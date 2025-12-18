@@ -1,0 +1,152 @@
+[
+    {
+        "module": "razonamiento_cuantitativo",
+        "text": "En una empresa, el costo de producción C de x unidades de un producto está dado por C = 4x + 2000. Si cada unidad se vende a $10, ¿cuántas unidades se deben vender para alcanzar el punto de equilibrio (donde los ingresos igualan los costos)?",
+        "options": [
+            {
+                "id": "a",
+                "text": "200 unidades"
+            },
+            {
+                "id": "b",
+                "text": "333 unidades"
+            },
+            {
+                "id": "c",
+                "text": "400 unidades"
+            },
+            {
+                "id": "d",
+                "text": "500 unidades"
+            }
+        ],
+        "correctAnswer": "b",
+        "explanation": "El ingreso I es 10x. Igualamos Ingreso y Costo: 10x = 4x + 2000 -> 6x = 2000 -> x = 333.33. Se redondea al entero más cercano o contexto.",
+        "difficulty": "media"
+    },
+    {
+        "module": "razonamiento_cuantitativo",
+        "text": "Un tanque de agua se vacía a razón de 5 litros por minuto. Si inicialmente contenía 1000 litros, ¿cuál función describe el volumen V(t) en función del tiempo t en minutos?",
+        "options": [
+            {
+                "id": "a",
+                "text": "V(t) = 1000 + 5t"
+            },
+            {
+                "id": "b",
+                "text": "V(t) = 1000 - 5t"
+            },
+            {
+                "id": "c",
+                "text": "V(t) = 5t - 1000"
+            },
+            {
+                "id": "d",
+                "text": "V(t) = 1000 / 5t"
+            }
+        ],
+        "correctAnswer": "b",
+        "explanation": "El volumen inicial es 1000 y disminuye (resta) 5 litros cada minuto t.",
+        "difficulty": "baja"
+    },
+    {
+        "module": "lectura_critica",
+        "text": "La frase 'El fin justifica los medios' atribuida a Maquiavelo, implica éticamente que:",
+        "options": [
+            {
+                "id": "a",
+                "text": "Cualquier acción es válida si el resultado es positivo."
+            },
+            {
+                "id": "b",
+                "text": "Los medios son irrelevantes en la política."
+            },
+            {
+                "id": "c",
+                "text": "Solo importan los resultados económicos."
+            },
+            {
+                "id": "d",
+                "text": "La moralidad depende exclusivamente de las intenciones."
+            }
+        ],
+        "correctAnswer": "a",
+        "explanation": "Esta postura consecuencialista sugiere que la moralidad de una acción se juzga únicamente por sus resultados finales.",
+        "difficulty": "media"
+    },
+    {
+        "module": "competencias_ciudadanas",
+        "text": "Un ciudadano observa que están talando árboles en un parque protegido de su barrio. ¿Cuál es la acción constitucional más adecuada que puede emprender para detenerlo inmediatamente?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Tutela"
+            },
+            {
+                "id": "b",
+                "text": "Acción Popular"
+            },
+            {
+                "id": "c",
+                "text": "Derecho de Petición"
+            },
+            {
+                "id": "d",
+                "text": "Denuncia Penal"
+            }
+        ],
+        "correctAnswer": "b",
+        "explanation": "La Acción Popular es el mecanismo constitucional diseñado específicamente para proteger derechos e intereses colectivos, como el medio ambiente y el espacio público.",
+        "difficulty": "media"
+    },
+    {
+        "module": "ingles",
+        "text": "Choose the correct option to complete the sentence: 'If I ______ enough money, I would travel around the world.'",
+        "options": [
+            {
+                "id": "a",
+                "text": "have"
+            },
+            {
+                "id": "b",
+                "text": "had"
+            },
+            {
+                "id": "c",
+                "text": "have had"
+            },
+            {
+                "id": "d",
+                "text": "would have"
+            }
+        ],
+        "correctAnswer": "b",
+        "explanation": "Second Conditional: If + Past Simple, ... would + infinitive. Expresses a hypothetical situation in the present/future.",
+        "difficulty": "media"
+    },
+    {
+        "module": "comunicacion_escrita",
+        "text": "Identifique el error de concordancia en la siguiente oración: 'La mayoría de los estudiantes aprobaron el examen con notas altas.'",
+        "options": [
+            {
+                "id": "a",
+                "text": "No hay error."
+            },
+            {
+                "id": "b",
+                "text": "'La mayoría' debe ir seguido de singular ('aprobó')."
+            },
+            {
+                "id": "c",
+                "text": "'Notas altas' es redundante."
+            },
+            {
+                "id": "d",
+                "text": "Falta una coma después de 'estudiantes'."
+            }
+        ],
+        "correctAnswer": "b",
+        "explanation": "Cuando el sujeto es un sustantivo colectivo seguido de un complemento plural ('La mayoría de los estudiantes'), el verbo puede ir en singular o plural, aunque la RAE prefiere la concordancia con el colectivo (singular) en el habla culta, ambos son aceptados. Sin embargo, en el contexto de corrección estricta, se suele evaluar la concordancia ad sensum vs gramatical.",
+        "difficulty": "media"
+    }
+]

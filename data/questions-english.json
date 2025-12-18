@@ -1,0 +1,3752 @@
+[
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a zoo"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a zoo"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a plane"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Quiet please, exam in progress.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Quiet please, exam in progress.\" is typical for context: In a school.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a zoo"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a plane"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Quiet please, exam in progress.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Quiet please, exam in progress.\" is typical for context: In a school.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a zoo"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a zoo"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a zoo"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Quiet please, exam in progress.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Quiet please, exam in progress.\" is typical for context: In a school.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a zoo"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a zoo"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Quiet please, exam in progress.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a zoo"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Quiet please, exam in progress.\" is typical for context: In a school.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a plane"
+      },
+      {
+        "id": "d",
+        "text": "In a zoo"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Quiet please, exam in progress.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a zoo"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Quiet please, exam in progress.\" is typical for context: In a school.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Quiet please, exam in progress.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a zoo"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Quiet please, exam in progress.\" is typical for context: In a school.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a zoo"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a zoo"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a zoo"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a zoo"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a zoo"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a zoo"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a zoo"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a zoo"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a zoo"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Quiet please, exam in progress.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Quiet please, exam in progress.\" is typical for context: In a school.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a zoo"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a zoo"
+      },
+      {
+        "id": "c",
+        "text": "In a plane"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a zoo"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a plane"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Quiet please, exam in progress.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a zoo"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Quiet please, exam in progress.\" is typical for context: In a school.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Quiet please, exam in progress.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Quiet please, exam in progress.\" is typical for context: In a school.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "b",
+        "text": "In a zoo"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a zoo"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Quiet please, exam in progress.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Quiet please, exam in progress.\" is typical for context: In a school.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a zoo"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a zoo"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a zoo"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a zoo"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a plane"
+      },
+      {
+        "id": "d",
+        "text": "In a zoo"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "b",
+        "text": "In a zoo"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a zoo"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Quiet please, exam in progress.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Quiet please, exam in progress.\" is typical for context: In a school.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Quiet please, exam in progress.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Quiet please, exam in progress.\" is typical for context: In a school.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a zoo"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Do not run near the pool.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Do not run near the pool.\" is typical for context: In a swimming pool.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a zoo"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a plane"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a plane"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a zoo"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Quiet please, exam in progress.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Quiet please, exam in progress.\" is typical for context: In a school.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Quiet please, exam in progress.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Quiet please, exam in progress.\" is typical for context: In a school.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a zoo"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a plane"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "b",
+        "text": "In a zoo"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a zoo"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a zoo"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Sale! 50% off everything.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a shop"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a plane"
+      },
+      {
+        "id": "d",
+        "text": "In a school"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Sale! 50% off everything.\" is typical for context: In a shop.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a zoo"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a zoo"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a zoo"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a plane"
+      },
+      {
+        "id": "c",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Quiet please, exam in progress.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a school"
+      },
+      {
+        "id": "b",
+        "text": "In a swimming pool"
+      },
+      {
+        "id": "c",
+        "text": "In a plane"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Quiet please, exam in progress.\" is typical for context: In a school.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a zoo"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a shop"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please do not feed the animals.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a zoo"
+      },
+      {
+        "id": "b",
+        "text": "In a school"
+      },
+      {
+        "id": "c",
+        "text": "In a shop"
+      },
+      {
+        "id": "d",
+        "text": "In a plane"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Please do not feed the animals.\" is typical for context: In a zoo.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Where can you see this sign?\n\n\"Please fasten your seatbelt.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a plane"
+      },
+      {
+        "id": "b",
+        "text": "In a shop"
+      },
+      {
+        "id": "c",
+        "text": "In a school"
+      },
+      {
+        "id": "d",
+        "text": "In a swimming pool"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The phrase \"Please fasten your seatbelt.\" is typical for context: In a plane.",
+    "difficulty": "media"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nIf I _____ you, I would study harder.",
+    "options": [
+      {
+        "id": "a",
+        "text": "was"
+      },
+      {
+        "id": "b",
+        "text": "be"
+      },
+      {
+        "id": "c",
+        "text": "am"
+      },
+      {
+        "id": "d",
+        "text": "were"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Grammatically correct choice is \"were\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nWe enjoy _____ movies on weekends.",
+    "options": [
+      {
+        "id": "a",
+        "text": "watching"
+      },
+      {
+        "id": "b",
+        "text": "watch"
+      },
+      {
+        "id": "c",
+        "text": "watched"
+      },
+      {
+        "id": "d",
+        "text": "to watch"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Grammatically correct choice is \"watching\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nWe enjoy _____ movies on weekends.",
+    "options": [
+      {
+        "id": "a",
+        "text": "watch"
+      },
+      {
+        "id": "b",
+        "text": "to watch"
+      },
+      {
+        "id": "c",
+        "text": "watched"
+      },
+      {
+        "id": "d",
+        "text": "watching"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Grammatically correct choice is \"watching\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nWe enjoy _____ movies on weekends.",
+    "options": [
+      {
+        "id": "a",
+        "text": "to watch"
+      },
+      {
+        "id": "b",
+        "text": "watched"
+      },
+      {
+        "id": "c",
+        "text": "watch"
+      },
+      {
+        "id": "d",
+        "text": "watching"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Grammatically correct choice is \"watching\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nIf I _____ you, I would study harder.",
+    "options": [
+      {
+        "id": "a",
+        "text": "be"
+      },
+      {
+        "id": "b",
+        "text": "were"
+      },
+      {
+        "id": "c",
+        "text": "am"
+      },
+      {
+        "id": "d",
+        "text": "was"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Grammatically correct choice is \"were\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nHe has _____ working here for ten years.",
+    "options": [
+      {
+        "id": "a",
+        "text": "is"
+      },
+      {
+        "id": "b",
+        "text": "being"
+      },
+      {
+        "id": "c",
+        "text": "be"
+      },
+      {
+        "id": "d",
+        "text": "been"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Grammatically correct choice is \"been\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nShe _____ to the market yesterday.",
+    "options": [
+      {
+        "id": "a",
+        "text": "went"
+      },
+      {
+        "id": "b",
+        "text": "gone"
+      },
+      {
+        "id": "c",
+        "text": "goes"
+      },
+      {
+        "id": "d",
+        "text": "go"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Grammatically correct choice is \"went\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nThe book _____ was written by Garcia Marquez.",
+    "options": [
+      {
+        "id": "a",
+        "text": "where"
+      },
+      {
+        "id": "b",
+        "text": "who"
+      },
+      {
+        "id": "c",
+        "text": "which"
+      },
+      {
+        "id": "d",
+        "text": "whose"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Grammatically correct choice is \"which\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nIf I _____ you, I would study harder.",
+    "options": [
+      {
+        "id": "a",
+        "text": "be"
+      },
+      {
+        "id": "b",
+        "text": "was"
+      },
+      {
+        "id": "c",
+        "text": "am"
+      },
+      {
+        "id": "d",
+        "text": "were"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Grammatically correct choice is \"were\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nIf I _____ you, I would study harder.",
+    "options": [
+      {
+        "id": "a",
+        "text": "be"
+      },
+      {
+        "id": "b",
+        "text": "were"
+      },
+      {
+        "id": "c",
+        "text": "am"
+      },
+      {
+        "id": "d",
+        "text": "was"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Grammatically correct choice is \"were\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nWe enjoy _____ movies on weekends.",
+    "options": [
+      {
+        "id": "a",
+        "text": "watched"
+      },
+      {
+        "id": "b",
+        "text": "watch"
+      },
+      {
+        "id": "c",
+        "text": "watching"
+      },
+      {
+        "id": "d",
+        "text": "to watch"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Grammatically correct choice is \"watching\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nThe book _____ was written by Garcia Marquez.",
+    "options": [
+      {
+        "id": "a",
+        "text": "whose"
+      },
+      {
+        "id": "b",
+        "text": "which"
+      },
+      {
+        "id": "c",
+        "text": "who"
+      },
+      {
+        "id": "d",
+        "text": "where"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Grammatically correct choice is \"which\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nThe book _____ was written by Garcia Marquez.",
+    "options": [
+      {
+        "id": "a",
+        "text": "who"
+      },
+      {
+        "id": "b",
+        "text": "whose"
+      },
+      {
+        "id": "c",
+        "text": "which"
+      },
+      {
+        "id": "d",
+        "text": "where"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Grammatically correct choice is \"which\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nIf I _____ you, I would study harder.",
+    "options": [
+      {
+        "id": "a",
+        "text": "be"
+      },
+      {
+        "id": "b",
+        "text": "am"
+      },
+      {
+        "id": "c",
+        "text": "was"
+      },
+      {
+        "id": "d",
+        "text": "were"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Grammatically correct choice is \"were\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nIf I _____ you, I would study harder.",
+    "options": [
+      {
+        "id": "a",
+        "text": "am"
+      },
+      {
+        "id": "b",
+        "text": "be"
+      },
+      {
+        "id": "c",
+        "text": "were"
+      },
+      {
+        "id": "d",
+        "text": "was"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Grammatically correct choice is \"were\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nIf I _____ you, I would study harder.",
+    "options": [
+      {
+        "id": "a",
+        "text": "am"
+      },
+      {
+        "id": "b",
+        "text": "was"
+      },
+      {
+        "id": "c",
+        "text": "were"
+      },
+      {
+        "id": "d",
+        "text": "be"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Grammatically correct choice is \"were\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nHe has _____ working here for ten years.",
+    "options": [
+      {
+        "id": "a",
+        "text": "been"
+      },
+      {
+        "id": "b",
+        "text": "being"
+      },
+      {
+        "id": "c",
+        "text": "is"
+      },
+      {
+        "id": "d",
+        "text": "be"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Grammatically correct choice is \"been\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nHe has _____ working here for ten years.",
+    "options": [
+      {
+        "id": "a",
+        "text": "is"
+      },
+      {
+        "id": "b",
+        "text": "being"
+      },
+      {
+        "id": "c",
+        "text": "be"
+      },
+      {
+        "id": "d",
+        "text": "been"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Grammatically correct choice is \"been\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nHe has _____ working here for ten years.",
+    "options": [
+      {
+        "id": "a",
+        "text": "been"
+      },
+      {
+        "id": "b",
+        "text": "be"
+      },
+      {
+        "id": "c",
+        "text": "is"
+      },
+      {
+        "id": "d",
+        "text": "being"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Grammatically correct choice is \"been\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nShe _____ to the market yesterday.",
+    "options": [
+      {
+        "id": "a",
+        "text": "go"
+      },
+      {
+        "id": "b",
+        "text": "goes"
+      },
+      {
+        "id": "c",
+        "text": "went"
+      },
+      {
+        "id": "d",
+        "text": "gone"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Grammatically correct choice is \"went\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nWe enjoy _____ movies on weekends.",
+    "options": [
+      {
+        "id": "a",
+        "text": "to watch"
+      },
+      {
+        "id": "b",
+        "text": "watched"
+      },
+      {
+        "id": "c",
+        "text": "watch"
+      },
+      {
+        "id": "d",
+        "text": "watching"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Grammatically correct choice is \"watching\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nIf I _____ you, I would study harder.",
+    "options": [
+      {
+        "id": "a",
+        "text": "were"
+      },
+      {
+        "id": "b",
+        "text": "be"
+      },
+      {
+        "id": "c",
+        "text": "am"
+      },
+      {
+        "id": "d",
+        "text": "was"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Grammatically correct choice is \"were\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nThe book _____ was written by Garcia Marquez.",
+    "options": [
+      {
+        "id": "a",
+        "text": "whose"
+      },
+      {
+        "id": "b",
+        "text": "who"
+      },
+      {
+        "id": "c",
+        "text": "which"
+      },
+      {
+        "id": "d",
+        "text": "where"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Grammatically correct choice is \"which\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nWe enjoy _____ movies on weekends.",
+    "options": [
+      {
+        "id": "a",
+        "text": "watching"
+      },
+      {
+        "id": "b",
+        "text": "watch"
+      },
+      {
+        "id": "c",
+        "text": "to watch"
+      },
+      {
+        "id": "d",
+        "text": "watched"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Grammatically correct choice is \"watching\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nThe book _____ was written by Garcia Marquez.",
+    "options": [
+      {
+        "id": "a",
+        "text": "which"
+      },
+      {
+        "id": "b",
+        "text": "who"
+      },
+      {
+        "id": "c",
+        "text": "where"
+      },
+      {
+        "id": "d",
+        "text": "whose"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Grammatically correct choice is \"which\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nShe _____ to the market yesterday.",
+    "options": [
+      {
+        "id": "a",
+        "text": "gone"
+      },
+      {
+        "id": "b",
+        "text": "go"
+      },
+      {
+        "id": "c",
+        "text": "goes"
+      },
+      {
+        "id": "d",
+        "text": "went"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Grammatically correct choice is \"went\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nShe _____ to the market yesterday.",
+    "options": [
+      {
+        "id": "a",
+        "text": "went"
+      },
+      {
+        "id": "b",
+        "text": "goes"
+      },
+      {
+        "id": "c",
+        "text": "gone"
+      },
+      {
+        "id": "d",
+        "text": "go"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Grammatically correct choice is \"went\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nShe _____ to the market yesterday.",
+    "options": [
+      {
+        "id": "a",
+        "text": "went"
+      },
+      {
+        "id": "b",
+        "text": "gone"
+      },
+      {
+        "id": "c",
+        "text": "go"
+      },
+      {
+        "id": "d",
+        "text": "goes"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Grammatically correct choice is \"went\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nIf I _____ you, I would study harder.",
+    "options": [
+      {
+        "id": "a",
+        "text": "were"
+      },
+      {
+        "id": "b",
+        "text": "be"
+      },
+      {
+        "id": "c",
+        "text": "am"
+      },
+      {
+        "id": "d",
+        "text": "was"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Grammatically correct choice is \"were\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Complete the sentence:\n\nHe has _____ working here for ten years.",
+    "options": [
+      {
+        "id": "a",
+        "text": "is"
+      },
+      {
+        "id": "b",
+        "text": "being"
+      },
+      {
+        "id": "c",
+        "text": "been"
+      },
+      {
+        "id": "d",
+        "text": "be"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Grammatically correct choice is \"been\".",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that space exploration is as important as physical health. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about space exploration?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it has no impact on society."
+      },
+      {
+        "id": "b",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "c",
+        "text": "That it is as important as physical health."
+      },
+      {
+        "id": "d",
+        "text": "That we should ignore the trend."
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The text explicitly states that space exploration is as important as physical health.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that climate change is as important as physical health. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about climate change?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it has no impact on society."
+      },
+      {
+        "id": "b",
+        "text": "That we should ignore the trend."
+      },
+      {
+        "id": "c",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "d",
+        "text": "That it is as important as physical health."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The text explicitly states that climate change is as important as physical health.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that space exploration requires global cooperation. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about space exploration?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it has no impact on society."
+      },
+      {
+        "id": "b",
+        "text": "That we should ignore the trend."
+      },
+      {
+        "id": "c",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "d",
+        "text": "That it requires global cooperation."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The text explicitly states that space exploration requires global cooperation.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that mental health improves flexibility but reduces social contact. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about mental health?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it improves flexibility but reduces social contact."
+      },
+      {
+        "id": "b",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "c",
+        "text": "That we should ignore the trend."
+      },
+      {
+        "id": "d",
+        "text": "That it has no impact on society."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The text explicitly states that mental health improves flexibility but reduces social contact.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that climate change is as important as physical health. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about climate change?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That we should ignore the trend."
+      },
+      {
+        "id": "b",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "c",
+        "text": "That it is as important as physical health."
+      },
+      {
+        "id": "d",
+        "text": "That it has no impact on society."
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The text explicitly states that climate change is as important as physical health.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that mental health requires global cooperation. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about mental health?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That we should ignore the trend."
+      },
+      {
+        "id": "b",
+        "text": "That it has no impact on society."
+      },
+      {
+        "id": "c",
+        "text": "That it requires global cooperation."
+      },
+      {
+        "id": "d",
+        "text": "That it is not important at all."
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "The text explicitly states that mental health requires global cooperation.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that mental health is as important as physical health. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about mental health?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That we should ignore the trend."
+      },
+      {
+        "id": "b",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "c",
+        "text": "That it has no impact on society."
+      },
+      {
+        "id": "d",
+        "text": "That it is as important as physical health."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The text explicitly states that mental health is as important as physical health.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that climate change requires global cooperation. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about climate change?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it requires global cooperation."
+      },
+      {
+        "id": "b",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "c",
+        "text": "That we should ignore the trend."
+      },
+      {
+        "id": "d",
+        "text": "That it has no impact on society."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The text explicitly states that climate change requires global cooperation.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that space exploration improves flexibility but reduces social contact. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about space exploration?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it improves flexibility but reduces social contact."
+      },
+      {
+        "id": "b",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "c",
+        "text": "That it has no impact on society."
+      },
+      {
+        "id": "d",
+        "text": "That we should ignore the trend."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The text explicitly states that space exploration improves flexibility but reduces social contact.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that climate change requires global cooperation. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about climate change?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it requires global cooperation."
+      },
+      {
+        "id": "b",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "c",
+        "text": "That we should ignore the trend."
+      },
+      {
+        "id": "d",
+        "text": "That it has no impact on society."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The text explicitly states that climate change requires global cooperation.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that mental health improves flexibility but reduces social contact. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about mental health?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "b",
+        "text": "That it improves flexibility but reduces social contact."
+      },
+      {
+        "id": "c",
+        "text": "That it has no impact on society."
+      },
+      {
+        "id": "d",
+        "text": "That we should ignore the trend."
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "The text explicitly states that mental health improves flexibility but reduces social contact.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that space exploration improves flexibility but reduces social contact. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about space exploration?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it improves flexibility but reduces social contact."
+      },
+      {
+        "id": "b",
+        "text": "That we should ignore the trend."
+      },
+      {
+        "id": "c",
+        "text": "That it has no impact on society."
+      },
+      {
+        "id": "d",
+        "text": "That it is not important at all."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The text explicitly states that space exploration improves flexibility but reduces social contact.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that mental health improves flexibility but reduces social contact. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about mental health?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it improves flexibility but reduces social contact."
+      },
+      {
+        "id": "b",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "c",
+        "text": "That we should ignore the trend."
+      },
+      {
+        "id": "d",
+        "text": "That it has no impact on society."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The text explicitly states that mental health improves flexibility but reduces social contact.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that space exploration improves flexibility but reduces social contact. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about space exploration?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it has no impact on society."
+      },
+      {
+        "id": "b",
+        "text": "That we should ignore the trend."
+      },
+      {
+        "id": "c",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "d",
+        "text": "That it improves flexibility but reduces social contact."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The text explicitly states that space exploration improves flexibility but reduces social contact.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that space exploration requires global cooperation. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about space exploration?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it requires global cooperation."
+      },
+      {
+        "id": "b",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "c",
+        "text": "That we should ignore the trend."
+      },
+      {
+        "id": "d",
+        "text": "That it has no impact on society."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The text explicitly states that space exploration requires global cooperation.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that remote work could be our future survival strategy. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about remote work?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it could be our future survival strategy."
+      },
+      {
+        "id": "b",
+        "text": "That it has no impact on society."
+      },
+      {
+        "id": "c",
+        "text": "That we should ignore the trend."
+      },
+      {
+        "id": "d",
+        "text": "That it is not important at all."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The text explicitly states that remote work could be our future survival strategy.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that mental health is as important as physical health. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about mental health?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it has no impact on society."
+      },
+      {
+        "id": "b",
+        "text": "That we should ignore the trend."
+      },
+      {
+        "id": "c",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "d",
+        "text": "That it is as important as physical health."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "The text explicitly states that mental health is as important as physical health.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that space exploration could be our future survival strategy. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about space exploration?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it could be our future survival strategy."
+      },
+      {
+        "id": "b",
+        "text": "That it has no impact on society."
+      },
+      {
+        "id": "c",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "d",
+        "text": "That we should ignore the trend."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The text explicitly states that space exploration could be our future survival strategy.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that remote work requires global cooperation. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about remote work?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it requires global cooperation."
+      },
+      {
+        "id": "b",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "c",
+        "text": "That we should ignore the trend."
+      },
+      {
+        "id": "d",
+        "text": "That it has no impact on society."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The text explicitly states that remote work requires global cooperation.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "ingles",
+    "text": "Read the text:\n\"Recent studies suggest that climate change is as important as physical health. Experts argue that we must pay attention to this trend.\"\n\nWhat do experts suggest about climate change?",
+    "options": [
+      {
+        "id": "a",
+        "text": "That it is as important as physical health."
+      },
+      {
+        "id": "b",
+        "text": "That we should ignore the trend."
+      },
+      {
+        "id": "c",
+        "text": "That it is not important at all."
+      },
+      {
+        "id": "d",
+        "text": "That it has no impact on society."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "The text explicitly states that climate change is as important as physical health.",
+    "difficulty": "avanzada"
+  }
+]

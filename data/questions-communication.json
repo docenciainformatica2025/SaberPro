@@ -1,0 +1,3752 @@
+[
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "hecho"
+      },
+      {
+        "id": "b",
+        "text": "ehcho"
+      },
+      {
+        "id": "c",
+        "text": "ecco"
+      },
+      {
+        "id": "d",
+        "text": "echo"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "haya"
+      },
+      {
+        "id": "b",
+        "text": "halla"
+      },
+      {
+        "id": "c",
+        "text": "alla"
+      },
+      {
+        "id": "d",
+        "text": "aya"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "haya"
+      },
+      {
+        "id": "b",
+        "text": "halla"
+      },
+      {
+        "id": "c",
+        "text": "alla"
+      },
+      {
+        "id": "d",
+        "text": "aya"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "aya"
+      },
+      {
+        "id": "b",
+        "text": "alla"
+      },
+      {
+        "id": "c",
+        "text": "haya"
+      },
+      {
+        "id": "d",
+        "text": "halla"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "alla"
+      },
+      {
+        "id": "b",
+        "text": "haya"
+      },
+      {
+        "id": "c",
+        "text": "halla"
+      },
+      {
+        "id": "d",
+        "text": "aya"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "baya"
+      },
+      {
+        "id": "b",
+        "text": "vaya"
+      },
+      {
+        "id": "c",
+        "text": "valla"
+      },
+      {
+        "id": "d",
+        "text": "balla"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "halla"
+      },
+      {
+        "id": "b",
+        "text": "haya"
+      },
+      {
+        "id": "c",
+        "text": "alla"
+      },
+      {
+        "id": "d",
+        "text": "aya"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "baya"
+      },
+      {
+        "id": "b",
+        "text": "vaya"
+      },
+      {
+        "id": "c",
+        "text": "valla"
+      },
+      {
+        "id": "d",
+        "text": "balla"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "ehcho"
+      },
+      {
+        "id": "b",
+        "text": "echo"
+      },
+      {
+        "id": "c",
+        "text": "ecco"
+      },
+      {
+        "id": "d",
+        "text": "hecho"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "aya"
+      },
+      {
+        "id": "b",
+        "text": "alla"
+      },
+      {
+        "id": "c",
+        "text": "haya"
+      },
+      {
+        "id": "d",
+        "text": "halla"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Saltó la _____ para entrar.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "valla"
+      },
+      {
+        "id": "b",
+        "text": "vaya"
+      },
+      {
+        "id": "c",
+        "text": "baya"
+      },
+      {
+        "id": "d",
+        "text": "balla"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"valla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "halla"
+      },
+      {
+        "id": "b",
+        "text": "haya"
+      },
+      {
+        "id": "c",
+        "text": "aya"
+      },
+      {
+        "id": "d",
+        "text": "alla"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Ya he _____ la tarea.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "hice"
+      },
+      {
+        "id": "b",
+        "text": "ehcho"
+      },
+      {
+        "id": "c",
+        "text": "echo"
+      },
+      {
+        "id": "d",
+        "text": "hecho"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"hecho\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Saltó la _____ para entrar.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "valla"
+      },
+      {
+        "id": "b",
+        "text": "baya"
+      },
+      {
+        "id": "c",
+        "text": "balla"
+      },
+      {
+        "id": "d",
+        "text": "vaya"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"valla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "aya"
+      },
+      {
+        "id": "b",
+        "text": "haya"
+      },
+      {
+        "id": "c",
+        "text": "halla"
+      },
+      {
+        "id": "d",
+        "text": "alla"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Ya he _____ la tarea.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "ehcho"
+      },
+      {
+        "id": "b",
+        "text": "hice"
+      },
+      {
+        "id": "c",
+        "text": "echo"
+      },
+      {
+        "id": "d",
+        "text": "hecho"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"hecho\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Ya he _____ la tarea.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "ehcho"
+      },
+      {
+        "id": "b",
+        "text": "echo"
+      },
+      {
+        "id": "c",
+        "text": "hecho"
+      },
+      {
+        "id": "d",
+        "text": "hice"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "En este contexto, la forma correcta es \"hecho\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Ya he _____ la tarea.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "hecho"
+      },
+      {
+        "id": "b",
+        "text": "hice"
+      },
+      {
+        "id": "c",
+        "text": "echo"
+      },
+      {
+        "id": "d",
+        "text": "ehcho"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"hecho\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Ya he _____ la tarea.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "hecho"
+      },
+      {
+        "id": "b",
+        "text": "echo"
+      },
+      {
+        "id": "c",
+        "text": "ehcho"
+      },
+      {
+        "id": "d",
+        "text": "hice"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"hecho\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "valla"
+      },
+      {
+        "id": "b",
+        "text": "vaya"
+      },
+      {
+        "id": "c",
+        "text": "baya"
+      },
+      {
+        "id": "d",
+        "text": "balla"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Ya he _____ la tarea.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "echo"
+      },
+      {
+        "id": "b",
+        "text": "hecho"
+      },
+      {
+        "id": "c",
+        "text": "ehcho"
+      },
+      {
+        "id": "d",
+        "text": "hice"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"hecho\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Ya he _____ la tarea.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "hecho"
+      },
+      {
+        "id": "b",
+        "text": "ehcho"
+      },
+      {
+        "id": "c",
+        "text": "hice"
+      },
+      {
+        "id": "d",
+        "text": "echo"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"hecho\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "halla"
+      },
+      {
+        "id": "b",
+        "text": "haya"
+      },
+      {
+        "id": "c",
+        "text": "aya"
+      },
+      {
+        "id": "d",
+        "text": "alla"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "baya"
+      },
+      {
+        "id": "b",
+        "text": "vaya"
+      },
+      {
+        "id": "c",
+        "text": "valla"
+      },
+      {
+        "id": "d",
+        "text": "balla"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "baya"
+      },
+      {
+        "id": "b",
+        "text": "vaya"
+      },
+      {
+        "id": "c",
+        "text": "valla"
+      },
+      {
+        "id": "d",
+        "text": "balla"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "ehcho"
+      },
+      {
+        "id": "b",
+        "text": "echo"
+      },
+      {
+        "id": "c",
+        "text": "hecho"
+      },
+      {
+        "id": "d",
+        "text": "ecco"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "alla"
+      },
+      {
+        "id": "b",
+        "text": "haya"
+      },
+      {
+        "id": "c",
+        "text": "aya"
+      },
+      {
+        "id": "d",
+        "text": "halla"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "haya"
+      },
+      {
+        "id": "b",
+        "text": "halla"
+      },
+      {
+        "id": "c",
+        "text": "alla"
+      },
+      {
+        "id": "d",
+        "text": "aya"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "ehcho"
+      },
+      {
+        "id": "b",
+        "text": "ecco"
+      },
+      {
+        "id": "c",
+        "text": "hecho"
+      },
+      {
+        "id": "d",
+        "text": "echo"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Ya he _____ la tarea.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "hecho"
+      },
+      {
+        "id": "b",
+        "text": "ehcho"
+      },
+      {
+        "id": "c",
+        "text": "echo"
+      },
+      {
+        "id": "d",
+        "text": "hice"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"hecho\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "ecco"
+      },
+      {
+        "id": "b",
+        "text": "ehcho"
+      },
+      {
+        "id": "c",
+        "text": "hecho"
+      },
+      {
+        "id": "d",
+        "text": "echo"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Saltó la _____ para entrar.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "valla"
+      },
+      {
+        "id": "b",
+        "text": "vaya"
+      },
+      {
+        "id": "c",
+        "text": "baya"
+      },
+      {
+        "id": "d",
+        "text": "balla"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"valla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "alla"
+      },
+      {
+        "id": "b",
+        "text": "halla"
+      },
+      {
+        "id": "c",
+        "text": "aya"
+      },
+      {
+        "id": "d",
+        "text": "haya"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "hecho"
+      },
+      {
+        "id": "b",
+        "text": "echo"
+      },
+      {
+        "id": "c",
+        "text": "ecco"
+      },
+      {
+        "id": "d",
+        "text": "ehcho"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "hecho"
+      },
+      {
+        "id": "b",
+        "text": "ecco"
+      },
+      {
+        "id": "c",
+        "text": "ehcho"
+      },
+      {
+        "id": "d",
+        "text": "echo"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "balla"
+      },
+      {
+        "id": "b",
+        "text": "valla"
+      },
+      {
+        "id": "c",
+        "text": "vaya"
+      },
+      {
+        "id": "d",
+        "text": "baya"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "haya"
+      },
+      {
+        "id": "b",
+        "text": "aya"
+      },
+      {
+        "id": "c",
+        "text": "halla"
+      },
+      {
+        "id": "d",
+        "text": "alla"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "aya"
+      },
+      {
+        "id": "b",
+        "text": "alla"
+      },
+      {
+        "id": "c",
+        "text": "haya"
+      },
+      {
+        "id": "d",
+        "text": "halla"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "valla"
+      },
+      {
+        "id": "b",
+        "text": "vaya"
+      },
+      {
+        "id": "c",
+        "text": "balla"
+      },
+      {
+        "id": "d",
+        "text": "baya"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "valla"
+      },
+      {
+        "id": "b",
+        "text": "baya"
+      },
+      {
+        "id": "c",
+        "text": "vaya"
+      },
+      {
+        "id": "d",
+        "text": "balla"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "alla"
+      },
+      {
+        "id": "b",
+        "text": "aya"
+      },
+      {
+        "id": "c",
+        "text": "halla"
+      },
+      {
+        "id": "d",
+        "text": "haya"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "ehcho"
+      },
+      {
+        "id": "b",
+        "text": "echo"
+      },
+      {
+        "id": "c",
+        "text": "ecco"
+      },
+      {
+        "id": "d",
+        "text": "hecho"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "halla"
+      },
+      {
+        "id": "b",
+        "text": "haya"
+      },
+      {
+        "id": "c",
+        "text": "aya"
+      },
+      {
+        "id": "d",
+        "text": "alla"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Saltó la _____ para entrar.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "valla"
+      },
+      {
+        "id": "b",
+        "text": "vaya"
+      },
+      {
+        "id": "c",
+        "text": "baya"
+      },
+      {
+        "id": "d",
+        "text": "balla"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"valla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Ya he _____ la tarea.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "echo"
+      },
+      {
+        "id": "b",
+        "text": "hice"
+      },
+      {
+        "id": "c",
+        "text": "ehcho"
+      },
+      {
+        "id": "d",
+        "text": "hecho"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"hecho\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "ehcho"
+      },
+      {
+        "id": "b",
+        "text": "hecho"
+      },
+      {
+        "id": "c",
+        "text": "ecco"
+      },
+      {
+        "id": "d",
+        "text": "echo"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Ya he _____ la tarea.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "hecho"
+      },
+      {
+        "id": "b",
+        "text": "echo"
+      },
+      {
+        "id": "c",
+        "text": "ehcho"
+      },
+      {
+        "id": "d",
+        "text": "hice"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"hecho\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "baya"
+      },
+      {
+        "id": "b",
+        "text": "vaya"
+      },
+      {
+        "id": "c",
+        "text": "balla"
+      },
+      {
+        "id": "d",
+        "text": "valla"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Saltó la _____ para entrar.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "vaya"
+      },
+      {
+        "id": "b",
+        "text": "valla"
+      },
+      {
+        "id": "c",
+        "text": "baya"
+      },
+      {
+        "id": "d",
+        "text": "balla"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"valla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "haya"
+      },
+      {
+        "id": "b",
+        "text": "halla"
+      },
+      {
+        "id": "c",
+        "text": "aya"
+      },
+      {
+        "id": "d",
+        "text": "alla"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Saltó la _____ para entrar.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "baya"
+      },
+      {
+        "id": "b",
+        "text": "valla"
+      },
+      {
+        "id": "c",
+        "text": "vaya"
+      },
+      {
+        "id": "d",
+        "text": "balla"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"valla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "vaya"
+      },
+      {
+        "id": "b",
+        "text": "baya"
+      },
+      {
+        "id": "c",
+        "text": "valla"
+      },
+      {
+        "id": "d",
+        "text": "balla"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "aya"
+      },
+      {
+        "id": "b",
+        "text": "alla"
+      },
+      {
+        "id": "c",
+        "text": "halla"
+      },
+      {
+        "id": "d",
+        "text": "haya"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Ya he _____ la tarea.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "echo"
+      },
+      {
+        "id": "b",
+        "text": "hecho"
+      },
+      {
+        "id": "c",
+        "text": "ehcho"
+      },
+      {
+        "id": "d",
+        "text": "hice"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"hecho\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "halla"
+      },
+      {
+        "id": "b",
+        "text": "alla"
+      },
+      {
+        "id": "c",
+        "text": "aya"
+      },
+      {
+        "id": "d",
+        "text": "haya"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Ya he _____ la tarea.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "echo"
+      },
+      {
+        "id": "b",
+        "text": "hice"
+      },
+      {
+        "id": "c",
+        "text": "hecho"
+      },
+      {
+        "id": "d",
+        "text": "ehcho"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "En este contexto, la forma correcta es \"hecho\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Saltó la _____ para entrar.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "balla"
+      },
+      {
+        "id": "b",
+        "text": "valla"
+      },
+      {
+        "id": "c",
+        "text": "vaya"
+      },
+      {
+        "id": "d",
+        "text": "baya"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"valla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "echo"
+      },
+      {
+        "id": "b",
+        "text": "hecho"
+      },
+      {
+        "id": "c",
+        "text": "ehcho"
+      },
+      {
+        "id": "d",
+        "text": "ecco"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "valla"
+      },
+      {
+        "id": "b",
+        "text": "vaya"
+      },
+      {
+        "id": "c",
+        "text": "baya"
+      },
+      {
+        "id": "d",
+        "text": "balla"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "echo"
+      },
+      {
+        "id": "b",
+        "text": "hecho"
+      },
+      {
+        "id": "c",
+        "text": "ehcho"
+      },
+      {
+        "id": "d",
+        "text": "ecco"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Saltó la _____ para entrar.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "valla"
+      },
+      {
+        "id": "b",
+        "text": "vaya"
+      },
+      {
+        "id": "c",
+        "text": "baya"
+      },
+      {
+        "id": "d",
+        "text": "balla"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"valla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "alla"
+      },
+      {
+        "id": "b",
+        "text": "halla"
+      },
+      {
+        "id": "c",
+        "text": "aya"
+      },
+      {
+        "id": "d",
+        "text": "haya"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Ya he _____ la tarea.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "ehcho"
+      },
+      {
+        "id": "b",
+        "text": "echo"
+      },
+      {
+        "id": "c",
+        "text": "hecho"
+      },
+      {
+        "id": "d",
+        "text": "hice"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "En este contexto, la forma correcta es \"hecho\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Saltó la _____ para entrar.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "vaya"
+      },
+      {
+        "id": "b",
+        "text": "valla"
+      },
+      {
+        "id": "c",
+        "text": "baya"
+      },
+      {
+        "id": "d",
+        "text": "balla"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"valla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Ya he _____ la tarea.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "hice"
+      },
+      {
+        "id": "b",
+        "text": "ehcho"
+      },
+      {
+        "id": "c",
+        "text": "echo"
+      },
+      {
+        "id": "d",
+        "text": "hecho"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"hecho\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "ecco"
+      },
+      {
+        "id": "b",
+        "text": "ehcho"
+      },
+      {
+        "id": "c",
+        "text": "echo"
+      },
+      {
+        "id": "d",
+        "text": "hecho"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "balla"
+      },
+      {
+        "id": "b",
+        "text": "valla"
+      },
+      {
+        "id": "c",
+        "text": "vaya"
+      },
+      {
+        "id": "d",
+        "text": "baya"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "alla"
+      },
+      {
+        "id": "b",
+        "text": "aya"
+      },
+      {
+        "id": "c",
+        "text": "halla"
+      },
+      {
+        "id": "d",
+        "text": "haya"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Saltó la _____ para entrar.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "balla"
+      },
+      {
+        "id": "b",
+        "text": "valla"
+      },
+      {
+        "id": "c",
+        "text": "vaya"
+      },
+      {
+        "id": "d",
+        "text": "baya"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"valla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "echo"
+      },
+      {
+        "id": "b",
+        "text": "ecco"
+      },
+      {
+        "id": "c",
+        "text": "hecho"
+      },
+      {
+        "id": "d",
+        "text": "ehcho"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Ya he _____ la tarea.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "echo"
+      },
+      {
+        "id": "b",
+        "text": "hecho"
+      },
+      {
+        "id": "c",
+        "text": "ehcho"
+      },
+      {
+        "id": "d",
+        "text": "hice"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"hecho\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "balla"
+      },
+      {
+        "id": "b",
+        "text": "baya"
+      },
+      {
+        "id": "c",
+        "text": "vaya"
+      },
+      {
+        "id": "d",
+        "text": "valla"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "ecco"
+      },
+      {
+        "id": "b",
+        "text": "ehcho"
+      },
+      {
+        "id": "c",
+        "text": "hecho"
+      },
+      {
+        "id": "d",
+        "text": "echo"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "halla"
+      },
+      {
+        "id": "b",
+        "text": "haya"
+      },
+      {
+        "id": "c",
+        "text": "alla"
+      },
+      {
+        "id": "d",
+        "text": "aya"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "haya"
+      },
+      {
+        "id": "b",
+        "text": "aya"
+      },
+      {
+        "id": "c",
+        "text": "alla"
+      },
+      {
+        "id": "d",
+        "text": "halla"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "halla"
+      },
+      {
+        "id": "b",
+        "text": "aya"
+      },
+      {
+        "id": "c",
+        "text": "haya"
+      },
+      {
+        "id": "d",
+        "text": "alla"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Ya he _____ la tarea.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "hecho"
+      },
+      {
+        "id": "b",
+        "text": "echo"
+      },
+      {
+        "id": "c",
+        "text": "hice"
+      },
+      {
+        "id": "d",
+        "text": "ehcho"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"hecho\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "aya"
+      },
+      {
+        "id": "b",
+        "text": "haya"
+      },
+      {
+        "id": "c",
+        "text": "halla"
+      },
+      {
+        "id": "d",
+        "text": "alla"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "haya"
+      },
+      {
+        "id": "b",
+        "text": "halla"
+      },
+      {
+        "id": "c",
+        "text": "alla"
+      },
+      {
+        "id": "d",
+        "text": "aya"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "alla"
+      },
+      {
+        "id": "b",
+        "text": "haya"
+      },
+      {
+        "id": "c",
+        "text": "halla"
+      },
+      {
+        "id": "d",
+        "text": "aya"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "haya"
+      },
+      {
+        "id": "b",
+        "text": "halla"
+      },
+      {
+        "id": "c",
+        "text": "aya"
+      },
+      {
+        "id": "d",
+        "text": "alla"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "echo"
+      },
+      {
+        "id": "b",
+        "text": "hecho"
+      },
+      {
+        "id": "c",
+        "text": "ehcho"
+      },
+      {
+        "id": "d",
+        "text": "ecco"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "haya"
+      },
+      {
+        "id": "b",
+        "text": "halla"
+      },
+      {
+        "id": "c",
+        "text": "alla"
+      },
+      {
+        "id": "d",
+        "text": "aya"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "halla"
+      },
+      {
+        "id": "b",
+        "text": "aya"
+      },
+      {
+        "id": "c",
+        "text": "alla"
+      },
+      {
+        "id": "d",
+        "text": "haya"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "alla"
+      },
+      {
+        "id": "b",
+        "text": "haya"
+      },
+      {
+        "id": "c",
+        "text": "aya"
+      },
+      {
+        "id": "d",
+        "text": "halla"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "balla"
+      },
+      {
+        "id": "b",
+        "text": "vaya"
+      },
+      {
+        "id": "c",
+        "text": "valla"
+      },
+      {
+        "id": "d",
+        "text": "baya"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "balla"
+      },
+      {
+        "id": "b",
+        "text": "valla"
+      },
+      {
+        "id": "c",
+        "text": "vaya"
+      },
+      {
+        "id": "d",
+        "text": "baya"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "halla"
+      },
+      {
+        "id": "b",
+        "text": "haya"
+      },
+      {
+        "id": "c",
+        "text": "aya"
+      },
+      {
+        "id": "d",
+        "text": "alla"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "hecho"
+      },
+      {
+        "id": "b",
+        "text": "echo"
+      },
+      {
+        "id": "c",
+        "text": "ecco"
+      },
+      {
+        "id": "d",
+        "text": "ehcho"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Saltó la _____ para entrar.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "balla"
+      },
+      {
+        "id": "b",
+        "text": "valla"
+      },
+      {
+        "id": "c",
+        "text": "vaya"
+      },
+      {
+        "id": "d",
+        "text": "baya"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "En este contexto, la forma correcta es \"valla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "haya"
+      },
+      {
+        "id": "b",
+        "text": "halla"
+      },
+      {
+        "id": "c",
+        "text": "aya"
+      },
+      {
+        "id": "d",
+        "text": "alla"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "haya"
+      },
+      {
+        "id": "b",
+        "text": "alla"
+      },
+      {
+        "id": "c",
+        "text": "aya"
+      },
+      {
+        "id": "d",
+        "text": "halla"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "haya"
+      },
+      {
+        "id": "b",
+        "text": "aya"
+      },
+      {
+        "id": "c",
+        "text": "halla"
+      },
+      {
+        "id": "d",
+        "text": "alla"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Siempre _____ de menos mi ciudad.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "echo"
+      },
+      {
+        "id": "b",
+        "text": "hecho"
+      },
+      {
+        "id": "c",
+        "text": "ehcho"
+      },
+      {
+        "id": "d",
+        "text": "ecco"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"echo\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "valla"
+      },
+      {
+        "id": "b",
+        "text": "vaya"
+      },
+      {
+        "id": "c",
+        "text": "balla"
+      },
+      {
+        "id": "d",
+        "text": "baya"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "valla"
+      },
+      {
+        "id": "b",
+        "text": "balla"
+      },
+      {
+        "id": "c",
+        "text": "vaya"
+      },
+      {
+        "id": "d",
+        "text": "baya"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"No sé dónde se _____ la sede central.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "aya"
+      },
+      {
+        "id": "b",
+        "text": "alla"
+      },
+      {
+        "id": "c",
+        "text": "haya"
+      },
+      {
+        "id": "d",
+        "text": "halla"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"halla\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Esa fruta es una _____ venenosa.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "balla"
+      },
+      {
+        "id": "b",
+        "text": "vaya"
+      },
+      {
+        "id": "c",
+        "text": "baya"
+      },
+      {
+        "id": "d",
+        "text": "valla"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "En este contexto, la forma correcta es \"baya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "haya"
+      },
+      {
+        "id": "b",
+        "text": "halla"
+      },
+      {
+        "id": "c",
+        "text": "alla"
+      },
+      {
+        "id": "d",
+        "text": "aya"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Seleccione la palabra correcta para completar la oración:\n\n\"Espero que _____ llegado bien.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "aya"
+      },
+      {
+        "id": "b",
+        "text": "alla"
+      },
+      {
+        "id": "c",
+        "text": "halla"
+      },
+      {
+        "id": "d",
+        "text": "haya"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "En este contexto, la forma correcta es \"haya\".",
+    "difficulty": "media"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Quería ir a la fiesta; _____, tenía mucho trabajo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "aunque"
+      },
+      {
+        "id": "b",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "c",
+        "text": "puesto que"
+      },
+      {
+        "id": "d",
+        "text": "sin embargo"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La relación lógica entre las oraciones es de oposición, por lo que \"sin embargo\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Llegó tarde a la reunión; _____, perdió el vuelo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "b",
+        "text": "pero"
+      },
+      {
+        "id": "c",
+        "text": "además"
+      },
+      {
+        "id": "d",
+        "text": "puesto que"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La relación lógica entre las oraciones es de adición, por lo que \"además\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Estudió mucho para el examen; _____, aprobó con honores.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "b",
+        "text": "además"
+      },
+      {
+        "id": "c",
+        "text": "sin embargo"
+      },
+      {
+        "id": "d",
+        "text": "puesto que"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La relación lógica entre las oraciones es de consecuencia, por lo que \"por lo tanto\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Estudió mucho para el examen; _____, aprobó con honores.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "b",
+        "text": "sin embargo"
+      },
+      {
+        "id": "c",
+        "text": "pero"
+      },
+      {
+        "id": "d",
+        "text": "aunque"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La relación lógica entre las oraciones es de consecuencia, por lo que \"por lo tanto\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Quería ir a la fiesta; _____, tenía mucho trabajo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "sin embargo"
+      },
+      {
+        "id": "b",
+        "text": "puesto que"
+      },
+      {
+        "id": "c",
+        "text": "además"
+      },
+      {
+        "id": "d",
+        "text": "aunque"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La relación lógica entre las oraciones es de oposición, por lo que \"sin embargo\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Quería ir a la fiesta; _____, tenía mucho trabajo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "pero"
+      },
+      {
+        "id": "b",
+        "text": "sin embargo"
+      },
+      {
+        "id": "c",
+        "text": "aunque"
+      },
+      {
+        "id": "d",
+        "text": "puesto que"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La relación lógica entre las oraciones es de oposición, por lo que \"sin embargo\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Llegó tarde a la reunión; _____, perdió el vuelo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "además"
+      },
+      {
+        "id": "b",
+        "text": "sin embargo"
+      },
+      {
+        "id": "c",
+        "text": "aunque"
+      },
+      {
+        "id": "d",
+        "text": "pero"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La relación lógica entre las oraciones es de adición, por lo que \"además\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Quería ir a la fiesta; _____, tenía mucho trabajo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "pero"
+      },
+      {
+        "id": "b",
+        "text": "sin embargo"
+      },
+      {
+        "id": "c",
+        "text": "aunque"
+      },
+      {
+        "id": "d",
+        "text": "además"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La relación lógica entre las oraciones es de oposición, por lo que \"sin embargo\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Llegó tarde a la reunión; _____, perdió el vuelo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "puesto que"
+      },
+      {
+        "id": "b",
+        "text": "además"
+      },
+      {
+        "id": "c",
+        "text": "sin embargo"
+      },
+      {
+        "id": "d",
+        "text": "por lo tanto"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La relación lógica entre las oraciones es de adición, por lo que \"además\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Llegó tarde a la reunión; _____, perdió el vuelo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "b",
+        "text": "además"
+      },
+      {
+        "id": "c",
+        "text": "pero"
+      },
+      {
+        "id": "d",
+        "text": "sin embargo"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La relación lógica entre las oraciones es de adición, por lo que \"además\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Debemos ahorrar agua; _____, es un recurso limitado.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "puesto que"
+      },
+      {
+        "id": "b",
+        "text": "sin embargo"
+      },
+      {
+        "id": "c",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "d",
+        "text": "además"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La relación lógica entre las oraciones es de causa, por lo que \"puesto que\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Debemos ahorrar agua; _____, es un recurso limitado.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "además"
+      },
+      {
+        "id": "b",
+        "text": "pero"
+      },
+      {
+        "id": "c",
+        "text": "puesto que"
+      },
+      {
+        "id": "d",
+        "text": "aunque"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La relación lógica entre las oraciones es de causa, por lo que \"puesto que\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Debemos ahorrar agua; _____, es un recurso limitado.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "además"
+      },
+      {
+        "id": "b",
+        "text": "aunque"
+      },
+      {
+        "id": "c",
+        "text": "pero"
+      },
+      {
+        "id": "d",
+        "text": "puesto que"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La relación lógica entre las oraciones es de causa, por lo que \"puesto que\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Quería ir a la fiesta; _____, tenía mucho trabajo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "pero"
+      },
+      {
+        "id": "b",
+        "text": "aunque"
+      },
+      {
+        "id": "c",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "d",
+        "text": "sin embargo"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La relación lógica entre las oraciones es de oposición, por lo que \"sin embargo\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Debemos ahorrar agua; _____, es un recurso limitado.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "pero"
+      },
+      {
+        "id": "b",
+        "text": "aunque"
+      },
+      {
+        "id": "c",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "d",
+        "text": "puesto que"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La relación lógica entre las oraciones es de causa, por lo que \"puesto que\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Quería ir a la fiesta; _____, tenía mucho trabajo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "sin embargo"
+      },
+      {
+        "id": "b",
+        "text": "puesto que"
+      },
+      {
+        "id": "c",
+        "text": "pero"
+      },
+      {
+        "id": "d",
+        "text": "por lo tanto"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La relación lógica entre las oraciones es de oposición, por lo que \"sin embargo\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Llegó tarde a la reunión; _____, perdió el vuelo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "sin embargo"
+      },
+      {
+        "id": "b",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "c",
+        "text": "además"
+      },
+      {
+        "id": "d",
+        "text": "aunque"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La relación lógica entre las oraciones es de adición, por lo que \"además\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Llegó tarde a la reunión; _____, perdió el vuelo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "pero"
+      },
+      {
+        "id": "b",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "c",
+        "text": "sin embargo"
+      },
+      {
+        "id": "d",
+        "text": "además"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La relación lógica entre las oraciones es de adición, por lo que \"además\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Debemos ahorrar agua; _____, es un recurso limitado.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "b",
+        "text": "aunque"
+      },
+      {
+        "id": "c",
+        "text": "puesto que"
+      },
+      {
+        "id": "d",
+        "text": "además"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La relación lógica entre las oraciones es de causa, por lo que \"puesto que\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Llegó tarde a la reunión; _____, perdió el vuelo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "b",
+        "text": "pero"
+      },
+      {
+        "id": "c",
+        "text": "sin embargo"
+      },
+      {
+        "id": "d",
+        "text": "además"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La relación lógica entre las oraciones es de adición, por lo que \"además\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Llegó tarde a la reunión; _____, perdió el vuelo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "puesto que"
+      },
+      {
+        "id": "b",
+        "text": "además"
+      },
+      {
+        "id": "c",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "d",
+        "text": "aunque"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La relación lógica entre las oraciones es de adición, por lo que \"además\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Debemos ahorrar agua; _____, es un recurso limitado.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "aunque"
+      },
+      {
+        "id": "b",
+        "text": "puesto que"
+      },
+      {
+        "id": "c",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "d",
+        "text": "sin embargo"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La relación lógica entre las oraciones es de causa, por lo que \"puesto que\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Llegó tarde a la reunión; _____, perdió el vuelo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "además"
+      },
+      {
+        "id": "b",
+        "text": "puesto que"
+      },
+      {
+        "id": "c",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "d",
+        "text": "aunque"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La relación lógica entre las oraciones es de adición, por lo que \"además\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Debemos ahorrar agua; _____, es un recurso limitado.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "sin embargo"
+      },
+      {
+        "id": "b",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "c",
+        "text": "puesto que"
+      },
+      {
+        "id": "d",
+        "text": "además"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La relación lógica entre las oraciones es de causa, por lo que \"puesto que\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Llegó tarde a la reunión; _____, perdió el vuelo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "además"
+      },
+      {
+        "id": "b",
+        "text": "puesto que"
+      },
+      {
+        "id": "c",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "d",
+        "text": "sin embargo"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La relación lógica entre las oraciones es de adición, por lo que \"además\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Quería ir a la fiesta; _____, tenía mucho trabajo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "b",
+        "text": "sin embargo"
+      },
+      {
+        "id": "c",
+        "text": "aunque"
+      },
+      {
+        "id": "d",
+        "text": "puesto que"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La relación lógica entre las oraciones es de oposición, por lo que \"sin embargo\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Llegó tarde a la reunión; _____, perdió el vuelo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "además"
+      },
+      {
+        "id": "b",
+        "text": "pero"
+      },
+      {
+        "id": "c",
+        "text": "aunque"
+      },
+      {
+        "id": "d",
+        "text": "puesto que"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La relación lógica entre las oraciones es de adición, por lo que \"además\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Llegó tarde a la reunión; _____, perdió el vuelo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "aunque"
+      },
+      {
+        "id": "b",
+        "text": "además"
+      },
+      {
+        "id": "c",
+        "text": "puesto que"
+      },
+      {
+        "id": "d",
+        "text": "pero"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La relación lógica entre las oraciones es de adición, por lo que \"además\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Estudió mucho para el examen; _____, aprobó con honores.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "pero"
+      },
+      {
+        "id": "b",
+        "text": "aunque"
+      },
+      {
+        "id": "c",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "d",
+        "text": "sin embargo"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La relación lógica entre las oraciones es de consecuencia, por lo que \"por lo tanto\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Complete la oración con el conector lógico más adecuado:\n\n\"Llegó tarde a la reunión; _____, perdió el vuelo.\"",
+    "options": [
+      {
+        "id": "a",
+        "text": "aunque"
+      },
+      {
+        "id": "b",
+        "text": "además"
+      },
+      {
+        "id": "c",
+        "text": "por lo tanto"
+      },
+      {
+        "id": "d",
+        "text": "puesto que"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La relación lógica entre las oraciones es de adición, por lo que \"además\" es el conector adecuado.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "b",
+        "text": "3. Propuesta de soluciones. - 2. Análisis de causas. - 4. Conclusiones finales. - 1. Definición del problema."
+      },
+      {
+        "id": "c",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "d",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "b",
+        "text": "2. Análisis de causas. - 4. Conclusiones finales. - 3. Propuesta de soluciones. - 1. Definición del problema."
+      },
+      {
+        "id": "c",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "d",
+        "text": "3. Propuesta de soluciones. - 4. Conclusiones finales. - 2. Análisis de causas. - 1. Definición del problema."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "b",
+        "text": "3. Propuesta de soluciones. - 2. Análisis de causas. - 4. Conclusiones finales. - 1. Definición del problema."
+      },
+      {
+        "id": "c",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "d",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "b",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "c",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "d",
+        "text": "3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema. - 4. Conclusiones finales."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "b",
+        "text": "4. Conclusiones finales. - 1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones."
+      },
+      {
+        "id": "c",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "d",
+        "text": "4. Conclusiones finales. - 1. Definición del problema. - 3. Propuesta de soluciones. - 2. Análisis de causas."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales. - 1. Definición del problema."
+      },
+      {
+        "id": "b",
+        "text": "2. Análisis de causas. - 1. Definición del problema. - 4. Conclusiones finales. - 3. Propuesta de soluciones."
+      },
+      {
+        "id": "c",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "d",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "b",
+        "text": "1. Definición del problema. - 3. Propuesta de soluciones. - 4. Conclusiones finales. - 2. Análisis de causas."
+      },
+      {
+        "id": "c",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "d",
+        "text": "Opción D"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "b",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "c",
+        "text": "Opción D"
+      },
+      {
+        "id": "d",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "b",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "c",
+        "text": "3. Propuesta de soluciones. - 4. Conclusiones finales. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "d",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "b",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "c",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "d",
+        "text": "1. Definición del problema. - 4. Conclusiones finales. - 2. Análisis de causas. - 3. Propuesta de soluciones."
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "b",
+        "text": "Opción D"
+      },
+      {
+        "id": "c",
+        "text": "2. Análisis de causas. - 4. Conclusiones finales. - 3. Propuesta de soluciones. - 1. Definición del problema."
+      },
+      {
+        "id": "d",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "b",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "c",
+        "text": "1. Definición del problema. - 3. Propuesta de soluciones. - 4. Conclusiones finales. - 2. Análisis de causas."
+      },
+      {
+        "id": "d",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "4. Conclusiones finales. - 2. Análisis de causas. - 1. Definición del problema. - 3. Propuesta de soluciones."
+      },
+      {
+        "id": "b",
+        "text": "2. Análisis de causas. - 1. Definición del problema. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "c",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "d",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "4. Conclusiones finales. - 1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones."
+      },
+      {
+        "id": "b",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "c",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "d",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "b",
+        "text": "1. Definición del problema. - 4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas."
+      },
+      {
+        "id": "c",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "d",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "b",
+        "text": "3. Propuesta de soluciones. - 4. Conclusiones finales. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "c",
+        "text": "1. Definición del problema. - 4. Conclusiones finales. - 2. Análisis de causas. - 3. Propuesta de soluciones."
+      },
+      {
+        "id": "d",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "b",
+        "text": "2. Análisis de causas. - 1. Definición del problema. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "c",
+        "text": "1. Definición del problema. - 4. Conclusiones finales. - 2. Análisis de causas. - 3. Propuesta de soluciones."
+      },
+      {
+        "id": "d",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "b",
+        "text": "1. Definición del problema. - 4. Conclusiones finales. - 2. Análisis de causas. - 3. Propuesta de soluciones."
+      },
+      {
+        "id": "c",
+        "text": "Opción D"
+      },
+      {
+        "id": "d",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      },
+      {
+        "id": "b",
+        "text": "1. Definición del problema. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 4. Conclusiones finales."
+      },
+      {
+        "id": "c",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "d",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "comunicacion_escrita",
+    "text": "Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n1. Definición del problema.\n2. Análisis de causas.\n3. Propuesta de soluciones.\n4. Conclusiones finales.",
+    "options": [
+      {
+        "id": "a",
+        "text": "1. Definición del problema. - 2. Análisis de causas. - 3. Propuesta de soluciones. - 4. Conclusiones finales."
+      },
+      {
+        "id": "b",
+        "text": "3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema. - 4. Conclusiones finales."
+      },
+      {
+        "id": "c",
+        "text": "4. Conclusiones finales. - 1. Definición del problema. - 3. Propuesta de soluciones. - 2. Análisis de causas."
+      },
+      {
+        "id": "d",
+        "text": "4. Conclusiones finales. - 3. Propuesta de soluciones. - 2. Análisis de causas. - 1. Definición del problema."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.",
+    "difficulty": "avanzada"
+  }
+]

@@ -1,0 +1,66 @@
+
+> web-app@0.1.0 build
+> next build
+
+ ÔÜá `eslint` configuration in next.config.ts is no longer supported. See more info here: https://nextjs.org/docs/app/api-reference/cli/next#next-lint-options
+ ÔÜá `images.domains` is deprecated in favor of `images.remotePatterns`. Please update next.config.ts to protect your application from malicious users.
+ ÔÜá Invalid next.config.ts options detected: 
+ ÔÜá     Unrecognized key(s) in object: 'eslint'
+ ÔÜá See more info here: https://nextjs.org/docs/messages/invalid-next-config
+   Ôû▓ Next.js 16.0.10 (Turbopack)
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 2 errors:
+./app/dashboard/billing/page.tsx:10:1
+Export generateInvoicePDF doesn't exist in target module
+   8 | import { Transaction, PaymentStatus } from "@/types/finance";
+   9 | import { Download, CreditCard, Clock, CheckCircle, AlertCircle, ArrowLeft, Receipt } from "lucide-react";
+> 10 | import { generateInvoicePDF } from "@/utils/invoiceGenerator";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 |
+  12 | export default function BillingPage() {
+  13 |     const { user, subscription, role } = useAuth();
+
+The export generateInvoicePDF was not found in module [project]/utils/invoiceGenerator.ts [app-client] (ecmascript).
+Did you mean to import invoiceGenerator?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/dashboard/billing/page.tsx [Client Component Browser]
+    ./app/dashboard/billing/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/dashboard/billing/page.tsx [Client Component SSR]
+    ./app/dashboard/billing/page.tsx [Server Component]
+
+
+./app/dashboard/billing/page.tsx:10:1
+Export generateInvoicePDF doesn't exist in target module
+   8 | import { Transaction, PaymentStatus } from "@/types/finance";
+   9 | import { Download, CreditCard, Clock, CheckCircle, AlertCircle, ArrowLeft, Receipt } from "lucide-react";
+> 10 | import { generateInvoicePDF } from "@/utils/invoiceGenerator";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 |
+  12 | export default function BillingPage() {
+  13 |     const { user, subscription, role } = useAuth();
+
+The export generateInvoicePDF was not found in module [project]/utils/invoiceGenerator.ts [app-ssr] (ecmascript).
+Did you mean to import invoiceGenerator?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/dashboard/billing/page.tsx [Client Component Browser]
+    ./app/dashboard/billing/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/dashboard/billing/page.tsx [Client Component SSR]
+    ./app/dashboard/billing/page.tsx [Server Component]
+
+
+    at <unknown> (./app/dashboard/billing/page.tsx:10:1)
+    at <unknown> (./app/dashboard/billing/page.tsx:10:1)

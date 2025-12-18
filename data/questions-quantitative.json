@@ -1,0 +1,3752 @@
+[
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 100 balotas. El 60% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "40"
+      },
+      {
+        "id": "b",
+        "text": "60"
+      },
+      {
+        "id": "c",
+        "text": "50"
+      },
+      {
+        "id": "d",
+        "text": "65"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 60% son rojas, entonces el 40% NO son rojas. 40% de 100 es 40.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $42000. Desea venderlo ganando el 10% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$46200"
+      },
+      {
+        "id": "b",
+        "text": "$44100"
+      },
+      {
+        "id": "c",
+        "text": "$36960"
+      },
+      {
+        "id": "d",
+        "text": "$50820"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $42000. El 10% de ganancia es $42000 * 0.1 = $4200. Precio venta = $42000 + $4200 = $46200.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 90 balotas. El 80% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "77"
+      },
+      {
+        "id": "b",
+        "text": "28"
+      },
+      {
+        "id": "c",
+        "text": "72"
+      },
+      {
+        "id": "d",
+        "text": "18"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 80% son rojas, entonces el 20% NO son rojas. 20% de 90 es 18.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 110 balotas. El 20% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "88"
+      },
+      {
+        "id": "b",
+        "text": "22"
+      },
+      {
+        "id": "c",
+        "text": "98"
+      },
+      {
+        "id": "d",
+        "text": "27"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 20% son rojas, entonces el 80% NO son rojas. 80% de 110 es 88.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $56000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$64400"
+      },
+      {
+        "id": "b",
+        "text": "$80080"
+      },
+      {
+        "id": "c",
+        "text": "$58240"
+      },
+      {
+        "id": "d",
+        "text": "$72800"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $56000. El 30% de ganancia es $56000 * 0.3 = $16800. Precio venta = $56000 + $16800 = $72800.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 60 balotas. El 80% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "12"
+      },
+      {
+        "id": "b",
+        "text": "48"
+      },
+      {
+        "id": "c",
+        "text": "53"
+      },
+      {
+        "id": "d",
+        "text": "22"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 80% son rojas, entonces el 20% NO son rojas. 20% de 60 es 12.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $16000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$20800"
+      },
+      {
+        "id": "b",
+        "text": "$16640"
+      },
+      {
+        "id": "c",
+        "text": "$22880"
+      },
+      {
+        "id": "d",
+        "text": "$18400"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $16000. El 30% de ganancia es $16000 * 0.3 = $4800. Precio venta = $16000 + $4800 = $20800.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 30 balotas. El 70% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "26"
+      },
+      {
+        "id": "b",
+        "text": "19"
+      },
+      {
+        "id": "c",
+        "text": "21"
+      },
+      {
+        "id": "d",
+        "text": "9"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 70% son rojas, entonces el 30% NO son rojas. 30% de 30 es 9.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 110 balotas. El 70% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "33"
+      },
+      {
+        "id": "b",
+        "text": "77"
+      },
+      {
+        "id": "c",
+        "text": "43"
+      },
+      {
+        "id": "d",
+        "text": "82"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 70% son rojas, entonces el 30% NO son rojas. 30% de 110 es 33.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $31000. Desea venderlo ganando el 25% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$31000"
+      },
+      {
+        "id": "b",
+        "text": "$38750"
+      },
+      {
+        "id": "c",
+        "text": "$34875"
+      },
+      {
+        "id": "d",
+        "text": "$42625"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El costo es $31000. El 25% de ganancia es $31000 * 0.25 = $7750. Precio venta = $31000 + $7750 = $38750.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 40 balotas. El 60% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "26"
+      },
+      {
+        "id": "b",
+        "text": "24"
+      },
+      {
+        "id": "c",
+        "text": "29"
+      },
+      {
+        "id": "d",
+        "text": "16"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 60% son rojas, entonces el 40% NO son rojas. 40% de 40 es 16.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 40 balotas. El 80% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "37"
+      },
+      {
+        "id": "b",
+        "text": "18"
+      },
+      {
+        "id": "c",
+        "text": "32"
+      },
+      {
+        "id": "d",
+        "text": "8"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 80% son rojas, entonces el 20% NO son rojas. 20% de 40 es 8.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 70 balotas. El 30% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "26"
+      },
+      {
+        "id": "b",
+        "text": "21"
+      },
+      {
+        "id": "c",
+        "text": "49"
+      },
+      {
+        "id": "d",
+        "text": "59"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Si el 30% son rojas, entonces el 70% NO son rojas. 70% de 70 es 49.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $23000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$26450"
+      },
+      {
+        "id": "b",
+        "text": "$29900"
+      },
+      {
+        "id": "c",
+        "text": "$23920"
+      },
+      {
+        "id": "d",
+        "text": "$32890"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El costo es $23000. El 30% de ganancia es $23000 * 0.3 = $6900. Precio venta = $23000 + $6900 = $29900.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 70 balotas. El 40% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "28"
+      },
+      {
+        "id": "b",
+        "text": "52"
+      },
+      {
+        "id": "c",
+        "text": "33"
+      },
+      {
+        "id": "d",
+        "text": "42"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 40% son rojas, entonces el 60% NO son rojas. 60% de 70 es 42.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 100 balotas. El 10% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "100"
+      },
+      {
+        "id": "b",
+        "text": "90"
+      },
+      {
+        "id": "c",
+        "text": "10"
+      },
+      {
+        "id": "d",
+        "text": "15"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Si el 10% son rojas, entonces el 90% NO son rojas. 90% de 100 es 90.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 20 balotas. El 20% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "26"
+      },
+      {
+        "id": "b",
+        "text": "4"
+      },
+      {
+        "id": "c",
+        "text": "9"
+      },
+      {
+        "id": "d",
+        "text": "16"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 20% son rojas, entonces el 80% NO son rojas. 80% de 20 es 16.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $36000. Desea venderlo ganando el 15% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$45540"
+      },
+      {
+        "id": "b",
+        "text": "$33120"
+      },
+      {
+        "id": "c",
+        "text": "$38700"
+      },
+      {
+        "id": "d",
+        "text": "$41400"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $36000. El 15% de ganancia es $36000 * 0.15 = $5400. Precio venta = $36000 + $5400 = $41400.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 40 balotas. El 40% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "24"
+      },
+      {
+        "id": "b",
+        "text": "21"
+      },
+      {
+        "id": "c",
+        "text": "16"
+      },
+      {
+        "id": "d",
+        "text": "34"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 40% son rojas, entonces el 60% NO son rojas. 60% de 40 es 24.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 50 balotas. El 10% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "10"
+      },
+      {
+        "id": "b",
+        "text": "55"
+      },
+      {
+        "id": "c",
+        "text": "5"
+      },
+      {
+        "id": "d",
+        "text": "45"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 10% son rojas, entonces el 90% NO son rojas. 90% de 50 es 45.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $30000. Desea venderlo ganando el 25% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$37500"
+      },
+      {
+        "id": "b",
+        "text": "$33750"
+      },
+      {
+        "id": "c",
+        "text": "$30000"
+      },
+      {
+        "id": "d",
+        "text": "$41250"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $30000. El 25% de ganancia es $30000 * 0.25 = $7500. Precio venta = $30000 + $7500 = $37500.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 30 balotas. El 60% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "12"
+      },
+      {
+        "id": "b",
+        "text": "18"
+      },
+      {
+        "id": "c",
+        "text": "22"
+      },
+      {
+        "id": "d",
+        "text": "23"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 60% son rojas, entonces el 40% NO son rojas. 40% de 30 es 12.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 110 balotas. El 80% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "88"
+      },
+      {
+        "id": "b",
+        "text": "93"
+      },
+      {
+        "id": "c",
+        "text": "22"
+      },
+      {
+        "id": "d",
+        "text": "32"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Si el 80% son rojas, entonces el 20% NO son rojas. 20% de 110 es 22.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $56000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$58240"
+      },
+      {
+        "id": "b",
+        "text": "$64400"
+      },
+      {
+        "id": "c",
+        "text": "$72800"
+      },
+      {
+        "id": "d",
+        "text": "$80080"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El costo es $56000. El 30% de ganancia es $56000 * 0.3 = $16800. Precio venta = $56000 + $16800 = $72800.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $36000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$37440"
+      },
+      {
+        "id": "b",
+        "text": "$41400"
+      },
+      {
+        "id": "c",
+        "text": "$51480"
+      },
+      {
+        "id": "d",
+        "text": "$46800"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $36000. El 30% de ganancia es $36000 * 0.3 = $10800. Precio venta = $36000 + $10800 = $46800.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $48000. Desea venderlo ganando el 25% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$60000"
+      },
+      {
+        "id": "b",
+        "text": "$48000"
+      },
+      {
+        "id": "c",
+        "text": "$66000"
+      },
+      {
+        "id": "d",
+        "text": "$54000"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $48000. El 25% de ganancia es $48000 * 0.25 = $12000. Precio venta = $48000 + $12000 = $60000.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 30 balotas. El 30% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "14"
+      },
+      {
+        "id": "b",
+        "text": "31"
+      },
+      {
+        "id": "c",
+        "text": "9"
+      },
+      {
+        "id": "d",
+        "text": "21"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 30% son rojas, entonces el 70% NO son rojas. 70% de 30 es 21.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $44000. Desea venderlo ganando el 15% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$47300"
+      },
+      {
+        "id": "b",
+        "text": "$55660"
+      },
+      {
+        "id": "c",
+        "text": "$40480"
+      },
+      {
+        "id": "d",
+        "text": "$50600"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $44000. El 15% de ganancia es $44000 * 0.15 = $6600. Precio venta = $44000 + $6600 = $50600.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $16000. Desea venderlo ganando el 20% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$21120"
+      },
+      {
+        "id": "b",
+        "text": "$15360"
+      },
+      {
+        "id": "c",
+        "text": "$19200"
+      },
+      {
+        "id": "d",
+        "text": "$17600"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El costo es $16000. El 20% de ganancia es $16000 * 0.2 = $3200. Precio venta = $16000 + $3200 = $19200.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 100 balotas. El 40% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "60"
+      },
+      {
+        "id": "b",
+        "text": "40"
+      },
+      {
+        "id": "c",
+        "text": "70"
+      },
+      {
+        "id": "d",
+        "text": "45"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 40% son rojas, entonces el 60% NO son rojas. 60% de 100 es 60.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 90 balotas. El 10% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "14"
+      },
+      {
+        "id": "b",
+        "text": "91"
+      },
+      {
+        "id": "c",
+        "text": "9"
+      },
+      {
+        "id": "d",
+        "text": "81"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 10% son rojas, entonces el 90% NO son rojas. 90% de 90 es 81.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 90 balotas. El 10% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "91"
+      },
+      {
+        "id": "b",
+        "text": "9"
+      },
+      {
+        "id": "c",
+        "text": "81"
+      },
+      {
+        "id": "d",
+        "text": "14"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Si el 10% son rojas, entonces el 90% NO son rojas. 90% de 90 es 81.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $54000. Desea venderlo ganando el 25% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$60750"
+      },
+      {
+        "id": "b",
+        "text": "$67500"
+      },
+      {
+        "id": "c",
+        "text": "$54000"
+      },
+      {
+        "id": "d",
+        "text": "$74250"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El costo es $54000. El 25% de ganancia es $54000 * 0.25 = $13500. Precio venta = $54000 + $13500 = $67500.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 40 balotas. El 80% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "37"
+      },
+      {
+        "id": "b",
+        "text": "18"
+      },
+      {
+        "id": "c",
+        "text": "32"
+      },
+      {
+        "id": "d",
+        "text": "8"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 80% son rojas, entonces el 20% NO son rojas. 20% de 40 es 8.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $46000. Desea venderlo ganando el 15% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$52900"
+      },
+      {
+        "id": "b",
+        "text": "$42320"
+      },
+      {
+        "id": "c",
+        "text": "$58190"
+      },
+      {
+        "id": "d",
+        "text": "$49450"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $46000. El 15% de ganancia es $46000 * 0.15 = $6900. Precio venta = $46000 + $6900 = $52900.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 40 balotas. El 40% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "24"
+      },
+      {
+        "id": "b",
+        "text": "21"
+      },
+      {
+        "id": "c",
+        "text": "16"
+      },
+      {
+        "id": "d",
+        "text": "34"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 40% son rojas, entonces el 60% NO son rojas. 60% de 40 es 24.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 60 balotas. El 20% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "48"
+      },
+      {
+        "id": "b",
+        "text": "17"
+      },
+      {
+        "id": "c",
+        "text": "12"
+      },
+      {
+        "id": "d",
+        "text": "58"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 20% son rojas, entonces el 80% NO son rojas. 80% de 60 es 48.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $10000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$14300"
+      },
+      {
+        "id": "b",
+        "text": "$10400"
+      },
+      {
+        "id": "c",
+        "text": "$11500"
+      },
+      {
+        "id": "d",
+        "text": "$13000"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $10000. El 30% de ganancia es $10000 * 0.3 = $3000. Precio venta = $10000 + $3000 = $13000.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $30000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$34500"
+      },
+      {
+        "id": "b",
+        "text": "$42900"
+      },
+      {
+        "id": "c",
+        "text": "$31200"
+      },
+      {
+        "id": "d",
+        "text": "$39000"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $30000. El 30% de ganancia es $30000 * 0.3 = $9000. Precio venta = $30000 + $9000 = $39000.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $21000. Desea venderlo ganando el 25% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$26250"
+      },
+      {
+        "id": "b",
+        "text": "$21000"
+      },
+      {
+        "id": "c",
+        "text": "$28875"
+      },
+      {
+        "id": "d",
+        "text": "$23625"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $21000. El 25% de ganancia es $21000 * 0.25 = $5250. Precio venta = $21000 + $5250 = $26250.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 20 balotas. El 60% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "18"
+      },
+      {
+        "id": "b",
+        "text": "17"
+      },
+      {
+        "id": "c",
+        "text": "12"
+      },
+      {
+        "id": "d",
+        "text": "8"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 60% son rojas, entonces el 40% NO son rojas. 40% de 20 es 8.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $26000. Desea venderlo ganando el 25% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$32500"
+      },
+      {
+        "id": "b",
+        "text": "$26000"
+      },
+      {
+        "id": "c",
+        "text": "$29250"
+      },
+      {
+        "id": "d",
+        "text": "$35750"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $26000. El 25% de ganancia es $26000 * 0.25 = $6500. Precio venta = $26000 + $6500 = $32500.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 20 balotas. El 30% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "14"
+      },
+      {
+        "id": "b",
+        "text": "11"
+      },
+      {
+        "id": "c",
+        "text": "6"
+      },
+      {
+        "id": "d",
+        "text": "24"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 30% son rojas, entonces el 70% NO son rojas. 70% de 20 es 14.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $16000. Desea venderlo ganando el 10% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$16800"
+      },
+      {
+        "id": "b",
+        "text": "$19360"
+      },
+      {
+        "id": "c",
+        "text": "$14080"
+      },
+      {
+        "id": "d",
+        "text": "$17600"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $16000. El 10% de ganancia es $16000 * 0.1 = $1600. Precio venta = $16000 + $1600 = $17600.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $22000. Desea venderlo ganando el 10% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$24200"
+      },
+      {
+        "id": "b",
+        "text": "$19360"
+      },
+      {
+        "id": "c",
+        "text": "$26620"
+      },
+      {
+        "id": "d",
+        "text": "$23100"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $22000. El 10% de ganancia es $22000 * 0.1 = $2200. Precio venta = $22000 + $2200 = $24200.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 110 balotas. El 20% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "22"
+      },
+      {
+        "id": "b",
+        "text": "98"
+      },
+      {
+        "id": "c",
+        "text": "88"
+      },
+      {
+        "id": "d",
+        "text": "27"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Si el 20% son rojas, entonces el 80% NO son rojas. 80% de 110 es 88.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $28000. Desea venderlo ganando el 20% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$33600"
+      },
+      {
+        "id": "b",
+        "text": "$26880"
+      },
+      {
+        "id": "c",
+        "text": "$30800"
+      },
+      {
+        "id": "d",
+        "text": "$36960"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $28000. El 20% de ganancia es $28000 * 0.2 = $5600. Precio venta = $28000 + $5600 = $33600.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $31000. Desea venderlo ganando el 25% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$34875"
+      },
+      {
+        "id": "b",
+        "text": "$38750"
+      },
+      {
+        "id": "c",
+        "text": "$31000"
+      },
+      {
+        "id": "d",
+        "text": "$42625"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El costo es $31000. El 25% de ganancia es $31000 * 0.25 = $7750. Precio venta = $31000 + $7750 = $38750.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 40 balotas. El 30% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "38"
+      },
+      {
+        "id": "b",
+        "text": "12"
+      },
+      {
+        "id": "c",
+        "text": "17"
+      },
+      {
+        "id": "d",
+        "text": "28"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 30% son rojas, entonces el 70% NO son rojas. 70% de 40 es 28.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 40 balotas. El 70% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "33"
+      },
+      {
+        "id": "b",
+        "text": "22"
+      },
+      {
+        "id": "c",
+        "text": "28"
+      },
+      {
+        "id": "d",
+        "text": "12"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 70% son rojas, entonces el 30% NO son rojas. 30% de 40 es 12.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 90 balotas. El 50% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "45"
+      },
+      {
+        "id": "b",
+        "text": "45"
+      },
+      {
+        "id": "c",
+        "text": "55"
+      },
+      {
+        "id": "d",
+        "text": "50"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 50% son rojas, entonces el 50% NO son rojas. 50% de 90 es 45.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $48000. Desea venderlo ganando el 25% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$60000"
+      },
+      {
+        "id": "b",
+        "text": "$66000"
+      },
+      {
+        "id": "c",
+        "text": "$48000"
+      },
+      {
+        "id": "d",
+        "text": "$54000"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $48000. El 25% de ganancia es $48000 * 0.25 = $12000. Precio venta = $48000 + $12000 = $60000.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $58000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$75400"
+      },
+      {
+        "id": "b",
+        "text": "$82940"
+      },
+      {
+        "id": "c",
+        "text": "$60320"
+      },
+      {
+        "id": "d",
+        "text": "$66700"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $58000. El 30% de ganancia es $58000 * 0.3 = $17400. Precio venta = $58000 + $17400 = $75400.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 90 balotas. El 60% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "46"
+      },
+      {
+        "id": "b",
+        "text": "59"
+      },
+      {
+        "id": "c",
+        "text": "54"
+      },
+      {
+        "id": "d",
+        "text": "36"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 60% son rojas, entonces el 40% NO son rojas. 40% de 90 es 36.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $32000. Desea venderlo ganando el 20% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$35200"
+      },
+      {
+        "id": "b",
+        "text": "$42240"
+      },
+      {
+        "id": "c",
+        "text": "$30720"
+      },
+      {
+        "id": "d",
+        "text": "$38400"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $32000. El 20% de ganancia es $32000 * 0.2 = $6400. Precio venta = $32000 + $6400 = $38400.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $12000. Desea venderlo ganando el 10% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$12600"
+      },
+      {
+        "id": "b",
+        "text": "$14520"
+      },
+      {
+        "id": "c",
+        "text": "$10560"
+      },
+      {
+        "id": "d",
+        "text": "$13200"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $12000. El 10% de ganancia es $12000 * 0.1 = $1200. Precio venta = $12000 + $1200 = $13200.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $53000. Desea venderlo ganando el 10% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$58300"
+      },
+      {
+        "id": "b",
+        "text": "$55650"
+      },
+      {
+        "id": "c",
+        "text": "$46640"
+      },
+      {
+        "id": "d",
+        "text": "$64130"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $53000. El 10% de ganancia es $53000 * 0.1 = $5300. Precio venta = $53000 + $5300 = $58300.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 40 balotas. El 60% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "16"
+      },
+      {
+        "id": "b",
+        "text": "26"
+      },
+      {
+        "id": "c",
+        "text": "24"
+      },
+      {
+        "id": "d",
+        "text": "29"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 60% son rojas, entonces el 40% NO son rojas. 40% de 40 es 16.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 30 balotas. El 40% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "18"
+      },
+      {
+        "id": "b",
+        "text": "28"
+      },
+      {
+        "id": "c",
+        "text": "17"
+      },
+      {
+        "id": "d",
+        "text": "12"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 40% son rojas, entonces el 60% NO son rojas. 60% de 30 es 18.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $26000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$37180"
+      },
+      {
+        "id": "b",
+        "text": "$29900"
+      },
+      {
+        "id": "c",
+        "text": "$27040"
+      },
+      {
+        "id": "d",
+        "text": "$33800"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $26000. El 30% de ganancia es $26000 * 0.3 = $7800. Precio venta = $26000 + $7800 = $33800.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $12000. Desea venderlo ganando el 25% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$15000"
+      },
+      {
+        "id": "b",
+        "text": "$13500"
+      },
+      {
+        "id": "c",
+        "text": "$12000"
+      },
+      {
+        "id": "d",
+        "text": "$16500"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $12000. El 25% de ganancia es $12000 * 0.25 = $3000. Precio venta = $12000 + $3000 = $15000.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 90 balotas. El 70% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "68"
+      },
+      {
+        "id": "b",
+        "text": "37"
+      },
+      {
+        "id": "c",
+        "text": "63"
+      },
+      {
+        "id": "d",
+        "text": "27"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 70% son rojas, entonces el 30% NO son rojas. 30% de 90 es 27.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $58000. Desea venderlo ganando el 10% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$51040"
+      },
+      {
+        "id": "b",
+        "text": "$63800"
+      },
+      {
+        "id": "c",
+        "text": "$70180"
+      },
+      {
+        "id": "d",
+        "text": "$60900"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El costo es $58000. El 10% de ganancia es $58000 * 0.1 = $5800. Precio venta = $58000 + $5800 = $63800.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 100 balotas. El 50% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "60"
+      },
+      {
+        "id": "b",
+        "text": "55"
+      },
+      {
+        "id": "c",
+        "text": "50"
+      },
+      {
+        "id": "d",
+        "text": "50"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Si el 50% son rojas, entonces el 50% NO son rojas. 50% de 100 es 50.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $49000. Desea venderlo ganando el 10% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$53900"
+      },
+      {
+        "id": "b",
+        "text": "$51450"
+      },
+      {
+        "id": "c",
+        "text": "$43120"
+      },
+      {
+        "id": "d",
+        "text": "$59290"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $49000. El 10% de ganancia es $49000 * 0.1 = $4900. Precio venta = $49000 + $4900 = $53900.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 110 balotas. El 60% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "71"
+      },
+      {
+        "id": "b",
+        "text": "66"
+      },
+      {
+        "id": "c",
+        "text": "44"
+      },
+      {
+        "id": "d",
+        "text": "54"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Si el 60% son rojas, entonces el 40% NO son rojas. 40% de 110 es 44.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $10000. Desea venderlo ganando el 15% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$11500"
+      },
+      {
+        "id": "b",
+        "text": "$10750"
+      },
+      {
+        "id": "c",
+        "text": "$9200"
+      },
+      {
+        "id": "d",
+        "text": "$12650"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $10000. El 15% de ganancia es $10000 * 0.15 = $1500. Precio venta = $10000 + $1500 = $11500.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 90 balotas. El 70% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "68"
+      },
+      {
+        "id": "b",
+        "text": "37"
+      },
+      {
+        "id": "c",
+        "text": "63"
+      },
+      {
+        "id": "d",
+        "text": "27"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 70% son rojas, entonces el 30% NO son rojas. 30% de 90 es 27.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $42000. Desea venderlo ganando el 10% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$44100"
+      },
+      {
+        "id": "b",
+        "text": "$50820"
+      },
+      {
+        "id": "c",
+        "text": "$36960"
+      },
+      {
+        "id": "d",
+        "text": "$46200"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $42000. El 10% de ganancia es $42000 * 0.1 = $4200. Precio venta = $42000 + $4200 = $46200.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $50000. Desea venderlo ganando el 15% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$57500"
+      },
+      {
+        "id": "b",
+        "text": "$63250"
+      },
+      {
+        "id": "c",
+        "text": "$53750"
+      },
+      {
+        "id": "d",
+        "text": "$46000"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $50000. El 15% de ganancia es $50000 * 0.15 = $7500. Precio venta = $50000 + $7500 = $57500.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $52000. Desea venderlo ganando el 25% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$65000"
+      },
+      {
+        "id": "b",
+        "text": "$52000"
+      },
+      {
+        "id": "c",
+        "text": "$58500"
+      },
+      {
+        "id": "d",
+        "text": "$71500"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $52000. El 25% de ganancia es $52000 * 0.25 = $13000. Precio venta = $52000 + $13000 = $65000.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $33000. Desea venderlo ganando el 15% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$35475"
+      },
+      {
+        "id": "b",
+        "text": "$41745"
+      },
+      {
+        "id": "c",
+        "text": "$30360"
+      },
+      {
+        "id": "d",
+        "text": "$37950"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $33000. El 15% de ganancia es $33000 * 0.15 = $4950. Precio venta = $33000 + $4950 = $37950.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $16000. Desea venderlo ganando el 20% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$19200"
+      },
+      {
+        "id": "b",
+        "text": "$17600"
+      },
+      {
+        "id": "c",
+        "text": "$15360"
+      },
+      {
+        "id": "d",
+        "text": "$21120"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $16000. El 20% de ganancia es $16000 * 0.2 = $3200. Precio venta = $16000 + $3200 = $19200.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 20 balotas. El 50% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "10"
+      },
+      {
+        "id": "b",
+        "text": "10"
+      },
+      {
+        "id": "c",
+        "text": "20"
+      },
+      {
+        "id": "d",
+        "text": "15"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 50% son rojas, entonces el 50% NO son rojas. 50% de 20 es 10.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $34000. Desea venderlo ganando el 25% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$42500"
+      },
+      {
+        "id": "b",
+        "text": "$34000"
+      },
+      {
+        "id": "c",
+        "text": "$46750"
+      },
+      {
+        "id": "d",
+        "text": "$38250"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $34000. El 25% de ganancia es $34000 * 0.25 = $8500. Precio venta = $34000 + $8500 = $42500.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 70 balotas. El 60% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "28"
+      },
+      {
+        "id": "b",
+        "text": "42"
+      },
+      {
+        "id": "c",
+        "text": "47"
+      },
+      {
+        "id": "d",
+        "text": "38"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 60% son rojas, entonces el 40% NO son rojas. 40% de 70 es 28.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 90 balotas. El 70% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "63"
+      },
+      {
+        "id": "b",
+        "text": "27"
+      },
+      {
+        "id": "c",
+        "text": "68"
+      },
+      {
+        "id": "d",
+        "text": "37"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Si el 70% son rojas, entonces el 30% NO son rojas. 30% de 90 es 27.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 50 balotas. El 30% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "35"
+      },
+      {
+        "id": "b",
+        "text": "15"
+      },
+      {
+        "id": "c",
+        "text": "20"
+      },
+      {
+        "id": "d",
+        "text": "45"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 30% son rojas, entonces el 70% NO son rojas. 70% de 50 es 35.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $53000. Desea venderlo ganando el 15% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$48760"
+      },
+      {
+        "id": "b",
+        "text": "$60950"
+      },
+      {
+        "id": "c",
+        "text": "$56975"
+      },
+      {
+        "id": "d",
+        "text": "$67045"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El costo es $53000. El 15% de ganancia es $53000 * 0.15 = $7950. Precio venta = $53000 + $7950 = $60950.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $53000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$60950"
+      },
+      {
+        "id": "b",
+        "text": "$75790"
+      },
+      {
+        "id": "c",
+        "text": "$55120"
+      },
+      {
+        "id": "d",
+        "text": "$68900"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $53000. El 30% de ganancia es $53000 * 0.3 = $15900. Precio venta = $53000 + $15900 = $68900.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $10000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$13000"
+      },
+      {
+        "id": "b",
+        "text": "$10400"
+      },
+      {
+        "id": "c",
+        "text": "$14300"
+      },
+      {
+        "id": "d",
+        "text": "$11500"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $10000. El 30% de ganancia es $10000 * 0.3 = $3000. Precio venta = $10000 + $3000 = $13000.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $29000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$37700"
+      },
+      {
+        "id": "b",
+        "text": "$30160"
+      },
+      {
+        "id": "c",
+        "text": "$41470"
+      },
+      {
+        "id": "d",
+        "text": "$33350"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $29000. El 30% de ganancia es $29000 * 0.3 = $8700. Precio venta = $29000 + $8700 = $37700.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $22000. Desea venderlo ganando el 25% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$24750"
+      },
+      {
+        "id": "b",
+        "text": "$30250"
+      },
+      {
+        "id": "c",
+        "text": "$22000"
+      },
+      {
+        "id": "d",
+        "text": "$27500"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $22000. El 25% de ganancia es $22000 * 0.25 = $5500. Precio venta = $22000 + $5500 = $27500.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 100 balotas. El 10% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "90"
+      },
+      {
+        "id": "b",
+        "text": "15"
+      },
+      {
+        "id": "c",
+        "text": "10"
+      },
+      {
+        "id": "d",
+        "text": "100"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 10% son rojas, entonces el 90% NO son rojas. 90% de 100 es 90.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $37000. Desea venderlo ganando el 10% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$38850"
+      },
+      {
+        "id": "b",
+        "text": "$40700"
+      },
+      {
+        "id": "c",
+        "text": "$44770"
+      },
+      {
+        "id": "d",
+        "text": "$32560"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El costo es $37000. El 10% de ganancia es $37000 * 0.1 = $3700. Precio venta = $37000 + $3700 = $40700.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $49000. Desea venderlo ganando el 20% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$53900"
+      },
+      {
+        "id": "b",
+        "text": "$58800"
+      },
+      {
+        "id": "c",
+        "text": "$47040"
+      },
+      {
+        "id": "d",
+        "text": "$64680"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El costo es $49000. El 20% de ganancia es $49000 * 0.2 = $9800. Precio venta = $49000 + $9800 = $58800.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 80 balotas. El 10% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "82"
+      },
+      {
+        "id": "b",
+        "text": "13"
+      },
+      {
+        "id": "c",
+        "text": "8"
+      },
+      {
+        "id": "d",
+        "text": "72"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 10% son rojas, entonces el 90% NO son rojas. 90% de 80 es 72.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 30 balotas. El 20% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "11"
+      },
+      {
+        "id": "b",
+        "text": "34"
+      },
+      {
+        "id": "c",
+        "text": "6"
+      },
+      {
+        "id": "d",
+        "text": "24"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 20% son rojas, entonces el 80% NO son rojas. 80% de 30 es 24.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 70 balotas. El 50% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "35"
+      },
+      {
+        "id": "b",
+        "text": "35"
+      },
+      {
+        "id": "c",
+        "text": "45"
+      },
+      {
+        "id": "d",
+        "text": "40"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 50% son rojas, entonces el 50% NO son rojas. 50% de 70 es 35.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 40 balotas. El 50% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "25"
+      },
+      {
+        "id": "b",
+        "text": "30"
+      },
+      {
+        "id": "c",
+        "text": "20"
+      },
+      {
+        "id": "d",
+        "text": "20"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Si el 50% son rojas, entonces el 50% NO son rojas. 50% de 40 es 20.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $39000. Desea venderlo ganando el 20% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$46800"
+      },
+      {
+        "id": "b",
+        "text": "$37440"
+      },
+      {
+        "id": "c",
+        "text": "$51480"
+      },
+      {
+        "id": "d",
+        "text": "$42900"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $39000. El 20% de ganancia es $39000 * 0.2 = $7800. Precio venta = $39000 + $7800 = $46800.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 60 balotas. El 50% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "30"
+      },
+      {
+        "id": "b",
+        "text": "40"
+      },
+      {
+        "id": "c",
+        "text": "30"
+      },
+      {
+        "id": "d",
+        "text": "35"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 50% son rojas, entonces el 50% NO son rojas. 50% de 60 es 30.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 20 balotas. El 20% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "16"
+      },
+      {
+        "id": "b",
+        "text": "4"
+      },
+      {
+        "id": "c",
+        "text": "26"
+      },
+      {
+        "id": "d",
+        "text": "9"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si el 20% son rojas, entonces el 80% NO son rojas. 80% de 20 es 16.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 30 balotas. El 20% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "6"
+      },
+      {
+        "id": "b",
+        "text": "11"
+      },
+      {
+        "id": "c",
+        "text": "34"
+      },
+      {
+        "id": "d",
+        "text": "24"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 20% son rojas, entonces el 80% NO son rojas. 80% de 30 es 24.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $20000. Desea venderlo ganando el 15% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$23000"
+      },
+      {
+        "id": "b",
+        "text": "$18400"
+      },
+      {
+        "id": "c",
+        "text": "$21500"
+      },
+      {
+        "id": "d",
+        "text": "$25300"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $20000. El 15% de ganancia es $20000 * 0.15 = $3000. Precio venta = $20000 + $3000 = $23000.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $54000. Desea venderlo ganando el 25% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$67500"
+      },
+      {
+        "id": "b",
+        "text": "$54000"
+      },
+      {
+        "id": "c",
+        "text": "$74250"
+      },
+      {
+        "id": "d",
+        "text": "$60750"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $54000. El 25% de ganancia es $54000 * 0.25 = $13500. Precio venta = $54000 + $13500 = $67500.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $28000. Desea venderlo ganando el 25% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$31500"
+      },
+      {
+        "id": "b",
+        "text": "$38500"
+      },
+      {
+        "id": "c",
+        "text": "$28000"
+      },
+      {
+        "id": "d",
+        "text": "$35000"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $28000. El 25% de ganancia es $28000 * 0.25 = $7000. Precio venta = $28000 + $7000 = $35000.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $44000. Desea venderlo ganando el 20% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$42240"
+      },
+      {
+        "id": "b",
+        "text": "$52800"
+      },
+      {
+        "id": "c",
+        "text": "$58080"
+      },
+      {
+        "id": "d",
+        "text": "$48400"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El costo es $44000. El 20% de ganancia es $44000 * 0.2 = $8800. Precio venta = $44000 + $8800 = $52800.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $18000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$20700"
+      },
+      {
+        "id": "b",
+        "text": "$25740"
+      },
+      {
+        "id": "c",
+        "text": "$18720"
+      },
+      {
+        "id": "d",
+        "text": "$23400"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $18000. El 30% de ganancia es $18000 * 0.3 = $5400. Precio venta = $18000 + $5400 = $23400.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "En una urna hay 50 balotas. El 80% son rojas. ¿Cuántas balotas NO son rojas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "20"
+      },
+      {
+        "id": "b",
+        "text": "40"
+      },
+      {
+        "id": "c",
+        "text": "45"
+      },
+      {
+        "id": "d",
+        "text": "10"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si el 80% son rojas, entonces el 20% NO son rojas. 20% de 50 es 10.",
+    "difficulty": "media"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $55000. Desea venderlo ganando el 10% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$66550"
+      },
+      {
+        "id": "b",
+        "text": "$60500"
+      },
+      {
+        "id": "c",
+        "text": "$48400"
+      },
+      {
+        "id": "d",
+        "text": "$57750"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El costo es $55000. El 10% de ganancia es $55000 * 0.1 = $5500. Precio venta = $55000 + $5500 = $60500.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 6 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4 veces"
+      },
+      {
+        "id": "b",
+        "text": "2 veces"
+      },
+      {
+        "id": "c",
+        "text": "8 veces"
+      },
+      {
+        "id": "d",
+        "text": "6 veces"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 8 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2 veces"
+      },
+      {
+        "id": "b",
+        "text": "4 veces"
+      },
+      {
+        "id": "c",
+        "text": "8 veces"
+      },
+      {
+        "id": "d",
+        "text": "6 veces"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $37000. Desea venderlo ganando el 10% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$32560"
+      },
+      {
+        "id": "b",
+        "text": "$40700"
+      },
+      {
+        "id": "c",
+        "text": "$38850"
+      },
+      {
+        "id": "d",
+        "text": "$44770"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El costo es $37000. El 10% de ganancia es $37000 * 0.1 = $3700. Precio venta = $37000 + $3700 = $40700.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 10 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4 veces"
+      },
+      {
+        "id": "b",
+        "text": "2 veces"
+      },
+      {
+        "id": "c",
+        "text": "8 veces"
+      },
+      {
+        "id": "d",
+        "text": "6 veces"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 8 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "6 veces"
+      },
+      {
+        "id": "b",
+        "text": "4 veces"
+      },
+      {
+        "id": "c",
+        "text": "2 veces"
+      },
+      {
+        "id": "d",
+        "text": "8 veces"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 12 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2 veces"
+      },
+      {
+        "id": "b",
+        "text": "6 veces"
+      },
+      {
+        "id": "c",
+        "text": "8 veces"
+      },
+      {
+        "id": "d",
+        "text": "4 veces"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $33000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$47190"
+      },
+      {
+        "id": "b",
+        "text": "$37950"
+      },
+      {
+        "id": "c",
+        "text": "$34320"
+      },
+      {
+        "id": "d",
+        "text": "$42900"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $33000. El 30% de ganancia es $33000 * 0.3 = $9900. Precio venta = $33000 + $9900 = $42900.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 8 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4 veces"
+      },
+      {
+        "id": "b",
+        "text": "2 veces"
+      },
+      {
+        "id": "c",
+        "text": "8 veces"
+      },
+      {
+        "id": "d",
+        "text": "6 veces"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $45000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$46800"
+      },
+      {
+        "id": "b",
+        "text": "$51750"
+      },
+      {
+        "id": "c",
+        "text": "$64350"
+      },
+      {
+        "id": "d",
+        "text": "$58500"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $45000. El 30% de ganancia es $45000 * 0.3 = $13500. Precio venta = $45000 + $13500 = $58500.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 8 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4 veces"
+      },
+      {
+        "id": "b",
+        "text": "2 veces"
+      },
+      {
+        "id": "c",
+        "text": "8 veces"
+      },
+      {
+        "id": "d",
+        "text": "6 veces"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 9 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2 veces"
+      },
+      {
+        "id": "b",
+        "text": "8 veces"
+      },
+      {
+        "id": "c",
+        "text": "4 veces"
+      },
+      {
+        "id": "d",
+        "text": "6 veces"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $18000. Desea venderlo ganando el 20% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$19800"
+      },
+      {
+        "id": "b",
+        "text": "$23760"
+      },
+      {
+        "id": "c",
+        "text": "$17280"
+      },
+      {
+        "id": "d",
+        "text": "$21600"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $18000. El 20% de ganancia es $18000 * 0.2 = $3600. Precio venta = $18000 + $3600 = $21600.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 9 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "8 veces"
+      },
+      {
+        "id": "b",
+        "text": "6 veces"
+      },
+      {
+        "id": "c",
+        "text": "2 veces"
+      },
+      {
+        "id": "d",
+        "text": "4 veces"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $50000. Desea venderlo ganando el 15% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$63250"
+      },
+      {
+        "id": "b",
+        "text": "$57500"
+      },
+      {
+        "id": "c",
+        "text": "$46000"
+      },
+      {
+        "id": "d",
+        "text": "$53750"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El costo es $50000. El 15% de ganancia es $50000 * 0.15 = $7500. Precio venta = $50000 + $7500 = $57500.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $54000. Desea venderlo ganando el 20% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$59400"
+      },
+      {
+        "id": "b",
+        "text": "$64800"
+      },
+      {
+        "id": "c",
+        "text": "$51840"
+      },
+      {
+        "id": "d",
+        "text": "$71280"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El costo es $54000. El 20% de ganancia es $54000 * 0.2 = $10800. Precio venta = $54000 + $10800 = $64800.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 7 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2 veces"
+      },
+      {
+        "id": "b",
+        "text": "4 veces"
+      },
+      {
+        "id": "c",
+        "text": "6 veces"
+      },
+      {
+        "id": "d",
+        "text": "8 veces"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 14 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4 veces"
+      },
+      {
+        "id": "b",
+        "text": "2 veces"
+      },
+      {
+        "id": "c",
+        "text": "6 veces"
+      },
+      {
+        "id": "d",
+        "text": "8 veces"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $51000. Desea venderlo ganando el 10% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$61710"
+      },
+      {
+        "id": "b",
+        "text": "$53550"
+      },
+      {
+        "id": "c",
+        "text": "$44880"
+      },
+      {
+        "id": "d",
+        "text": "$56100"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $51000. El 10% de ganancia es $51000 * 0.1 = $5100. Precio venta = $51000 + $5100 = $56100.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $59000. Desea venderlo ganando el 20% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$64900"
+      },
+      {
+        "id": "b",
+        "text": "$56640"
+      },
+      {
+        "id": "c",
+        "text": "$77880"
+      },
+      {
+        "id": "d",
+        "text": "$70800"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $59000. El 20% de ganancia es $59000 * 0.2 = $11800. Precio venta = $59000 + $11800 = $70800.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 7 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "6 veces"
+      },
+      {
+        "id": "b",
+        "text": "8 veces"
+      },
+      {
+        "id": "c",
+        "text": "2 veces"
+      },
+      {
+        "id": "d",
+        "text": "4 veces"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $16000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$18400"
+      },
+      {
+        "id": "b",
+        "text": "$22880"
+      },
+      {
+        "id": "c",
+        "text": "$20800"
+      },
+      {
+        "id": "d",
+        "text": "$16640"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El costo es $16000. El 30% de ganancia es $16000 * 0.3 = $4800. Precio venta = $16000 + $4800 = $20800.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 7 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4 veces"
+      },
+      {
+        "id": "b",
+        "text": "6 veces"
+      },
+      {
+        "id": "c",
+        "text": "2 veces"
+      },
+      {
+        "id": "d",
+        "text": "8 veces"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $36000. Desea venderlo ganando el 25% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$49500"
+      },
+      {
+        "id": "b",
+        "text": "$45000"
+      },
+      {
+        "id": "c",
+        "text": "$40500"
+      },
+      {
+        "id": "d",
+        "text": "$36000"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El costo es $36000. El 25% de ganancia es $36000 * 0.25 = $9000. Precio venta = $36000 + $9000 = $45000.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $11000. Desea venderlo ganando el 20% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$12100"
+      },
+      {
+        "id": "b",
+        "text": "$14520"
+      },
+      {
+        "id": "c",
+        "text": "$10560"
+      },
+      {
+        "id": "d",
+        "text": "$13200"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El costo es $11000. El 20% de ganancia es $11000 * 0.2 = $2200. Precio venta = $11000 + $2200 = $13200.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Un comerciante compra un artículo por $55000. Desea venderlo ganando el 30% sobre el costo. ¿Cuál debe ser el precio de venta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$71500"
+      },
+      {
+        "id": "b",
+        "text": "$57200"
+      },
+      {
+        "id": "c",
+        "text": "$78650"
+      },
+      {
+        "id": "d",
+        "text": "$63250"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El costo es $55000. El 30% de ganancia es $55000 * 0.3 = $16500. Precio venta = $55000 + $16500 = $71500.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 6 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "8 veces"
+      },
+      {
+        "id": "b",
+        "text": "2 veces"
+      },
+      {
+        "id": "c",
+        "text": "6 veces"
+      },
+      {
+        "id": "d",
+        "text": "4 veces"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 14 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4 veces"
+      },
+      {
+        "id": "b",
+        "text": "6 veces"
+      },
+      {
+        "id": "c",
+        "text": "2 veces"
+      },
+      {
+        "id": "d",
+        "text": "8 veces"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 11 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "6 veces"
+      },
+      {
+        "id": "b",
+        "text": "8 veces"
+      },
+      {
+        "id": "c",
+        "text": "2 veces"
+      },
+      {
+        "id": "d",
+        "text": "4 veces"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 11 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "6 veces"
+      },
+      {
+        "id": "b",
+        "text": "8 veces"
+      },
+      {
+        "id": "c",
+        "text": "2 veces"
+      },
+      {
+        "id": "d",
+        "text": "4 veces"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Si x + y = 10 y x - y = 2, ¿cuál es el valor de x*y?",
+    "options": [
+      {
+        "id": "a",
+        "text": "22"
+      },
+      {
+        "id": "b",
+        "text": "10"
+      },
+      {
+        "id": "c",
+        "text": "24"
+      },
+      {
+        "id": "d",
+        "text": "26"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Sumando ecuaciones: 2x = 12 -> x = 6. Restando: 2y = 8 -> y = 4. x*y = 24.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 13 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "8 veces"
+      },
+      {
+        "id": "b",
+        "text": "4 veces"
+      },
+      {
+        "id": "c",
+        "text": "2 veces"
+      },
+      {
+        "id": "d",
+        "text": "6 veces"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Si x + y = 12 y x - y = -4, ¿cuál es el valor de x*y?",
+    "options": [
+      {
+        "id": "a",
+        "text": "32"
+      },
+      {
+        "id": "b",
+        "text": "34"
+      },
+      {
+        "id": "c",
+        "text": "12"
+      },
+      {
+        "id": "d",
+        "text": "30"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Sumando ecuaciones: 2x = 8 -> x = 4. Restando: 2y = 16 -> y = 8. x*y = 32.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Si x + y = 10 y x - y = -4, ¿cuál es el valor de x*y?",
+    "options": [
+      {
+        "id": "a",
+        "text": "21"
+      },
+      {
+        "id": "b",
+        "text": "19"
+      },
+      {
+        "id": "c",
+        "text": "10"
+      },
+      {
+        "id": "d",
+        "text": "23"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Sumando ecuaciones: 2x = 6 -> x = 3. Restando: 2y = 14 -> y = 7. x*y = 21.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Si x + y = 9 y x - y = 7, ¿cuál es el valor de x*y?",
+    "options": [
+      {
+        "id": "a",
+        "text": "8"
+      },
+      {
+        "id": "b",
+        "text": "10"
+      },
+      {
+        "id": "c",
+        "text": "6"
+      },
+      {
+        "id": "d",
+        "text": "9"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Sumando ecuaciones: 2x = 16 -> x = 8. Restando: 2y = 2 -> y = 1. x*y = 8.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 5 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2 veces"
+      },
+      {
+        "id": "b",
+        "text": "4 veces"
+      },
+      {
+        "id": "c",
+        "text": "6 veces"
+      },
+      {
+        "id": "d",
+        "text": "8 veces"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Si x + y = 11 y x - y = 7, ¿cuál es el valor de x*y?",
+    "options": [
+      {
+        "id": "a",
+        "text": "18"
+      },
+      {
+        "id": "b",
+        "text": "16"
+      },
+      {
+        "id": "c",
+        "text": "20"
+      },
+      {
+        "id": "d",
+        "text": "11"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Sumando ecuaciones: 2x = 18 -> x = 9. Restando: 2y = 4 -> y = 2. x*y = 18.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 8 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "6 veces"
+      },
+      {
+        "id": "b",
+        "text": "2 veces"
+      },
+      {
+        "id": "c",
+        "text": "4 veces"
+      },
+      {
+        "id": "d",
+        "text": "8 veces"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 11 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2 veces"
+      },
+      {
+        "id": "b",
+        "text": "4 veces"
+      },
+      {
+        "id": "c",
+        "text": "6 veces"
+      },
+      {
+        "id": "d",
+        "text": "8 veces"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Si x + y = 17 y x - y = 1, ¿cuál es el valor de x*y?",
+    "options": [
+      {
+        "id": "a",
+        "text": "72"
+      },
+      {
+        "id": "b",
+        "text": "17"
+      },
+      {
+        "id": "c",
+        "text": "74"
+      },
+      {
+        "id": "d",
+        "text": "70"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Sumando ecuaciones: 2x = 18 -> x = 9. Restando: 2y = 16 -> y = 8. x*y = 72.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Si x + y = 17 y x - y = -1, ¿cuál es el valor de x*y?",
+    "options": [
+      {
+        "id": "a",
+        "text": "17"
+      },
+      {
+        "id": "b",
+        "text": "72"
+      },
+      {
+        "id": "c",
+        "text": "70"
+      },
+      {
+        "id": "d",
+        "text": "74"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Sumando ecuaciones: 2x = 16 -> x = 8. Restando: 2y = 18 -> y = 9. x*y = 72.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Si x + y = 16 y x - y = -4, ¿cuál es el valor de x*y?",
+    "options": [
+      {
+        "id": "a",
+        "text": "16"
+      },
+      {
+        "id": "b",
+        "text": "58"
+      },
+      {
+        "id": "c",
+        "text": "62"
+      },
+      {
+        "id": "d",
+        "text": "60"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Sumando ecuaciones: 2x = 12 -> x = 6. Restando: 2y = 20 -> y = 10. x*y = 60.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Si x + y = 8 y x - y = 4, ¿cuál es el valor de x*y?",
+    "options": [
+      {
+        "id": "a",
+        "text": "8"
+      },
+      {
+        "id": "b",
+        "text": "10"
+      },
+      {
+        "id": "c",
+        "text": "14"
+      },
+      {
+        "id": "d",
+        "text": "12"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Sumando ecuaciones: 2x = 12 -> x = 6. Restando: 2y = 4 -> y = 2. x*y = 12.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Si x + y = 10 y x - y = 4, ¿cuál es el valor de x*y?",
+    "options": [
+      {
+        "id": "a",
+        "text": "21"
+      },
+      {
+        "id": "b",
+        "text": "23"
+      },
+      {
+        "id": "c",
+        "text": "19"
+      },
+      {
+        "id": "d",
+        "text": "10"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Sumando ecuaciones: 2x = 14 -> x = 7. Restando: 2y = 6 -> y = 3. x*y = 21.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Si x + y = 11 y x - y = -3, ¿cuál es el valor de x*y?",
+    "options": [
+      {
+        "id": "a",
+        "text": "11"
+      },
+      {
+        "id": "b",
+        "text": "28"
+      },
+      {
+        "id": "c",
+        "text": "30"
+      },
+      {
+        "id": "d",
+        "text": "26"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Sumando ecuaciones: 2x = 8 -> x = 4. Restando: 2y = 14 -> y = 7. x*y = 28.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 7 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "6 veces"
+      },
+      {
+        "id": "b",
+        "text": "2 veces"
+      },
+      {
+        "id": "c",
+        "text": "4 veces"
+      },
+      {
+        "id": "d",
+        "text": "8 veces"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 13 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "8 veces"
+      },
+      {
+        "id": "b",
+        "text": "2 veces"
+      },
+      {
+        "id": "c",
+        "text": "6 veces"
+      },
+      {
+        "id": "d",
+        "text": "4 veces"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 11 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4 veces"
+      },
+      {
+        "id": "b",
+        "text": "2 veces"
+      },
+      {
+        "id": "c",
+        "text": "8 veces"
+      },
+      {
+        "id": "d",
+        "text": "6 veces"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 8 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "6 veces"
+      },
+      {
+        "id": "b",
+        "text": "8 veces"
+      },
+      {
+        "id": "c",
+        "text": "2 veces"
+      },
+      {
+        "id": "d",
+        "text": "4 veces"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "razonamiento_cuantitativo",
+    "text": "Se tiene un cuadrado de lado 12 cm. Si cada lado se duplica, ¿cuántas veces aumenta su área?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4 veces"
+      },
+      {
+        "id": "b",
+        "text": "2 veces"
+      },
+      {
+        "id": "c",
+        "text": "8 veces"
+      },
+      {
+        "id": "d",
+        "text": "6 veces"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Área inicial = L^2. Nuevo lado = 2L. Nueva área = (2L)^2 = 4L^2. Aumenta 4 veces.",
+    "difficulty": "avanzada"
+  }
+]

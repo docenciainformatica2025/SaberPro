@@ -1,0 +1,3752 @@
+[
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "d",
+        "text": "Demanda civil ordinaria"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libre asociación al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al detener a alguien sin orden judicial. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "habeas corpus"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La habeas corpus es el mecanismo preferente para proteger la libertad personal ante detenciones arbitrarias cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la vida al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al detener a alguien sin orden judicial. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "habeas corpus"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La habeas corpus es el mecanismo preferente para proteger la libertad personal ante detenciones arbitrarias cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la vida al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Demanda civil ordinaria"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al detener a alguien sin orden judicial. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "habeas corpus"
+      },
+      {
+        "id": "b",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La habeas corpus es el mecanismo preferente para proteger la libertad personal ante detenciones arbitrarias cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al detener a alguien sin orden judicial. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "habeas corpus"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La habeas corpus es el mecanismo preferente para proteger la libertad personal ante detenciones arbitrarias cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la vida al detener a alguien sin orden judicial. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "habeas corpus"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La habeas corpus es el mecanismo preferente para proteger la libertad personal ante detenciones arbitrarias cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al detener a alguien sin orden judicial. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "habeas corpus"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La habeas corpus es el mecanismo preferente para proteger la libertad personal ante detenciones arbitrarias cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "b",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libre asociación al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libre asociación al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libre asociación al detener a alguien sin orden judicial. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "habeas corpus"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La habeas corpus es el mecanismo preferente para proteger la libertad personal ante detenciones arbitrarias cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libre asociación al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la vida al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libre asociación al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la vida al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "b",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libre asociación al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la vida al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libre asociación al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "b",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "c",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la vida al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la vida al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "Demanda civil ordinaria"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la vida al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la vida al detener a alguien sin orden judicial. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "habeas corpus"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La habeas corpus es el mecanismo preferente para proteger la libertad personal ante detenciones arbitrarias cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libre asociación al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "Demanda civil ordinaria"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al detener a alguien sin orden judicial. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "habeas corpus"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La habeas corpus es el mecanismo preferente para proteger la libertad personal ante detenciones arbitrarias cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Demanda civil ordinaria"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "Demanda civil ordinaria"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la vida al detener a alguien sin orden judicial. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "habeas corpus"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La habeas corpus es el mecanismo preferente para proteger la libertad personal ante detenciones arbitrarias cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libre asociación al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la vida al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "b",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "c",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al detener a alguien sin orden judicial. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "habeas corpus"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La habeas corpus es el mecanismo preferente para proteger la libertad personal ante detenciones arbitrarias cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libre asociación al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "d",
+        "text": "Demanda civil ordinaria"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al detener a alguien sin orden judicial. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "habeas corpus"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La habeas corpus es el mecanismo preferente para proteger la libertad personal ante detenciones arbitrarias cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "b",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Demanda civil ordinaria"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la vida al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la vida al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la vida al detener a alguien sin orden judicial. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "habeas corpus"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La habeas corpus es el mecanismo preferente para proteger la libertad personal ante detenciones arbitrarias cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "Demanda civil ordinaria"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libre asociación al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "b",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la libertad de expresión al detener a alguien sin orden judicial. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "habeas corpus"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La habeas corpus es el mecanismo preferente para proteger la libertad personal ante detenciones arbitrarias cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al censurar un periódico. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a la intimidad al publicar fotos privadas sin permiso. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "b",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "c",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "d",
+        "text": "Recolección de firmas"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al negar atención médica vital. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "acción de tutela"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "Queja ante la policía"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Un ciudadano considera que se ha vulnerado su derecho a el debido proceso al prohibir una reunión pacífica. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recolección de firmas"
+      },
+      {
+        "id": "b",
+        "text": "Queja ante la policía"
+      },
+      {
+        "id": "c",
+        "text": "Demanda civil ordinaria"
+      },
+      {
+        "id": "d",
+        "text": "acción de tutela"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de tutela es el mecanismo preferente para proteger derechos fundamentales cuando no existen otros medios eficaces.",
+    "difficulty": "media"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la minería en páramos, la comunidad local argumenta priorizando la generación de empleo. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Es necesario fomentar la generación de empleo aunque implique sacrificios menores."
+      },
+      {
+        "id": "b",
+        "text": "Se debe prohibir totalmente la minería en páramos sin excepciones."
+      },
+      {
+        "id": "c",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "d",
+        "text": "El único interés válido es el de la contraparte."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si la prioridad del actor es la generación de empleo, buscará medidas que lo favorezcan o lo maximicen en el contexto de la minería en páramos.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre el uso de glifosato, el gobierno nacional argumenta priorizando la generación de empleo. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Es necesario fomentar la generación de empleo aunque implique sacrificios menores."
+      },
+      {
+        "id": "b",
+        "text": "Se debe prohibir totalmente el uso de glifosato sin excepciones."
+      },
+      {
+        "id": "c",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "d",
+        "text": "El único interés válido es el de la contraparte."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si la prioridad del actor es la generación de empleo, buscará medidas que lo favorezcan o lo maximicen en el contexto de el uso de glifosato.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre el uso de glifosato, el gobierno nacional argumenta priorizando el desarrollo económico. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Es necesario fomentar el desarrollo económico aunque implique sacrificios menores."
+      },
+      {
+        "id": "b",
+        "text": "Se debe prohibir totalmente el uso de glifosato sin excepciones."
+      },
+      {
+        "id": "c",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "d",
+        "text": "El estado no debe intervenir en absoluto."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si la prioridad del actor es el desarrollo económico, buscará medidas que lo favorezcan o lo maximicen en el contexto de el uso de glifosato.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la construcción de una represa, la empresa privada argumenta priorizando el desarrollo económico. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "b",
+        "text": "Es necesario fomentar el desarrollo económico aunque implique sacrificios menores."
+      },
+      {
+        "id": "c",
+        "text": "Se debe prohibir totalmente la construcción de una represa sin excepciones."
+      },
+      {
+        "id": "d",
+        "text": "El estado no debe intervenir en absoluto."
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Si la prioridad del actor es el desarrollo económico, buscará medidas que lo favorezcan o lo maximicen en el contexto de la construcción de una represa.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre el uso de glifosato, la empresa privada argumenta priorizando la soberanía nacional. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Es necesario fomentar la soberanía nacional aunque implique sacrificios menores."
+      },
+      {
+        "id": "b",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "c",
+        "text": "Se debe prohibir totalmente el uso de glifosato sin excepciones."
+      },
+      {
+        "id": "d",
+        "text": "El único interés válido es el de la contraparte."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si la prioridad del actor es la soberanía nacional, buscará medidas que lo favorezcan o lo maximicen en el contexto de el uso de glifosato.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre el uso de glifosato, la empresa privada argumenta priorizando la generación de empleo. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "b",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "c",
+        "text": "Se debe prohibir totalmente el uso de glifosato sin excepciones."
+      },
+      {
+        "id": "d",
+        "text": "Es necesario fomentar la generación de empleo aunque implique sacrificios menores."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si la prioridad del actor es la generación de empleo, buscará medidas que lo favorezcan o lo maximicen en el contexto de el uso de glifosato.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre el uso de glifosato, los grupos ambientalistas argumenta priorizando el desarrollo económico. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "b",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "c",
+        "text": "Se debe prohibir totalmente el uso de glifosato sin excepciones."
+      },
+      {
+        "id": "d",
+        "text": "Es necesario fomentar el desarrollo económico aunque implique sacrificios menores."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si la prioridad del actor es el desarrollo económico, buscará medidas que lo favorezcan o lo maximicen en el contexto de el uso de glifosato.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la regulación de plataformas de transporte, la empresa privada argumenta priorizando la generación de empleo. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "b",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "c",
+        "text": "Se debe prohibir totalmente la regulación de plataformas de transporte sin excepciones."
+      },
+      {
+        "id": "d",
+        "text": "Es necesario fomentar la generación de empleo aunque implique sacrificios menores."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si la prioridad del actor es la generación de empleo, buscará medidas que lo favorezcan o lo maximicen en el contexto de la regulación de plataformas de transporte.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre el uso de glifosato, los grupos ambientalistas argumenta priorizando la protección del ecosistema. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "b",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "c",
+        "text": "Se debe prohibir totalmente el uso de glifosato sin excepciones."
+      },
+      {
+        "id": "d",
+        "text": "Es necesario fomentar la protección del ecosistema aunque implique sacrificios menores."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si la prioridad del actor es la protección del ecosistema, buscará medidas que lo favorezcan o lo maximicen en el contexto de el uso de glifosato.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la minería en páramos, la empresa privada argumenta priorizando la soberanía nacional. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "b",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "c",
+        "text": "Se debe prohibir totalmente la minería en páramos sin excepciones."
+      },
+      {
+        "id": "d",
+        "text": "Es necesario fomentar la soberanía nacional aunque implique sacrificios menores."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si la prioridad del actor es la soberanía nacional, buscará medidas que lo favorezcan o lo maximicen en el contexto de la minería en páramos.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre el uso de glifosato, la comunidad local argumenta priorizando el desarrollo económico. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Se debe prohibir totalmente el uso de glifosato sin excepciones."
+      },
+      {
+        "id": "b",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "c",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "d",
+        "text": "Es necesario fomentar el desarrollo económico aunque implique sacrificios menores."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si la prioridad del actor es el desarrollo económico, buscará medidas que lo favorezcan o lo maximicen en el contexto de el uso de glifosato.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la regulación de plataformas de transporte, la empresa privada argumenta priorizando el desarrollo económico. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Es necesario fomentar el desarrollo económico aunque implique sacrificios menores."
+      },
+      {
+        "id": "b",
+        "text": "Se debe prohibir totalmente la regulación de plataformas de transporte sin excepciones."
+      },
+      {
+        "id": "c",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "d",
+        "text": "El único interés válido es el de la contraparte."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si la prioridad del actor es el desarrollo económico, buscará medidas que lo favorezcan o lo maximicen en el contexto de la regulación de plataformas de transporte.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la minería en páramos, el gobierno nacional argumenta priorizando la protección del ecosistema. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Es necesario fomentar la protección del ecosistema aunque implique sacrificios menores."
+      },
+      {
+        "id": "b",
+        "text": "Se debe prohibir totalmente la minería en páramos sin excepciones."
+      },
+      {
+        "id": "c",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "d",
+        "text": "El estado no debe intervenir en absoluto."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si la prioridad del actor es la protección del ecosistema, buscará medidas que lo favorezcan o lo maximicen en el contexto de la minería en páramos.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la minería en páramos, el gobierno nacional argumenta priorizando la protección del ecosistema. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Se debe prohibir totalmente la minería en páramos sin excepciones."
+      },
+      {
+        "id": "b",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "c",
+        "text": "Es necesario fomentar la protección del ecosistema aunque implique sacrificios menores."
+      },
+      {
+        "id": "d",
+        "text": "El único interés válido es el de la contraparte."
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Si la prioridad del actor es la protección del ecosistema, buscará medidas que lo favorezcan o lo maximicen en el contexto de la minería en páramos.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre el uso de glifosato, los grupos ambientalistas argumenta priorizando el desarrollo económico. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Es necesario fomentar el desarrollo económico aunque implique sacrificios menores."
+      },
+      {
+        "id": "b",
+        "text": "Se debe prohibir totalmente el uso de glifosato sin excepciones."
+      },
+      {
+        "id": "c",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "d",
+        "text": "El estado no debe intervenir en absoluto."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si la prioridad del actor es el desarrollo económico, buscará medidas que lo favorezcan o lo maximicen en el contexto de el uso de glifosato.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la minería en páramos, la empresa privada argumenta priorizando la protección del ecosistema. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "b",
+        "text": "Se debe prohibir totalmente la minería en páramos sin excepciones."
+      },
+      {
+        "id": "c",
+        "text": "Es necesario fomentar la protección del ecosistema aunque implique sacrificios menores."
+      },
+      {
+        "id": "d",
+        "text": "El único interés válido es el de la contraparte."
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Si la prioridad del actor es la protección del ecosistema, buscará medidas que lo favorezcan o lo maximicen en el contexto de la minería en páramos.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la minería en páramos, los grupos ambientalistas argumenta priorizando el desarrollo económico. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Es necesario fomentar el desarrollo económico aunque implique sacrificios menores."
+      },
+      {
+        "id": "b",
+        "text": "Se debe prohibir totalmente la minería en páramos sin excepciones."
+      },
+      {
+        "id": "c",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "d",
+        "text": "El estado no debe intervenir en absoluto."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si la prioridad del actor es el desarrollo económico, buscará medidas que lo favorezcan o lo maximicen en el contexto de la minería en páramos.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la construcción de una represa, la empresa privada argumenta priorizando la soberanía nacional. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Se debe prohibir totalmente la construcción de una represa sin excepciones."
+      },
+      {
+        "id": "b",
+        "text": "Es necesario fomentar la soberanía nacional aunque implique sacrificios menores."
+      },
+      {
+        "id": "c",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "d",
+        "text": "El único interés válido es el de la contraparte."
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Si la prioridad del actor es la soberanía nacional, buscará medidas que lo favorezcan o lo maximicen en el contexto de la construcción de una represa.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la construcción de una represa, el gobierno nacional argumenta priorizando la generación de empleo. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "b",
+        "text": "Se debe prohibir totalmente la construcción de una represa sin excepciones."
+      },
+      {
+        "id": "c",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "d",
+        "text": "Es necesario fomentar la generación de empleo aunque implique sacrificios menores."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si la prioridad del actor es la generación de empleo, buscará medidas que lo favorezcan o lo maximicen en el contexto de la construcción de una represa.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la minería en páramos, la comunidad local argumenta priorizando la generación de empleo. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Es necesario fomentar la generación de empleo aunque implique sacrificios menores."
+      },
+      {
+        "id": "b",
+        "text": "Se debe prohibir totalmente la minería en páramos sin excepciones."
+      },
+      {
+        "id": "c",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "d",
+        "text": "El estado no debe intervenir en absoluto."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si la prioridad del actor es la generación de empleo, buscará medidas que lo favorezcan o lo maximicen en el contexto de la minería en páramos.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la construcción de una represa, la comunidad local argumenta priorizando la soberanía nacional. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "b",
+        "text": "Se debe prohibir totalmente la construcción de una represa sin excepciones."
+      },
+      {
+        "id": "c",
+        "text": "Es necesario fomentar la soberanía nacional aunque implique sacrificios menores."
+      },
+      {
+        "id": "d",
+        "text": "El estado no debe intervenir en absoluto."
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Si la prioridad del actor es la soberanía nacional, buscará medidas que lo favorezcan o lo maximicen en el contexto de la construcción de una represa.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la regulación de plataformas de transporte, la comunidad local argumenta priorizando la generación de empleo. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "b",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "c",
+        "text": "Se debe prohibir totalmente la regulación de plataformas de transporte sin excepciones."
+      },
+      {
+        "id": "d",
+        "text": "Es necesario fomentar la generación de empleo aunque implique sacrificios menores."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si la prioridad del actor es la generación de empleo, buscará medidas que lo favorezcan o lo maximicen en el contexto de la regulación de plataformas de transporte.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la minería en páramos, los grupos ambientalistas argumenta priorizando la protección del ecosistema. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Es necesario fomentar la protección del ecosistema aunque implique sacrificios menores."
+      },
+      {
+        "id": "b",
+        "text": "Se debe prohibir totalmente la minería en páramos sin excepciones."
+      },
+      {
+        "id": "c",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "d",
+        "text": "El estado no debe intervenir en absoluto."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Si la prioridad del actor es la protección del ecosistema, buscará medidas que lo favorezcan o lo maximicen en el contexto de la minería en páramos.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre el uso de glifosato, la comunidad local argumenta priorizando la generación de empleo. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "b",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "c",
+        "text": "Se debe prohibir totalmente el uso de glifosato sin excepciones."
+      },
+      {
+        "id": "d",
+        "text": "Es necesario fomentar la generación de empleo aunque implique sacrificios menores."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si la prioridad del actor es la generación de empleo, buscará medidas que lo favorezcan o lo maximicen en el contexto de el uso de glifosato.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la regulación de plataformas de transporte, la comunidad local argumenta priorizando la soberanía nacional. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "b",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "c",
+        "text": "Se debe prohibir totalmente la regulación de plataformas de transporte sin excepciones."
+      },
+      {
+        "id": "d",
+        "text": "Es necesario fomentar la soberanía nacional aunque implique sacrificios menores."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si la prioridad del actor es la soberanía nacional, buscará medidas que lo favorezcan o lo maximicen en el contexto de la regulación de plataformas de transporte.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la construcción de una represa, la comunidad local argumenta priorizando el desarrollo económico. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "b",
+        "text": "Se debe prohibir totalmente la construcción de una represa sin excepciones."
+      },
+      {
+        "id": "c",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "d",
+        "text": "Es necesario fomentar el desarrollo económico aunque implique sacrificios menores."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si la prioridad del actor es el desarrollo económico, buscará medidas que lo favorezcan o lo maximicen en el contexto de la construcción de una represa.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre el uso de glifosato, la empresa privada argumenta priorizando la generación de empleo. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "b",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "c",
+        "text": "Se debe prohibir totalmente el uso de glifosato sin excepciones."
+      },
+      {
+        "id": "d",
+        "text": "Es necesario fomentar la generación de empleo aunque implique sacrificios menores."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "Si la prioridad del actor es la generación de empleo, buscará medidas que lo favorezcan o lo maximicen en el contexto de el uso de glifosato.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la regulación de plataformas de transporte, el gobierno nacional argumenta priorizando la soberanía nacional. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "b",
+        "text": "Se debe prohibir totalmente la regulación de plataformas de transporte sin excepciones."
+      },
+      {
+        "id": "c",
+        "text": "Es necesario fomentar la soberanía nacional aunque implique sacrificios menores."
+      },
+      {
+        "id": "d",
+        "text": "El estado no debe intervenir en absoluto."
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Si la prioridad del actor es la soberanía nacional, buscará medidas que lo favorezcan o lo maximicen en el contexto de la regulación de plataformas de transporte.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la construcción de una represa, la comunidad local argumenta priorizando la soberanía nacional. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El estado no debe intervenir en absoluto."
+      },
+      {
+        "id": "b",
+        "text": "Es necesario fomentar la soberanía nacional aunque implique sacrificios menores."
+      },
+      {
+        "id": "c",
+        "text": "Se debe prohibir totalmente la construcción de una represa sin excepciones."
+      },
+      {
+        "id": "d",
+        "text": "El único interés válido es el de la contraparte."
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Si la prioridad del actor es la soberanía nacional, buscará medidas que lo favorezcan o lo maximicen en el contexto de la construcción de una represa.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "En el debate sobre la minería en páramos, la empresa privada argumenta priorizando la soberanía nacional. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Se debe prohibir totalmente la minería en páramos sin excepciones."
+      },
+      {
+        "id": "b",
+        "text": "Es necesario fomentar la soberanía nacional aunque implique sacrificios menores."
+      },
+      {
+        "id": "c",
+        "text": "El único interés válido es el de la contraparte."
+      },
+      {
+        "id": "d",
+        "text": "El estado no debe intervenir en absoluto."
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Si la prioridad del actor es la soberanía nacional, buscará medidas que lo favorezcan o lo maximicen en el contexto de la minería en páramos.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir el desempleo juvenil, un alcalde propone militarizar las calles. Un analista advierte que esta medida, aunque popular, podría generar hacinamiento carcelario a largo plazo como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El costo político para el alcalde."
+      },
+      {
+        "id": "b",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "c",
+        "text": "La opinión de los medios de comunicación."
+      },
+      {
+        "id": "d",
+        "text": "El impacto estructural a largo plazo."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (hacinamiento carcelario a largo plazo) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir el desempleo juvenil, un alcalde propone reducir los impuestos a empresas. Un analista advierte que esta medida, aunque popular, podría generar violación de derechos humanos como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El impacto estructural a largo plazo."
+      },
+      {
+        "id": "b",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "c",
+        "text": "El costo político para el alcalde."
+      },
+      {
+        "id": "d",
+        "text": "La opinión de los medios de comunicación."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (violación de derechos humanos) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir la corrupción administrativa, un alcalde propone subsidiar el primer empleo. Un analista advierte que esta medida, aunque popular, podría generar déficit fiscal como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El impacto estructural a largo plazo."
+      },
+      {
+        "id": "b",
+        "text": "La opinión de los medios de comunicación."
+      },
+      {
+        "id": "c",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "d",
+        "text": "El costo político para el alcalde."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (déficit fiscal) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir la corrupción administrativa, un alcalde propone aumentar las penas de cárcel. Un analista advierte que esta medida, aunque popular, podría generar déficit fiscal como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El impacto estructural a largo plazo."
+      },
+      {
+        "id": "b",
+        "text": "La opinión de los medios de comunicación."
+      },
+      {
+        "id": "c",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "d",
+        "text": "El costo político para el alcalde."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (déficit fiscal) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir el desempleo juvenil, un alcalde propone subsidiar el primer empleo. Un analista advierte que esta medida, aunque popular, podría generar hacinamiento carcelario a largo plazo como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El impacto estructural a largo plazo."
+      },
+      {
+        "id": "b",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "c",
+        "text": "La opinión de los medios de comunicación."
+      },
+      {
+        "id": "d",
+        "text": "El costo político para el alcalde."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (hacinamiento carcelario a largo plazo) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir la corrupción administrativa, un alcalde propone militarizar las calles. Un analista advierte que esta medida, aunque popular, podría generar hacinamiento carcelario a largo plazo como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La opinión de los medios de comunicación."
+      },
+      {
+        "id": "b",
+        "text": "El costo político para el alcalde."
+      },
+      {
+        "id": "c",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "d",
+        "text": "El impacto estructural a largo plazo."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (hacinamiento carcelario a largo plazo) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir la informalidad laboral, un alcalde propone reducir los impuestos a empresas. Un analista advierte que esta medida, aunque popular, podría generar precarización laboral futura como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El impacto estructural a largo plazo."
+      },
+      {
+        "id": "b",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "c",
+        "text": "La opinión de los medios de comunicación."
+      },
+      {
+        "id": "d",
+        "text": "El costo político para el alcalde."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (precarización laboral futura) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir la informalidad laboral, un alcalde propone reducir los impuestos a empresas. Un analista advierte que esta medida, aunque popular, podría generar violación de derechos humanos como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El costo político para el alcalde."
+      },
+      {
+        "id": "b",
+        "text": "La opinión de los medios de comunicación."
+      },
+      {
+        "id": "c",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "d",
+        "text": "El impacto estructural a largo plazo."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (violación de derechos humanos) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir la informalidad laboral, un alcalde propone subsidiar el primer empleo. Un analista advierte que esta medida, aunque popular, podría generar violación de derechos humanos como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El impacto estructural a largo plazo."
+      },
+      {
+        "id": "b",
+        "text": "La opinión de los medios de comunicación."
+      },
+      {
+        "id": "c",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "d",
+        "text": "El costo político para el alcalde."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (violación de derechos humanos) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir la corrupción administrativa, un alcalde propone aumentar las penas de cárcel. Un analista advierte que esta medida, aunque popular, podría generar hacinamiento carcelario a largo plazo como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La opinión de los medios de comunicación."
+      },
+      {
+        "id": "b",
+        "text": "El costo político para el alcalde."
+      },
+      {
+        "id": "c",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "d",
+        "text": "El impacto estructural a largo plazo."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (hacinamiento carcelario a largo plazo) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir el desempleo juvenil, un alcalde propone subsidiar el primer empleo. Un analista advierte que esta medida, aunque popular, podría generar hacinamiento carcelario a largo plazo como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El impacto estructural a largo plazo."
+      },
+      {
+        "id": "b",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "c",
+        "text": "El costo político para el alcalde."
+      },
+      {
+        "id": "d",
+        "text": "La opinión de los medios de comunicación."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (hacinamiento carcelario a largo plazo) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir la informalidad laboral, un alcalde propone aumentar las penas de cárcel. Un analista advierte que esta medida, aunque popular, podría generar hacinamiento carcelario a largo plazo como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La opinión de los medios de comunicación."
+      },
+      {
+        "id": "b",
+        "text": "El costo político para el alcalde."
+      },
+      {
+        "id": "c",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "d",
+        "text": "El impacto estructural a largo plazo."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (hacinamiento carcelario a largo plazo) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir la corrupción administrativa, un alcalde propone subsidiar el primer empleo. Un analista advierte que esta medida, aunque popular, podría generar precarización laboral futura como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La opinión de los medios de comunicación."
+      },
+      {
+        "id": "b",
+        "text": "El impacto estructural a largo plazo."
+      },
+      {
+        "id": "c",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "d",
+        "text": "El costo político para el alcalde."
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (precarización laboral futura) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir el desempleo juvenil, un alcalde propone reducir los impuestos a empresas. Un analista advierte que esta medida, aunque popular, podría generar violación de derechos humanos como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El impacto estructural a largo plazo."
+      },
+      {
+        "id": "b",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "c",
+        "text": "La opinión de los medios de comunicación."
+      },
+      {
+        "id": "d",
+        "text": "El costo político para el alcalde."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (violación de derechos humanos) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir la inseguridad urbana, un alcalde propone aumentar las penas de cárcel. Un analista advierte que esta medida, aunque popular, podría generar precarización laboral futura como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El impacto estructural a largo plazo."
+      },
+      {
+        "id": "b",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "c",
+        "text": "El costo político para el alcalde."
+      },
+      {
+        "id": "d",
+        "text": "La opinión de los medios de comunicación."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (precarización laboral futura) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir la informalidad laboral, un alcalde propone reducir los impuestos a empresas. Un analista advierte que esta medida, aunque popular, podría generar déficit fiscal como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El costo político para el alcalde."
+      },
+      {
+        "id": "b",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "c",
+        "text": "La opinión de los medios de comunicación."
+      },
+      {
+        "id": "d",
+        "text": "El impacto estructural a largo plazo."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (déficit fiscal) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir la inseguridad urbana, un alcalde propone aumentar las penas de cárcel. Un analista advierte que esta medida, aunque popular, podría generar violación de derechos humanos como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "b",
+        "text": "El costo político para el alcalde."
+      },
+      {
+        "id": "c",
+        "text": "El impacto estructural a largo plazo."
+      },
+      {
+        "id": "d",
+        "text": "La opinión de los medios de comunicación."
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (violación de derechos humanos) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir la corrupción administrativa, un alcalde propone aumentar las penas de cárcel. Un analista advierte que esta medida, aunque popular, podría generar precarización laboral futura como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El costo político para el alcalde."
+      },
+      {
+        "id": "b",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "c",
+        "text": "El impacto estructural a largo plazo."
+      },
+      {
+        "id": "d",
+        "text": "La opinión de los medios de comunicación."
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (precarización laboral futura) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir el desempleo juvenil, un alcalde propone militarizar las calles. Un analista advierte que esta medida, aunque popular, podría generar violación de derechos humanos como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El impacto estructural a largo plazo."
+      },
+      {
+        "id": "b",
+        "text": "La opinión de los medios de comunicación."
+      },
+      {
+        "id": "c",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "d",
+        "text": "El costo político para el alcalde."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (violación de derechos humanos) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "competencias_ciudadanas",
+    "text": "Para combatir el desempleo juvenil, un alcalde propone subsidiar el primer empleo. Un analista advierte que esta medida, aunque popular, podría generar hacinamiento carcelario a largo plazo como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El impacto estructural a largo plazo."
+      },
+      {
+        "id": "b",
+        "text": "La opinión de los medios de comunicación."
+      },
+      {
+        "id": "c",
+        "text": "La popularidad inmediata de la medida."
+      },
+      {
+        "id": "d",
+        "text": "El costo político para el alcalde."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El analista está evaluando consecuencias sistémicas de segundo orden (hacinamiento carcelario a largo plazo) más allá de la solución inmediata.",
+    "difficulty": "avanzada"
+  }
+]

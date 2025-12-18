@@ -1,0 +1,3752 @@
+[
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial es una moda pasajera. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital es fundamental para el progreso. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático requiere regulación inmediata. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital requiere regulación inmediata. Sin embargo, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Sin embargo,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Sin embargo,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital plantea riesgos ineludibles. En contraste, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"En contraste,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"En contraste,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa requiere regulación inmediata. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual es una moda pasajera. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa es fundamental para el progreso. Sin embargo, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Sin embargo,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Concluir el argumento principal"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Sin embargo,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual es fundamental para el progreso. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Concluir el argumento principal"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital plantea riesgos ineludibles. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial plantea riesgos ineludibles. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital transformará nuestra sociedad. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa requiere regulación inmediata. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual requiere regulación inmediata. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital transformará nuestra sociedad. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático es una moda pasajera. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital plantea riesgos ineludibles. Sin embargo, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Sin embargo,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Sin embargo,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial es una moda pasajera. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático transformará nuestra sociedad. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa es una moda pasajera. Sin embargo, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Sin embargo,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El conector \"Sin embargo,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial requiere regulación inmediata. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático es una moda pasajera. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático requiere regulación inmediata. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial requiere regulación inmediata. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual es fundamental para el progreso. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual es fundamental para el progreso. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa transformará nuestra sociedad. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital plantea riesgos ineludibles. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual transformará nuestra sociedad. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual requiere regulación inmediata. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual transformará nuestra sociedad. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático es fundamental para el progreso. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático requiere regulación inmediata. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa es fundamental para el progreso. Sin embargo, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Sin embargo,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Sin embargo,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático es una moda pasajera. Sin embargo, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Sin embargo,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Sin embargo,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual plantea riesgos ineludibles. Sin embargo, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Sin embargo,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Sin embargo,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial transformará nuestra sociedad. Sin embargo, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Sin embargo,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Sin embargo,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial requiere regulación inmediata. En contraste, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"En contraste,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"En contraste,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial es una moda pasajera. En contraste, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"En contraste,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"En contraste,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual es una moda pasajera. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital requiere regulación inmediata. En contraste, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"En contraste,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"En contraste,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático transformará nuestra sociedad. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa plantea riesgos ineludibles. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital es fundamental para el progreso. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial es una moda pasajera. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Concluir el argumento principal"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa plantea riesgos ineludibles. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Concluir el argumento principal"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital es fundamental para el progreso. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático plantea riesgos ineludibles. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Concluir el argumento principal"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial es fundamental para el progreso. Sin embargo, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Sin embargo,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Sin embargo,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital plantea riesgos ineludibles. Sin embargo, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Sin embargo,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Sin embargo,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático transformará nuestra sociedad. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial requiere regulación inmediata. Sin embargo, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Sin embargo,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Sin embargo,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa plantea riesgos ineludibles. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "b",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial es fundamental para el progreso. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial es fundamental para el progreso. En contraste, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"En contraste,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"En contraste,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa es fundamental para el progreso. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital transformará nuestra sociedad. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa plantea riesgos ineludibles. Sin embargo, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Sin embargo,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El conector \"Sin embargo,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital requiere regulación inmediata. En contraste, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"En contraste,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El conector \"En contraste,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa es una moda pasajera. En contraste, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"En contraste,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"En contraste,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital es fundamental para el progreso. En contraste, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"En contraste,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "b",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El conector \"En contraste,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa plantea riesgos ineludibles. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa es fundamental para el progreso. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual es una moda pasajera. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual requiere regulación inmediata. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial es una moda pasajera. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial plantea riesgos ineludibles. En contraste, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"En contraste,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "d",
+        "text": "Concluir el argumento principal"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El conector \"En contraste,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático transformará nuestra sociedad. Sin embargo, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Sin embargo,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Sin embargo,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático es fundamental para el progreso. Sin embargo, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Sin embargo,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Concluir el argumento principal"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El conector \"Sin embargo,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático transformará nuestra sociedad. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa requiere regulación inmediata. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial transformará nuestra sociedad. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual requiere regulación inmediata. En contraste, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"En contraste,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El conector \"En contraste,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital es fundamental para el progreso. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial plantea riesgos ineludibles. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital plantea riesgos ineludibles. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital requiere regulación inmediata. En contraste, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"En contraste,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El conector \"En contraste,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital es una moda pasajera. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial es fundamental para el progreso. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático plantea riesgos ineludibles. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático es fundamental para el progreso. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual requiere regulación inmediata. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial transformará nuestra sociedad. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual es una moda pasajera. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático plantea riesgos ineludibles. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático requiere regulación inmediata. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial es fundamental para el progreso. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual es fundamental para el progreso. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa es fundamental para el progreso. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital requiere regulación inmediata. En contraste, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"En contraste,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"En contraste,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que el cambio climático requiere regulación inmediata. En contraste, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"En contraste,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"En contraste,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital plantea riesgos ineludibles. En contraste, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"En contraste,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El conector \"En contraste,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital es fundamental para el progreso. No obstante, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"No obstante,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"No obstante,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial es fundamental para el progreso. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la economía colaborativa es una moda pasajera. En contraste, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"En contraste,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El conector \"En contraste,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial transformará nuestra sociedad. Sin embargo, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Sin embargo,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "b",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El conector \"Sin embargo,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la educación virtual es una moda pasajera. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "b",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Ejemplificar la afirmación inicial"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital es una moda pasajera. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "b",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      },
+      {
+        "id": "c",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "d",
+        "text": "Negar rotundamente la primera frase"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la inteligencia artificial requiere regulación inmediata. Por consiguiente, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Por consiguiente,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "c",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Por consiguiente,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Muchos expertos afirman que la democracia digital plantea riesgos ineludibles. Además, otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.\n\n¿Cuál es la función del conector \"Además,\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ejemplificar la afirmación inicial"
+      },
+      {
+        "id": "b",
+        "text": "Negar rotundamente la primera frase"
+      },
+      {
+        "id": "c",
+        "text": "Concluir el argumento principal"
+      },
+      {
+        "id": "d",
+        "text": "Introducir una idea que contrasta o amplía la anterior"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El conector \"Además,\" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.",
+    "difficulty": "media"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El político citado miró el reloj con ansiedad mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El político citado:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Tenía hambre"
+      },
+      {
+        "id": "b",
+        "text": "tenía prisa o impaciencia"
+      },
+      {
+        "id": "c",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "d",
+        "text": "Estaba muy feliz"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de \"miró el reloj con ansiedad\" típicamente denota que el sujeto tenía prisa o impaciencia.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El protagonista miró el reloj con ansiedad mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El protagonista:",
+    "options": [
+      {
+        "id": "a",
+        "text": "tenía prisa o impaciencia"
+      },
+      {
+        "id": "b",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "c",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "d",
+        "text": "Tenía hambre"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de \"miró el reloj con ansiedad\" típicamente denota que el sujeto tenía prisa o impaciencia.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El autor miró el reloj con ansiedad mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El autor:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Tenía hambre"
+      },
+      {
+        "id": "b",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "c",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "d",
+        "text": "tenía prisa o impaciencia"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de \"miró el reloj con ansiedad\" típicamente denota que el sujeto tenía prisa o impaciencia.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El político citado evitó el contacto visual mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El político citado:",
+    "options": [
+      {
+        "id": "a",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "b",
+        "text": "sentía culpa o evasión"
+      },
+      {
+        "id": "c",
+        "text": "Tenía hambre"
+      },
+      {
+        "id": "d",
+        "text": "Estaba muy feliz"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de \"evitó el contacto visual\" típicamente denota que el sujeto sentía culpa o evasión.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El protagonista evitó el contacto visual mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El protagonista:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "b",
+        "text": "sentía culpa o evasión"
+      },
+      {
+        "id": "c",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "d",
+        "text": "Tenía hambre"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de \"evitó el contacto visual\" típicamente denota que el sujeto sentía culpa o evasión.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El narrador evitó el contacto visual mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El narrador:",
+    "options": [
+      {
+        "id": "a",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "b",
+        "text": "Tenía hambre"
+      },
+      {
+        "id": "c",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "d",
+        "text": "sentía culpa o evasión"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de \"evitó el contacto visual\" típicamente denota que el sujeto sentía culpa o evasión.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El narrador evitó el contacto visual mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El narrador:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Tenía hambre"
+      },
+      {
+        "id": "b",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "c",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "d",
+        "text": "sentía culpa o evasión"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de \"evitó el contacto visual\" típicamente denota que el sujeto sentía culpa o evasión.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El protagonista cerró la puerta de un golpe mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El protagonista:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Tenía hambre"
+      },
+      {
+        "id": "b",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "c",
+        "text": "sentía ira o frustración"
+      },
+      {
+        "id": "d",
+        "text": "Estaba muy feliz"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La acción de \"cerró la puerta de un golpe\" típicamente denota que el sujeto sentía ira o frustración.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El autor cerró la puerta de un golpe mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El autor:",
+    "options": [
+      {
+        "id": "a",
+        "text": "sentía ira o frustración"
+      },
+      {
+        "id": "b",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "c",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "d",
+        "text": "Tenía hambre"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de \"cerró la puerta de un golpe\" típicamente denota que el sujeto sentía ira o frustración.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El narrador evitó el contacto visual mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El narrador:",
+    "options": [
+      {
+        "id": "a",
+        "text": "sentía culpa o evasión"
+      },
+      {
+        "id": "b",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "c",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "d",
+        "text": "Tenía hambre"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de \"evitó el contacto visual\" típicamente denota que el sujeto sentía culpa o evasión.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El político citado evitó el contacto visual mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El político citado:",
+    "options": [
+      {
+        "id": "a",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "b",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "c",
+        "text": "sentía culpa o evasión"
+      },
+      {
+        "id": "d",
+        "text": "Tenía hambre"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La acción de \"evitó el contacto visual\" típicamente denota que el sujeto sentía culpa o evasión.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El narrador miró el reloj con ansiedad mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El narrador:",
+    "options": [
+      {
+        "id": "a",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "b",
+        "text": "tenía prisa o impaciencia"
+      },
+      {
+        "id": "c",
+        "text": "Tenía hambre"
+      },
+      {
+        "id": "d",
+        "text": "Estaba muy feliz"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de \"miró el reloj con ansiedad\" típicamente denota que el sujeto tenía prisa o impaciencia.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El político citado evitó el contacto visual mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El político citado:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "b",
+        "text": "sentía culpa o evasión"
+      },
+      {
+        "id": "c",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "d",
+        "text": "Tenía hambre"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de \"evitó el contacto visual\" típicamente denota que el sujeto sentía culpa o evasión.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El narrador evitó el contacto visual mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El narrador:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "b",
+        "text": "sentía culpa o evasión"
+      },
+      {
+        "id": "c",
+        "text": "Tenía hambre"
+      },
+      {
+        "id": "d",
+        "text": "No escuchaba nada"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de \"evitó el contacto visual\" típicamente denota que el sujeto sentía culpa o evasión.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El narrador suspiró profundamente antes de responder mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El narrador:",
+    "options": [
+      {
+        "id": "a",
+        "text": "sentía resignación"
+      },
+      {
+        "id": "b",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "c",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "d",
+        "text": "Tenía hambre"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de \"suspiró profundamente antes de responder\" típicamente denota que el sujeto sentía resignación.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El protagonista evitó el contacto visual mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El protagonista:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "b",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "c",
+        "text": "Tenía hambre"
+      },
+      {
+        "id": "d",
+        "text": "sentía culpa o evasión"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de \"evitó el contacto visual\" típicamente denota que el sujeto sentía culpa o evasión.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El autor cerró la puerta de un golpe mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El autor:",
+    "options": [
+      {
+        "id": "a",
+        "text": "sentía ira o frustración"
+      },
+      {
+        "id": "b",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "c",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "d",
+        "text": "Tenía hambre"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de \"cerró la puerta de un golpe\" típicamente denota que el sujeto sentía ira o frustración.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El narrador suspiró profundamente antes de responder mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El narrador:",
+    "options": [
+      {
+        "id": "a",
+        "text": "sentía resignación"
+      },
+      {
+        "id": "b",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "c",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "d",
+        "text": "Tenía hambre"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de \"suspiró profundamente antes de responder\" típicamente denota que el sujeto sentía resignación.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El narrador miró el reloj con ansiedad mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El narrador:",
+    "options": [
+      {
+        "id": "a",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "b",
+        "text": "Tenía hambre"
+      },
+      {
+        "id": "c",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "d",
+        "text": "tenía prisa o impaciencia"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de \"miró el reloj con ansiedad\" típicamente denota que el sujeto tenía prisa o impaciencia.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El narrador evitó el contacto visual mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El narrador:",
+    "options": [
+      {
+        "id": "a",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "b",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "c",
+        "text": "sentía culpa o evasión"
+      },
+      {
+        "id": "d",
+        "text": "Tenía hambre"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La acción de \"evitó el contacto visual\" típicamente denota que el sujeto sentía culpa o evasión.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El autor cerró la puerta de un golpe mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El autor:",
+    "options": [
+      {
+        "id": "a",
+        "text": "sentía ira o frustración"
+      },
+      {
+        "id": "b",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "c",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "d",
+        "text": "Tenía hambre"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de \"cerró la puerta de un golpe\" típicamente denota que el sujeto sentía ira o frustración.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El político citado cerró la puerta de un golpe mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El político citado:",
+    "options": [
+      {
+        "id": "a",
+        "text": "sentía ira o frustración"
+      },
+      {
+        "id": "b",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "c",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "d",
+        "text": "Tenía hambre"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de \"cerró la puerta de un golpe\" típicamente denota que el sujeto sentía ira o frustración.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El político citado suspiró profundamente antes de responder mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El político citado:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "b",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "c",
+        "text": "Tenía hambre"
+      },
+      {
+        "id": "d",
+        "text": "sentía resignación"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de \"suspiró profundamente antes de responder\" típicamente denota que el sujeto sentía resignación.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El narrador suspiró profundamente antes de responder mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El narrador:",
+    "options": [
+      {
+        "id": "a",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "b",
+        "text": "Tenía hambre"
+      },
+      {
+        "id": "c",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "d",
+        "text": "sentía resignación"
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "La acción de \"suspiró profundamente antes de responder\" típicamente denota que el sujeto sentía resignación.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El protagonista evitó el contacto visual mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El protagonista:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Tenía hambre"
+      },
+      {
+        "id": "b",
+        "text": "sentía culpa o evasión"
+      },
+      {
+        "id": "c",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "d",
+        "text": "No escuchaba nada"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "La acción de \"evitó el contacto visual\" típicamente denota que el sujeto sentía culpa o evasión.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El protagonista evitó el contacto visual mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El protagonista:",
+    "options": [
+      {
+        "id": "a",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "b",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "c",
+        "text": "sentía culpa o evasión"
+      },
+      {
+        "id": "d",
+        "text": "Tenía hambre"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "La acción de \"evitó el contacto visual\" típicamente denota que el sujeto sentía culpa o evasión.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El político citado suspiró profundamente antes de responder mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El político citado:",
+    "options": [
+      {
+        "id": "a",
+        "text": "sentía resignación"
+      },
+      {
+        "id": "b",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "c",
+        "text": "Tenía hambre"
+      },
+      {
+        "id": "d",
+        "text": "No escuchaba nada"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de \"suspiró profundamente antes de responder\" típicamente denota que el sujeto sentía resignación.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El político citado miró el reloj con ansiedad mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El político citado:",
+    "options": [
+      {
+        "id": "a",
+        "text": "tenía prisa o impaciencia"
+      },
+      {
+        "id": "b",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "c",
+        "text": "No escuchaba nada"
+      },
+      {
+        "id": "d",
+        "text": "Tenía hambre"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de \"miró el reloj con ansiedad\" típicamente denota que el sujeto tenía prisa o impaciencia.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El autor miró el reloj con ansiedad mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El autor:",
+    "options": [
+      {
+        "id": "a",
+        "text": "tenía prisa o impaciencia"
+      },
+      {
+        "id": "b",
+        "text": "Tenía hambre"
+      },
+      {
+        "id": "c",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "d",
+        "text": "No escuchaba nada"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de \"miró el reloj con ansiedad\" típicamente denota que el sujeto tenía prisa o impaciencia.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "\"El político citado miró el reloj con ansiedad mientras le hablaban.\"\n\nDel fragmento anterior se puede inferir que El político citado:",
+    "options": [
+      {
+        "id": "a",
+        "text": "tenía prisa o impaciencia"
+      },
+      {
+        "id": "b",
+        "text": "Tenía hambre"
+      },
+      {
+        "id": "c",
+        "text": "Estaba muy feliz"
+      },
+      {
+        "id": "d",
+        "text": "No escuchaba nada"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "La acción de \"miró el reloj con ansiedad\" típicamente denota que el sujeto tenía prisa o impaciencia.",
+    "difficulty": "media_alta"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, el conocimiento no es un fin, sino un medio. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "No existen parámetros únicos para el conocimiento."
+      },
+      {
+        "id": "b",
+        "text": "El autor tiene una visión relativista de el conocimiento."
+      },
+      {
+        "id": "c",
+        "text": "El conocimiento depende del contexto histórico."
+      },
+      {
+        "id": "d",
+        "text": "El conocimiento es un valor absoluto e inmutable."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, la libertad es una construcción social. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La libertad depende del contexto histórico."
+      },
+      {
+        "id": "b",
+        "text": "La libertad es un valor absoluto e inmutable."
+      },
+      {
+        "id": "c",
+        "text": "El autor tiene una visión relativista de la libertad."
+      },
+      {
+        "id": "d",
+        "text": "No existen parámetros únicos para la libertad."
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, la libertad no es un fin, sino un medio. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La libertad es un valor absoluto e inmutable."
+      },
+      {
+        "id": "b",
+        "text": "La libertad depende del contexto histórico."
+      },
+      {
+        "id": "c",
+        "text": "El autor tiene una visión relativista de la libertad."
+      },
+      {
+        "id": "d",
+        "text": "No existen parámetros únicos para la libertad."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, la verdad reside en la mente del individuo. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La verdad es un valor absoluto e inmutable."
+      },
+      {
+        "id": "b",
+        "text": "La verdad depende del contexto histórico."
+      },
+      {
+        "id": "c",
+        "text": "El autor tiene una visión relativista de la verdad."
+      },
+      {
+        "id": "d",
+        "text": "No existen parámetros únicos para la verdad."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, la libertad es una construcción social. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La libertad es un valor absoluto e inmutable."
+      },
+      {
+        "id": "b",
+        "text": "La libertad depende del contexto histórico."
+      },
+      {
+        "id": "c",
+        "text": "No existen parámetros únicos para la libertad."
+      },
+      {
+        "id": "d",
+        "text": "El autor tiene una visión relativista de la libertad."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, el conocimiento es inalcanzable en su totalidad. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El autor tiene una visión relativista de el conocimiento."
+      },
+      {
+        "id": "b",
+        "text": "No existen parámetros únicos para el conocimiento."
+      },
+      {
+        "id": "c",
+        "text": "El conocimiento depende del contexto histórico."
+      },
+      {
+        "id": "d",
+        "text": "El conocimiento es un valor absoluto e inmutable."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, la justicia no es un fin, sino un medio. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "No existen parámetros únicos para la justicia."
+      },
+      {
+        "id": "b",
+        "text": "La justicia depende del contexto histórico."
+      },
+      {
+        "id": "c",
+        "text": "El autor tiene una visión relativista de la justicia."
+      },
+      {
+        "id": "d",
+        "text": "La justicia es un valor absoluto e inmutable."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, la verdad no es un fin, sino un medio. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La verdad depende del contexto histórico."
+      },
+      {
+        "id": "b",
+        "text": "La verdad es un valor absoluto e inmutable."
+      },
+      {
+        "id": "c",
+        "text": "El autor tiene una visión relativista de la verdad."
+      },
+      {
+        "id": "d",
+        "text": "No existen parámetros únicos para la verdad."
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, el conocimiento es inalcanzable en su totalidad. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El conocimiento es un valor absoluto e inmutable."
+      },
+      {
+        "id": "b",
+        "text": "No existen parámetros únicos para el conocimiento."
+      },
+      {
+        "id": "c",
+        "text": "El conocimiento depende del contexto histórico."
+      },
+      {
+        "id": "d",
+        "text": "El autor tiene una visión relativista de el conocimiento."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, la justicia es inalcanzable en su totalidad. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La justicia es un valor absoluto e inmutable."
+      },
+      {
+        "id": "b",
+        "text": "No existen parámetros únicos para la justicia."
+      },
+      {
+        "id": "c",
+        "text": "El autor tiene una visión relativista de la justicia."
+      },
+      {
+        "id": "d",
+        "text": "La justicia depende del contexto histórico."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, la verdad reside en la mente del individuo. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La verdad es un valor absoluto e inmutable."
+      },
+      {
+        "id": "b",
+        "text": "La verdad depende del contexto histórico."
+      },
+      {
+        "id": "c",
+        "text": "No existen parámetros únicos para la verdad."
+      },
+      {
+        "id": "d",
+        "text": "El autor tiene una visión relativista de la verdad."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, la verdad no es un fin, sino un medio. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La verdad es un valor absoluto e inmutable."
+      },
+      {
+        "id": "b",
+        "text": "La verdad depende del contexto histórico."
+      },
+      {
+        "id": "c",
+        "text": "No existen parámetros únicos para la verdad."
+      },
+      {
+        "id": "d",
+        "text": "El autor tiene una visión relativista de la verdad."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, la verdad es una construcción social. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La verdad es un valor absoluto e inmutable."
+      },
+      {
+        "id": "b",
+        "text": "La verdad depende del contexto histórico."
+      },
+      {
+        "id": "c",
+        "text": "No existen parámetros únicos para la verdad."
+      },
+      {
+        "id": "d",
+        "text": "El autor tiene una visión relativista de la verdad."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, el conocimiento no es un fin, sino un medio. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El autor tiene una visión relativista de el conocimiento."
+      },
+      {
+        "id": "b",
+        "text": "No existen parámetros únicos para el conocimiento."
+      },
+      {
+        "id": "c",
+        "text": "El conocimiento depende del contexto histórico."
+      },
+      {
+        "id": "d",
+        "text": "El conocimiento es un valor absoluto e inmutable."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, el conocimiento reside en la mente del individuo. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El conocimiento depende del contexto histórico."
+      },
+      {
+        "id": "b",
+        "text": "El conocimiento es un valor absoluto e inmutable."
+      },
+      {
+        "id": "c",
+        "text": "No existen parámetros únicos para el conocimiento."
+      },
+      {
+        "id": "d",
+        "text": "El autor tiene una visión relativista de el conocimiento."
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, la verdad no es un fin, sino un medio. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La verdad es un valor absoluto e inmutable."
+      },
+      {
+        "id": "b",
+        "text": "La verdad depende del contexto histórico."
+      },
+      {
+        "id": "c",
+        "text": "No existen parámetros únicos para la verdad."
+      },
+      {
+        "id": "d",
+        "text": "El autor tiene una visión relativista de la verdad."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, la libertad es inalcanzable en su totalidad. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El autor tiene una visión relativista de la libertad."
+      },
+      {
+        "id": "b",
+        "text": "No existen parámetros únicos para la libertad."
+      },
+      {
+        "id": "c",
+        "text": "La libertad depende del contexto histórico."
+      },
+      {
+        "id": "d",
+        "text": "La libertad es un valor absoluto e inmutable."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, el conocimiento es una construcción social. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El autor tiene una visión relativista de el conocimiento."
+      },
+      {
+        "id": "b",
+        "text": "No existen parámetros únicos para el conocimiento."
+      },
+      {
+        "id": "c",
+        "text": "El conocimiento depende del contexto histórico."
+      },
+      {
+        "id": "d",
+        "text": "El conocimiento es un valor absoluto e inmutable."
+      }
+    ],
+    "correctAnswer": "d",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, el conocimiento no es un fin, sino un medio. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El conocimiento es un valor absoluto e inmutable."
+      },
+      {
+        "id": "b",
+        "text": "El conocimiento depende del contexto histórico."
+      },
+      {
+        "id": "c",
+        "text": "No existen parámetros únicos para el conocimiento."
+      },
+      {
+        "id": "d",
+        "text": "El autor tiene una visión relativista de el conocimiento."
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  },
+  {
+    "module": "lectura_critica",
+    "text": "Para el autor, la libertad no es un fin, sino un medio. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "No existen parámetros únicos para la libertad."
+      },
+      {
+        "id": "b",
+        "text": "La libertad depende del contexto histórico."
+      },
+      {
+        "id": "c",
+        "text": "La libertad es un valor absoluto e inmutable."
+      },
+      {
+        "id": "d",
+        "text": "El autor tiene una visión relativista de la libertad."
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es \"absoluto e inmutable\" es incompatible.",
+    "difficulty": "avanzada"
+  }
+]
