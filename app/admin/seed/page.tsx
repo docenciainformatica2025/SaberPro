@@ -10,16 +10,32 @@ import citizenshipQuestions from "@/data/questions-citizenship.json";
 import englishQuestions from "@/data/questions-english.json";
 import communicationQuestions from "@/data/questions-communication.json";
 import { Database, Trash2, Play, AlertCircle, CheckCircle2, Terminal, Info, Zap, ShieldAlert } from "lucide-react";
+import { toast } from "sonner";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
 
+const TOTAL_QUESTIONS = sampleQuestions.length + quantitativeQuestions.length + readingQuestions.length + citizenshipQuestions.length + englishQuestions.length + communicationQuestions.length;
+
+// Configuration Constants for Batch Processing
+// Firestore limit is 500 writes per batch. We use 450 to be safe and allow margin.
+const BATCH_SIZE = 450;
+const LOG_INTERVAL = 50;
+
+/**
+ * SeedPage Component
+ * 
+ * Provides an administrative interface to inject (seed) or purge the question bank.
+ * Implements an Idempotent "Upsert" strategy to prevent data duplication.
+ * 
+ * @module Admin/Seed
+ * @returns {JSX.Element} The rendered admin page.
+ */
 export default function SeedPage() {
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
     const [log, setLog] = useState<string[]>([]);
-
-    const totalQuestionsCount = sampleQuestions.length + quantitativeQuestions.length + readingQuestions.length + citizenshipQuestions.length + englishQuestions.length + communicationQuestions.length;
+    const [isConfirmingPurge, setIsConfirmingPurge] = useState(false);
 
     const handleSeed = async () => {
         setStatus("loading");
@@ -40,21 +56,25 @@ export default function SeedPage() {
             let currentBatch = writeBatch(db);
 
             for (const q of allQuestions) {
-                const newDocRef = doc(questionsRef);
-                currentBatch.set(newDocRef, q);
+                // Upsert strategy: Use deterministic ID if available, else auto-ID
+                const docId = (q as any).id || undefined;
+                const newDocRef = docId ? doc(db, "questions", docId) : doc(questionsRef);
+
+                // Merge true ensures we update if exists, create if not
+                currentBatch.set(newDocRef, q, { merge: true });
                 count++;
 
-                if (count % 50 === 0) {
-                    setLog(prev => [...prev, `[BATCH] Lote de 50 procesado (${count}/${allQuestions.length})`]);
+                if (count % LOG_INTERVAL === 0) {
+                    setLog(prev => [...prev, `[BATCH] Procesando ${count}/${allQuestions.length}...`]);
                 }
 
-                if (count % 450 === 0) {
+                if (count % BATCH_SIZE === 0) {
                     await currentBatch.commit();
                     currentBatch = writeBatch(db);
                 }
             }
 
-            if (count % 450 !== 0) await currentBatch.commit();
+            if (count % BATCH_SIZE !== 0) await currentBatch.commit();
 
             setStatus("success");
             setLog(prev => [...prev, `[EXITO] Se han cargado ${count} reactivos exitosamente.`, "[SISTEMA] Sincronización inmutable completada."]);
@@ -66,7 +86,15 @@ export default function SeedPage() {
     };
 
     const handleClear = async () => {
-        if (!confirm("⚠️ ATENCIÓN: Esta acción es IRREVERSIBLE. ¿Desea proceder con la purga total?")) return;
+        if (!isConfirmingPurge) {
+            setIsConfirmingPurge(true);
+            toast.warning("Confirmación Requerida", {
+                description: "Presiona nuevamente para confirmar la ELIMINACIÓN TOTAL.",
+                duration: 3000,
+            });
+            return;
+        }
+        setIsConfirmingPurge(false);
 
         setStatus("loading");
         setLog(["[SEGURIDAD] Autenticando protocolo de borrado masivo...", "[LIMPIEZA] Iniciando purga de la colección 'questions'..."]);
@@ -138,7 +166,7 @@ export default function SeedPage() {
                             </div>
                             <div className="flex justify-between items-center p-3 bg-white/5 rounded-lg border border-white/5">
                                 <span className="text-[10px] font-black text-metal-silver/40 uppercase">Total Reactivos</span>
-                                <span className="text-sm font-mono text-metal-gold">{totalQuestionsCount}</span>
+                                <span className="text-sm font-mono text-metal-gold">{TOTAL_QUESTIONS}</span>
                             </div>
                         </div>
                     </div>
@@ -154,11 +182,13 @@ export default function SeedPage() {
                         </Button>
                         <Button
                             variant="danger"
-                            className="w-full h-12 group"
+                            className="w-full h-12 group transition-all"
                             onClick={handleClear}
                             disabled={status === "loading"}
+                            onMouseLeave={() => setIsConfirmingPurge(false)}
                         >
-                            <Trash2 size={18} className="group-hover:animate-bounce" /> Purga Atómica
+                            <Trash2 size={18} className={isConfirmingPurge ? "animate-pulse text-red-100" : "group-hover:animate-bounce"} />
+                            {isConfirmingPurge ? "CONFIRMAR BORRADO" : "Purga Atómica"}
                         </Button>
                     </div>
 

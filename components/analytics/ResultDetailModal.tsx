@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { toast } from "sonner";
 import { X, Download, CheckCircle, AlertCircle, Lock } from "lucide-react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
@@ -47,9 +48,14 @@ export default function ResultDetailModal({ isOpen, onClose, result, userName }:
 
     const handleDownloadPDF = async () => {
         if (!isPro) {
-            if (confirm("Los Certificados de Desempeño son exclusivos del Plan Pro. ¿Deseas obtenerlos?")) {
-                router.push('/pricing');
-            }
+            toast("Función Exclusiva Pro", {
+                description: "Obtén certificados oficiales y análisis detallado con Premium.",
+                action: {
+                    label: "Mejorar Plan",
+                    onClick: () => router.push('/pricing'),
+                },
+                duration: 5000,
+            });
             return;
         }
         setIsDownloading(true);

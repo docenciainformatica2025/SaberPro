@@ -1,93 +1,102 @@
 const fs = require('fs');
 const path = require('path');
+const { generateId } = require('./utils/idGenerator');
 
-const TOTAL_QUESTIONS = 150;
+const TOTAL_QUESTIONS = 600;
 const COUNTS = {
-    media: 100,
-    media_alta: 30,
-    avanzada: 20
+    media: Math.floor(TOTAL_QUESTIONS * 0.5),
+    media_alta: Math.floor(TOTAL_QUESTIONS * 0.3),
+    avanzada: Math.floor(TOTAL_QUESTIONS * 0.2)
 };
 
 // Bases para generar textos "semi-coherentes" proceduralmente para pruebas
 const TEMPLATES = [
+    // --- ARGUMENTATION (Conectores) ---
     {
         type: "argumentation",
         difficulty: "media",
         generate: () => {
-            const topics = ["el cambio climático", "la inteligencia artificial", "la democracia digital", "la educación virtual", "la economía colaborativa"];
-            const stances = ["es fundamental para el progreso", "plantea riesgos ineludibles", "requiere regulación inmediata", "transformará nuestra sociedad", "es una moda pasajera"];
-            const connectors = ["Sin embargo,", "Por consiguiente,", "No obstante,", "Además,", "En contraste,"];
+            const topics = ["el cambio climático", "la inteligencia artificial", "la democracia digital", "la educación virtual", "la economía colaborativa", "el teletrabajo", "la biotecnología"];
+            const stances = ["es fundamental para el progreso", "plantea riesgos ineludibles", "requiere regulación inmediata", "transformará nuestra sociedad", "es una moda pasajera", "debe ser prioridad nacional"];
+
+            const connectors = [
+                { word: "Sin embargo,", func: "Introducir una idea que contrasta o limita la anterior" },
+                { word: "Por consiguiente,", func: "Introducir una consecuencia lógica de lo anterior" },
+                { word: "Además,", func: "Añadir información que refuerza el argumento" },
+                { word: "En contraste,", func: "Señalar una diferencia u oposición directa" },
+                { word: "Es decir,", func: "Aclarar o explicar la idea precedente" }
+            ];
 
             const topic = topics[Math.floor(Math.random() * topics.length)];
             const stance = stances[Math.floor(Math.random() * stances.length)];
-            const connector = connectors[Math.floor(Math.random() * connectors.length)];
+            const conn = connectors[Math.floor(Math.random() * connectors.length)];
 
-            const text = `Muchos expertos afirman que ${topic} ${stance}. ${connector} otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.`;
+            const text = `Muchos expertos afirman que ${topic} ${stance}. ${conn.word} otros sostienen que sus efectos a largo plazo son impredecibles. La evidencia sugiere que debemos ser cautelosos.`;
 
             return {
-                text: `${text}\n\n¿Cuál es la función del conector "${connector}" en el texto?`,
-                correct: "Introducir una idea que contrasta o amplía la anterior",
-                distractors: [
-                    "Concluir el argumento principal",
-                    "Ejemplificar la afirmación inicial",
-                    "Negar rotundamente la primera frase"
-                ],
-                explanation: `El conector "${connector}" se utiliza gramaticalmente para contrastar o añadir matices a la idea previa.`
+                text: `${text}\n\n¿Cuál es la función del conector "${conn.word}" en el texto?`,
+                correct: conn.func,
+                distractors: connectors.filter(c => c.word !== conn.word).slice(0, 3).map(c => c.func),
+                explanation: `El conector "${conn.word}" se utiliza gramaticalmente para: ${conn.func.toLowerCase()}.`
             };
         }
     },
+    // --- INFERENCE (Implicit Meaning) ---
     {
         type: "inference",
         difficulty: "media_alta",
         generate: () => {
             const subjects = ["El protagonista", "El autor", "El narrador", "El político citado"];
-            const actions = ["miró el reloj con ansiedad", "cerró la puerta de un golpe", "suspiró profundamente antes de responder", "evitó el contacto visual"];
-            const implications = ["tenía prisa o estaba nervioso", "estaba furioso", "sentía resignación o cansancio", "ocultaba algo"];
+            const scenarios = [
+                { action: "miró el reloj con ansiedad y golpeó el suelo con el pie", inference: "tenía prisa o estaba impaciente" },
+                { action: "cerró la puerta de un golpe y respiró hondo", inference: "estaba intentando controlar su ira" },
+                { action: "bajó la mirada y su voz se quebró", inference: "sentía tristeza o vergüenza" },
+                { action: "evitó responder y cambió de tema bruscamente", inference: "ocultaba algo o se sentía incómodo" },
+                { action: "se frotó las manos y sonrió maliciosamente", inference: "planeaba algo con doble intención" }
+            ];
 
             const subject = subjects[Math.floor(Math.random() * subjects.length)];
-            const action = actions[Math.floor(Math.random() * actions.length)];
-            const implication = implications[Math.floor(Math.random() * implications.length)]; // Note: This logic needs to align, keeping it simple for mass gen
-
-            // Aligning logic for simplicity in script
-            let correctImp = "";
-            if (action.includes("reloj")) correctImp = "tenía prisa o impaciencia";
-            else if (action.includes("golpe")) correctImp = "sentía ira o frustración";
-            else if (action.includes("suspiró")) correctImp = "sentía resignación";
-            else correctImp = "sentía culpa o evasión";
+            const scen = scenarios[Math.floor(Math.random() * scenarios.length)];
 
             return {
-                text: `"${subject} ${action} mientras le hablaban."\n\nDel fragmento anterior se puede inferir que ${subject}:`,
-                correct: correctImp,
+                text: `"${subject} ${scen.action} mientras le hablaban."\n\nDel fragmento anterior se puede inferir que ${subject}:`,
+                correct: scen.inference,
                 distractors: [
-                    "Estaba muy feliz",
-                    "No escuchaba nada",
-                    "Tenía hambre"
+                    "Estaba totalmente indiferente",
+                    "No entendía lo que le decían",
+                    "Estaba muy feliz y relajado"
                 ],
-                explanation: `La acción de "${action}" típicamente denota que el sujeto ${correctImp}.`
+                explanation: `La acción descrita ("${scen.action}") denota típicamente que el sujeto ${scen.inference}.`
             };
         }
     },
+    // --- PHILOSOPHICAL (Abstractions) ---
     {
         type: "philosophical",
         difficulty: "avanzada",
         generate: () => {
-            const concepts = ["La libertad", "La justicia", "La verdad", "El conocimiento"];
-            const definitions = ["no es un fin, sino un medio", "es una construcción social", "reside en la mente del individuo", "es inalcanzable en su totalidad"];
+            const concepts = ["La libertad", "La justicia", "La verdad", "El conocimiento", "La ética"];
+            const definitions = [
+                { def: "no es un fin, sino un medio constante", incompatible: "es un objetivo final y estático" },
+                { def: "es una construcción social variable", incompatible: "es un valor absoluto natural e inmutable" },
+                { def: "reside en la mente del individuo sin ataduras", incompatible: "depende exclusivamente de las leyes externas" },
+                { def: "es inalcanzable en su totalidad por el ser humano", incompatible: "puede ser comprendida perfectamente por cualquiera" }
+            ];
 
             const concept = concepts[Math.floor(Math.random() * concepts.length)];
-            const def = definitions[Math.floor(Math.random() * definitions.length)];
+            const defData = definitions[Math.floor(Math.random() * definitions.length)];
 
-            const text = `Para el autor, ${concept.toLowerCase()} ${def}. Esto implica que no podemos juzgarla bajo parámetros absolutos, sino relativos al contexto histórico.`;
+            const text = `Para el autor, ${concept.toLowerCase()} ${defData.def}. Esto implica que no podemos juzgarla bajo parámetros rígidos, sino relativos al contexto.`;
 
             return {
-                text: `${text}\n\n¿Cuál de las siguientes afirmaciones es incompatible con el texto?`,
-                correct: `${concept} es un valor absoluto e inmutable.`,
+                text: `${text}\n\n¿Cuál de las siguientes afirmaciones es INCOMPATIBLE con el texto?`,
+                correct: `${concept} ${defData.incompatible}.`,
                 distractors: [
-                    `${concept} depende del contexto histórico.`,
+                    `${concept} depende del contexto.`,
                     `No existen parámetros únicos para ${concept.toLowerCase()}.`,
-                    `El autor tiene una visión relativista de ${concept.toLowerCase()}.`
+                    `El autor tiene una visión flexible de ${concept.toLowerCase()}.`
                 ],
-                explanation: `El texto afirma explícitamente que NO se puede juzgar bajo parámetros absolutos. Por tanto, decir que es "absoluto e inmutable" es incompatible.`
+                explanation: `El texto define el concepto como algo que "${defData.def}". Afirmar que "${defData.incompatible}" contradice directamente esa definición.`
             };
         }
     }
@@ -97,9 +106,7 @@ function generateQuestions() {
     const questions = [];
 
     const generateBatch = (count, difficulty) => {
-        // Filter templates that can support this difficulty (simplification)
         const templates = TEMPLATES.filter(t => t.difficulty === difficulty || (difficulty === 'media' && t.difficulty === 'media'));
-        // Fallback if no specific logic
         const pool = templates.length > 0 ? templates : TEMPLATES;
 
         for (let i = 0; i < count; i++) {
@@ -120,7 +127,11 @@ function generateQuestions() {
 
             const correctAnswerId = finalOptions.find(o => o.text === qData.correct).id;
 
+            // Generate deterministic ID
+            const qId = generateId("lectura_critica", qData.text, qData.correct);
+
             questions.push({
+                id: qId,
                 module: "lectura_critica",
                 text: qData.text,
                 options: finalOptions,

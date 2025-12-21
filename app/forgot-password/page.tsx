@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { Mail, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
+import { BRAND_YEAR, COPYRIGHT_TEXT } from '@/lib/config';
+import { Logo } from "@/components/ui/Logo";
 
 export default function ForgotPasswordPage() {
     const [email, setEmail] = useState('');
@@ -46,11 +48,8 @@ export default function ForgotPasswordPage() {
                 <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-metal-gold/5 rounded-full blur-[100px]"></div>
 
                 <div className="relative z-10">
-                    <div className="flex items-center gap-3 mb-8">
-                        <div className="w-10 h-10 bg-gradient-to-br from-metal-gold to-[#B8860B] rounded-lg flex items-center justify-center shadow-lg shadow-metal-gold/20">
-                            <span className="font-bold text-black text-xl">S</span>
-                        </div>
-                        <span className="text-2xl font-bold text-white tracking-wide">SaberPro<span className="text-metal-gold">2026</span></span>
+                    <div className="mb-8">
+                        <Logo variant="full" size="xl" />
                     </div>
                 </div>
 
@@ -65,7 +64,7 @@ export default function ForgotPasswordPage() {
                 </div>
 
                 <div className="relative z-10 text-xs text-metal-silver/40 space-y-2">
-                    <p>© 2025 Saber Pro Suite. Todos los derechos reservados.</p>
+                    <p>{COPYRIGHT_TEXT}</p>
                 </div>
             </div>
 

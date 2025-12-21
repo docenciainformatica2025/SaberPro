@@ -1,91 +1,95 @@
 const fs = require('fs');
 const path = require('path');
+const { generateId } = require('./utils/idGenerator');
 
-const TOTAL_QUESTIONS = 150;
+const TOTAL_QUESTIONS = 600;
 const COUNTS = {
-    media: 100,
-    media_alta: 30,
-    avanzada: 20
+    media: Math.floor(TOTAL_QUESTIONS * 0.5),
+    media_alta: Math.floor(TOTAL_QUESTIONS * 0.3),
+    avanzada: Math.floor(TOTAL_QUESTIONS * 0.2)
 };
 
 const TEMPLATES = [
+    // --- CONSTITUTION (Rights & Mechanisms) ---
     {
         type: "constitution_rights",
         difficulty: "media",
         generate: () => {
-            const rights = ["la vida", "la libertad de expresión", "el debido proceso", "la intimidad", "la libre asociación"];
-            const violations = ["censurar un periódico", "detener a alguien sin orden judicial", "publicar fotos privadas sin permiso", "prohibir una reunión pacífica", "negar atención médica vital"];
-            const actions = ["acción de tutela", "derecho de petición", "habeas corpus", "acción popular"];
+            const rights = ["la vida", "la libertad de expresión", "el debido proceso", "la intimidad", "la libre asociación", "la salud", "la educación", "el trabajo"];
+            const violations = [
+                { act: "censurar un periódico sin causa legal", right: "la libertad de expresión", mech: "acción de tutela" },
+                { act: "detener a alguien sin orden judicial", right: "la libertad personal", mech: "habeas corpus" },
+                { act: "publicar fotos privadas sin permiso", right: "la intimidad", mech: "acción de tutela" },
+                { act: "prohibir una reunión pacífica", right: "la libre asociación", mech: "acción de tutela" },
+                { act: "negar atención médica vital de urgencia", right: "la salud", mech: "acción de tutela" },
+                { act: "despedir a una mujer por estar embarazada", right: "la estabilidad laboral", mech: "acción de tutela" },
+                { act: "solicitar información pública y ser ignorado", right: "petición", mech: "acción de cumplimiento" } // Simplified logic
+            ];
 
-            const right = rights[Math.floor(Math.random() * rights.length)];
-            const violation = violations[Math.floor(Math.random() * violations.length)];
-
-            // Basic logic linking violation to mechanism
-            let correctAction = "acción de tutela";
-            let logic = "proteger derechos fundamentales";
-
-            if (violation.includes("detener")) {
-                correctAction = "habeas corpus";
-                logic = "proteger la libertad personal ante detenciones arbitrarias";
-            }
+            const item = violations[Math.floor(Math.random() * violations.length)];
 
             return {
-                text: `Un ciudadano considera que se ha vulnerado su derecho a ${right} al ${violation}. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?`,
-                correct: correctAction,
+                text: `Un ciudadano considera que se ha vulnerado su derecho a ${item.right} al ${item.act}. ¿Cuál es el mecanismo constitucional más idóneo para proteger este derecho de manera inmediata?`,
+                correct: item.mech,
                 distractors: [
                     "Demanda civil ordinaria",
                     "Queja ante la policía",
-                    "Recolección de firmas"
-                ].filter(d => d !== correctAction),
-                explanation: `La ${correctAction} es el mecanismo preferente para ${logic} cuando no existen otros medios eficaces.`
+                    "Recolección de firmas",
+                    "Consulta popular"
+                ].filter(d => d !== item.mech).slice(0, 3),
+                explanation: `El mecanismo preferente es la ${item.mech} dado que se busca proteger un derecho fundamental de manera inmediata.`
             };
         }
     },
+    // --- MULTIPERSPECTIVISM (Conflicts) ---
     {
         type: "multiperspectivism",
         difficulty: "media_alta",
         generate: () => {
-            const conflicts = ["la construcción de una represa", "la minería en páramos", "el uso de glifosato", "la regulación de plataformas de transporte"];
-            const actors = ["la comunidad local", "la empresa privada", "el gobierno nacional", "los grupos ambientalistas"];
-            const interests = ["el desarrollo económico", "la protección del ecosistema", "la generación de empleo", "la soberanía nacional"];
+            const conflicts = [
+                { topic: "la construcción de una represa", actor: "la comunidad local", interest: "la protección del ecosistema y sus viviendas", perspective: "rechazar el proyecto si no hay garantías ambientales" },
+                { topic: "la minería en páramos", actor: "la empresa minera", interest: "el desarrollo económico y la inversión", perspective: "promover la extracción responsable con regalías" },
+                { topic: "el uso de glifosato", actor: "el gobierno", interest: "la erradicación eficiente de cultivos ilícitos", perspective: "usar herramientas efectivas contra el narcotráfico" },
+                { topic: "la regulación de plataformas de transporte", actor: "el gremio de taxistas", interest: "la competencia leal y regulación igualitaria", perspective: "exigir las mismas condiciones legales para todos" }
+            ];
 
-            const conflict = conflicts[Math.floor(Math.random() * conflicts.length)];
-            const actor = actors[Math.floor(Math.random() * actors.length)];
-            const interest = interests[Math.floor(Math.random() * interests.length)];
+            const item = conflicts[Math.floor(Math.random() * conflicts.length)];
 
             return {
-                text: `En el debate sobre ${conflict}, ${actor} argumenta priorizando ${interest}. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?`,
-                correct: `Es necesario fomentar ${interest} aunque implique sacrificios menores.`,
+                text: `En el debate sobre ${item.topic}, ${item.actor} argumenta priorizando ${item.interest}. ¿Cuál de los siguientes enunciados describe mejor una perspectiva COMPATIBLE con este actor?`,
+                correct: item.perspective,
                 distractors: [
-                    `Se debe prohibir totalmente ${conflict} sin excepciones.`,
-                    `El único interés válido es el de la contraparte.`,
-                    `El estado no debe intervenir en absoluto.`
+                    "Abandonar sus intereses por el bien común abstracto",
+                    "No opinar al respecto",
+                    "Apoyar ciegamente a la contraparte"
                 ],
-                explanation: `Si la prioridad del actor es ${interest}, buscará medidas que lo favorezcan o lo maximicen en el contexto de ${conflict}.`
+                explanation: `Si la prioridad del actor es ${item.interest}, su postura lógica sería ${item.perspective}.`
             };
         }
     },
+    // --- SYSTEMIC THINKING (Consequences) ---
     {
         type: "systemic_thinking",
         difficulty: "avanzada",
         generate: () => {
-            const problems = ["el desempleo juvenil", "la inseguridad urbana", "la corrupción administrativa", "la informalidad laboral"];
-            const measures = ["aumentar las penas de cárcel", "reducir los impuestos a empresas", "militarizar las calles", "subsidiar el primer empleo"];
-            const consequences = ["hacinamiento carcelario a largo plazo", "déficit fiscal", "violación de derechos humanos", "precarización laboral futura"];
+            const scenarios = [
+                { problem: "el desempleo juvenil", measure: "subsidiar el primer empleo indefinidamente", consequence: "déficit fiscal insostenible" },
+                { problem: "la inseguridad urbana", measure: "militarizar permanentemente las calles", consequence: "falta de garantías de derechos civiles" },
+                { problem: "la corrupción", measure: "eliminar todos los trámites públicos", consequence: "falta de control y caos administrativo" },
+                { problem: "la contaminación", measure: "prohibir todo tipo de vehículos", consequence: "colapso de la movilidad y economía" }
+            ];
 
-            const problem = problems[Math.floor(Math.random() * problems.length)];
-            const measure = measures[Math.floor(Math.random() * measures.length)];
-            const consequence = consequences[Math.floor(Math.random() * consequences.length)];
+            const item = scenarios[Math.floor(Math.random() * scenarios.length)];
 
             return {
-                text: `Para combatir ${problem}, un alcalde propone ${measure}. Un analista advierte que esta medida, aunque popular, podría generar ${consequence} como efecto no deseado. ¿Qué dimensión del problema está privilegiando el analista?`,
-                correct: "El impacto estructural a largo plazo.",
+                text: `Para combatir ${item.problem}, se propone ${item.measure}. Un analista advierte que esta medida, aunque popular, podría generar ${item.consequence}. ¿Qué dimensión del problema está privilegiando el analista?`,
+                correct: "El impacto estructural o las consecuencias no deseadas a largo plazo.",
                 distractors: [
                     "La popularidad inmediata de la medida.",
-                    "El costo político para el alcalde.",
+                    "El beneficio económico a corto plazo.",
                     "La opinión de los medios de comunicación."
                 ],
-                explanation: `El analista está evaluando consecuencias sistémicas de segundo orden (${consequence}) más allá de la solución inmediata.`
+                explanation: `El analista está evaluando consecuencias sistémicas de segundo orden (${item.consequence}) más allá de la solución inmediata.`
             };
         }
     }
@@ -95,8 +99,12 @@ function generateQuestions() {
     const questions = [];
 
     const generateBatch = (count, difficulty) => {
-        const templates = TEMPLATES.filter(t => t.difficulty === difficulty || (difficulty === 'media' && t.difficulty === 'media'));
-        const pool = templates.length > 0 ? templates : TEMPLATES;
+        let pool = TEMPLATES;
+        if (difficulty === 'media') pool = TEMPLATES.filter(t => t.type === 'constitution_rights');
+        if (difficulty === 'media_alta') pool = TEMPLATES.filter(t => t.type === 'multiperspectivism');
+        if (difficulty === 'avanzada') pool = TEMPLATES.filter(t => t.type === 'systemic_thinking');
+
+        if (pool.length === 0) pool = TEMPLATES;
 
         for (let i = 0; i < count; i++) {
             const template = pool[Math.floor(Math.random() * pool.length)];
@@ -116,7 +124,11 @@ function generateQuestions() {
 
             const correctAnswerId = finalOptions.find(o => o.text === qData.correct).id;
 
+            // Generate deterministic ID
+            const qId = generateId("competencias_ciudadanas", qData.text, qData.correct);
+
             questions.push({
+                id: qId,
                 module: "competencias_ciudadanas",
                 text: qData.text,
                 options: finalOptions,

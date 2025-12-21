@@ -1,0 +1,18 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Isotype -->
+  <rect x="50" y="50" width="200" height="200" rx="50" fill="url(#paint0_linear)"/>
+  <path d="M182.8 120.3C182.8 111.7 175.8 104.7 167.2 104.7H132.8C124.2 104.7 117.2 111.7 117.2 120.3V126.6C117.2 135.2 124.2 142.2 132.8 142.2H167.2C175.8 142.2 182.8 149.2 182.8 157.8V179.7C182.8 188.3 175.8 195.3 167.2 195.3H117.2" stroke="black" stroke-width="20" stroke-linecap="round"/>
+  
+  <!-- Text: Saber (White) -->
+  <text x="300" y="200" font-family="Arial, sans-serif" font-weight="900" font-size="160" fill="white" letter-spacing="-4">Saber</text>
+  
+  <!-- Text: Pro (Gold) -->
+  <text x="750" y="200" font-family="Arial, sans-serif" font-weight="900" font-size="160" fill="#D4AF37" letter-spacing="-4">Pro</text>
+
+  <defs>
+    <linearGradient id="paint0_linear" x1="50" y1="50" x2="250" y2="250" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D4AF37"/>
+      <stop offset="1" stop-color="#B8860B"/>
+    </linearGradient>
+  </defs>
+</svg>

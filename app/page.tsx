@@ -1,20 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { ShieldCheck, TrendingUp, Brain, ArrowRight, CheckCircle, Smartphone, Users, Award, Star } from "lucide-react";
+import { ShieldCheck, TrendingUp, Brain, ArrowRight } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
+import { BRAND_YEAR, COPYRIGHT_TEXT } from "@/lib/config";
+
+import { Logo } from "@/components/ui/Logo";
 
 export default function Home() {
-  const { user, role, loading } = useAuth();
-  const router = useRouter();
-
-
+  const { user, role } = useAuth();
   const dashboardLink = role === 'teacher' ? '/teacher' : role === 'admin' ? '/admin/dashboard' : '/dashboard';
 
   return (
@@ -23,12 +20,9 @@ export default function Home() {
       {/* Navigation (Transparent) */}
       <nav className="fixed top-0 w-full z-50 backdrop-blur-md border-b border-white/5 bg-black/50">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-metal-gold to-yellow-600 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.3)]">
-              <span className="font-black text-black text-xl tracking-tighter">S</span>
-            </div>
-            <span className="text-xl font-bold text-white tracking-tight">Saber<span className="text-metal-gold">Pro 2026</span></span>
-          </div>
+          <Link href="/">
+            <Logo variant="full" size="md" />
+          </Link>
           <div className="flex gap-4">
             {user ? (
               <Link href={dashboardLink}>
@@ -58,7 +52,7 @@ export default function Home() {
 
         <div className="relative z-10 max-w-5xl space-y-8 animate-in fade-in zoom-in-95 duration-1000">
           <Badge variant="premium" className="mx-auto px-6 py-2 text-xs font-black tracking-[0.2em] uppercase shadow-[0_0_30px_rgba(212,175,55,0.2)] border-metal-gold/30">
-            Plataforma Oficial 2026
+            Plataforma Oficial {BRAND_YEAR}
           </Badge>
 
           <p className="text-[10px] md:text-xs text-metal-silver/40 font-bold uppercase tracking-[0.15em] mt-2">
@@ -70,7 +64,7 @@ export default function Home() {
               Prepárate para el
             </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-white to-metal-gold animate-gradient-x">
-              Saber Pro 2026
+              Saber Pro {BRAND_YEAR}
             </span>
           </h1>
 
@@ -183,7 +177,7 @@ export default function Home() {
       <footer className="py-20 border-t border-white/5 bg-black text-center relative z-10">
         <div className="max-w-4xl mx-auto px-6">
           <div className="flex flex-col gap-4 text-metal-silver/40 text-[10px] font-bold uppercase tracking-widest mb-8">
-            <p>© 2025 Saber Pro Suite. Todos los derechos reservados.</p>
+            <p>{COPYRIGHT_TEXT}</p>
             <p>
               Desarrollado por <span className="text-metal-silver">Ing. Antonio Rodriguez</span> para Docencia Informática.
             </p>
@@ -191,7 +185,9 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-6 md:gap-8 opacity-50 px-4">
             <Link href="/terms" className="text-metal-silver hover:text-white text-[10px] md:text-xs uppercase tracking-widest font-bold whitespace-nowrap">Términos</Link>
             <Link href="/privacy" className="text-metal-silver hover:text-white text-[10px] md:text-xs uppercase tracking-widest font-bold whitespace-nowrap">Privacidad</Link>
-            <a href="mailto:docenciainformatica2025@gmail.com" className="text-metal-silver hover:text-white text-[10px] md:text-xs uppercase tracking-widest font-bold whitespace-nowrap">Soporte</a>
+            <a href="mailto:docenciainformatica2025@gmail.com" className="text-metal-silver hover:text-white text-[10px] md:text-xs uppercase tracking-widest font-bold whitespace-nowrap flex items-center gap-2">
+              ✉️ Contacto
+            </a>
           </div>
         </div>
       </footer>

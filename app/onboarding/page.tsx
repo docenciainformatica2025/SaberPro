@@ -6,6 +6,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { GraduationCap, User, ArrowRight, Check } from "lucide-react";
+import { BRAND_YEAR } from "@/lib/config";
 
 export default function OnboardingPage() {
     const { user, role } = useAuth();
@@ -53,12 +54,12 @@ export default function OnboardingPage() {
             <div className="max-w-4xl w-full">
                 <div className="text-center mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
                     <h1 className="text-4xl font-bold text-white mb-4">
-                        ¡Bienvenido a <span className="text-gradient-gold">Saber Pro 2026</span>!
+                        ¡Bienvenido a <span className="text-gradient-gold">Saber Pro {BRAND_YEAR}</span>!
                     </h1>
                     <p className="text-xl text-metal-silver">
                         Para personalizar tu experiencia, cuéntanos cómo usarás la plataforma.
                     </p>
-                </div>
+                </div >
 
                 <div className="grid md:grid-cols-2 gap-8 mb-12">
                     {/* STUDENT CARD */}
@@ -117,7 +118,7 @@ export default function OnboardingPage() {
                         {loading ? "Configurando..." : "Comenzar Aventura"} <ArrowRight size={20} />
                     </button>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }

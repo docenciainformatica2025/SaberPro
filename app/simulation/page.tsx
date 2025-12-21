@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, Suspense } from "react";
 import { ArrowLeft, Brain, Sparkles, Zap, Timer, Clock, HelpCircle } from "lucide-react";
 import Link from "next/link";
+import { toast } from "sonner";
 import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
 import { db } from "@/lib/firebase";
 import { doc, getDoc, collection, query, where, limit, getDocs } from "firebase/firestore";
@@ -88,9 +89,14 @@ function SimulationSelectionContent() {
                         const data = docSnap.data();
                         // Only require targetCareer for students
                         if (!data.targetCareer && role !== 'teacher') {
-                            const confirm = window.confirm("⚠️ Requisito Faltante\n\nPara generar un simulacro efectivo, necesitamos saber tu Carrera de Interés.\n\n¿Ir al perfil a configurarlo?");
-                            if (confirm) router.push("/profile");
-                            else router.push("/dashboard");
+
+                            // Non-blocking approach
+                            toast.warning("Configuración Requerida", {
+                                description: "Para calibrar el simulacro, necesitamos conocer tu Carrera de Interés.",
+                                duration: 5000,
+                            });
+                            router.push("/profile");
+                            return; // Stop further execution/loading of this page state
                         }
                     }
                 } catch (e) {
@@ -147,9 +153,13 @@ function SimulationSelectionContent() {
                     className="p-10 mb-20 flex flex-col md:flex-row items-center justify-between gap-10 cursor-pointer group relative overflow-hidden border-metal-gold/30 hover:border-metal-gold/60 hover:shadow-[0_0_50px_rgba(212,175,55,0.2)] transition-all duration-500 bg-black/60 backdrop-blur-xl"
                     onClick={() => {
                         if (!isPro && simulationCount >= 3) {
-                            if (confirm("🔒 Límite Gratuito Alcanzado\n\nHas completado tus 3 simulacros de prueba. Para continuar tu entrenamiento ilimitado y acceder a analíticas avanzadas, mejora tu plan.\n\n¿Ver Planes Pro?")) {
-                                router.push('/pricing');
-                            }
+                            toast.error("🔒 Límite Gratuito Alcanzado", {
+                                description: "Para acceder al Simulacro Completo y analíticas, necesitas un plan Pro.",
+                                action: {
+                                    label: "Ver Planes",
+                                    onClick: () => router.push('/pricing')
+                                }
+                            });
                             return;
                         }
                         const sessionId = crypto.randomUUID();
@@ -194,9 +204,13 @@ function SimulationSelectionContent() {
                             variant="glass"
                             onClick={() => {
                                 if (!isPro && simulationCount >= 3) {
-                                    if (confirm("🔒 Límite Gratuito Alcanzado\n\nMejora a Pro para desbloquear simulacros ilimitados.")) {
-                                        router.push('/pricing');
-                                    }
+                                    toast.error("🔒 Límite Gratuito Alcanzado", {
+                                        description: "Has completado tus 3 simulacros de prueba. Mejora a Pro para continuar.",
+                                        action: {
+                                            label: "Ver Planes",
+                                            onClick: () => router.push('/pricing')
+                                        }
+                                    });
                                     return;
                                 }
                                 sessionStorage.removeItem('currentSessionId');

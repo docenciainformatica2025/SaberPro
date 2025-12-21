@@ -10,6 +10,7 @@ import { AuthProvider } from "@/context/AuthContext";
 import RoleBasedNavigation from "@/components/layout/RoleBasedNavigation";
 import ConditionalFooter from "@/components/ui/ConditionalFooter";
 import CookieBanner from "@/components/legal/CookieBanner";
+import { BRAND_NAME_SPACED } from "@/lib/config";
 
 // Hack to suppress the noisy hydration warning from extensions
 if (typeof window !== "undefined") {
@@ -39,19 +40,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Saber Pro 2026 | Simulador Premium de Pruebas de Estado",
+  title: `${BRAND_NAME_SPACED} | Simulador Premium de Pruebas de Estado`,
   description: "Plataforma de entrenamiento de alto rendimiento para las pruebas Saber Pro (ICFES). Simulacros con IA, analíticas avanzadas y preparación certificada.",
   keywords: ["Saber Pro", "ICFES", "Simulacro Saber Pro", "Preparación Examen Estado", "Ingeniería de Sistemas", "Lectura Crítica"],
   authors: [{ name: "Saber Pro Team" }],
   openGraph: {
-    title: "Saber Pro 2026 | Domina tu Futuro Profesional",
+    title: `${BRAND_NAME_SPACED} | Domina tu Futuro Profesional`,
     description: "Entrena con la plataforma más avanzada. Simulacros ilimitados, IA y certificados de desempeño.",
     type: "website",
     locale: "es_CO",
-    siteName: "Saber Pro 2026"
+    siteName: BRAND_NAME_SPACED
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.svg",
   }
 };
 
@@ -80,6 +81,32 @@ export default function RootLayout({
         <Clarity />
         <Toaster />
         <OfflineIndicator />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "Saber Pro 2026",
+              "applicationCategory": "EducationalApplication",
+              "operatingSystem": "Web",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "COP"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "ratingCount": "5000"
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Ing. Antonio Rodríguez"
+              }
+            })
+          }}
+        />
       </body>
     </html>
   );

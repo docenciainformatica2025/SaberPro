@@ -5,6 +5,7 @@ import { Lock, ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
+import { BRAND_YEAR, COPYRIGHT_TEXT } from '@/lib/config';
 
 function UpdatePasswordForm() {
     const [password, setPassword] = useState('');
@@ -165,7 +166,7 @@ export default function UpdatePasswordPage() {
                         <div className="w-10 h-10 bg-gradient-to-br from-metal-gold to-[#B8860B] rounded-lg flex items-center justify-center shadow-lg shadow-metal-gold/20">
                             <span className="font-bold text-black text-xl">S</span>
                         </div>
-                        <span className="text-2xl font-bold text-white tracking-wide">SaberPro<span className="text-metal-gold">2026</span></span>
+                        <span className="text-2xl font-bold text-white tracking-wide">SaberPro<span className="text-metal-gold">{BRAND_YEAR}</span></span>
                     </div>
                 </div>
 
@@ -180,7 +181,7 @@ export default function UpdatePasswordPage() {
                 </div>
 
                 <div className="relative z-10 text-xs text-metal-silver/40 space-y-2">
-                    <p>© 2025 Saber Pro Suite. Todos los derechos reservados.</p>
+                    <p>{COPYRIGHT_TEXT}</p>
                 </div>
             </div>
 

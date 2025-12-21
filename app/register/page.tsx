@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registerSchema, RegisterFormValues } from '@/lib/schemas';
-import { Mail, Lock, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Mail, Lock, ArrowRight, CheckCircle2, RefreshCw, Eye, EyeOff, ShieldCheck } from 'lucide-react';
+import Turnstile from 'react-turnstile';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
@@ -12,20 +13,59 @@ import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 
 import { toast } from 'sonner';
+import { BRAND_YEAR, COPYRIGHT_TEXT } from "@/lib/config";
+import { Logo } from "@/components/ui/Logo";
 
 export default function RegisterPage() {
     const { signup, signInWithGoogle } = useAuth();
     const router = useRouter();
     const [googleLoading, setGoogleLoading] = useState(false);
     const [authError, setAuthError] = useState('');
+    const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
     const {
         register,
         handleSubmit,
+        setValue,
+        watch,
         formState: { errors, isSubmitting },
     } = useForm<RegisterFormValues>({
         resolver: zodResolver(registerSchema),
     });
+
+    const generatePassword = () => {
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@$!%*?&";
+        let password = "";
+
+        // Ensure at least one of each required type
+        password += "A"; // Uppercase
+        password += "a"; // Lowercase
+        password += "1"; // Number
+        password += "@"; // Symbol
+
+        // Fill the rest (4 chars to reach 8)
+        for (let i = 0; i < 4; i++) {
+            password += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+
+        // Shuffle the password
+        password = password.split('').sort(() => 0.5 - Math.random()).join('');
+
+        setValue("password", password);
+        setValue("confirmPassword", password);
+        toast.success("Contraseña segura generada", {
+            description: "No olvides guardarla en un lugar seguro."
+        });
+    };
+
+    const passwordValue = watch("password", "");
+
+    const requirements = [
+        { regex: /.{8,}/, text: "Mínimo 8 caracteres" },
+        { regex: /[A-Z]/, text: "Una mayúscula" },
+        { regex: /[0-9]/, text: "Un número" },
+        { regex: /[^A-Za-z0-9]/, text: "Un símbolo (@$!%*?&)" },
+    ];
 
     const onSubmit = async (data: RegisterFormValues) => {
         setAuthError('');
@@ -77,11 +117,8 @@ export default function RegisterPage() {
                 <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-metal-blue/5 rounded-full blur-[100px]"></div>
 
                 <div className="relative z-10">
-                    <div className="flex items-center gap-3 mb-8">
-                        <div className="w-10 h-10 bg-gradient-to-br from-metal-gold to-[#B8860B] rounded-lg flex items-center justify-center shadow-lg shadow-metal-gold/20">
-                            <span className="font-bold text-black text-xl">S</span>
-                        </div>
-                        <span className="text-2xl font-bold text-white tracking-wide">SaberPro<span className="text-metal-gold">2026</span></span>
+                    <div className="mb-8">
+                        <Logo variant="full" size="xl" />
                     </div>
                 </div>
 
@@ -109,7 +146,7 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="relative z-10 text-xs text-metal-silver/40 space-y-2">
-                    <p>© 2025 Saber Pro Suite. Todos los derechos reservados.</p>
+                    <p>{COPYRIGHT_TEXT}</p>
                     <p>
                         Desarrollado por <span className="text-metal-silver/60">Ing. Antonio Rodriguez</span><br />
                         para Docencia Informática.
@@ -123,7 +160,7 @@ export default function RegisterPage() {
 
                     {/* Mobile Header (Hidden on Desktop) */}
                     <div className="lg:hidden text-center mb-8">
-                        <h1 className="text-3xl font-bold text-white mb-2">SaberPro<span className="text-metal-gold">2026</span></h1>
+                        <h1 className="text-3xl font-bold text-white mb-2">SaberPro<span className="text-metal-gold">{BRAND_YEAR}</span></h1>
                         <p className="text-metal-silver/60">Cuenta Profesional</p>
                     </div>
 
@@ -174,14 +211,40 @@ export default function RegisterPage() {
                             error={errors.email?.message}
                         />
 
-                        <Input
-                            label="Contraseña"
-                            type="password"
-                            icon={Lock}
-                            placeholder="••••••••"
-                            {...register("password")}
-                            error={errors.password?.message}
-                        />
+                        <div className="space-y-2">
+                            <div className="flex justify-between items-center ml-1">
+                                <label className="text-xs font-semibold text-metal-silver/80 uppercase tracking-wider">
+                                    Contraseña
+                                </label>
+                                <button
+                                    type="button"
+                                    onClick={generatePassword}
+                                    className="text-[10px] text-metal-gold hover:text-white flex items-center gap-1 transition-colors uppercase font-bold tracking-wider"
+                                >
+                                    <RefreshCw size={10} /> Generar Segura
+                                </button>
+                            </div>
+                            <Input
+                                type="password"
+                                icon={Lock}
+                                placeholder="••••••••"
+                                {...register("password")}
+                                error={errors.password?.message}
+                            />
+
+                            {/* Password Requirements Visualization */}
+                            <div className="grid grid-cols-2 gap-2 mt-2">
+                                {requirements.map((req, i) => {
+                                    const met = req.regex.test(passwordValue);
+                                    return (
+                                        <div key={i} className={`text-[10px] flex items-center gap-1.5 ${met ? 'text-green-400' : 'text-metal-silver/30'}`}>
+                                            <div className={`w-1.5 h-1.5 rounded-full ${met ? 'bg-green-400' : 'bg-metal-silver/20'}`} />
+                                            {req.text}
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
 
                         <Input
                             label="Confirmar Contraseña"
@@ -209,9 +272,17 @@ export default function RegisterPage() {
                         </div>
                         {errors.terms && <span className="text-red-400 text-xs ml-1">{errors.terms.message}</span>}
 
+                        <div className="flex justify-center my-4 overflow-hidden rounded-xl">
+                            <Turnstile
+                                sitekey="0x4AAAAAACH1Rmabzh7QI6OR"
+                                onVerify={(token) => setCaptchaToken(token)}
+                                theme="dark"
+                            />
+                        </div>
+
                         <Button
                             type="submit"
-                            disabled={isSubmitting}
+                            disabled={isSubmitting || !captchaToken}
                             isLoading={isSubmitting}
                             icon={ArrowRight}
                             iconPosition="right"

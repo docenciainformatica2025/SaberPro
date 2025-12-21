@@ -1,95 +1,99 @@
 const fs = require('fs');
 const path = require('path');
+const { generateId } = require('./utils/idGenerator');
 
-const TOTAL_QUESTIONS = 150;
+const TOTAL_QUESTIONS = 200;
 const COUNTS = {
-    media: 100, // Basic Orthography and Grammar
-    media_alta: 30, // Coherence and Connectors
-    avanzada: 20 // Text Organization and Style
+    media: Math.floor(TOTAL_QUESTIONS * 0.5),
+    media_alta: Math.floor(TOTAL_QUESTIONS * 0.3),
+    avanzada: Math.floor(TOTAL_QUESTIONS * 0.2)
 };
 
 const TEMPLATES = [
+    // --- ORTHOGRAPHY (Homophones/Accents) ---
     {
         type: "orthography",
         difficulty: "media",
         generate: () => {
-            const correctWords = [
-                { word: "haya", context: "Espero que _____ llegado bien." },
-                { word: "halla", context: "No sé dónde se _____ la sede central." },
-                { word: "valla", context: "Saltó la _____ para entrar." },
-                { word: "baya", context: "Esa fruta es una _____ venenosa." },
-                { word: "hecho", context: "Ya he _____ la tarea." },
-                { word: "echo", context: "Siempre _____ de menos mi ciudad." }
+            const items = [
+                { correct: "haya", context: "Espero que _____ llegado bien.", distractors: ["halla", "alla", "aya"] },
+                { correct: "halla", context: "No sé dónde se _____ la sede central.", distractors: ["haya", "alla", "aya"] },
+                { correct: "valla", context: "Saltó la _____ para entrar al estadio.", distractors: ["vaya", "baya", "balla"] },
+                { correct: "vaya", context: "No creo que _____ a llover hoy.", distractors: ["valla", "baya", "balla"] },
+                { correct: "hecho", context: "Ya he _____ la tarea.", distractors: ["echo", "ehcho", "hice"] },
+                { correct: "echo", context: "Siempre _____ de menos mi ciudad.", distractors: ["hecho", "ehcho", "ecco"] },
+                { correct: "cayó", context: "El niño se _____ del columpio.", distractors: ["calló", "calio", "callo"] },
+                { correct: "calló", context: "El público se _____ al iniciar la obra.", distractors: ["cayó", "cayo", "calio"] },
+                { correct: "bienes", context: "Donó todos sus _____ a la caridad.", distractors: ["vienes", "bénes", "vlenes"] },
+                { correct: "vienes", context: "¿Cuándo _____ a visitarme?", distractors: ["bienes", "biénes", "benes"] }
             ];
 
-            const item = correctWords[Math.floor(Math.random() * correctWords.length)];
-
-            // Generate basic distractors based on homophones confusion
-            let distractors = [];
-            if (item.word === "haya") distractors = ["halla", "alla", "aya"];
-            else if (item.word === "halla") distractors = ["haya", "alla", "aya"];
-            else if (item.word === "valla") distractors = ["vaya", "baya", "balla"];
-            else if (item.word === "baya") distractors = ["vaya", "valla", "balla"];
-            else if (item.word === "hecho") distractors = ["echo", "ehcho", "hice"];
-            else if (item.word === "echo") distractors = ["hecho", "ehcho", "ecco"];
+            const item = items[Math.floor(Math.random() * items.length)];
 
             return {
                 text: `Seleccione la palabra correcta para completar la oración:\n\n"${item.context}"`,
-                correct: item.word,
-                distractors: distractors,
-                explanation: `En este contexto, la forma correcta es "${item.word}".`
+                correct: item.correct,
+                distractors: item.distractors,
+                explanation: `En este contexto, la forma correcta es "${item.correct}".`
             };
         }
     },
+    // --- CONNECTORS (Coherence) ---
     {
         type: "connector_usage",
         difficulty: "media_alta",
         generate: () => {
-            const sentences = [
-                { start: "Estudió mucho para el examen;", end: "aprobó con honores.", correct: "por lo tanto", type: "consecuencia" },
-                { start: "Quería ir a la fiesta;", end: "tenía mucho trabajo.", correct: "sin embargo", type: "oposición" },
-                { start: "Debemos ahorrar agua;", end: "es un recurso limitado.", correct: "puesto que", type: "causa" },
-                { start: "Llegó tarde a la reunión;", end: "perdió el vuelo.", correct: "además", type: "adición" } // A bit forced, logic needs care
+            const items = [
+                { sentence: "Estudió mucho para el examen; _____, aprobó con honores.", correct: "por lo tanto", type: "consecuencia" },
+                { sentence: "Quería ir a la fiesta; _____, tenía mucho trabajo pendiente.", correct: "sin embargo", type: "oposición" },
+                { sentence: "Debemos ahorrar agua ____ es un recurso limitado.", correct: "ya que", type: "causa" },
+                { sentence: "Llegó tarde a la reunión ____ perdió el vuelo.", correct: "porque", type: "causa" },
+                { sentence: "No solo es inteligente, ____ trabaja muy duro.", correct: "sino que también", type: "adición" },
+                { sentence: "El proyecto es viable, ____ requiere mucha inversión inicial.", correct: "aunque", type: "concesión" }
             ];
 
-            const item = sentences[Math.floor(Math.random() * sentences.length)];
-
-            // Valid distractors based on different connector types
-            const otherConnectors = ["sin embargo", "por lo tanto", "puesto que", "además", "aunque", "pero"].filter(c => c !== item.correct);
+            const item = items[Math.floor(Math.random() * items.length)];
+            const otherConnectors = ["sin embargo", "por lo tanto", "ya que", "además", "aunque", "pero", "sino que también"].filter(c => c !== item.correct);
             const distractors = otherConnectors.sort(() => 0.5 - Math.random()).slice(0, 3);
 
             return {
-                text: `Complete la oración con el conector lógico más adecuado:\n\n"${item.start} _____, ${item.end}"`,
+                text: `Complete la oración con el conector lógico más adecuado:\n\n"${item.sentence}"`,
                 correct: item.correct,
                 distractors: distractors,
-                explanation: `La relación lógica entre las oraciones es de ${item.type}, por lo que "${item.correct}" es el conector adecuado.`
+                explanation: `La relación lógica entre las oraciones requiere un conector de ${item.type} como "${item.correct}".`
             };
         }
     },
+    // --- TEXT ORGANIZATION (Order) ---
     {
         type: "text_order",
         difficulty: "avanzada",
         generate: () => {
-            const sequenceparts = [
-                "1. Definición del problema.",
-                "2. Análisis de causas.",
-                "3. Propuesta de soluciones.",
-                "4. Conclusiones finales."
+            // Arrays of logical steps
+            const sequences = [
+                ["1. Definición del problema.", "2. Análisis de causas.", "3. Propuesta de soluciones.", "4. Conclusiones finales."],
+                ["1. Introducción al tema.", "2. Desarrollo de argumentos.", "3. Presentación de contraargumentos.", "4. Síntesis y cierre."],
+                ["1. Recolección de datos.", "2. Procesamiento de la información.", "3. Análisis de resultados.", "4. Publicación del informe."],
+                ["1. Identificación de necesidades.", "2. Diseño del prototipo.", "3. Pruebas de usuario.", "4. Lanzamiento del producto."]
             ];
 
-            const shuffled = [...sequenceparts].sort(() => Math.random() - 0.5);
-            const correctOrder = sequenceparts.join(" - ");
+            const selectedSeq = sequences[Math.floor(Math.random() * sequences.length)];
+            const correctOrder = selectedSeq.join(" - ");
 
-            // Create dummy orders
-            const dummy1 = [...sequenceparts].sort(() => Math.random() - 0.5).join(" - ");
-            const dummy2 = [...sequenceparts].sort(() => Math.random() - 0.5).join(" - ");
-            const dummy3 = [...sequenceparts].reverse().join(" - ");
+            // Generate distractors by shuffling
+            const d1 = [...selectedSeq].sort(() => Math.random() - 0.5).join(" - ");
+            const d2 = [...selectedSeq].reverse().join(" - ");
+            const d3 = [selectedSeq[1], selectedSeq[0], selectedSeq[3], selectedSeq[2]].join(" - "); // Swap pairs
+
+            const distractors = [d1, d2, d3].filter(d => d !== correctOrder);
+            // Ensure 3 distractors even if filter removed duplicates (unlikely with strings)
+            while (distractors.length < 3) distractors.push("Orden incorrecto aleatorio");
 
             return {
-                text: `Organice lógicamente los siguientes apartados para un ensayo argumentativo:\n\n${sequenceparts.join("\n")}`,
+                text: `Organice lógicamente los siguientes apartados para un texto coherente:\n\n${selectedSeq.sort(() => Math.random() - 0.5).join("\n")}`, // Show shuffled in prompt
                 correct: correctOrder,
-                distractors: [dummy1, dummy2, dummy3].filter(d => d !== correctOrder),
-                explanation: `Un texto argumentativo lógico debe ir de la introducción del problema, al análisis y solución, cerrando con conclusiones.`
+                distractors: distractors.slice(0, 3),
+                explanation: `El orden lógico deductivo o cronológico correcto es: ${correctOrder}.`
             };
         }
     }
@@ -112,9 +116,9 @@ function generateQuestions() {
 
             const options = [
                 { id: "a", text: qData.correct },
-                { id: "b", text: qData.distractors[0] || "Opción B" },
-                { id: "c", text: qData.distractors[1] || "Opción C" },
-                { id: "d", text: qData.distractors[2] || "Opción D" }
+                { id: "b", text: qData.distractors[0] },
+                { id: "c", text: qData.distractors[1] },
+                { id: "d", text: qData.distractors[2] }
             ].sort(() => Math.random() - 0.5);
 
             const finalOptions = options.map((opt, idx) => ({
@@ -124,7 +128,11 @@ function generateQuestions() {
 
             const correctAnswerId = finalOptions.find(o => o.text === qData.correct).id;
 
+            // Generate deterministic ID
+            const qId = generateId("comunicacion_escrita", qData.text, qData.correct);
+
             questions.push({
+                id: qId,
                 module: "comunicacion_escrita",
                 text: qData.text,
                 options: finalOptions,
