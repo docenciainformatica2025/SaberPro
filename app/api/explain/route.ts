@@ -3,9 +3,23 @@ import { NextResponse } from "next/server";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
+import { z } from "zod";
+
+const explainSchema = z.object({
+    question: z.object({
+        text: z.string().min(1, "El texto de la pregunta es requerido"),
+    }),
+    selectedOption: z.string().min(1),
+    correctAnswer: z.string().min(1),
+    userProfile: z.object({
+        targetCareer: z.string().optional(),
+    }).optional(),
+});
+
 export async function POST(req: Request) {
     try {
-        const { question, selectedOption, correctAnswer, userProfile } = await req.json();
+        const body = await req.json();
+        const { question, selectedOption, correctAnswer, userProfile } = explainSchema.parse(body);
 
         if (!process.env.GEMINI_API_KEY) {
             return NextResponse.json(

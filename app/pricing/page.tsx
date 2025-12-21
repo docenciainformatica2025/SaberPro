@@ -110,7 +110,7 @@ export default function PricingPage() {
                 </Link>
 
                 <Badge variant="premium" className="mx-auto px-4 py-1.5 text-[10px] uppercase font-black tracking-[0.3em] shadow-[0_0_20px_rgba(212,175,55,0.2)]">
-                    Inversión Inteligente
+                    Membresía
                 </Badge>
 
                 <h1 className="text-5xl md:text-6xl font-black tracking-tighter text-white uppercase italic">
@@ -118,7 +118,7 @@ export default function PricingPage() {
                 </h1>
 
                 <p className="text-xl text-metal-silver/60 max-w-2xl mx-auto font-light">
-                    Elige la herramienta adecuada para maximizar tu potencial. Sin contratos ocultos.
+                    Herramientas profesionales para quien toma su preparación en serio.
                 </p>
 
                 {/* Switch */}
@@ -192,7 +192,7 @@ export default function PricingPage() {
                             <span className="text-metal-gold text-sm uppercase font-bold">/ {isTeacher ? 'Mes' : 'Único'}</span>
                         </div>
                         <p className="text-white/80 text-sm mt-4 font-medium leading-relaxed">
-                            {isTeacher ? "Gestiona múltiples grupos, asigna tareas y monitorea el progreso en tiempo real." : "Desbloquea todo el potencial de la IA y asegura tu ingreso a la universidad."}
+                            {isTeacher ? "Para docentes que gestionan el progreso de sus grupos." : "Entrenamiento completo sin restricciones."}
                         </p>
                     </div>
 

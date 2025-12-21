@@ -131,7 +131,33 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const signInWithGoogle = async () => {
         try {
             const provider = new GoogleAuthProvider();
-            await signInWithPopup(auth, provider);
+            const result = await signInWithPopup(auth, provider);
+
+            // Migrate Diagnostic Data if exists
+            try {
+                const diagnosticData = localStorage.getItem("saberpro_diagnostic_results");
+                if (diagnosticData && result.user) {
+                    const parsed = JSON.parse(diagnosticData);
+                    const resultsRef = await import("firebase/firestore").then(mod => mod.collection(db, "results"));
+                    const addDoc = await import("firebase/firestore").then(mod => mod.addDoc);
+
+                    await addDoc(resultsRef, {
+                        userId: result.user.uid,
+                        type: 'diagnostic',
+                        score: parsed.score,
+                        totalQuestions: 5,
+                        answers: parsed.answers,
+                        completedAt: new Date(parsed.date || Date.now()),
+                        migratedFromPublic: true
+                    });
+
+                    localStorage.removeItem("saberpro_diagnostic_results");
+                    console.log("Diagnostic data migrated successfully (Google Auth).");
+                }
+            } catch (e) {
+                console.error("Error migrating diagnostic data", e);
+            }
+
         } catch (error) {
             console.error("Error signing in with Google", error);
             throw error;
@@ -175,6 +201,31 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             completedProfile: false,
             consentLog: consentLog
         });
+
+        // Migrate Diagnostic Data if exists
+        try {
+            const diagnosticData = localStorage.getItem("saberpro_diagnostic_results");
+            if (diagnosticData) {
+                const parsed = JSON.parse(diagnosticData);
+                const resultsRef = await import("firebase/firestore").then(mod => mod.collection(db, "results"));
+                const addDoc = await import("firebase/firestore").then(mod => mod.addDoc);
+
+                await addDoc(resultsRef, {
+                    userId: userCredential.user.uid,
+                    type: 'diagnostic',
+                    score: parsed.score,
+                    totalQuestions: 5,
+                    answers: parsed.answers,
+                    completedAt: new Date(parsed.date || Date.now()),
+                    migratedFromPublic: true
+                });
+
+                localStorage.removeItem("saberpro_diagnostic_results");
+                console.log("Diagnostic data migrated successfully.");
+            }
+        } catch (e) {
+            console.error("Error migrating diagnostic data", e);
+        }
     };
 
     const logout = async () => {

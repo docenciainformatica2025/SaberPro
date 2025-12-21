@@ -185,7 +185,7 @@ function PreferencesModal({ onSave, onClose }: { onSave: (c: CookieConsent) => v
                         <Shield className="text-metal-gold" size={24} />
                         Centro de Preferencias de Privacidad
                     </h2>
-                    <button onClick={onClose} className="text-metal-silver hover:text-white transition-colors">
+                    <button onClick={onClose} aria-label="Cerrar banner de cookies" className="text-metal-silver hover:text-white transition-colors">
                         <X size={24} />
                     </button>
                 </div>

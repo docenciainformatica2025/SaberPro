@@ -11,6 +11,7 @@ import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
 import { Trophy, Medal, Crown, ArrowLeft, Search, User, Sparkles } from "lucide-react";
 import Link from "next/link";
 import StreakCounter from "@/components/gamification/StreakCounter";
+import Image from "next/image";
 
 interface LeaderboardUser {
     id: string;
@@ -187,7 +188,10 @@ export default function LeaderboardPage() {
                             <span className="w-8 text-center text-metal-silver font-black text-lg mr-4">{rUser.rank}</span>
 
                             <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center mr-4 text-metal-silver font-bold overflow-hidden">
-                                {rUser.photoURL ? <img src={rUser.photoURL} alt={`Foto de ${rUser.fullName}`} className="w-full h-full object-cover" /> : rUser.fullName[0]}
+                                import Image from "next/image"; // Add import at top manually if needed, or rely on auto-import if supported?
+                            // No, I need to add the import. Wait, I cannot add import easily with single chunk replace if it's far away.
+                            // I will use multi_replace for import + usage.
+
                             </div>
 
                             <div className="flex-grow">

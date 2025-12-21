@@ -16,6 +16,9 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import StatCardPremium from "@/components/ui/StatCardPremium";
+import { Skeleton } from "@/components/ui/Skeleton"; // Import Skeleton
+import { driver } from "driver.js"; // Import Driver
+import "driver.js/dist/driver.css"; // Import Driver CSS
 
 const MOTIVATIONAL_QUOTES = [
     "La excelencia no es un acto, es un hábito. - Aristóteles",
@@ -41,6 +44,7 @@ export default function DashboardPage() {
     const [joining, setJoining] = useState(false);
     const [quote, setQuote] = useState(MOTIVATIONAL_QUOTES[0]);
     const [myClasses, setMyClasses] = useState<any[]>([]);
+    const [isLoadingData, setIsLoadingData] = useState(true); // New loading state for data
 
     useEffect(() => {
         if (!loading && role === 'teacher') {
@@ -59,6 +63,7 @@ export default function DashboardPage() {
     useEffect(() => {
         const fetchData = async () => {
             if (!user) return;
+            setIsLoadingData(true);
             try {
                 // Fetch Results Stats
                 const q = query(collection(db, "results"), where("userId", "==", user.uid), orderBy("completedAt", "desc"), limit(5));
@@ -100,6 +105,8 @@ export default function DashboardPage() {
                 if (isIndexError) {
                     setFirestoreError(error.message);
                 }
+            } finally {
+                setIsLoadingData(false);
             }
         };
 
@@ -112,6 +119,7 @@ export default function DashboardPage() {
         return () => clearInterval(interval);
     }, [user]);
 
+    // Handle Join Class
     const handleJoinClass = async () => {
         if (!joinCode) return;
         setJoining(true);
@@ -148,8 +156,6 @@ export default function DashboardPage() {
 
             alert(`Te has unido a: ${classData.name}`);
             setJoinCode("");
-            // Refresh classes logic is handled by reloading or adding to state
-            // Simple state update for immediate feedback
             setMyClasses(prev => [...prev, { id: classDoc.id, ...classData }]);
 
         } catch (error) {
@@ -159,6 +165,34 @@ export default function DashboardPage() {
             setJoining(false);
         }
     };
+
+    // Driver.js Tour
+    useEffect(() => {
+        if (!loading && !isLoadingData && user) {
+            const hasSeenTour = localStorage.getItem('dashboard_tour_seen');
+            if (!hasSeenTour) {
+                const driverObj = driver({
+                    showProgress: true,
+                    animate: true,
+                    steps: [
+                        { element: '#tour-welcome', popover: { title: '¡Bienvenido!', description: 'Este es tu panel de control principal donde verás todo tu progreso.' } },
+                        { element: '#tour-start-sim', popover: { title: 'Empieza Aquí', description: 'Haz clic aquí para iniciar un nuevo simulacro de examen.' } },
+                        { element: '#tour-stats', popover: { title: 'Tus Métricas', description: 'Aquí verás tu puntaje promedio y nivel de preparación en tiempo real.' } },
+                        { element: '#tour-assignments', popover: { title: 'Tareas', description: 'Las tareas asignadas por tus profesores aparecerán aquí.' } },
+                        { element: '#tour-join-class', popover: { title: 'Unirse a Clase', description: 'Ingresa el código que te dio tu profesor para unirte a su curso.' } },
+                    ],
+                    onDestroyStarted: () => {
+                        localStorage.setItem('dashboard_tour_seen', 'true');
+                        driverObj.destroy();
+                    },
+                });
+
+                // Small delay to ensure everything rendered
+                setTimeout(() => driverObj.drive(), 1000);
+            }
+        }
+    }, [loading, isLoadingData, user]);
+
 
     if (loading) return <AIProcessingLoader text="Cargando Perfil" subtext="Analizando progreso..." />;
 
@@ -175,7 +209,7 @@ export default function DashboardPage() {
             )}
 
             {/* Header Premium */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div id="tour-welcome" className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 <div>
                     <h1 className="text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-white via-metal-silver to-white flex items-center gap-4 tracking-tighter italic uppercase animate-in slide-in-from-left-4 duration-700">
                         <Sparkles className="text-metal-gold" size={36} /> Hola, {userName?.split(' ')[0]}
@@ -186,7 +220,7 @@ export default function DashboardPage() {
                     </p>
                 </div>
                 <div className="flex items-center gap-3 animate-in slide-in-from-right-4 duration-700 delay-200">
-                    <Link href="/simulation">
+                    <Link href="/simulation" id="tour-start-sim">
                         <Button variant="premium" size="lg" icon={Brain} className="shadow-[0_0_30px_rgba(212,175,55,0.2)] hover:shadow-[0_0_50px_rgba(212,175,55,0.4)] transition-all uppercase tracking-widest font-black text-xs">
                             Iniciar Simulacro
                         </Button>
@@ -195,37 +229,47 @@ export default function DashboardPage() {
             </div>
 
             {/* Main Stats Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
-                <StatCardPremium
-                    title="Puntaje Global"
-                    value={stats.averageScore}
-                    icon={<Target size={22} />}
-                    trend={stats.averageScore > 300 ? "Nivel Avanzado" : "En Progreso"}
-                    trendUp={stats.averageScore > 300}
-                    color="gold"
-                />
-                <StatCardPremium
-                    title="Simulacros Ejecutados"
-                    value={stats.completedSimulations}
-                    icon={<Brain size={22} />}
-                    trend="+2 esta semana"
-                    trendUp={true}
-                    color="purple"
-                />
-                <StatCardPremium
-                    title="Nivel de Preparación"
-                    value={`${Math.min(100, Math.round((stats.completedSimulations * 10) + (stats.averageScore / 5)))}%`}
-                    icon={<Zap size={22} />}
-                    trend="Listo para el examen"
-                    trendUp={true}
-                    color="green"
-                />
+            <div id="tour-stats" className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
+                {isLoadingData ? (
+                    <>
+                        <Skeleton className="h-32 rounded-2xl bg-white/5" />
+                        <Skeleton className="h-32 rounded-2xl bg-white/5" />
+                        <Skeleton className="h-32 rounded-2xl bg-white/5" />
+                    </>
+                ) : (
+                    <>
+                        <StatCardPremium
+                            title="Puntaje Global"
+                            value={stats.averageScore}
+                            icon={<Target size={22} />}
+                            trend={stats.averageScore > 300 ? "Nivel Avanzado" : "En Progreso"}
+                            trendUp={stats.averageScore > 300}
+                            color="gold"
+                        />
+                        <StatCardPremium
+                            title="Simulacros Ejecutados"
+                            value={stats.completedSimulations}
+                            icon={<Brain size={22} />}
+                            trend="+2 esta semana"
+                            trendUp={true}
+                            color="purple"
+                        />
+                        <StatCardPremium
+                            title="Nivel de Preparación"
+                            value={`${Math.min(100, Math.round((stats.completedSimulations * 10) + (stats.averageScore / 5)))}%`}
+                            icon={<Zap size={22} />}
+                            trend="Listo para el examen"
+                            trendUp={true}
+                            color="green"
+                        />
+                    </>
+                )}
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500">
                 {/* Assignments Section */}
                 <div className="lg:col-span-2 space-y-8">
-                    <Card variant="solid" className="p-8 border-white/5 relative overflow-hidden group">
+                    <Card id="tour-assignments" variant="solid" className="p-8 border-white/5 relative overflow-hidden group">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-metal-gold/5 rounded-full blur-[100px] pointer-events-none transition-opacity opacity-50 group-hover:opacity-80" />
 
                         <div className="flex justify-between items-center mb-8 relative z-10">
@@ -235,7 +279,14 @@ export default function DashboardPage() {
                             <Badge variant="premium" className="px-3 py-1 text-[10px] uppercase font-black tracking-widest">Activas</Badge>
                         </div>
 
-                        <StudentAssignments user={user} />
+                        {isLoadingData ? (
+                            <div className="space-y-4">
+                                <Skeleton className="h-16 w-full rounded-xl bg-white/5" />
+                                <Skeleton className="h-16 w-full rounded-xl bg-white/5" />
+                            </div>
+                        ) : (
+                            <StudentAssignments user={user} />
+                        )}
                     </Card>
 
                     <Card variant="solid" className="p-8 border-white/5">
@@ -250,19 +301,27 @@ export default function DashboardPage() {
                             </Link>
                         </div>
 
-                        {recentResults.length > 0 ? (
-                            <ResultsHistoryList
-                                results={recentResults}
-                                onViewReport={(r: any) => { setSelectedResult(r); setIsModalOpen(true); }}
-                            />
-                        ) : (
-                            <div className="py-12 text-center border-2 border-dashed border-white/5 rounded-2xl bg-black/20">
-                                <Brain className="mx-auto text-metal-silver/20 mb-3" size={48} />
-                                <p className="text-metal-silver/40 font-bold uppercase text-xs tracking-widest">Sin data de simulacros</p>
-                                <Button variant="ghost" onClick={() => router.push('/simulation')} className="mt-2 text-metal-gold font-bold hover:underline hover:bg-transparent">
-                                    Realizar Primer Test
-                                </Button>
+                        {isLoadingData ? (
+                            <div className="space-y-4">
+                                <Skeleton className="h-12 w-full rounded-lg bg-white/5" />
+                                <Skeleton className="h-12 w-full rounded-lg bg-white/5" />
+                                <Skeleton className="h-12 w-full rounded-lg bg-white/5" />
                             </div>
+                        ) : (
+                            recentResults.length > 0 ? (
+                                <ResultsHistoryList
+                                    results={recentResults}
+                                    onViewReport={(r: any) => { setSelectedResult(r); setIsModalOpen(true); }}
+                                />
+                            ) : (
+                                <div className="py-12 text-center border-2 border-dashed border-white/5 rounded-2xl bg-black/20">
+                                    <Brain className="mx-auto text-metal-silver/20 mb-3" size={48} />
+                                    <p className="text-metal-silver/40 font-bold uppercase text-xs tracking-widest">Sin data de simulacros</p>
+                                    <Button variant="ghost" onClick={() => router.push('/simulation')} className="mt-2 text-metal-gold font-bold hover:underline hover:bg-transparent">
+                                        Realizar Primer Test
+                                    </Button>
+                                </div>
+                            )
                         )}
                     </Card>
                 </div>
@@ -270,7 +329,7 @@ export default function DashboardPage() {
                 {/* Sidebar */}
                 <div className="space-y-8">
                     {/* Join Class Card */}
-                    <Card variant="solid" className="p-8 border-white/5 bg-gradient-to-b from-white/[0.03] to-transparent">
+                    <Card id="tour-join-class" variant="solid" className="p-8 border-white/5 bg-gradient-to-b from-white/[0.03] to-transparent">
                         <h3 className="text-lg font-black text-white mb-6 flex items-center gap-2 italic uppercase tracking-tighter">
                             <Users className="text-purple-400" size={18} /> Unirse a Clase
                         </h3>
@@ -322,9 +381,9 @@ export default function DashboardPage() {
                             <div className="absolute inset-0 bg-gradient-to-br from-metal-gold/20 via-black to-black opacity-80" />
                             <div className="relative z-10">
                                 <Crown className="mx-auto text-metal-gold mb-4 animate-bounce" size={32} />
-                                <h3 className="text-xl font-black text-white italic uppercase tracking-tighter mb-2">Desbloquea Todo</h3>
+                                <h3 className="text-xl font-black text-white italic uppercase tracking-tighter mb-2">Plan Profesional</h3>
                                 <p className="text-xs text-metal-silver/80 mb-6 font-medium leading-relaxed">
-                                    Accede a simulacros ilimitados, analíticas avanzadas y descargas PDF.
+                                    Habilita todas las herramientas de análisis y práctica.
                                 </p>
                                 <Link href="/pricing">
                                     <Button variant="premium" className="w-full font-black uppercase tracking-widest text-xs h-10 shadow-[0_0_20px_rgba(212,175,55,0.3)]">

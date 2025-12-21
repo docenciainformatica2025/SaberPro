@@ -76,7 +76,7 @@ service cloud.firestore {
 
     // Preguntas: Lectura pública, escritura solo Admin.
     match /questions/{questionId} {
-      allow read: if true; 
+      allow read: if isAuthenticated(); 
       allow write: if isAdmin();
     }
 

@@ -129,7 +129,7 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
                                 <h4 className="font-black text-white text-sm uppercase tracking-widest">Límite de IA Alcanzado (5/5)</h4>
                                 <p className="text-sm text-metal-silver">Pásate a PRO para explicaciones ilimitadas.</p>
                             </div>
-                            <Link href="/pricing" className="absolute inset-0 z-20" />
+                            <Link href="/pricing" aria-label="Ver planes de precios" className="absolute inset-0 z-20" />
                         </Card>
                     ) : (
                         <div className="bg-metal-dark/30 rounded-xl border border-metal-silver/10 overflow-hidden">

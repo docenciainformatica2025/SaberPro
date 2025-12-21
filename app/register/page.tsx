@@ -1,6 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { registerSchema, RegisterFormValues } from '@/lib/schemas';
 import { Mail, Lock, ArrowRight, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -8,44 +11,45 @@ import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 
+import { toast } from 'sonner';
+
 export default function RegisterPage() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [acceptedTerms, setAcceptedTerms] = useState(false);
-    const [error, setError] = useState('');
     const { signup, signInWithGoogle } = useAuth();
     const router = useRouter();
-    const [loading, setLoading] = useState(false);
     const [googleLoading, setGoogleLoading] = useState(false);
+    const [authError, setAuthError] = useState('');
 
-    const handleRegister = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+    } = useForm<RegisterFormValues>({
+        resolver: zodResolver(registerSchema),
+    });
 
-        if (password !== confirmPassword) {
-            return setError('Las contraseñas no coinciden.');
-        }
-
-        if (!acceptedTerms) {
-            return setError('Debes aceptar los Términos y Condiciones para continuar.');
-        }
-
-        setLoading(true);
-        setError('');
+    const onSubmit = async (data: RegisterFormValues) => {
+        setAuthError('');
+        const loadingToast = toast.loading("Creando tu cuenta...");
         try {
-            await signup(email, password);
+            await signup(data.email, data.password);
+            toast.dismiss(loadingToast);
+            toast.success("¡Cuenta creada exitosamente!", {
+                description: "Redirigiendo a la configuración inicial..."
+            });
             router.push('/onboarding');
         } catch (err: any) {
-            setError(`Error: ${err.message}`);
-            console.error(err);
-        } finally {
-            setLoading(false);
+            toast.dismiss(loadingToast);
+            const msg = `Error: ${err.message}`;
+            setAuthError(msg);
+            toast.error("No se pudo crear la cuenta", {
+                description: err.message
+            });
         }
     };
 
     const handleGoogleLogin = async () => {
         setGoogleLoading(true);
-        setError('');
+        setAuthError('');
         try {
             await signInWithGoogle();
         } catch (err: any) {
@@ -56,7 +60,7 @@ export default function RegisterPage() {
             } else if (err.code === 'auth/popup-blocked') {
                 msg = "El navegador bloqueó la ventana emergente.";
             }
-            setError(msg);
+            setAuthError(msg);
             setGoogleLoading(false);
         }
     };
@@ -83,18 +87,18 @@ export default function RegisterPage() {
 
                 <div className="relative z-10 max-w-lg">
                     <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
-                        Crea tu cuenta y <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-[#ffd700] to-metal-gold">domina el examen.</span>
+                        Crea tu perfil y <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-[#ffd700] to-metal-gold">empieza a entrenar.</span>
                     </h2>
                     <p className="text-metal-silver/80 text-lg leading-relaxed mb-8">
-                        La plataforma número #1 para estudiantes de ingeniería y carreras afines. Empieza tu entrenamiento hoy mismo.
+                        Herramientas profesionales para estudiantes que buscan claridad en su preparación.
                     </p>
 
                     <div className="space-y-4">
                         {[
-                            "Acceso inmediato a simulacros",
-                            "Resultados predictivos con IA",
-                            "Certificados de competencia"
+                            "Diagnóstico de nivel inicial",
+                            "Práctica por áreas específicas",
+                            "Resultados inmediatos"
                         ].map((item, i) => (
                             <div key={i} className="flex items-center gap-3 text-metal-silver">
                                 <CheckCircle2 className="text-metal-gold" size={20} />
@@ -120,7 +124,7 @@ export default function RegisterPage() {
                     {/* Mobile Header (Hidden on Desktop) */}
                     <div className="lg:hidden text-center mb-8">
                         <h1 className="text-3xl font-bold text-white mb-2">SaberPro<span className="text-metal-gold">2026</span></h1>
-                        <p className="text-metal-silver/60">Crea tu cuenta profesional</p>
+                        <p className="text-metal-silver/60">Cuenta Profesional</p>
                     </div>
 
                     <div className="space-y-2">
@@ -153,44 +157,39 @@ export default function RegisterPage() {
                         </div>
                     </div>
 
-                    {error && (
+                    {authError && (
                         <div className="bg-red-500/10 border border-red-500/50 text-red-200 p-3 rounded-xl text-sm flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
                             <div className="w-1.5 h-1.5 rounded-full bg-red-400"></div>
-                            {error}
+                            {authError}
                         </div>
                     )}
 
-                    <form onSubmit={handleRegister} className="space-y-4">
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                         <Input
                             label="Correo Electrónico"
                             type="email"
                             icon={Mail}
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
                             placeholder="nombre@ejemplo.com"
-                            required
+                            {...register("email")}
+                            error={errors.email?.message}
                         />
 
                         <Input
                             label="Contraseña"
                             type="password"
                             icon={Lock}
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
                             placeholder="••••••••"
-                            required
-                            minLength={6}
+                            {...register("password")}
+                            error={errors.password?.message}
                         />
 
                         <Input
                             label="Confirmar Contraseña"
                             type="password"
                             icon={Lock}
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
                             placeholder="Repite tu contraseña"
-                            required
-                            minLength={6}
+                            {...register("confirmPassword")}
+                            error={errors.confirmPassword?.message}
                         />
 
                         {/* Terms */}
@@ -199,8 +198,7 @@ export default function RegisterPage() {
                                 <input
                                     type="checkbox"
                                     id="terms"
-                                    checked={acceptedTerms}
-                                    onChange={(e) => setAcceptedTerms(e.target.checked)}
+                                    {...register("terms")}
                                     className="h-4 w-4 rounded border-metal-silver text-metal-gold focus:ring-metal-gold bg-metal-dark/50 cursor-pointer"
                                 />
                             </div>
@@ -209,16 +207,17 @@ export default function RegisterPage() {
                                 Entiendo que esta App es un simulador educativo y <strong>no garantiza mis resultados</strong> en el examen oficial.
                             </label>
                         </div>
+                        {errors.terms && <span className="text-red-400 text-xs ml-1">{errors.terms.message}</span>}
 
                         <Button
                             type="submit"
-                            disabled={!acceptedTerms || loading}
-                            isLoading={loading}
+                            disabled={isSubmitting}
+                            isLoading={isSubmitting}
                             icon={ArrowRight}
                             iconPosition="right"
                             className="w-full h-12 mt-4"
                         >
-                            {loading ? "Registrando..." : "Crear Cuenta"}
+                            {isSubmitting ? "Registrando..." : "Crear Cuenta"}
                         </Button>
                     </form>
 

@@ -119,7 +119,7 @@ export default function CreateAssignmentModal({ isOpen, onClose, onAssignmentCre
                     <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                         <BookOpen className="text-metal-gold" /> Nueva Asignación
                     </h2>
-                    <button onClick={onClose} className="text-metal-silver hover:text-white transition-colors">
+                    <button onClick={onClose} aria-label="Cerrar modal" className="text-metal-silver hover:text-white transition-colors">
                         <X size={24} />
                     </button>
                 </div>

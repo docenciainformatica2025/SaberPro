@@ -61,20 +61,28 @@ export default function Home() {
             Plataforma Oficial 2026
           </Badge>
 
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9]">
+          <p className="text-[10px] md:text-xs text-metal-silver/40 font-bold uppercase tracking-[0.15em] mt-2">
+            Diseñado y desarrollado por Ing. Antonio Rodríguez
+          </p>
+
+          <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.0] mb-6">
             <span className="block text-white mb-2 drop-shadow-2xl">
-              Domina las Pruebas
+              Prepárate para el
             </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-white to-metal-gold animate-gradient-x">
-              Saber Pro
+              Saber Pro 2026
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-metal-silver/60 max-w-3xl mx-auto font-medium leading-relaxed">
-            La primera plataforma inteligente diseñada con principios de psicometría avanzada y análisis de datos del ICFES para maximizar tu puntaje.
+          <p className="text-xl md:text-2xl text-white max-w-4xl mx-auto font-medium leading-relaxed mb-4">
+            con práctica inteligente basada en tu nivel real.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-12">
+          <p className="text-sm md:text-base text-metal-silver/80 uppercase tracking-widest font-bold mb-8">
+            Diagnóstico gratuito • Plan personalizado • Resultados medibles
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-8">
             {user ? (
               <Link href={dashboardLink}>
                 <Button size="xl" variant="premium" icon={ArrowRight} iconPosition="right" className="h-16 px-10 text-lg font-black uppercase tracking-widest shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:shadow-[0_0_60px_rgba(212,175,55,0.6)] hover:scale-105 transition-all">
@@ -82,15 +90,15 @@ export default function Home() {
                 </Button>
               </Link>
             ) : (
-              <Link href="/register">
-                <Button size="xl" variant="premium" icon={ArrowRight} iconPosition="right" className="h-16 px-10 text-lg font-black uppercase tracking-widest shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:shadow-[0_0_60px_rgba(212,175,55,0.6)] hover:scale-105 transition-all">
-                  Iniciar Entrenamiento
+              <Link href="/diagnostic">
+                <Button size="xl" variant="premium" icon={Brain} iconPosition="left" className="h-16 px-10 text-lg font-black uppercase tracking-widest shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:shadow-[0_0_60px_rgba(212,175,55,0.6)] hover:scale-105 transition-all">
+                  Probar ahora (3 minutos)
                 </Button>
               </Link>
             )}
             <Link href="/methodology">
               <Button variant="outline" size="xl" className="h-16 px-10 text-lg font-bold uppercase tracking-widest border-white/10 hover:bg-white/5 hover:border-white/20 backdrop-blur-md">
-                Ver Metodología
+                Ver cómo funciona
               </Button>
             </Link>
           </div>
@@ -109,12 +117,23 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Features Section */}
+      {/* Features Section & Marketing Copy */}
       <section className="py-32 relative bg-black/50 border-t border-white/5 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-black text-white italic uppercase tracking-tighter mb-6">Tecnología de Punta</h2>
-            <p className="text-metal-silver max-w-2xl mx-auto text-lg">Hemos deconstruido el examen para ofrecerte las herramientas más precisas del mercado.</p>
+          <div className="text-center mb-20 space-y-6">
+            <Badge variant="outline" className="text-metal-gold border-metal-gold/30 px-4 py-1 uppercase tracking-widest text-[10px] font-black">
+              Filosofía de Entrenamiento
+            </Badge>
+
+            <h2 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter mb-6 leading-none">
+              &quot;El problema no es que no sepas.<br />
+              <span className="text-metal-silver/50">Es que no sabes qué reforzar.&quot;</span>
+            </h2>
+
+            <p className="text-metal-silver max-w-2xl mx-auto text-lg font-medium">
+              El Saber Pro no se estudia. <span className="text-white font-bold">Se entrena.</span><br />
+              Entrena como los que sí pasan.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -170,9 +189,9 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-6 md:gap-8 opacity-50 px-4">
-            <Link href="#" className="text-metal-silver hover:text-white text-[10px] md:text-xs uppercase tracking-widest font-bold whitespace-nowrap">Términos</Link>
-            <Link href="#" className="text-metal-silver hover:text-white text-[10px] md:text-xs uppercase tracking-widest font-bold whitespace-nowrap">Privacidad</Link>
-            <Link href="#" className="text-metal-silver hover:text-white text-[10px] md:text-xs uppercase tracking-widest font-bold whitespace-nowrap">Soporte</Link>
+            <Link href="/terms" className="text-metal-silver hover:text-white text-[10px] md:text-xs uppercase tracking-widest font-bold whitespace-nowrap">Términos</Link>
+            <Link href="/privacy" className="text-metal-silver hover:text-white text-[10px] md:text-xs uppercase tracking-widest font-bold whitespace-nowrap">Privacidad</Link>
+            <a href="mailto:docenciainformatica2025@gmail.com" className="text-metal-silver hover:text-white text-[10px] md:text-xs uppercase tracking-widest font-bold whitespace-nowrap">Soporte</a>
           </div>
         </div>
       </footer>

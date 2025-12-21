@@ -1,9 +1,10 @@
 'use client';
-import { useState, useEffect } from 'react';
+
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema, LoginFormValues } from '@/lib/schemas';
-import { Mail, Lock, ArrowRight, Chrome, CheckCircle2 } from 'lucide-react';
+import { registerSchema, RegisterFormValues } from '@/lib/schemas';
+import { Mail, Lock, ArrowRight, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
@@ -12,8 +13,8 @@ import { Input } from '@/components/ui/Input';
 
 import { toast } from 'sonner';
 
-export default function LoginPage() {
-    const { login, signInWithGoogle, user, role, loading } = useAuth(); // Add role & loading
+export default function RegisterPage() {
+    const { signup, signInWithGoogle } = useAuth();
     const router = useRouter();
     const [googleLoading, setGoogleLoading] = useState(false);
     const [authError, setAuthError] = useState('');
@@ -22,67 +23,44 @@ export default function LoginPage() {
         register,
         handleSubmit,
         formState: { errors, isSubmitting },
-    } = useForm<LoginFormValues>({
-        resolver: zodResolver(loginSchema),
+    } = useForm<RegisterFormValues>({
+        resolver: zodResolver(registerSchema),
     });
 
-    // Validar y redirigir si ya está logueado
-    useEffect(() => {
-        if (!loading && user) {
-            const dashboardLink = role === 'teacher' ? '/teacher' : role === 'admin' ? '/admin/dashboard' : '/dashboard';
-            // Solo mostrar toast si no acabamos de enviar el formulario (evita doble toast)
-            // Pero como es difícil saberlo aquí, mejor lo dejamos simple o confiamos en el toast del submit
-            router.push(dashboardLink);
-        }
-    }, [user, role, loading, router]);
-
-    const onSubmit = async (data: LoginFormValues) => {
+    const onSubmit = async (data: RegisterFormValues) => {
         setAuthError('');
-        const loadingToast = toast.loading("Iniciando sesión...");
+        const loadingToast = toast.loading("Creando tu cuenta...");
         try {
-            await login(data.email, data.password);
+            await signup(data.email, data.password);
             toast.dismiss(loadingToast);
-            toast.success("¡Bienvenido de nuevo!");
-            // La redirección la maneja el useEffect
+            toast.success("¡Cuenta creada exitosamente!", {
+                description: "Redirigiendo a la configuración inicial..."
+            });
+            router.push('/onboarding');
         } catch (err: any) {
             toast.dismiss(loadingToast);
-            console.error(err);
-            let msg = "Ocurrió un error al iniciar sesión.";
-            if (err.code === "auth/invalid-credential") msg = "Credenciales incorrectas.";
-            else if (err.code === "auth/user-not-found") msg = "Cuenta no encontrada.";
-            else if (err.code === "auth/wrong-password") msg = "Contraseña incorrecta.";
-            else if (err.code === "auth/too-many-requests") msg = "Demasiados intentos. Intenta más tarde.";
-
+            const msg = `Error: ${err.message}`;
             setAuthError(msg);
-            toast.error("Error al ingresar", { description: msg });
+            toast.error("No se pudo crear la cuenta", {
+                description: err.message
+            });
         }
     };
 
     const handleGoogleLogin = async () => {
         setGoogleLoading(true);
         setAuthError('');
-        const loadingToast = toast.loading("Conectando con Google...");
         try {
             await signInWithGoogle();
-            toast.dismiss(loadingToast);
         } catch (err: any) {
-            toast.dismiss(loadingToast);
             console.error("Google Login Error:", err);
-
             let msg = "No se pudo conectar con Google.";
-
             if (err.code === 'auth/popup-closed-by-user') {
                 msg = "Inicio de sesión cancelado.";
             } else if (err.code === 'auth/popup-blocked') {
-                msg = "El navegador bloqueó la ventana emergente. Por favor permítela.";
-            } else if (err.code === 'auth/cancelled-popup-request') {
-                msg = "Se canceló la solicitud.";
-            } else if (err.code === 'auth/unauthorized-domain') {
-                msg = "Dominio no autorizado en Firebase (Configuración).";
+                msg = "El navegador bloqueó la ventana emergente.";
             }
-
             setAuthError(msg);
-            toast.error("Error de conexión", { description: msg });
             setGoogleLoading(false);
         }
     };
@@ -91,7 +69,7 @@ export default function LoginPage() {
         <div className="flex min-h-screen bg-[#050505]">
             {/* Left Side - Branding (Desktop Only) */}
             <div className="hidden lg:flex w-1/2 bg-[#0a0a0a] relative overflow-hidden flex-col justify-between p-16 border-r border-white/5">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497864149936-d7e61461c302?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-20 filter grayscale mix-blend-overlay"></div>
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-20 filter grayscale mix-blend-overlay"></div>
                 <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/40 to-metal-gold/5"></div>
 
                 {/* Decoration Circles */}
@@ -109,18 +87,18 @@ export default function LoginPage() {
 
                 <div className="relative z-10 max-w-lg">
                     <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
-                        Accede a tu <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-[#ffd700] to-metal-gold">espacio de entrenamiento.</span>
+                        Crea tu cuenta y <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-[#ffd700] to-metal-gold">domina el examen.</span>
                     </h2>
                     <p className="text-metal-silver/80 text-lg leading-relaxed mb-8">
-                        Continúa tu preparación con métodos validados y seguimiento detallado de tu progreso.
+                        La plataforma número #1 para estudiantes de ingeniería y carreras afines. Empieza tu entrenamiento hoy mismo.
                     </p>
 
                     <div className="space-y-4">
                         {[
-                            "Simulación de examen real",
-                            "Métricas de desempeño",
-                            "Seguimiento de progreso"
+                            "Acceso inmediato a simulacros",
+                            "Resultados predictivos con IA",
+                            "Certificados de competencia"
                         ].map((item, i) => (
                             <div key={i} className="flex items-center gap-3 text-metal-silver">
                                 <CheckCircle2 className="text-metal-gold" size={20} />
@@ -139,29 +117,27 @@ export default function LoginPage() {
                 </div>
             </div>
 
-            {/* Right Side - Login Form */}
+            {/* Right Side - Register Form */}
             <div className="w-full lg:w-1/2 flex items-center justify-center p-8 relative">
                 <div className="w-full max-w-md space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
 
                     {/* Mobile Header (Hidden on Desktop) */}
                     <div className="lg:hidden text-center mb-8">
                         <h1 className="text-3xl font-bold text-white mb-2">SaberPro<span className="text-metal-gold">2026</span></h1>
-                        <p className="text-metal-silver/60">Entrenamiento Profesional</p>
+                        <p className="text-metal-silver/60">Crea tu cuenta profesional</p>
                     </div>
 
                     <div className="space-y-2">
-                        <h1 className="text-3xl font-bold text-white tracking-tight">Bienvenido de nuevo</h1>
-                        <p className="text-metal-silver/60">Ingresa tus credenciales para acceder al simulador.</p>
+                        <h1 className="text-3xl font-bold text-white tracking-tight">Regístrate Ahora</h1>
+                        <p className="text-metal-silver/60">Completa el formulario para comenzar tu preparación.</p>
                     </div>
 
-                    {/* Social Login */}
                     <Button
                         onClick={handleGoogleLogin}
                         disabled={googleLoading}
                         variant="silver"
                         className="w-full bg-white text-black hover:bg-gray-100 border-none h-12"
                         isLoading={googleLoading}
-                        aria-label="Iniciar sesión con Google"
                     >
                         <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
                             <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -169,7 +145,7 @@ export default function LoginPage() {
                             <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.26z" />
                             <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
                         </svg>
-                        Continuar con Google
+                        Registrarse con Google
                     </Button>
 
                     <div className="relative">
@@ -177,7 +153,7 @@ export default function LoginPage() {
                             <span className="w-full border-t border-metal-silver/10"></span>
                         </div>
                         <div className="relative flex justify-center text-xs uppercase">
-                            <span className="bg-[#050505] px-2 text-metal-silver/40">O continúa con correo</span>
+                            <span className="bg-[#050505] px-2 text-metal-silver/40">O regístrate con correo</span>
                         </div>
                     </div>
 
@@ -188,7 +164,7 @@ export default function LoginPage() {
                         </div>
                     )}
 
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                         <Input
                             label="Correo Electrónico"
                             type="email"
@@ -198,40 +174,58 @@ export default function LoginPage() {
                             error={errors.email?.message}
                         />
 
-                        <div className="space-y-2">
-                            <div className="flex justify-between items-center ml-1">
-                                <label className="text-xs font-semibold text-metal-silver/80 uppercase tracking-wider">
-                                    Contraseña
-                                </label>
-                                <Link href="/forgot-password" className="text-xs text-metal-gold hover:text-white transition-colors">
-                                    ¿Olvidaste tu contraseña?
-                                </Link>
+                        <Input
+                            label="Contraseña"
+                            type="password"
+                            icon={Lock}
+                            placeholder="••••••••"
+                            {...register("password")}
+                            error={errors.password?.message}
+                        />
+
+                        <Input
+                            label="Confirmar Contraseña"
+                            type="password"
+                            icon={Lock}
+                            placeholder="Repite tu contraseña"
+                            {...register("confirmPassword")}
+                            error={errors.confirmPassword?.message}
+                        />
+
+                        {/* Terms */}
+                        <div className="flex items-start gap-3 p-3 bg-black/20 rounded-xl border border-metal-silver/5 mt-2">
+                            <div className="relative flex items-center pt-1">
+                                <input
+                                    type="checkbox"
+                                    id="terms"
+                                    {...register("terms")}
+                                    className="h-4 w-4 rounded border-metal-silver text-metal-gold focus:ring-metal-gold bg-metal-dark/50 cursor-pointer"
+                                />
                             </div>
-                            <Input
-                                type="password"
-                                icon={Lock}
-                                placeholder="••••••••"
-                                {...register("password")}
-                                error={errors.password?.message}
-                            />
+                            <label htmlFor="terms" className="text-xs text-metal-silver/70 cursor-pointer select-none leading-relaxed">
+                                Acepto los <Link href="/terms" target="_blank" className="text-metal-gold hover:text-white underline">Términos de Uso y Política de Datos</Link>.
+                                Entiendo que esta App es un simulador educativo y <strong>no garantiza mis resultados</strong> en el examen oficial.
+                            </label>
                         </div>
+                        {errors.terms && <span className="text-red-400 text-xs ml-1">{errors.terms.message}</span>}
 
                         <Button
                             type="submit"
+                            disabled={isSubmitting}
                             isLoading={isSubmitting}
                             icon={ArrowRight}
                             iconPosition="right"
-                            className="w-full h-12 mt-2"
+                            className="w-full h-12 mt-4"
                         >
-                            {isSubmitting ? "Autenticando..." : "Ingresar al Sistema"}
+                            {isSubmitting ? "Registrando..." : "Crear Cuenta"}
                         </Button>
                     </form>
 
                     <div className="text-center">
                         <p className="text-sm text-metal-silver/60">
-                            ¿Aún no tienes cuenta?{' '}
-                            <Link href="/register" className="text-metal-gold hover:text-white font-medium transition-colors">
-                                Crear nueva cuenta
+                            ¿Ya tienes cuenta?{' '}
+                            <Link href="/login" className="text-metal-gold hover:text-white font-medium transition-colors">
+                                Iniciar Sesión
                             </Link>
                         </p>
                     </div>
@@ -240,10 +234,11 @@ export default function LoginPage() {
                 {/* Footer Legal Links (Absolute Bottom) */}
                 <div className="absolute bottom-6 w-full text-center px-4">
                     <p className="text-[10px] text-metal-silver/30">
-                        Protegido por reCAPTCHA y sujeto a la <Link href="/privacy" className="hover:text-metal-gold underline">Política de Privacidad</Link> y <Link href="/terms" className="hover:text-metal-gold underline">Términos del Servicio</Link>.
+                        Protegido por reCAPTCHA y sujeto a la <Link href="/privacy" className="hover:text-metal-gold underline">Política de Privacidad</Link>.
                     </p>
                 </div>
             </div>
         </div>
     );
 }
+

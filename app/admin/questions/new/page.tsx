@@ -22,6 +22,7 @@ import {
     Info
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { Question } from "@/types/question";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -201,7 +202,7 @@ export default function NewQuestionPage() {
                                 />
                                 {formData.imageUrl && (
                                     <div className="relative rounded-2xl overflow-hidden border border-white/5 mt-2 group aspect-video bg-black/40">
-                                        <img src={formData.imageUrl} alt="Vista previa de la pregunta" className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-700" />
+                                        <Image src={formData.imageUrl} alt="Vista previa de la pregunta" fill className="object-contain p-4 group-hover:scale-105 transition-transform duration-700" />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
                                             <Badge variant="info" className="bg-blue-500/20 text-blue-400">Vista Previa del Activo</Badge>
                                         </div>

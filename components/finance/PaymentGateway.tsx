@@ -72,7 +72,7 @@ export default function PaymentGateway({ planName, price, onSuccess, onCancel }:
 
                 {/* Right: Payment Interface */}
                 <div className="order-1 lg:order-2 metallic-card bg-[#0F0F0F] border border-white/10 rounded-2xl p-6 lg:p-8 relative overflow-hidden flex flex-col h-full min-h-[500px]">
-                    <button onClick={onCancel} className="absolute top-4 right-4 text-metal-silver hover:text-white transition-colors z-10">
+                    <button onClick={onCancel} aria-label="Cerrar pasarela de pago" className="absolute top-4 right-4 text-metal-silver hover:text-white transition-colors z-10">
                         <X size={24} />
                     </button>
 

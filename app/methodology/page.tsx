@@ -29,6 +29,16 @@ export default function MethodologyPage() {
                     <p className="text-xl md:text-2xl text-metal-silver/60 max-w-3xl mx-auto font-light leading-relaxed">
                         Diseñada científicamente para maximizar tu puntaje en el Saber Pro, combinando psicometría avanzada y tecnología adaptativa.
                     </p>
+
+                    <div className="pt-8">
+                        <div className="inline-block p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm max-w-2xl">
+                            <h3 className="text-white font-bold mb-2 uppercase tracking-wide text-sm">Un método diseñado desde la práctica real</h3>
+                            <p className="text-metal-silver text-sm leading-relaxed">
+                                Este entrenamiento fue desarrollado por <span className="text-white font-medium">Ing. Antonio Rodríguez</span>, ingeniero y formador en tecnología educativa.
+                                El enfoque prioriza diagnóstico, práctica guiada y seguimiento medible del progreso.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Core Pillars */}
