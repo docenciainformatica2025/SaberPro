@@ -36,6 +36,8 @@ export default function SeedPage() {
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
     const [liveCounts, setLiveCounts] = useState<Record<string, number>>({});
     const [isCheckingLive, setIsCheckingLive] = useState(true);
+    const [log, setLog] = useState<string[]>([]);
+    const [isConfirmingPurge, setIsConfirmingPurge] = useState(false);
 
     const checkLiveStatus = async () => {
         setIsCheckingLive(true);

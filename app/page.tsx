@@ -46,7 +46,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <main className="flex-grow pt-32 pb-20 px-4 relative overflow-hidden flex flex-col items-center text-center">
+      <main className="flex-grow pt-24 md:pt-32 pb-4 md:pb-10 px-4 relative overflow-hidden flex flex-col items-center text-center">
         {/* Background Ambience */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-metal-gold/5 rounded-full blur-[120px] pointer-events-none animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-metal-blue/5 rounded-full blur-[120px] pointer-events-none" />
@@ -99,7 +99,7 @@ export default function Home() {
           </div>
 
           {/* Trust Bar */}
-          <div className="pt-20 pb-10 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
+          <div className="pt-8 md:pt-16 pb-6 md:pb-10 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
             <p className="text-[10px] font-black uppercase tracking-[0.3em] text-metal-silver mb-8">Confianza de Estudiantes de</p>
             <div className="flex flex-wrap justify-center gap-12 md:gap-24 items-center">
               <span className="text-xl font-serif font-bold text-white">UNAL</span>
@@ -113,9 +113,9 @@ export default function Home() {
       </main>
 
       {/* Features Section & Marketing Copy */}
-      <section className="py-32 relative bg-black/50 border-t border-white/5 backdrop-blur-sm">
+      <section className="py-12 md:py-24 relative bg-black/50 border-t border-white/5 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20 space-y-6">
+          <div className="text-center mb-10 md:mb-20 space-y-4 md:space-y-6">
             <Badge variant="outline" className="text-metal-gold border-metal-gold/30 px-4 py-1 uppercase tracking-widest text-[10px] font-black">
               Filosofía de Entrenamiento
             </Badge>
@@ -150,7 +150,7 @@ export default function Home() {
       </section>
 
       {/* Social Proof / Stats */}
-      <section className="py-24 bg-gradient-to-b from-metal-gold/5 to-transparent relative overflow-hidden">
+      <section className="py-12 md:py-20 bg-gradient-to-b from-metal-gold/5 to-transparent relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
