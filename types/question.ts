@@ -17,6 +17,7 @@ export interface Question {
     options: QuestionOption[];
     correctAnswer: string; // ID de la opción correcta
     explanation: string;
-    difficulty: "baja" | "media" | "alta";
+    difficulty: "baja" | "media" | "media_alta" | "avanzada" | "alta";
     imageUrl?: string;
+    isPromptOnly?: boolean; // 2026: Para tareas de respuesta abierta (ej: Comunicación Escrita)
 }

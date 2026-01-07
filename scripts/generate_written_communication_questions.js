@@ -96,6 +96,28 @@ const TEMPLATES = [
                 explanation: `El orden lógico deductivo o cronológico correcto es: ${correctOrder}.`
             };
         }
+    },
+    // --- ARGUMENT OUTLINING (2026 NEW) ---
+    {
+        type: "argument_outlining",
+        difficulty: "avanzada",
+        generate: () => {
+            const topics = [
+                { topic: "la regulación de la Inteligencia Artificial", view: "a favor de una regulación estricta" },
+                { topic: "la transición energética inmediata", view: "en contra de prohibir combustibles fósiles drásticamente" },
+                { topic: "la educación 100% virtual en universidades", view: "a favor de mantener presencialidad híbrida" }
+            ];
+
+            const item = topics[Math.floor(Math.random() * topics.length)];
+
+            return {
+                isPromptOnly: true, // Special flag for UI handling
+                text: `TEMA DE ACTUALIDAD: ${item.topic}.\n\nTarea: Esboce 3 argumentos sólidos que sustenten una postura ${item.view}. No es necesario redactar un ensayo completo, solo los puntos clave.`,
+                correct: "Respuesta abierta (Evaluación de coherencia).",
+                explanation: "Un argumento sólido debe tener una premisa clara, evidencia o lógica de soporte y una conclusión vinculada al tema.",
+                distractors: ["N/A", "N/A", "N/A"] // Placeholder to maintain structure
+            };
+        }
     }
 ];
 
@@ -106,7 +128,7 @@ function generateQuestions() {
         let pool = TEMPLATES;
         if (difficulty === 'media') pool = TEMPLATES.filter(t => t.type === 'orthography');
         if (difficulty === 'media_alta') pool = TEMPLATES.filter(t => t.type === 'connector_usage');
-        if (difficulty === 'avanzada') pool = TEMPLATES.filter(t => t.type === 'text_order');
+        if (difficulty === 'avanzada') pool = TEMPLATES.filter(t => ['text_order', 'argument_outlining'].includes(t.type));
 
         if (pool.length === 0) pool = TEMPLATES;
 
@@ -138,7 +160,8 @@ function generateQuestions() {
                 options: finalOptions,
                 correctAnswer: correctAnswerId,
                 explanation: qData.explanation,
-                difficulty: difficulty
+                difficulty: difficulty,
+                isPromptOnly: qData.isPromptOnly || false
             });
         }
     };

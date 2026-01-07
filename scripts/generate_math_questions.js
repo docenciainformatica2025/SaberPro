@@ -143,46 +143,47 @@ const TEMPLATES = [
         }
     },
 
-    // --- AVANZADA ---
+    // --- PERSONAL FINANCE - NEW 2026 ---
     {
-        type: "algebra_system",
-        difficulty: "avanzada",
+        type: "personal_finance",
+        difficulty: "media_alta",
         generate: () => {
-            const x = Math.floor(Math.random() * 10) + 2;
-            const y = Math.floor(Math.random() * 10) + 2;
-
-            const res1 = 2 * x + y;
-            const res2 = x - y;
+            const principal = (Math.floor(Math.random() * 9) + 1) * 1000000; // 1M - 9M
+            const rate = Math.floor(Math.random() * 5) + 8; // 8% - 12%
+            const inflation = 5;
+            const realReturn = rate - inflation;
 
             return {
-                text: `Resuelva el sistema de ecuaciones para hallar 'x':\n1) 2x + y = ${res1}\n2) x - y = ${res2}`,
-                correct: `x = ${x}`,
+                text: `Si inviertes $${principal.toLocaleString('es-CO')} en un CDT con una tasa efectiva anual del ${rate}%, y la inflación proyectada es del ${inflation}%, ¿cuál será aproximadamente tu rentabilidad real al final del año?`,
+                correct: `${realReturn}%`,
                 distractors: [
-                    `x = ${x + 1}`,
-                    `x = ${y}`,
-                    `x = ${Math.round((res1 + res2) / 2)}`
+                    `${rate}%`,
+                    `${rate + inflation}%`,
+                    `${inflation}%`
                 ],
-                explanation: `Sumando (1) y (2): (2x + y) + (x - y) = ${res1} + ${res2} --> 3x = ${res1 + res2} --> x = ${(res1 + res2) / 3}.`
+                explanation: `Rentabilidad Real ≈ Tasa Nominal - Inflación. En este caso: ${rate}% - ${inflation}% = ${realReturn}%.`
             };
         }
     },
+    // --- DATA INTERPRETATION (News Graphs) - NEW 2026 ---
     {
-        type: "geometry_circle_area",
-        difficulty: "avanzada",
+        type: "data_interpretation_news",
+        difficulty: "media",
         generate: () => {
-            const r = Math.floor(Math.random() * 8) + 2;
-            const area = Math.PI * r * r;
-            const areaStr = `${(r * r)}π`;
+            const years = ["2022", "2023", "2024", "2025"];
+            const values = [12, 15, 18, 14]; // Generic percentage growth
+            const maxYear = years[2];
+            const maxVal = values[2];
 
             return {
-                text: `Si el radio de un círculo es ${r} cm, ¿cuál es su área?`,
-                correct: `${areaStr} cm²`,
+                text: `Un gráfico de noticias muestra el crecimiento del PIB en 4 años: 2022 (12%), 2023 (15%), 2024 (18%) y 2025 (14%). Según estos datos, ¿en qué año se registró el mayor crecimiento y cuánto fue la caída respecto al año anterior en 2025?`,
+                correct: `Mayor en 2024; Caída de 4 puntos porcentuales en 2025.`,
                 distractors: [
-                    `${2 * r}π cm²`,
-                    `${r}π cm²`,
-                    `${r * r * r}π cm²`
+                    `Mayor en 2025; Crecimiento persistente.`,
+                    `Mayor en 2024; Caída de 14% en 2025.`,
+                    `Mayor en 2023; Estabilidad en 2024.`
                 ],
-                explanation: `El área de un círculo es A = π*r^2. A = π*(${r})^2 = ${r * r}π.`
+                explanation: `El valor máximo es 18% en 2024. En 2025 bajó a 14%, lo que representa una caída de 4 puntos (18 - 14 = 4).`
             };
         }
     }

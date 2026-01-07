@@ -99,6 +99,63 @@ const TEMPLATES = [
                 explanation: `El texto define el concepto como algo que "${defData.def}". Afirmar que "${defData.incompatible}" contradice directamente esa definición.`
             };
         }
+    },
+    // --- PHILOSOPHICAL (Abstractions & Intents) - UPDATED 2026 ---
+    {
+        type: "philosophical_intents",
+        difficulty: "avanzada",
+        generate: () => {
+            const fragments = [
+                {
+                    text: "Si la justicia es solo el interés del más fuerte, como propone Trasímaco, entonces la ley no es un refugio sino una herramienta de dominación.",
+                    question: "¿Qué intención oculta se puede identificar en la premisa sobre Trasímaco?",
+                    correct: "Criticar la reducción de la moral a una cuestión de poder.",
+                    explanation: "El autor usa un condicional para mostrar las consecuencias negativas de una visión puramente cínica de la justicia.",
+                    distractors: ["Apoyar la idea de que los fuertes deben mandar.", "Describir objetivamente la historia de Grecia.", "Elogiar la claridad de Trasímaco."]
+                },
+                {
+                    text: "La libertad no consiste en hacer lo que uno quiere, sino en no estar obligado a hacer lo que otro quiere bajo coacción injusta.",
+                    question: "¿Cuál es el prejuicio ético que intenta desmontar el fragmento?",
+                    correct: "La falsa equivalencia entre libertad y ausencia total de normas o deseos caprichosos.",
+                    explanation: "El texto redefine la libertad enfocándose en la autonomía frente a la coacción externa.",
+                    distractors: ["Que nadie debe seguir leyes.", "Que la libertad es un concepto imposible.", "Que el autor está en contra de la voluntad individual."]
+                }
+            ];
+
+            const frag = fragments[Math.floor(Math.random() * fragments.length)];
+
+            return {
+                text: `${frag.text}\n\n${frag.question}`,
+                correct: frag.correct,
+                distractors: frag.distractors,
+                explanation: frag.explanation
+            };
+        }
+    },
+    // --- OPINION COLUMNS (Arguments & Validity) - NEW 2026 ---
+    {
+        type: "opinion_analysis",
+        difficulty: "media_alta",
+        generate: () => {
+            const columns = [
+                {
+                    text: "No podemos permitir que expertos en algoritmos decidan el futuro de nuestra privacidad, pues su único norte es la rentabilidad, no el bienestar ciudadano. Ignorar esto es ingenuidad pura.",
+                    question: "¿Cuál es el principal recurso argumentativo del autor para descalificar a los expertos?",
+                    correct: "El cuestionamiento de sus intenciones basado en un interés económico (argumento ad hominem circunstancial).",
+                    explanation: "El autor ataca la propuesta de los expertos señalando que su motivación es el lucro, no la competencia técnica.",
+                    distractors: ["El uso de estadísticas de privacidad.", "La comparación entre algoritmos y seres humanos.", "La cita de una autoridad en derechos humanos."]
+                }
+            ];
+
+            const col = columns[Math.floor(Math.random() * columns.length)];
+
+            return {
+                text: `Fragmento de columna:\n"${col.text}"\n\n${col.question}`,
+                correct: col.correct,
+                distractors: col.distractors,
+                explanation: col.explanation
+            };
+        }
     }
 ];
 

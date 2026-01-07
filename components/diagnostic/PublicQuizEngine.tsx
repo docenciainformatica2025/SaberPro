@@ -7,47 +7,67 @@ import { Card } from "@/components/ui/Card";
 import { Brain, ArrowRight, CheckCircle2, XCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Preguntas Micro-Diagnóstico (Hardcoded para velocidad)
+// Preguntas Micro-Diagnóstico 2026 (Expert Level)
 const QUESTIONS = [
     {
         id: 1,
-        category: "Razonamiento Cuantitativo",
-        question: "Si el 30% de X es 45, ¿cuánto es el 50% de X?",
-        options: ["60", "75", "90", "150"],
-        correct: 1, // 75
-        explanation: "Si 30% = 45, entonces 10% = 15. Por tanto 100% = 150. El 50% de 150 es 75."
+        category: "Competencias Ciudadanas",
+        question: "Un medio de comunicación publica la orientación sexual de un funcionario público alegando 'interés general'. El funcionario demanda alegando su derecho a la intimidad. ¿Qué criterio aplica la Corte Constitucional?",
+        options: [
+            "Priorizar siempre la libertad de prensa.",
+            "El test de proporcionalidad (ponderación).",
+            "Darle la razón a quien llegó primero.",
+            "Ignorar el caso por ser privado."
+        ],
+        correct: 1,
+        explanation: "En conflictos de derechos constitucionales de igual jerarquía, se aplica la ponderación basada en el test de proporcionalidad."
     },
     {
         id: 2,
         category: "Lectura Crítica",
-        question: "¿Cuál es la intención principal del autor en un texto argumentativo?",
-        options: ["Narrar una historia", "Describir una escena", "Persuadir al lector", "Exponer datos"],
+        question: "Si la justicia es solo el interés del más fuerte, entonces la ley no es un refugio sino una herramienta de dominación. ¿Qué intención tiene el autor?",
+        options: [
+            "Elogiar la fuerza bruta.",
+            "Describir la historia griega.",
+            "Criticar la reducción de la moral al poder.",
+            "Apoyar la anarquía total."
+        ],
         correct: 2,
-        explanation: "El propósito central de la argumentación es convencer o persuadir."
+        explanation: "El autor usa un condicional para mostrar las consecuencias cínicas de reducir la justicia al simple interés del más fuerte."
     },
     {
         id: 3,
-        category: "Inglés (B1)",
-        question: "Select the correct sentence:",
-        options: ["She have two cats.", "She has two cats.", "She is having two cats.", "She had have two cats."],
-        correct: 1,
-        explanation: "Third person singular (She) uses 'has'."
+        category: "Razonamiento Cuantitativo",
+        question: "Inviertes $1.000.000 al 10% E.A. Si la inflación es del 5%, ¿cuál es tu rentabilidad real aproximada?",
+        options: ["10%", "15%", "5%", "50%"],
+        correct: 2,
+        explanation: "La rentabilidad real se calcula restando la inflación de la tasa nominal: 10% - 5% = 5%."
     },
     {
         id: 4,
-        category: "Competencias Ciudadanas",
-        question: "¿Qué mecanismo protege los derechos fundamentales en Colombia?",
-        options: ["Acción de Grupo", "Acción de Tutela", "Habeas Corpus", "Plebiscito"],
+        category: "Inglés (B2)",
+        question: "What can be inferred from: 'Despite digitalization, many elderly people prefer face-to-face interaction since technology feels cold'?",
+        options: [
+            "Technology is free for everyone.",
+            "There is social resistance due to emotional factors.",
+            "The government stopped the process.",
+            "Elderly people can't learn technology."
+        ],
         correct: 1,
-        explanation: "La Tutela es el mecanismo específico para la protección inmediata de derechos fundamentales."
+        explanation: "The preference for face-to-face due to 'coldness' implies an emotional/generational resistance to the digital shift."
     },
     {
         id: 5,
-        category: "Pensamiento Lógico",
-        question: "Completa la serie: 2, 4, 8, 16, ...",
-        options: ["20", "24", "30", "32"],
-        correct: 3,
-        explanation: "Es una progresión geométrica multiplicada por 2. 16 * 2 = 32."
+        category: "Comunicación Escrita",
+        question: "Para un ensayo sobre inteligencia artificial, ¿cuál es el orden lógico más adecuado?",
+        options: [
+            "Conclusiones - Argumentos - Tesis.",
+            "Tesis - Argumentos - Contraargumentos - Conclusión.",
+            "Ejemplos - Tesis - Bibliografía - Título.",
+            "Introducción - Cierre - Desarrollo - Tesis."
+        ],
+        correct: 1,
+        explanation: "Un ensayo académico estándar sigue una estructura deductiva: planteamiento de tesis, sustentación (pros/contras) y síntesis final."
     }
 ];
 
@@ -168,7 +188,7 @@ export default function PublicQuizEngine() {
                 </motion.div>
             </AnimatePresence>
 
-            {/* Immediate Feedback (Micro-Victoria) */}
+            {/* Immediate Feedback (Expert Evaluator) */}
             <AnimatePresence>
                 {showFeedback && (
                     <motion.div
@@ -182,11 +202,22 @@ export default function PublicQuizEngine() {
                             </div>
                             <div className="flex-1">
                                 <h4 className={`font-bold mb-1 ${isCorrect ? 'text-green-400' : 'text-red-400'}`}>
-                                    {isCorrect ? '✔ Bien, este tema lo dominas.' : '⚠ Aquí suele fallar el 70% de estudiantes.'}
+                                    {isCorrect ? '✔ Evaluador Experto: Correcto. Tu análisis es coherente con la matriz 2026.' : '⚠ Evaluador Experto: Aquí suele fallar el 70% de aspirantes por falta de rigor técnico.'}
                                 </h4>
                                 <p className="text-sm text-metal-silver mb-4 leading-relaxed">
                                     {currentQ.explanation}
                                 </p>
+
+                                {/* Tip Saber Pro 2026 */}
+                                <div className="mb-6 p-4 bg-metal-gold/5 border-l-2 border-metal-gold rounded-r-lg">
+                                    <span className="block text-[10px] font-black text-metal-gold uppercase tracking-widest mb-1">Tip Saber Pro 2026</span>
+                                    <p className="text-xs italic text-metal-silver/80">
+                                        {isCorrect
+                                            ? "Mantén este nivel de detalle. En 2026, las inferencias no son solo literales, requieren entender la intención oculta del autor."
+                                            : "No te dejes llevar por la respuesta que suena 'más bonita'. En Competencias Ciudadanas, prioriza siempre el marco constitucional vigente."}
+                                    </p>
+                                </div>
+
                                 <Button
                                     onClick={handleNext}
                                     variant="premium"

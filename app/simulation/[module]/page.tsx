@@ -215,6 +215,8 @@ const SimulationContent = () => {
         );
     }
 
+    const isStudyMode = searchParams.get('mode') === 'study';
+
     return (
         <div className="min-h-screen py-6 md:py-12 bg-metal-dark text-white selection:bg-metal-gold/30">
             <QuizEngine
@@ -224,6 +226,7 @@ const SimulationContent = () => {
                 timeLimit={finalTimeLimit}
                 sessionId={sessionId}
                 assignmentId={assignmentId as string}
+                studyMode={isStudyMode}
             />
         </div>
     );

@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { Question } from "@/types/question";
 import QuestionCard from "./QuestionCard";
-import { ArrowRight, ArrowLeft, Trophy, Timer, AlertTriangle, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ArrowLeft, Trophy, Timer, AlertTriangle, CheckCircle2, Brain } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { db } from "@/lib/firebase";
@@ -21,9 +22,10 @@ interface QuizEngineProps {
     timeLimit?: number; // In seconds
     sessionId?: string;
     assignmentId?: string;
+    studyMode?: boolean; // 2026: Immediate feedback mode
 }
 
-export default function QuizEngine({ questions, moduleName, nextModule, timeLimit, sessionId, assignmentId }: QuizEngineProps) {
+export default function QuizEngine({ questions, moduleName, nextModule, timeLimit, sessionId, assignmentId, studyMode = false }: QuizEngineProps) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [answers, setAnswers] = useState<Record<string, string>>({});
     const [finished, setFinished] = useState(false);
@@ -63,12 +65,23 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
         return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
     };
 
+    const [showFeedback, setShowFeedback] = useState(false);
+    const [isCorrect, setIsCorrect] = useState(false);
+
     const handleSelectOption = (optionId: string) => {
-        if (finished) return;
+        if (finished || (studyMode && showFeedback)) return;
+
+        const correct = optionId === currentQuestion.correctAnswer;
+        setIsCorrect(correct);
+
         setAnswers(prev => ({
             ...prev,
             [currentQuestion.id!]: optionId
         }));
+
+        if (studyMode) {
+            setShowFeedback(true);
+        }
     };
 
     const calculateScoreAndSave = async (isPartial = false) => {
@@ -169,12 +182,21 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
     const [showReview, setShowReview] = useState(false);
 
     const handleNext = () => {
+        if (studyMode) setShowFeedback(false);
+
         if (isLastQuestion) {
             setShowReview(true);
         } else {
             setCurrentIndex(prev => prev + 1);
         }
     };
+
+    // 2026 Tip Logic
+    const getTip = (correct: boolean) => {
+        if (correct) return "✔ Evaluador Experto: Correcto. Tu análisis es coherente con la matriz 2026. Sigue así.";
+        return "⚠ Evaluador Experto: Este error es común. Tip Saber Pro 2026: Lee siempre el contexto antes de descartar opciones que parecen técnicamente válidas.";
+    };
+
     // ---------------------------------
 
     if (showReview && !finished) {
@@ -393,7 +415,43 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                 question={currentQuestion}
                 selectedOptionId={answers[currentQuestion.id!] || null}
                 onSelectOption={handleSelectOption}
+                showResult={studyMode && showFeedback}
             />
+
+            {/* Immediate Feedback (Micro-Victoria) 2026 */}
+            <AnimatePresence>
+                {studyMode && showFeedback && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="mt-8 bg-black/40 border border-white/10 rounded-xl p-6 backdrop-blur-md"
+                    >
+                        <div className="flex items-start gap-4">
+                            <div className={`p-2 rounded-lg ${isCorrect ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'}`}>
+                                <Brain size={24} />
+                            </div>
+                            <div className="flex-1">
+                                <h4 className={`font-bold mb-1 ${isCorrect ? 'text-green-400' : 'text-red-400'}`}>
+                                    {getTip(isCorrect)}
+                                </h4>
+                                <p className="text-sm text-metal-silver mb-4 leading-relaxed">
+                                    {currentQuestion.explanation}
+                                </p>
+                                <Button
+                                    onClick={handleNext}
+                                    variant="premium"
+                                    className="w-full text-xs font-black uppercase tracking-widest h-10"
+                                    icon={ArrowRight}
+                                    iconPosition="right"
+                                >
+                                    {isLastQuestion ? 'Ver Diagnóstico Final' : 'Siguiente Pregunta'}
+                                </Button>
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* Navigation */}
             <div className="flex justify-between items-center mt-12 gap-4">

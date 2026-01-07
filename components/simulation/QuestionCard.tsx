@@ -76,46 +76,59 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
                 {question.text}
             </h2>
 
-            {/* ... Existing Options ... */}
-            <div className="space-y-4 mb-8">
-                {question.options.map((option) => {
-                    const isSelected = selectedOptionId === option.id;
-                    const isCorrect = option.id === question.correctAnswer;
+            {/* ... Options or Prompt ... */}
+            {question.isPromptOnly ? (
+                <div className="space-y-4 mb-8">
+                    <textarea
+                        className="w-full h-40 p-4 rounded-xl border border-metal-silver/20 bg-metal-dark/50 text-white focus:border-metal-gold focus:ring-1 focus:ring-metal-gold outline-none transition-all"
+                        placeholder="Escribe tus 3 argumentos aquí..."
+                        disabled={showResult}
+                    />
+                    <p className="text-xs text-metal-silver/50 italic">
+                        * Esta es una tarea de respuesta abierta para desarrollar tus habilidades de argumentación.
+                    </p>
+                </div>
+            ) : (
+                <div className="space-y-4 mb-8">
+                    {question.options.map((option) => {
+                        const isSelected = selectedOptionId === option.id;
+                        const isCorrect = option.id === question.correctAnswer;
 
-                    let optionStyle = "bg-metal-dark/50 border-metal-silver/10 text-metal-silver/70 hover:bg-metal-silver/5 hover:border-metal-silver/30";
-                    let iconColor = "border-metal-silver/30 text-transparent group-hover:border-metal-silver/60";
+                        let optionStyle = "bg-metal-dark/50 border-metal-silver/10 text-metal-silver/70 hover:bg-metal-silver/5 hover:border-metal-silver/30";
+                        let iconColor = "border-metal-silver/30 text-transparent group-hover:border-metal-silver/60";
 
-                    if (showResult) {
-                        if (isCorrect) {
-                            optionStyle = "bg-green-500/20 border-green-500/50 text-white";
-                            iconColor = "border-green-500 text-green-500";
+                        if (showResult) {
+                            if (isCorrect) {
+                                optionStyle = "bg-green-500/20 border-green-500/50 text-white";
+                                iconColor = "border-green-500 text-green-500";
+                            } else if (isSelected) {
+                                optionStyle = "bg-red-500/20 border-red-500/50 text-white";
+                                iconColor = "border-red-500 text-red-500";
+                            } else {
+                                optionStyle = "opacity-50 pointer-events-none";
+                            }
                         } else if (isSelected) {
-                            optionStyle = "bg-red-500/20 border-red-500/50 text-white";
-                            iconColor = "border-red-500 text-red-500";
-                        } else {
-                            optionStyle = "opacity-50 pointer-events-none";
+                            optionStyle = "bg-metal-gold/10 border-metal-gold text-white shadow-[0_0_15px_rgba(212,175,55,0.1)]";
+                            iconColor = "border-metal-gold text-metal-gold";
                         }
-                    } else if (isSelected) {
-                        optionStyle = "bg-metal-gold/10 border-metal-gold text-white shadow-[0_0_15px_rgba(212,175,55,0.1)]";
-                        iconColor = "border-metal-gold text-metal-gold";
-                    }
 
-                    return (
-                        <button
-                            key={option.id}
-                            onClick={() => !showResult && onSelectOption(option.id)}
-                            disabled={showResult}
-                            className={`w-full text-left p-4 rounded-xl border transition-all duration-300 flex items-center gap-4 group ${optionStyle}`}
-                        >
-                            <div className={`p-1 rounded-full border transition-colors ${iconColor}`}>
-                                {showResult && isCorrect ? <CheckCircle2 size={20} className="fill-green-500/20" /> :
-                                    isSelected ? <CheckCircle2 size={20} className="fill-metal-gold/20" /> : <Circle size={20} />}
-                            </div>
-                            <span className="text-lg">{option.text}</span>
-                        </button>
-                    );
-                })}
-            </div>
+                        return (
+                            <button
+                                key={option.id}
+                                onClick={() => !showResult && onSelectOption(option.id)}
+                                disabled={showResult}
+                                className={`w-full text-left p-4 rounded-xl border transition-all duration-300 flex items-center gap-4 group ${optionStyle}`}
+                            >
+                                <div className={`p-1 rounded-full border transition-colors ${iconColor}`}>
+                                    {showResult && isCorrect ? <CheckCircle2 size={20} className="fill-green-500/20" /> :
+                                        isSelected ? <CheckCircle2 size={20} className="fill-metal-gold/20" /> : <Circle size={20} />}
+                                </div>
+                                <span className="text-lg">{option.text}</span>
+                            </button>
+                        );
+                    })}
+                </div>
+            )}
 
             {/* AI Explanation Section */}
             {showResult && (

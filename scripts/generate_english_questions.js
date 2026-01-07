@@ -70,30 +70,35 @@ const TEMPLATES = [
             };
         }
     },
-    // --- PART 7: READING ---
+    // --- PART 7: INFERENTIAL READING (B1/B2) - UPDATED 2026 ---
     {
-        type: "reading_comprehension",
+        type: "inferential_reading",
         difficulty: "avanzada",
         generate: () => {
-            const subjects = ["Climate Change", "Remote Work", "Mental Health", "Space Exploration", "Artificial Intelligence", "Healthy Eating"];
-            const details = ["requires global cooperation", "improves flexibility but reduces social contact", "is as important as physical health", "could be our future survival strategy", "will transform job markets", "extends life expectancy"];
+            const scenarios = [
+                {
+                    text: "Despite the government's efforts to digitalize all public services, a significant portion of the elderly population still prefers face-to-face interaction, claiming that technology feels 'impersonal and cold'.",
+                    question: "What can be inferred from the text about the digitalization process?",
+                    correct: "It has faced social resistance due to emotional or generational factors.",
+                    explanation: "The text mentions a 'preference' and 'claims' from a specific group, implying a gap between policy and user experience.",
+                    distractors: ["The government has failed to build any websites.", "Elderly people are unable to learn new skills.", "Digital services are cheaper than face-to-face ones."]
+                },
+                {
+                    text: "The rise of conscious consumerism has forced major corporations to rethink their supply chains, although critics argue these changes are often more about marketing than ethics.",
+                    question: "What is the critics' main concern regarding the companies' changes?",
+                    correct: "That the changes might be superficial or profit-driven.",
+                    explanation: "Explicitly mentions 'marketing than ethics', suggesting a lack of genuine commitment.",
+                    distractors: ["That corporations are losing too much money.", "That consumers do not care about supply chains.", "That supply chains are becoming too complex."]
+                }
+            ];
 
-            // Randomly pick subject/detail
-            const sIdx = Math.floor(Math.random() * subjects.length);
-            const subject = subjects[sIdx];
-            const detail = details[sIdx] || details[0]; // Fallback aligned by index roughly or random? Let's align by index for coherence if array same length, else random. Arrays are same length.
-
-            const text = `Recent studies suggest that ${subject.toLowerCase()} ${detail}. Experts argue that we must pay attention to this trend to ensure a better future.`;
+            const sc = scenarios[Math.floor(Math.random() * scenarios.length)];
 
             return {
-                text: `Read the text:\n"${text}"\n\nWhat do experts suggest about ${subject.toLowerCase()}?`,
-                correct: `That it ${detail}.`,
-                distractors: [
-                    "That it is not important at all.",
-                    "That we should ignore the trend.",
-                    "That it has no impact on society."
-                ],
-                explanation: `The text explicitly states that ${subject.toLowerCase()} ${detail}.`
+                text: `Read the passage:\n"${sc.text}"\n\n${sc.question}`,
+                correct: sc.correct,
+                distractors: sc.distractors,
+                explanation: sc.explanation
             };
         }
     }

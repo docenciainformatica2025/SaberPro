@@ -67,29 +67,35 @@ const TEMPLATES = [
             };
         }
     },
-    // --- SYSTEMIC THINKING (Consequences) ---
+    // --- CONSTITUTIONAL CONFLICTS - UPDATED 2026 ---
     {
-        type: "systemic_thinking",
+        type: "constitutional_conflicts",
         difficulty: "avanzada",
         generate: () => {
             const scenarios = [
-                { problem: "el desempleo juvenil", measure: "subsidiar el primer empleo indefinidamente", consequence: "déficit fiscal insostenible" },
-                { problem: "la inseguridad urbana", measure: "militarizar permanentemente las calles", consequence: "falta de garantías de derechos civiles" },
-                { problem: "la corrupción", measure: "eliminar todos los trámites públicos", consequence: "falta de control y caos administrativo" },
-                { problem: "la contaminación", measure: "prohibir todo tipo de vehículos", consequence: "colapso de la movilidad y economía" }
+                {
+                    text: "Un medio de comunicación publica la orientación sexual de un funcionario público alegando 'interés general', pero el funcionario demanda alegando su derecho a la intimidad.",
+                    question: "En este choque de derechos, ¿qué criterio suele aplicar la Corte Constitucional para resolverlo?",
+                    correct: "El test de proporcionalidad: evaluar si la revelación es necesaria, idónea y proporcional para el fin buscado.",
+                    explanation: "En conflictos de derechos constitucionales de igual jerarquía, se aplica la ponderación basada en la proporcionalidad.",
+                    distractors: ["Priorizar siempre la libertad de prensa sobre cualquier otro derecho.", "Darle la razón a quien interponga la tutela primero.", "Ignorar el caso por ser de ámbito privado."]
+                },
+                {
+                    text: "En una consulta previa, una minoría étnica rechaza un proyecto minero avalado por el interés nacional de crecimiento económico.",
+                    question: "¿Qué principio fundamental de la Constitución de 1991 se encuentra en tensión aquí?",
+                    correct: "Diversidad étnica y cultural vs. Utilidad pública e interés social.",
+                    explanation: "La Constitución colombiana protege la diversidad como valor fundamental, lo que a veces choca con metas extractivas o nacionales.",
+                    distractors: ["Derecho a la educación vs. Derecho al trabajo.", "Derecho de petición vs. Libertad de expresión.", "Autonomía regional vs. Centralismo absoluto."]
+                }
             ];
 
-            const item = scenarios[Math.floor(Math.random() * scenarios.length)];
+            const sc = scenarios[Math.floor(Math.random() * scenarios.length)];
 
             return {
-                text: `Para combatir ${item.problem}, se propone ${item.measure}. Un analista advierte que esta medida, aunque popular, podría generar ${item.consequence}. ¿Qué dimensión del problema está privilegiando el analista?`,
-                correct: "El impacto estructural o las consecuencias no deseadas a largo plazo.",
-                distractors: [
-                    "La popularidad inmediata de la medida.",
-                    "El beneficio económico a corto plazo.",
-                    "La opinión de los medios de comunicación."
-                ],
-                explanation: `El analista está evaluando consecuencias sistémicas de segundo orden (${item.consequence}) más allá de la solución inmediata.`
+                text: `${sc.text}\n\n${sc.question}`,
+                correct: sc.correct,
+                distractors: sc.distractors,
+                explanation: sc.explanation
             };
         }
     }
