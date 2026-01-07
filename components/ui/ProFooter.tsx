@@ -4,7 +4,7 @@ import { COPYRIGHT_TEXT, DEVELOPER_COPYRIGHT } from "@/lib/config";
 
 export default function ProFooter() {
     return (
-        <footer className="w-full mt-4 md:mt-8 pt-4 md:pt-8 pb-12 border-t border-metal-silver/5 flex flex-col items-center animate-in fade-in slide-in-from-bottom-2 duration-1000">
+        <footer className="w-full mt-2 md:mt-4 pt-2 md:pt-4 pb-8 border-t border-metal-silver/5 flex flex-col items-center animate-in fade-in slide-in-from-bottom-2 duration-1000">
             {/* Trust Badges */}
             <div className="flex items-center gap-6 mb-4 opacity-30 grayscale hover:grayscale-0 transition-all duration-500" suppressHydrationWarning>
                 <div className="flex items-center gap-1 text-[10px] font-bold text-metal-silver uppercase tracking-widest" suppressHydrationWarning>
