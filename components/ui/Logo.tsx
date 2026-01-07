@@ -66,7 +66,7 @@ export const Logo: React.FC<LogoProps> = ({
                         <span className={`font-black uppercase tracking-[0.2em] text-[#D4AF37] ${currentSize.sub}`}>
                             Pro
                         </span>
-                        <span className={`font-medium text-slate-500 ${currentSize.sub}`}>
+                        <span className={`font-black text-slate-500/80 ${currentSize.sub}`}>
                             {BRAND_YEAR}
                         </span>
                     </div>

@@ -79,10 +79,17 @@ export default function RegisterPage() {
             router.push('/onboarding');
         } catch (err: any) {
             toast.dismiss(loadingToast);
-            const msg = `Error: ${err.message}`;
+            let msg = `Error al crear cuenta.`;
+            if (err.code === 'auth/email-already-in-use') {
+                msg = "Este correo ya está registrado. Intenta iniciar sesión.";
+            } else if (err.code === 'auth/weak-password') {
+                msg = "La contraseña es muy débil.";
+            } else if (err.code === 'auth/invalid-email') {
+                msg = "El formato del correo no es válido.";
+            }
             setAuthError(msg);
-            toast.error("No se pudo crear la cuenta", {
-                description: err.message
+            toast.error("Error de registro", {
+                description: msg
             });
         }
     };
@@ -158,15 +165,17 @@ export default function RegisterPage() {
             <div className="w-full lg:w-1/2 flex items-center justify-center p-8 relative">
                 <div className="w-full max-w-md space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
 
-                    {/* Mobile Header (Hidden on Desktop) */}
-                    <div className="lg:hidden text-center mb-8">
-                        <h1 className="text-3xl font-bold text-white mb-2">SaberPro<span className="text-metal-gold">{BRAND_YEAR}</span></h1>
-                        <p className="text-metal-silver/60">Cuenta Profesional</p>
+                    {/* Mobile Header (Standardized) */}
+                    <div className="lg:hidden text-center mb-6">
+                        <div className="flex justify-center mb-2">
+                            <Logo variant="full" size="md" />
+                        </div>
+                        <p className="text-[10px] font-black text-metal-silver/40 uppercase tracking-[0.2em]">Prepárate para el Éxito</p>
                     </div>
 
-                    <div className="space-y-2">
-                        <h1 className="text-3xl font-bold text-white tracking-tight">Regístrate Ahora</h1>
-                        <p className="text-metal-silver/60">Completa el formulario para comenzar tu preparación.</p>
+                    <div className="space-y-1">
+                        <h1 className="text-3xl font-black text-white tracking-tighter italic uppercase">Registro</h1>
+                        <p className="text-metal-silver/60 text-sm">Crea tu cuenta para comenzar tu preparación.</p>
                     </div>
 
                     <Button

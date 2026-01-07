@@ -76,11 +76,11 @@ export default function LoginPage() {
             if (err.code === 'auth/popup-closed-by-user') {
                 msg = "Inicio de sesión cancelado.";
             } else if (err.code === 'auth/popup-blocked') {
-                msg = "El navegador bloqueó la ventana emergente. Por favor permítela.";
-            } else if (err.code === 'auth/cancelled-popup-request') {
-                msg = "Se canceló la solicitud.";
+                msg = "Bloqueado: Por favor habilita las ventanas emergentes.";
             } else if (err.code === 'auth/unauthorized-domain') {
-                msg = "Dominio no autorizado en Firebase (Configuración).";
+                msg = "⚠️ Dominio no autorizado. Contacta a soporte.";
+            } else if (err.code === 'auth/network-request-failed') {
+                msg = "Error de conexión. Revisa tu internet.";
             }
 
             setAuthError(msg);
@@ -142,15 +142,17 @@ export default function LoginPage() {
             <div className="w-full lg:w-1/2 flex items-center justify-center p-8 relative">
                 <div className="w-full max-w-md space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
 
-                    {/* Mobile Header (Hidden on Desktop) */}
-                    <div className="lg:hidden text-center mb-8">
-                        <h1 className="text-3xl font-bold text-white mb-2">SaberPro<span className="text-metal-gold">{BRAND_YEAR}</span></h1>
-                        <p className="text-metal-silver/60">Entrenamiento Profesional</p>
+                    {/* Mobile Header (Standardized) */}
+                    <div className="lg:hidden text-center mb-6">
+                        <div className="flex justify-center mb-2">
+                            <Logo variant="full" size="md" />
+                        </div>
+                        <p className="text-[10px] font-black text-metal-silver/40 uppercase tracking-[0.2em]">Entrenamiento Profesional</p>
                     </div>
 
-                    <div className="space-y-2">
-                        <h1 className="text-3xl font-bold text-white tracking-tight">Bienvenido de nuevo</h1>
-                        <p className="text-metal-silver/60">Ingresa tus credenciales para acceder al simulador.</p>
+                    <div className="space-y-1">
+                        <h1 className="text-3xl font-black text-white tracking-tighter italic uppercase">Bienvenido</h1>
+                        <p className="text-metal-silver/60 text-sm">Ingresa tus credenciales para acceder al simulador.</p>
                     </div>
 
                     {/* Social Login */}

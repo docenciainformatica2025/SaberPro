@@ -34,10 +34,39 @@ const LOG_INTERVAL = 50;
  */
 export default function SeedPage() {
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-    const [log, setLog] = useState<string[]>([]);
-    const [isConfirmingPurge, setIsConfirmingPurge] = useState(false);
+    const [liveCounts, setLiveCounts] = useState<Record<string, number>>({});
+    const [isCheckingLive, setIsCheckingLive] = useState(true);
+
+    const checkLiveStatus = async () => {
+        setIsCheckingLive(true);
+        try {
+            const q = collection(db, "questions");
+            const snapshot = await getDocs(q);
+            const counts: Record<string, number> = {};
+            snapshot.docs.forEach(d => {
+                const mod = d.data().module || "otros";
+                counts[mod] = (counts[mod] || 0) + 1;
+            });
+            setLiveCounts(counts);
+        } catch (e) {
+            console.error(e);
+        } finally {
+            setIsCheckingLive(false);
+        }
+    };
+
+    useState(() => {
+        checkLiveStatus();
+    });
+
+    const totalLive = Object.values(liveCounts).reduce((a, b) => a + b, 0);
 
     const handleSeed = async () => {
+        if (totalLive > 0) {
+            if (!confirm(`Se detectaron ${totalLive} preguntas en la nube. Reinyectar sin purgar puede crear duplicados. ¿Deseas continuar?`)) {
+                return;
+            }
+        }
         setStatus("loading");
         setLog(["[SISTEMA] Iniciando conexión con clúster académico..."]);
         try {
@@ -157,16 +186,34 @@ export default function SeedPage() {
                 <Card variant="solid" className="p-8 space-y-8 animate-in fade-in slide-in-from-left-4 duration-500 delay-100">
                     <div>
                         <h3 className="text-sm font-black text-white uppercase tracking-widest mb-4 flex items-center gap-2">
-                            <Zap className="text-metal-gold" size={16} /> Estado del Clúster
+                            <Zap className="text-metal-gold" size={16} /> Estado del Clúster (Local vs Nube)
                         </h3>
-                        <div className="space-y-4">
-                            <div className="flex justify-between items-center p-3 bg-white/5 rounded-lg border border-white/5">
-                                <span className="text-[10px] font-black text-metal-silver/40 uppercase">Archivos Listos</span>
-                                <span className="text-sm font-mono text-white">6 Módulos</span>
-                            </div>
-                            <div className="flex justify-between items-center p-3 bg-white/5 rounded-lg border border-white/5">
-                                <span className="text-[10px] font-black text-metal-silver/40 uppercase">Total Reactivos</span>
-                                <span className="text-sm font-mono text-metal-gold">{TOTAL_QUESTIONS}</span>
+                        <div className="space-y-3">
+                            {[
+                                { id: "lectura_critica", label: "Lectura" },
+                                { id: "razonamiento_cuantitativo", label: "Matemática" },
+                                { id: "ingles", label: "Inglés" },
+                                { id: "competencias_ciudadanas", label: "Ciudadanas" },
+                                { id: "comunicacion_escrita", label: "Escrita" }
+                            ].map((mod) => {
+                                const localCount = [
+                                    ...quantitativeQuestions, ...readingQuestions, ...citizenshipQuestions, ...englishQuestions, ...communicationQuestions
+                                ].filter(q => q.module === mod.id).length;
+                                const liveCount = liveCounts[mod.id] || 0;
+                                return (
+                                    <div key={mod.id} className="flex justify-between items-center p-2.5 bg-white/5 rounded-lg border border-white/5">
+                                        <span className="text-[10px] font-black text-metal-silver/40 uppercase">{mod.label}</span>
+                                        <div className="flex items-center gap-2 font-mono">
+                                            <span className="text-[10px] text-white/40">{localCount}</span>
+                                            <span className="text-[8px] text-white/20">/</span>
+                                            <span className={`text-[10px] ${liveCount === localCount ? 'text-green-400' : 'text-metal-gold'}`}>{liveCount}</span>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                            <div className="flex justify-between items-center p-3 bg-metal-gold/5 rounded-lg border border-metal-gold/10 mt-2">
+                                <span className="text-[10px] font-black text-metal-gold uppercase">Sincronía Total</span>
+                                <span className="text-sm font-mono text-white">{totalLive} / {TOTAL_QUESTIONS}</span>
                             </div>
                         </div>
                     </div>
