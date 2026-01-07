@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/Badge";
 import { BRAND_YEAR, COPYRIGHT_TEXT } from "@/lib/config";
 
 import { Logo } from "@/components/ui/Logo";
+import ProFooter from "@/components/ui/ProFooter";
 
 export default function Home() {
   const { user, role } = useAuth();
@@ -174,23 +175,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-20 border-t border-white/5 bg-black text-center relative z-10">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="flex flex-col gap-4 text-metal-silver/40 text-[10px] font-bold uppercase tracking-widest mb-8">
-            <p>{COPYRIGHT_TEXT}</p>
-            <p>
-              Desarrollado por <span className="text-metal-silver">Ing. Antonio Rodriguez</span> para Docencia Informática.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-6 md:gap-8 opacity-50 px-4">
-            <Link href="/terms" className="text-metal-silver hover:text-white text-[10px] md:text-xs uppercase tracking-widest font-bold whitespace-nowrap">Términos</Link>
-            <Link href="/privacy" className="text-metal-silver hover:text-white text-[10px] md:text-xs uppercase tracking-widest font-bold whitespace-nowrap">Privacidad</Link>
-            <a href="mailto:docenciainformatica2025@gmail.com" className="text-metal-silver hover:text-white text-[10px] md:text-xs uppercase tracking-widest font-bold whitespace-nowrap flex items-center gap-2">
-              ✉️ Contacto
-            </a>
-          </div>
-        </div>
-      </footer>
+      <ProFooter />
     </div>
   );
 }
