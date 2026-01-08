@@ -69,7 +69,7 @@ export default function RootLayout({
         <AuthProvider>
           <OnboardingGuard>
             <RoleBasedNavigation />
-            <main className="flex-grow flex flex-col pt-20 pb-32" suppressHydrationWarning>
+            <main className="flex-grow flex flex-col pt-20 pb-12 md:pb-32" suppressHydrationWarning>
               <PageTransition>
                 {children}
               </PageTransition>
