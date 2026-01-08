@@ -141,9 +141,9 @@ export default function RegisterPage() {
                 <div className="relative z-10 max-w-lg">
                     <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
                         Crea tu perfil y <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-[#ffd700] to-metal-gold">empieza a entrenar.</span>
+                        <span className="text-metal-gold drop-shadow-[0_0_15px_rgba(212,175,55,0.6)]">empieza a entrenar.</span>
                     </h2>
-                    <p className="text-metal-silver/80 text-lg leading-relaxed mb-8">
+                    <p className="text-metal-silver text-lg leading-relaxed mb-8">
                         Herramientas profesionales para estudiantes que buscan claridad en su preparación.
                     </p>
 
