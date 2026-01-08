@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Home, ArrowLeft, Sparkles, Brain, Search, BookOpen, MessageCircle, Zap } from "lucide-react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { useState } from "react";
 
@@ -32,79 +31,66 @@ export default function NotFound() {
             </div>
 
             {/* Floating 3D Brain Hologram */}
+            {/* Pure CSS 3D "404" - No Background Image */}
             <motion.div
-                initial={{ scale: 0.8, opacity: 0, rotateY: -20 }}
-                animate={{ scale: 1, opacity: 1, rotateY: 0 }}
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 1.2, ease: "easeOut" }}
-                className="relative z-10 mb-8"
+                className="relative z-10 mb-12 md:mb-16"
             >
-                <div className="relative w-72 h-72 md:w-96 md:h-96">
-                    {/* Animated brain container with 3D effect */}
-                    <motion.div
+                <div className="relative">
+                    {/* Main 3D 404 Number */}
+                    <motion.h1
                         animate={{
-                            y: [0, -15, 0],
-                            rotateY: [0, 5, 0],
-                            rotateX: [0, 2, 0]
+                            y: [0, -10, 0],
                         }}
                         transition={{
-                            duration: 5,
+                            duration: 4,
                             repeat: Infinity,
                             ease: "easeInOut"
                         }}
-                        className="relative w-full h-full"
+                        className="text-[120px] md:text-[180px] lg:text-[240px] font-black tracking-tighter select-none"
+                        style={{
+                            background: 'linear-gradient(135deg, #FFD700 0%, #D4AF37 25%, #FFA500 50%, #D4AF37 75%, #FFD700 100%)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
+                            textShadow: '0 10px 30px rgba(212, 175, 55, 0.4)',
+                            filter: 'drop-shadow(0 0 40px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 80px rgba(212, 175, 55, 0.3))',
+                        }}
                     >
-                        {/* Glowing ring effect */}
-                        <div className="absolute inset-0 rounded-full border-2 border-metal-gold/20 animate-ping" style={{ animationDuration: '3s' }} />
-                        <div className="absolute inset-4 rounded-full border border-metal-gold/30" />
+                        404
+                    </motion.h1>
 
-                        {/* Brain image with enhanced glow */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <Image
-                                src="/assets/images/lost_in_knowledge_404.png"
-                                alt="Neural Network"
-                                width={400}
-                                height={400}
-                                className="w-full h-full object-contain drop-shadow-[0_0_60px_rgba(212,175,55,0.4)] select-none pointer-events-none"
-                                priority
-                            />
-                        </div>
+                    {/* Glowing rings around 404 */}
+                    <div className="absolute inset-0 -z-10">
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] rounded-full border-2 border-metal-gold/20 animate-ping" style={{ animationDuration: '3s' }} />
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] rounded-full border border-metal-gold/30" />
+                    </div>
 
-                        {/* Animated 404 overlay with neural effect */}
+                    {/* Orbiting particles */}
+                    {[...Array(6)].map((_, i) => (
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.8, duration: 1 }}
-                            className="absolute inset-0 flex items-center justify-center"
-                        >
-                            <h1 className="text-8xl md:text-[10rem] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-metal-gold to-metal-copper drop-shadow-2xl select-none opacity-90 italic uppercase">
-                                404
-                            </h1>
-                        </motion.div>
-
-                        {/* Orbiting particles */}
-                        {[...Array(8)].map((_, i) => (
-                            <motion.div
-                                key={i}
-                                className="absolute w-2 h-2 bg-metal-gold rounded-full"
-                                style={{
-                                    top: '50%',
-                                    left: '50%',
-                                }}
-                                animate={{
-                                    x: [0, Math.cos(i * Math.PI / 4) * 150, 0],
-                                    y: [0, Math.sin(i * Math.PI / 4) * 150, 0],
-                                    opacity: [0.3, 0.8, 0.3],
-                                    scale: [0.5, 1, 0.5]
-                                }}
-                                transition={{
-                                    duration: 4,
-                                    repeat: Infinity,
-                                    delay: i * 0.2,
-                                    ease: "easeInOut"
-                                }}
-                            />
-                        ))}
-                    </motion.div>
+                            key={i}
+                            className="absolute w-3 h-3 bg-metal-gold rounded-full"
+                            style={{
+                                top: '50%',
+                                left: '50%',
+                            }}
+                            animate={{
+                                x: [0, Math.cos(i * Math.PI / 3) * 180, 0],
+                                y: [0, Math.sin(i * Math.PI / 3) * 180, 0],
+                                opacity: [0.3, 0.8, 0.3],
+                                scale: [0.5, 1.2, 0.5]
+                            }}
+                            transition={{
+                                duration: 5,
+                                repeat: Infinity,
+                                delay: i * 0.3,
+                                ease: "easeInOut"
+                            }}
+                        />
+                    ))}
                 </div>
             </motion.div>
 
