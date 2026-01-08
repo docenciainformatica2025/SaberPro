@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import { Save, User, Mail, School, BookOpen } from "lucide-react";
 import { db } from "@/lib/firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
+import { toast } from "sonner";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 
 export default function TeacherSettingsPage() {
     const { user, role } = useAuth();
@@ -50,10 +52,16 @@ export default function TeacherSettingsPage() {
                 ...formData,
                 updatedAt: new Date()
             }, { merge: true });
-            alert("Perfil actualizado correctamente");
+            toast.success("¡Configuración Guardada!", {
+                description: "Tu perfil profesional ha sido actualizado correctamente.",
+                icon: <CheckCircle2 className="text-metal-gold" size={16} />
+            });
         } catch (error) {
             console.error(error);
-            alert("Error al actualizar");
+            toast.error("Error al Guardar", {
+                description: "Hubo un problema al procesar la solicitud. Intenta de nuevo.",
+                icon: <AlertCircle className="text-red-500" size={16} />
+            });
         } finally {
             setLoading(false);
         }

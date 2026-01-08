@@ -6,9 +6,10 @@ interface OrderSummaryProps {
     planName: string;
     price: number;
     billingPeriod: string;
+    currency?: string;
 }
 
-export default function OrderSummary({ planName, price, billingPeriod }: OrderSummaryProps) {
+export default function OrderSummary({ planName, price, billingPeriod, currency = "COP" }: OrderSummaryProps) {
     const taxRate = 0.19; // IVA Colombia
     const basePrice = price / (1 + taxRate);
     const taxAmount = price - basePrice;
@@ -27,7 +28,13 @@ export default function OrderSummary({ planName, price, billingPeriod }: OrderSu
                         <div className="text-xs text-metal-silver uppercase tracking-wider">{billingPeriod}</div>
                     </div>
                     <div className="text-right">
-                        <div className="text-white font-mono font-bold">${price.toLocaleString()} COP</div>
+                        <div className="text-white font-mono font-bold">
+                            {new Intl.NumberFormat(currency === 'COP' ? 'es-CO' : 'en-US', {
+                                style: 'currency',
+                                currency: currency,
+                                maximumFractionDigits: 0
+                            }).format(price)} {currency}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,7 +51,13 @@ export default function OrderSummary({ planName, price, billingPeriod }: OrderSu
                 </div>
                 <div className="pt-4 flex justify-between items-center text-white border-t border-white/10">
                     <span className="font-bold text-lg">Total a Pagar</span>
-                    <span className="font-mono font-black text-2xl text-metal-gold">${price.toLocaleString()} COP</span>
+                    <span className="font-mono font-black text-2xl text-metal-gold">
+                        {new Intl.NumberFormat(currency === 'COP' ? 'es-CO' : 'en-US', {
+                            style: 'currency',
+                            currency: currency,
+                            maximumFractionDigits: 0
+                        }).format(price)} {currency}
+                    </span>
                 </div>
             </div>
 

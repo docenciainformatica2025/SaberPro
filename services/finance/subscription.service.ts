@@ -26,7 +26,7 @@ export const processPaymentMock = async (token: string, amount: number): Promise
 /**
  * Upgrades the user's role and subscription in Firestore
  */
-export const upgradeUserSubscription = async (userId: string, planName: 'pro', transactionId: string, amount: number, riskContextJson?: string) => {
+export const upgradeUserSubscription = async (userId: string, planName: 'pro', transactionId: string, amount: number, currency: string = 'COP', riskContextJson?: string) => {
     try {
         const userRef = doc(db, "users", userId);
 
@@ -64,7 +64,7 @@ export const upgradeUserSubscription = async (userId: string, planName: 'pro', t
         await setDoc(transactionRef, {
             userId,
             amount,
-            currency: 'COP',
+            currency,
             plan: planName,
             status: 'completed',
             provider: 'MockGateway', // In real app: 'Stripe', 'Wompi'

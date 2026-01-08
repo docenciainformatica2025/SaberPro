@@ -1,12 +1,17 @@
 @import "tailwindcss";
 
-@theme {
+@import "tailwindcss";
+
+:root {
+  --background: rgb(25, 30, 35);
+  --foreground: rgb(229, 228, 226);
+
+  /* Define colors explicitly in root for var() usage */
   --color-metal-dark: rgb(25, 30, 35);
   --color-metal-black: rgb(10, 12, 15);
   --color-metal-silver: rgb(229, 228, 226);
   --color-metal-silver-dim: rgba(229, 228, 226, 0.7);
   --color-metal-silver-deep: rgb(169, 169, 169);
-  /* #A9A9A9 */
   --color-metal-gold: rgb(212, 175, 55);
   --color-metal-gold-deep: rgb(184, 134, 11);
   --color-metal-blue: rgb(70, 130, 180);
@@ -19,6 +24,34 @@
   --animate-success-pulse: success-pulse 0.5s cubic-bezier(0.4, 0, 0.6, 1);
 }
 
+/* Base Utilities manually defined to ensure availability */
+.bg-metal-dark {
+  background-color: var(--color-metal-dark);
+}
+
+.bg-metal-black {
+  background-color: var(--color-metal-black);
+}
+
+.text-metal-gold {
+  color: var(--color-metal-gold);
+}
+
+.text-metal-silver {
+  color: var(--color-metal-silver);
+}
+
+.text-metal-blue {
+  color: var(--color-metal-blue);
+}
+
+.border-metal-gold {
+  border-color: var(--color-metal-gold);
+}
+
+.border-metal-silver {
+  border-color: var(--color-metal-silver);
+}
 
 @keyframes shine {
   0% {
@@ -44,19 +77,6 @@
   }
 }
 
-:root {
-  --background: rgb(25, 30, 35);
-  --foreground: rgb(229, 228, 226);
-
-  /* Define colors explicitly in root for var() usage */
-  --color-metal-dark: rgb(25, 30, 35);
-  --color-metal-silver: rgb(229, 228, 226);
-  --color-metal-silver-dim: rgba(229, 228, 226, 0.7);
-  --color-metal-gold: rgb(212, 175, 55);
-  --color-metal-blue: rgb(70, 130, 180);
-  --color-metal-copper: rgb(184, 115, 51);
-}
-
 /* Scroll Smoothing & Selection */
 html {
   scroll-behavior: smooth;
@@ -71,16 +91,32 @@ html {
 body {
   background: linear-gradient(180deg, var(--color-metal-dark) 0%, var(--color-metal-black) 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Elite Reading Experience */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 @layer utilities {
   .text-gradient-gold {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-metal-gold via-yellow-400 to-metal-gold;
+    background-image: linear-gradient(to right, var(--color-metal-gold), #facc15, var(--color-metal-gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
-
-
 
   /* Text Readability Utility */
   .text-dim {
@@ -89,7 +125,10 @@ body {
   }
 
   .text-gradient-silver {
-    @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-metal-silver;
+    background-image: linear-gradient(to bottom, #ffffff, var(--color-metal-silver));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .no-scrollbar::-webkit-scrollbar {
@@ -99,6 +138,24 @@ body {
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* Ultra-Premium Glassmorphism */
+  .glass-elite {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(24px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+  }
+
+  .glass-card-hover {
+    transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card-hover:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(212, 175, 55, 0.3);
+    box-shadow: 0 0 40px -10px rgba(212, 175, 55, 0.3);
   }
 }
 

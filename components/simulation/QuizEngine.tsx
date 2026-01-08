@@ -14,6 +14,7 @@ import SuccessAnimation from "@/components/ui/SuccessAnimation";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { toast } from "sonner";
 
 interface QuizEngineProps {
     questions: Question[];
@@ -148,7 +149,10 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
 
             } catch (error: any) {
                 console.error("Error saving result:", error);
-                alert(`Error guardando el resultado: ${error.message || "Error desconocido"}. Por favor toma una captura de pantalla.`);
+                console.error("Error saving result:", error);
+                toast.error("Error de Guardado", {
+                    description: "No se guardó el resultado. Por favor, toma una captura de este error.",
+                });
                 // We still show the result screen so they don't lose the score visibility
                 setFinished(true);
             }
@@ -182,6 +186,12 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
     const [showReview, setShowReview] = useState(false);
 
     const handleNext = () => {
+        if (studyMode && !showFeedback && currentQuestion.isPromptOnly) {
+            setShowFeedback(true);
+            setIsCorrect(true); // Always "correct" for prompts as they are self-eval
+            return;
+        }
+
         if (studyMode) setShowFeedback(false);
 
         if (isLastQuestion) {
@@ -191,10 +201,30 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
         }
     };
 
-    // 2026 Tip Logic
-    const getTip = (correct: boolean) => {
-        if (correct) return "✔ Evaluador Experto: Correcto. Tu análisis es coherente con la matriz 2026. Sigue así.";
-        return "⚠ Evaluador Experto: Este error es común. Tip Saber Pro 2026: Lee siempre el contexto antes de descartar opciones que parecen técnicamente válidas.";
+    // 2026 Tip Logic - Refined Expert Evaluator Persona
+    const getTip = (correct: boolean, module: string) => {
+        const personas: Record<string, string> = {
+            lectura_critica: "Analista Literario",
+            razonamiento_cuantitativo: "Auditor Financiero",
+            competencias_ciudadanas: "Consultor Constitucional",
+            ingles: "Linguista B2+",
+            comunicacion_escrita: "Redactor Jefe"
+        };
+        const persona = personas[module] || "Evaluador Experto";
+
+        if (correct) {
+            return `✔ ${persona}: Respuesta acertada. Has identificado la premisa central bajo la matriz 2026. Excelente razonamiento.`;
+        }
+
+        const tips: Record<string, string> = {
+            lectura_critica: "Tip 2026: No confundas la opinión del autor con los hechos narrados; busca siempre el sesgo implícito.",
+            razonamiento_cuantitativo: "Tip 2026: En problemas financieros, recuerda que el interés compuesto siempre crece más rápido que el simple.",
+            competencias_ciudadanas: "Tip 2026: En conflictos de derechos, busca la solución que aplique el principio de proporcionalidad.",
+            ingles: "Tip 2026: Focus on the tone of the passage (positive/negative) to infer the author's intent.",
+            comunicacion_escrita: "Tip 2026: Un buen argumento debe ser coherente, suficiente y relevante para la postura defendida."
+        };
+
+        return `⚠ ${persona}: ${tips[module] || "Este error es común. Relee el enunciado buscando palabras clave de exclusión."}`;
     };
 
     // ---------------------------------
@@ -425,17 +455,17 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        className="mt-8 bg-black/40 border border-white/10 rounded-xl p-6 backdrop-blur-md"
+                        className="mt-8 glass-elite rounded-xl p-8 transition-all duration-500"
                     >
-                        <div className="flex items-start gap-4">
+                        <div className="flex items-start gap-6">
                             <div className={`p-2 rounded-lg ${isCorrect ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'}`}>
                                 <Brain size={24} />
                             </div>
                             <div className="flex-1">
                                 <h4 className={`font-bold mb-1 ${isCorrect ? 'text-green-400' : 'text-red-400'}`}>
-                                    {getTip(isCorrect)}
+                                    {getTip(isCorrect, currentQuestion.module)}
                                 </h4>
-                                <p className="text-sm text-metal-silver mb-4 leading-relaxed">
+                                <p className="text-base text-metal-silver mb-6 leading-loose font-medium">
                                     {currentQuestion.explanation}
                                 </p>
                                 <Button
@@ -472,7 +502,7 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                     icon={ArrowRight}
                     iconPosition="right"
                 >
-                    {isLastQuestion ? "Finalizar Examen" : "Siguiente Pregunta"}
+                    {studyMode && !showFeedback && currentQuestion.isPromptOnly ? "Confirmar Argumentos" : (isLastQuestion ? "Finalizar Examen" : "Siguiente Pregunta")}
                 </Button>
             </div>
             <SuccessAnimation isVisible={showSuccess} message="¡Módulo Completado!" />
@@ -482,7 +512,7 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                 onContinue={() => setShowExitModal(false)}
                 onExit={handleExitConfirm}
             />
-        </div>
+        </div >
     );
 }
 

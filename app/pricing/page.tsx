@@ -37,6 +37,7 @@ export default function PricingPage() {
     const [showPaymentModal, setShowPaymentModal] = useState(false);
     const [loading, setLoading] = useState(false);
     const [pricing, setPricing] = useState({ student: 49900, teacher: 89900 });
+    const [currency, setCurrency] = useState("COP");
 
     useEffect(() => {
         const fetchConfig = async () => {
@@ -49,6 +50,7 @@ export default function PricingPage() {
                         student: data.monetization?.students?.price || 49900,
                         teacher: data.monetization?.teachers?.priceMonthly || 89900
                     });
+                    setCurrency(data.monetization?.currency || "COP");
                 }
             } catch (err) {
                 console.error("Error fetching pricing config:", err);
@@ -82,7 +84,7 @@ export default function PricingPage() {
         } catch (e) { }
 
         try {
-            await upgradeUserSubscription(user.uid, 'pro', txId, amount, riskContext);
+            await upgradeUserSubscription(user.uid, 'pro', txId, amount, currency, riskContext);
             setTimeout(() => {
                 router.push(viewMode === 'teacher' ? '/teacher?payment_success=true' : '/dashboard?payment_success=true');
             }, 1000);
@@ -187,7 +189,11 @@ export default function PricingPage() {
                         </h3>
                         <div className="flex items-baseline gap-1">
                             <span className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-metal-gold">
-                                ${new Intl.NumberFormat('es-CO').format(isTeacher ? pricing.teacher : pricing.student)}
+                                {new Intl.NumberFormat(currency === 'COP' ? 'es-CO' : 'en-US', {
+                                    style: 'currency',
+                                    currency: currency,
+                                    maximumFractionDigits: 0
+                                }).format(isTeacher ? pricing.teacher : pricing.student)}
                             </span>
                             <span className="text-metal-gold text-sm uppercase font-bold">/ {isTeacher ? 'Mes' : 'Único'}</span>
                         </div>
@@ -237,6 +243,7 @@ export default function PricingPage() {
                 <PaymentGateway
                     planName={isTeacher ? "Licencia Docente" : "Plan Elite Pro"}
                     price={isTeacher ? pricing.teacher : pricing.student}
+                    currency={currency}
                     onSuccess={handlePaymentSuccess}
                     onCancel={() => setShowPaymentModal(false)}
                 />

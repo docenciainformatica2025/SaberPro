@@ -7,6 +7,9 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import NumberTicker from "@/components/ui/NumberTicker";
+import PromotionBanner from "@/components/ui/PromotionBanner";
+import { toast } from "sonner";
+import { Info } from "lucide-react";
 
 export default function TeacherDashboard() {
     const { user, profile, subscription } = useAuth();
@@ -22,6 +25,7 @@ export default function TeacherDashboard() {
 
     return (
         <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <PromotionBanner />
             {/* Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
@@ -95,7 +99,18 @@ export default function TeacherDashboard() {
                     <Link href="/teacher/classes">
                         <Button variant="premium" icon={Plus}>Empezar Ahora</Button>
                     </Link>
-                    <Button variant="outline" className="opacity-50 hover:opacity-100">Ver Tutorial</Button>
+                    <Button
+                        variant="outline"
+                        className="opacity-50 hover:opacity-100"
+                        onClick={() => {
+                            toast.info("Guía Rápida Docente", {
+                                description: "1. Crea una clase. 2. Comparte el código. 3. Asigna simulacros. ¡Listo!",
+                                icon: <Info className="text-metal-gold" size={16} />
+                            });
+                        }}
+                    >
+                        Ver Tutorial
+                    </Button>
                 </div>
             </Card>
         </div>

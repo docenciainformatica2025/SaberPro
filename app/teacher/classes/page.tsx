@@ -11,6 +11,9 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Badge } from "@/components/ui/Badge";
+import { toast } from "sonner";
+import { BRAND_NAME } from "@/lib/config";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 
 export default function ClassesPage() {
     const { user } = useAuth();
@@ -72,16 +75,25 @@ export default function ClassesPage() {
             setNewClassName("");
             setIsCreating(false);
             fetchClasses(); // Refresh list
-            alert(`Clase creada con éxito! Código: ${code}`);
+            toast.success("¡Clase Creada!", {
+                description: `${newClassName} ya está disponible. Código: ${code}`,
+                icon: <CheckCircle2 className="text-green-500" size={16} />
+            });
         } catch (error) {
             console.error("Error creating class:", error);
-            alert("Error al crear la clase");
+            toast.error("Error al crear clase", {
+                description: "Por favor intente de nuevo en unos momentos.",
+                icon: <AlertCircle className="text-red-500" size={16} />
+            });
         }
     };
 
     const copyCode = (code: string) => {
         navigator.clipboard.writeText(code);
-        alert("Código copiado al portapapeles: " + code);
+        toast.info("Código Copiado", {
+            description: "El código de acceso ya está en tu portapapeles.",
+            icon: <Copy className="text-metal-gold" size={16} />
+        });
     };
 
     return (

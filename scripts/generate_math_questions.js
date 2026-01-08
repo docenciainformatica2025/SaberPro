@@ -186,6 +186,26 @@ const TEMPLATES = [
                 explanation: `El valor máximo es 18% en 2024. En 2025 bajó a 14%, lo que representa una caída de 4 puntos (18 - 14 = 4).`
             };
         }
+    },
+    {
+        type: "compound_interest_risk",
+        difficulty: "avanzada",
+        generate: () => {
+            const amount = 5000000;
+            const rate = 12; // 12% annual
+            const months = 12;
+
+            return {
+                text: `Tienes un crédito de $5,000,000 con una tasa de interés del 1% mensual vencido (interés compuesto). Si decides no pagar nada durante 12 meses, ¿cuál de las siguientes afirmaciones sobre tu deuda final es CORRECTA?`,
+                correct: `La deuda será superior a $5,600,000 debido a que los intereses generan nuevos intereses cada mes.`,
+                distractors: [
+                    `La deuda será exactamente $5,600,000 (interés simple).`,
+                    `La deuda bajará por el efecto de la inflación.`,
+                    `La deuda se congelará si el usuario no tiene empleo.`
+                ],
+                explanation: `Al ser interés compuesto, el valor final es P(1+i)^n. 5M * (1.01)^12 ≈ 5.63M. Esto es mayor que el cálculo simple de 12%.`
+            };
+        }
     }
 ];
 

@@ -10,9 +10,10 @@ interface PaymentGatewayProps {
     price: number;
     onSuccess: (result: string) => void;
     onCancel: () => void;
+    currency?: string;
 }
 
-export default function PaymentGateway({ planName, price, onSuccess, onCancel }: PaymentGatewayProps) {
+export default function PaymentGateway({ planName, price, onSuccess, onCancel, currency = "COP" }: PaymentGatewayProps) {
     const [step, setStep] = useState<'selection' | 'redirecting' | 'success'>('selection');
     const [selectedMethod, setSelectedMethod] = useState<'card' | 'nequi' | 'pse' | 'bancolombia'>('card');
     const [legalAccepted, setLegalAccepted] = useState(false);
@@ -66,7 +67,7 @@ export default function PaymentGateway({ planName, price, onSuccess, onCancel }:
 
                 {/* Left: Summary */}
                 <div className="order-2 lg:order-1 h-full">
-                    <OrderSummary planName={planName} price={price} billingPeriod="Anual" />
+                    <OrderSummary planName={planName} price={price} billingPeriod="Anual" currency={currency} />
 
                 </div>
 
@@ -141,7 +142,11 @@ export default function PaymentGateway({ planName, price, onSuccess, onCancel }:
                                     onClick={handlePay}
                                     className="w-full metallic-btn bg-metal-gold text-black font-black py-4 rounded-xl shadow-lg hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] flex items-center justify-center gap-2 text-lg transform transition-all hover:scale-[1.02]"
                                 >
-                                    PAGAR ${price.toLocaleString()} <ChevronRight size={20} />
+                                    PAGAR {new Intl.NumberFormat(currency === 'COP' ? 'es-CO' : 'en-US', {
+                                        style: 'currency',
+                                        currency: currency,
+                                        maximumFractionDigits: 0
+                                    }).format(price)} <ChevronRight size={20} />
                                 </button>
 
                                 <div className="flex justify-center gap-4 opacity-30 pt-2 text-metal-silver">

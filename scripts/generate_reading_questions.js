@@ -144,6 +144,13 @@ const TEMPLATES = [
                     correct: "El cuestionamiento de sus intenciones basado en un interés económico (argumento ad hominem circunstancial).",
                     explanation: "El autor ataca la propuesta de los expertos señalando que su motivación es el lucro, no la competencia técnica.",
                     distractors: ["El uso de estadísticas de privacidad.", "La comparación entre algoritmos y seres humanos.", "La cita de una autoridad en derechos humanos."]
+                },
+                {
+                    text: "La libertad de prensa no es un cheque en blanco; es un contrato social que exige veracidad. Cuando el rumor se disfraza de noticia, el contrato se rompe y la democracia sangra.",
+                    question: "¿Qué metáfora utiliza el autor para enfatizar el daño a la democracia?",
+                    correct: "La personificación de la democracia como un organismo que puede 'sangrar' por la desinformación.",
+                    explanation: "El autor usa un lenguaje figurado para mostrar que la mala prensa hiere el tejido democrático.",
+                    distractors: ["La comparación de la prensa con un banco.", "La descripción de la noticia como un disfraz.", "El uso de términos legales como 'contrato social'."]
                 }
             ];
 

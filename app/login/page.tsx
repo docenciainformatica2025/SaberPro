@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema, LoginFormValues } from '@/lib/schemas';
-import { Mail, Lock, ArrowRight, Chrome, CheckCircle2 } from 'lucide-react';
+import { Mail, Lock, ArrowRight, Chrome, CheckCircle2, Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
@@ -19,6 +19,7 @@ export default function LoginPage() {
     const router = useRouter();
     const [googleLoading, setGoogleLoading] = useState(false);
     const [authError, setAuthError] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
     const {
         register,
@@ -208,13 +209,22 @@ export default function LoginPage() {
                                     ¿Olvidaste tu contraseña?
                                 </Link>
                             </div>
-                            <Input
-                                type="password"
-                                icon={Lock}
-                                placeholder="••••••••"
-                                {...register("password")}
-                                error={errors.password?.message}
-                            />
+                            <div className="relative">
+                                <Input
+                                    type={showPassword ? "text" : "password"}
+                                    icon={Lock}
+                                    placeholder="••••••••"
+                                    {...register("password")}
+                                    error={errors.password?.message}
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute right-3 top-3 text-metal-silver/40 hover:text-white transition-colors"
+                                >
+                                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                </button>
+                            </div>
                         </div>
 
                         <Button
@@ -244,7 +254,7 @@ export default function LoginPage() {
                         Protegido por reCAPTCHA y sujeto a la <Link href="/privacy" className="hover:text-metal-gold underline">Política de Privacidad</Link> y <Link href="/terms" className="hover:text-metal-gold underline">Términos del Servicio</Link>.
                     </p>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }

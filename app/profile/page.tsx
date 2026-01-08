@@ -11,6 +11,9 @@ import { Card } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { toast } from "sonner";
+import { BRAND_NAME } from "@/lib/config";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 
 export default function ProfilePage() {
     const { user, loading: authLoading, role } = useAuth();
@@ -86,11 +89,19 @@ export default function ProfilePage() {
                 createdAt: (await getDoc(doc(db, "users", user.uid))).data()?.createdAt || new Date()
             }, { merge: true });
 
-            alert("¡Perfil actualizado con éxito!");
-            window.location.href = "/dashboard";
+            toast.success("¡Perfil Actualizado!", {
+                description: `Tu identidad digital en ${BRAND_NAME} ha sido sincronizada.`,
+                icon: <CheckCircle2 className="text-metal-gold" size={16} />
+            });
+            setTimeout(() => {
+                window.location.href = "/dashboard";
+            }, 1500);
         } catch (error) {
             console.error("Error updating profile:", error);
-            alert("Error al guardar el perfil.");
+            toast.error("Error de Sincronización", {
+                description: "No se pudieron guardar los cambios. Intente de nuevo.",
+                icon: <AlertCircle className="text-red-500" size={16} />
+            });
         } finally {
             setSaving(false);
         }

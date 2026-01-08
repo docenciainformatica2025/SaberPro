@@ -194,9 +194,9 @@ export default function PublicQuizEngine() {
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="bg-black/40 border border-white/10 rounded-xl p-6 backdrop-blur-md"
+                        className="glass-elite rounded-xl p-8 transition-all duration-500"
                     >
-                        <div className="flex items-start gap-4">
+                        <div className="flex items-start gap-6">
                             <div className={`p-2 rounded-lg ${isCorrect ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'}`}>
                                 <Brain size={24} />
                             </div>
@@ -204,7 +204,7 @@ export default function PublicQuizEngine() {
                                 <h4 className={`font-bold mb-1 ${isCorrect ? 'text-green-400' : 'text-red-400'}`}>
                                     {isCorrect ? '✔ Evaluador Experto: Correcto. Tu análisis es coherente con la matriz 2026.' : '⚠ Evaluador Experto: Aquí suele fallar el 70% de aspirantes por falta de rigor técnico.'}
                                 </h4>
-                                <p className="text-sm text-metal-silver mb-4 leading-relaxed">
+                                <p className="text-base text-metal-silver mb-6 leading-loose font-medium">
                                     {currentQ.explanation}
                                 </p>
 

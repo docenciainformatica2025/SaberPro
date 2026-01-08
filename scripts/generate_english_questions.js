@@ -89,6 +89,13 @@ const TEMPLATES = [
                     correct: "That the changes might be superficial or profit-driven.",
                     explanation: "Explicitly mentions 'marketing than ethics', suggesting a lack of genuine commitment.",
                     distractors: ["That corporations are losing too much money.", "That consumers do not care about supply chains.", "That supply chains are becoming too complex."]
+                },
+                {
+                    text: "While urban agriculture is often praised for its ecological benefits, its scalability remains a subject of intense debate among urban planners who prioritize housing density.",
+                    question: "Which of the following best expresses the tension described in the text?",
+                    correct: "The conflict between environmental sustainability and space optimization for housing.",
+                    explanation: "The text highlights a trade-off between green benefits and the need for high-density housing.",
+                    distractors: ["The cost of organic food vs. traditional farming.", "The lack of interest from citizens in growing their own food.", "The government's refusal to fund urban gardens."]
                 }
             ];
 

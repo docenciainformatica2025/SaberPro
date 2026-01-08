@@ -86,6 +86,13 @@ const TEMPLATES = [
                     correct: "Diversidad étnica y cultural vs. Utilidad pública e interés social.",
                     explanation: "La Constitución colombiana protege la diversidad como valor fundamental, lo que a veces choca con metas extractivas o nacionales.",
                     distractors: ["Derecho a la educación vs. Derecho al trabajo.", "Derecho de petición vs. Libertad de expresión.", "Autonomía regional vs. Centralismo absoluto."]
+                },
+                {
+                    text: "El Estado decide expropiar un terreno privado para construir una vía 4G, ofreciendo una indemnización que el dueño considera insuficiente en comparación con el valor comercial.",
+                    question: "¿Bajo qué figura jurídica el Estado justifica priorizar la construcción de la vía?",
+                    correct: "La prevalencia del interés general sobre el interés particular.",
+                    explanation: "Aunque se protege la propiedad privada, el interés de la comunidad por la infraestructura vial prevalece, siempre que haya indemnización.",
+                    distractors: ["El derecho a la libre locomoción.", "La soberanía nacional.", "El estado de sitio."]
                 }
             ];
 

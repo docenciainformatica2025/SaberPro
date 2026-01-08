@@ -11,6 +11,7 @@ import RoleBasedNavigation from "@/components/layout/RoleBasedNavigation";
 import ConditionalFooter from "@/components/ui/ConditionalFooter";
 import CookieBanner from "@/components/legal/CookieBanner";
 import { BRAND_NAME_SPACED } from "@/lib/config";
+import PageTransition from "@/components/layout/PageTransition";
 
 // Hack to suppress the noisy hydration warning from extensions
 if (typeof window !== "undefined") {
@@ -70,8 +71,10 @@ export default function RootLayout({
         <AuthProvider>
           <OnboardingGuard>
             <RoleBasedNavigation />
-            <main className="flex-grow flex flex-col pt-20 pb-32 animate-in fade-in slide-in-from-bottom-8 duration-700 ease-out" suppressHydrationWarning>
-              {children}
+            <main className="flex-grow flex flex-col pt-20 pb-32" suppressHydrationWarning>
+              <PageTransition>
+                {children}
+              </PageTransition>
             </main>
           </OnboardingGuard>
           <ConditionalFooter />

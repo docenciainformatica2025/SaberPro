@@ -22,6 +22,7 @@ export default function RegisterPage() {
     const [googleLoading, setGoogleLoading] = useState(false);
     const [authError, setAuthError] = useState('');
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+    const [showPassword, setShowPassword] = useState(false);
 
     const {
         register,
@@ -241,13 +242,22 @@ export default function RegisterPage() {
                                     <RefreshCw size={10} /> Generar Segura
                                 </button>
                             </div>
-                            <Input
-                                type="password"
-                                icon={Lock}
-                                placeholder="••••••••"
-                                {...register("password")}
-                                error={errors.password?.message}
-                            />
+                            <div className="relative">
+                                <Input
+                                    type={showPassword ? "text" : "password"}
+                                    icon={Lock}
+                                    placeholder="••••••••"
+                                    {...register("password")}
+                                    error={errors.password?.message}
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute right-3 top-3 text-metal-silver/40 hover:text-white transition-colors"
+                                >
+                                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                </button>
+                            </div>
 
                             {/* Password Requirements Visualization */}
                             <div className="grid grid-cols-2 gap-2 mt-2">
@@ -325,8 +335,8 @@ export default function RegisterPage() {
                         Protegido por reCAPTCHA y sujeto a la <Link href="/privacy" className="hover:text-metal-gold underline">Política de Privacidad</Link>.
                     </p>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }
 

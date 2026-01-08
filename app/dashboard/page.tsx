@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import StatCardPremium from "@/components/ui/StatCardPremium";
 import { Skeleton } from "@/components/ui/Skeleton"; // Import Skeleton
+import PromotionBanner from "@/components/ui/PromotionBanner";
 import { driver } from "driver.js"; // Import Driver
 import "driver.js/dist/driver.css"; // Import Driver CSS
 
@@ -198,6 +199,7 @@ export default function DashboardPage() {
 
     return (
         <div className="space-y-12 pb-44 px-6 md:px-12 animate-in fade-in duration-700">
+            <PromotionBanner />
             {firestoreError && (
                 <div className="fixed top-0 left-0 w-full bg-red-600/90 text-white z-50 p-4 text-center backdrop-blur-md">
                     <p className="font-bold mb-2">⚠️ ATENCIÓN: Se requiere configuración de base de datos</p>
