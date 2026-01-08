@@ -19,11 +19,11 @@ export default function ProFooter() {
             </div>
 
             {/* Legal Links */}
-            <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-[9px] uppercase tracking-[0.2em] text-metal-silver/40 font-bold mb-4 px-6 text-center">
-                <Link href="/terms" className="hover:text-metal-gold transition-colors whitespace-nowrap">Términos de Uso</Link>
-                <Link href="/privacy" className="hover:text-metal-gold transition-colors whitespace-nowrap">Privacidad de Datos</Link>
-                <Link href="/cookies" className="hover:text-metal-gold transition-colors whitespace-nowrap">Política de Cookies</Link>
-                <Link href="/support" className="hover:text-metal-gold transition-colors whitespace-nowrap">Centro de Ayuda y Soporte</Link>
+            <div className="flex flex-col md:flex-row flex-wrap justify-center gap-3 md:gap-4 lg:gap-6 text-[10px] md:text-[9px] uppercase tracking-[0.2em] text-metal-silver/40 font-bold mb-4 px-6 text-center">
+                <Link href="/terms" className="hover:text-metal-gold transition-colors whitespace-nowrap min-h-[44px] flex items-center justify-center">Términos de Uso</Link>
+                <Link href="/privacy" className="hover:text-metal-gold transition-colors whitespace-nowrap min-h-[44px] flex items-center justify-center">Privacidad de Datos</Link>
+                <Link href="/cookies" className="hover:text-metal-gold transition-colors whitespace-nowrap min-h-[44px] flex items-center justify-center">Política de Cookies</Link>
+                <Link href="/support" className="hover:text-metal-gold transition-colors whitespace-nowrap min-h-[44px] flex items-center justify-center">Centro de Ayuda y Soporte</Link>
             </div>
 
             {/* Copyright & Version */}

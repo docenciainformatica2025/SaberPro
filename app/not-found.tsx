@@ -114,17 +114,18 @@ export default function NotFound() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1 }}
+                    className="px-4"
                 >
-                    <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter italic mb-4">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tighter italic mb-4 leading-tight">
                         <span className="text-white">Tu conocimiento no se ha perdido,</span>{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-metal-gold to-yellow-500 drop-shadow-[0_0_20px_rgba(255,215,0,0.5)]">
                             solo tomó un camino diferente
                         </span>
                     </h2>
-                    <p className="text-metal-silver text-lg md:text-xl font-medium leading-relaxed max-w-2xl mx-auto">
+                    <p className="text-metal-silver text-base md:text-lg lg:text-xl font-medium leading-relaxed max-w-2xl mx-auto px-4">
                         Cada error es una oportunidad para aprender algo nuevo.
                         <br className="hidden md:block" />
-                        El camino al éxito sigue abierto.
+                        {" "}El camino al éxito sigue abierto.
                     </p>
                 </motion.div>
 
