@@ -61,6 +61,26 @@ export default function TeacherDashboard() {
                 })}
             </div>
 
+            {/* PRO Upgrade Card (Visible to non-pro) */}
+            {profile?.role === 'teacher' && subscription?.plan !== 'pro' && (
+                <Card variant="premium" className="p-8 bg-gradient-to-r from-metal-gold to-yellow-500 border-none relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-32 bg-white/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none group-hover:scale-110 transition-transform duration-1000"></div>
+                    <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div className="text-center md:text-left">
+                            <h3 className="text-2xl font-black text-black uppercase tracking-tight mb-2">Desbloquea el Potencial Elite</h3>
+                            <p className="text-black/70 font-medium max-w-xl">
+                                Obtén reportes detallados por estudiante, descarga de resultados en PDF masivos y soporte prioritario 24/7.
+                            </p>
+                        </div>
+                        <Link href="/pricing">
+                            <Button className="bg-black text-white hover:bg-black/80 px-8 h-12 font-black uppercase tracking-widest shadow-xl">
+                                Actualizar a PRO
+                            </Button>
+                        </Link>
+                    </div>
+                </Card>
+            )}
+
             {/* Empty State / CTA */}
             <Card variant="glass" className="p-16 text-center flex flex-col items-center justify-center min-h-[400px] border-dashed border-white/5">
                 <div className="w-24 h-24 bg-white/5 rounded-full flex items-center justify-center mb-8 animate-pulse relative">
