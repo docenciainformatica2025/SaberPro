@@ -1,115 +1,213 @@
 "use client";
 
 import Link from "next/link";
-import { Home, ArrowLeft, Sparkles, Brain } from "lucide-react";
+import { Home, ArrowLeft, Sparkles, Brain, Search, BookOpen, MessageCircle, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
+import { useState } from "react";
 
 export default function NotFound() {
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const quickLinks = [
+        { icon: Home, label: "Dashboard", href: "/dashboard", color: "text-metal-gold" },
+        { icon: Zap, label: "Simulación", href: "/simulation", color: "text-blue-400" },
+        { icon: BookOpen, label: "Recursos", href: "/methodology", color: "text-purple-400" },
+        { icon: MessageCircle, label: "Soporte", href: "/support", color: "text-green-400" },
+    ];
+
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-[#050505] p-6 text-center relative overflow-hidden">
 
-            {/* Cinematic Background Elements */}
+            {/* Enhanced Background with Neural Network Effect */}
             <div className="absolute inset-0 z-0">
+                {/* Animated gradient orbs */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-metal-gold/5 rounded-full blur-[120px] opacity-50 animate-pulse" />
-                <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 pointer-events-none" />
+                <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+                <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
+
+                {/* Subtle grid pattern */}
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 pointer-events-none" />
             </div>
 
-            {/* Floating Portal Centerpiece */}
+            {/* Floating 3D Brain Hologram */}
             <motion.div
-                initial={{ scale: 0.8, opacity: 0, rotate: -10 }}
-                animate={{ scale: 1, opacity: 1, rotate: 0 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                className="relative z-10 mb-12"
+                initial={{ scale: 0.8, opacity: 0, rotateY: -20 }}
+                animate={{ scale: 1, opacity: 1, rotateY: 0 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="relative z-10 mb-8"
             >
-                <div className="relative w-64 h-64 md:w-96 md:h-96">
+                <div className="relative w-72 h-72 md:w-96 md:h-96">
+                    {/* Animated brain container with 3D effect */}
                     <motion.div
                         animate={{
-                            y: [0, -20, 0],
-                            rotate: [0, 2, 0]
+                            y: [0, -15, 0],
+                            rotateY: [0, 5, 0],
+                            rotateX: [0, 2, 0]
                         }}
                         transition={{
-                            duration: 6,
+                            duration: 5,
                             repeat: Infinity,
                             ease: "easeInOut"
                         }}
+                        className="relative w-full h-full"
                     >
-                        <Image
-                            src="/assets/images/lost_in_knowledge_404.png"
-                            alt="Conocimiento Perdido"
-                            width={500}
-                            height={500}
-                            className="w-full h-full object-contain drop-shadow-[0_0_50px_rgba(212,175,55,0.3)] select-none pointer-events-none"
-                        />
-                    </motion.div>
+                        {/* Glowing ring effect */}
+                        <div className="absolute inset-0 rounded-full border-2 border-metal-gold/20 animate-ping" style={{ animationDuration: '3s' }} />
+                        <div className="absolute inset-4 rounded-full border border-metal-gold/30" />
 
-                    {/* Glowing Error Code */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 1, duration: 1 }}
-                        className="absolute inset-0 flex items-center justify-center"
-                    >
-                        <h1 className="text-8xl md:text-[12rem] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-metal-gold to-metal-copper drop-shadow-2xl select-none opacity-90 italic uppercase">
-                            404
-                        </h1>
+                        {/* Brain image with enhanced glow */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <Image
+                                src="/assets/images/lost_in_knowledge_404.png"
+                                alt="Neural Network"
+                                width={400}
+                                height={400}
+                                className="w-full h-full object-contain drop-shadow-[0_0_60px_rgba(212,175,55,0.4)] select-none pointer-events-none"
+                                priority
+                            />
+                        </div>
+
+                        {/* Animated 404 overlay with neural effect */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.8, duration: 1 }}
+                            className="absolute inset-0 flex items-center justify-center"
+                        >
+                            <h1 className="text-8xl md:text-[10rem] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-metal-gold to-metal-copper drop-shadow-2xl select-none opacity-90 italic uppercase">
+                                404
+                            </h1>
+                        </motion.div>
+
+                        {/* Orbiting particles */}
+                        {[...Array(8)].map((_, i) => (
+                            <motion.div
+                                key={i}
+                                className="absolute w-2 h-2 bg-metal-gold rounded-full"
+                                style={{
+                                    top: '50%',
+                                    left: '50%',
+                                }}
+                                animate={{
+                                    x: [0, Math.cos(i * Math.PI / 4) * 150, 0],
+                                    y: [0, Math.sin(i * Math.PI / 4) * 150, 0],
+                                    opacity: [0.3, 0.8, 0.3],
+                                    scale: [0.5, 1, 0.5]
+                                }}
+                                transition={{
+                                    duration: 4,
+                                    repeat: Infinity,
+                                    delay: i * 0.2,
+                                    ease: "easeInOut"
+                                }}
+                            />
+                        ))}
                     </motion.div>
                 </div>
             </motion.div>
 
-            {/* Content Section */}
-            <div className="relative z-20 space-y-8 max-w-2xl mx-auto">
+            {/* Content Section with Enhanced Typography */}
+            <div className="relative z-20 space-y-8 max-w-3xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.2 }}
+                    transition={{ delay: 1 }}
                 >
                     <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter italic mb-4">
-                        <span className="text-white">Has entrado en un</span>{" "}
+                        <span className="text-white">Tu conocimiento no se ha perdido,</span>{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-metal-gold to-yellow-500 drop-shadow-[0_0_20px_rgba(255,215,0,0.5)]">
-                            Vacío Digital
+                            solo tomó un camino diferente
                         </span>
                     </h2>
-                    <p className="text-metal-silver/80 text-lg md:text-xl font-medium leading-relaxed">
-                        Parece que el conocimiento que buscas se ha desvanecido en el laberinto de la plataforma.
+                    <p className="text-metal-silver text-lg md:text-xl font-medium leading-relaxed max-w-2xl mx-auto">
+                        Cada error es una oportunidad para aprender algo nuevo.
                         <br className="hidden md:block" />
-                        No te preocupes, el camino al éxito sigue abierto.
+                        El camino al éxito sigue abierto.
                     </p>
                 </motion.div>
 
+                {/* Interactive Search Bar */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.2 }}
+                    className="max-w-md mx-auto"
+                >
+                    <div className="relative">
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-metal-silver/40" size={20} />
+                        <input
+                            type="text"
+                            placeholder="Busca lo que necesitas..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' && searchQuery.trim()) {
+                                    window.location.href = `/dashboard?search=${encodeURIComponent(searchQuery)}`;
+                                }
+                            }}
+                            className="w-full h-14 pl-12 pr-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-metal-silver/40 focus:outline-none focus:border-metal-gold/50 focus:bg-white/10 transition-all"
+                        />
+                    </div>
+                </motion.div>
+
+                {/* Quick Links Grid */}
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.4 }}
+                    className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto"
+                >
+                    {quickLinks.map((link, i) => (
+                        <Link key={i} href={link.href}>
+                            <motion.div
+                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-metal-gold/30 transition-all group cursor-pointer"
+                            >
+                                <link.icon className={`${link.color} mx-auto mb-2 group-hover:scale-110 transition-transform`} size={24} />
+                                <p className="text-xs font-bold text-metal-silver group-hover:text-white transition-colors uppercase tracking-wider">
+                                    {link.label}
+                                </p>
+                            </motion.div>
+                        </Link>
+                    ))}
+                </motion.div>
+
+                {/* Primary CTAs */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1.5, duration: 0.5 }}
-                    className="flex flex-col md:flex-row items-center justify-center gap-6 pt-4"
+                    transition={{ delay: 1.6, duration: 0.5 }}
+                    className="flex flex-col md:flex-row items-center justify-center gap-4 pt-4"
                 >
                     <Link href="/dashboard">
                         <Button
                             variant="premium"
                             size="lg"
                             icon={Home}
-                            className="px-10 h-14 text-xs font-black tracking-[0.2em] shadow-[0_0_30px_rgba(212,175,55,0.2)] hover:shadow-[0_0_50px_rgba(212,175,55,0.4)]"
+                            className="px-10 h-14 text-sm font-black tracking-[0.2em] shadow-[0_0_30px_rgba(212,175,55,0.3)] hover:shadow-[0_0_50px_rgba(212,175,55,0.5)]"
                         >
-                            REGRESAR AL DASHBOARD
+                            VOLVER AL ENTRENAMIENTO
                         </Button>
                     </Link>
 
                     <button
                         onClick={() => window.history.back()}
-                        className="group flex items-center gap-3 text-metal-silver hover:text-white transition-all text-xs font-bold uppercase tracking-widest px-6 py-3 rounded-full hover:bg-white/5 active:scale-95 border border-transparent hover:border-white/10"
+                        className="group flex items-center gap-3 text-metal-silver hover:text-white transition-all text-sm font-bold uppercase tracking-widest px-6 py-3 rounded-full hover:bg-white/5 active:scale-95 border border-transparent hover:border-white/10"
                     >
                         <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                         Volver Atrás
                     </button>
                 </motion.div>
 
-                {/* Footer Micro-details */}
+                {/* Elite Footer Badges */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 0.3 }}
                     transition={{ delay: 2 }}
-                    className="flex items-center justify-center gap-4 text-[10px] text-metal-silver font-bold tracking-[0.3em] uppercase pt-12"
+                    className="flex items-center justify-center gap-4 text-[10px] text-metal-silver font-bold tracking-[0.3em] uppercase pt-8"
                 >
                     <div className="flex items-center gap-2">
                         <Sparkles size={12} className="text-metal-gold" />
@@ -123,7 +221,7 @@ export default function NotFound() {
                 </motion.div>
             </div>
 
-            {/* Interactive Corner Effects */}
+            {/* Decorative Corner Effects */}
             <div className="fixed bottom-0 right-0 p-12 pointer-events-none opacity-20">
                 <div className="w-64 h-64 border border-metal-gold/20 rounded-full scale-150 rotate-45 -mr-32 -mb-32 blur-3xl" />
             </div>
