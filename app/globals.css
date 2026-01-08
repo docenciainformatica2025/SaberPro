@@ -17,6 +17,17 @@
   --color-metal-blue: rgb(70, 130, 180);
   --color-metal-copper: rgb(184, 115, 51);
 
+  /* Unprefixed versions for component compatibility */
+  --metal-dark: rgb(25, 30, 35);
+  --metal-black: rgb(10, 12, 15);
+  --metal-silver: rgb(229, 228, 226);
+  --metal-silver-dim: rgba(229, 228, 226, 0.7);
+  --metal-silver-deep: rgb(169, 169, 169);
+  --metal-gold: rgb(212, 175, 55);
+  --metal-gold-deep: rgb(184, 134, 11);
+  --metal-blue: rgb(70, 130, 180);
+  --metal-copper: rgb(184, 115, 51);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
@@ -98,7 +109,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Elite Reading Experience */
+/* Elite Reading Experience - 2026 Standards */
 p,
 h1,
 h2,
@@ -107,7 +118,28 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+  word-wrap: break-word;
+  /* Fallback */
   hyphens: auto;
+  text-wrap: pretty;
+  /* Modern CSS - prevents orphans */
+}
+
+/* Headings get balanced text wrapping for better visual hierarchy */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+  /* Distributes text evenly across lines */
+  max-width: 100%;
+  /* Prevent overflow */
+}
+
+/* Prevent layout shift from long words */
+* {
+  word-break: normal;
+  overflow-wrap: anywhere;
+  /* Emergency fallback for very long strings */
 }
 
 @layer utilities {
@@ -156,6 +188,41 @@ h6 {
     background-color: rgba(255, 255, 255, 0.06);
     border-color: rgba(212, 175, 55, 0.3);
     box-shadow: 0 0 40px -10px rgba(212, 175, 55, 0.3);
+  }
+
+  /* Modern Text Utilities - 2026 Best Practices */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Safe truncation with ellipsis */
+  .truncate-safe {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+    /* Critical for flex containers */
+  }
+
+  /* Multi-line clamping */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
