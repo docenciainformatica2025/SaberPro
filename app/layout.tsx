@@ -14,14 +14,12 @@ import { BRAND_NAME_SPACED } from "@/lib/config";
 import PageTransition from "@/components/layout/PageTransition";
 
 // Hack to suppress the noisy hydration warning from extensions
+// Hack to suppress the noisy hydration warning from extensions
 if (typeof window !== "undefined") {
   const originalError = console.error;
   console.error = (...args) => {
-    if (typeof args[0] === "string" && args[0].includes("bis_skin_checked")) {
-      return;
-    }
-    // Also suppress the generic hydration mismatch warning if related
-    if (typeof args[0] === "string" && args[0].includes("Hydration failed")) {
+    const errorString = args.map(arg => String(arg)).join(" ");
+    if (errorString.includes("bis_skin_checked") || errorString.includes("Hydration failed") || errorString.includes("text content does not match")) {
       return;
     }
     originalError.call(console, ...args);
