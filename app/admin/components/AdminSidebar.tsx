@@ -51,45 +51,31 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
         }
     ];
 
+
     return (
         <>
-            {/* Desktop Sidebar */}
-            <aside className="hidden lg:flex w-64 bg-[#0a0a0a] border-r border-white/5 flex-col h-screen sticky top-0">
+            {/* Desktop Sidebar (Always visible on lg) */}
+            <aside className="hidden lg:flex w-64 bg-[#0a0a0a] border-r border-white/5 flex-col h-screen sticky top-0 shrink-0">
                 <SidebarContent navGroups={navGroups} pathname={pathname} />
             </aside>
 
-            {/* Mobile Overlay Sidebar (Controlled by Parent Layout usually, but for self-containment we might need state here or in Layout) 
-                Actually, simpler to let Layout handle mobile sheet, OR make this responsive self-contained.
-                Let's make this component accept a prop or handle mobile state strictly here if we can.
-            */}
+            {/* Mobile Sidebar Overlay */}
+            {isOpen && (
+                <div className="fixed inset-0 z-50 lg:hidden font-sans">
+                    {/* Backdrop */}
+                    <div
+                        className="absolute inset-0 bg-black/80 backdrop-blur-sm animate-in fade-in duration-300"
+                        onClick={onClose}
+                    />
+
+                    {/* Drawer */}
+                    <aside className="absolute top-0 left-0 w-3/4 max-w-[280px] h-full bg-[#0a0a0a] border-r border-white/10 shadow-2xl animate-in slide-in-from-left duration-300 flex flex-col">
+                        <SidebarContent navGroups={navGroups} pathname={pathname} onClose={onClose} />
+                    </aside>
+                </div>
+            )}
         </>
     );
-}
-
-return (
-    <>
-        {/* Desktop Sidebar (Always visible on lg) */}
-        <aside className="hidden lg:flex w-64 bg-[#0a0a0a] border-r border-white/5 flex-col h-screen sticky top-0 shrink-0">
-            <SidebarContent navGroups={navGroups} pathname={pathname} />
-        </aside>
-
-        {/* Mobile Sidebar Overlay */}
-        {isOpen && (
-            <div className="fixed inset-0 z-50 lg:hidden font-sans">
-                {/* Backdrop */}
-                <div
-                    className="absolute inset-0 bg-black/80 backdrop-blur-sm animate-in fade-in duration-300"
-                    onClick={onClose}
-                />
-
-                {/* Drawer */}
-                <aside className="absolute top-0 left-0 w-3/4 max-w-[280px] h-full bg-[#0a0a0a] border-r border-white/10 shadow-2xl animate-in slide-in-from-left duration-300 flex flex-col">
-                    <SidebarContent navGroups={navGroups} pathname={pathname} onClose={onClose} />
-                </aside>
-            </div>
-        )}
-    </>
-);
 }
 
 function SidebarContent({ navGroups, pathname, onClose }: { navGroups: any[], pathname: string, onClose?: () => void }) {
