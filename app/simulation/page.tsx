@@ -139,8 +139,8 @@ function SimulationSelectionContent() {
                     <Badge variant="premium" className="mb-6 px-4 py-1.5 text-[10px] uppercase font-black tracking-[0.2em] shadow-[0_0_20px_rgba(212,175,55,0.3)]">
                         Modo Examen Real
                     </Badge>
-                    <h1 className="text-5xl md:text-6xl font-black text-white mb-6 italic tracking-tighter uppercase">
-                        Simulacro <span className="text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-white to-metal-gold">Saber Pro</span>
+                    <h1 className="text-4xl md:text-6xl font-black text-white mb-6 italic tracking-tighter uppercase leading-tight">
+                        Simulacro <span className="block md:inline text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-white to-metal-gold">Saber Pro</span>
                     </h1>
                     <p className="text-metal-silver/60 text-lg font-medium max-w-2xl mx-auto leading-relaxed">
                         Mide tus conocimientos en condiciones reales. Sin pausas, sin ayudas de IA y con límite de tiempo por pregunta.
