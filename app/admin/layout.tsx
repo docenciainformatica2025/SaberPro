@@ -7,7 +7,7 @@ import Link from "next/link";
 import { LayoutDashboard, FileText, Users, Settings, LogOut, ShieldAlert, Database, Menu, X } from "lucide-react";
 import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
 import AdminSidebar from "./components/AdminSidebar";
-import AdminMobileNav from "./components/AdminMobileNav";
+
 
 export default function AdminLayout({
     children,
@@ -98,7 +98,7 @@ export default function AdminLayout({
                 </main>
             </div>
 
-            <AdminMobileNav />
+
         </div>
     );
 }

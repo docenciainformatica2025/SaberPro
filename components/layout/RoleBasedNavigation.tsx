@@ -21,7 +21,8 @@ import {
     Home,
     User,
     Trophy,
-    Calendar
+    Calendar,
+    DollarSign
 } from "lucide-react";
 import StreakCounter from "@/components/gamification/StreakCounter";
 
@@ -56,6 +57,7 @@ export default function RoleBasedNavigation() {
 
     const adminItems = [
         { name: "Panel", href: "/admin/dashboard", icon: LayoutDashboard },
+        { name: "Finanzas", href: "/admin/finance", icon: DollarSign },
         { name: "Usuarios", href: "/admin/users", icon: Users },
         { name: "Preguntas", href: "/admin/questions", icon: Database },
         { name: "Analíticas", href: "/admin/analytics", icon: FileText },
