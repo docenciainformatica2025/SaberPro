@@ -114,7 +114,62 @@ export default function QuestionsPage() {
 
             {/* List with Premium Aesthetics */}
             <Card variant="solid" className="p-0 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200 shadow-2xl">
-                <div className="overflow-x-auto">
+                {/* Mobile View (Cards) */}
+                <div className="md:hidden p-4 space-y-4">
+                    {filteredQuestions.length === 0 ? (
+                        <div className="flex flex-col items-center py-12 text-center">
+                            <Search size={40} className="mb-4 text-metal-gold opacity-30" />
+                            <p className="text-metal-silver/40 font-bold uppercase tracking-widest text-xs">Sin coincidencias académicas</p>
+                        </div>
+                    ) : (
+                        filteredQuestions.map((q) => {
+                            const ModuleIcon = getModuleIcon(q.module!);
+                            return (
+                                <div key={q.id} className="bg-white/[0.03] border border-white/10 rounded-2xl p-5 space-y-4">
+                                    <div className="flex justify-between items-start gap-4">
+                                        <div className="space-y-2 flex-1">
+                                            <div className="flex items-center gap-2 text-metal-gold">
+                                                <ModuleIcon size={12} />
+                                                <span className="text-[9px] font-black uppercase tracking-tighter">
+                                                    {q.module?.replace(/_/g, ' ')}
+                                                </span>
+                                            </div>
+                                            <p className="text-sm text-white font-bold leading-relaxed line-clamp-3 italic">
+                                                "{q.text}"
+                                            </p>
+                                        </div>
+                                        {q.imageUrl && <Badge variant="info" className="text-[8px] h-5 px-2 shrink-0">IMG</Badge>}
+                                    </div>
+
+                                    <div className="flex items-center justify-between border-t border-white/5 pt-4">
+                                        <div className="flex items-center gap-2">
+                                            <div className="bg-black/40 px-3 py-1.5 rounded-lg border border-white/5">
+                                                <span className="text-white font-black text-xs">{q.options?.length || 0}</span>
+                                                <span className="text-[8px] uppercase font-black text-metal-silver/40 ml-1">Opc</span>
+                                            </div>
+                                            <span className="text-[8px] text-metal-silver/30 font-mono tracking-tighter bg-white/5 px-2 py-1 rounded">ID: {(q.id || "").substring(0, 6)}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <Link href={`/admin/questions/${q.id}`}>
+                                                <Button variant="ghost" size="sm" icon={Edit3} className="h-8 w-8 p-0" />
+                                            </Link>
+                                            <Button
+                                                variant="danger"
+                                                size="sm"
+                                                icon={Trash2}
+                                                className="h-8 w-8 p-0"
+                                                onClick={() => handleDelete(q.id!)}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })
+                    )}
+                </div>
+
+                {/* Desktop View (Table) */}
+                <div className="hidden md:block overflow-x-auto">
                     <table className="w-full text-left text-sm text-metal-silver">
                         <thead className="bg-black/40 text-[10px] uppercase font-black tracking-[0.2em] text-metal-gold border-b border-white/5">
                             <tr>

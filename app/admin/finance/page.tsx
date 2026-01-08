@@ -284,7 +284,75 @@ export default function FinanceDashboard() {
                     </div>
                     <Badge variant="info" className="px-5 py-2 font-black uppercase tracking-widest text-[9px]">50 Registros Recientes</Badge>
                 </div>
-                <div className="overflow-x-auto">
+
+                {/* Mobile View (Cards) */}
+                <div className="md:hidden p-4 space-y-4">
+                    {transactions.length === 0 ? (
+                        <div className="text-center py-12">
+                            <AIProcessingLoader text="Buscando operaciones" subtext="Consultando el libro mayor digital..." />
+                        </div>
+                    ) : (
+                        transactions.map(tx => {
+                            const u = userMap[tx.userId] || {};
+                            const userName = u.fullName || u.displayName || u.email?.split('@')[0] || "Usuario";
+                            return (
+                                <div key={tx.id} className="bg-white/[0.03] border border-white/10 rounded-2xl p-5 space-y-4">
+                                    <div className="flex justify-between items-start">
+                                        <div className="space-y-1">
+                                            <p className="text-[10px] font-mono text-metal-silver/50 tracking-widest uppercase">REF: {tx.id.substring(0, 8)}</p>
+                                            <h4 className="text-white font-black uppercase tracking-tight">{userName}</h4>
+                                            <p className="text-xs text-metal-silver/50 truncate max-w-[200px]">{u.email}</p>
+                                        </div>
+                                        <Badge variant={tx.status === 'completed' ? 'success' : 'error'} className="shadow-none text-[9px] px-2 py-1">
+                                            {tx.status === 'completed' ? 'EXITOSO' : 'FALLO'}
+                                        </Badge>
+                                    </div>
+
+                                    <div className="flex items-center justify-between border-t border-white/5 pt-4">
+                                        <div>
+                                            <p className="text-[9px] text-metal-silver/40 uppercase font-black tracking-widest mb-1">Servicio</p>
+                                            <Badge variant={tx.plan?.includes('pro') ? 'premium' : 'default'} className="uppercase font-black text-[9px] tracking-widest px-2 py-0.5">
+                                                {(tx.plan || "free").replace('_', ' ')}
+                                            </Badge>
+                                        </div>
+                                        <div className="text-right">
+                                            <p className="text-[9px] text-metal-silver/40 uppercase font-black tracking-widest mb-1">Monto</p>
+                                            <div className="flex items-center gap-1 font-black text-white tabular-nums">
+                                                <span className="text-metal-gold text-xs">$</span>
+                                                <span className="text-lg tracking-tighter">{(tx.amount || 0).toLocaleString('es-CO')}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center justify-between pt-2">
+                                        <div className="flex items-center gap-2 text-metal-silver/40 text-[10px] font-bold uppercase">
+                                            <Calendar size={12} />
+                                            {tx.createdAt?.seconds ? new Date(tx.createdAt.seconds * 1000).toLocaleDateString('es-CO', { day: '2-digit', month: 'short', year: 'numeric' }) : '---'}
+                                        </div>
+                                        <Button
+                                            variant="ghost"
+                                            size="sm"
+                                            className="h-8 text-[10px] uppercase font-bold tracking-widest hover:text-metal-gold hover:bg-white/5"
+                                            onClick={async () => {
+                                                const { invoiceGenerator } = await import("@/utils/invoiceGenerator");
+                                                invoiceGenerator.generateInvoice(tx, {
+                                                    fullName: userName,
+                                                    email: u.email || "---",
+                                                    uid: tx.userId
+                                                });
+                                            }}
+                                        >
+                                            <Printer size={14} className="mr-2" /> Recibo
+                                        </Button>
+                                    </div>
+                                </div>
+                            );
+                        })
+                    )}
+                </div>
+
+                {/* Desktop View (Table) */}
+                <div className="hidden md:block overflow-x-auto">
                     <table className="w-full text-sm text-left border-collapse">
                         <thead>
                             <tr className="text-[10px] text-metal-silver/60 uppercase font-black tracking-widest bg-white/[0.01]">

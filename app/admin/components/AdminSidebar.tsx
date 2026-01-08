@@ -112,8 +112,8 @@ function SidebarContent({ navGroups, pathname, onClose }: { navGroups: any[], pa
                                         className={`
                                             flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 group
                                             ${isActive
-                                                ? "bg-metal-gold text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]"
-                                                : "text-metal-silver hover:bg-white/5 hover:text-white"
+                                                ? "bg-metal-gold text-black shadow-[0_0_15px_rgba(212,175,55,0.3)] font-black"
+                                                : "text-metal-silver hover:bg-white/10 hover:text-white"
                                             }
                                         `}
                                     >

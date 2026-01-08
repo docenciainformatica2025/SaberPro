@@ -3,7 +3,9 @@ export const CURRENT_YEAR = new Date().getFullYear();
 
 // Branding and Versioning (2026 Adaptation)
 export const BRAND_YEAR = 2026;
-export const APP_VERSION = "3.1.1"; // Mobile UX Hotfix + 404 Redesign
+export const APP_VERSION = "3.1.2"; // Mobile UX Hotfix + SEO Patch
+
+export const SITE_URL = "https://saberpro-app.vercel.app";
 
 export const BRAND_NAME = `SaberPro ${BRAND_YEAR}`;
 export const BRAND_NAME_SPACED = `Saber Pro ${BRAND_YEAR}`;

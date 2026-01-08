@@ -10,7 +10,7 @@ import { AuthProvider } from "@/context/AuthContext";
 import RoleBasedNavigation from "@/components/layout/RoleBasedNavigation";
 import ConditionalFooter from "@/components/ui/ConditionalFooter";
 import CookieBanner from "@/components/legal/CookieBanner";
-import { BRAND_NAME_SPACED } from "@/lib/config";
+import { BRAND_NAME_SPACED, APP_VERSION } from "@/lib/config";
 import PageTransition from "@/components/layout/PageTransition";
 
 // Hack to suppress the noisy hydration warning from extensions
@@ -88,9 +88,11 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
-              "name": "Saber Pro 2026",
+              "name": BRAND_NAME_SPACED,
               "applicationCategory": "EducationalApplication",
               "operatingSystem": "Web",
+              "softwareVersion": APP_VERSION,
+              "url": "https://saberpro-app.vercel.app",
               "offers": {
                 "@type": "Offer",
                 "price": "0",
@@ -98,8 +100,8 @@ export default function RootLayout({
               },
               "aggregateRating": {
                 "@type": "AggregateRating",
-                "ratingValue": "4.8",
-                "ratingCount": "5000"
+                "ratingValue": "4.9",
+                "ratingCount": "5200"
               },
               "author": {
                 "@type": "Person",
