@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/Badge";
 import NumberTicker from "@/components/ui/NumberTicker";
 
 export default function TeacherDashboard() {
-    const { user, profile } = useAuth();
+    const { user, profile, subscription } = useAuth();
 
     const stats = [
         { title: "Estudiantes Activos", value: 125, suffix: "+", icon: Users, color: "text-blue-400" },
