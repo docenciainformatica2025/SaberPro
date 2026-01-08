@@ -25,20 +25,28 @@ export default function Home() {
           <Link href="/">
             <Logo variant="full" size="md" />
           </Link>
-          <div className="flex gap-4">
+          <div className="flex gap-3 md:gap-4 items-center">
             {user ? (
               <Link href={dashboardLink}>
-                <Button variant="premium" className="text-xs font-black uppercase tracking-widest h-10 px-6 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
-                  Ir al Dashboard
+                <Button variant="premium" className="text-[10px] md:text-xs font-black uppercase tracking-widest h-9 md:h-10 px-4 md:px-6 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                  Dashboard
                 </Button>
               </Link>
             ) : (
               <>
-                <Link href="/login">
-                  <Button variant="ghost" className="text-sm font-bold uppercase tracking-widest text-metal-silver hover:text-white">Iniciar Sesión</Button>
+                <Link href="/login" className="hidden md:block">
+                  <Button variant="ghost" className="text-sm font-bold uppercase tracking-widest text-metal-silver hover:text-white">
+                    Iniciar Sesión
+                  </Button>
+                </Link>
+                {/* Mobile Login Icon/Link */}
+                <Link href="/login" className="md:hidden text-metal-silver hover:text-white font-bold text-xs uppercase tracking-wider mr-2">
+                  Entrar
                 </Link>
                 <Link href="/register">
-                  <Button variant="premium" className="text-xs font-black uppercase tracking-widest h-10 px-6 shadow-[0_0_20px_rgba(212,175,55,0.2)]">Comenzar Gratis</Button>
+                  <Button variant="premium" className="text-[10px] md:text-xs font-black uppercase tracking-widest h-9 md:h-10 px-4 md:px-6 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                    Empezar
+                  </Button>
                 </Link>
               </>
             )}
@@ -47,7 +55,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <main className="flex-grow pt-24 md:pt-28 pb-2 md:pb-4 px-4 relative overflow-hidden flex flex-col items-center text-center">
+      <main className="flex-grow pt-28 md:pt-28 pb-4 md:pb-4 px-4 relative overflow-hidden flex flex-col items-center text-center">
         {/* Background Ambience */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-metal-gold/5 rounded-full blur-[120px] pointer-events-none animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-metal-blue/5 rounded-full blur-[120px] pointer-events-none" />
@@ -61,11 +69,11 @@ export default function Home() {
             Diseñado y desarrollado por Ing. Antonio Rodríguez
           </p>
 
-          <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.0] mb-6">
+          <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight md:leading-[1.0] mb-6">
             <span className="block text-white mb-2 drop-shadow-2xl">
               Prepárate para el
             </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-white to-metal-gold animate-gradient-x">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-white to-metal-gold animate-gradient-x py-1">
               Saber Pro {BRAND_YEAR}
             </span>
           </h1>

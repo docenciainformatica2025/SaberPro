@@ -59,7 +59,7 @@ export const Logo: React.FC<LogoProps> = ({
             {/* --- LOGOTIPO (El Texto) --- */}
             {variant === 'full' && (
                 <div className="flex flex-col leading-none">
-                    <span className={`font-bold tracking-tight text-white ${currentSize.text}`}>
+                    <span className={`font-bold tracking-tight text-white ${currentSize.text} whitespace-nowrap`}>
                         Saber
                     </span>
                     <div className="flex items-center gap-1">
