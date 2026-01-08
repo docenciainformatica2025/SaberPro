@@ -91,7 +91,7 @@ export default function AdminLayout({
                 <AdminSidebar isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
 
                 {/* Main Content Area - Full Screen Canvas */}
-                <main className="flex-1 w-full max-w-[1800px] mx-auto p-4 lg:p-8">
+                <main className="flex-1 w-full max-w-[1800px] mx-auto p-4 pb-32 lg:p-8 lg:pb-8">
                     <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 ease-out">
                         {children}
                     </div>
