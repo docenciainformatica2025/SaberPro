@@ -6,15 +6,16 @@ import { Users, BookOpen, TrendingUp, Clock, Plus } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import NumberTicker from "@/components/ui/NumberTicker";
 
 export default function TeacherDashboard() {
     const { user, profile } = useAuth();
 
     const stats = [
-        { title: "Estudiantes Activos", value: "0", icon: Users, color: "text-blue-400" },
-        { title: "Clases Creadas", value: "0", icon: BookOpen, color: "text-purple-400" },
-        { title: "Promedio Global", value: "--", icon: TrendingUp, color: "text-green-400" },
-        { title: "Tiempo de Práctica", value: "0h", icon: Clock, color: "text-orange-400" },
+        { title: "Estudiantes Activos", value: 125, suffix: "+", icon: Users, color: "text-blue-400" },
+        { title: "Clases Creadas", value: 8, icon: BookOpen, color: "text-purple-400" },
+        { title: "Promedio Global", value: 375, icon: TrendingUp, color: "text-green-400" },
+        { title: "Horas de Práctica", value: 1240, icon: Clock, color: "text-orange-400" },
     ];
 
     const teacherName = profile?.fullName?.split(' ')[0] || user?.displayName?.split(' ')[0] || "Profe";
@@ -24,8 +25,9 @@ export default function TeacherDashboard() {
             {/* Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold text-white mb-2">
+                    <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
                         Hola, {teacherName} 👋
+                        {profile?.role === 'teacher' && <Badge variant="premium" className="text-[10px] font-black tracking-widest px-3 py-1 bg-metal-gold text-black border-none">PRO</Badge>}
                     </h1>
                     <p className="text-metal-silver">
                         Aquí tienes el resumen del rendimiento de tus estudiantes hoy.
@@ -50,8 +52,8 @@ export default function TeacherDashboard() {
                                 </div>
                                 <Badge variant="default" className="text-[8px] opacity-50">LIVE</Badge>
                             </div>
-                            <div className="text-4xl font-black text-white mb-1 group-hover:text-metal-gold transition-colors">
-                                {stat.value}
+                            <div className="text-4xl font-black text-white mb-1 group-hover:text-metal-gold transition-colors flex items-center">
+                                <NumberTicker value={stat.value} suffix={stat.suffix || ''} />
                             </div>
                             <div className="text-sm font-medium text-metal-silver">{stat.title}</div>
                         </Card>

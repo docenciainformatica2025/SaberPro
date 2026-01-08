@@ -10,6 +10,7 @@ import { BRAND_YEAR, COPYRIGHT_TEXT } from "@/lib/config";
 
 import { Logo } from "@/components/ui/Logo";
 import ProFooter from "@/components/ui/ProFooter";
+import NumberTicker from "@/components/ui/NumberTicker";
 
 export default function Home() {
   const { user, role } = useAuth();
@@ -155,19 +156,27 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
             <div>
-              <div className="text-5xl font-black text-white mb-2 tracking-tighter">5k+</div>
+              <div className="text-5xl font-black text-white mb-2 tracking-tighter flex items-center justify-center">
+                <NumberTicker value={5000} suffix="+" />
+              </div>
               <div className="text-xs font-bold text-metal-gold uppercase tracking-widest">Estudiantes Activos</div>
             </div>
             <div>
-              <div className="text-5xl font-black text-white mb-2 tracking-tighter">98%</div>
+              <div className="text-5xl font-black text-white mb-2 tracking-tighter flex items-center justify-center">
+                <NumberTicker value={98} suffix="%" />
+              </div>
               <div className="text-xs font-bold text-metal-gold uppercase tracking-widest">Tasa de Aprobación</div>
             </div>
             <div>
-              <div className="text-5xl font-black text-white mb-2 tracking-tighter">24/7</div>
+              <div className="text-5xl font-black text-white mb-2 tracking-tighter flex items-center justify-center">
+                <NumberTicker value={24} suffix="/7" />
+              </div>
               <div className="text-xs font-bold text-metal-gold uppercase tracking-widest">Disponibilidad</div>
             </div>
             <div>
-              <div className="text-5xl font-black text-white mb-2 tracking-tighter">#1</div>
+              <div className="text-5xl font-black text-white mb-2 tracking-tighter flex items-center justify-center">
+                #<NumberTicker value={1} />
+              </div>
               <div className="text-xs font-bold text-metal-gold uppercase tracking-widest">Plataforma LatAm</div>
             </div>
           </div>

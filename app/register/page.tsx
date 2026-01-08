@@ -79,17 +79,25 @@ export default function RegisterPage() {
             router.push('/onboarding');
         } catch (err: any) {
             toast.dismiss(loadingToast);
-            let msg = `Error al crear cuenta.`;
+            console.error("Signup Error:", err);
+            let msg = `Error al crear cuenta: ${err.message || 'Error desconocido'}`;
+
             if (err.code === 'auth/email-already-in-use') {
                 msg = "Este correo ya está registrado. Intenta iniciar sesión.";
             } else if (err.code === 'auth/weak-password') {
-                msg = "La contraseña es muy débil.";
+                msg = "La contraseña debe tener al menos 8 caracteres y cumplir los requisitos.";
             } else if (err.code === 'auth/invalid-email') {
                 msg = "El formato del correo no es válido.";
+            } else if (err.code === 'auth/operation-not-allowed') {
+                msg = "El registro con correo está deshabilitado temporalmente.";
+            } else if (err.code === 'auth/network-request-failed') {
+                msg = "Error de red. Revisa tu conexión a internet.";
             }
+
             setAuthError(msg);
-            toast.error("Error de registro", {
-                description: msg
+            toast.error("Error de Registro", {
+                description: msg,
+                duration: 5000
             });
         }
     };

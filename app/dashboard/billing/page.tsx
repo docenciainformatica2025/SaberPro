@@ -63,13 +63,12 @@ export default function BillingPage() {
 
     // Robust Date Formatter
     const formatDate = (dateValue: any) => {
-        if (!dateValue) return "Indefinido";
+        if (!dateValue) return "Ciclo Anual";
         try {
-            // Handle Firestore Timestamp
             const date = dateValue.toDate ? dateValue.toDate() : new Date(dateValue);
             return date.toLocaleDateString("es-CO", { year: 'numeric', month: 'long', day: 'numeric' });
         } catch (e) {
-            return "Fecha Inválida";
+            return "Próxima renovación (Anual)";
         }
     };
 
