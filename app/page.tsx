@@ -74,8 +74,8 @@ export default function Home() {
             con práctica inteligente basada en tu nivel real.
           </p>
 
-          <p className="text-sm md:text-base text-metal-silver/80 uppercase tracking-widest font-bold mb-8">
-            Diagnóstico gratuito • Plan personalizado • Resultados medibles
+          <p className="text-sm md:text-base text-white/90 uppercase tracking-widest font-black mb-8 drop-shadow-lg">
+            <span className="text-metal-gold">Diagnóstico gratuito</span> • <span className="text-metal-gold">Plan personalizado</span> • <span className="text-metal-gold">Resultados medibles</span>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-8">

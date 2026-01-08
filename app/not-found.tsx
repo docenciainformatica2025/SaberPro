@@ -65,11 +65,15 @@ export default function NotFound() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2 }}
                 >
-                    <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter italic mb-4">
-                        Has entrado en un <span className="text-metal-gold">Vacío Digital</span>
+                    <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter italic mb-4">
+                        <span className="text-white">Has entrado en un</span>{" "}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-metal-gold to-yellow-500 drop-shadow-[0_0_20px_rgba(255,215,0,0.5)]">
+                            Vacío Digital
+                        </span>
                     </h2>
-                    <p className="text-metal-silver/60 text-lg md:text-xl font-light leading-relaxed">
+                    <p className="text-metal-silver/80 text-lg md:text-xl font-medium leading-relaxed">
                         Parece que el conocimiento que buscas se ha desvanecido en el laberinto de la plataforma.
+                        <br className="hidden md:block" />
                         No te preocupes, el camino al éxito sigue abierto.
                     </p>
                 </motion.div>

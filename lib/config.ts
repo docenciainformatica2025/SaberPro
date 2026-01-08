@@ -3,7 +3,7 @@ export const CURRENT_YEAR = new Date().getFullYear();
 
 // Branding and Versioning (2026 Adaptation)
 export const BRAND_YEAR = 2026;
-export const APP_VERSION = "3.0.0"; // Major update for 2026 standards
+export const APP_VERSION = "3.1.0"; // Elite Polish + Auth UX improvements
 
 export const BRAND_NAME = `SaberPro ${BRAND_YEAR}`;
 export const BRAND_NAME_SPACED = `Saber Pro ${BRAND_YEAR}`;
