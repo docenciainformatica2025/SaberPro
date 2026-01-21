@@ -15,8 +15,33 @@ const TEXT_LIGHT = [100, 100, 100];
 const generateVerificationID = (seed: string = "") => {
     const timestamp = Date.now().toString(36);
     const random = Math.random().toString(36).substring(2, 6).toUpperCase();
-    const hash = (seed + timestamp).split('').reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a }, 0);
+    const hash = (seed + timestamp).split('').reduce((a, b: string) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a }, 0);
     return `SP-${timestamp}-${random}-${Math.abs(hash).toString(36).toUpperCase()}`.substring(0, 20);
+};
+
+/**
+ * Normaliza y limpia strings para nombres de archivo internacionales (Slugs)
+ */
+const slugify = (text: string) => {
+    return text
+        .toString()
+        .normalize('NFD')                   // Decompose combined characters (accents)
+        .replace(/[\u0300-\u036f]/g, '')    // Remove accents
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, '-')               // Replace spaces with -
+        .replace(/[^\w-]+/g, '')            // Remove non-word characters
+        .replace(/--+/g, '-')               // Replace multiple - with single -
+        .toUpperCase();                     // Institutional style
+};
+
+/**
+ * Genera un nombre de archivo institucional estricto
+ */
+const generateFileName = (type: string, name: string, verifID: string) => {
+    const date = new Date().toISOString().split('T')[0].replace(/-/g, ''); // YYYYMMDD
+    const slugName = slugify(name);
+    return `SABERPRO_${type.toUpperCase()}_${date}_${slugName}_${verifID.split('-').pop()}.pdf`;
 };
 
 export interface Student {
@@ -318,7 +343,7 @@ export const pdfGenerator = {
         doc.text("CERTIFICADO", pageWidth - 45, stampY + 15, { align: 'center' });
 
         drawFooter(2);
-        doc.save(`Reporte_SaberPro_${data.user.name.replace(/\s+/g, '_')}_${verifID}.pdf`);
+        doc.save(generateFileName("REPORT", data.user.name, verifID));
     },
 
     /**
@@ -542,7 +567,7 @@ export const pdfGenerator = {
         });
 
         drawFooter(doc.internal.pages.length);
-        doc.save(`Reporte_Curso_SaberPro_${classroomName.replace(/\s+/g, '_')}.pdf`);
+        doc.save(generateFileName("CLASS", classroomName, verifID));
     },
 
     /**
@@ -696,7 +721,7 @@ export const pdfGenerator = {
         doc.text("Documento No Oficial", 20, footerY + 28);
         doc.text(`Generado: ${dateStr}`, pageWidth - 20, footerY + 28, { align: 'right' });
 
-        doc.save(`Reporte_${studentName.replace(/\s+/g, '_')}.pdf`);
+        doc.save(generateFileName("STUDENT", studentName, verifID));
     },
 
     /**
@@ -859,7 +884,7 @@ export const pdfGenerator = {
         doc.text("Certificado Oficial", 20, footerY + 28);
         doc.text(`Generado: ${dateStr}`, pageWidth - 20, footerY + 28, { align: 'right' });
 
-        doc.save(`Consentimiento_${user.email}_${dateStr.replace(/[:\/, ]/g, '-')}.pdf`);
+        doc.save(generateFileName("CONSENT", user.email, verifID));
     }
 };
 

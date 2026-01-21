@@ -31,6 +31,8 @@ import {
 } from "lucide-react";
 import { AnalyticsSkeleton } from "@/components/ui/AnalyticsSkeleton";
 import { EmptyState } from "@/components/ui/EmptyState";
+import { adaptiveEngine, AdaptiveAdvice } from "@/utils/adaptiveEngine";
+import AICoachMessage from "@/components/analytics/AICoachMessage";
 
 export default function AnalyticsPage() {
     const { user, loading } = useAuth();
@@ -42,6 +44,7 @@ export default function AnalyticsPage() {
     const [selectedResult, setSelectedResult] = useState<any | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [userName, setUserName] = useState("Estudiante");
+    const [aiAnalysis, setAiAnalysis] = useState<AdaptiveAdvice | null>(null);
 
     const [kpis, setKpis] = useState({
         totalSimulations: 0,
@@ -119,6 +122,13 @@ export default function AnalyticsPage() {
                     highestScore: maxScore,
                     questionsAnswered: totalQuestions
                 });
+
+                // Generate AI Analysis
+                const analysis = adaptiveEngine.analyzeProfile(radar, {
+                    averageScore: snapshot.size > 0 ? Math.round(totalScoreSum / snapshot.size) : 0,
+                    totalSimulations: snapshot.size
+                });
+                setAiAnalysis(analysis);
             } catch (error) {
                 console.error("Error fetching analytics:", error);
             } finally {
@@ -258,36 +268,9 @@ export default function AnalyticsPage() {
                             </Card>
                         </motion.div>
 
-                        {/* AI Insight */}
+                        {/* AI Insight - Phase 8: Adaptive Coach */}
                         <motion.div variants={itemVariant}>
-                            <Card variant="premium" className="relative overflow-hidden p-8 border-metal-gold/30">
-                                <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
-                                    <Brain size={200} className="text-metal-gold" />
-                                </div>
-                                <div className="relative z-10">
-                                    <h3 className="text-lg font-black text-metal-gold mb-6 flex items-center gap-2 uppercase tracking-tight">
-                                        <Sparkles size={18} /> Análisis de Inteligencia Artificial
-                                    </h3>
-                                    {kpis.totalSimulations > 0 ? (
-                                        <p className="text-white/90 text-lg leading-relaxed font-medium max-w-3xl">
-                                            Basado en tus {kpis.totalSimulations} sesiones, mantienes un rendimiento promedio del <strong className="text-metal-gold">{kpis.averageScore}%</strong>.
-                                            {kpis.averageScore < 60 ?
-                                                " Se detectan oportunidades de mejora significativas. Te recomiendo enfocar tus próximas sesiones en modo Entrenamiento para recibir retroalimentación detallada." :
-                                                " ¡Tu consistencia es clave! Intenta mantener tu racha y enfócate en las áreas donde el gráfico de radar muestre menor cobertura para equilibrar tu perfil."
-                                            }
-                                        </p>
-                                    ) : (
-                                        <p className="text-metal-silver text-lg leading-relaxed max-w-3xl">
-                                            Aún no tengo suficientes datos para generar un análisis personalizado. Completa al menos un simulacro o módulo de entrenamiento para empezar a ver insights aquí.
-                                        </p>
-                                    )}
-                                    <div className="mt-8 flex gap-4">
-                                        <Link href="/training">
-                                            <Button variant="premium" className="shadow-[0_0_20px_rgba(212,175,55,0.3)]">Ir a Entrenar</Button>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </Card>
+                            {aiAnalysis && <AICoachMessage analysis={aiAnalysis} />}
                         </motion.div>
 
                         {/* Charts Section */}
