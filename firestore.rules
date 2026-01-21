@@ -17,7 +17,7 @@ service cloud.firestore {
     // Verifica si el usuario tiene un rol específico de forma segura
     function hasRole(role) {
       let userPath = /databases/$(database)/documents/users/$(request.auth.uid);
-      return isAuthenticated() && exists(userPath) && get(userPath).data.role == role;
+      return isAuthenticated() && exists(userPath) && get(userPath).data.get('role', 'none') == role;
     }
 
     // Verifica si el usuario tiene rol de administrador

@@ -2,7 +2,7 @@
 
 import { useAuth } from "@/context/AuthContext";
 import { db } from "@/lib/firebase";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { GraduationCap, User, ArrowRight, Check } from "lucide-react";
@@ -24,19 +24,16 @@ export default function OnboardingPage() {
         if (!user || !selectedRole) return;
         setLoading(true);
         try {
-            const { setDoc } = await import("firebase/firestore");
             await setDoc(doc(db, "users", user.uid), {
                 role: selectedRole
             }, { merge: true });
-            // Force reload manually to refresh context or rely on listener
-            // Given listener is fast, we just wait a split second or push
-            // Force reload to refresh AuthContext
+
             // Force reload to refresh AuthContext completely and triggering Guard re-eval
             if (selectedRole === 'student') window.location.href = '/dashboard';
             if (selectedRole === 'teacher') window.location.href = '/teacher';
-        } catch (error) {
-            console.error("Error setting role:", error);
-            alert("Error al guardar tu perfil. Intenta de nuevo.");
+        } catch (error: any) {
+            console.error("CRITICAL AUTH ERROR (ONBOARDING):", error);
+            alert(`Error al guardar tu perfil: ${error.message || 'Error de comunicación con el servidor'}. Intenta de nuevo.`);
             setLoading(false);
         }
     };

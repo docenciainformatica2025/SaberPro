@@ -10,7 +10,7 @@ import {
     createUserWithEmailAndPassword,
     User
 } from "firebase/auth";
-import { doc, getDoc, setDoc, Timestamp, onSnapshot } from "firebase/firestore";
+import { doc, getDoc, setDoc, Timestamp, onSnapshot, DocumentData } from "firebase/firestore";
 import { db, auth } from "@/lib/firebase";
 
 // Force Spanish for Firebase Emails
@@ -84,44 +84,40 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     useEffect(() => {
         if (!user) return;
 
-        const unsubscribeSnapshot = onSnapshot(doc(db, "users", user.uid), async (docSnap: any) => {
-            // Check if super admin via env
+        const unsubscribeSnapshot = onSnapshot(doc(db, "users", user.uid), (docSnap) => {
             const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "").split(",").map((e: string) => e.trim().toLowerCase());
             const isSuperAdmin = user.email && adminEmails.includes(user.email.toLowerCase());
 
             if (docSnap.exists()) {
-                const data = docSnap.data();
+                const data = docSnap.data() as DocumentData;
                 setProfile(data as UserProfile);
 
-                // Handle Admin Whitelist enforcement
-                if (isSuperAdmin && data.role !== 'admin') {
-                    // We don't want to infinite loop here, so careful.
-                    // But setDoc is async. We just update state for now locally and fire-and-forget update?
-                    // Better to just respect the whitelist locally or trigger update only if needed.
-                    if (data.role !== 'admin') {
-                        await setDoc(doc(db, "users", user.uid), { role: 'admin' }, { merge: true });
-                    }
+                if (isSuperAdmin) {
                     setRole('admin');
+                    // Optimization: Only update Firestore if stored role is not admin
+                    if (data.role !== 'admin') {
+                        setDoc(doc(db, "users", user.uid), { role: 'admin' }, { merge: true })
+                            .catch(err => console.error("Error auto-setting admin role:", err));
+                    }
                 } else {
-                    if (data.role === null) {
+                    // Properly handle null/missing role to avoid fallback to 'student' in onboarding
+                    const storedRole = data.role;
+                    if (storedRole === null || storedRole === undefined) {
                         setRole(null);
                     } else {
-                        setRole(data.role as 'student' | 'teacher' || 'student');
+                        setRole(storedRole as 'student' | 'teacher' | 'admin');
                     }
                 }
 
                 setCompletedProfile(data.completedProfile || false);
                 setSubscription(data.subscription as UserSubscription || defaultSubscription);
             } else {
-                // Profile doesn't exist yet (e.g. just signed up and trigger hasn't run, or manual create)
-                // We can handle creation here or wait. 
-                // For now, default values.
-                setRole(isSuperAdmin ? 'admin' : 'student');
+                setRole(isSuperAdmin ? 'admin' : null); // null forces onboarding
                 setSubscription(defaultSubscription);
                 setCompletedProfile(false);
             }
             setLoading(false);
-        }, (error: any) => {
+        }, (error) => {
             console.error("Error watching user profile:", error);
             setLoading(false);
         });
