@@ -128,24 +128,25 @@ export default function PaymentGateway({ planName, price, onSuccess, onCancel, c
                             {/* Divider with Secure Info */}
                             <div className="mt-auto space-y-4">
                                 {/* Legal Checkbox */}
-                                <div className="bg-metal-blue/5 rounded-lg p-3 border border-metal-blue/10 flex gap-3 items-start cursor-pointer hover:bg-metal-blue/10 transition-colors" onClick={() => setLegalAccepted(!legalAccepted)}>
+                                <div
+                                    className="bg-metal-blue/5 rounded-lg p-3 border border-metal-blue/10 flex gap-3 items-start cursor-pointer hover:bg-metal-blue/10 transition-colors select-none"
+                                    onClick={() => setLegalAccepted(!legalAccepted)}
+                                >
                                     <div className={`mt-0.5 w-4 h-4 rounded border flex items-center justify-center transition-colors ${legalAccepted ? 'bg-metal-gold border-metal-gold' : 'border-metal-silver bg-black/50'}`}>
                                         {legalAccepted && <CheckCircle size={12} className="text-black" />}
                                     </div>
-                                    <p className="text-[10px] text-metal-silver/80 leading-relaxed select-none">
-                                        Acepto iniciar el servicio inmediatamente y <Link href="/terms" target="_blank" className="text-metal-gold hover:underline">renuncio al derecho de retracto</Link>.
+                                    <p className="text-[10px] text-metal-silver/80 leading-relaxed">
+                                        Acepto iniciar el servicio inmediatamente y <Link href="/terms" target="_blank" className="text-metal-gold hover:underline" onClick={(e) => e.stopPropagation()}>renuncio al derecho de retracto</Link>.
                                     </p>
                                 </div>
 
-                                {error && (
-                                    <div className="text-red-400 text-xs flex items-center gap-2 bg-red-500/10 p-3 rounded-lg border border-red-500/20 animate-pulse">
-                                        <AlertCircle size={14} /> {error}
-                                    </div>
-                                )}
-
                                 <button
                                     onClick={handlePay}
-                                    className="w-full metallic-btn bg-metal-gold text-black font-black py-4 rounded-xl shadow-lg hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] flex items-center justify-center gap-2 text-lg transform transition-all hover:scale-[1.02]"
+                                    disabled={!legalAccepted}
+                                    className={`w-full metallic-btn bg-metal-gold text-black font-black py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 text-lg transform transition-all ${legalAccepted
+                                            ? 'hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-[1.02] cursor-pointer'
+                                            : 'opacity-50 cursor-not-allowed grayscale'
+                                        }`}
                                 >
                                     PAGAR {new Intl.NumberFormat(currency === 'COP' ? 'es-CO' : 'en-US', {
                                         style: 'currency',
