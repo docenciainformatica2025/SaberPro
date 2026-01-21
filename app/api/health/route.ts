@@ -1,43 +1,29 @@
 
-import { NextResponse } from "next/server";
-import { db } from "@/lib/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { NextResponse } from 'next/server';
+
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
-    const start = Date.now();
-    let dbStatus = "healthy";
-    let status = 200;
-
     try {
-        // Lightweight check: Read system config or a known public doc
-        // Using a timeout to ensure we don't hang indefinitely
-        const timeoutPromise = new Promise((_, reject) =>
-            setTimeout(() => reject(new Error("Database timeout")), 3000)
-        );
+        const memoryUsage = process.memoryUsage();
+        const uptime = process.uptime();
 
-        // Attempt to read a lightweight document (e.g., config)
-        const dbCheck = getDoc(doc(db, "system", "config"));
+        return NextResponse.json({
+            status: 'ok',
+            serverTime: new Date().toISOString(),
+            uptime: uptime,
+            memory: {
+                rss: Math.round(memoryUsage.rss / 1024 / 1024) + ' MB',
+                heapTotal: Math.round(memoryUsage.heapTotal / 1024 / 1024) + ' MB',
+                heapUsed: Math.round(memoryUsage.heapUsed / 1024 / 1024) + ' MB',
+            },
+            env: process.env.NODE_ENV
+        }, { status: 200 });
 
-        await Promise.race([dbCheck, timeoutPromise]);
-
-    } catch (error: any) {
-        dbStatus = "unhealthy";
-        status = 503; // Service Unavailable
-        console.error("Health check failed:", error);
+    } catch (error) {
+        return NextResponse.json({
+            status: 'error',
+            message: 'Internal Server Monitor Error'
+        }, { status: 500 });
     }
-
-    const duration = Date.now() - start;
-
-    return NextResponse.json(
-        {
-            status: dbStatus === "healthy" ? "ok" : "error",
-            timestamp: new Date().toISOString(),
-            uptime: process.uptime(), // Server uptime
-            database: dbStatus,
-            latency: `${duration}ms`,
-            environment: process.env.NODE_ENV,
-            version: "1.0.0"
-        },
-        { status }
-    );
 }

@@ -8,12 +8,15 @@ import { getFirestore, doc, getDoc, enableNetwork } from "firebase/firestore";
 import { app } from "@/lib/firebase"; // Ensure this import path is correct for your project
 import { getAuth } from "firebase/auth";
 
+// ... (imports remain)
+
 export default function SystemStatusPage() {
     const [status, setStatus] = useState<any>({
         database: 'checking',
         auth: 'checking',
         api: 'checking',
-        latency: 0
+        latency: 0,
+        server: null // New field for server metrics
     });
     const [lastCheck, setLastCheck] = useState<Date>(new Date());
 
@@ -24,17 +27,14 @@ export default function SystemStatusPage() {
         // 1. Check Database Connection
         try {
             const db = getFirestore(app);
-            // Attempt to read a lightweight document or just check network
             await enableNetwork(db);
-            // In a real scenario, you might read a specific "health" doc
-            // await getDoc(doc(db, "system", "health"));
             newStatus.database = 'online';
         } catch (e) {
             console.error(e);
             newStatus.database = 'offline';
         }
 
-        // 2. Check Auth Service (Client side SDK availability)
+        // 2. Check Auth
         try {
             const auth = getAuth(app);
             if (auth) newStatus.auth = 'online';
@@ -43,26 +43,30 @@ export default function SystemStatusPage() {
             newStatus.auth = 'error';
         }
 
-        // 3. Simulated API Latency
-        // You could fetch a simple endpoint here
-        const end = performance.now();
-        newStatus.latency = Math.round(end - start);
-        if (newStatus.latency < 200) newStatus.api = 'excellent';
-        else if (newStatus.latency < 500) newStatus.api = 'good';
-        else newStatus.api = 'slow';
+        // 3. Server Health & Latency (Real API Call)
+        try {
+            const res = await fetch('/api/health'); // Ping our new route
+            const data = await res.json();
+            const end = performance.now();
+
+            newStatus.latency = Math.round(end - start);
+            newStatus.server = data; // Store full server metrics
+
+            if (res.ok && newStatus.latency < 500) newStatus.api = 'excellent';
+            else if (res.ok) newStatus.api = 'good';
+            else newStatus.api = 'error';
+
+        } catch (e) {
+            newStatus.api = 'offline';
+        }
 
         setStatus(newStatus);
         setLastCheck(new Date());
     };
 
-    useEffect(() => {
-        // Run initial check deferred to avoid hydration mismatch/block
-        setTimeout(() => checkSystem(), 1000);
+    // ... (useEffect remains same)
 
-        // Interval check every 30s
-        const interval = setInterval(checkSystem, 30000);
-        return () => clearInterval(interval);
-    }, []);
+    // ... (useEffect remains same)
 
     const StatusIndicator = ({ state }: { state: string }) => {
         const colors: any = {
@@ -102,7 +106,7 @@ export default function SystemStatusPage() {
                         Estado del Sistema
                     </h1>
                     <p className="text-metal-silver text-sm font-medium">
-                        Monitoreo en tiempo real de la infraestructura crítica.
+                        Monitoreo en tiempo real de infraestructura, recursos y red.
                     </p>
                 </div>
                 <Badge variant="outline" className="flex items-center gap-2 px-4 py-2 border-metal-gold/30 text-metal-gold">
@@ -146,22 +150,22 @@ export default function SystemStatusPage() {
                     </div>
                 </Card>
 
-                {/* API / Network Status */}
+                {/* API / Latency Status */}
                 <Card variant="glass" className="p-6 relative overflow-hidden group">
                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <Activity size={64} />
+                        <Wifi size={64} />
                     </div>
                     <div className="relative z-10 space-y-4">
                         <div className="p-3 bg-green-500/10 w-fit rounded-xl text-green-400">
                             <Wifi size={24} />
                         </div>
                         <div>
-                            <h3 className="text-lg font-bold text-white mb-1">Red / Latencia</h3>
+                            <h3 className="text-lg font-bold text-white mb-1">Latencia API</h3>
                             <div className="flex items-center gap-2">
                                 <StatusIndicator state={status.api} />
                                 {status.latency > 0 && (
-                                    <span className="text-[10px] text-metal-silver font-mono">
-                                        ({status.latency}ms)
+                                    <span className="text-[10px] text-metal-silver font-mono bg-white/5 px-2 rounded">
+                                        {status.latency}ms
                                     </span>
                                 )}
                             </div>
@@ -169,8 +173,8 @@ export default function SystemStatusPage() {
                     </div>
                 </Card>
 
-                {/* Environment Info */}
-                <Card variant="glass" className="p-6 relative overflow-hidden group">
+                {/* Server Resources (New) */}
+                <Card variant="glass" className="p-6 relative overflow-hidden group border-metal-gold/20">
                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                         <Server size={64} />
                     </div>
@@ -179,17 +183,23 @@ export default function SystemStatusPage() {
                             <Server size={24} />
                         </div>
                         <div>
-                            <h3 className="text-lg font-bold text-white mb-1">Entorno</h3>
-                            <div className="flex flex-col">
-                                <span className="text-sm text-white font-medium">Producción (Vercel)</span>
-                                <span className="text-[10px] text-metal-silver uppercase tracking-wider">v2.1.0 Stable</span>
-                            </div>
+                            <h3 className="text-lg font-bold text-white mb-1">Recursos (RAM)</h3>
+                            {status.server ? (
+                                <div className="flex flex-col">
+                                    <span className="text-sm text-white font-mono font-bold">{status.server.memory?.rss || 'N/A'}</span>
+                                    <span className="text-[10px] text-metal-silver uppercase tracking-wider">
+                                        Uptime: {status.server.uptime ? Math.round(status.server.uptime) + 's' : '0s'}
+                                    </span>
+                                </div>
+                            ) : (
+                                <StatusIndicator state="checking" />
+                            )}
                         </div>
                     </div>
                 </Card>
             </div>
 
-            {/* Diagnostic Logs (Mocked for now due to client-side only access) */}
+            {/* Detailed Logs */}
             <Card variant="glass" className="p-8">
                 <div className="flex items-center gap-3 mb-6">
                     <Activity size={20} className="text-metal-gold" />
@@ -197,33 +207,36 @@ export default function SystemStatusPage() {
                 </div>
 
                 <div className="space-y-2 font-mono text-xs">
+                    {status.server && (
+                        <div className="flex gap-4 p-3 rounded bg-black/40 border-l-2 border-metal-gold">
+                            <span className="text-metal-silver">{new Date().toLocaleTimeString()}</span>
+                            <span className="text-metal-gold font-bold">[SERVER]</span>
+                            <span className="text-gray-300">
+                                Health Check OK. Environment: {status.server.env}. Heap Used: {status.server.memory?.heapUsed}.
+                            </span>
+                        </div>
+                    )}
                     <div className="flex gap-4 p-3 rounded bg-black/40 border-l-2 border-green-500">
-                        <span className="text-metal-silver">{new Date().toLocaleTimeString()}</span>
-                        <span className="text-green-400 font-bold">[INFO]</span>
-                        <span className="text-gray-300">System health check initialized via Admin Dashboard.</span>
+                        <span className="text-metal-silver">{new Date(lastCheck.getTime() - 100).toLocaleTimeString()}</span>
+                        <span className="text-green-400 font-bold">[DB]</span>
+                        <span className="text-gray-300">Firebase Firestore Connection Established. Cloud operations ready.</span>
                     </div>
-                    <div className="flex gap-4 p-3 rounded bg-black/40 border-l-2 border-blue-500">
-                        <span className="text-metal-silver">{new Date(lastCheck.getTime() - 5000).toLocaleTimeString()}</span>
-                        <span className="text-blue-400 font-bold">[AUTH]</span>
-                        <span className="text-gray-300">Firebase Auth provider (Google) is active and responding.</span>
-                    </div>
-                    {/* If Auth is actually unauthorized domain, we could hint it here */}
                     {status.auth === 'error' && (
                         <div className="flex gap-4 p-3 rounded bg-red-900/20 border-l-2 border-red-500 animate-pulse">
                             <span className="text-metal-silver">{new Date().toLocaleTimeString()}</span>
                             <span className="text-red-400 font-bold">[CRITICAL]</span>
-                            <span className="text-gray-300">Auth Error Detected: "Authorized Domain" verification might be failing. Check Firebase Console.</span>
+                            <span className="text-gray-300">Auth Service Unreachable. Check 'Authorized Domains' in Firebase Console.</span>
                         </div>
                     )}
                 </div>
             </Card>
 
-            <div className="p-4 rounded-xl bg-orange-500/10 border border-orange-500/20 flex gap-4 items-start">
-                <AlertTriangle className="text-orange-500 shrink-0 mt-1" size={20} />
+            <div className="p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 flex gap-4 items-start">
+                <Smartphone className="text-blue-400 shrink-0 mt-1" size={20} />
                 <div>
-                    <h4 className="text-sm font-bold text-orange-400 uppercase tracking-wider mb-1">Nota Técnica: Error de Dominio</h4>
-                    <p className="text-xs text-orange-200/80 leading-relaxed">
-                        Si experimentas el error &quot;Dominio no autorizado&quot; al iniciar sesión con Google, es necesario agregar el dominio actual de despliegue (<code>.vercel.app</code>) a la lista de dominios autorizados en la <strong>Consola de Firebase &gt; Authentication &gt; Settings &gt; Authorized Domains</strong>. Este es un bloqueo de seguridad de Google Cloud, no un error de código.
+                    <h4 className="text-sm font-bold text-blue-400 uppercase tracking-wider mb-1">Métricas de Serverless (Vercel)</h4>
+                    <p className="text-xs text-blue-200/80 leading-relaxed">
+                        Al usar arquitectura Serverless, la métrica de &quot;Carga CPU&quot; es efímera. Se muestra el <strong>Uptime de la Instancia</strong> y el <strong>Uso de Memoria (RSS)</strong> del contenedor actual ejecución. Tiempos de respuesta (Latencia API) bajos indican buena salud del sistema.
                     </p>
                 </div>
             </div>

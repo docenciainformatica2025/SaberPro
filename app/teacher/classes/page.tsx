@@ -2,18 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
-import { db } from "@/lib/firebase";
-import { collection, query, where, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
+import { ClassService } from "@/services/teacher/class.service";
 import { Classroom } from "@/types/classroom";
-import { Plus, Users, Copy, Trash2, ArrowRight, BookOpen, GraduationCap } from "lucide-react";
+import { Plus, Users, Copy, Trash2, ArrowRight, BookOpen, GraduationCap, CheckCircle2, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Badge } from "@/components/ui/Badge";
 import { toast } from "sonner";
-import { BRAND_NAME } from "@/lib/config";
-import { CheckCircle2, AlertCircle } from "lucide-react";
 
 export default function ClassesPage() {
     const { user } = useAuth();
@@ -29,9 +26,7 @@ export default function ClassesPage() {
         if (!user) return;
         setLoading(true);
         try {
-            const q = query(collection(db, "classrooms"), where("teacherId", "==", user.uid));
-            const snapshot = await getDocs(q);
-            const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Classroom));
+            const data = await ClassService.getClassesByTeacher(user.uid);
             setClasses(data);
         } catch (error) {
             console.error("Error fetching classes:", error);
@@ -44,33 +39,12 @@ export default function ClassesPage() {
         fetchClasses();
     }, [user]);
 
-    const generateCode = () => {
-        // Generates exactly 6-character alphanumeric code
-        // EXCLUDED: I, O, 0, 1 (confusion)
-        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-        let result = '';
-        for (let i = 0; i < 6; i++) {
-            result += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        return result;
-    }
-
     const handleCreateClass = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!user || !newClassName) return;
 
         try {
-            const code = generateCode();
-            await addDoc(collection(db, "classrooms"), {
-                name: newClassName,
-                subject: newClassSubject,
-                code: code,
-                teacherId: user.uid,
-                createdAt: serverTimestamp(),
-                isActive: true,
-                studentCount: 0,
-                averageScore: 0
-            });
+            const code = await ClassService.createClass(user.uid, newClassName, newClassSubject);
 
             setNewClassName("");
             setIsCreating(false);

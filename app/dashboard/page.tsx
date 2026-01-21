@@ -6,8 +6,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Sparkles, ArrowRight, Zap, History, Crown, Target, Brain, BookOpen, Users } from "lucide-react";
 import { db } from "@/lib/firebase";
-import { collection, query, where, getDocs, limit, orderBy, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, query, where, getDocs, limit, orderBy } from "firebase/firestore";
 import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
+import { StudentService } from "@/services/student/student.service";
 import ResultsHistoryList from "@/components/analytics/ResultsHistoryList";
 import ResultDetailModal from "@/components/analytics/ResultDetailModal";
 import StudentAssignments from "@/components/dashboard/StudentAssignments";
@@ -122,42 +123,20 @@ export default function DashboardPage() {
 
     // Handle Join Class
     const handleJoinClass = async () => {
-        if (!joinCode) return;
+        if (!joinCode || !user) return;
         setJoining(true);
         try {
-            const q = query(collection(db, "classrooms"), where("code", "==", joinCode.toUpperCase()));
-            const querySnapshot = await getDocs(q);
+            const result = await StudentService.joinClassByCode(user.uid, joinCode, userName);
 
-            if (querySnapshot.empty) {
-                alert("Código de clase inválido.");
-                setJoining(false);
-                return;
+            if (result.success) {
+                alert(result.message);
+                setJoinCode("");
+                if (result.classData) {
+                    setMyClasses(prev => [...prev, result.classData]);
+                }
+            } else {
+                alert(result.message);
             }
-
-            const classDoc = querySnapshot.docs[0];
-            const classData = classDoc.data();
-
-            // Check if already joined
-            const memberQ = query(collection(db, "class_members"), where("classId", "==", classDoc.id), where("userId", "==", user?.uid));
-            const memberSnap = await getDocs(memberQ);
-
-            if (!memberSnap.empty) {
-                alert("Ya estás inscrito en esta clase.");
-                setJoining(false);
-                return;
-            }
-
-            await addDoc(collection(db, "class_members"), {
-                classId: classDoc.id,
-                userId: user?.uid,
-                joinedAt: serverTimestamp(),
-                role: 'student',
-                studentName: userName
-            });
-
-            alert(`Te has unido a: ${classData.name}`);
-            setJoinCode("");
-            setMyClasses(prev => [...prev, { id: classDoc.id, ...classData }]);
 
         } catch (error) {
             console.error("Error joining class:", error);

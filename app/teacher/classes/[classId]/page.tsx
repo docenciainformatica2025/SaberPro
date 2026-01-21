@@ -2,8 +2,7 @@
 
 import { useAuth } from "@/context/AuthContext";
 import { use, useEffect, useState } from "react";
-import { db } from "@/lib/firebase";
-import { doc, getDoc, collection, query, where, onSnapshot } from "firebase/firestore";
+import { ClassService } from "@/services/teacher/class.service";
 import { Classroom } from "@/types/classroom";
 import { Users, Clock, Trophy, Play, Settings, ArrowLeft, Download } from "lucide-react";
 import Link from "next/link";
