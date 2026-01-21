@@ -77,19 +77,16 @@ export default function ClassDetailsPage({ params }: ClassDetailsProps) {
 
         // 1. Get Class Metadata
         const fetchClass = async () => {
-            const docRef = doc(db, "classrooms", classId);
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
-                setClassroom({ id: docSnap.id, ...docSnap.data() } as Classroom);
+            const data = await ClassService.getClassDetails(classId);
+            if (data) {
+                setClassroom(data);
             }
             setLoading(false);
         };
         fetchClass();
 
         // 2. Real-time Student Listener
-        const q = query(collection(db, "class_members"), where("classId", "==", classId));
-        const unsubscribe = onSnapshot(q, (snapshot) => {
-            const members = snapshot.docs.map(d => d.data());
+        const unsubscribe = ClassService.subscribeToClassStudents(classId, (members) => {
             setStudents(members);
         });
         return () => unsubscribe();
