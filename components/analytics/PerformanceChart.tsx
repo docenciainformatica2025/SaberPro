@@ -15,15 +15,29 @@ import {
     Radar
 } from "recharts";
 
+import { useState, useEffect } from "react";
+
 interface PerformanceChartProps {
     type: "line" | "radar";
-    data: any[];
+    data: Record<string, any>[];
     dataKey?: string;
     categoryKey?: string;
     color?: string;
 }
 
 export default function PerformanceChart({ type, data, dataKey = "value", categoryKey = "name", color = "#D4AF37" }: PerformanceChartProps) {
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) return (
+        <div className="h-64 flex items-center justify-center text-metal-silver/10 border border-white/5 rounded-xl bg-black/20">
+            <div className="animate-pulse">Cargando visualización...</div>
+        </div>
+    );
+
     if (data.length === 0) {
         return (
             <div className="h-64 flex items-center justify-center text-metal-silver/30 border border-white/5 rounded-xl bg-black/20">

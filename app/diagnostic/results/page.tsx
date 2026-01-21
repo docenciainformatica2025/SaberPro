@@ -13,6 +13,11 @@ export default function DiagnosticResultsPage() {
     const router = useRouter();
     const [data, setData] = useState<any>(null);
     const [loading, setLoading] = useState(true);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         // 1. Read from localStorage
@@ -68,21 +73,29 @@ export default function DiagnosticResultsPage() {
                     </div>
 
                     <Card variant="glass" className="h-[300px] border-metal-gold/20 bg-black/40 relative">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <RadarChart cx="50%" cy="50%" outerRadius="70%" data={chartData}>
-                                <PolarGrid stroke="#333" />
-                                <PolarAngleAxis dataKey="subject" tick={{ fill: '#999', fontSize: 10 }} />
-                                <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
-                                <Radar
-                                    name="Tu Nivel"
-                                    dataKey="A"
-                                    stroke="#d4af37"
-                                    strokeWidth={3}
-                                    fill="#d4af37"
-                                    fillOpacity={0.3}
-                                />
-                            </RadarChart>
-                        </ResponsiveContainer>
+                        {mounted ? (
+                            <ResponsiveContainer width="100%" height="100%">
+                                <RadarChart cx="50%" cy="50%" outerRadius="70%" data={chartData}>
+                                    <PolarGrid stroke="#333" />
+                                    <PolarAngleAxis dataKey="subject" tick={{ fill: '#999', fontSize: 10 }} />
+                                    <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+                                    <Radar
+                                        name="Tu Nivel"
+                                        dataKey="A"
+                                        stroke="#d4af37"
+                                        strokeWidth={3}
+                                        fill="#d4af37"
+                                        fillOpacity={0.3}
+                                    />
+                                </RadarChart>
+                            </ResponsiveContainer>
+                        ) : (
+                            <div className="w-full h-full flex items-center justify-center">
+                                <div className="animate-pulse text-metal-silver/20 text-[10px] font-black uppercase tracking-widest">
+                                    Generando Visualización...
+                                </div>
+                            </div>
+                        )}
                         <div className="absolute inset-x-0 bottom-4 text-center">
                             <p className="text-xs text-metal-silver uppercase tracking-widest font-bold">Patrón de Desempeño</p>
                         </div>
