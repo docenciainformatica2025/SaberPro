@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { ReactNode } from "react";
+import NumberTicker from "@/components/ui/NumberTicker";
 
 interface StatCardPremiumProps {
     title: string;
@@ -15,9 +16,12 @@ export function StatCardPremium({ title, value, icon, trend, trendUp, color }: S
     const theme = {
         gold: { bg: 'bg-metal-gold/10', text: 'text-metal-gold', border: 'border-metal-gold/20' },
         blue: { bg: 'bg-blue-500/10', text: 'text-blue-400', border: 'border-blue-500/20' },
-        purple: { bg: 'bg-purple-500/10', text: 'text-purple-400', border: 'border-purple-500/20' },
+        purple: { bg: 'bg-purple-500/10', text: 'text-purple-400', border: 'border-blue-500/20' },
         green: { bg: 'bg-green-500/10', text: 'text-green-400', border: 'border-green-500/20' },
     }[color] || { bg: 'bg-white/5', text: 'text-white', border: 'border-white/10' };
+
+    const isNumeric = typeof value === 'number' || (!isNaN(Number(value)) && typeof value === 'string' && !value.includes('%'));
+    const numericValue = typeof value === 'number' ? value : Number(value);
 
     return (
         <Card variant="solid" className="p-6 relative overflow-hidden group hover:border-white/10 transition-colors">
@@ -33,12 +37,18 @@ export function StatCardPremium({ title, value, icon, trend, trendUp, color }: S
             </div>
 
             <div className="relative z-10">
-                <h3 className="text-3xl font-black text-white tracking-tighter tabular-nums mb-1">{value}</h3>
+                <h3 className="text-3xl font-black text-white tracking-tighter tabular-nums mb-1">
+                    {isNumeric ? (
+                        <NumberTicker value={numericValue} />
+                    ) : (
+                        value
+                    )}
+                    {typeof value === 'string' && value.includes('%') && '%'}
+                </h3>
                 <p className="text-metal-silver/40 text-[10px] font-black uppercase tracking-widest leading-none">{title}</p>
             </div>
         </Card>
     );
 }
 
-// Default export for ease of import
 export default StatCardPremium;

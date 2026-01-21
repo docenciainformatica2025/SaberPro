@@ -1,0 +1,11 @@
+app/page.tsx(168,44): error TS2322: Type '{ value: number; suffix: string; }' is not assignable to type 'IntrinsicAttributes & NumberTickerProps'.
+  Property 'suffix' does not exist on type 'IntrinsicAttributes & NumberTickerProps'.
+app/page.tsx(174,42): error TS2322: Type '{ value: number; suffix: string; }' is not assignable to type 'IntrinsicAttributes & NumberTickerProps'.
+  Property 'suffix' does not exist on type 'IntrinsicAttributes & NumberTickerProps'.
+app/page.tsx(180,42): error TS2322: Type '{ value: number; suffix: string; }' is not assignable to type 'IntrinsicAttributes & NumberTickerProps'.
+  Property 'suffix' does not exist on type 'IntrinsicAttributes & NumberTickerProps'.
+app/teacher/page.tsx(60,66): error TS2322: Type '{ value: number; suffix: string; }' is not assignable to type 'IntrinsicAttributes & NumberTickerProps'.
+  Property 'suffix' does not exist on type 'IntrinsicAttributes & NumberTickerProps'.
+tests/example.spec.ts(1,30): error TS2307: Cannot find module '@playwright/test' or its corresponding type declarations.
+tests/example.spec.ts(3,28): error TS7031: Binding element 'page' implicitly has an 'any' type.
+tests/example.spec.ts(10,35): error TS7031: Binding element 'page' implicitly has an 'any' type.

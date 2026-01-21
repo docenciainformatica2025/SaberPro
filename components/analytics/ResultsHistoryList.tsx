@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
-import { Eye, Download, FileText } from "lucide-react";
+import { Eye, FileText } from "lucide-react";
 
 interface Result {
     id: string;
@@ -30,16 +30,40 @@ export default function ResultsHistoryList({ results, onViewReport }: ResultsHis
         );
     }
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.05
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, x: -10 },
+        visible: { opacity: 1, x: 0 }
+    };
+
     return (
         <div className="space-y-4">
             {/* Mobile Card View */}
-            <div className="md:hidden space-y-4">
+            <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+                className="md:hidden space-y-4"
+            >
                 {results.slice().reverse().map((result) => {
                     const date = result.completedAt?.toDate ? result.completedAt.toDate() : new Date();
                     const percentage = Math.round((result.score / result.totalQuestions) * 100);
 
                     return (
-                        <div key={result.id} className="bg-white/5 border border-white/10 rounded-xl p-4 space-y-3">
+                        <motion.div
+                            variants={itemVariants}
+                            key={result.id}
+                            className="bg-white/5 border border-white/10 rounded-xl p-4 space-y-3"
+                        >
                             <div className="flex justify-between items-start">
                                 <span className="text-xs text-metal-silver font-medium">
                                     {format(date, "d MMM yyyy, HH:mm", { locale: es })}
@@ -75,10 +99,10 @@ export default function ResultsHistoryList({ results, onViewReport }: ResultsHis
                             >
                                 <Eye size={16} /> Ver Reporte Detallado
                             </button>
-                        </div>
+                        </motion.div>
                     );
                 })}
-            </div>
+            </motion.div>
 
             {/* Desktop Table View */}
             <div className="hidden md:block overflow-x-auto rounded-xl border border-white/10">
@@ -92,13 +116,22 @@ export default function ResultsHistoryList({ results, onViewReport }: ResultsHis
                             <th className="px-6 py-4 text-center">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-white/5">
+                    <motion.tbody
+                        initial="hidden"
+                        animate="visible"
+                        variants={containerVariants}
+                        className="divide-y divide-white/5"
+                    >
                         {results.slice().reverse().map((result) => {
                             const date = result.completedAt?.toDate ? result.completedAt.toDate() : new Date();
                             const percentage = Math.round((result.score / result.totalQuestions) * 100);
 
                             return (
-                                <tr key={result.id} className="hover:bg-white/5 transition-colors group">
+                                <motion.tr
+                                    variants={itemVariants}
+                                    key={result.id}
+                                    className="hover:bg-white/5 transition-colors group"
+                                >
                                     <td className="px-6 py-4 font-medium text-white whitespace-nowrap text-center">
                                         {format(date, "d MMM yyyy, HH:mm", { locale: es })}
                                     </td>
@@ -134,10 +167,10 @@ export default function ResultsHistoryList({ results, onViewReport }: ResultsHis
                                             <Eye size={14} /> Ver Reporte
                                         </button>
                                     </td>
-                                </tr>
+                                </motion.tr>
                             );
                         })}
-                    </tbody>
+                    </motion.tbody>
                 </table>
             </div>
         </div>

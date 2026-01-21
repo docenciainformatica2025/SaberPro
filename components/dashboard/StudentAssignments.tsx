@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, query, where, getDocs, limit, orderBy } from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { BookOpen, Brain, Clock, ArrowRight, AlertCircle, CheckCircle } from "lucide-react";
 import { User } from "firebase/auth";
+import { motion } from "framer-motion";
 
 interface Assignment {
     id: string;
@@ -32,7 +33,6 @@ export default function StudentAssignments({ user }: StudentAssignmentsProps) {
             setLoading(true);
             setError(null);
             try {
-                // 1. Get Enrolled Classes & Completed Assignments
                 const enrollmentQ = query(collection(db, "class_members"), where("userId", "==", user.uid));
                 const enrollmentSnap = await getDocs(enrollmentQ);
 
@@ -55,28 +55,19 @@ export default function StudentAssignments({ user }: StudentAssignmentsProps) {
                     return;
                 }
 
-                // 2. Fetch Assignments for these classes
                 const chunks = [];
                 for (let i = 0; i < classIds.length; i += 10) {
                     chunks.push(classIds.slice(i, i + 10));
                 }
 
                 let allAssignments: Assignment[] = [];
-
                 for (const chunk of chunks) {
-                    const q = query(
-                        collection(db, "assignments"),
-                        where("classId", "in", chunk)
-                    );
+                    const q = query(collection(db, "assignments"), where("classId", "in", chunk));
                     const snapshot = await getDocs(q);
-                    const chunkAssignments = snapshot.docs.map(doc => ({
-                        id: doc.id,
-                        ...doc.data()
-                    })) as Assignment[];
+                    const chunkAssignments = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as Assignment[];
                     allAssignments = [...allAssignments, ...chunkAssignments];
                 }
 
-                // 3. Filter and Sort in Memory
                 const validAssignments = allAssignments
                     .filter(a => {
                         const isActive = a.status === 'active' || !a.status;
@@ -86,11 +77,10 @@ export default function StudentAssignments({ user }: StudentAssignmentsProps) {
                     .sort((a: any, b: any) => {
                         const timeA = a.createdAt?.seconds || 0;
                         const timeB = b.createdAt?.seconds || 0;
-                        return timeB - timeA; // Descending
+                        return timeB - timeA;
                     });
 
                 setAssignments(validAssignments);
-
             } catch (err: any) {
                 console.error("Error fetching assignments:", err);
                 if (err.message.includes("requires an index")) {
@@ -103,13 +93,20 @@ export default function StudentAssignments({ user }: StudentAssignmentsProps) {
             }
         };
 
-        if (user) {
-            fetchAssignments();
-        }
+        if (user) fetchAssignments();
     }, [user]);
 
-    const handleStart = (assignmentId: string) => {
-        window.location.href = `/simulation?assignmentId=${assignmentId}`;
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.05 }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, scale: 0.95 },
+        visible: { opacity: 1, scale: 1 }
     };
 
     if (loading) {
@@ -124,8 +121,7 @@ export default function StudentAssignments({ user }: StudentAssignmentsProps) {
     if (classCount === 0) return null;
 
     return (
-        <div className="animate-in fade-in slide-in-from-bottom-6 duration-1000 mb-12">
-
+        <div className="mb-12">
             <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold text-white flex items-center gap-3">
                     <BookOpen className="text-metal-gold" /> Tareas Pendientes ({assignments.length})
@@ -142,12 +138,19 @@ export default function StudentAssignments({ user }: StudentAssignmentsProps) {
             )}
 
             {assignments.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={containerVariants}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
                     {assignments.map((assign) => (
-                        <div key={assign.id} className="metallic-card bg-metal-dark border border-metal-silver/10 p-6 rounded-2xl relative overflow-hidden group hover:border-metal-gold/30 transition-all shadow-lg hover:shadow-metal-gold/5">
-                            {/* Glow Effect */}
+                        <motion.div
+                            variants={itemVariants}
+                            key={assign.id}
+                            className="metallic-card bg-metal-dark border border-metal-silver/10 p-6 rounded-2xl relative overflow-hidden group hover:border-metal-gold/30 transition-all shadow-lg hover:shadow-metal-gold/5"
+                        >
                             <div className="absolute top-0 right-0 w-32 h-32 bg-metal-gold/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-metal-gold/10 transition-all blur-2xl"></div>
-
                             <div className="relative z-10">
                                 <div className="flex justify-between items-start mb-4">
                                     <div className="px-3 py-1 rounded-lg bg-metal-blue/10 text-metal-blue text-[10px] font-black uppercase tracking-wider border border-metal-blue/20">
@@ -160,16 +163,13 @@ export default function StudentAssignments({ user }: StudentAssignmentsProps) {
                                         </div>
                                     )}
                                 </div>
-
                                 <h3 className="text-lg font-bold text-white mb-3 line-clamp-2 min-h-[56px] leading-tight">
                                     {assign.title}
                                 </h3>
-
                                 <div className="flex items-center gap-3 text-xs text-metal-silver mb-6 bg-black/20 p-2 rounded-lg w-fit">
                                     <Brain size={14} className="text-metal-gold" />
                                     <span>{assign.questions?.length || 0} Preguntas</span>
                                 </div>
-
                                 <a
                                     href={`/simulation?assignmentId=${assign.id}`}
                                     className="w-full relative overflow-hidden group/btn bg-white/5 hover:bg-metal-gold border border-white/10 hover:border-metal-gold text-white hover:text-black font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-md hover:shadow-metal-gold/20"
@@ -179,9 +179,9 @@ export default function StudentAssignments({ user }: StudentAssignmentsProps) {
                                     </span>
                                 </a>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             ) : (
                 <div className="mb-8 p-4 bg-white/5 border border-white/5 rounded-2xl flex items-center gap-4">
                     <div className="p-3 bg-metal-silver/10 rounded-full text-metal-silver">

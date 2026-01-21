@@ -1,53 +1,39 @@
-'use client';
+"use client";
 
-import { useEffect, useState, useRef } from 'react';
-import { useInView, useMotionValue, useSpring } from 'framer-motion';
+import { useEffect, useState, useRef } from "react";
+import { useInView, useMotionValue, useSpring } from "framer-motion";
 
 interface NumberTickerProps {
     value: number;
-    direction?: 'up' | 'down';
-    delay?: number;
     className?: string;
     suffix?: string;
 }
 
-export default function NumberTicker({
-    value,
-    direction = 'up',
-    delay = 0,
-    className,
-    suffix = '',
-}: NumberTickerProps) {
-    const ref = useRef<HTMLSpanElement>(null);
-    const motionValue = useMotionValue(direction === 'down' ? value : 0);
+export default function NumberTicker({ value, className, suffix = "" }: NumberTickerProps) {
+    const [displayValue, setDisplayValue] = useState(0);
+    const motionValue = useMotionValue(0);
     const springValue = useSpring(motionValue, {
-        damping: 60,
+        damping: 30,
         stiffness: 100,
     });
-    const isInView = useInView(ref, { margin: '0px', once: true });
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "0px" });
 
     useEffect(() => {
         if (isInView) {
-            setTimeout(() => {
-                motionValue.set(direction === 'down' ? 0 : value);
-            }, delay * 1000);
+            motionValue.set(value);
         }
-    }, [motionValue, isInView, delay, value, direction]);
+    }, [isInView, value, motionValue]);
 
     useEffect(() => {
-        springValue.on('change', (latest) => {
-            if (ref.current) {
-                ref.current.textContent = Intl.NumberFormat('en-US').format(
-                    Math.round(latest)
-                ) + suffix;
-            }
+        return springValue.on("change", (latest) => {
+            setDisplayValue(Math.round(latest));
         });
-    }, [springValue, suffix]);
+    }, [springValue]);
 
     return (
-        <span
-            className={className}
-            ref={ref}
-        />
+        <span ref={ref} className={className}>
+            {displayValue}{suffix}
+        </span>
     );
 }
