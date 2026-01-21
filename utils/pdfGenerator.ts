@@ -20,14 +20,14 @@ const generateVerificationID = (seed: string = "") => {
     return `SP-${timestamp}-${random}-${Math.abs(hash).toString(36).toUpperCase()}`.substring(0, 20);
 };
 
-interface Student {
+export interface Student {
     studentName: string;
     lastScore?: number;
     lastTotalQuestions?: number;
     lastModule?: string;
 }
 
-interface UserConsent {
+export interface UserConsent {
     email: string;
     id: string;
     consentLog: {

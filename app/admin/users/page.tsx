@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import type { UserConsent } from "@/utils/pdfGenerator";
 import { db, auth } from "@/lib/firebase";
 import { collection, getDocs, limit, query, updateDoc, doc, where, orderBy, deleteDoc } from "firebase/firestore";
 import { sendPasswordResetEmail } from "firebase/auth";
@@ -359,7 +360,7 @@ export default function UsersPage() {
                                                     {u.consentLog && (
                                                         <Button variant="ghost" size="icon" className="hover:text-white hover:bg-white/10 border-transparent hover:border-white/20" onClick={async () => {
                                                             const { pdfGenerator } = await import("@/utils/pdfGenerator");
-                                                            pdfGenerator.generateConsentCertificate(u);
+                                                            pdfGenerator.generateConsentCertificate(u as UserConsent);
                                                         }} title="Consignar Certificado">
                                                             <FileText size={18} />
                                                         </Button>
