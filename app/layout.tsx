@@ -13,6 +13,7 @@ import CookieBanner from "@/components/legal/CookieBanner";
 import { BRAND_NAME_SPACED, APP_VERSION } from "@/lib/config";
 import PageTransition from "@/components/layout/PageTransition";
 import AdminRoleSwitcher from "@/components/admin/AdminRoleSwitcher";
+import MobileTabBar from "@/components/layout/MobileTabBar";
 
 // Hack to suppress the noisy hydration warning from extensions
 if (typeof window !== "undefined") {
@@ -75,6 +76,7 @@ export default function RootLayout({
               </PageTransition>
             </main>
             <AdminRoleSwitcher />
+            <MobileTabBar />
           </OnboardingGuard>
           <ConditionalFooter />
           <CookieBanner />

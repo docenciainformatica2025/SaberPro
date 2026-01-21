@@ -298,6 +298,38 @@ h3 {
     line-height: var(--line-height-tight);
     /* 1.25 - Headings only */
   }
+
+  /* === MOBILE TOUCH TARGETS (WCAG 2.2 Level AAA) === */
+
+  /* Minimum touch target size for mobile accessibility */
+  .touch-target {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .touch-target-large {
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  /* Ensure interactive elements are easily tappable */
+  .touch-manipulation {
+    touch-action: manipulation;
+    /* Prevents 300ms delay on mobile */
+  }
+
+  /* Expand clickable area without changing visual size */
+  .tap-area-expanded {
+    position: relative;
+  }
+
+  .tap-area-expanded::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    /* Expands tap area by 8px on all sides */
+    z-index: -1;
+  }
 }
 
 /* Animations */

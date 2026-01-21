@@ -489,7 +489,7 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                     onClick={() => setCurrentIndex(prev => Math.max(0, prev - 1))}
                     disabled={currentIndex === 0}
                     variant="ghost"
-                    className="h-14 px-8 text-lg"
+                    className="h-14 px-8 text-lg touch-target-large touch-manipulation"
                     icon={ArrowLeft}
                 >
                     Anterior
@@ -498,7 +498,7 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                 <Button
                     onClick={handleNext}
                     variant="premium"
-                    className="h-14 px-12 text-lg"
+                    className="h-14 px-12 text-lg touch-target-large touch-manipulation"
                     icon={ArrowRight}
                     iconPosition="right"
                 >
