@@ -28,6 +28,43 @@
   --metal-blue: rgb(70, 130, 180);
   --metal-copper: rgb(184, 115, 51);
 
+  /* === MATERIAL DESIGN DARK MODE SYSTEM === */
+  /* Professional dark theme with elevation surfaces */
+
+  /* Dark Mode Surfaces (Material Design) */
+  --surface-base: #121212;
+  /* Page background */
+  --surface-1: #1E1E1E;
+  /* Cards, inputs - 1dp elevation */
+  --surface-2: #252525;
+  /* Modals, dropdowns - 2dp elevation */
+  --surface-3: #2C2C2C;
+  /* Tooltips, popovers - 3dp elevation */
+
+  /* Dark Mode Text (Optimized opacity - prevents ghost effect) */
+  --text-high-emphasis: rgba(255, 255, 255, 0.87);
+  /* Primary text */
+  --text-medium-emphasis: rgba(255, 255, 255, 0.60);
+  /* Secondary text */
+  --text-disabled: rgba(255, 255, 255, 0.38);
+  /* Disabled state */
+
+  /* Light Mode (For toggle) */
+  --surface-base-light: #F9FAFB;
+  --surface-1-light: #FFFFFF;
+  --surface-2-light: #F3F4F6;
+  --text-high-emphasis-light: #111827;
+  --text-medium-emphasis-light: #6B7280;
+
+  /* Active Theme Variables (defaulting to Dark Mode) */
+  --theme-bg-base: var(--surface-base);
+  --theme-bg-surface-1: var(--surface-1);
+  --theme-bg-surface-2: var(--surface-2);
+  --theme-bg-surface-3: var(--surface-3);
+  --theme-text-primary: var(--text-high-emphasis);
+  --theme-text-secondary: var(--text-medium-emphasis);
+  --theme-text-disabled: var(--text-disabled);
+
   /* === WORLD-CLASS TYPOGRAPHY SYSTEM === */
   /* Optimized for prolonged reading (exam interfaces) */
 
@@ -135,14 +172,37 @@ html {
   color: white;
 }
 
+/* Dark mode default styles */
+:root {
+  color-scheme: dark;
+}
+
+/* Light mode override */
+.light {
+  color-scheme: light;
+  --theme-bg-base: var(--surface-base-light);
+  --theme-bg-surface-1: var(--surface-1-light);
+  --theme-bg-surface-2: var(--surface-2-light);
+  --theme-text-primary: var(--text-high-emphasis-light);
+  --theme-text-secondary: var(--text-medium-emphasis-light);
+}
+
 body {
-  background: linear-gradient(180deg, var(--color-metal-dark) 0%, var(--color-metal-black) 100%);
-  color: var(--foreground);
+  background: var(--theme-bg-base);
+  color: var(--theme-text-primary);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   min-height: 100vh;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure background is consistently applied in dark mode if no class is present */
+@media (prefers-color-scheme: dark) {
+  body:not(.light) {
+    background: linear-gradient(180deg, var(--color-metal-dark) 0%, var(--color-metal-black) 100%);
+  }
 }
 
 /* Elite Reading Experience - 2026 Standards */
