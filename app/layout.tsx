@@ -15,7 +15,6 @@ import PageTransition from "@/components/layout/PageTransition";
 import AdminRoleSwitcher from "@/components/admin/AdminRoleSwitcher";
 
 // Hack to suppress the noisy hydration warning from extensions
-// Hack to suppress the noisy hydration warning from extensions
 if (typeof window !== "undefined") {
   const originalError = console.error;
   console.error = (...args) => {

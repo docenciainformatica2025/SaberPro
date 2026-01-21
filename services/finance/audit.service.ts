@@ -36,8 +36,6 @@ export class AuditService {
             updatedAt: Date.now(),
             ...(metadata ? { metadata } : {}) // Merge metadata if provided
         });
-
-        console.log(`[AUDIT] Transaction ${txId} updated to ${status}`);
     }
 
     static async getTransaction(txId: string): Promise<Transaction | null> {
