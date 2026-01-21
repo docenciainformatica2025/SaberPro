@@ -1,0 +1,547 @@
+
+> web-app@3.1.1 lint
+> eslint
+
+
+C:\SaberPro\web-app\__tests__\QuizEngine.test.tsx
+  34:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\achievements\page.tsx
+   4:10  warning  'useState' is defined but never used          @typescript-eslint/no-unused-vars
+  22:13  warning  'user' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  22:19  warning  'profile' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\app\admin\analytics\page.tsx
+   8:5   warning  'LineChart' is defined but never used     @typescript-eslint/no-unused-vars
+   9:5   warning  'Line' is defined but never used          @typescript-eslint/no-unused-vars
+  45:48  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  63:35  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\admin\audit\page.tsx
+  6:30  warning  'User' is defined but never used      @typescript-eslint/no-unused-vars
+  6:36  warning  'Activity' is defined but never used  @typescript-eslint/no-unused-vars
+  6:54  warning  'Filter' is defined but never used    @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\app\admin\components\AdminSidebar.tsx
+   81:72  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   99:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  105:53  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\admin\dashboard\page.tsx
+   5:5   warning  'FileQuestion' is defined but never used          @typescript-eslint/no-unused-vars
+  10:5   warning  'Clock' is defined but never used                 @typescript-eslint/no-unused-vars
+  11:5   warning  'AlertCircle' is defined but never used           @typescript-eslint/no-unused-vars
+  94:12  warning  'recentUsers' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\app\admin\finance\page.tsx
+   22:16  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   38:44  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   62:44  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  213:52  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\admin\layout.tsx
+   6:8   warning  'Link' is defined but never used               @typescript-eslint/no-unused-vars
+   7:10  warning  'LayoutDashboard' is defined but never used    @typescript-eslint/no-unused-vars
+   7:27  warning  'FileText' is defined but never used           @typescript-eslint/no-unused-vars
+   7:37  warning  'Users' is defined but never used              @typescript-eslint/no-unused-vars
+   7:44  warning  'Settings' is defined but never used           @typescript-eslint/no-unused-vars
+   7:54  warning  'LogOut' is defined but never used             @typescript-eslint/no-unused-vars
+   7:75  warning  'Database' is defined but never used           @typescript-eslint/no-unused-vars
+  19:11  warning  'pathname' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\app\admin\questions\[id]\page.tsx
+   15:5   warning  'HelpCircle' is defined but never used       @typescript-eslint/no-unused-vars
+   20:5   warning  'Trash2' is defined but never used           @typescript-eslint/no-unused-vars
+   33:11  warning  'router' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  230:61  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\admin\questions\new\page.tsx
+    3:20  warning  'useEffect' is defined but never used        @typescript-eslint/no-unused-vars
+   35:11  warning  'router' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  111:35  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  120:25  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  233:65  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\admin\questions\page.tsx
+    4:54  warning  'orderBy' is defined but never used                              @typescript-eslint/no-unused-vars
+    7:73  warning  'ChevronRight' is defined but never used                         @typescript-eslint/no-unused-vars
+  138:49  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  138:58  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  198:53  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  198:62  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\SaberPro\web-app\app\admin\seed\page.tsx
+   12:47  warning  'CheckCircle2' is defined but never used             @typescript-eslint/no-unused-vars
+   38:12  warning  'isCheckingLive' is assigned a value but never used  @typescript-eslint/no-unused-vars
+   91:37  error    Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  112:21  error    Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  160:21  error    Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\admin\settings\page.tsx
+   26:10  warning  'Badge' is defined but never used         @typescript-eslint/no-unused-vars
+  233:67  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\admin\system\page.tsx
+   9:5   warning  'Server' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         @typescript-eslint/no-unused-vars
+  12:5   warning  'Cpu' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+  38:9   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\SaberPro\web-app\app\admin\system\page.tsx:38:9
+  36 |         // Hydration safe initialization
+  37 |         const now = Date.now();
+> 38 |         setLogs([
+     |         ^^^^^^^ Avoid calling setState() directly within an effect
+  39 |             { time: new Date().toLocaleTimeString(), msg: "Saber Pro Kernel inicializado con ├®xito", type: "success" },
+  40 |             { time: new Date(now - 5000).toLocaleTimeString(), msg: "Conectando al cl├║ster Firestore (us-central1)... Conectado.", type: "info" },
+  41 |             { time: new Date(now - 10000).toLocaleTimeString(), msg: "Reglas de seguridad validadas por Firebase Auth", type: "success" }  react-hooks/set-state-in-effect
+  68:18  warning  'e' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  79:9   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\SaberPro\web-app\app\admin\system\page.tsx:79:9
+  77 |     useEffect(() => {
+  78 |         const interval = setInterval(checkSystem, 8000);
+> 79 |         checkSystem();
+     |         ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  80 |         return () => clearInterval(interval);
+  81 |     }, []);
+  82 |                                                                                                                                                                                                                                                                                                                                              react-hooks/set-state-in-effect
+
+C:\SaberPro\web-app\app\admin\users\page.tsx
+    4:14   warning  'auth' is defined but never used                    @typescript-eslint/no-unused-vars
+    5:61   warning  'where' is defined but never used                   @typescript-eslint/no-unused-vars
+    6:10   warning  'sendPasswordResetEmail' is defined but never used  @typescript-eslint/no-unused-vars
+   16:5    warning  'MoreVertical' is defined but never used            @typescript-eslint/no-unused-vars
+   18:5    warning  'MapPin' is defined but never used                  @typescript-eslint/no-unused-vars
+   22:5    warning  'Download' is defined but never used                @typescript-eslint/no-unused-vars
+   25:5    warning  'Key' is defined but never used                     @typescript-eslint/no-unused-vars
+   49:17   error    Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+  113:87   error    Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+  114:18   warning  'error' is defined but never used                   @typescript-eslint/no-unused-vars
+  120:13   error    'newPlan' is never reassigned. Use 'const' instead  prefer-const
+  131:83   error    Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+  134:18   warning  'error' is defined but never used                   @typescript-eslint/no-unused-vars
+  150:18   warning  'e' is defined but never used                       @typescript-eslint/no-unused-vars
+  165:18   warning  'error' is defined but never used                   @typescript-eslint/no-unused-vars
+  191:130  error    Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+  193:18   warning  'error' is defined but never used                   @typescript-eslint/no-unused-vars
+  237:78   error    Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+  249:78   error    Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+  490:109  error    Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\analytics\page.tsx
+   10:66  warning  'AlertTriangle' is defined but never used  @typescript-eslint/no-unused-vars
+   10:81  warning  'CheckCircle' is defined but never used    @typescript-eslint/no-unused-vars
+   22:48  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+   23:48  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+   24:52  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+   25:58  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+   58:30  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+   60:36  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+   64:34  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+   64:42  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+   70:40  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+  132:39  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\api\explain\route.ts
+  53:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\api\health\route.ts
+  23:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\credits\page.tsx
+  61:52  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  61:68  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\SaberPro\web-app\app\dashboard\billing\page.tsx
+   7:36  warning  'orderBy' is defined but never used       @typescript-eslint/no-unused-vars
+  34:51  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  35:51  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  40:29  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  65:36  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  70:18  warning  'e' is defined but never used             @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\app\dashboard\page.tsx
+   41:56  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   42:58  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   47:48  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   73:32  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  100:29  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  316:55  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\diagnostic\results\page.tsx
+   8:10  warning  'ArrowRight' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+  14:38  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  @typescript-eslint/no-explicit-any
+  24:9   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\SaberPro\web-app\app\diagnostic\results\page.tsx:24:9
+  22 |             return;
+  23 |         }
+> 24 |         setData(JSON.parse(saved));
+     |         ^^^^^^^ Avoid calling setState() directly within an effect
+  25 |         setLoading(false);
+  26 |     }, []);
+  27 |  react-hooks/set-state-in-effect
+  26:8   warning  React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 react-hooks/exhaustive-deps
+  40:11  warning  'projectedScore' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\app\forgot-password\page.tsx
+   7:10  warning  'BRAND_YEAR' is defined but never used    @typescript-eslint/no-unused-vars
+  26:23  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\leaderboard\page.tsx
+    5:29   warning  'orderBy' is defined but never used                                     @typescript-eslint/no-unused-vars
+    5:54   warning  'where' is defined but never used                                       @typescript-eslint/no-unused-vars
+   11:10   warning  'Trophy' is defined but never used                                      @typescript-eslint/no-unused-vars
+   11:18   warning  'Medal' is defined but never used                                       @typescript-eslint/no-unused-vars
+   11:43   warning  'Search' is defined but never used                                      @typescript-eslint/no-unused-vars
+   11:51   warning  'User' is defined but never used                                        @typescript-eslint/no-unused-vars
+   11:57   warning  'Sparkles' is defined but never used                                    @typescript-eslint/no-unused-vars
+   13:8    warning  'StreakCounter' is defined but never used                               @typescript-eslint/no-unused-vars
+   14:8    warning  'Image' is defined but never used                                       @typescript-eslint/no-unused-vars
+   26:19   warning  'profile' is assigned a value but never used                            @typescript-eslint/no-unused-vars
+  182:39   warning  'i' is defined but never used                                           @typescript-eslint/no-unused-vars
+  190:162  error    Comments inside children section of tag should be placed inside braces  react/jsx-no-comment-textnodes
+  191:51   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`         react/no-unescaped-entities
+  191:62   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`         react/no-unescaped-entities
+  192:126  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`         react/no-unescaped-entities
+
+C:\SaberPro\web-app\app\login\page.tsx
+   6:34  warning  'Chrome' is defined but never used        @typescript-eslint/no-unused-vars
+  14:10  warning  'BRAND_YEAR' is defined but never used    @typescript-eslint/no-unused-vars
+  50:23  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  71:23  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\page.tsx
+  9:22  warning  'COPYRIGHT_TEXT' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\app\planner\page.tsx
+   6:33  warning  'CalendarIcon' is defined but never used             @typescript-eslint/no-unused-vars
+   6:76  warning  'MoreVertical' is defined but never used             @typescript-eslint/no-unused-vars
+   6:90  warning  'Plus' is defined but never used                     @typescript-eslint/no-unused-vars
+  10:10  warning  'Badge' is defined but never used                    @typescript-eslint/no-unused-vars
+  12:10  warning  'doc' is defined but never used                      @typescript-eslint/no-unused-vars
+  12:15  warning  'getDoc' is defined but never used                   @typescript-eslint/no-unused-vars
+  12:23  warning  'setDoc' is defined but never used                   @typescript-eslint/no-unused-vars
+  13:10  warning  'db' is defined but never used                       @typescript-eslint/no-unused-vars
+  72:25  warning  'setCurrentYear' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\app\pricing\page.tsx
+   4:52  warning  'Star' is defined but never used                   @typescript-eslint/no-unused-vars
+  32:19  warning  'subscription' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  38:12  warning  'loading' is assigned a value but never used       @typescript-eslint/no-unused-vars
+  84:18  warning  'e' is defined but never used                      @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\app\profile\page.tsx
+  6:76  warning  'Layout' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\app\register\page.tsx
+    7:72  warning  'ShieldCheck' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+   16:10  warning  'BRAND_YEAR' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+   62:27  warning  Compilation Skipped: Use of incompatible library
+
+This API returns functions which cannot be memoized without leading to stale UI. To prevent this, by default React Compiler will skip memoizing this component/hook. However, you may see issues if values from this API are passed to other components/hooks that are memoized.
+
+C:\SaberPro\web-app\app\register\page.tsx:62:27
+  60 |     };
+  61 |
+> 62 |     const passwordValue = watch("password", "");
+     |                           ^^^^^ React Hook Form's `useForm()` API returns a `watch()` function which cannot be memoized safely.
+  63 |
+  64 |     const requirements = [
+  65 |         { regex: /.{8,}/, text: "M├¡nimo 8 caracteres" },  react-hooks/incompatible-library
+   81:23  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @typescript-eslint/no-explicit-any
+  111:23  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\simulation\page.tsx
+  112:8  warning  React Hook useEffect has a missing dependency: 'role'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\SaberPro\web-app\app\support\page.tsx
+  4:39  warning  'Shield' is defined but never used         @typescript-eslint/no-unused-vars
+  4:62  warning  'Check' is defined but never used          @typescript-eslint/no-unused-vars
+  4:69  warning  'MessageSquare' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\app\teacher\analytics\page.tsx
+   5:68  warning  'ChevronRight' is defined but never used                                                                       @typescript-eslint/no-unused-vars
+   7:45  warning  'getCountFromServer' is defined but never used                                                                 @typescript-eslint/no-unused-vars
+   9:86  warning  'BarChart' is defined but never used                                                                           @typescript-eslint/no-unused-vars
+   9:96  warning  'Bar' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  43:8   warning  React Hook useEffect has a missing dependency: 'fetchStats'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  51:19  warning  'classIds' is assigned a value but never used                                                                  @typescript-eslint/no-unused-vars
+  53:19  warning  'totalStudents' is assigned a value but never used                                                             @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\app\teacher\assignments\page.tsx
+   5:16  warning  'Calendar' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+   8:45  warning  'orderBy' is defined but never used                                                                                  @typescript-eslint/no-unused-vars
+  22:8   warning  React Hook useEffect has a missing dependency: 'fetchAssignments'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  36:91  error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  37:91  error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  60:31  error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  79:18  warning  'e' is defined but never used                                                                                        @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\app\teacher\classes\[classId]\page.tsx
+  23:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  27:43  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\teacher\classes\page.tsx
+   8:29  warning  'Trash2' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+   8:49  warning  'BookOpen' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  15:10  warning  'BRAND_NAME' is defined but never used                                                                           @typescript-eslint/no-unused-vars
+  45:8   warning  React Hook useEffect has a missing dependency: 'fetchClasses'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\SaberPro\web-app\app\teacher\generator\page.tsx
+    7:23   warning  'CheckCircle' is defined but never used                                                                          @typescript-eslint/no-unused-vars
+    7:36   warning  'AlertCircle' is defined but never used                                                                          @typescript-eslint/no-unused-vars
+    7:80   warning  'BookOpen' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+   24:66   error    Unexpected any. Specify a different type                                                                         @typescript-eslint/no-explicit-any
+   25:44   error    Unexpected any. Specify a different type                                                                         @typescript-eslint/no-explicit-any
+   29:8    warning  React Hook useEffect has a missing dependency: 'fetchClasses'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  116:11   warning  'isPro' is assigned a value but never used                                                                       @typescript-eslint/no-unused-vars
+  164:102  error    Unexpected any. Specify a different type                                                                         @typescript-eslint/no-explicit-any
+  243:66   error    Unexpected any. Specify a different type                                                                         @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\teacher\layout.tsx
+   6:8   warning  'Link' is defined but never used                       @typescript-eslint/no-unused-vars
+  13:5   warning  'LogOut' is defined but never used                     @typescript-eslint/no-unused-vars
+  14:5   warning  'GraduationCap' is defined but never used              @typescript-eslint/no-unused-vars
+  15:5   warning  'Menu' is defined but never used                       @typescript-eslint/no-unused-vars
+  16:5   warning  'X' is defined but never used                          @typescript-eslint/no-unused-vars
+  23:8   warning  'ProFooter' is defined but never used                  @typescript-eslint/no-unused-vars
+  27:25  warning  'logout' is assigned a value but never used            @typescript-eslint/no-unused-vars
+  29:11  warning  'pathname' is assigned a value but never used          @typescript-eslint/no-unused-vars
+  30:12  warning  'isSidebarOpen' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  30:27  warning  'setIsSidebarOpen' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  61:11  warning  'navItems' is assigned a value but never used          @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\app\teacher\settings\page.tsx
+   5:22  warning  'Mail' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  12:19  warning  'role' is assigned a value but never used                                                                        @typescript-eslint/no-unused-vars
+  25:8   warning  React Hook useEffect has a missing dependency: 'fetchProfile'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\SaberPro\web-app\app\training\[module]\page.tsx
+    7:8    warning  'AIProcessingLoader' is defined but never used                   @typescript-eslint/no-unused-vars
+    8:65   warning  'RefreshCcw' is defined but never used                           @typescript-eslint/no-unused-vars
+   12:45   warning  'limit' is defined but never used                                @typescript-eslint/no-unused-vars
+   32:12   warning  'loading' is assigned a value but never used                     @typescript-eslint/no-unused-vars
+   35:12   warning  'explanation' is assigned a value but never used                 @typescript-eslint/no-unused-vars
+   36:12   warning  'loadingExplanation' is assigned a value but never used          @typescript-eslint/no-unused-vars
+   37:52   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   84:51   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   98:51   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  112:51   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  155:11   warning  'handleExplain' is assigned a value but never used               @typescript-eslint/no-unused-vars
+  224:29   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  224:108  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\SaberPro\web-app\app\training\page.tsx
+   6:57  warning  'Target' is defined but never used        @typescript-eslint/no-unused-vars
+  16:52  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\app\update-password\page.tsx
+  52:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\backup_pre_strategy\page.tsx
+  40:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  55:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\components\analytics\PerformanceChart.tsx
+  20:11  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\components\analytics\ResultDetailModal.tsx
+    6:8   warning  'html2canvas' is defined but never used   @typescript-eslint/no-unused-vars
+    7:8   warning  'jsPDF' is defined but never used         @typescript-eslint/no-unused-vars
+   16:18  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  229:30  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\components\analytics\ResultsHistoryList.tsx
+   3:10  warning  'useState' is defined but never used      @typescript-eslint/no-unused-vars
+   3:20  warning  'useEffect' is defined but never used     @typescript-eslint/no-unused-vars
+   6:15  warning  'Download' is defined but never used      @typescript-eslint/no-unused-vars
+  13:18  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\components\dashboard\StudentAssignments.tsx
+    4:45  warning  'limit' is defined but never used                 @typescript-eslint/no-unused-vars
+    4:52  warning  'orderBy' is defined but never used               @typescript-eslint/no-unused-vars
+   13:16  error    Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   14:17  error    Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   86:31  error    Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   86:39  error    Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   94:27  error    Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+  111:11  warning  'handleStart' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\components\diagnostic\PublicQuizEngine.tsx
+  81:44  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\components\finance\OrderSummary.tsx
+  3:10  warning  'Shield' is defined but never used       @typescript-eslint/no-unused-vars
+  3:36  warning  'CheckCircle' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\components\finance\PaymentGateway.tsx
+   4:31  warning  'ShieldCheck' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+   4:44  warning  'Loader2' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  27:13  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\SaberPro\web-app\components\finance\PaymentGateway.tsx:27:13
+  25 |     useEffect(() => {
+  26 |         if (!deviceId) {
+> 27 |             setDeviceId("dev_" + Math.random().toString(36).substring(2) + Date.now().toString(36));
+     |             ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  28 |         }
+  29 |     }, [deviceId]);
+  30 |  react-hooks/set-state-in-effect
+  97:82  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\components\gamification\StreakCounter.tsx
+   7:10  warning  'doc' is defined but never used                @typescript-eslint/no-unused-vars
+   7:15  warning  'updateDoc' is defined but never used          @typescript-eslint/no-unused-vars
+   8:10  warning  'db' is defined but never used                 @typescript-eslint/no-unused-vars
+  11:22  warning  'user' is assigned a value but never used      @typescript-eslint/no-unused-vars
+  21:11  warning  'isAtRisk' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\components\layout\PageTransition.tsx
+  36:31  error  Expected a `const` instead of a literal type assertion  @typescript-eslint/prefer-as-const
+
+C:\SaberPro\web-app\components\legal\CookieBanner.tsx
+    4:8   warning  'Link' is defined but never used      @typescript-eslint/no-unused-vars
+  272:28  warning  'readOnly' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\components\legal\CookieContent.tsx
+   1:18   warning  'Shield' is defined but never used                               @typescript-eslint/no-unused-vars
+  36:103  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  36:117  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\SaberPro\web-app\components\legal\PrivacyContent.tsx
+    1:42  warning  'Monitor' is defined but never used                              @typescript-eslint/no-unused-vars
+  126:75  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  126:97  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  147:27  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\components\legal\TermsOfServiceBody.tsx
+  185:179  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  185:190  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\SaberPro\web-app\components\simulation\ModuleIntro.tsx
+  37:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\SaberPro\web-app\components\simulation\ModuleIntro.tsx:37:9
+  35 |
+  36 |     useEffect(() => {
+> 37 |         setQuote(RANDOM_QUOTES[Math.floor(Math.random() * RANDOM_QUOTES.length)]);
+     |         ^^^^^^^^ Avoid calling setState() directly within an effect
+  38 |     }, []);
+  39 |
+  40 |     return (  react-hooks/set-state-in-effect
+  77:25  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           react/no-unescaped-entities
+  77:33  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           react/no-unescaped-entities
+
+C:\SaberPro\web-app\components\simulation\QuestionCard.tsx
+   1:20  warning  'QuestionOption' is defined but never used  @typescript-eslint/no-unused-vars
+  14:17  warning  'Loader2' is defined but never used         @typescript-eslint/no-unused-vars
+  15:8   warning  'PremiumGuard' is defined but never used    @typescript-eslint/no-unused-vars
+  26:13  warning  'user' is assigned a value but never used   @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\components\simulation\QuizEngine.tsx
+    6:63  warning  'CheckCircle2' is defined but never used                                                                                                       @typescript-eslint/no-unused-vars
+   61:8   warning  React Hook useEffect has missing dependencies: 'calculateScoreAndSave' and 'isSubmitting'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  130:43  error    Unexpected any. Specify a different type                                                                                                       @typescript-eslint/no-explicit-any
+  150:29  error    Unexpected any. Specify a different type                                                                                                       @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\components\teacher\ClassAnalyticsDashboard.tsx
+  14:15  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\components\teacher\CreateAssignmentModal.tsx
+    5:33  warning  'Brain' is defined but never used                                                                                                             @typescript-eslint/no-unused-vars
+   19:44  error    Unexpected any. Specify a different type                                                                                                      @typescript-eslint/no-explicit-any
+   20:12  warning  'loading' is assigned a value but never used                                                                                                  @typescript-eslint/no-unused-vars
+   20:21  warning  'setLoading' is assigned a value but never used                                                                                               @typescript-eslint/no-unused-vars
+   37:8   warning  React Hook useEffect has missing dependencies: 'checkAssignmentQuota' and 'fetchClasses'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  103:22  error    Unexpected any. Specify a different type                                                                                                      @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\components\ui\NumberTicker.tsx
+  3:21  warning  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\components\ui\OfflineIndicator.tsx
+  12:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\SaberPro\web-app\components\ui\OfflineIndicator.tsx:12:13
+  10 |         // Definir estado inicial (si window existe)
+  11 |         if (typeof window !== "undefined") {
+> 12 |             setIsOnline(navigator.onLine);
+     |             ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  13 |         }
+  14 |
+  15 |         const handleOnline = () => setIsOnline(true);  react-hooks/set-state-in-effect
+
+C:\SaberPro\web-app\components\ui\PromotionBanner.tsx
+  11:42  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\context\AuthContext.tsx
+   13:15  warning  'getDoc' is defined but never used             @typescript-eslint/no-unused-vars
+   31:20  error    Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+   61:12  warning  'error' is assigned a value but never used     @typescript-eslint/no-unused-vars
+   61:19  warning  'setError' is assigned a value but never used  @typescript-eslint/no-unused-vars
+   87:92  error    Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+  124:20  error    Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\services\finance\audit.service.ts
+   2:54  warning  'serverTimestamp' is defined but never used  @typescript-eslint/no-unused-vars
+   3:38  warning  'PaymentMethod' is defined but never used    @typescript-eslint/no-unused-vars
+   3:53  warning  'CurrencyCode' is defined but never used     @typescript-eslint/no-unused-vars
+  32:90  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\services\finance\subscription.service.ts
+   2:51  warning  'getDoc' is defined but never used  @typescript-eslint/no-unused-vars
+  15:57  warning  'amount' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\SaberPro\web-app\types\finance.ts
+  53:31  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\SaberPro\web-app\utils\invoiceGenerator.ts
+   19:17  error  Unexpected any. Specify a different type              @typescript-eslint/no-explicit-any
+  138:13  error  'methodCol' is never reassigned. Use 'const' instead  prefer-const
+
+C:\SaberPro\web-app\utils\pdfGenerator.ts
+   27:60  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  342:74  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  342:82  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  397:40  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  463:56  warning  'isLast' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+Ô£û 298 problems (127 errors, 171 warnings)
+  3 errors and 0 warnings potentially fixable with the `--fix` option.
+

@@ -20,11 +20,29 @@ const generateVerificationID = (seed: string = "") => {
     return `SP-${timestamp}-${random}-${Math.abs(hash).toString(36).toUpperCase()}`.substring(0, 20);
 };
 
+interface Student {
+    studentName: string;
+    lastScore?: number;
+    lastTotalQuestions?: number;
+    lastModule?: string;
+}
+
+interface UserConsent {
+    email: string;
+    id: string;
+    consentLog: {
+        acceptedAt: string | number | Date;
+        version: string;
+        type: string;
+        ipHash: string;
+    };
+}
+
 export const pdfGenerator = {
     /**
      * Generates a "World-Class" Executive Group Report
      */
-    generateClassReport: (classroomName: string, students: any[]) => {
+    generateClassReport: (classroomName: string, students: Student[]) => {
         const doc = new jsPDF({ format: 'letter' });
         const pageWidth = doc.internal.pageSize.getWidth();
         const pageHeight = doc.internal.pageSize.getHeight();
@@ -339,7 +357,7 @@ export const pdfGenerator = {
 
         doc.setFontSize(11);
         doc.setTextColor(TEXT_MAIN[0], TEXT_MAIN[1], TEXT_MAIN[2]);
-        doc.splitTextToSize(analysisText, pageWidth - 40).forEach((line: any, i: any) => {
+        doc.splitTextToSize(analysisText, pageWidth - 40).forEach((line: string, i: number) => {
             doc.text(line, 20, 160 + (i * 6));
         });
 
@@ -394,7 +412,7 @@ export const pdfGenerator = {
     /**
      * Generates a "Legal-Grade" Consent Certificate
      */
-    generateConsentCertificate: (user: any) => {
+    generateConsentCertificate: (user: UserConsent) => {
         const doc = new jsPDF({ format: 'letter' });
         const pageWidth = doc.internal.pageSize.getWidth();
         const pageHeight = doc.internal.pageSize.getHeight();

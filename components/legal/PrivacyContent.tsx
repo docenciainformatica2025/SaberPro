@@ -123,7 +123,7 @@ export default function PrivacyContent() {
                 <div className="metallic-card p-6 rounded-xl border border-metal-gold/30 bg-black text-center space-y-2">
                     <p className="text-xs text-metal-silver uppercase tracking-widest mb-1">Correo Electrónico Oficial</p>
                     <p className="text-xl md:text-2xl font-bold text-metal-gold select-all">docenciainformatica2025@gmail.com</p>
-                    <p className="text-xs text-white/50">Asunto sugerido: "Solicitud Habeas Data"</p>
+                    <p className="text-xs text-white/50">Asunto sugerido: &quot;Solicitud Habeas Data&quot;</p>
                 </div>
             </section>
 
@@ -144,4 +144,21 @@ export default function PrivacyContent() {
     );
 }
 
-function CheckIcon(props: any) { return <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg> }
+function CheckIcon({ size = 24, ...props }: React.SVGProps<SVGSVGElement> & { size?: number | string }) {
+    return (
+        <svg
+            {...props}
+            width={size}
+            height={size}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <polyline points="20 6 9 17 4 12" />
+        </svg>
+    );
+}

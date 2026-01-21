@@ -58,7 +58,7 @@ export default function CreditsPage() {
                         </div>
                         <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-wide">Propósito Educativo</h3>
                         <p className="text-metal-silver text-sm leading-relaxed mb-6">
-                            El objetivo no es solo "pasar un examen", sino democratizar el acceso a herramientas de entrenamiento de alta calidad. Utilizamos algoritmos para identificar brechas de conocimiento que las clases tradicionales suelen pasar por alto.
+                            El objetivo no es solo &quot;pasar un examen&quot;, sino democratizar el acceso a herramientas de entrenamiento de alta calidad. Utilizamos algoritmos para identificar brechas de conocimiento que las clases tradicionales suelen pasar por alto.
                         </p>
                         <div className="flex flex-wrap gap-2">
                             <span className="px-2 py-1 rounded bg-white/5 border border-white/5 text-[10px] font-mono text-metal-silver/60">Aprendizaje Adaptativo</span>

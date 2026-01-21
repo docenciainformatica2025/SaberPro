@@ -21,9 +21,14 @@ export default function DiagnosticResultsPage() {
             router.push("/diagnostic"); // No data? Go back to start
             return;
         }
-        setData(JSON.parse(saved));
-        setLoading(false);
-    }, []);
+
+        const timer = setTimeout(() => {
+            setData(JSON.parse(saved));
+            setLoading(false);
+        }, 0);
+
+        return () => clearTimeout(timer);
+    }, [router]);
 
     if (loading || !data) return null;
 

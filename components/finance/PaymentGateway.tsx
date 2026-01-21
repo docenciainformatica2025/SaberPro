@@ -23,8 +23,13 @@ export default function PaymentGateway({ planName, price, onSuccess, onCancel, c
     const [deviceId, setDeviceId] = useState("");
 
     useEffect(() => {
-        setDeviceId("dev_" + Math.random().toString(36).substring(2) + Date.now().toString(36));
-    }, []);
+        if (!deviceId) {
+            const timer = setTimeout(() => {
+                setDeviceId("dev_" + Math.random().toString(36).substring(2) + Date.now().toString(36));
+            }, 0);
+            return () => clearTimeout(timer);
+        }
+    }, [deviceId]);
 
     const methods = [
         { id: 'card', label: 'Tarjeta Crédito/Débito', icon: <CreditCard size={24} />, logos: ['Visa', 'Mastercard'] },

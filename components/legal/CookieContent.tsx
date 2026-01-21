@@ -33,7 +33,7 @@ export default function CookieContent() {
                 </h2>
                 <div className="p-4 rounded-lg bg-metal-gold/5 border border-metal-gold/10">
                     <p className="leading-relaxed text-sm">
-                        Una cookie es un pequeño archivo de texto que se almacena en su navegador. El "Local Storage" permite almacenar datos en su dispositivo de manera más persistente y segura.
+                        Una cookie es un pequeño archivo de texto que se almacena en su navegador. El &quot;Local Storage&quot; permite almacenar datos en su dispositivo de manera más persistente y segura.
                     </p>
                 </div>
             </section>

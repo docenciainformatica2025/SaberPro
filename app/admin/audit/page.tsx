@@ -136,7 +136,7 @@ export default function AuditPage() {
                                         </Badge>
                                     </td>
                                     <td className="p-4 text-white/70 max-w-xs xl:max-w-md">
-                                        <p className="line-clamp-2 leading-tight italic">"{log.details}"</p>
+                                        <p className="line-clamp-2 leading-tight italic">&quot;{log.details}&quot;</p>
                                     </td>
                                     <td className="p-4 text-right pr-6">
                                         <span className="font-mono text-[10px] text-metal-silver/30 bg-white/5 px-2 py-1 rounded select-all hover:text-white transition-colors">

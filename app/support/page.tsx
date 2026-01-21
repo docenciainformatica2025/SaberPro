@@ -92,7 +92,7 @@ export default function SupportPage() {
                                 <AlertTriangle size={14} /> Para una atención rápida incluye:
                             </h4>
                             <ul className="text-xs text-red-200/60 space-y-1.5 list-disc pl-4 font-medium">
-                                <li>Asunto: "Soporte App SaberPro - [Descripción]"</li>
+                                <li>Asunto: &quot;Soporte App SaberPro - [Descripción]&quot;</li>
                                 <li>Tu correo registrado y dispositivo (Ej: iPhone 13, Android).</li>
                                 <li>Captura de pantalla del error (si aplica).</li>
                             </ul>

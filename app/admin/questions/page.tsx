@@ -135,7 +135,7 @@ export default function QuestionsPage() {
                                                 </span>
                                             </div>
                                             <p className="text-sm text-white font-bold leading-relaxed line-clamp-3 italic">
-                                                "{q.text}"
+                                                &quot;{q.text}&quot;
                                             </p>
                                         </div>
                                         {q.imageUrl && <Badge variant="info" className="text-[8px] h-5 px-2 shrink-0">IMG</Badge>}
@@ -195,7 +195,7 @@ export default function QuestionsPage() {
                                         <td className="p-5 pl-7">
                                             <div className="max-w-xl">
                                                 <p className="line-clamp-2 text-white font-bold leading-relaxed mb-1 group-hover:text-metal-gold transition-colors italic">
-                                                    "{q.text}"
+                                                    &quot;{q.text}&quot;
                                                 </p>
                                                 <div className="flex items-center gap-3">
                                                     <span className="text-[9px] text-metal-silver/30 font-mono tracking-tighter bg-white/5 px-2 py-0.5 rounded">UUID: {q.id}</span>

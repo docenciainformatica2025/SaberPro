@@ -34,7 +34,10 @@ export default function ModuleIntro({ moduleName, questionCount, timeLimitSecond
     const [quote, setQuote] = useState("");
 
     useEffect(() => {
-        setQuote(RANDOM_QUOTES[Math.floor(Math.random() * RANDOM_QUOTES.length)]);
+        const timer = setTimeout(() => {
+            setQuote(RANDOM_QUOTES[Math.floor(Math.random() * RANDOM_QUOTES.length)]);
+        }, 0);
+        return () => clearTimeout(timer);
     }, []);
 
     return (
@@ -74,7 +77,7 @@ export default function ModuleIntro({ moduleName, questionCount, timeLimitSecond
                     </div>
 
                     <p className="text-lg text-metal-silver/80 italic border-l-4 border-metal-gold pl-4 py-2 mb-10 leading-relaxed">
-                        "{quote}"
+                        &quot;{quote}&quot;
                     </p>
 
                     <Button

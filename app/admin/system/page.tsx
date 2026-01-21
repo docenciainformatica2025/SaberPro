@@ -34,15 +34,18 @@ export default function SystemStatusPage() {
 
     useEffect(() => {
         // Hydration safe initialization
-        const now = Date.now();
-        setLogs([
-            { time: new Date().toLocaleTimeString(), msg: "Saber Pro Kernel inicializado con éxito", type: "success" },
-            { time: new Date(now - 5000).toLocaleTimeString(), msg: "Conectando al clúster Firestore (us-central1)... Conectado.", type: "info" },
-            { time: new Date(now - 10000).toLocaleTimeString(), msg: "Reglas de seguridad validadas por Firebase Auth", type: "success" }
-        ]);
+        const timer = setTimeout(() => {
+            const now = Date.now();
+            setLogs([
+                { time: new Date().toLocaleTimeString(), msg: "Saber Pro Kernel inicializado con éxito", type: "success" },
+                { time: new Date(now - 5000).toLocaleTimeString(), msg: "Conectando al clúster Firestore (us-central1)... Conectado.", type: "info" },
+                { time: new Date(now - 10000).toLocaleTimeString(), msg: "Reglas de seguridad validadas por Firebase Auth", type: "success" }
+            ]);
 
-        const visualBars = Array.from({ length: 30 }, () => Math.random());
-        setVisualData(visualBars);
+            const visualBars = Array.from({ length: 30 }, () => Math.random());
+            setVisualData(visualBars);
+        }, 0);
+        return () => clearTimeout(timer);
     }, []);
 
     const checkSystem = async () => {
@@ -76,8 +79,13 @@ export default function SystemStatusPage() {
 
     useEffect(() => {
         const interval = setInterval(checkSystem, 8000);
-        checkSystem();
-        return () => clearInterval(interval);
+        const timer = setTimeout(() => {
+            checkSystem();
+        }, 0);
+        return () => {
+            clearInterval(interval);
+            clearTimeout(timer);
+        };
     }, []);
 
     return (

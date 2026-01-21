@@ -29,7 +29,7 @@ export class AuditService {
         return newTxRef.id;
     }
 
-    static async updateTransactionStatus(txId: string, status: PaymentStatus, metadata?: any): Promise<void> {
+    static async updateTransactionStatus(txId: string, status: PaymentStatus, metadata?: Record<string, unknown>): Promise<void> {
         const txRef = doc(db, TRANSACTIONS_COLLECTION, txId);
 
         await updateDoc(txRef, {

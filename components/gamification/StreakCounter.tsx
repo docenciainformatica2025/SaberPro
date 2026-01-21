@@ -22,9 +22,12 @@ export default function StreakCounter() {
 
     useEffect(() => {
         if (streak > 0) {
-            setAnimated(true);
-            const timer = setTimeout(() => setAnimated(false), 2000);
-            return () => clearTimeout(timer);
+            const initialTimer = setTimeout(() => setAnimated(true), 100);
+            const timer = setTimeout(() => setAnimated(false), 2100);
+            return () => {
+                clearTimeout(initialTimer);
+                clearTimeout(timer);
+            };
         }
     }, [streak]);
 

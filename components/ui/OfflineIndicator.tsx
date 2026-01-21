@@ -7,9 +7,12 @@ export default function OfflineIndicator() {
     const [isOnline, setIsOnline] = useState(true);
 
     useEffect(() => {
-        // Definir estado inicial (si window existe)
+        let timer: NodeJS.Timeout;
+
         if (typeof window !== "undefined") {
-            setIsOnline(navigator.onLine);
+            timer = setTimeout(() => {
+                setIsOnline(navigator.onLine);
+            }, 0);
         }
 
         const handleOnline = () => setIsOnline(true);
@@ -19,6 +22,7 @@ export default function OfflineIndicator() {
         window.addEventListener("offline", handleOffline);
 
         return () => {
+            if (timer) clearTimeout(timer);
             window.removeEventListener("online", handleOnline);
             window.removeEventListener("offline", handleOffline);
         };

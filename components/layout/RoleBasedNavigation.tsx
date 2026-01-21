@@ -75,19 +75,12 @@ export default function RoleBasedNavigation() {
     ];
 
     let navItems = [];
-    let themeColor = "text-white";
-    let activeColor = "bg-white text-black";
-    let activeDotColor = "bg-white";
-    let brandColor = "text-white";
     let brandSubtext = "Estudiante";
     let brandIcon = <GraduationCap size={18} strokeWidth={2.5} className="text-black" />;
 
     // Theme Configuration
     if (role === 'teacher') {
         navItems = teacherItems;
-        themeColor = "text-metal-silver";
-        activeColor = "bg-white text-black";
-        activeDotColor = "bg-metal-gold";
         brandSubtext = "Docente";
         brandIcon = (
             <div className="p-1.5 bg-gradient-to-br from-metal-gold to-yellow-600 rounded-lg shadow-lg shadow-metal-gold/20">
@@ -97,9 +90,6 @@ export default function RoleBasedNavigation() {
     } else if (role === 'admin' || (user.email && (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "").includes(user.email))) {
         // Fallback for role='admin' or explicit email check if context not fully updated
         navItems = adminItems;
-        themeColor = "text-metal-silver";
-        activeColor = "bg-white text-black";
-        activeDotColor = "bg-red-500";
         brandSubtext = "Admin Isotope";
         brandIcon = (
             <div className="p-1.5 bg-gradient-to-br from-red-600 to-red-900 rounded-lg shadow-lg shadow-red-500/20">
@@ -109,9 +99,6 @@ export default function RoleBasedNavigation() {
     } else {
         // Default Student
         navItems = studentItems;
-        themeColor = "text-metal-silver"; // Improved contrast from gray-400
-        activeColor = "bg-white text-black";
-        activeDotColor = "bg-blue-500";
         brandSubtext = "Estudiante";
         brandIcon = (
             <div className="p-1.5 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg shadow-lg shadow-blue-500/20">
@@ -184,7 +171,7 @@ export default function RoleBasedNavigation() {
                             className={`group relative flex items-center justify-center p-4 rounded-3xl transition-all duration-300 ease-out 
                                 ${isActive
                                     ? `bg-white text-black -translate-y-4 shadow-[0_20px_30px_-10px_rgba(255,255,255,0.3)] scale-110 mx-2`
-                                    : `${themeColor} hover:text-white hover:bg-white/10 hover:-translate-y-2 hover:scale-110`
+                                    : `text-metal-silver hover:text-white hover:bg-white/10 hover:-translate-y-2 hover:scale-110`
                                 }
                             `}
                         >
@@ -197,7 +184,7 @@ export default function RoleBasedNavigation() {
 
                             {/* Active Dot */}
                             {isActive && (
-                                <span className={`absolute -bottom-2.5 w-1.5 h-1.5 rounded-full shadow-[0_0_8px_currentColor] ${activeDotColor}`}></span>
+                                <span className={`absolute -bottom-2.5 w-1.5 h-1.5 rounded-full shadow-[0_0_8px_currentColor] ${role === 'admin' ? 'bg-red-500' : role === 'teacher' ? 'bg-metal-gold' : 'bg-blue-500'}`}></span>
                             )}
                         </Link>
                     );

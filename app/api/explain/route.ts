@@ -50,17 +50,18 @@ export async function POST(req: Request) {
         const text = response.text();
 
         return NextResponse.json({ explanation: text });
-    } catch (error: any) {
-        console.error("Error completo de IA:", error);
+    } catch (error: unknown) {
+        const err = error as { status?: number; message?: string };
+        console.error("Error completo de IA:", err);
         // Verificar si es error de API Key
-        if (error.status === 400 && error.message?.includes('API key')) {
+        if (err.status === 400 && err.message?.includes('API key')) {
             return NextResponse.json(
                 { error: "Clave API inválida o expirada." },
                 { status: 500 }
             );
         }
         return NextResponse.json(
-            { error: `Error generando explicación: ${error.message || 'Desconocido'}` },
+            { error: `Error generando explicación: ${err.message || 'Desconocido'}` },
             { status: 500 }
         );
     }

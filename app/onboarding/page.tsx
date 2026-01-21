@@ -24,9 +24,10 @@ export default function OnboardingPage() {
         if (!user || !selectedRole) return;
         setLoading(true);
         try {
-            await updateDoc(doc(db, "users", user.uid), {
+            const { setDoc } = await import("firebase/firestore");
+            await setDoc(doc(db, "users", user.uid), {
                 role: selectedRole
-            });
+            }, { merge: true });
             // Force reload manually to refresh context or rely on listener
             // Given listener is fast, we just wait a split second or push
             // Force reload to refresh AuthContext

@@ -221,7 +221,7 @@ export default function TrainingModulePage({ params }: TrainingPageProps) {
                             <div className="h-full bg-green-500 transition-all duration-1000" style={{ width: `${accuracy}%` }}></div>
                         </div>
                         <p className="mt-4 text-xs text-metal-silver/60 italic">
-                            "Los usuarios Pro practican 3x más preguntas y obtienen puntajes 40% más altos."
+                            &quot;Los usuarios Pro practican 3x más preguntas y obtienen puntajes 40% más altos.&quot;
                         </p>
                     </div>
 

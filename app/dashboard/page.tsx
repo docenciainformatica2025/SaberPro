@@ -218,7 +218,7 @@ export default function DashboardPage() {
                     </h1>
                     <p className="text-metal-silver/60 text-sm mt-2 flex items-center gap-2 font-medium italic animate-in slide-in-from-left-4 duration-700 delay-100">
                         <span className="w-1.5 h-1.5 rounded-full bg-metal-gold animate-pulse"></span>
-                        "{quote}"
+                        &quot;{quote}&quot;
                     </p>
                 </div>
                 <div className="flex items-center gap-3 animate-in slide-in-from-right-4 duration-700 delay-200">

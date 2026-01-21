@@ -33,7 +33,7 @@ export default function TermsOfServiceBody() {
                 </h2>
                 <div className="p-4 rounded-lg bg-metal-gold/5 border border-metal-gold/10">
                     <p className="leading-relaxed text-sm">
-                        Al descargar, instalar o utilizar la aplicación móvil o web SaberPro (en adelante, "la App"), el Usuario acepta íntegramente los presentes términos.
+                        Al descargar, instalar o utilizar la aplicación móvil o web SaberPro (en adelante, &quot;la App&quot;), el Usuario acepta íntegramente los presentes términos.
                         <span className="block mt-2 font-bold text-white">Si no está de acuerdo, debe abstenerse de usar la aplicación.</span>
                     </p>
                 </div>
@@ -53,7 +53,7 @@ export default function TermsOfServiceBody() {
                             <Check size={16} className="text-green-400" /> Finalidad Educativa
                         </strong>
                         <p className="text-xs leading-relaxed">
-                            La App es una herramienta de simulación y práctica. Su propósito es familiarizar al estudiante con la metodología y estructura de preguntas tipo "Saber Pro".
+                            La App es una herramienta de simulación y práctica. Su propósito es familiarizar al estudiante con la metodología y estructura de preguntas tipo &quot;Saber Pro&quot;.
                         </p>
                     </div>
                     <div className="p-5 bg-black/40 border border-white/5 rounded-xl hover:border-orange-500/30 transition-colors">
@@ -61,7 +61,7 @@ export default function TermsOfServiceBody() {
                             <AlertTriangle size={16} className="text-orange-400" /> Desvinculación del ICFES
                         </strong>
                         <p className="text-xs leading-relaxed">
-                            Esta App es una iniciativa privada e independiente. <strong>NO existe vínculo alguno</strong> (laboral, contractual o de representación) entre el Desarrollador y el ICFES o el Ministerio de Educación Nacional. El uso del nombre "Saber Pro" es descriptivo (uso justo).
+                            Esta App es una iniciativa privada e independiente. <strong>NO existe vínculo alguno</strong> (laboral, contractual o de representación) entre el Desarrollador y el ICFES o el Ministerio de Educación Nacional. El uso del nombre &quot;Saber Pro&quot; es descriptivo (uso justo).
                         </p>
                     </div>
                 </div>
@@ -171,7 +171,7 @@ export default function TermsOfServiceBody() {
                             No obstante lo anterior, SaberPro informa al Usuario que, debido a la naturaleza digital y de consumo inmediato del servicio ofrecido, aplica la excepción contemplada en el numeral 1 del Artículo 47 de la Ley 1480 de 2011:
                         </p>
                         <blockquote className="mt-2 pl-3 border-l-2 border-metal-gold text-xs italic opacity-70">
-                            "Se exceptúan del derecho de retracto [...] los contratos de prestación de servicios cuya prestación haya comenzado con el acuerdo del consumidor."
+                            &quot;Se exceptúan del derecho de retracto [...] los contratos de prestación de servicios cuya prestación haya comenzado con el acuerdo del consumidor.&quot;
                         </blockquote>
                     </div>
 
@@ -182,7 +182,7 @@ export default function TermsOfServiceBody() {
                         </p>
                         <ul className="list-disc pl-5 mt-2 space-y-1 text-xs">
                             <li>El servicio de simulación y acceso al banco de preguntas comienza a ejecutarse de manera inmediata en el momento en que se validan las credenciales de acceso o se desbloquea el contenido.</li>
-                            <li>Al acceder al contenido digital, el Usuario pierde el derecho de retracto, ya que el servicio se considera consumido y no es posible realizar una "devolución" del conocimiento o la información visualizada.</li>
+                            <li>Al acceder al contenido digital, el Usuario pierde el derecho de retracto, ya que el servicio se considera consumido y no es posible realizar una &quot;devolución&quot; del conocimiento o la información visualizada.</li>
                             <li>Por lo tanto, no se realizarán reembolsos ni devoluciones de dinero una vez que el Usuario haya ingresado a la plataforma y el servicio esté activo, salvo en casos de fallas técnicas comprobables imputables exclusivamente al Desarrollador que impidan el uso total de la App por más de 72 horas.</li>
                         </ul>
                     </div>

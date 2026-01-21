@@ -133,6 +133,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             const provider = new GoogleAuthProvider();
             const result = await signInWithPopup(auth, provider);
 
+            // Initialize user document if not exists
+            if (result.user) {
+                const userRef = doc(db, "users", result.user.uid);
+                const userSnap = await getDoc(userRef);
+
+                if (!userSnap.exists()) {
+                    await setDoc(userRef, {
+                        email: result.user.email,
+                        role: null, // Forces Onboarding
+                        subscription: defaultSubscription,
+                        createdAt: new Date(),
+                        fullName: result.user.displayName || "",
+                        completedProfile: false,
+                        consentLog: {
+                            acceptedAt: new Date().toISOString(),
+                            version: "v1.0-2025-google",
+                            type: "Habeas Data + Términos (vía Google)",
+                            ipHash: "GOOGLE_AUTH_INIT"
+                        }
+                    });
+                }
+            }
+
             // Migrate Diagnostic Data if exists
             try {
                 const diagnosticData = localStorage.getItem("saberpro_diagnostic_results");

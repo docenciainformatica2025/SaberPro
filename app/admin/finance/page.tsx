@@ -19,8 +19,14 @@ interface Transaction {
     amount: number;
     plan: string;
     status: string;
-    createdAt: any;
+    createdAt: { seconds: number; nanoseconds: number }; // Firebase Timestamp
     provider: string;
+}
+
+interface FinanceUserProfile {
+    fullName?: string;
+    displayName?: string;
+    email?: string;
 }
 
 // Configuración de Colores de Marca
@@ -35,7 +41,7 @@ const CHART_COLORS = [BRAND_COLORS.gold, BRAND_COLORS.silver, '#B8860B', BRAND_C
 
 export default function FinanceDashboard() {
     const [transactions, setTransactions] = useState<Transaction[]>([]);
-    const [userMap, setUserMap] = useState<any>({});
+    const [userMap, setUserMap] = useState<Record<string, FinanceUserProfile>>({});
     const [stats, setStats] = useState({
         totalRevenue: 0,
         thisMonth: 0,
@@ -59,7 +65,7 @@ export default function FinanceDashboard() {
                 } as Transaction));
                 setTransactions(data);
 
-                const uMap: Record<string, any> = {};
+                const uMap: Record<string, FinanceUserProfile> = {};
                 const userPromises = data.map(async (tx) => {
                     if (!uMap[tx.userId]) {
                         const uSnap = await getDoc(doc(db, "users", tx.userId));
@@ -210,7 +216,7 @@ export default function FinanceDashboard() {
                                 <Tooltip
                                     contentStyle={{ backgroundColor: '#0A0A0A', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', fontSize: '11px' }}
                                     itemStyle={{ color: '#D4AF37', fontWeight: 'bold' }}
-                                    formatter={(v: any) => [`$${v.toLocaleString('es-CO')}`, "Ingresos"]}
+                                    formatter={(v: any) => [`$${v?.toLocaleString('es-CO') || 0}`, "Ingresos"]}
                                 />
                                 <Area type="monotone" dataKey="value" stroke="#D4AF37" strokeWidth={3} fillOpacity={1} fill="url(#colorRev)" />
                             </AreaChart>
