@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -80,7 +80,17 @@ export default function PublicQuizEngine() {
     const [isCorrect, setIsCorrect] = useState(false);
     const [results, setResults] = useState<any[]>([]);
 
-    const currentQ = QUESTIONS[currentIdx];
+    const [shuffledQuestions, setShuffledQuestions] = useState<typeof QUESTIONS>([]);
+
+    useEffect(() => {
+        // Randomize questions on mount
+        const shuffled = [...QUESTIONS].sort(() => Math.random() - 0.5);
+        setShuffledQuestions(shuffled);
+    }, []);
+
+    const currentQ = shuffledQuestions[currentIdx];
+
+    if (shuffledQuestions.length === 0) return null; // Avoid render before shuffle
 
     const handleSelect = (idx: number) => {
         if (showFeedback) return;
@@ -102,13 +112,13 @@ export default function PublicQuizEngine() {
     };
 
     const handleNext = () => {
-        if (currentIdx < QUESTIONS.length - 1) {
+        if (currentIdx < shuffledQuestions.length - 1) {
             setShowFeedback(false);
             setSelectedOption(null);
             setCurrentIdx(i => i + 1);
         } else {
             // Finish Quiz
-            const finalScore = Math.round(((score + (isCorrect ? 0 : 0)) / QUESTIONS.length) * 100);
+            const finalScore = Math.round(((score + (isCorrect ? 0 : 0)) / shuffledQuestions.length) * 100);
 
             // Save to localStorage for migration later
             localStorage.setItem("saberpro_diagnostic_results", JSON.stringify({
@@ -122,7 +132,7 @@ export default function PublicQuizEngine() {
         }
     };
 
-    const progress = ((currentIdx + 1) / QUESTIONS.length) * 100;
+    const progress = ((currentIdx + 1) / shuffledQuestions.length) * 100;
 
     return (
         <div className="max-w-xl mx-auto space-y-8">
@@ -130,7 +140,7 @@ export default function PublicQuizEngine() {
             <div className="space-y-2">
                 <div className="flex justify-between text-xs text-metal-silver uppercase font-bold tracking-widest">
                     <span>Progreso</span>
-                    <span>{currentIdx + 1} / {QUESTIONS.length}</span>
+                    <span>{currentIdx + 1} / {shuffledQuestions.length}</span>
                 </div>
                 <div className="h-2 bg-white/5 rounded-full overflow-hidden">
                     <motion.div
@@ -225,7 +235,7 @@ export default function PublicQuizEngine() {
                                     icon={ArrowRight}
                                     iconPosition="right"
                                 >
-                                    {currentIdx === QUESTIONS.length - 1 ? 'Ver Diagnóstico Final' : 'Siguiente Pregunta'}
+                                    {currentIdx === shuffledQuestions.length - 1 ? 'Ver Diagnóstico Final' : 'Siguiente Pregunta'}
                                 </Button>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 import { db } from "@/lib/firebase";
-import { collection, doc, setDoc, updateDoc, getDoc, serverTimestamp } from "firebase/firestore";
-import { Transaction, PaymentStatus, PaymentMethod, CurrencyCode } from "@/types/finance";
+import { collection, doc, setDoc, updateDoc, getDoc } from "firebase/firestore";
+import { Transaction, PaymentStatus } from "@/types/finance";
 
 const TRANSACTIONS_COLLECTION = "transactions";
 
@@ -25,7 +25,6 @@ export class AuditService {
         // In a real double-entry system, we would also write to a Ledger collection here.
         // For this app, the 'transactions' collection serves as the primary ledger.
 
-        console.log(`[AUDIT] Transaction created: ${newTxRef.id} for ${data.amount} ${data.currency}`);
         return newTxRef.id;
     }
 

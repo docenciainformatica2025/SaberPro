@@ -16,6 +16,7 @@ export default function DiagnosticResultsPage() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        // eslint-disable-next-line
         setMounted(true);
     }, []);
 
@@ -74,21 +75,23 @@ export default function DiagnosticResultsPage() {
 
                     <Card variant="glass" className="h-[300px] border-metal-gold/20 bg-black/40 relative">
                         {mounted ? (
-                            <ResponsiveContainer width="100%" height="100%">
-                                <RadarChart cx="50%" cy="50%" outerRadius="70%" data={chartData}>
-                                    <PolarGrid stroke="#333" />
-                                    <PolarAngleAxis dataKey="subject" tick={{ fill: '#999', fontSize: 10 }} />
-                                    <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
-                                    <Radar
-                                        name="Tu Nivel"
-                                        dataKey="A"
-                                        stroke="#d4af37"
-                                        strokeWidth={3}
-                                        fill="#d4af37"
-                                        fillOpacity={0.3}
-                                    />
-                                </RadarChart>
-                            </ResponsiveContainer>
+                            <div style={{ width: '100%', height: '100%' }}>
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <RadarChart cx="50%" cy="50%" outerRadius="70%" data={chartData}>
+                                        <PolarGrid stroke="#333" />
+                                        <PolarAngleAxis dataKey="subject" tick={{ fill: '#999', fontSize: 10 }} />
+                                        <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+                                        <Radar
+                                            name="Tu Nivel"
+                                            dataKey="A"
+                                            stroke="#d4af37"
+                                            strokeWidth={3}
+                                            fill="#d4af37"
+                                            fillOpacity={0.3}
+                                        />
+                                    </RadarChart>
+                                </ResponsiveContainer>
+                            </div>
                         ) : (
                             <div className="w-full h-full flex items-center justify-center">
                                 <div className="animate-pulse text-metal-silver/20 text-[10px] font-black uppercase tracking-widest">

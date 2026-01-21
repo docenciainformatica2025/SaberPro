@@ -183,7 +183,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                     });
 
                     localStorage.removeItem("saberpro_diagnostic_results");
-                    console.log("Diagnostic data migrated successfully (Google Auth).");
                 }
             } catch (e) {
                 console.error("Error migrating diagnostic data", e);
@@ -252,7 +251,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                 });
 
                 localStorage.removeItem("saberpro_diagnostic_results");
-                console.log("Diagnostic data migrated successfully.");
             }
         } catch (e) {
             console.error("Error migrating diagnostic data", e);

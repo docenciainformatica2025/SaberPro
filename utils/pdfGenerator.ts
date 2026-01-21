@@ -8,7 +8,6 @@ const LIGHT_BG = [255, 255, 255];
 const TEXT_MAIN = [20, 20, 20];
 const TEXT_LIGHT = [100, 100, 100];
 
-const LOGO_SVG = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gold" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#F4C430"/><stop offset="0.5" stop-color="#D4AF37"/><stop offset="1" stop-color="#8C621D"/></linearGradient></defs><rect width="24" height="24" rx="6" fill="url(#gold)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M6.75 4.5C5.50736 4.5 4.5 5.50736 4.5 6.75V9.75C4.5 10.9926 5.50736 12 6.75 12H13.5C14.3284 12 15 12.6716 15 13.5V15.75C15 16.5784 14.3284 17.25 13.5 17.25H6C5.58579 17.25 5.25 17.5858 5.25 18C5.25 18.4142 5.58579 18.75 6 18.75H13.5C15.1569 18.75 16.5 17.4069 16.5 15.75V13.5C16.5 12.2574 15.4926 11.25 14.25 11.25H7.5C6.67157 11.25 6 10.5784 6 9.75V6.75C6 5.92157 6.67157 5.25 7.5 5.25H18C18.4142 5.25 18.75 4.91421 18.75 4.5C18.75 4.08579 18.4142 3.75 18 3.75H7.5C6.25736 3.75 5.25 4.75736 5.25 6H6.75C6.75 5.17157 7.42157 4.5 8.25 4.5H6.75Z" fill="#0A0C0F"/><path d="M16 4.5L19 7.5" stroke="#0A0C0F" stroke-width="2" stroke-linecap="round" opacity="0.8"/></svg>`;
 
 /**
  * Genera un ID de verificación único y rastreable para el reporte.

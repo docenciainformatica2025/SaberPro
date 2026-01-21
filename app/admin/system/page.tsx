@@ -203,7 +203,7 @@ export default function SystemStatusPage() {
                         <span className="text-gray-300">System health check initialized via Admin Dashboard.</span>
                     </div>
                     <div className="flex gap-4 p-3 rounded bg-black/40 border-l-2 border-blue-500">
-                        <span className="text-metal-silver">{new Date(Date.now() - 5000).toLocaleTimeString()}</span>
+                        <span className="text-metal-silver">{new Date(lastCheck.getTime() - 5000).toLocaleTimeString()}</span>
                         <span className="text-blue-400 font-bold">[AUTH]</span>
                         <span className="text-gray-300">Firebase Auth provider (Google) is active and responding.</span>
                     </div>
