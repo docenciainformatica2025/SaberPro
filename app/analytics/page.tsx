@@ -14,6 +14,8 @@ import ResultDetailModal from "@/components/analytics/ResultDetailModal";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { pdfGenerator } from "@/utils/pdfGenerator";
+import { Download } from "lucide-react";
 
 export default function AnalyticsPage() {
     const { user, loading } = useAuth();
@@ -134,6 +136,22 @@ export default function AnalyticsPage() {
         setIsModalOpen(true);
     };
 
+    const handleDownloadReport = () => {
+        if (!user) return;
+
+        const reportData = {
+            user: {
+                name: userName,
+                email: user.email || ""
+            },
+            kpis: kpis,
+            trendData: trendData,
+            radarData: radarData
+        };
+
+        pdfGenerator.generatePerformanceReport(reportData);
+    };
+
     if (loading || isLoadingData) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-metal-dark">
@@ -160,10 +178,21 @@ export default function AnalyticsPage() {
                             Monitoreo en tiempo real de tu evolución académica.
                         </p>
                     </div>
-                    <Badge variant="premium" className="px-4 py-2 text-xs font-black tracking-widest uppercase shadow-[0_0_20px_rgba(212,175,55,0.2)] flex items-center gap-2">
-                        <Brain size={14} />
-                        Proyección IA: {kpis.averageScore > 0 ? (kpis.averageScore * 3).toString() + " / 300" : "Pendiente"}
-                    </Badge>
+                    <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            icon={Download}
+                            onClick={handleDownloadReport}
+                            className="bg-white/5 border-white/10 text-metal-silver hover:text-white"
+                        >
+                            Descargar Reporte PDF
+                        </Button>
+                        <Badge variant="premium" className="px-4 py-2 text-xs font-black tracking-widest uppercase shadow-[0_0_20px_rgba(212,175,55,0.2)] flex items-center gap-2">
+                            <Brain size={14} />
+                            Proyección IA: {kpis.averageScore > 0 ? (kpis.averageScore * 3).toString() + " / 300" : "Pendiente"}
+                        </Badge>
+                    </div>
                 </div>
 
                 {/* KPIs Grid */}

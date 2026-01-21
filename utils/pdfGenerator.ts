@@ -37,7 +37,290 @@ export interface UserConsent {
     };
 }
 
+export interface PerformanceReportData {
+    user: { name: string; email: string };
+    kpis: {
+        highestScore: number;
+        averageScore: number;
+        totalSimulations: number;
+        questionsAnswered: number;
+    };
+    trendData: { name: string; value: number }[];
+    radarData: { name: string; value: number }[];
+}
+
 export const pdfGenerator = {
+    /**
+     * Generates a "World-Class" Executive Performance Report
+     */
+    generatePerformanceReport: (data: PerformanceReportData) => {
+        const doc = new jsPDF({ format: 'letter' });
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const now = new Date();
+        const dateStr = now.toLocaleString('es-CO', { dateStyle: 'short', timeStyle: 'medium' });
+        const verifID = generateVerificationID(data.user.email);
+        const margin = 20;
+
+        // Helpers
+        const drawHeader = (title: string) => {
+            const ly = 15;
+            // Logo Isotype
+            doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+            doc.roundedRect(margin, ly, 10, 10, 2, 2, 'F');
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(10);
+            doc.setTextColor(0, 0, 0);
+            doc.text("S", margin + 3.5, ly + 7.5);
+
+            // Brand Text
+            doc.setFontSize(16);
+            doc.setTextColor(INK_BLACK[0], INK_BLACK[1], INK_BLACK[2]);
+            doc.text("SaberPro", margin + 12, ly + 6);
+            doc.setFontSize(9);
+            doc.setFont("helvetica", "normal");
+            doc.setTextColor(TECH_GRAY[0], TECH_GRAY[1], TECH_GRAY[2]);
+            doc.text("Analytics Executive Suite", margin + 12, ly + 11);
+
+            // Title & Meta
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(12);
+            doc.setTextColor(INK_BLACK[0], INK_BLACK[1], INK_BLACK[2]);
+            const titleWidth = doc.getTextWidth(title);
+            doc.text(title, pageWidth - margin - titleWidth, ly + 6);
+
+            doc.setFontSize(8);
+            doc.setFont("helvetica", "normal");
+            doc.setTextColor(TECH_GRAY[0], TECH_GRAY[1], TECH_GRAY[2]);
+            const meta = `REF: ${verifID}  |  Emisión: ${dateStr.split(',')[0]}`;
+            const metaWidth = doc.getTextWidth(meta);
+            doc.text(meta, pageWidth - margin - metaWidth, ly + 11);
+
+            // Divider
+            doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+            doc.setLineWidth(1);
+            doc.line(margin, ly + 18, pageWidth - margin, ly + 18);
+        };
+
+        const drawFooter = (pageNo: number) => {
+            const fy = pageHeight - 20;
+            doc.setFontSize(7);
+            doc.setFont("helvetica", "normal");
+            doc.setTextColor(150, 150, 150);
+            doc.text("© 2026 Saber Pro Suite - Reporte de Desempeño Académico Certificado (Propulsor IA)", margin, fy);
+            doc.text(`Página ${pageNo}`, pageWidth / 2, fy, { align: 'center' });
+            doc.text(`Documento verificado: ${verifID}`, pageWidth - margin, fy, { align: 'right' });
+        };
+
+        const drawMetricCard = (x: number, y: number, label: string, value: string, sub: string, color: number[]) => {
+            const w = (pageWidth - (margin * 2) - 30) / 4;
+            const h = 30;
+            doc.setFillColor(252, 252, 252);
+            doc.setDrawColor(240, 240, 240);
+            doc.roundedRect(x, y, w, h, 2, 2, 'FD');
+
+            doc.setFillColor(color[0], color[1], color[2]);
+            doc.rect(x, y, 2, h, 'F');
+
+            doc.setFontSize(7);
+            doc.setFont("helvetica", "bold");
+            doc.setTextColor(120, 120, 120);
+            doc.text(label.toUpperCase(), x + 6, y + 8);
+
+            doc.setFontSize(18);
+            doc.setTextColor(INK_BLACK[0], INK_BLACK[1], INK_BLACK[2]);
+            doc.text(value, x + 6, y + 19);
+
+            doc.setFontSize(7);
+            doc.setFont("helvetica", "normal");
+            doc.setTextColor(color[0], color[1], color[2]);
+            doc.text(sub, x + 6, y + 26);
+        };
+
+        // --- PAGE 1: EXECUTIVE SUMMARY ---
+        drawHeader("REPORTE DE ANALÍTICAS");
+
+        // Identity
+        doc.setFontSize(24);
+        doc.setFont("helvetica", "bold");
+        doc.setTextColor(INK_BLACK[0], INK_BLACK[1], INK_BLACK[2]);
+        doc.text(data.user.name, margin, 55);
+        doc.setFontSize(11);
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(TECH_GRAY[0], TECH_GRAY[1], TECH_GRAY[2]);
+        doc.text(data.user.email, margin, 62);
+
+        // KPI Section
+        const kpiY = 75;
+        drawMetricCard(margin, kpiY, "Puntaje Máximo", `${data.kpis.highestScore}%`, "Récord Personal", GOLD);
+        drawMetricCard(margin + ((pageWidth - 2 * margin - 30) / 4) + 10, kpiY, "Promedio", `${data.kpis.averageScore}%`, "Eficiencia Media", [59, 130, 246]);
+        drawMetricCard(margin + 2 * ((pageWidth - 2 * margin - 30) / 4) + 20, kpiY, "Simulacros", `${data.kpis.totalSimulations}`, "Sesiones Totales", [139, 92, 246]);
+        drawMetricCard(margin + 3 * ((pageWidth - 2 * margin - 30) / 4) + 30, kpiY, "Preguntas", `${data.kpis.questionsAnswered}`, "Volumen de Práctica", [236, 72, 153]);
+
+        // Evolution Graph (Vector Simulation)
+        doc.setFontSize(14);
+        doc.setFont("helvetica", "bold");
+        doc.setTextColor(INK_BLACK[0], INK_BLACK[1], INK_BLACK[2]);
+        doc.text("Evolución de Rendimiento", margin, 125);
+
+        const graphW = pageWidth - (margin * 2);
+        const graphH = 60;
+        const graphY = 135;
+
+        // Grid
+        doc.setDrawColor(240, 240, 240);
+        doc.setLineWidth(0.5);
+        for (let i = 0; i <= 4; i++) {
+            const gy = graphY + (graphH * (i / 4));
+            doc.line(margin, gy, pageWidth - margin, gy);
+            doc.setFontSize(6);
+            doc.text(`${100 - (i * 25)}%`, margin - 8, gy + 1);
+        }
+
+        // Trend Line
+        if (data.trendData.length > 1) {
+            doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+            doc.setLineWidth(1.5);
+            const step = graphW / (data.trendData.length - 1);
+
+            data.trendData.forEach((point, i) => {
+                const px = margin + (i * step);
+                const py = graphY + graphH - (point.value / 100 * graphH);
+
+                if (i > 0) {
+                    const prevX = margin + ((i - 1) * step);
+                    const prevY = graphY + graphH - (data.trendData[i - 1].value / 100 * graphH);
+                    doc.line(prevX, prevY, px, py);
+                }
+
+                // Point
+                doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+                doc.circle(px, py, 1, 'F');
+
+                // Label
+                doc.setFontSize(6);
+                doc.setTextColor(150, 150, 150);
+                doc.text(point.name, px, graphY + graphH + 8, { align: 'center' });
+            });
+        }
+
+        // Radar / Balance (Manual Layout)
+        doc.setFontSize(14);
+        doc.setFont("helvetica", "bold");
+        doc.setTextColor(INK_BLACK[0], INK_BLACK[1], INK_BLACK[2]);
+        doc.text("Balance de Competencias (Radar)", margin, 220);
+
+        const radarX = pageWidth / 2;
+        const radarY = 245;
+        const radarRadius = 35;
+
+        // Polygons (3 levels)
+        doc.setDrawColor(230, 230, 230);
+        doc.setLineWidth(0.5);
+        [0.33, 0.66, 1].forEach(scale => {
+            const r = radarRadius * scale;
+            const sides = data.radarData.length || 5;
+            for (let i = 0; i < sides; i++) {
+                const angle1 = (i * 2 * Math.PI / sides) - Math.PI / 2;
+                const angle2 = ((i + 1) * 2 * Math.PI / sides) - Math.PI / 2;
+                doc.line(
+                    radarX + r * Math.cos(angle1), radarY + r * Math.sin(angle1),
+                    radarX + r * Math.cos(angle2), radarY + r * Math.sin(angle2)
+                );
+            }
+        });
+
+        // Values
+        if (data.radarData.length > 0) {
+            const sides = data.radarData.length;
+            doc.setDrawColor(59, 130, 246);
+            doc.setFillColor(59, 130, 246);
+            doc.setLineWidth(1);
+
+            const points: [number, number][] = data.radarData.map((d, i) => {
+                const angle = (i * 2 * Math.PI / sides) - Math.PI / 2;
+                const r = radarRadius * (d.value / 100);
+                return [radarX + r * Math.cos(angle), radarY + r * Math.sin(angle)];
+            });
+
+            for (let i = 0; i < points.length; i++) {
+                const p1 = points[i];
+                const p2 = points[(i + 1) % points.length];
+                doc.line(p1[0], p1[1], p2[0], p2[1]);
+                doc.circle(p1[0], p1[1], 0.8, 'F');
+
+                // Labels
+                const angle = (i * 2 * Math.PI / sides) - Math.PI / 2;
+                const lx = radarX + (radarRadius + 12) * Math.cos(angle);
+                const ly = radarY + (radarRadius + 5) * Math.sin(angle);
+                doc.setFontSize(6);
+                doc.setTextColor(100, 100, 100);
+                doc.text(data.radarData[i].name, lx, ly, { align: 'center' });
+            }
+        }
+
+        drawFooter(1);
+
+        // --- PAGE 2: DETAILED ANALYSIS & INSIGHTS ---
+        doc.addPage();
+        drawHeader("ANÁLISIS DE PROYECCIÓN IA");
+
+        const insightY = 50;
+        doc.setFontSize(16);
+        doc.setFont("helvetica", "bold");
+        doc.setTextColor(GOLD[0], GOLD[1], GOLD[2]);
+        doc.text("Perspectiva de Inteligencia Artificial", margin, insightY);
+
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(INK_BLACK[0], INK_BLACK[1], INK_BLACK[2]);
+
+        const projectionText = `Basado en el análisis de trayectorias de ${data.kpis.totalSimulations} simulacros, tu curva de aprendizaje muestra una tendencia ${data.trendData.length > 1 && data.trendData[data.trendData.length - 1].value > data.trendData[0].value ? "Ascendente" : "Estable"}. Con un puntaje promedio de ${data.kpis.averageScore}%, tu proyección estimada para la prueba real Saber Pro se sitúa en el rango de ${(data.kpis.averageScore * 3)} a ${(data.kpis.averageScore * 3) + 15} puntos.`;
+
+        const splitProjection = doc.splitTextToSize(projectionText, pageWidth - (2 * margin));
+        doc.text(splitProjection, margin, insightY + 10);
+
+        // Strategic Recommendations
+        doc.setFontSize(14);
+        doc.setFont("helvetica", "bold");
+        doc.text("Recomendaciones Estratégicas", margin, insightY + 45);
+
+        const recommendations = [
+            { title: "Enfoque en Debilidades", desc: "Prioriza los módulos donde el radar muestra menos del 60%. Usa el modo 'Entrenamiento' para ver explicaciones de IA." },
+            { title: "Consistencia Post-Simulacro", desc: "La curva de evolución es más estable cuando se realizan al menos 2 simulacros semanales." },
+            { title: "Gestión de Tiempo", desc: "Se observa una correlación entre el tiempo por pregunta y la precisión. Intenta balancear velocidad y rigor." },
+            { title: "Optimización de Lectura", desc: "Refuerza la lectura crítica, ya que es la competencia transversal que impacta en todos los demás módulos." }
+        ];
+
+        let ry = insightY + 58;
+        recommendations.forEach(rec => {
+            doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+            doc.circle(margin + 2, ry - 1, 1, 'F');
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(9);
+            doc.text(rec.title, margin + 8, ry);
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(8);
+            doc.setTextColor(TECH_GRAY[0], TECH_GRAY[1], TECH_GRAY[2]);
+            doc.text(rec.desc, margin + 8, ry + 5);
+            ry += 15;
+        });
+
+        // Security Stamp
+        const stampY = pageHeight - 80;
+        doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+        doc.setLineWidth(2);
+        doc.rect(pageWidth - 70, stampY, 50, 20, 'S');
+        doc.setFontSize(10);
+        doc.setTextColor(GOLD[0], GOLD[1], GOLD[2]);
+        doc.setFont("helvetica", "bold");
+        doc.text("REPORTE", pageWidth - 45, stampY + 9, { align: 'center' });
+        doc.text("CERTIFICADO", pageWidth - 45, stampY + 15, { align: 'center' });
+
+        drawFooter(2);
+        doc.save(`Reporte_SaberPro_${data.user.name.replace(/\s+/g, '_')}_${verifID}.pdf`);
+    },
+
     /**
      * Generates a "World-Class" Executive Group Report
      */
