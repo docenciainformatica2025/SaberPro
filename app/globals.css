@@ -28,6 +28,42 @@
   --metal-blue: rgb(70, 130, 180);
   --metal-copper: rgb(184, 115, 51);
 
+  /* === WORLD-CLASS TYPOGRAPHY SYSTEM === */
+  /* Optimized for prolonged reading (exam interfaces) */
+
+  /* Light Mode Colors (Future-ready) */
+  --text-primary-light: #111827;
+  /* Slate-900 - Less eye strain than #000 */
+  --text-secondary-light: #4B5563;
+  /* Gray-600 */
+  --bg-primary-light: #F9FAFB;
+  /* Gray-50 - Warmer than pure white */
+  --bg-secondary-light: #FFFFFF;
+
+  /* Optimal Line Heights for Different Contexts */
+  --line-height-tight: 1.25;
+  /* Headings */
+  --line-height-normal: 1.5;
+  /* Body text (WCAG recommended) */
+  --line-height-relaxed: 1.625;
+  /* Long-form reading (exam questions) */
+  --line-height-loose: 1.75;
+  /* Dense data tables */
+
+  /* Typography Scale - Modular (1.25 ratio for harmony) */
+  --text-xs: 0.75rem;
+  /* 12px */
+  --text-sm: 0.875rem;
+  /* 14px */
+  --text-base: 1rem;
+  /* 16px - Base */
+  --text-lg: 1.125rem;
+  /* 18px */
+  --text-xl: 1.25rem;
+  /* 20px */
+  --text-2xl: 1.5rem;
+  /* 24px */
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
@@ -213,6 +249,8 @@ h3 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
+    /* Standard property for compatibility */
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -221,8 +259,44 @@ h3 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
+    /* Standard property for compatibility */
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  /* === WORLD-CLASS LEGIBILITY UTILITIES === */
+
+  /* Optimal max-width for reading (prevents eye fatigue on wide screens) */
+  .prose-optimal {
+    max-width: 65ch;
+    /* 65 characters - sweet spot for sustained reading */
+  }
+
+  .prose-narrow {
+    max-width: 60ch;
+    /* Denser content */
+  }
+
+  .prose-wide {
+    max-width: 75ch;
+    /* Maximum before eye jumps become fatiguing */
+  }
+
+  /* Line-height utilities for different content types */
+  .leading-exam {
+    line-height: var(--line-height-relaxed);
+    /* 1.625 - Perfect for exam questions */
+  }
+
+  .leading-comfortable {
+    line-height: var(--line-height-normal);
+    /* 1.5 - WCAG standard */
+  }
+
+  .leading-tight-heading {
+    line-height: var(--line-height-tight);
+    /* 1.25 - Headings only */
   }
 }
 

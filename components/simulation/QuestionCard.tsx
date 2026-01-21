@@ -72,7 +72,7 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
                 </Badge>
             </div>
 
-            <h2 className="text-xl md:text-2xl font-medium text-metal-silver mb-8 leading-relaxed">
+            <h2 className="text-xl md:text-2xl font-medium text-metal-silver leading-exam prose-optimal mx-auto">
                 {question.text}
             </h2>
 
@@ -123,7 +123,7 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
                                     {showResult && isCorrect ? <CheckCircle2 size={20} className="fill-green-500/20" /> :
                                         isSelected ? <CheckCircle2 size={20} className="fill-metal-gold/20" /> : <Circle size={20} />}
                                 </div>
-                                <span className="text-lg">{option.text}</span>
+                                <span className="text-lg leading-comfortable">{option.text}</span>
                             </button>
                         );
                     })}
@@ -169,7 +169,7 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
                                     )
                                 ) : (
                                     <div className="prose prose-invert prose-sm max-w-none">
-                                        <p className="text-metal-silver leading-relaxed whitespace-pre-line animate-in fade-in">
+                                        <p className="text-metal-silver leading-exam prose-optimal mx-auto whitespace-pre-line animate-in fade-in">
                                             {explanation}
                                         </p>
                                     </div>
