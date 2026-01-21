@@ -223,7 +223,7 @@ export default function SystemStatusPage() {
                 <div>
                     <h4 className="text-sm font-bold text-orange-400 uppercase tracking-wider mb-1">Nota Técnica: Error de Dominio</h4>
                     <p className="text-xs text-orange-200/80 leading-relaxed">
-                        Si experimentas el error "Dominio no autorizado" al iniciar sesión con Google, es necesario agregar el dominio actual de despliegue (`.vercel.app`) a la lista de dominios autorizados en la **Consola de Firebase > Authentication > Settings > Authorized Domains**. Este es un bloqueo de seguridad de Google Cloud, no un error de código.
+                        Si experimentas el error &quot;Dominio no autorizado&quot; al iniciar sesión con Google, es necesario agregar el dominio actual de despliegue (<code>.vercel.app</code>) a la lista de dominios autorizados en la <strong>Consola de Firebase &gt; Authentication &gt; Settings &gt; Authorized Domains</strong>. Este es un bloqueo de seguridad de Google Cloud, no un error de código.
                     </p>
                 </div>
             </div>
