@@ -4,21 +4,28 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registerSchema, RegisterFormValues } from '@/lib/schemas';
-import { Mail, Lock, ArrowRight, CheckCircle2, RefreshCw, Eye, EyeOff, ShieldCheck } from 'lucide-react';
+import { Mail, Lock, ArrowRight, ArrowLeft, CheckCircle2, RefreshCw, Eye, EyeOff } from 'lucide-react';
 import Turnstile from 'react-turnstile';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
-
+import FormStepper from '@/components/ui/FormStepper';
+import ValidatedInput from '@/components/ui/ValidatedInput';
 import { toast } from 'sonner';
-import { BRAND_YEAR, COPYRIGHT_TEXT } from "@/lib/config";
 import { Logo } from "@/components/ui/Logo";
+
+const STEPS = [
+    { id: 'email', title: 'Email', description: 'Tu correo electrónico' },
+    { id: 'password', title: 'Contraseña', description: 'Crea una segura' },
+    { id: 'consent', title: 'Consentimiento', description: 'Términos y captcha' },
+];
 
 export default function RegisterPage() {
     const { signup, signInWithGoogle } = useAuth();
     const router = useRouter();
+    const [currentStep, setCurrentStep] = useState(0);
     const [googleLoading, setGoogleLoading] = useState(false);
     const [authError, setAuthError] = useState('');
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
@@ -29,37 +36,28 @@ export default function RegisterPage() {
         handleSubmit,
         setValue,
         watch,
+        trigger,
         formState: { errors, isSubmitting },
     } = useForm<RegisterFormValues>({
         resolver: zodResolver(registerSchema),
+        mode: 'onChange',
     });
 
     const generatePassword = () => {
         const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@$!%*?&";
-        let password = "";
-
-        // Ensure at least one of each required type
-        password += "A"; // Uppercase
-        password += "a"; // Lowercase
-        password += "1"; // Number
-        password += "@"; // Symbol
-
-        // Fill the rest (4 chars to reach 8)
+        let password = "Aa1@"; // Ensure requirements
         for (let i = 0; i < 4; i++) {
             password += chars.charAt(Math.floor(Math.random() * chars.length));
         }
-
-        // Shuffle the password
         password = password.split('').sort(() => 0.5 - Math.random()).join('');
-
         setValue("password", password);
         setValue("confirmPassword", password);
-        toast.success("Contraseña segura generada", {
-            description: "No olvides guardarla en un lugar seguro."
-        });
+        toast.success("Contraseña segura generada");
     };
 
     const passwordValue = watch("password", "");
+    const confirmPasswordValue = watch("confirmPassword", "");
+    const emailValue = watch("email", "");
 
     const requirements = [
         { regex: /.{8,}/, text: "Mínimo 8 caracteres" },
@@ -68,54 +66,62 @@ export default function RegisterPage() {
         { regex: /[^A-Za-z0-9]/, text: "Un símbolo (@$!%*?&)" },
     ];
 
+    const validateEmail = (value: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(value) ? 'valid' : 'invalid';
+    };
+
+    const validatePassword = (value: string) => {
+        const allMet = requirements.every(req => req.regex.test(value));
+        return allMet ? 'valid' : 'invalid';
+    };
+
+    const canProceedToStep = (step: number): boolean => {
+        if (step === 1) return validateEmail(emailValue) === 'valid';
+        if (step === 2) {
+            return validatePassword(passwordValue) === 'valid' &&
+                passwordValue === confirmPasswordValue &&
+                confirmPasswordValue !== '';
+        }
+        return true;
+    };
+
+    const handleNext = async () => {
+        const isValid = await trigger(currentStep === 0 ? 'email' : currentStep === 1 ? ['password', 'confirmPassword'] : undefined);
+        if (isValid && canProceedToStep(currentStep + 1)) {
+            setCurrentStep(prev => Math.min(prev + 1, STEPS.length - 1));
+        }
+    };
+
+    const handleBack = () => {
+        setCurrentStep(prev => Math.max(prev - 1, 0));
+    };
+
     const onSubmit = async (data: RegisterFormValues) => {
         setAuthError('');
         const loadingToast = toast.loading("Creando tu cuenta...");
         try {
             await signup(data.email, data.password);
             toast.dismiss(loadingToast);
-            toast.success("¡Cuenta creada exitosamente!", {
-                description: "Redirigiendo a la configuración inicial..."
-            });
+            toast.success("¡Cuenta creada exitosamente!");
             router.push('/onboarding');
         } catch (err: any) {
             toast.dismiss(loadingToast);
-            console.error("Signup Error:", err);
             let msg = `Error al crear cuenta: ${err.message || 'Error desconocido'}`;
-
             if (err.code === 'auth/email-already-in-use') {
                 msg = "Este correo ya está registrado. Intenta iniciar sesión.";
-            } else if (err.code === 'auth/weak-password') {
-                msg = "La contraseña debe tener al menos 8 caracteres y cumplir los requisitos.";
-            } else if (err.code === 'auth/invalid-email') {
-                msg = "El formato del correo no es válido.";
-            } else if (err.code === 'auth/operation-not-allowed') {
-                msg = "El registro con correo está deshabilitado temporalmente.";
-            } else if (err.code === 'auth/network-request-failed') {
-                msg = "Error de red. Revisa tu conexión a internet.";
             }
-
             setAuthError(msg);
-            toast.error("Error de Registro", {
-                description: msg,
-                duration: 5000
-            });
+            toast.error("Error de Registro", { description: msg, duration: 5000 });
         }
     };
 
     const handleGoogleLogin = async () => {
         setGoogleLoading(true);
-        setAuthError('');
         try {
             await signInWithGoogle();
         } catch (err: any) {
-            console.error("Google Login Error:", err);
             let msg = "No se pudo conectar con Google.";
-            if (err.code === 'auth/popup-closed-by-user') {
-                msg = "Inicio de sesión cancelado.";
-            } else if (err.code === 'auth/popup-blocked') {
-                msg = "El navegador bloqueó la ventana emergente.";
-            }
             setAuthError(msg);
             setGoogleLoading(false);
         }
@@ -125,34 +131,17 @@ export default function RegisterPage() {
         <div className="flex min-h-screen bg-[#050505]">
             {/* Left Side - Branding (Desktop Only) */}
             <div className="hidden lg:flex w-1/2 bg-[#0a0a0a] relative overflow-hidden flex-col justify-between p-16 border-r border-white/5">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 filter grayscale mix-blend-overlay"></div>
                 <div className="absolute inset-0 bg-gradient-to-br from-black/95 via-black/80 to-[#0A0A0A]"></div>
-
-                {/* Decoration Circles */}
-                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-metal-gold/5 rounded-full blur-[100px]"></div>
-                <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-metal-blue/5 rounded-full blur-[100px]"></div>
-
                 <div className="relative z-10">
-                    <div className="mb-8">
-                        <Logo variant="full" size="xl" />
-                    </div>
+                    <div className="mb-8"><Logo variant="full" size="xl" /></div>
                 </div>
-
                 <div className="relative z-10 max-w-lg">
                     <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
                         Crea tu perfil y <br />
-                        <span className="text-metal-gold drop-shadow-[0_0_15px_rgba(212,175,55,0.6)]">empieza a entrenar.</span>
+                        <span className="text-metal-gold">empieza a entrenar.</span>
                     </h2>
-                    <p className="text-metal-silver text-lg leading-relaxed mb-8">
-                        Herramientas profesionales para estudiantes que buscan claridad en su preparación.
-                    </p>
-
                     <div className="space-y-4">
-                        {[
-                            "Diagnóstico de nivel inicial",
-                            "Práctica por áreas específicas",
-                            "Resultados inmediatos"
-                        ].map((item, i) => (
+                        {["Diagnóstico de nivel inicial", "Práctica por áreas específicas", "Resultados inmediatos"].map((item, i) => (
                             <div key={i} className="flex items-center gap-3 text-metal-silver">
                                 <CheckCircle2 className="text-metal-gold" size={20} />
                                 <span>{item}</span>
@@ -160,38 +149,25 @@ export default function RegisterPage() {
                         ))}
                     </div>
                 </div>
-
-                <div className="relative z-10 text-xs text-metal-silver/40 space-y-2">
-                    <p>{COPYRIGHT_TEXT}</p>
-                    <p>
-                        Desarrollado por <span className="text-metal-silver/60">Ing. Antonio Rodriguez</span><br />
-                        para Docencia Informática.
-                    </p>
-                </div>
             </div>
 
             {/* Right Side - Register Form */}
             <div className="w-full lg:w-1/2 flex items-center justify-center p-8 relative">
-                <div className="w-full max-w-md space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-
-                    {/* Mobile Header (Standardized) */}
+                <div className="w-full max-w-md space-y-8">
                     <div className="lg:hidden text-center mb-6">
-                        <div className="flex justify-center mb-2">
-                            <Logo variant="full" size="md" />
-                        </div>
-                        <p className="text-[10px] font-black text-metal-silver/40 uppercase tracking-[0.2em]">Prepárate para el Éxito</p>
+                        <Logo variant="full" size="md" />
                     </div>
 
                     <div className="space-y-1">
-                        <h1 className="text-3xl font-black text-white tracking-tighter italic uppercase">Registro</h1>
-                        <p className="text-metal-silver/60 text-sm">Crea tu cuenta para comenzar tu preparación.</p>
+                        <h1 className="text-3xl font-black text-white uppercase">Registro</h1>
+                        <p className="text-metal-silver/60 text-sm">Crea tu cuenta para comenzar.</p>
                     </div>
 
                     <Button
                         onClick={handleGoogleLogin}
                         disabled={googleLoading}
                         variant="silver"
-                        className="w-full bg-white text-black hover:bg-gray-100 border-none h-12"
+                        className="w-full bg-white text-black hover:bg-gray-100 border-none h-12 touch-target-large touch-manipulation"
                         isLoading={googleLoading}
                     >
                         <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
@@ -213,130 +189,160 @@ export default function RegisterPage() {
                     </div>
 
                     {authError && (
-                        <div className="bg-red-500/10 border border-red-500/50 text-red-200 p-3 rounded-xl text-sm flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
-                            <div className="w-1.5 h-1.5 rounded-full bg-red-400"></div>
+                        <div className="bg-red-500/10 border border-red-500/50 text-red-200 p-3 rounded-xl text-sm">
                             {authError}
                         </div>
                     )}
 
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                        <Input
-                            label="Correo Electrónico"
-                            type="email"
-                            icon={Mail}
-                            placeholder="nombre@ejemplo.com"
-                            {...register("email")}
-                            error={errors.email?.message}
-                        />
+                    {/* Stepper */}
+                    <FormStepper steps={STEPS} currentStep={currentStep} />
 
-                        <div className="space-y-2">
-                            <div className="flex justify-between items-center ml-1">
-                                <label className="text-xs font-semibold text-metal-silver/80 uppercase tracking-wider">
-                                    Contraseña
-                                </label>
-                                <button
-                                    type="button"
-                                    onClick={generatePassword}
-                                    className="text-[10px] text-metal-gold hover:text-white flex items-center gap-1 transition-colors uppercase font-bold tracking-wider"
-                                >
-                                    <RefreshCw size={10} /> Generar Segura
-                                </button>
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                        {/* Step 1: Email */}
+                        {currentStep === 0 && (
+                            <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
+                                <ValidatedInput
+                                    label="Correo Electrónico"
+                                    type="email"
+                                    icon={Mail}
+                                    placeholder="nombre@ejemplo.com"
+                                    onValidate={validateEmail}
+                                    onChange={(value) => setValue('email', value)}
+                                    inputMode="email"
+                                    autoComplete="email"
+                                />
+                                {errors.email && <p className="text-xs text-red-400 ml-1">{errors.email.message}</p>}
                             </div>
-                            <div className="relative">
+                        )}
+
+                        {/* Step 2: Password */}
+                        {currentStep === 1 && (
+                            <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
+                                <div className="space-y-2">
+                                    <div className="flex justify-between items-center">
+                                        <label className="text-xs font-semibold text-metal-silver/80 uppercase">Contraseña</label>
+                                        <button
+                                            type="button"
+                                            onClick={generatePassword}
+                                            className="text-[10px] text-metal-gold hover:text-white flex items-center gap-1 uppercase font-bold touch-target tap-area-expanded"
+                                        >
+                                            <RefreshCw size={10} /> Generar
+                                        </button>
+                                    </div>
+                                    <div className="relative">
+                                        <Input
+                                            type={showPassword ? "text" : "password"}
+                                            icon={Lock}
+                                            placeholder="••••••••"
+                                            {...register("password")}
+                                            error={errors.password?.message}
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={() => setShowPassword(!showPassword)}
+                                            className="absolute right-3 top-3 text-metal-silver/40 hover:text-white touch-target tap-area-expanded"
+                                        >
+                                            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                        </button>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-2">
+                                        {requirements.map((req, i) => {
+                                            const met = req.regex.test(passwordValue);
+                                            return (
+                                                <div key={i} className={`text-[10px] flex items-center gap-1.5 ${met ? 'text-green-400' : 'text-metal-silver/30'}`}>
+                                                    <div className={`w-1.5 h-1.5 rounded-full ${met ? 'bg-green-400' : 'bg-metal-silver/20'}`} />
+                                                    {req.text}
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
                                 <Input
-                                    type={showPassword ? "text" : "password"}
+                                    label="Confirmar Contraseña"
+                                    type="password"
                                     icon={Lock}
-                                    placeholder="••••••••"
-                                    {...register("password")}
-                                    error={errors.password?.message}
+                                    placeholder="Repite tu contraseña"
+                                    {...register("confirmPassword")}
+                                    error={errors.confirmPassword?.message}
                                 />
-                                <button
+                            </div>
+                        )}
+
+                        {/* Step 3: Consent */}
+                        {currentStep === 2 && (
+                            <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
+                                <div className="flex items-start gap-3 p-3 bg-black/20 rounded-xl border border-metal-silver/5">
+                                    <input
+                                        type="checkbox"
+                                        id="terms"
+                                        {...register("terms")}
+                                        className="h-4 w-4 rounded border-metal-silver text-metal-gold focus:ring-metal-gold bg-metal-dark/50 cursor-pointer touch-target"
+                                    />
+                                    <label htmlFor="terms" className="text-xs text-metal-silver/70 cursor-pointer leading-relaxed">
+                                        Acepto los <Link href="/terms" target="_blank" className="text-metal-gold hover:text-white underline">Términos de Uso</Link>.
+                                    </label>
+                                </div>
+                                {errors.terms && <span className="text-red-400 text-xs ml-1">{errors.terms.message}</span>}
+
+                                <div className="flex justify-center overflow-hidden rounded-xl">
+                                    <Turnstile
+                                        sitekey="0x4AAAAAACH1Rmabzh7QI6OR"
+                                        onVerify={(token) => setCaptchaToken(token)}
+                                        theme="dark"
+                                    />
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Navigation */}
+                        <div className="flex justify-between gap-4">
+                            {currentStep > 0 && (
+                                <Button
                                     type="button"
-                                    onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-3 top-3 text-metal-silver/40 hover:text-white transition-colors"
+                                    onClick={handleBack}
+                                    variant="ghost"
+                                    className="h-12 px-6 touch-target-large touch-manipulation"
+                                    icon={ArrowLeft}
                                 >
-                                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                                </button>
-                            </div>
-
-                            {/* Password Requirements Visualization */}
-                            <div className="grid grid-cols-2 gap-2 mt-2">
-                                {requirements.map((req, i) => {
-                                    const met = req.regex.test(passwordValue);
-                                    return (
-                                        <div key={i} className={`text-[10px] flex items-center gap-1.5 ${met ? 'text-green-400' : 'text-metal-silver/30'}`}>
-                                            <div className={`w-1.5 h-1.5 rounded-full ${met ? 'bg-green-400' : 'bg-metal-silver/20'}`} />
-                                            {req.text}
-                                        </div>
-                                    )
-                                })}
-                            </div>
+                                    Atrás
+                                </Button>
+                            )}
+                            {currentStep < STEPS.length - 1 ? (
+                                <Button
+                                    type="button"
+                                    onClick={handleNext}
+                                    disabled={!canProceedToStep(currentStep + 1)}
+                                    className="h-12 px-8 flex-1 touch-target-large touch-manipulation"
+                                    icon={ArrowRight}
+                                    iconPosition="right"
+                                >
+                                    Continuar
+                                </Button>
+                            ) : (
+                                <Button
+                                    type="submit"
+                                    disabled={isSubmitting || !captchaToken}
+                                    isLoading={isSubmitting}
+                                    className="h-12 px-8 flex-1 touch-target-large touch-manipulation"
+                                    icon={ArrowRight}
+                                    iconPosition="right"
+                                >
+                                    {isSubmitting ? "Registrando..." : "Crear Cuenta"}
+                                </Button>
+                            )}
                         </div>
-
-                        <Input
-                            label="Confirmar Contraseña"
-                            type="password"
-                            icon={Lock}
-                            placeholder="Repite tu contraseña"
-                            {...register("confirmPassword")}
-                            error={errors.confirmPassword?.message}
-                        />
-
-                        {/* Terms */}
-                        <div className="flex items-start gap-3 p-3 bg-black/20 rounded-xl border border-metal-silver/5 mt-2">
-                            <div className="relative flex items-center pt-1">
-                                <input
-                                    type="checkbox"
-                                    id="terms"
-                                    {...register("terms")}
-                                    className="h-4 w-4 rounded border-metal-silver text-metal-gold focus:ring-metal-gold bg-metal-dark/50 cursor-pointer"
-                                />
-                            </div>
-                            <label htmlFor="terms" className="text-xs text-metal-silver/70 cursor-pointer select-none leading-relaxed">
-                                Acepto los <Link href="/terms" target="_blank" className="text-metal-gold hover:text-white underline">Términos de Uso y Política de Datos</Link>.
-                                Entiendo que esta App es un simulador educativo y <strong>no garantiza mis resultados</strong> en el examen oficial.
-                            </label>
-                        </div>
-                        {errors.terms && <span className="text-red-400 text-xs ml-1">{errors.terms.message}</span>}
-
-                        <div className="flex justify-center my-4 overflow-hidden rounded-xl">
-                            <Turnstile
-                                sitekey="0x4AAAAAACH1Rmabzh7QI6OR"
-                                onVerify={(token) => setCaptchaToken(token)}
-                                theme="dark"
-                            />
-                        </div>
-
-                        <Button
-                            type="submit"
-                            disabled={isSubmitting || !captchaToken}
-                            isLoading={isSubmitting}
-                            icon={ArrowRight}
-                            iconPosition="right"
-                            className="w-full h-12 mt-4"
-                        >
-                            {isSubmitting ? "Registrando..." : "Crear Cuenta"}
-                        </Button>
                     </form>
 
                     <div className="text-center">
                         <p className="text-sm text-metal-silver/60">
                             ¿Ya tienes cuenta?{' '}
-                            <Link href="/login" className="text-metal-gold hover:text-white font-medium transition-colors">
+                            <Link href="/login" className="text-metal-gold hover:text-white font-medium">
                                 Iniciar Sesión
                             </Link>
                         </p>
                     </div>
                 </div>
-
-                {/* Footer Legal Links (Absolute Bottom) */}
-                <div className="absolute bottom-6 w-full text-center px-4">
-                    <p className="text-[10px] text-metal-silver/30">
-                        Protegido por reCAPTCHA y sujeto a la <Link href="/privacy" className="hover:text-metal-gold underline">Política de Privacidad</Link>.
-                    </p>
-                </div>
-            </div >
-        </div >
+            </div>
+        </div>
     );
 }
-
