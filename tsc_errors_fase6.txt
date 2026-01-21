@@ -1,0 +1,4 @@
+app/layout.tsx(14,8): error TS2613: Module '"C:/SaberPro/web-app/components/layout/PageTransition"' has no default export. Did you mean to use 'import { PageTransition } from "C:/SaberPro/web-app/components/layout/PageTransition"' instead?
+tests/example.spec.ts(1,30): error TS2307: Cannot find module '@playwright/test' or its corresponding type declarations.
+tests/example.spec.ts(3,28): error TS7031: Binding element 'page' implicitly has an 'any' type.
+tests/example.spec.ts(10,35): error TS7031: Binding element 'page' implicitly has an 'any' type.

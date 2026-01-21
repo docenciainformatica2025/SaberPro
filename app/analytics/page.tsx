@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
@@ -60,14 +61,9 @@ export default function AnalyticsPage() {
     useEffect(() => {
         async function fetchData() {
             if (!user) return;
-
             try {
-                const q = query(
-                    collection(db, "results"),
-                    where("userId", "==", user.uid)
-                );
+                const q = query(collection(db, "results"), where("userId", "==", user.uid));
                 const snapshot = await getDocs(q);
-
                 let totalScoreSum = 0;
                 let maxScore = 0;
                 let totalQuestions = 0;
@@ -76,7 +72,6 @@ export default function AnalyticsPage() {
                 const resultsList: any[] = [];
 
                 const rawData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
                 rawData.sort((a: any, b: any) => {
                     const timeA = (a.completedAt || a.date)?.toDate ? (a.completedAt || a.date).toDate().getTime() : 0;
                     const timeB = (b.completedAt || b.date)?.toDate ? (b.completedAt || b.date).toDate().getTime() : 0;
@@ -87,24 +82,18 @@ export default function AnalyticsPage() {
                     const score = Math.round((data.score / data.totalQuestions) * 100);
                     const timestamp = data.completedAt || data.date;
                     const dateObj = timestamp?.toDate ? timestamp.toDate() : new Date();
-
                     resultsList.push(data);
-
                     totalScoreSum += score;
                     if (score > maxScore) maxScore = score;
                     totalQuestions += data.totalQuestions;
-
                     trend.push({
                         name: dateObj.toLocaleDateString('es-CO', { day: '2-digit', month: '2-digit' }),
                         value: score,
                         fullDate: dateObj
                     });
-
                     if (data.module) {
                         const modKey = data.module;
-                        if (!moduleScores[modKey]) {
-                            moduleScores[modKey] = { sum: 0, count: 0 };
-                        }
+                        if (!moduleScores[modKey]) moduleScores[modKey] = { sum: 0, count: 0 };
                         moduleScores[modKey].sum += score;
                         moduleScores[modKey].count += 1;
                     }
@@ -130,14 +119,12 @@ export default function AnalyticsPage() {
                     highestScore: maxScore,
                     questionsAnswered: totalQuestions
                 });
-
             } catch (error) {
                 console.error("Error fetching analytics:", error);
             } finally {
                 setIsLoadingData(false);
             }
         }
-
         fetchData();
     }, [user]);
 
@@ -152,18 +139,26 @@ export default function AnalyticsPage() {
 
     const handleDownloadReport = () => {
         if (!user) return;
-
         const reportData = {
-            user: {
-                name: userName,
-                email: user.email || ""
-            },
+            user: { name: userName, email: user.email || "" },
             kpis: kpis,
             trendData: trendData,
             radarData: radarData
         };
-
         pdfGenerator.generatePerformanceReport(reportData);
+    };
+
+    const staggerContainer = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.1 }
+        }
+    };
+
+    const itemVariant = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 }
     };
 
     return (
@@ -182,9 +177,14 @@ export default function AnalyticsPage() {
                         />
                     </div>
                 ) : (
-                    <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={staggerContainer}
+                        className="space-y-12"
+                    >
                         {/* Header */}
-                        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8 border-b border-white/5 pb-8">
+                        <motion.div variants={itemVariant} className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8 border-b border-white/5 pb-8">
                             <div>
                                 <Link href="/dashboard">
                                     <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-metal-silver hover:text-white uppercase tracking-widest text-[10px] pl-0 mb-4">
@@ -213,10 +213,10 @@ export default function AnalyticsPage() {
                                     Proyección IA: {kpis.averageScore > 0 ? (kpis.averageScore * 3).toString() + " / 300" : "Pendiente"}
                                 </Badge>
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* KPIs Grid */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <motion.div variants={itemVariant} className="grid grid-cols-2 md:grid-cols-4 gap-6">
                             <Card variant="glass" className="p-6 border-white/5 bg-white/[0.02] hover:-translate-y-1 transition-transform">
                                 <div className="flex items-center gap-2 mb-4">
                                     <div className="p-2 bg-yellow-500/10 rounded-lg text-yellow-500">
@@ -256,41 +256,42 @@ export default function AnalyticsPage() {
                                 </div>
                                 <div className="text-4xl font-black text-white tracking-tight">{kpis.questionsAnswered}</div>
                             </Card>
-                        </div>
+                        </motion.div>
 
                         {/* AI Insight */}
-                        <Card variant="premium" className="relative overflow-hidden p-8 border-metal-gold/30">
-                            <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
-                                <Brain size={200} className="text-metal-gold" />
-                            </div>
-                            <div className="relative z-10">
-                                <h3 className="text-lg font-black text-metal-gold mb-6 flex items-center gap-2 uppercase tracking-tight">
-                                    <Sparkles size={18} /> Análisis de Inteligencia Artificial
-                                </h3>
-                                {kpis.totalSimulations > 0 ? (
-                                    <p className="text-white/90 text-lg leading-relaxed font-medium max-w-3xl">
-                                        Basado en tus {kpis.totalSimulations} sesiones, mantienes un rendimiento promedio del <strong className="text-metal-gold">{kpis.averageScore}%</strong>.
-                                        {kpis.averageScore < 60 ?
-                                            " Se detectan oportunidades de mejora significativas. Te recomiendo enfocar tus próximas sesiones en modo Entrenamiento para recibir retroalimentación detallada." :
-                                            " ¡Tu consistencia es clave! Intenta mantener tu racha y enfócate en las áreas donde el gráfico de radar muestre menor cobertura para equilibrar tu perfil."
-                                        }
-                                    </p>
-                                ) : (
-                                    <p className="text-metal-silver text-lg leading-relaxed max-w-3xl">
-                                        Aún no tengo suficientes datos para generar un análisis personalizado. Completa al menos un simulacro o módulo de entrenamiento para empezar a ver insights aquí.
-                                    </p>
-                                )}
-                                <div className="mt-8 flex gap-4">
-                                    <Link href="/training">
-                                        <Button variant="premium" className="shadow-[0_0_20px_rgba(212,175,55,0.3)]">Ir a Entrenar</Button>
-                                    </Link>
+                        <motion.div variants={itemVariant}>
+                            <Card variant="premium" className="relative overflow-hidden p-8 border-metal-gold/30">
+                                <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+                                    <Brain size={200} className="text-metal-gold" />
                                 </div>
-                            </div>
-                        </Card>
+                                <div className="relative z-10">
+                                    <h3 className="text-lg font-black text-metal-gold mb-6 flex items-center gap-2 uppercase tracking-tight">
+                                        <Sparkles size={18} /> Análisis de Inteligencia Artificial
+                                    </h3>
+                                    {kpis.totalSimulations > 0 ? (
+                                        <p className="text-white/90 text-lg leading-relaxed font-medium max-w-3xl">
+                                            Basado en tus {kpis.totalSimulations} sesiones, mantienes un rendimiento promedio del <strong className="text-metal-gold">{kpis.averageScore}%</strong>.
+                                            {kpis.averageScore < 60 ?
+                                                " Se detectan oportunidades de mejora significativas. Te recomiendo enfocar tus próximas sesiones en modo Entrenamiento para recibir retroalimentación detallada." :
+                                                " ¡Tu consistencia es clave! Intenta mantener tu racha y enfócate en las áreas donde el gráfico de radar muestre menor cobertura para equilibrar tu perfil."
+                                            }
+                                        </p>
+                                    ) : (
+                                        <p className="text-metal-silver text-lg leading-relaxed max-w-3xl">
+                                            Aún no tengo suficientes datos para generar un análisis personalizado. Completa al menos un simulacro o módulo de entrenamiento para empezar a ver insights aquí.
+                                        </p>
+                                    )}
+                                    <div className="mt-8 flex gap-4">
+                                        <Link href="/training">
+                                            <Button variant="premium" className="shadow-[0_0_20px_rgba(212,175,55,0.3)]">Ir a Entrenar</Button>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </Card>
+                        </motion.div>
 
                         {/* Charts Section */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                            {/* Evolution Chart */}
+                        <motion.div variants={itemVariant} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                             <Card variant="glass" className="p-8 border-white/5 bg-white/[0.02]">
                                 <div className="mb-8 border-b border-white/5 pb-4">
                                     <h3 className="text-xl font-black text-white uppercase italic tracking-tight">Evolución de Puntaje</h3>
@@ -301,7 +302,6 @@ export default function AnalyticsPage() {
                                 </div>
                             </Card>
 
-                            {/* Radar Chart */}
                             <Card variant="glass" className="p-8 border-white/5 bg-white/[0.02]">
                                 <div className="mb-8 border-b border-white/5 pb-4">
                                     <h3 className="text-xl font-black text-white uppercase italic tracking-tight">Balance de Competencias</h3>
@@ -311,19 +311,21 @@ export default function AnalyticsPage() {
                                     <PerformanceChart type="radar" data={radarData} color="#60a5fa" />
                                 </div>
                             </Card>
-                        </div>
+                        </motion.div>
 
                         {/* History Section */}
-                        <Card variant="glass" className="p-8 border-white/5 bg-white/[0.02]">
-                            <div className="mb-8 border-b border-white/5 pb-4 flex justify-between items-end">
-                                <div>
-                                    <h3 className="text-xl font-black text-white uppercase italic tracking-tight">Historial de Simulacros</h3>
-                                    <p className="text-xs font-bold text-metal-silver/50 uppercase tracking-widest mt-1">Registro detallado y reportes de resultados</p>
+                        <motion.div variants={itemVariant}>
+                            <Card variant="glass" className="p-8 border-white/5 bg-white/[0.02]">
+                                <div className="mb-8 border-b border-white/5 pb-4 flex justify-between items-end">
+                                    <div>
+                                        <h3 className="text-xl font-black text-white uppercase italic tracking-tight">Historial de Simulacros</h3>
+                                        <p className="text-xs font-bold text-metal-silver/50 uppercase tracking-widest mt-1">Registro detallado y reportes de resultados</p>
+                                    </div>
+                                    <Badge variant="default" className="text-[10px] bg-white/5 text-metal-silver border-white/10">{fullResults.length} REGISTROS</Badge>
                                 </div>
-                                <Badge variant="default" className="text-[10px] bg-white/5 text-metal-silver border-white/10">{fullResults.length} REGISTROS</Badge>
-                            </div>
-                            <ResultsHistoryList results={fullResults} onViewReport={handleViewReport} />
-                        </Card>
+                                <ResultsHistoryList results={fullResults} onViewReport={handleViewReport} />
+                            </Card>
+                        </motion.div>
 
                         {/* Modals */}
                         <ResultDetailModal
@@ -332,7 +334,7 @@ export default function AnalyticsPage() {
                             result={selectedResult}
                             userName={userName}
                         />
-                    </div>
+                    </motion.div>
                 )}
             </div>
         </div>
