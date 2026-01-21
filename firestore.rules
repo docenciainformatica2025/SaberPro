@@ -89,6 +89,13 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    // Auditoría: Solo lectura para Admins, inmoborrable.
+    match /admin_audit/{logId} {
+      allow read: if isAdmin();
+      allow create: if isAdmin(); 
+      allow update, delete: if false;
+    }
+
     // Denegación por defecto para cualquier otra ruta
     match /{document=**} {
       allow read, write: if false;
