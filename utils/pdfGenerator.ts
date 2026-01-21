@@ -56,9 +56,13 @@ export const pdfGenerator = {
             const margin = 14;
             const ly = 10;
 
-            // Isotype (SVG)
-            const logoDataUrl = 'data:image/svg+xml;base64,' + btoa(LOGO_SVG);
-            doc.addImage(logoDataUrl, 'SVG', margin, ly, 10, 10);
+            // Isotype (Vector Fallback because SVG crashes)
+            doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+            doc.roundedRect(margin, ly, 10, 10, 2, 2, 'F');
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(10);
+            doc.setTextColor(0, 0, 0); // Black "S"
+            doc.text("S", margin + 3.5, ly + 7.5);
 
             // Text "SaberPro"
             doc.setFont("helvetica", "bold");
@@ -273,9 +277,13 @@ export const pdfGenerator = {
         const margin = 14;
         const ly = 10;
 
-        // Isotype (SVG)
-        const logoDataUrl = 'data:image/svg+xml;base64,' + btoa(LOGO_SVG);
-        doc.addImage(logoDataUrl, 'SVG', margin, ly, 10, 10);
+        // Isotype (Vector Fallback)
+        doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+        doc.roundedRect(margin, ly, 10, 10, 2, 2, 'F');
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+        doc.setTextColor(0, 0, 0);
+        doc.text("S", margin + 3.5, ly + 7.5);
 
         // Text "SaberPro"
         doc.setFont("helvetica", "bold");
@@ -423,9 +431,13 @@ export const pdfGenerator = {
         const margin = 14;
         const ly = 10;
 
-        // Isotype (SVG)
-        const logoDataUrl = 'data:image/svg+xml;base64,' + btoa(LOGO_SVG);
-        doc.addImage(logoDataUrl, 'SVG', margin, ly, 10, 10);
+        // Isotype (Vector Fallback)
+        doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+        doc.roundedRect(margin, ly, 10, 10, 2, 2, 'F');
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+        doc.setTextColor(0, 0, 0);
+        doc.text("S", margin + 3.5, ly + 7.5);
 
         // Text "SaberPro"
         doc.setFont("helvetica", "bold");
