@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 import {
     LayoutDashboard,
     Users,
@@ -79,6 +80,7 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
 }
 
 function SidebarContent({ navGroups, pathname, onClose }: { navGroups: any[], pathname: string, onClose?: () => void }) {
+    const { logout } = useAuth();
     return (
         <div className="flex flex-col h-full">
             {/* Header */}
@@ -129,13 +131,15 @@ function SidebarContent({ navGroups, pathname, onClose }: { navGroups: any[], pa
 
             {/* Footer */}
             <div className="p-4 border-t border-white/5 bg-black/20">
-                <Link
-                    href="/dashboard"
-                    className="flex items-center gap-3 px-4 py-3 text-metal-silver hover:text-white hover:bg-red-500/10 hover:border-red-500/20 border border-transparent rounded-lg transition-all group"
+                <button
+                    onClick={async () => {
+                        await logout();
+                    }}
+                    className="w-full flex items-center gap-3 px-4 py-3 text-metal-silver hover:text-white hover:bg-red-500/10 hover:border-red-500/20 border border-transparent rounded-lg transition-all group"
                 >
                     <LogOut size={18} className="group-hover:text-red-400 transition-colors" />
-                    <span className="text-sm font-medium">Salir a la App</span>
-                </Link>
+                    <span className="text-sm font-medium">Cerrar Sesión</span>
+                </button>
             </div>
         </div>
     );

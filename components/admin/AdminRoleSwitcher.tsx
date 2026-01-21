@@ -28,7 +28,7 @@ export default function AdminRoleSwitcher() {
     };
 
     return (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] animate-in slide-in-from-bottom-10 duration-700">
+        <div className="fixed bottom-6 right-6 z-[9999] animate-in slide-in-from-bottom-10 duration-700">
             {isMinimized ? (
                 <button
                     onClick={() => setIsMinimized(false)}
