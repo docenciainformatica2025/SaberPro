@@ -15,7 +15,7 @@ export default function AdminRoleSwitcher() {
     if (!isSuperAdmin) return null;
 
     const roles = [
-        { id: 'admin', label: 'Admin', icon: Shield, color: 'text-red-500', bg: 'bg-red-500/10', path: '/admin' },
+        { id: 'admin', label: 'Admin', icon: Shield, color: 'text-red-500', bg: 'bg-red-500/10', path: '/admin/dashboard' },
         { id: 'teacher', label: 'Docente', icon: GraduationCap, color: 'text-purple-400', bg: 'bg-purple-500/10', path: '/teacher' },
         { id: 'student', label: 'Estudiante', icon: User, color: 'text-metal-gold', bg: 'bg-metal-gold/10', path: '/dashboard' }
     ];

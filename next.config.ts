@@ -43,6 +43,15 @@ const nextConfig: NextConfig = {
   },
   // Suppress hydration errors from extensions (e.g., Grammarly, Translate)
   reactStrictMode: false,
+  async redirects() {
+    return [
+      {
+        source: '/admin',
+        destination: '/admin/dashboard',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withSentryConfig(nextConfig, {

@@ -17,7 +17,7 @@ export default function OnboardingPage() {
     // If already has a role, redirect
     useEffect(() => {
         if (isSuperAdmin) {
-            router.replace('/admin');
+            router.replace('/admin/dashboard');
             return;
         }
         if (role === 'student') router.replace('/dashboard');
