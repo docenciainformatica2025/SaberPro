@@ -28,7 +28,7 @@ export interface UserSubscription {
 export interface UserProfile {
     fullName?: string;
     email: string;
-    [key: string]: any;
+    [key: string]: string | number | boolean | any; // Manteniendo flexibilidad pero reduciendo 'any' puro
 }
 
 interface AuthContextType {
@@ -38,6 +38,9 @@ interface AuthContextType {
     subscription: UserSubscription;
     completedProfile: boolean;
     loading: boolean;
+    isSuperAdmin: boolean;
+    impersonatedRole: 'student' | 'teacher' | 'admin' | null;
+    switchRole: (role: 'student' | 'teacher' | 'admin' | null) => void;
     signInWithGoogle: () => Promise<void>;
     login: (email: string, password: string) => Promise<void>;
     signup: (email: string, password: string) => Promise<void>;
@@ -63,6 +66,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const [subscription, setSubscription] = useState<UserSubscription>(defaultSubscription);
     const [completedProfile, setCompletedProfile] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [impersonatedRole, setImpersonatedRole] = useState<'student' | 'teacher' | 'admin' | null>(null);
+
+    const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "").split(",").map((e: string) => e.trim().toLowerCase());
+    const isSuperAdmin = !!(user?.email && adminEmails.includes(user.email.toLowerCase()));
+
+    const switchRole = (newRole: 'student' | 'teacher' | 'admin' | null) => {
+        if (!isSuperAdmin) return;
+        setImpersonatedRole(newRole);
+    };
 
     useEffect(() => {
         const unsubscribeAuth = onAuthStateChanged(auth, (authUser) => {
@@ -285,7 +297,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
 
     return (
-        <AuthContext.Provider value={{ user, profile, role, subscription, completedProfile, loading, signInWithGoogle, login, signup, logout, resetPassword, confirmPasswordReset }}>
+        <AuthContext.Provider value={{
+            user,
+            profile,
+            role: impersonatedRole || role,
+            subscription,
+            completedProfile,
+            loading,
+            isSuperAdmin,
+            impersonatedRole,
+            switchRole,
+            signInWithGoogle,
+            login,
+            signup,
+            logout,
+            resetPassword,
+            confirmPasswordReset
+        }}>
             {children}
         </AuthContext.Provider>
     );

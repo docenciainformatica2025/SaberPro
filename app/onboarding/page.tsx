@@ -9,16 +9,20 @@ import { GraduationCap, User, ArrowRight, Check } from "lucide-react";
 import { BRAND_YEAR } from "@/lib/config";
 
 export default function OnboardingPage() {
-    const { user, role } = useAuth();
+    const { user, role, isSuperAdmin } = useAuth();
     const router = useRouter();
     const [loading, setLoading] = useState(false);
     const [selectedRole, setSelectedRole] = useState<'student' | 'teacher' | null>(null);
 
     // If already has a role, redirect
     useEffect(() => {
+        if (isSuperAdmin) {
+            router.replace('/admin');
+            return;
+        }
         if (role === 'student') router.replace('/dashboard');
         if (role === 'teacher') router.replace('/teacher');
-    }, [role, router]);
+    }, [role, isSuperAdmin, router]);
 
     const handleConfirm = async () => {
         if (!user || !selectedRole) return;
@@ -31,9 +35,10 @@ export default function OnboardingPage() {
             // Force reload to refresh AuthContext completely and triggering Guard re-eval
             if (selectedRole === 'student') window.location.href = '/dashboard';
             if (selectedRole === 'teacher') window.location.href = '/teacher';
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error("CRITICAL AUTH ERROR (ONBOARDING):", error);
-            alert(`Error al guardar tu perfil: ${error.message || 'Error de comunicación con el servidor'}. Intenta de nuevo.`);
+            const message = error instanceof Error ? error.message : 'Error de comunicación con el servidor';
+            alert(`Error al guardar tu perfil: ${message}. Intenta de nuevo.`);
             setLoading(false);
         }
     };

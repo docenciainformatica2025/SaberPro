@@ -12,6 +12,7 @@ import ConditionalFooter from "@/components/ui/ConditionalFooter";
 import CookieBanner from "@/components/legal/CookieBanner";
 import { BRAND_NAME_SPACED, APP_VERSION } from "@/lib/config";
 import PageTransition from "@/components/layout/PageTransition";
+import AdminRoleSwitcher from "@/components/admin/AdminRoleSwitcher";
 
 // Hack to suppress the noisy hydration warning from extensions
 // Hack to suppress the noisy hydration warning from extensions
@@ -74,6 +75,7 @@ export default function RootLayout({
                 {children}
               </PageTransition>
             </main>
+            <AdminRoleSwitcher />
           </OnboardingGuard>
           <ConditionalFooter />
           <CookieBanner />
