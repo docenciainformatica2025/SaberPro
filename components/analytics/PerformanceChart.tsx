@@ -1,8 +1,8 @@
 "use client";
 
 import {
-    LineChart,
-    Line,
+    AreaChart,
+    Area,
     XAxis,
     YAxis,
     CartesianGrid,
@@ -25,11 +25,27 @@ interface PerformanceChartProps {
     color?: string;
 }
 
+const CustomTooltip = ({ active, payload, label, color }: any) => {
+    if (active && payload && payload.length) {
+        return (
+            <div className="bg-metal-black/80 backdrop-blur-xl border border-metal-silver/10 p-4 rounded-xl shadow-2xl shadow-black/50 animate-in fade-in zoom-in duration-200">
+                <p className="text-[10px] font-black uppercase tracking-widest text-metal-silver/40 mb-1">{label}</p>
+                <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: color }} />
+                    <p className="text-lg font-black text-white italic">
+                        {payload[0].value}%
+                    </p>
+                </div>
+            </div>
+        );
+    }
+    return null;
+};
+
 export default function PerformanceChart({ type, data, dataKey = "value", categoryKey = "name", color = "#D4AF37" }: PerformanceChartProps) {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        // eslint-disable-next-line
         setMounted(true);
     }, []);
 
@@ -51,23 +67,41 @@ export default function PerformanceChart({ type, data, dataKey = "value", catego
         return (
             <div className="h-64 w-full">
                 <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" />
-                        <XAxis dataKey={categoryKey} stroke="#9ca3af" fontSize={12} tickLine={false} axisLine={false} />
-                        <YAxis stroke="#9ca3af" fontSize={12} tickLine={false} axisLine={false} domain={[0, 100]} />
-                        <Tooltip
-                            contentStyle={{ backgroundColor: "#1a1a1a", borderColor: "#333", color: "#fff" }}
-                            itemStyle={{ color: color }}
+                    <AreaChart data={data} margin={{ top: 10, right: 10, bottom: 0, left: -20 }}>
+                        <defs>
+                            <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor={color} stopOpacity={0.3} />
+                                <stop offset="95%" stopColor={color} stopOpacity={0} />
+                            </linearGradient>
+                        </defs>
+                        <CartesianGrid strokeDasharray="5 5" stroke="#ffffff05" vertical={false} />
+                        <XAxis
+                            dataKey={categoryKey}
+                            stroke="#ffffff60"
+                            fontSize={10}
+                            tickLine={false}
+                            axisLine={false}
+                            dy={10}
                         />
-                        <Line
+                        <YAxis
+                            stroke="#ffffff60"
+                            fontSize={10}
+                            tickLine={false}
+                            axisLine={false}
+                            domain={[0, 100]}
+                            dx={-10}
+                        />
+                        <Tooltip content={<CustomTooltip color={color} />} />
+                        <Area
                             type="monotone"
                             dataKey={dataKey}
                             stroke={color}
                             strokeWidth={3}
-                            dot={{ r: 4, fill: color }}
-                            activeDot={{ r: 6, fill: "#fff" }}
+                            fillOpacity={1}
+                            fill="url(#colorValue)"
+                            animationDuration={1500}
                         />
-                    </LineChart>
+                    </AreaChart>
                 </ResponsiveContainer>
             </div>
         );
@@ -78,19 +112,26 @@ export default function PerformanceChart({ type, data, dataKey = "value", catego
             <div className="h-64 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                     <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
-                        <PolarGrid stroke="#ffffff20" />
-                        <PolarAngleAxis dataKey={categoryKey} tick={{ fill: "#9ca3af", fontSize: 10 }} />
-                        <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+                        <PolarGrid stroke="#ffffff10" />
+                        <PolarAngleAxis
+                            dataKey={categoryKey}
+                            tick={{ fill: "#ffffff99", fontSize: 10, fontWeight: "bold" }}
+                        />
+                        <PolarRadiusAxis
+                            angle={30}
+                            domain={[0, 100]}
+                            tick={false}
+                            axisLine={false}
+                        />
                         <Radar
                             name="Desempeño"
                             dataKey={dataKey}
                             stroke={color}
                             fill={color}
-                            fillOpacity={0.4}
+                            fillOpacity={0.5}
+                            animationDuration={1500}
                         />
-                        <Tooltip
-                            contentStyle={{ backgroundColor: "#1a1a1a", borderColor: "#333", color: "#fff" }}
-                        />
+                        <Tooltip content={<CustomTooltip color={color} />} />
                     </RadarChart>
                 </ResponsiveContainer>
             </div>
