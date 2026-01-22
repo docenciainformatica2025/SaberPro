@@ -32,7 +32,6 @@ import {
     Pie,
     Cell
 } from "recharts";
-import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
 import { DashboardSkeleton } from "@/components/ui/DashboardSkeleton";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
