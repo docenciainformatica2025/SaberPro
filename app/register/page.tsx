@@ -148,7 +148,7 @@ export default function RegisterPage() {
 
                     <div className="space-y-1">
                         <h1 className="text-3xl font-black text-white uppercase italic tracking-tighter">Registro de Usuario</h1>
-                        <p className="text-metal-silver/60 text-sm">Crea tu cuenta institucional <span className="text-metal-gold text-[10px] ml-2 border border-metal-gold/30 px-2 py-0.5 rounded-full">v4.1.5 (Unified)</span></p>
+                        <p className="text-metal-silver/60 text-sm">Crea tu cuenta institucional <span className="text-metal-gold text-[10px] ml-2 border border-metal-gold/30 px-2 py-0.5 rounded-full">v4.1.6 (Legal)</span></p>
                     </div>
 
 
@@ -201,7 +201,7 @@ export default function RegisterPage() {
                                 <div className="flex items-start gap-3">
                                     <input type="checkbox" id="terms" {...register("terms")} className="mt-1 h-4 w-4 rounded border-metal-silver text-metal-gold focus:ring-metal-gold bg-metal-dark/50" />
                                     <label htmlFor="terms" className="text-xs text-metal-silver/70 leading-relaxed">
-                                        Al crear mi cuenta acepto los <Link href="/terms" target="_blank" className="text-metal-gold underline hover:text-white">Términos de Uso</Link> y Política de Privacidad.
+                                        Al crear mi cuenta acepto los <Link href="/terms" target="_blank" className="text-metal-gold underline hover:text-white">Términos de Uso</Link>, <Link href="/privacy" target="_blank" className="text-metal-gold underline hover:text-white">Política de Privacidad</Link> y el uso de <Link href="/cookies" target="_blank" className="text-metal-gold underline hover:text-white">Cookies</Link>.
                                     </label>
                                 </div>
                                 {errors.terms && <p className="text-xs text-red-400 ml-1">{errors.terms.message}</p>}
