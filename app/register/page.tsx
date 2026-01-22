@@ -23,7 +23,7 @@ const STEPS = [
 ];
 
 export default function RegisterPage() {
-    // v4.0.0 Restoration - Full Legacy Mode
+    // v4.0.0 Restoration - Exact Original State
     const { signup, signInWithGoogle } = useAuth();
     const router = useRouter();
     const [currentStep, setCurrentStep] = useState(0);
@@ -71,6 +71,8 @@ export default function RegisterPage() {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(value) ? 'valid' : 'invalid';
     };
+
+
 
     const validatePassword = (value: string) => {
         const allMet = requirements.every(req => req.regex.test(value));
@@ -128,6 +130,8 @@ export default function RegisterPage() {
         }
     };
 
+
+
     return (
         <div className="flex min-h-screen bg-[#050505]">
             {/* Left Side - Branding (Desktop Only) */}
@@ -171,6 +175,8 @@ export default function RegisterPage() {
                         <h1 className="text-3xl font-black text-white uppercase italic tracking-tighter">Registro de Usuario</h1>
                         <p className="text-metal-silver/60 text-sm">Crea tu cuenta institucional para comenzar el entrenamiento.</p>
                     </div>
+
+
 
                     <Button
                         onClick={handleGoogleLogin}
