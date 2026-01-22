@@ -23,6 +23,7 @@ const STEPS = [
 ];
 
 export default function RegisterPage() {
+    // v4.0.0 Restoration - Full Legacy Mode
     const { signup, signInWithGoogle } = useAuth();
     const router = useRouter();
     const [currentStep, setCurrentStep] = useState(0);
