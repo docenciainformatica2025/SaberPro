@@ -12,6 +12,13 @@ body {
   padding: 0;
 }
 
+/* === ACCESSIBILITY (ADA Section 508) === */
+:focus-visible {
+  outline: 2px solid #D4AF37;
+  /* Metal Gold High Contrast */
+  outline-offset: 2px;
+}
+
 :root {
   --background: rgb(25, 30, 35);
   --foreground: rgb(229, 228, 226);
