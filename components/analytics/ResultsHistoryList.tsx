@@ -81,7 +81,7 @@ export default function ResultsHistoryList({ results, onViewReport }: ResultsHis
 
                             <div>
                                 <h4 className="text-white font-bold capitalize text-lg leading-tight mb-1">
-                                    {result.module.replace(/_/g, " ")}
+                                    {result.module?.replace(/_/g, " ") || "Prueba General"}
                                 </h4>
                                 <div className="flex items-center gap-2">
                                     <span className={`font-black text-2xl ${percentage >= 80 ? "text-green-400" :
@@ -136,7 +136,7 @@ export default function ResultsHistoryList({ results, onViewReport }: ResultsHis
                                         {format(date, "d MMM yyyy, HH:mm", { locale: es })}
                                     </td>
                                     <td className="px-6 py-4 text-metal-silver capitalize text-center font-medium text-base">
-                                        {result.module.replace(/_/g, " ")}
+                                        {result.module?.replace(/_/g, " ") || "Prueba General"}
                                     </td>
                                     <td className="px-6 py-4">
                                         <div className="flex items-center justify-center gap-2">

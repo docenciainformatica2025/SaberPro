@@ -170,6 +170,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                             version: "v1.0-2025-google",
                             type: "Habeas Data + Términos (vía Google)",
                             ipHash: "GOOGLE_AUTH_INIT"
+                        },
+                        gamification: {
+                            xp: 0,
+                            level: 1,
+                            badges: [],
+                            streak: {
+                                current: 0,
+                                lastActiveDate: null
+                            }
                         }
                     });
                 }
@@ -240,7 +249,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             createdAt: new Date(),
             fullName: "", // To be filled in profile
             completedProfile: false,
-            consentLog: consentLog
+            consentLog: consentLog,
+            gamification: {
+                xp: 0,
+                level: 1,
+                badges: [],
+                streak: {
+                    current: 0,
+                    lastActiveDate: null
+                }
+            }
         });
 
         // Migrate Diagnostic Data if exists

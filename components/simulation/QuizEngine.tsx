@@ -407,7 +407,7 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                 <Card variant="glass" className="p-12 max-w-md w-full">
                     <Trophy className="w-24 h-24 text-metal-gold mx-auto mb-6 drop-shadow-[0_0_15px_rgba(212,175,55,0.5)]" />
                     <h2 className="text-3xl font-bold mb-2">Simulacro Finalizado</h2>
-                    <Badge variant="premium" className="mb-8">{moduleName.replace(/_/g, ' ')}</Badge>
+                    <Badge variant="premium" className="mb-8">{moduleName?.replace(/_/g, ' ') || 'Simulacro General'}</Badge>
 
                     {timeLeft === 0 && (
                         <div className="mb-6">

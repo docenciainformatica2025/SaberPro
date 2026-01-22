@@ -145,7 +145,7 @@ export default function ResultDetailModal({ isOpen, onClose, result, userName }:
                         {/* Main Score */}
                         <div className="mb-12">
                             <h2 className="text-lg font-bold mb-6 flex items-center gap-2 uppercase tracking-wide border-l-4 pl-3" style={{ color: '#111827', borderColor: '#000000' }}>
-                                Desempeño General - {result.module.replace(/_/g, " ")}
+                                Desempeño General - {result.module?.replace(/_/g, " ") || "Prueba General"}
                             </h2>
 
                             <div className="flex items-stretch gap-6">
