@@ -55,7 +55,7 @@ export default function OnboardingPage() {
     return (
         <div className="min-h-screen bg-metal-dark flex items-center justify-center p-4">
             <div className="max-w-4xl w-full">
-                <div className="text-center mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                <div className="text-center mb-12">
                     <h1 className="text-4xl font-bold text-white mb-4">
                         ¡Bienvenido a <span className="text-gradient-gold">Saber Pro {BRAND_YEAR}</span>!
                     </h1>

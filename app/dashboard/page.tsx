@@ -168,7 +168,7 @@ export default function DashboardPage() {
                 {loading || isLoadingData ? (
                     <DashboardSkeleton />
                 ) : (
-                    <div className="space-y-12 pb-44 animate-in fade-in duration-700">
+                    <div className="space-y-12 pb-44">
                         <PromotionBanner />
                         {firestoreError && (
                             <div className="fixed top-0 left-0 w-full bg-red-600/90 text-white z-50 p-4 text-center backdrop-blur-md">

@@ -171,7 +171,7 @@ export default function AdminDashboard() {
     return (
         <div className="space-y-12 pb-44">
             {/* Header Pro */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 animate-in fade-in slide-in-from-top-4 duration-700">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 <div>
                     <h1 className="text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-white via-metal-silver to-white flex items-center gap-4 tracking-tighter">
                         <Activity className="text-metal-gold" size={36} /> Comando Central
@@ -196,7 +196,7 @@ export default function AdminDashboard() {
             </div>
 
             {/* KPI Grid Premium */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <StatCardPremium
                     title="Revenue Estimado (M)"
                     value={`$${(stats.proUsers * 49900).toLocaleString('es-CO')}`}
@@ -232,7 +232,7 @@ export default function AdminDashboard() {
             </div>
 
             {/* Charts Section */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Main Activity Chart */}
                 <Card variant="solid" className="lg:col-span-2 p-8">
                     <div className="flex justify-between items-center mb-8">
@@ -318,7 +318,7 @@ export default function AdminDashboard() {
             </div>
 
             {/* Sub-Charts Row */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <Card variant="solid" className="p-8">
                     <h3 className="text-xl font-black text-white mb-8 flex items-center gap-3 italic uppercase tracking-tighter">
                         <BookOpen className="text-metal-gold" size={18} /> Nicho Profesional
