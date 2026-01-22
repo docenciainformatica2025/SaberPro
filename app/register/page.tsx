@@ -16,10 +16,7 @@ import ValidatedInput from '@/components/ui/ValidatedInput';
 import { toast } from 'sonner';
 import { Logo } from "@/components/ui/Logo";
 
-const STEPS = [
-    { id: 'email', title: 'Identificación', description: 'Tu correo electrónico' },
-    { id: 'security', title: 'Seguridad', description: 'Contraseña y validación' },
-];
+const STEPS = []; // Removed for single-step flow
 
 export default function RegisterPage() {
     // v4.0.0 Restoration - Exact Original State
@@ -76,22 +73,6 @@ export default function RegisterPage() {
     const validatePassword = (value: string) => {
         const allMet = requirements.every(req => req.regex.test(value));
         return allMet ? 'valid' : 'invalid';
-    };
-
-    const canProceedToStep = (step: number): boolean => {
-        if (step === 1) return validateEmail(emailValue) === 'valid';
-        return true;
-    };
-
-    const handleNext = async () => {
-        const isValid = await trigger('email');
-        if (isValid && canProceedToStep(currentStep + 1)) {
-            setCurrentStep(prev => Math.min(prev + 1, STEPS.length - 1));
-        }
-    };
-
-    const handleBack = () => {
-        setCurrentStep(prev => Math.max(prev - 1, 0));
     };
 
     const onSubmit = async (data: RegisterFormValues) => {
@@ -167,7 +148,7 @@ export default function RegisterPage() {
 
                     <div className="space-y-1">
                         <h1 className="text-3xl font-black text-white uppercase italic tracking-tighter">Registro de Usuario</h1>
-                        <p className="text-metal-silver/60 text-sm">Crea tu cuenta institucional <span className="text-metal-gold text-[10px] ml-2 border border-metal-gold/30 px-2 py-0.5 rounded-full">v4.1.4 (Secure)</span></p>
+                        <p className="text-metal-silver/60 text-sm">Crea tu cuenta institucional <span className="text-metal-gold text-[10px] ml-2 border border-metal-gold/30 px-2 py-0.5 rounded-full">v4.1.5 (Unified)</span></p>
                     </div>
 
 
@@ -182,71 +163,58 @@ export default function RegisterPage() {
                         Registrarse con Google
                     </Button>
 
-                    <FormStepper steps={STEPS} currentStep={currentStep} />
-
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                        {currentStep === 0 && (
-                            <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
-                                <ValidatedInput
-                                    label="Correo Electrónico"
-                                    type="email"
-                                    icon={MailIcon}
-                                    onValidate={validateEmail}
-                                    onChange={(value) => setValue('email', value)}
-                                />
-                                {errors.email && <p className="text-xs text-red-400 ml-1">{errors.email.message}</p>}
-                            </div>
-                        )}
+                        <div className="space-y-4">
+                            <ValidatedInput
+                                label="Correo Electrónico"
+                                type="email"
+                                icon={MailIcon}
+                                onValidate={validateEmail}
+                                onChange={(value) => setValue('email', value)}
+                            />
+                            {errors.email && <p className="text-xs text-red-400 ml-1">{errors.email.message}</p>}
 
-                        {currentStep === 1 && (
-                            <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
-                                {/* Password Section */}
-                                <div className="space-y-4">
-                                    <div className="space-y-2">
-                                        <div className="flex justify-between items-center">
-                                            <label className="text-xs font-semibold text-metal-silver/80 uppercase">Contraseña</label>
-                                            <button type="button" onClick={generatePassword} className="text-[10px] text-metal-gold hover:text-white flex items-center gap-1 uppercase font-bold">
-                                                <RefreshIcon size={10} /> Generar
-                                            </button>
-                                        </div>
-                                        <div className="relative">
-                                            <Input
-                                                type={showPassword ? "text" : "password"}
-                                                icon={LockIcon}
-                                                {...register("password")}
-                                                error={errors.password?.message}
-                                            />
-                                            <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-3 text-metal-silver/40 hover:text-white">
-                                                {showPassword ? <EyeOffIcon size={18} /> : <EyeIcon size={18} />}
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <Input label="Confirmar" type="password" icon={LockIcon} {...register("confirmPassword")} error={errors.confirmPassword?.message} />
+                            {/* Password Section */}
+                            <div className="space-y-2">
+                                <div className="flex justify-between items-center">
+                                    <label className="text-xs font-semibold text-metal-silver/80 uppercase">Contraseña</label>
+                                    <button type="button" onClick={generatePassword} className="text-[10px] text-metal-gold hover:text-white flex items-center gap-1 uppercase font-bold">
+                                        <RefreshIcon size={10} /> Generar
+                                    </button>
                                 </div>
-
-                                {/* Terms & Security Section (Big Tech Standard) */}
-                                <div className="pt-4 border-t border-white/5 space-y-4">
-                                    <div className="flex items-start gap-3">
-                                        <input type="checkbox" id="terms" {...register("terms")} className="mt-1 h-4 w-4 rounded border-metal-silver text-metal-gold focus:ring-metal-gold bg-metal-dark/50" />
-                                        <label htmlFor="terms" className="text-xs text-metal-silver/70 leading-relaxed">
-                                            Al crear mi cuenta acepto los <Link href="/terms" target="_blank" className="text-metal-gold underline hover:text-white">Términos de Uso</Link> y Política de Privacidad.
-                                        </label>
-                                    </div>
-                                    {errors.terms && <p className="text-xs text-red-400 ml-1">{errors.terms.message}</p>}
-
-                                    <div className="flex justify-center bg-black/20 p-2 rounded-xl border border-white/5">
-                                        <Turnstile sitekey="0x4AAAAAACH1Rmabzh7QI6OR" onVerify={(token) => setCaptchaToken(token)} theme="dark" />
-                                    </div>
+                                <div className="relative">
+                                    <Input
+                                        type={showPassword ? "text" : "password"}
+                                        icon={LockIcon}
+                                        {...register("password")}
+                                        error={errors.password?.message}
+                                    />
+                                    <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-3 text-metal-silver/40 hover:text-white">
+                                        {showPassword ? <EyeOffIcon size={18} /> : <EyeIcon size={18} />}
+                                    </button>
                                 </div>
                             </div>
-                        )}
+                            <Input label="Confirmar" type="password" icon={LockIcon} {...register("confirmPassword")} error={errors.confirmPassword?.message} />
 
-                        <div className="flex justify-between gap-4">
-                            {currentStep > 0 && <Button type="button" onClick={handleBack} variant="ghost" className="h-12 px-6" icon={ArrowLeftIcon}>Atrás</Button>}
-                            <Button type={currentStep === 1 ? "submit" : "button"} onClick={currentStep < 1 ? handleNext : undefined} disabled={currentStep < 1 ? !canProceedToStep(currentStep + 1) : (isSubmitting || !captchaToken)} isLoading={isSubmitting} className="h-12 px-8 flex-1" icon={ArrowRightIcon} iconPosition="right">
-                                {currentStep < 1 ? "Continuar" : "Crear Cuenta"}
-                            </Button>
+                            {/* Terms & Security Section (Unified) */}
+                            <div className="pt-4 border-t border-white/5 space-y-4">
+                                <div className="flex items-start gap-3">
+                                    <input type="checkbox" id="terms" {...register("terms")} className="mt-1 h-4 w-4 rounded border-metal-silver text-metal-gold focus:ring-metal-gold bg-metal-dark/50" />
+                                    <label htmlFor="terms" className="text-xs text-metal-silver/70 leading-relaxed">
+                                        Al crear mi cuenta acepto los <Link href="/terms" target="_blank" className="text-metal-gold underline hover:text-white">Términos de Uso</Link> y Política de Privacidad.
+                                    </label>
+                                </div>
+                                {errors.terms && <p className="text-xs text-red-400 ml-1">{errors.terms.message}</p>}
+
+                                <div className="flex justify-center bg-black/20 p-2 rounded-xl border border-white/5">
+                                    <Turnstile sitekey="0x4AAAAAACH1Rmabzh7QI6OR" onVerify={(token) => setCaptchaToken(token)} theme="dark" />
+                                </div>
+                            </div>
                         </div>
+
+                        <Button type="submit" disabled={isSubmitting || !captchaToken} isLoading={isSubmitting} className="h-12 px-8 w-full" icon={ArrowRightIcon} iconPosition="right">
+                            Crear Cuenta
+                        </Button>
                     </form>
                     <div className="text-center"><p className="text-sm text-metal-silver/60">¿Ya tienes cuenta? <Link href="/login" className="text-metal-gold hover:text-white font-medium">Iniciar Sesión</Link></p></div>
                 </div>
