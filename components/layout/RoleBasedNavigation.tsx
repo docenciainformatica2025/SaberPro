@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -25,11 +26,18 @@ import {
     DollarSign
 } from "lucide-react";
 import StreakCounter from "@/components/gamification/StreakCounter";
+import GlobalExitModal from "@/components/auth/GlobalExitModal";
+import { Logo } from "@/components/ui/Logo";
 
 export default function RoleBasedNavigation() {
-    const { user, profile, role, logout, loading } = useAuth();
+    const { user, profile, role, logout, loading, activeActivity } = useAuth();
     const pathname = usePathname();
     const router = useRouter();
+
+    const [modalState, setModalState] = useState<{ isOpen: boolean; type: 'logout' | 'navigation'; target?: string }>({
+        isOpen: false,
+        type: 'logout'
+    });
 
     // 1. Hide on public pages or authenticating
     if (loading) return null;
@@ -110,12 +118,40 @@ export default function RoleBasedNavigation() {
     // Settings Link Logic (Standardized)
     const settingsHref = role === 'teacher' ? "/teacher/settings" : role === 'admin' ? "/admin/settings" : "/profile";
 
+    const handleProtectedNavigation = (href: string, isLogout = false) => {
+        if (activeActivity || isLogout) {
+            setModalState({
+                isOpen: true,
+                type: isLogout ? 'logout' : 'navigation',
+                target: href
+            });
+            return;
+        }
+        router.push(href);
+    };
+
+    const confirmExit = async () => {
+        const type = modalState.type;
+        const target = modalState.target;
+        setModalState({ ...modalState, isOpen: false });
+
+        if (type === 'logout') {
+            await logout();
+            // Logout redirects to home automatically in AuthContext
+        } else if (target) {
+            router.push(target);
+        }
+    };
+
     return (
         <>
             {/* 1. Top Floating Status Bar - Scaled Up */}
             <header className="fixed top-6 left-6 right-6 z-50 flex items-center justify-between pointer-events-none">
                 {/* Brand Pill */}
-                <div className="flex items-center gap-4 pointer-events-auto bg-[#111]/90 backdrop-blur-2xl border border-white/10 px-6 py-3 rounded-full shadow-2xl animate-in fade-in slide-in-from-top-4 duration-700">
+                <div
+                    onClick={() => handleProtectedNavigation('/')}
+                    className="flex items-center gap-4 pointer-events-auto bg-[#111]/90 backdrop-blur-2xl border border-white/10 px-6 py-3 rounded-full shadow-2xl animate-in fade-in slide-in-from-top-4 duration-700 cursor-pointer hover:border-metal-gold/30 transition-all"
+                >
                     {brandIcon}
                     <div>
                         <h1 className="font-bold text-base tracking-tight leading-none text-white">SaberPro</h1>
@@ -142,7 +178,7 @@ export default function RoleBasedNavigation() {
                         {(profile?.fullName || user?.displayName || user?.email)?.[0].toUpperCase()}
                     </div>
                     <button
-                        onClick={async () => { await logout(); router.push('/'); }}
+                        onClick={() => handleProtectedNavigation('/', true)}
                         className="p-2.5 rounded-full hover:bg-red-500/20 text-metal-silver hover:text-red-400 transition-colors"
                         title="Cerrar Sesión"
                     >
@@ -150,6 +186,14 @@ export default function RoleBasedNavigation() {
                     </button>
                 </div>
             </header>
+
+            <GlobalExitModal
+                isOpen={modalState.isOpen}
+                type={modalState.type}
+                isActiveActivity={!!activeActivity}
+                onCancel={() => setModalState(prev => ({ ...prev, isOpen: false }))}
+                onConfirm={confirmExit}
+            />
 
             {/* 2. The "World Class" Floating Dock - Scaled Up */}
             <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-end gap-3 px-6 py-4 bg-[#111]/90 backdrop-blur-3xl [-webkit-backdrop-filter:blur(64px)] border border-white/10 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.6)] border-t-white/20 transition-all hover:scale-[1.01] hover:bg-[#151515] max-w-[90vw] overflow-x-auto no-scrollbar touch-pan-x">
@@ -165,9 +209,9 @@ export default function RoleBasedNavigation() {
                     }
 
                     return (
-                        <Link
+                        <button
                             key={item.href}
-                            href={item.href}
+                            onClick={() => handleProtectedNavigation(item.href)}
                             className={`group relative flex items-center justify-center p-4 rounded-3xl transition-all duration-300 ease-out 
                                 ${isActive
                                     ? `bg-white text-black -translate-y-4 shadow-[0_20px_30px_-10px_rgba(255,255,255,0.3)] scale-110 mx-2`
@@ -186,21 +230,21 @@ export default function RoleBasedNavigation() {
                             {isActive && (
                                 <span className={`absolute -bottom-2.5 w-1.5 h-1.5 rounded-full shadow-[0_0_8px_currentColor] ${role === 'admin' ? 'bg-red-500' : role === 'teacher' ? 'bg-metal-gold' : 'bg-blue-500'}`}></span>
                             )}
-                        </Link>
+                        </button>
                     );
                 })}
 
                 <div className="w-px h-10 bg-white/10 mx-3 self-center" />
 
-                <Link
-                    href={settingsHref}
+                <button
+                    onClick={() => handleProtectedNavigation(settingsHref)}
                     className={`group relative p-4 rounded-3xl transition-all duration-300 hover:bg-white/10 hover:-translate-y-2 text-metal-silver hover:text-white ${pathname === settingsHref ? 'text-white' : ''}`}
                 >
                     <Settings size={26} />
                     <span className="absolute -top-14 left-1/2 -translate-x-1/2 bg-black/90 text-white text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-white/10 shadow-xl translate-y-2 group-hover:translate-y-0">
                         Configuración
                     </span>
-                </Link>
+                </button>
             </nav>
         </>
     );

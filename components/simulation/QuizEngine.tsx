@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { db } from "@/lib/firebase";
 import { addDoc, collection, serverTimestamp, query, where, getDocs, updateDoc, arrayUnion } from "firebase/firestore";
-import ExitConfirmationModal from "./ExitConfirmationModal";
+import GlobalExitModal from "@/components/auth/GlobalExitModal";
 import SuccessAnimation from "@/components/ui/SuccessAnimation";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -38,8 +38,12 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
     const [timeLeft, setTimeLeft] = useState(timeLimit || questions.length * 120);
 
     const router = useRouter();
-    const { user, subscription } = useAuth();
-    // ... existing state ...
+    const { user, subscription, registerActivity } = useAuth();
+    // Register activity on mount
+    useEffect(() => {
+        registerActivity({ id: sessionId || 'temp', type: 'simulation' });
+        return () => registerActivity(null);
+    }, [sessionId]);
 
     const currentQuestion = questions[currentIndex];
     const isLastQuestion = currentIndex === questions.length - 1;
@@ -507,10 +511,12 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
             </div>
             <SuccessAnimation isVisible={showSuccess} message="¡Módulo Completado!" />
 
-            <ExitConfirmationModal
+            <GlobalExitModal
                 isOpen={showExitModal}
-                onContinue={() => setShowExitModal(false)}
-                onExit={handleExitConfirm}
+                type="navigation"
+                isActiveActivity={true}
+                onCancel={() => setShowExitModal(false)}
+                onConfirm={handleExitConfirm}
             />
         </div >
     );

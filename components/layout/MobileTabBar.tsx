@@ -14,6 +14,9 @@ import {
     BookOpen,
     Brain
 } from "lucide-react";
+import { useState } from "react";
+import GlobalExitModal from "@/components/auth/GlobalExitModal";
+import { useRouter } from "next/navigation";
 
 /**
  * Mobile Tab Bar - Bottom Navigation (Thumb Zone Optimized)
@@ -21,8 +24,14 @@ import {
  * Touch targets: 48x48px minimum (WCAG 2.2 + Apple HIG)
  */
 export default function MobileTabBar() {
-    const { user, role, loading } = useAuth();
+    const { user, role, loading, activeActivity, logout } = useAuth();
     const pathname = usePathname();
+    const router = useRouter();
+
+    const [modalState, setModalState] = useState<{ isOpen: boolean; type: 'logout' | 'navigation'; target?: string }>({
+        isOpen: false,
+        type: 'logout'
+    });
 
     // Hide on desktop, public pages, or auth states
     if (loading || !user) return null;
@@ -61,6 +70,24 @@ export default function MobileTabBar() {
 
     const navItems = getNavItems();
 
+    const handleProtectedNavigation = (href: string) => {
+        if (activeActivity) {
+            setModalState({
+                isOpen: true,
+                type: 'navigation',
+                target: href
+            });
+            return;
+        }
+        router.push(href);
+    };
+
+    const confirmExit = async () => {
+        const target = modalState.target;
+        setModalState({ ...modalState, isOpen: false });
+        if (target) router.push(target);
+    };
+
     return (
         <>
             {/* Spacer to prevent content from being hidden behind fixed bar */}
@@ -74,9 +101,9 @@ export default function MobileTabBar() {
                         const Icon = item.icon;
 
                         return (
-                            <Link
+                            <button
                                 key={item.href}
-                                href={item.href}
+                                onClick={() => handleProtectedNavigation(item.href)}
                                 className={`
                                     flex flex-col items-center justify-center gap-1
                                     min-w-[48px] min-h-[48px] px-3 py-2 rounded-xl
@@ -97,10 +124,18 @@ export default function MobileTabBar() {
                                 <span className="text-[10px] font-black uppercase tracking-wider leading-none">
                                     {item.name}
                                 </span>
-                            </Link>
+                            </button>
                         );
                     })}
                 </div>
+
+                <GlobalExitModal
+                    isOpen={modalState.isOpen}
+                    type={modalState.type}
+                    isActiveActivity={!!activeActivity}
+                    onCancel={() => setModalState({ ...modalState, isOpen: false })}
+                    onConfirm={confirmExit}
+                />
 
                 {/* Safe Area Inset for iOS Notch */}
                 <div className="h-[env(safe-area-inset-bottom)] bg-metal-black" />

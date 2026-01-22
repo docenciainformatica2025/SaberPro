@@ -36,6 +36,8 @@ interface AuthContextType {
     profile: UserProfile | null;
     role: 'student' | 'teacher' | 'admin' | null;
     subscription: UserSubscription;
+    activeActivity: { id: string; type: 'simulation' | 'training' } | null;
+    registerActivity: (activity: { id: string; type: 'simulation' | 'training' } | null) => void;
     completedProfile: boolean;
     loading: boolean;
     isSuperAdmin: boolean;
@@ -66,6 +68,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const [subscription, setSubscription] = useState<UserSubscription>(defaultSubscription);
     const [completedProfile, setCompletedProfile] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [activeActivity, setActiveActivity] = useState<{ id: string; type: 'simulation' | 'training' } | null>(null);
     const [impersonatedRole, setImpersonatedRole] = useState<'student' | 'teacher' | 'admin' | null>(null);
 
     const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "").split(",").map((e: string) => e.trim().toLowerCase());
@@ -303,6 +306,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             completedProfile,
             loading,
             isSuperAdmin,
+            activeActivity,
+            registerActivity: setActiveActivity,
             impersonatedRole,
             switchRole,
             signInWithGoogle,
