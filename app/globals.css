@@ -41,13 +41,13 @@
   --surface-3: #2C2C2C;
   /* Tooltips, popovers - 3dp elevation */
 
-  /* Dark Mode Text (Optimized opacity - prevents ghost effect) */
-  --text-high-emphasis: rgba(255, 255, 255, 0.87);
-  /* Primary text */
-  --text-medium-emphasis: rgba(255, 255, 255, 0.60);
-  /* Secondary text */
-  --text-disabled: rgba(255, 255, 255, 0.38);
-  /* Disabled state */
+  /* Dark Mode Text (Optimized - NO Opacity to prevent dimming issues) */
+  --text-high-emphasis: #FFFFFF;
+  /* Primary text - 100% white */
+  --text-medium-emphasis: #B0B0B0;
+  /* Secondary text - Solid Grey */
+  --text-disabled: #606060;
+  /* Disabled state - Solid Dark Grey */
 
   /* Light Mode (For toggle) */
   --surface-base-light: #F9FAFB;
@@ -434,4 +434,53 @@ h3 {
   border-radius: 4px;
   /* Ensure visibility on dark backgrounds */
   box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+}
+
+/* === EMERGENCY VISIBILITY FIX (v4.1.11) === */
+/* User reported "se carga y se opaca". forcing solid opacity globally. */
+/* This overrides tailwindcss-animate classes to prevent FOUC/Ghosting */
+.animate-in,
+.fade-in,
+.zoom-in,
+.slide-in-from-bottom,
+.slide-in-from-top,
+.duration-700,
+.delay-100,
+.delay-200,
+.delay-300 {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  transition: none !important;
+}
+
+/* Force Text Visibility */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div,
+a,
+button,
+input,
+label {
+  text-rendering: optimizeLegibility;
+}
+
+/* Fix for specific Login/Footer text issues */
+.text-metal-silver\/80 {
+  color: rgba(229, 228, 226, 1) !important;
+}
+
+.text-metal-silver\/60 {
+  color: rgba(229, 228, 226, 0.9) !important;
+}
+
+.text-metal-silver\/40 {
+  color: rgba(229, 228, 226, 0.8) !important;
 }
