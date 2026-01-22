@@ -26,6 +26,7 @@ import {
     DollarSign
 } from "lucide-react";
 import StreakCounter from "@/components/gamification/StreakCounter";
+import LevelBadge from "@/components/gamification/LevelBadge";
 import GlobalExitModal from "@/components/auth/GlobalExitModal";
 import { Logo } from "@/components/ui/Logo";
 
@@ -162,7 +163,8 @@ export default function RoleBasedNavigation() {
                 </div>
 
                 {/* Gamification Status */}
-                <div className="hidden md:block pointer-events-auto animate-in fade-in slide-in-from-top-4 duration-700 delay-75">
+                <div className="hidden md:flex items-center gap-3 pointer-events-auto animate-in fade-in slide-in-from-top-4 duration-700 delay-75">
+                    <LevelBadge />
                     <StreakCounter />
                 </div>
 

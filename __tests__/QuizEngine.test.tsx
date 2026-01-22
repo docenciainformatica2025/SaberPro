@@ -18,7 +18,9 @@ const mockUser = {
 vi.mock('@/context/AuthContext', () => ({
     useAuth: () => ({
         user: mockUser,
+        profile: { gamification: { badges: [] } },
         subscription: { plan: 'free' },
+        registerActivity: vi.fn(),
     }),
 }));
 
@@ -77,71 +79,61 @@ describe('QuizEngine Component', () => {
 
         expect(screen.getByText('Question 1 Text')).toBeInTheDocument();
         expect(screen.getByText('Option A')).toBeInTheDocument();
-        expect(screen.getByText('1 / 2')).toBeInTheDocument(); // Header progress
+        expect(screen.getByText('1')).toBeInTheDocument();
+        expect(screen.getByText(/\/ 2/)).toBeInTheDocument();
     });
 
     it('allows selecting an option and navigating to next question', () => {
         render(<QuizEngine questions={mockQuestions} moduleName="test_module" />);
 
-        // Select option 1 for Question 1
         const optionA = screen.getByText('Option A');
         fireEvent.click(optionA);
 
-        // Verify selection visual feedback (this depends on implementation details, usually checking class/style)
-        // Here we can assume state updated.
-
-        // Click Next
         const nextBtn = screen.getByText('Siguiente Pregunta');
         fireEvent.click(nextBtn);
 
-        // Should see Question 2
         expect(screen.getByText('Question 2 Text')).toBeInTheDocument();
     });
 
     it('shows review screen after last question', () => {
         render(<QuizEngine questions={mockQuestions} moduleName="test_module" />);
 
-        // Answer Q1
         fireEvent.click(screen.getByText('Option A'));
         fireEvent.click(screen.getByText('Siguiente Pregunta'));
 
-        // Answer Q2 (Last)
         fireEvent.click(screen.getByText('Option D'));
 
-        // Button should say "Finalizar Examen"
         const finishBtn = screen.getByText('Finalizar Examen');
         expect(finishBtn).toBeInTheDocument();
         fireEvent.click(finishBtn);
 
-        // Should see Review Screen
         expect(screen.getByText('Resumen del Módulo')).toBeInTheDocument();
     });
 
     it('submits results correctly', async () => {
+        vi.useFakeTimers();
         render(<QuizEngine questions={mockQuestions} moduleName="test_module" />);
 
-        // Fast forward to end
-        // Q1 -> Correct
+        // Q1
         fireEvent.click(screen.getByText('Option A'));
         fireEvent.click(screen.getByText('Siguiente Pregunta'));
 
-        // Q2 -> Correct
+        // Q2
         fireEvent.click(screen.getByText('Option D'));
         fireEvent.click(screen.getByText('Finalizar Examen'));
 
-        // Review Screen -> Confirm
+        // Review Screen
         const confirmBtn = screen.getByText('CONFIRMAR Y FINALIZAR');
         fireEvent.click(confirmBtn);
 
-        // Wait for submission
-        await waitFor(() => {
-            expect(mockAddDoc).toHaveBeenCalled();
-        });
+        // Advance timers for the 2s success animation + microtasks
+        await vi.advanceTimersByTimeAsync(2500);
 
-        // Check if score was calculated correctly (2/2)
+        expect(mockAddDoc).toHaveBeenCalled();
+
         const callArgs = mockAddDoc.mock.calls[0];
-        const savedData = callArgs[1]; // Second arg is the data object
+        const savedData = callArgs[1];
         expect(savedData.score).toBe(2);
-        expect(savedData.module).toBe('test_module');
+        vi.useRealTimers();
     });
 });

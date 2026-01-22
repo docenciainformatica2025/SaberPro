@@ -28,7 +28,15 @@ export interface UserSubscription {
 export interface UserProfile {
     fullName?: string;
     email: string;
-    [key: string]: string | number | boolean | any; // Manteniendo flexibilidad pero reduciendo 'any' puro
+    gamification?: {
+        xp?: number;
+        streak?: {
+            current: number;
+            lastActiveDate: string;
+        };
+        badges?: string[];
+    };
+    [key: string]: string | number | boolean | any;
 }
 
 interface AuthContextType {

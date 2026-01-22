@@ -13,6 +13,7 @@ import { StudentService } from "@/services/student/student.service";
 import ResultsHistoryList from "@/components/analytics/ResultsHistoryList";
 import ResultDetailModal from "@/components/analytics/ResultDetailModal";
 import StudentAssignments from "@/components/dashboard/StudentAssignments";
+import AchievementsGallery from "@/components/gamification/AchievementsGallery";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -293,6 +294,10 @@ export default function DashboardPage() {
                                             </div>
                                         </div>
                                     )}
+                                </Card>
+
+                                <Card variant="solid" className="p-8 border-white/5">
+                                    <AchievementsGallery />
                                 </Card>
 
                                 {(!subscription || subscription.plan === 'free') && (

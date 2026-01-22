@@ -8,7 +8,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { db } from "@/lib/firebase";
-import { addDoc, collection, serverTimestamp, query, where, getDocs, updateDoc, arrayUnion } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp, query, where, getDocs, updateDoc, arrayUnion, increment, doc } from "firebase/firestore";
+import { adaptiveEngine } from "@/utils/adaptiveEngine";
 import GlobalExitModal from "@/components/auth/GlobalExitModal";
 import SuccessAnimation from "@/components/ui/SuccessAnimation";
 import { Card } from "@/components/ui/Card";
@@ -38,7 +39,7 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
     const [timeLeft, setTimeLeft] = useState(timeLimit || questions.length * 120);
 
     const router = useRouter();
-    const { user, subscription, registerActivity } = useAuth();
+    const { user, profile, subscription, registerActivity } = useAuth();
     // Register activity on mount
     useEffect(() => {
         registerActivity({ id: sessionId || 'temp', type: 'simulation' });
@@ -147,6 +148,40 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                     });
                     await Promise.all(updates);
                 }
+
+                // 3. Update User Gamification (XP & Badges)
+                const scorePercentage = (correctCount / questions.length) * 100;
+                const earnedXP = adaptiveEngine.calculateXP(scorePercentage, isPartial ? 0 : timeLeft);
+                const newBadges = adaptiveEngine.checkNewAchievements(profile, correctCount, questions.length, timeLeft);
+
+                const userRef = doc(db, "users", user.uid);
+                const userUpdates: any = {
+                    "gamification.xp": increment(earnedXP),
+                    "gamification.streak.lastActiveDate": new Date().toISOString().split('T')[0],
+                };
+
+                if (newBadges.length > 0) {
+                    userUpdates["gamification.badges"] = arrayUnion(...newBadges);
+                    // Notify for each new badge
+                    newBadges.forEach(badge => {
+                        const badgeNames: any = {
+                            'first_step': '¡Primer Paso Completado! 🎓',
+                            'perfect_score': '¡Puntaje Perfecto! ✨',
+                            'speed_demon': '¡Demonio de la Velocidad! ⚡'
+                        };
+                        toast.success("¡Logro Desbloqueado!", {
+                            description: badgeNames[badge] || "Nueva insignia obtenida",
+                            duration: 5000,
+                        });
+                    });
+                }
+
+                await updateDoc(userRef, userUpdates);
+
+                // Notification of XP gained
+                toast.success(`+${earnedXP} XP Ganados`, {
+                    description: isPartial ? "Progreso parcial guardado." : "¡Excelente entrenamiento!",
+                });
 
                 // Everything saved successfully
                 setFinished(true);
