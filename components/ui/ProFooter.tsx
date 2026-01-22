@@ -18,18 +18,18 @@ export default function ProFooter() {
                 </div>
             </div>
 
-            {/* Legal Links - AA Contrast Compliant */}
-            <div className="flex flex-col md:flex-row flex-wrap justify-center gap-x-6 gap-y-4 text-[10px] md:text-[10px] uppercase tracking-[0.15em] text-metal-silver/70 font-bold mb-6 px-6 text-center">
+            {/* Legal Links - Solid High Contrast (No Opacity) */}
+            <div className="flex flex-col md:flex-row flex-wrap justify-center gap-x-6 gap-y-4 text-[10px] md:text-[10px] uppercase tracking-[0.15em] text-[#A0A0A0] font-bold mb-6 px-6 text-center">
                 <Link href="/terms" className="hover:text-metal-gold transition-colors whitespace-nowrap min-h-[44px] flex items-center justify-center">Términos de Uso</Link>
                 <Link href="/privacy" className="hover:text-metal-gold transition-colors whitespace-nowrap min-h-[44px] flex items-center justify-center">Privacidad de Datos</Link>
                 <Link href="/cookies" className="hover:text-metal-gold transition-colors whitespace-nowrap min-h-[44px] flex items-center justify-center">Política de Cookies</Link>
                 <Link href="/support" className="hover:text-metal-gold transition-colors whitespace-nowrap min-h-[44px] flex items-center justify-center">Centro de Ayuda y Soporte</Link>
             </div>
 
-            {/* Copyright & Version */}
-            <div className="text-[10px] text-metal-silver/50 text-center uppercase tracking-widest leading-relaxed">
+            {/* Copyright & Version - Solid Colors */}
+            <div className="text-[10px] text-[#808080] text-center uppercase tracking-widest leading-relaxed pb-8">
                 <p>{COPYRIGHT_TEXT}</p>
-                <p className="mt-2 font-black text-metal-silver/60">
+                <p className="mt-2 font-black text-[#606060]">
                     {DEVELOPER_COPYRIGHT}
                 </p>
             </div>
