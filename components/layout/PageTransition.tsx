@@ -8,23 +8,10 @@ interface PageTransitionProps {
 }
 
 export default function PageTransition({ children }: PageTransitionProps) {
-    const pathname = usePathname();
-
+    // Disabled animations to prevent FOUC/Opacity issues per user report "se carga y se opaca"
     return (
-        <AnimatePresence mode="wait">
-            <motion.div
-                key={pathname}
-                initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
-                transition={{
-                    duration: 0.4,
-                    ease: [0.22, 1, 0.36, 1] // Custom cubic-bezier for "Apple-like" smoothness
-                }}
-                className="w-full flex-grow flex flex-col"
-            >
-                {children}
-            </motion.div>
-        </AnimatePresence>
+        <div className="w-full flex-grow flex flex-col">
+            {children}
+        </div>
     );
 }
