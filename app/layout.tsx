@@ -71,10 +71,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning style={{ backgroundColor: '#050505', overscrollBehavior: 'none' }}>
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-[#050505]`}
+        style={{ backgroundColor: '#050505', overscrollBehavior: 'none', margin: 0, padding: 0 }}
       >
         <AuthProvider>
           <OnboardingGuard>
