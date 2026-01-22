@@ -163,7 +163,7 @@ export default function DashboardPage() {
     if (loading && !user) return null;
 
     return (
-        <div className="min-h-screen bg-metal-dark p-6 md:p-12 pb-24">
+        <main className="min-h-screen bg-[#050505] p-6 md:p-12 pb-24">
             <div className="max-w-7xl mx-auto">
                 {loading || isLoadingData ? (
                     <DashboardSkeleton />
@@ -327,6 +327,6 @@ export default function DashboardPage() {
                     userName={userName}
                 />
             )}
-        </div>
+        </main>
     );
 }

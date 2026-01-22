@@ -96,14 +96,14 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-8">
             {user ? (
               <Link href={dashboardLink}>
-                <Button size="xl" variant="premium" icon={ArrowRight} iconPosition="right" aria-label="Ir a mi Dashboard" className="h-16 px-10 text-lg font-black uppercase tracking-widest shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:shadow-[0_0_60px_rgba(212,175,55,0.6)] hover:scale-105 transition-all text-black bg-metal-gold">
+                <Button size="xl" variant="premium" icon={ArrowRight} iconPosition="right" aria-label="Ir a mi Dashboard" className="h-16 px-10 text-lg font-black uppercase tracking-widest shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:shadow-[0_0_60px_rgba(212,175,55,0.6)] hover:scale-105 transition-all text-black bg-[#D4AF37] hover:bg-[#FCC200] border-none">
                   Continuar Entrenamiento
                 </Button>
               </Link>
             ) : (
               <Link href="/register">
                 {/* Specific Text Requested by Audit: "Comenzar Simulación Gratuita" is implicit in "Comenzar Ahora" but user report suggested "Comenzar Simulación" */}
-                <Button size="xl" variant="premium" icon={Brain} iconPosition="left" aria-label="Registrarse y comenzar simulación gratuita" className="h-16 px-10 text-lg font-black uppercase tracking-widest shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:shadow-[0_0_60px_rgba(212,175,55,0.6)] hover:scale-105 transition-all text-black bg-metal-gold">
+                <Button size="xl" variant="premium" icon={Brain} iconPosition="left" aria-label="Registrarse y comenzar simulación gratuita" className="h-16 px-10 text-lg font-black uppercase tracking-widest shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:shadow-[0_0_60px_rgba(212,175,55,0.6)] hover:scale-105 transition-all text-[#000000] bg-[#D4AF37] hover:bg-[#FCC200] border-none">
                   COMENZAR SIMULACIÓN GRATUITA
                 </Button>
               </Link>

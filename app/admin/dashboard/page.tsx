@@ -33,6 +33,7 @@ import {
     Cell
 } from "recharts";
 import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
+import { DashboardSkeleton } from "@/components/ui/DashboardSkeleton";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -166,10 +167,10 @@ export default function AdminDashboard() {
             .slice(0, 5);
     };
 
-    if (loading) return <AIProcessingLoader text="Cargando Inteligencia" subtext="Analizando Big Data..." />;
+    if (loading) return <DashboardSkeleton />;
 
     return (
-        <div className="space-y-12 pb-44">
+        <main className="min-h-screen bg-[#050505] space-y-12 pb-44 p-6 md:p-12">
             {/* Header Pro */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 <div>
@@ -365,7 +366,7 @@ export default function AdminDashboard() {
                     </div>
                 </Card>
             </div>
-        </div>
+        </main>
     );
 }
 
