@@ -65,7 +65,13 @@
   --theme-text-secondary: var(--text-medium-emphasis);
   --theme-text-disabled: var(--text-disabled);
 
+  /* === ACCESSIBILITY FOCUS RING (ADA/WCAG AAA) === */
+  /* High visibility focus indicator for keyboard users */
+  --focus-ring-color: rgba(212, 175, 55, 0.6);
+  --focus-ring-offset: 2px;
+
   /* === WORLD-CLASS TYPOGRAPHY SYSTEM === */
+
   /* Optimized for prolonged reading (exam interfaces) */
 
   /* Light Mode Colors (Future-ready) */

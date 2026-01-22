@@ -36,7 +36,7 @@ export default function Home() {
               <>
                 <Link href="/login" className="hidden md:block">
                   <Button variant="ghost" className="text-sm font-bold uppercase tracking-widest text-metal-silver hover:text-white">
-                    Iniciar Sesión
+                    Acceder a Plataforma
                   </Button>
                 </Link>
                 {/* Mobile Login Icon/Link */}
@@ -96,7 +96,7 @@ export default function Home() {
             ) : (
               <Link href="/diagnostic">
                 <Button size="xl" variant="premium" icon={Brain} iconPosition="left" className="h-16 px-10 text-lg font-black uppercase tracking-widest shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:shadow-[0_0_60px_rgba(212,175,55,0.6)] hover:scale-105 transition-all">
-                  Probar ahora (3 minutos)
+                  Empieza Diagnóstico Gratis
                 </Button>
               </Link>
             )}
@@ -120,6 +120,41 @@ export default function Home() {
           </div>
         </div>
       </main>
+
+      {/* NEW: Process Roadmap Section (Audit Requirement) */}
+      <section className="py-20 border-t border-white/5 bg-[#080808] relative z-20" aria-label="Cómo funciona">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <Badge variant="outline" className="text-metal-silver border-metal-silver/30 px-4 py-1 uppercase tracking-widest text-[10px] font-black mb-4">
+              Ruta de Excelencia
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter">
+              Tu camino al <span className="text-metal-gold">Puntaje Perfecto</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+            {/* Connector Line (Desktop) */}
+            <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-metal-silver/10 via-metal-gold/30 to-metal-silver/10 z-0"></div>
+
+            {[
+              { step: "01", title: "Crea tu Cuenta", desc: "Registro unificado en 30 segundos. Sin costos ocultos.", color: "text-white" },
+              { step: "02", title: "Diagnóstico IA", desc: "Evalúa tu nivel actual con nuestro motor de inteligencia artificial.", color: "text-metal-gold" },
+              { step: "03", title: "Entrena y Domina", desc: "Recibe un plan personalizado basado en tus debilidades.", color: "text-white" }
+            ].map((item, i) => (
+              <div key={i} className="relative z-10 flex flex-col items-center text-center group">
+                <div className={`w-24 h-24 rounded-3xl bg-[#0A0A0A] border ${i === 1 ? 'border-metal-gold shadow-[0_0_30px_rgba(212,175,55,0.15)]' : 'border-white/10'} flex items-center justify-center text-3xl font-black ${item.color} mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2`}>
+                  {item.step}
+                </div>
+                <h3 className="text-xl font-bold text-white uppercase tracking-wider mb-3">{item.title}</h3>
+                <p className="text-metal-silver/60 text-sm font-medium max-w-xs leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Features Section & Marketing Copy */}
       <section className="py-6 md:py-12 relative bg-black/50 border-t border-white/5 backdrop-blur-sm">
