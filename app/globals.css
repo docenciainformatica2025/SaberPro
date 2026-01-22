@@ -426,3 +426,12 @@ h3 {
 .animate-scan {
   animation: scan 2s infinite linear;
 }
+
+/* Global Focus Reset & Enhancement */
+*:focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: 4px;
+  /* Ensure visibility on dark backgrounds */
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+}
