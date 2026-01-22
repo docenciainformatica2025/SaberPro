@@ -5,21 +5,21 @@ import { COPYRIGHT_TEXT, DEVELOPER_COPYRIGHT } from "@/lib/config";
 export default function ProFooter() {
     return (
         <footer className="w-full mt-2 md:mt-4 pt-2 md:pt-4 pb-8 border-t border-metal-silver/5 flex flex-col items-center animate-in fade-in slide-in-from-bottom-2 duration-1000">
-            {/* Trust Badges */}
-            <div className="flex items-center gap-3 mb-4 opacity-30 grayscale hover:grayscale-0 transition-all duration-500" suppressHydrationWarning>
-                <div className="flex items-center gap-1 text-[10px] font-bold text-metal-silver uppercase tracking-widest" suppressHydrationWarning>
-                    <Shield size={12} /> SSL SECURE
+            {/* Trust Badges - High Visibility */}
+            <div className="flex items-center gap-4 mb-6 hover:brightness-110 transition-all duration-500" suppressHydrationWarning>
+                <div className="flex items-center gap-1.5 text-[10px] font-bold text-metal-silver uppercase tracking-widest" suppressHydrationWarning>
+                    <Shield size={14} className="text-metal-gold" /> SSL SECURE
                 </div>
-                <div className="flex items-center gap-1 text-[10px] font-bold text-metal-silver uppercase tracking-widest" suppressHydrationWarning>
-                    <Lock size={12} /> ENCRYPTED DATA
+                <div className="flex items-center gap-1.5 text-[10px] font-bold text-metal-silver uppercase tracking-widest" suppressHydrationWarning>
+                    <Lock size={14} className="text-metal-gold" /> ENCRYPTED DATA
                 </div>
-                <div className="flex items-center gap-1 text-[10px] font-bold text-metal-silver uppercase tracking-widest" suppressHydrationWarning>
-                    <Globe size={12} /> GLOBAL ACCESS
+                <div className="flex items-center gap-1.5 text-[10px] font-bold text-metal-silver uppercase tracking-widest" suppressHydrationWarning>
+                    <Globe size={14} className="text-metal-gold" /> GLOBAL ACCESS
                 </div>
             </div>
 
-            {/* Legal Links */}
-            <div className="flex flex-col md:flex-row flex-wrap justify-center gap-3 md:gap-4 lg:gap-6 text-[10px] md:text-[9px] uppercase tracking-[0.2em] text-metal-silver/40 font-bold mb-4 px-6 text-center">
+            {/* Legal Links - AA Contrast Compliant */}
+            <div className="flex flex-col md:flex-row flex-wrap justify-center gap-x-6 gap-y-4 text-[10px] md:text-[10px] uppercase tracking-[0.15em] text-metal-silver/70 font-bold mb-6 px-6 text-center">
                 <Link href="/terms" className="hover:text-metal-gold transition-colors whitespace-nowrap min-h-[44px] flex items-center justify-center">Términos de Uso</Link>
                 <Link href="/privacy" className="hover:text-metal-gold transition-colors whitespace-nowrap min-h-[44px] flex items-center justify-center">Privacidad de Datos</Link>
                 <Link href="/cookies" className="hover:text-metal-gold transition-colors whitespace-nowrap min-h-[44px] flex items-center justify-center">Política de Cookies</Link>
@@ -27,9 +27,9 @@ export default function ProFooter() {
             </div>
 
             {/* Copyright & Version */}
-            <div className="text-[9px] text-metal-silver/30 text-center uppercase tracking-widest leading-relaxed">
+            <div className="text-[10px] text-metal-silver/50 text-center uppercase tracking-widest leading-relaxed">
                 <p>{COPYRIGHT_TEXT}</p>
-                <p className="mt-1 font-black text-metal-silver/50">
+                <p className="mt-2 font-black text-metal-silver/60">
                     {DEVELOPER_COPYRIGHT}
                 </p>
             </div>
