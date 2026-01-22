@@ -148,7 +148,7 @@ export default function RegisterPage() {
 
                     <div className="space-y-1">
                         <h1 className="text-3xl font-black text-white uppercase italic tracking-tighter">Registro de Usuario</h1>
-                        <p className="text-metal-silver/60 text-sm">Crea tu cuenta institucional <span className="text-metal-gold text-[10px] ml-2 border border-metal-gold/30 px-2 py-0.5 rounded-full">v4.1.6 (Legal)</span></p>
+                        <p className="text-metal-silver/60 text-sm">Crea tu cuenta institucional <span className="text-metal-gold text-[10px] ml-2 border border-metal-gold/30 px-2 py-0.5 rounded-full">v4.1.29 (Audit Certified)</span></p>
                     </div>
 
 
