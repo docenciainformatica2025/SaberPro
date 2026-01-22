@@ -57,6 +57,14 @@ export const metadata: Metadata = {
   }
 };
 
+// PREVENT WHITE BARS ON MOBILE BROWSERS (Silicon Valley Standard)
+export const viewport = {
+  themeColor: "#050505", // Matches bg-metal-dark
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1, // Optional: Prevents zoom if app-like
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
