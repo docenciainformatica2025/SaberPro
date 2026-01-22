@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 import { Sparkles, ArrowRight, Zap, History, Crown, Target, Brain, BookOpen, Users, Trophy } from "lucide-react";
 import { db } from "@/lib/firebase";
 import { collection, query, where, getDocs, limit, orderBy } from "firebase/firestore";
-import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
 import { StudentService } from "@/services/student/student.service";
 import ResultsHistoryList from "@/components/analytics/ResultsHistoryList";
 import ResultDetailModal from "@/components/analytics/ResultDetailModal";
