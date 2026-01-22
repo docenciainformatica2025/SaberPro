@@ -17,9 +17,8 @@ import { toast } from 'sonner';
 import { Logo } from "@/components/ui/Logo";
 
 const STEPS = [
-    { id: 'email', title: 'Email', description: 'Tu correo electrónico' },
-    { id: 'password', title: 'Contraseña', description: 'Crea una segura' },
-    { id: 'consent', title: 'Consentimiento', description: 'Términos y captcha' },
+    { id: 'email', title: 'Identificación', description: 'Tu correo electrónico' },
+    { id: 'security', title: 'Seguridad', description: 'Contraseña y validación' },
 ];
 
 export default function RegisterPage() {
@@ -81,16 +80,11 @@ export default function RegisterPage() {
 
     const canProceedToStep = (step: number): boolean => {
         if (step === 1) return validateEmail(emailValue) === 'valid';
-        if (step === 2) {
-            return validatePassword(passwordValue) === 'valid' &&
-                passwordValue === confirmPasswordValue &&
-                confirmPasswordValue !== '';
-        }
         return true;
     };
 
     const handleNext = async () => {
-        const isValid = await trigger(currentStep === 0 ? 'email' : currentStep === 1 ? ['password', 'confirmPassword'] : undefined);
+        const isValid = await trigger('email');
         if (isValid && canProceedToStep(currentStep + 1)) {
             setCurrentStep(prev => Math.min(prev + 1, STEPS.length - 1));
         }
@@ -205,44 +199,52 @@ export default function RegisterPage() {
                         )}
 
                         {currentStep === 1 && (
-                            <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
-                                <div className="space-y-2">
-                                    <div className="flex justify-between items-center">
-                                        <label className="text-xs font-semibold text-metal-silver/80 uppercase">Contraseña</label>
-                                        <button type="button" onClick={generatePassword} className="text-[10px] text-metal-gold hover:text-white flex items-center gap-1 uppercase font-bold">
-                                            <RefreshIcon size={10} /> Generar
-                                        </button>
+                            <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
+                                {/* Password Section */}
+                                <div className="space-y-4">
+                                    <div className="space-y-2">
+                                        <div className="flex justify-between items-center">
+                                            <label className="text-xs font-semibold text-metal-silver/80 uppercase">Contraseña</label>
+                                            <button type="button" onClick={generatePassword} className="text-[10px] text-metal-gold hover:text-white flex items-center gap-1 uppercase font-bold">
+                                                <RefreshIcon size={10} /> Generar
+                                            </button>
+                                        </div>
+                                        <div className="relative">
+                                            <Input
+                                                type={showPassword ? "text" : "password"}
+                                                icon={LockIcon}
+                                                {...register("password")}
+                                                error={errors.password?.message}
+                                            />
+                                            <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-3 text-metal-silver/40 hover:text-white">
+                                                {showPassword ? <EyeOffIcon size={18} /> : <EyeIcon size={18} />}
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div className="relative">
-                                        <Input
-                                            type={showPassword ? "text" : "password"}
-                                            icon={LockIcon}
-                                            {...register("password")}
-                                            error={errors.password?.message}
-                                        />
-                                        <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-3 text-metal-silver/40 hover:text-white">
-                                            {showPassword ? <EyeOffIcon size={18} /> : <EyeIcon size={18} />}
-                                        </button>
-                                    </div>
+                                    <Input label="Confirmar" type="password" icon={LockIcon} {...register("confirmPassword")} error={errors.confirmPassword?.message} />
                                 </div>
-                                <Input label="Confirmar" type="password" icon={LockIcon} {...register("confirmPassword")} error={errors.confirmPassword?.message} />
-                            </div>
-                        )}
 
-                        {currentStep === 2 && (
-                            <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
-                                <div className="flex items-start gap-3 p-3 bg-black/20 rounded-xl border border-metal-silver/5">
-                                    <input type="checkbox" id="terms" {...register("terms")} className="h-4 w-4 rounded border-metal-silver text-metal-gold focus:ring-metal-gold bg-metal-dark/50" />
-                                    <label htmlFor="terms" className="text-xs text-metal-silver/70 leading-relaxed">Acepto los <Link href="/terms" target="_blank" className="text-metal-gold underline">Términos de Uso</Link>.</label>
+                                {/* Terms & Security Section (Big Tech Standard) */}
+                                <div className="pt-4 border-t border-white/5 space-y-4">
+                                    <div className="flex items-start gap-3">
+                                        <input type="checkbox" id="terms" {...register("terms")} className="mt-1 h-4 w-4 rounded border-metal-silver text-metal-gold focus:ring-metal-gold bg-metal-dark/50" />
+                                        <label htmlFor="terms" className="text-xs text-metal-silver/70 leading-relaxed">
+                                            Al crear mi cuenta acepto los <Link href="/terms" target="_blank" className="text-metal-gold underline hover:text-white">Términos de Uso</Link> y Política de Privacidad.
+                                        </label>
+                                    </div>
+                                    {errors.terms && <p className="text-xs text-red-400 ml-1">{errors.terms.message}</p>}
+
+                                    <div className="flex justify-center bg-black/20 p-2 rounded-xl border border-white/5">
+                                        <Turnstile sitekey="0x4AAAAAACH1Rmabzh7QI6OR" onVerify={(token) => setCaptchaToken(token)} theme="dark" />
+                                    </div>
                                 </div>
-                                <div className="flex justify-center"><Turnstile sitekey="0x4AAAAAACH1Rmabzh7QI6OR" onVerify={(token) => setCaptchaToken(token)} theme="dark" /></div>
                             </div>
                         )}
 
                         <div className="flex justify-between gap-4">
                             {currentStep > 0 && <Button type="button" onClick={handleBack} variant="ghost" className="h-12 px-6" icon={ArrowLeftIcon}>Atrás</Button>}
-                            <Button type={currentStep === 2 ? "submit" : "button"} onClick={currentStep < 2 ? handleNext : undefined} disabled={currentStep < 2 ? !canProceedToStep(currentStep + 1) : (isSubmitting || !captchaToken)} isLoading={isSubmitting} className="h-12 px-8 flex-1" icon={ArrowRightIcon} iconPosition="right">
-                                {currentStep < 2 ? "Continuar" : "Crear Cuenta"}
+                            <Button type={currentStep === 1 ? "submit" : "button"} onClick={currentStep < 1 ? handleNext : undefined} disabled={currentStep < 1 ? !canProceedToStep(currentStep + 1) : (isSubmitting || !captchaToken)} isLoading={isSubmitting} className="h-12 px-8 flex-1" icon={ArrowRightIcon} iconPosition="right">
+                                {currentStep < 1 ? "Continuar" : "Crear Cuenta"}
                             </Button>
                         </div>
                     </form>
