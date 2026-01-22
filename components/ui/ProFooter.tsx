@@ -4,9 +4,9 @@ import { COPYRIGHT_TEXT, DEVELOPER_COPYRIGHT } from "@/lib/config";
 
 export default function ProFooter() {
     return (
-        <footer className="w-full mt-2 md:mt-4 pt-2 md:pt-4 pb-8 border-t border-metal-silver/5 flex flex-col items-center animate-in fade-in slide-in-from-bottom-2 duration-1000">
-            {/* Trust Badges - High Visibility */}
-            <div className="flex items-center gap-4 mb-6 hover:brightness-110 transition-all duration-500" suppressHydrationWarning>
+        <footer className="w-full mt-2 md:mt-4 pt-2 md:pt-4 pb-8 border-t border-metal-silver/5 flex flex-col items-center">
+            {/* Trust Badges - High Visibility - Static */}
+            <div className="flex items-center gap-4 mb-6 transition-transform hover:scale-105 duration-300">
                 <div className="flex items-center gap-1.5 text-[10px] font-bold text-metal-silver uppercase tracking-widest" suppressHydrationWarning>
                     <Shield size={14} className="text-metal-gold" /> SSL SECURE
                 </div>
