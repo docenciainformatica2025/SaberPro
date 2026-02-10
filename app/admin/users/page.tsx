@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { toast } from "sonner";
 import type { UserConsent } from "@/utils/pdfGenerator";
 import { db, auth } from "@/lib/firebase";
 import { collection, getDocs, limit, query, updateDoc, doc, where, orderBy, deleteDoc } from "firebase/firestore";
@@ -69,13 +70,46 @@ export default function UsersPage() {
     const fetchUsers = async () => {
         setLoading(true);
         try {
-            const q = query(collection(db, "users"), orderBy("createdAt", "desc"), limit(100));
+            const q = query(collection(db, "users"), orderBy("createdAt", "desc"), limit(200));
             const snapshot = await getDocs(q);
             const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as UserData));
             setUsers(data);
             setFilteredUsers(data);
         } catch (error) {
             console.error("Error fetching users:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleProductionPurge = async () => {
+        const adminEmail = "antonio_rburgos@msn.com";
+        const confirmation = prompt(`ALERTA DE SEGURIDAD NIVEL 5 - SALIDA A PRODUCCIÓN\n\nEsta acción ELIMINARÁ PERMANENTEMENTE a todos los usuarios excepto a ${adminEmail}.\n\nPara confirmar, escriba el correo electrónico del administrador a conservar:`);
+
+        if (confirmation !== adminEmail) {
+            toast.error("Confirmación fallida. Operación abortada.");
+            return;
+        }
+
+        setLoading(true);
+        try {
+            const snapshot = await getDocs(collection(db, "users"));
+            let deletedCount = 0;
+
+            for (const userDoc of snapshot.docs) {
+                const data = userDoc.data();
+                if (data.email !== adminEmail) {
+                    await deleteDoc(userDoc.ref);
+                    deletedCount++;
+                }
+            }
+
+            await logAdminAction(currentUser?.email || "unknown", "PRODUCTION_PURGE", "SYSTEM", `Performed production purge. Deleted ${deletedCount} users. Preserved ${adminEmail}`);
+            toast.success(`Purga de Producción Exitosa: ${deletedCount} usuarios eliminados. ${adminEmail} preservado.`);
+            await fetchUsers();
+        } catch (error: any) {
+            console.error(error);
+            toast.error(`Error en la purga: ${error.message}`);
         } finally {
             setLoading(false);
         }
@@ -212,6 +246,16 @@ export default function UsersPage() {
                 <div className="flex items-center gap-3">
                     <Button variant="outline" size="sm" icon={RefreshCw} onClick={fetchUsers} isLoading={loading} className="border-white/5 hover:border-white/10 px-6 font-bold uppercase tracking-widest text-[10px]">
                         Sincronizar
+                    </Button>
+                    <Button
+                        variant="danger"
+                        size="sm"
+                        icon={ShieldAlert}
+                        onClick={handleProductionPurge}
+                        disabled={loading}
+                        className="bg-red-500/10 border-red-500/20 text-red-500 hover:bg-red-500 hover:text-white px-6 font-black uppercase tracking-widest text-[10px] shadow-[0_0_20px_rgba(239,68,68,0.1)]"
+                    >
+                        Limpieza de Producción
                     </Button>
                     <Badge variant="premium" className="px-5 py-2.5 text-[10px] font-black tracking-widest uppercase">
                         {filteredUsers.length} REGISTROS ACTIVOS

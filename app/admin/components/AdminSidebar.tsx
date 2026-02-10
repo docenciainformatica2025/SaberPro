@@ -13,7 +13,8 @@ import {
     ShieldAlert,
     BarChart3,
     Activity,
-    DollarSign
+    DollarSign,
+    KeyRound
 } from "lucide-react";
 // import { cn } from "@/lib/utils";
 
@@ -47,6 +48,7 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
             items: [
                 { href: "/admin/audit", icon: ShieldAlert, label: "Auditoría de Acciones" },
                 { href: "/admin/settings", icon: Settings, label: "Configuración" },
+                { href: "/admin/settings/change-password", icon: KeyRound, label: "Cambiar Clave" },
                 { href: "/admin/system", icon: Activity, label: "Estado del Sistema" }
             ]
         }

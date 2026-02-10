@@ -1,0 +1,96 @@
+
+> web-app@3.1.1 build C:\SaberPro\web-app
+> next build
+
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+   Ôû▓ Next.js 16.0.10 (Turbopack)
+   - Environments: .env.local
+   - Experiments (use with caution):
+     ┬À clientTraceMetadata
+
+   Creating an optimized production build ...
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+ Ô£ô Compiled successfully in 14.2s
+   Running next.config.js provided runAfterProductionCompile ...
+ Ô£ô Completed runAfterProductionCompile in 1644ms
+   Running TypeScript ...
+   Collecting page data using 11 workers ...
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+ ÔÜá Using edge runtime on a page currently disables static generation for that page
+   Generating static pages using 11 workers (0/48) ...
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+   Generating static pages using 11 workers (12/48) 
+   Generating static pages using 11 workers (24/48) 
+   Generating static pages using 11 workers (36/48) 
+ Ô£ô Generating static pages using 11 workers (48/48) in 2.3s
+   Finalizing page optimization ...
+
+Route (app)
+Ôöî Ôùï /
+Ôö£ Ôùï /_not-found
+Ôö£ Ôùï /achievements
+Ôö£ Ôùï /admin/analytics
+Ôö£ Ôùï /admin/audit
+Ôö£ Ôùï /admin/dashboard
+Ôö£ Ôùï /admin/finance
+Ôö£ Ôùï /admin/questions
+Ôö£ ãÆ /admin/questions/[id]
+Ôö£ Ôùï /admin/questions/new
+Ôö£ Ôùï /admin/seed
+Ôö£ Ôùï /admin/settings
+Ôö£ Ôùï /admin/settings/change-password
+Ôö£ Ôùï /admin/system
+Ôö£ Ôùï /admin/users
+Ôö£ Ôùï /analytics
+Ôö£ ãÆ /api/explain
+Ôö£ ãÆ /api/health
+Ôö£ Ôùï /credits
+Ôö£ Ôùï /dashboard
+Ôö£ Ôùï /dashboard/billing
+Ôö£ Ôùï /diagnostic
+Ôö£ Ôùï /diagnostic/results
+Ôö£ Ôùï /forgot-password
+Ôö£ Ôùï /leaderboard
+Ôö£ Ôùï /legal/cookies
+Ôö£ Ôùï /legal/privacy
+Ôö£ Ôùï /legal/terms
+Ôö£ Ôùï /login
+Ôö£ Ôùï /manifest.webmanifest
+Ôö£ Ôùï /methodology
+Ôö£ Ôùï /onboarding
+Ôö£ ãÆ /opengraph-image
+Ôö£ Ôùï /planner
+Ôö£ Ôùï /pricing
+Ôö£ Ôùï /profile
+Ôö£ Ôùï /register
+Ôö£ Ôùï /robots.txt
+Ôö£ Ôùï /simulation
+Ôö£ ãÆ /simulation/[module]
+Ôö£ Ôùï /sitemap.xml
+Ôö£ Ôùï /support
+Ôö£ Ôùï /teacher
+Ôö£ Ôùï /teacher/analytics
+Ôö£ Ôùï /teacher/assignments
+Ôö£ Ôùï /teacher/classes
+Ôö£ ãÆ /teacher/classes/[classId]
+Ôö£ Ôùï /teacher/generator
+Ôö£ Ôùï /teacher/settings
+Ôö£ Ôùï /training
+Ôö£ ãÆ /training/[module]
+Ôöö Ôùï /update-password
+
+
+Ôùï  (Static)   prerendered as static content
+ãÆ  (Dynamic)  server-rendered on demand
+

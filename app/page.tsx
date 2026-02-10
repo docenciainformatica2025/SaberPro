@@ -17,7 +17,7 @@ export default function Home() {
   const dashboardLink = role === 'teacher' ? '/teacher' : role === 'admin' ? '/admin/dashboard' : '/dashboard';
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#050505] selection:bg-metal-gold/30">
+    <div className="flex flex-col min-h-screen bg-metal-black selection:bg-metal-gold/30">
 
       {/* Navigation (Transparent) */}
       <nav className="fixed top-0 w-full z-50 backdrop-blur-md border-b border-white/5 bg-black/50">
@@ -71,9 +71,6 @@ export default function Home() {
             Plataforma Oficial {BRAND_YEAR}
           </Badge>
 
-          <p className="text-[10px] md:text-xs text-[#A0A0A0] font-bold uppercase tracking-[0.15em] mt-2">
-            Diseñado y desarrollado por Ing. Antonio Rodríguez
-          </p>
 
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight md:leading-[1.0] mb-6 text-white drop-shadow-xl">
             <span className="block mb-2">

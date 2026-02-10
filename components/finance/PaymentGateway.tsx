@@ -136,7 +136,7 @@ export default function PaymentGateway({ planName, price, onSuccess, onCancel, c
                                         {legalAccepted && <CheckCircle size={12} className="text-black" />}
                                     </div>
                                     <p className="text-[10px] text-metal-silver/80 leading-relaxed">
-                                        Acepto iniciar el servicio inmediatamente y <Link href="/terms" target="_blank" className="text-metal-gold hover:underline" onClick={(e) => e.stopPropagation()}>renuncio al derecho de retracto</Link>.
+                                        Acepto iniciar el servicio inmediatamente y <Link href="/legal/terms" target="_blank" className="text-metal-gold hover:underline" onClick={(e) => e.stopPropagation()}>renuncio al derecho de retracto</Link>.
                                     </p>
                                 </div>
 
@@ -144,8 +144,8 @@ export default function PaymentGateway({ planName, price, onSuccess, onCancel, c
                                     onClick={handlePay}
                                     disabled={!legalAccepted}
                                     className={`w-full metallic-btn bg-metal-gold text-black font-black py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 text-lg transform transition-all ${legalAccepted
-                                            ? 'hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-[1.02] cursor-pointer'
-                                            : 'opacity-50 cursor-not-allowed grayscale'
+                                        ? 'hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-[1.02] cursor-pointer'
+                                        : 'opacity-50 cursor-not-allowed grayscale'
                                         }`}
                                 >
                                     PAGAR {new Intl.NumberFormat(currency === 'COP' ? 'es-CO' : 'en-US', {

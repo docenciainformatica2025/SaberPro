@@ -17,7 +17,7 @@ export default function NotFound() {
     ];
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-[#050505] p-6 text-center relative overflow-hidden">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-metal-black p-6 text-center relative overflow-hidden">
 
             {/* Enhanced Background with Neural Network Effect */}
             <div className="absolute inset-0 z-0">

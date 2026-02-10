@@ -51,7 +51,7 @@ export default function DiagnosticResultsPage() {
     const projectedScore = Math.round(data.score * 1.3); // Promesa de valor
 
     return (
-        <div className="min-h-screen bg-[#050505] selection:bg-metal-gold/30 p-6 flex items-center justify-center">
+        <div className="min-h-screen bg-metal-black selection:bg-metal-gold/30 p-6 flex items-center justify-center">
             <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
 
                 {/* Left: The Visual Diagnosis (The Gap) */}

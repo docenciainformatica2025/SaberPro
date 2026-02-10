@@ -77,7 +77,7 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="flex min-h-screen bg-[#050505]">
+        <div className="flex min-h-screen bg-metal-black">
             {/* Left Side - Branding (Desktop Only) */}
             <div className="hidden lg:flex w-1/2 bg-[#0a0a0a] relative overflow-hidden flex-col justify-between p-16 border-r border-white/5">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497864149936-d7e61461c302?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 filter grayscale mix-blend-overlay"></div>

@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
         description: 'La mejor plataforma de preparación para las pruebas Saber Pro.',
         start_url: '/dashboard',
         display: 'standalone',
-        background_color: '#050505',
+        background_color: '#0A0C0F',
         theme_color: '#D4AF37',
         icons: [
             {

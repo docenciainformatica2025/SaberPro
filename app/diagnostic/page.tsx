@@ -5,7 +5,7 @@ import { ChevronLeft } from "lucide-react";
 
 export default function DiagnosticPage() {
     return (
-        <div className="min-h-screen bg-[#050505] selection:bg-metal-gold/30 flex flex-col items-center justify-center p-6 relative overflow-hidden">
+        <div className="min-h-screen bg-metal-black selection:bg-metal-gold/30 flex flex-col items-center justify-center p-6 relative overflow-hidden">
 
             {/* Background */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-metal-gold/5 rounded-full blur-[120px] pointer-events-none" />

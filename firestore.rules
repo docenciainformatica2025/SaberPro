@@ -11,14 +11,19 @@ service cloud.firestore {
     }
     function isAdmin() { return hasRole('admin'); }
     function isTeacher() { return hasRole('teacher'); }
+    function isRoot(userId) {
+      let user = get(/databases/$(database)/documents/users/$(userId)).data;
+      return user.email == 'antonio_rburgos@msn.com' || user.get('isSystem', false) == true;
+    }
 
     // --- REGLAS ---
 
-    // CORRECCIÓN CRÍTICA AQUÍ: Permitir crear si es el propio usuario
+    // CORRECCIÓN CRÍTICA: Blindaje Root 2026
     match /users/{userId} {
       allow read: if isOwner(userId) || isAdmin();
       allow create: if isAuthenticated() && request.auth.uid == userId;
-      allow update, delete: if isOwner(userId) || isAdmin();
+      allow update: if (isOwner(userId) || isAdmin()) && (!isRoot(userId) || (request.auth.uid == userId));
+      allow delete: if isAdmin() && !isRoot(userId);
     }
 
     match /transactions/{transactionId} {

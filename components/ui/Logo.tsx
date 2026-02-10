@@ -31,16 +31,16 @@ export const Logo: React.FC<LogoProps> = ({
         relative flex items-center justify-center 
         ${currentSize.box} 
         rounded-xl 
-        bg-gradient-to-br from-[#F4C430] via-[#D4AF37] to-[#8C621D] 
-        shadow-[0_0_15px_rgba(212,175,55,0.3)] 
-        border border-[#F4C430]/30
+        bg-gradient-to-br from-[#FFD700] via-[#D4AF37] to-[#8B4513] 
+        shadow-[0_0_20px_rgba(212,175,55,0.4)] 
+        border border-white/20
       `}>
                 {/* SVG Geométrico Personalizado de la 'S' */}
                 <svg
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-[60%] h-[60%] text-[#0A0C0F]"
+                    className="w-[60%] h-[60%] text-[#050505]"
                 >
                     <path
                         fillRule="evenodd"
@@ -49,11 +49,11 @@ export const Logo: React.FC<LogoProps> = ({
                         fill="currentColor"
                         className="drop-shadow-sm"
                     />
-                    <path d="M16 4.5L19 7.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="opacity-80" />
                 </svg>
 
-                {/* Brillo especular (Glass effect) */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/0 via-white/20 to-white/0 opacity-50"></div>
+                {/* Brillo especular (Glass effect) mejorado para 2026 */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-transparent via-white/40 to-transparent pointer-events-none"></div>
+                <div className="absolute inset-0 rounded-xl shadow-[inset_0_0_10px_rgba(255,255,255,0.2)]"></div>
             </div>
 
             {/* --- LOGOTIPO (El Texto) --- */}

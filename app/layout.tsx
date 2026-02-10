@@ -60,7 +60,7 @@ export const metadata: Metadata = {
 
 // PREVENT WHITE BARS ON MOBILE BROWSERS (Silicon Valley Standard)
 export const viewport = {
-  themeColor: "#050505", // Matches bg-metal-dark
+  themeColor: "#0A0C0F", // Matches --metal-black
   width: "device-width",
   initialScale: 1,
   maximumScale: 1, // Optional: Prevents zoom if app-like
@@ -72,11 +72,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning style={{ backgroundColor: '#050505', overscrollBehavior: 'none' }}>
+    <html lang="es" suppressHydrationWarning style={{ backgroundColor: '#0A0C0F', overscrollBehavior: 'none' }}>
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-[#050505]`}
-        style={{ backgroundColor: '#050505', overscrollBehavior: 'none', margin: 0, padding: 0 }}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-metal-black`}
+        style={{ backgroundColor: '#0A0C0F', overscrollBehavior: 'none', margin: 0, padding: 0 }}
       >
         <AuthProvider>
           <OnboardingGuard>

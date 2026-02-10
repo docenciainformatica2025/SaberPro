@@ -1,0 +1,979 @@
+[
+  {
+    "id": "0qNQm0E5irPGCJrcO1zv",
+    "userId": "MVpei8rzZrg0S7PietedvZMMe9g1",
+    "module": "ingles",
+    "score": 0,
+    "totalQuestions": 30,
+    "isPartial": false,
+    "completedAt": {
+      "_seconds": 1765861429,
+      "_nanoseconds": 195000000
+    }
+  },
+  {
+    "id": "1MqjvrcsWHaPwcIM5rOP",
+    "userId": "hvR0ATWDHdNaKizDFCJZvsLcQOo1",
+    "module": "competencias_ciudadanas",
+    "score": 0,
+    "totalQuestions": 10,
+    "isPartial": false,
+    "sessionId": "7609244e-bdaf-4631-ab46-e6ace411132e",
+    "completedAt": {
+      "_seconds": 1765901948,
+      "_nanoseconds": 425000000
+    }
+  },
+  {
+    "id": "2e64am2WcxpmXVnknIX6",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "razonamiento_cuantitativo",
+    "score": 2,
+    "totalQuestions": 4,
+    "date": {
+      "_seconds": 1765836439,
+      "_nanoseconds": 516000000
+    }
+  },
+  {
+    "id": "3ak9KkdUdkyhW9IQ6tlG",
+    "userId": "VyQOaz1wlZg41VEtY7FL1f6ghVx1",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 50,
+    "isPartial": false,
+    "sessionId": "d37a83ea-055e-4e3e-9dc7-f8c50c9e384c",
+    "assignmentId": null,
+    "completedAt": {
+      "_seconds": 1766035444,
+      "_nanoseconds": 912000000
+    }
+  },
+  {
+    "id": "3mJS2nhQ0vHOpTHA5dMu",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "razonamiento_cuantitativo",
+    "score": 0,
+    "totalQuestions": 4,
+    "date": {
+      "_seconds": 1765841775,
+      "_nanoseconds": 278000000
+    }
+  },
+  {
+    "id": "4IUzv6Iz91kZdYlniJb3",
+    "userId": "MVpei8rzZrg0S7PietedvZMMe9g1",
+    "module": "comunicacion_escrita",
+    "score": 3,
+    "totalQuestions": 10,
+    "isPartial": false,
+    "completedAt": {
+      "_seconds": 1765860635,
+      "_nanoseconds": 636000000
+    }
+  },
+  {
+    "id": "7QhJbrFfrQjmwEQuDDdW",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "comunicacion_escrita",
+    "score": 0,
+    "totalQuestions": 1,
+    "date": {
+      "_seconds": 1765833231,
+      "_nanoseconds": 780000000
+    }
+  },
+  {
+    "id": "8F3M4nZSsYobRKNmM6qD",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "comunicacion_escrita",
+    "score": 0,
+    "totalQuestions": 1,
+    "date": {
+      "_seconds": 1765844263,
+      "_nanoseconds": 344000000
+    }
+  },
+  {
+    "id": "AGIcKa1ch8oMUKBMZG1C",
+    "userId": "VyQOaz1wlZg41VEtY7FL1f6ghVx1",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 2,
+    "isPartial": false,
+    "sessionId": "009f4262-6da1-41e2-8e04-b5d66aef13ea",
+    "assignmentId": "imcPeT1gOa0CaxHHHlg0",
+    "completedAt": {
+      "_seconds": 1766033662,
+      "_nanoseconds": 28000000
+    }
+  },
+  {
+    "id": "AaLYm85cPsbn0BIkJaM0",
+    "userId": "MVpei8rzZrg0S7PietedvZMMe9g1",
+    "module": "ingles",
+    "score": 0,
+    "totalQuestions": 30,
+    "isPartial": true,
+    "completedAt": {
+      "_seconds": 1765861432,
+      "_nanoseconds": 991000000
+    }
+  },
+  {
+    "id": "COb05fKaFxaG1o04b1lD",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "comunicacion_escrita",
+    "score": 0,
+    "totalQuestions": 1,
+    "date": {
+      "_seconds": 1765844279,
+      "_nanoseconds": 88000000
+    }
+  },
+  {
+    "id": "CVW9kbaZSEt7feWsiZZP",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765833210,
+      "_nanoseconds": 195000000
+    }
+  },
+  {
+    "id": "DCOiq9rltLEOpIB3Qwtk",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "competencias_ciudadanas",
+    "score": 1,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765837216,
+      "_nanoseconds": 820000000
+    }
+  },
+  {
+    "id": "E22FbqPmzGjzo3PBpWMM",
+    "userId": "VyQOaz1wlZg41VEtY7FL1f6ghVx1",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 2,
+    "isPartial": false,
+    "sessionId": "676db391-3c5d-418f-a601-dc9aa10cc0b5",
+    "completedAt": {
+      "_seconds": 1766005609,
+      "_nanoseconds": 442000000
+    }
+  },
+  {
+    "id": "FUb0oZL6lEflfPOyXA2Q",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "lectura_critica",
+    "score": 1,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765841610,
+      "_nanoseconds": 889000000
+    }
+  },
+  {
+    "id": "HvzMKif4XeQzTxIDyva7",
+    "userId": "MVpei8rzZrg0S7PietedvZMMe9g1",
+    "module": "razonamiento_cuantitativo",
+    "score": 0,
+    "totalQuestions": 20,
+    "isPartial": false,
+    "completedAt": {
+      "_seconds": 1765860693,
+      "_nanoseconds": 590000000
+    }
+  },
+  {
+    "id": "IAtQLVMs1L659S29qpCs",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765841470,
+      "_nanoseconds": 365000000
+    }
+  },
+  {
+    "id": "IpFEuBR4GfRvV32itDlh",
+    "userId": "BLsZXMyUV6f0IMh2KtRMCPGtOLm1",
+    "module": "razonamiento_cuantitativo",
+    "score": 0,
+    "totalQuestions": 10,
+    "isPartial": false,
+    "sessionId": "bbacfe34-60e2-4325-ad3f-08ceebcb5ba6",
+    "completedAt": {
+      "_seconds": 1765981569,
+      "_nanoseconds": 777000000
+    }
+  },
+  {
+    "id": "KLtTw55uAaFWVzccXX41",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "ingles",
+    "score": 0,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765844257,
+      "_nanoseconds": 453000000
+    }
+  },
+  {
+    "id": "LL1HCqIt12EVUzfG60pe",
+    "userId": "VyQOaz1wlZg41VEtY7FL1f6ghVx1",
+    "module": "competencias_ciudadanas",
+    "score": 0,
+    "totalQuestions": 50,
+    "isPartial": false,
+    "sessionId": "da4131ef-5a0c-474e-8f34-bbb241ed8e4d",
+    "assignmentId": null,
+    "completedAt": {
+      "_seconds": 1766036196,
+      "_nanoseconds": 380000000
+    }
+  },
+  {
+    "id": "LQcwmbbhTfbFVohyMXkL",
+    "userId": "MVpei8rzZrg0S7PietedvZMMe9g1",
+    "module": "lectura_critica",
+    "score": 8,
+    "totalQuestions": 20,
+    "isPartial": false,
+    "completedAt": {
+      "_seconds": 1765860407,
+      "_nanoseconds": 770000000
+    }
+  },
+  {
+    "id": "MW0Y3pBMHNVwtGeT9Kcu",
+    "userId": "rN2yKFnbzHO3wWJ3TAwy3QEiN9N2",
+    "module": "razonamiento_cuantitativo",
+    "score": 1,
+    "totalQuestions": 10,
+    "isPartial": false,
+    "sessionId": "7027131f-3044-4288-a547-412397cbd1cb",
+    "assignmentId": null,
+    "completedAt": {
+      "_seconds": 1766098241,
+      "_nanoseconds": 891000000
+    }
+  },
+  {
+    "id": "MYi6Ll8rDP6rWDn0hDF6",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "razonamiento_cuantitativo",
+    "score": 2,
+    "totalQuestions": 4,
+    "date": {
+      "_seconds": 1765841422,
+      "_nanoseconds": 276000000
+    }
+  },
+  {
+    "id": "Mv9jeCj3DZ34wKrm5wdF",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765837209,
+      "_nanoseconds": 752000000
+    }
+  },
+  {
+    "id": "OQcvwIMprCdGvWO8c7Ak",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "ingles",
+    "score": 0,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765837224,
+      "_nanoseconds": 329000000
+    }
+  },
+  {
+    "id": "OydNKB83gWcCPTtJ1vww",
+    "userId": "MVpei8rzZrg0S7PietedvZMMe9g1",
+    "module": "competencias_ciudadanas",
+    "score": 0,
+    "totalQuestions": 20,
+    "isPartial": false,
+    "completedAt": {
+      "_seconds": 1765861407,
+      "_nanoseconds": 526000000
+    }
+  },
+  {
+    "id": "QBCLAksJ4mcU25o2TPFF",
+    "userId": "MVpei8rzZrg0S7PietedvZMMe9g1",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 20,
+    "isPartial": false,
+    "completedAt": {
+      "_seconds": 1765862555,
+      "_nanoseconds": 951000000
+    }
+  },
+  {
+    "id": "QdlToIJ43bnM5z6gLQ1Y",
+    "userId": "hvR0ATWDHdNaKizDFCJZvsLcQOo1",
+    "module": "razonamiento_cuantitativo",
+    "score": 0,
+    "totalQuestions": 10,
+    "isPartial": false,
+    "sessionId": "3a9a88b2-499d-4ec1-b0cb-3e8212bc42e5",
+    "completedAt": {
+      "_seconds": 1765900978,
+      "_nanoseconds": 154000000
+    }
+  },
+  {
+    "id": "Qmp10TItnhdiVoThYcy2",
+    "userId": "Xp3mwyZX8LgmbdcEmGhpYI6QlSG3",
+    "module": "razonamiento_cuantitativo",
+    "score": 4,
+    "totalQuestions": 10,
+    "isPartial": false,
+    "sessionId": "e85fab11-cded-4850-8e06-d93bf1bc3207",
+    "assignmentId": null,
+    "completedAt": {
+      "_seconds": 1766101758,
+      "_nanoseconds": 683000000
+    }
+  },
+  {
+    "id": "R1NRFkSkY8NstBlMZRUp",
+    "userId": "dKvk9MNz56WllDHvzGo76dtjuvF2",
+    "module": "razonamiento_cuantitativo",
+    "score": 0,
+    "totalQuestions": 50,
+    "isPartial": false,
+    "sessionId": "3129d7d5-d8a7-4a96-8b3d-1815bcae9a39",
+    "completedAt": {
+      "_seconds": 1765999118,
+      "_nanoseconds": 967000000
+    }
+  },
+  {
+    "id": "RS9zMLyubqrApyj8xeli",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765843322,
+      "_nanoseconds": 351000000
+    }
+  },
+  {
+    "id": "RT9i8CuDWL5y4pFXYbcP",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765844781,
+      "_nanoseconds": 18000000
+    }
+  },
+  {
+    "id": "Rw6ubwW1RqDKVA7ooeCP",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "competencias_ciudadanas",
+    "score": 0,
+    "totalQuestions": 20,
+    "isPartial": false,
+    "sessionId": "6c207f85-2933-4866-9c4f-e4a5ba4b055e",
+    "completedAt": {
+      "_seconds": 1765896989,
+      "_nanoseconds": 790000000
+    }
+  },
+  {
+    "id": "Sf3Dw7Fte0LRUrOk3yOe",
+    "userId": "hvR0ATWDHdNaKizDFCJZvsLcQOo1",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 10,
+    "isPartial": false,
+    "sessionId": "993e5dea-6aa2-460e-8142-4e956b27099f",
+    "completedAt": {
+      "_seconds": 1765902326,
+      "_nanoseconds": 878000000
+    }
+  },
+  {
+    "id": "T7fE7sjxdid7rWN3d00s",
+    "userId": "hvR0ATWDHdNaKizDFCJZvsLcQOo1",
+    "module": "razonamiento_cuantitativo",
+    "score": 0,
+    "totalQuestions": 20,
+    "isPartial": false,
+    "sessionId": "adb276eb-8930-4fb3-8945-c42ba3bdb77f",
+    "completedAt": {
+      "_seconds": 1765899506,
+      "_nanoseconds": 164000000
+    }
+  },
+  {
+    "id": "TgxTP02nbiJU7vDQvY9T",
+    "userId": "MVpei8rzZrg0S7PietedvZMMe9g1",
+    "module": "razonamiento_cuantitativo",
+    "score": 0,
+    "totalQuestions": 20,
+    "isPartial": false,
+    "completedAt": {
+      "_seconds": 1765862546,
+      "_nanoseconds": 381000000
+    }
+  },
+  {
+    "id": "URxRtdLFfLKPIF9XqAPm",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "razonamiento_cuantitativo",
+    "score": 1,
+    "totalQuestions": 4,
+    "date": {
+      "_seconds": 1765843382,
+      "_nanoseconds": 988000000
+    }
+  },
+  {
+    "id": "UcQ15OyQtCYQpboBqcrm",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "razonamiento_cuantitativo",
+    "score": 0,
+    "totalQuestions": 4,
+    "date": {
+      "_seconds": 1765843312,
+      "_nanoseconds": 736000000
+    }
+  },
+  {
+    "id": "VCY5wGmNzFkPob40auhJ",
+    "userId": "MVpei8rzZrg0S7PietedvZMMe9g1",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 20,
+    "isPartial": false,
+    "completedAt": {
+      "_seconds": 1765860999,
+      "_nanoseconds": 759000000
+    }
+  },
+  {
+    "id": "XOk5l9ifcIUM2T2BIZFH",
+    "userId": "MVpei8rzZrg0S7PietedvZMMe9g1",
+    "module": "comunicacion_escrita",
+    "score": 0,
+    "totalQuestions": 10,
+    "isPartial": false,
+    "completedAt": {
+      "_seconds": 1765862596,
+      "_nanoseconds": 783000000
+    }
+  },
+  {
+    "id": "agsjVW14hRXxDPns87m5",
+    "userId": "dKvk9MNz56WllDHvzGo76dtjuvF2",
+    "module": "razonamiento_cuantitativo",
+    "score": 0,
+    "totalQuestions": 50,
+    "isPartial": false,
+    "sessionId": "eacda5bb-bca1-4070-9b54-be0e20f0bab5",
+    "completedAt": {
+      "_seconds": 1765998724,
+      "_nanoseconds": 992000000
+    }
+  },
+  {
+    "id": "alFMVY0RkbA8WBn5MM0J",
+    "userId": "2r8JnjURD2gbwCX0WikXnTBD01L2",
+    "module": "razonamiento_cuantitativo",
+    "score": 8,
+    "totalQuestions": 10,
+    "isPartial": false,
+    "sessionId": "438e5482-362e-4f8e-8d97-6bac39d59fa5",
+    "assignmentId": null,
+    "completedAt": {
+      "_seconds": 1769124649,
+      "_nanoseconds": 649000000
+    }
+  },
+  {
+    "id": "btCQVMIyXAWTHpcuKpLL",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 10,
+    "isPartial": false,
+    "sessionId": "51f755f5-c701-4285-8e21-1118657ff4c4",
+    "completedAt": {
+      "_seconds": 1765903839,
+      "_nanoseconds": 553000000
+    }
+  },
+  {
+    "id": "bygUsBuahcpiYF20BJlA",
+    "userId": "VyQOaz1wlZg41VEtY7FL1f6ghVx1",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 2,
+    "isPartial": false,
+    "sessionId": "288ee63e-ed3a-4634-b4d6-037df6c3e28e",
+    "assignmentId": "imcPeT1gOa0CaxHHHlg0",
+    "completedAt": {
+      "_seconds": 1766009588,
+      "_nanoseconds": 747000000
+    }
+  },
+  {
+    "id": "cLpaLecVu3f11sXKd3CO",
+    "userId": "hvR0ATWDHdNaKizDFCJZvsLcQOo1",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 20,
+    "isPartial": false,
+    "sessionId": "4a005c43-1c2a-4be5-acca-d3621c9b8143",
+    "completedAt": {
+      "_seconds": 1765900776,
+      "_nanoseconds": 498000000
+    }
+  },
+  {
+    "id": "dIdjEi1XkvYdb8pwjR3l",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "razonamiento_cuantitativo",
+    "score": 2,
+    "totalQuestions": 4,
+    "date": {
+      "_seconds": 1765842059,
+      "_nanoseconds": 839000000
+    }
+  },
+  {
+    "id": "diy3m5tG9a5VBQcKazsu",
+    "userId": "MVpei8rzZrg0S7PietedvZMMe9g1",
+    "module": "competencias_ciudadanas",
+    "score": 0,
+    "totalQuestions": 20,
+    "isPartial": false,
+    "completedAt": {
+      "_seconds": 1765862567,
+      "_nanoseconds": 914000000
+    }
+  },
+  {
+    "id": "dyu4C6p9EB4hQUKIVh0Y",
+    "userId": "MVpei8rzZrg0S7PietedvZMMe9g1",
+    "module": "razonamiento_cuantitativo",
+    "score": 0,
+    "totalQuestions": 20,
+    "isPartial": false,
+    "completedAt": {
+      "_seconds": 1765860673,
+      "_nanoseconds": 653000000
+    }
+  },
+  {
+    "id": "e4LgbkCxs98gN5mWeYxr",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "comunicacion_escrita",
+    "score": 1,
+    "totalQuestions": 1,
+    "date": {
+      "_seconds": 1765837234,
+      "_nanoseconds": 441000000
+    }
+  },
+  {
+    "id": "erTDNUTT9RDTmZX2c9Z3",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765841460,
+      "_nanoseconds": 21000000
+    }
+  },
+  {
+    "id": "ezaHVnu7WVgFI3ZtZTel",
+    "userId": "MVpei8rzZrg0S7PietedvZMMe9g1",
+    "module": "razonamiento_cuantitativo",
+    "score": 0,
+    "totalQuestions": 20,
+    "isPartial": true,
+    "completedAt": {
+      "_seconds": 1765860834,
+      "_nanoseconds": 52000000
+    }
+  },
+  {
+    "id": "f1NfF1YsgexQEImGzEmK",
+    "userId": "dKvk9MNz56WllDHvzGo76dtjuvF2",
+    "module": "lectura_critica",
+    "score": 2,
+    "totalQuestions": 50,
+    "isPartial": false,
+    "sessionId": "3bd2a946-1e80-4df6-8f69-331e12f16aa2",
+    "completedAt": {
+      "_seconds": 1765999575,
+      "_nanoseconds": 263000000
+    }
+  },
+  {
+    "id": "flDR60UatTAJ2ErOX5JM",
+    "userId": "VyQOaz1wlZg41VEtY7FL1f6ghVx1",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 2,
+    "isPartial": false,
+    "sessionId": "b0642126-4b5b-4a1a-b6b8-d40c5473eaca",
+    "assignmentId": "imcPeT1gOa0CaxHHHlg0",
+    "completedAt": {
+      "_seconds": 1766009937,
+      "_nanoseconds": 143000000
+    }
+  },
+  {
+    "id": "h5RJEqOx7FBwLUs8IeLL",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "razonamiento_cuantitativo",
+    "score": 0,
+    "totalQuestions": 4,
+    "date": {
+      "_seconds": 1765842028,
+      "_nanoseconds": 897000000
+    }
+  },
+  {
+    "id": "hpbt7Ol0O0U1dfUwhhiZ",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "razonamiento_cuantitativo",
+    "score": 0,
+    "totalQuestions": 4,
+    "date": {
+      "_seconds": 1765844299,
+      "_nanoseconds": 80000000
+    }
+  },
+  {
+    "id": "i6q4L3SHWIRU7ZrpBpo8",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "razonamiento_cuantitativo",
+    "score": 2,
+    "totalQuestions": 4,
+    "date": {
+      "_seconds": 1765833199,
+      "_nanoseconds": 541000000
+    }
+  },
+  {
+    "id": "ifANp81fHpbcWxqq4tK6",
+    "userId": "VyQOaz1wlZg41VEtY7FL1f6ghVx1",
+    "module": "ingles",
+    "score": 0,
+    "totalQuestions": 50,
+    "isPartial": false,
+    "sessionId": "3e149b09-1181-43f5-85cf-97495cbe5398",
+    "assignmentId": null,
+    "completedAt": {
+      "_seconds": 1766035526,
+      "_nanoseconds": 934000000
+    }
+  },
+  {
+    "id": "iimEPtx8whjZIjCH0fhl",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "competencias_ciudadanas",
+    "score": 0,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765844864,
+      "_nanoseconds": 886000000
+    }
+  },
+  {
+    "id": "iteZxVH11tNs7Pqmndyb",
+    "userId": "IdQ5bfT4SJeYz6PelenLKxJZ4tg2",
+    "type": "diagnostic",
+    "score": 40,
+    "totalQuestions": 5,
+    "answers": [
+      {
+        "questionId": 1,
+        "category": "Razonamiento Cuantitativo",
+        "correct": false
+      },
+      {
+        "questionId": 2,
+        "category": "Lectura Crítica",
+        "correct": true
+      },
+      {
+        "questionId": 3,
+        "category": "Inglés (B1)",
+        "correct": false
+      },
+      {
+        "questionId": 4,
+        "category": "Competencias Ciudadanas",
+        "correct": true
+      },
+      {
+        "questionId": 5,
+        "category": "Pensamiento Lógico",
+        "correct": false
+      }
+    ],
+    "completedAt": {
+      "_seconds": 1767815233,
+      "_nanoseconds": 454000000
+    },
+    "migratedFromPublic": true
+  },
+  {
+    "id": "jLBiWMm1jxR3HFpw6PVP",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "competencias_ciudadanas",
+    "score": 0,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765843328,
+      "_nanoseconds": 300000000
+    }
+  },
+  {
+    "id": "ocDUwaYZF6ZffkjCfWzY",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "ingles",
+    "score": 0,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765843335,
+      "_nanoseconds": 164000000
+    }
+  },
+  {
+    "id": "r7kN0NAxZeXeZodwX8Gs",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "razonamiento_cuantitativo",
+    "score": 0,
+    "totalQuestions": 4,
+    "date": {
+      "_seconds": 1765841803,
+      "_nanoseconds": 640000000
+    }
+  },
+  {
+    "id": "rbydGlF3I5uLCz6GjiVD",
+    "userId": "hvR0ATWDHdNaKizDFCJZvsLcQOo1",
+    "module": "competencias_ciudadanas",
+    "score": 0,
+    "totalQuestions": 10,
+    "isPartial": false,
+    "sessionId": "613f9b9f-de0d-41c4-8994-bcd4048d6360",
+    "completedAt": {
+      "_seconds": 1765901899,
+      "_nanoseconds": 130000000
+    }
+  },
+  {
+    "id": "sDyhopshLzhLowGJkAGB",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "razonamiento_cuantitativo",
+    "score": 1,
+    "totalQuestions": 4,
+    "date": {
+      "_seconds": 1765841259,
+      "_nanoseconds": 542000000
+    }
+  },
+  {
+    "id": "sQuV7AF81w1aksTHa8BX",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "competencias_ciudadanas",
+    "score": 1,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765833217,
+      "_nanoseconds": 688000000
+    }
+  },
+  {
+    "id": "sddmEqGnpK1buwLgq96H",
+    "userId": "OtvcHmbi2JaxMUYPzuq3SshTXdM2",
+    "type": "diagnostic",
+    "score": 40,
+    "totalQuestions": 5,
+    "answers": [
+      {
+        "questionId": 1,
+        "category": "Competencias Ciudadanas",
+        "correct": false
+      },
+      {
+        "questionId": 2,
+        "category": "Lectura Crítica",
+        "correct": false
+      },
+      {
+        "questionId": 3,
+        "category": "Razonamiento Cuantitativo",
+        "correct": false
+      },
+      {
+        "questionId": 4,
+        "category": "Inglés (B2)",
+        "correct": true
+      },
+      {
+        "questionId": 5,
+        "category": "Comunicación Escrita",
+        "correct": true
+      }
+    ],
+    "completedAt": {
+      "_seconds": 1769024362,
+      "_nanoseconds": 550000000
+    },
+    "migratedFromPublic": true
+  },
+  {
+    "id": "tBP2k1IwTCj9qtDAV7jf",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "razonamiento_cuantitativo",
+    "score": 1,
+    "totalQuestions": 4,
+    "date": {
+      "_seconds": 1765837200,
+      "_nanoseconds": 486000000
+    }
+  },
+  {
+    "id": "tVmpAxmEnwxSy9og5xUS",
+    "userId": "2r8JnjURD2gbwCX0WikXnTBD01L2",
+    "module": "razonamiento_cuantitativo",
+    "score": 7,
+    "totalQuestions": 10,
+    "isPartial": false,
+    "sessionId": "aa654fa5-2a1a-42d0-9f1b-ba3398825603",
+    "assignmentId": null,
+    "completedAt": {
+      "_seconds": 1769124265,
+      "_nanoseconds": 160000000
+    }
+  },
+  {
+    "id": "tihmaMNCk5jGgQwoOvl1",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "ingles",
+    "score": 1,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765833226,
+      "_nanoseconds": 148000000
+    }
+  },
+  {
+    "id": "uBjJh5tWdEmOOduPOzS6",
+    "userId": "VyQOaz1wlZg41VEtY7FL1f6ghVx1",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 2,
+    "isPartial": false,
+    "sessionId": "40335f00-0763-4aa5-92c4-a2f757fe2bed",
+    "completedAt": {
+      "_seconds": 1766005900,
+      "_nanoseconds": 879000000
+    }
+  },
+  {
+    "id": "vUMo6aJz6bMdMmByuUpl",
+    "userId": "MVpei8rzZrg0S7PietedvZMMe9g1",
+    "module": "ingles",
+    "score": 0,
+    "totalQuestions": 30,
+    "isPartial": false,
+    "completedAt": {
+      "_seconds": 1765862586,
+      "_nanoseconds": 65000000
+    }
+  },
+  {
+    "id": "vaxbsc8flQlsjKTH0RkM",
+    "userId": "MVpei8rzZrg0S7PietedvZMMe9g1",
+    "module": "razonamiento_cuantitativo",
+    "score": 0,
+    "totalQuestions": 20,
+    "isPartial": false,
+    "completedAt": {
+      "_seconds": 1765860831,
+      "_nanoseconds": 428000000
+    }
+  },
+  {
+    "id": "vmCqHYutb8qULvvKNJ7M",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "razonamiento_cuantitativo",
+    "score": 0,
+    "totalQuestions": 4,
+    "date": {
+      "_seconds": 1765840495,
+      "_nanoseconds": 539000000
+    }
+  },
+  {
+    "id": "wjLqmqp5EuGZd9rTEzPD",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "comunicacion_escrita",
+    "score": 0,
+    "totalQuestions": 1,
+    "date": {
+      "_seconds": 1765843341,
+      "_nanoseconds": 378000000
+    }
+  },
+  {
+    "id": "xHXXYDkcfa6h8MgXcFtj",
+    "userId": "MVpei8rzZrg0S7PietedvZMMe9g1",
+    "module": "lectura_critica",
+    "score": 8,
+    "totalQuestions": 20,
+    "isPartial": true,
+    "completedAt": {
+      "_seconds": 1765860427,
+      "_nanoseconds": 426000000
+    }
+  },
+  {
+    "id": "yeTjrMf2LCB8sKfzzt7P",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "lectura_critica",
+    "score": 0,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765847886,
+      "_nanoseconds": 122000000
+    }
+  },
+  {
+    "id": "zO2hMtDu1vTuCNcabDK4",
+    "userId": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "module": "competencias_ciudadanas",
+    "score": 0,
+    "totalQuestions": 2,
+    "date": {
+      "_seconds": 1765844799,
+      "_nanoseconds": 8000000
+    }
+  }
+]

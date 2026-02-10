@@ -21,7 +21,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         const baseStyles = "inline-flex items-center justify-center rounded-xl font-bold transition-colors duration-300 disabled:opacity-50 disabled:pointer-events-none select-none metallic-btn";
 
         const variants = {
-            premium: "bg-gradient-to-r from-metal-gold to-metal-gold-deep text-white font-black shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_40px_rgba(212,175,55,0.5)]",
+            premium: "bg-gradient-to-r from-metal-gold to-metal-gold-deep text-white font-black shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] shimmer-gold",
             silver: "bg-gradient-to-r from-metal-silver to-metal-silver-deep text-black font-black shadow-lg",
             outline: "bg-transparent border border-metal-silver/20 text-metal-silver hover:bg-metal-silver/5 hover:border-metal-silver/40",
             ghost: "bg-transparent text-metal-silver hover:bg-white/5",

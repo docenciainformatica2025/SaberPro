@@ -8,7 +8,7 @@ import { Card } from "@/components/ui/Card";
 
 export default function CreditsPage() {
     return (
-        <div className="min-h-screen bg-[#050505] selection:bg-metal-gold/30 p-6 md:p-12 pb-24 flex items-center justify-center">
+        <div className="min-h-screen bg-metal-black selection:bg-metal-gold/30 p-6 md:p-12 pb-24 flex items-center justify-center">
 
             {/* Background Ambience */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-metal-gold/5 rounded-full blur-[120px] pointer-events-none" />

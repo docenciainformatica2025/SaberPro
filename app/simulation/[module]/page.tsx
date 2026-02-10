@@ -89,13 +89,9 @@ const SimulationContent = () => {
                     return;
                 }
 
-                // 2. Verify Profile (Career)
-                const docSnap = await getDoc(doc(db, "users", user.uid));
-
-                if (docSnap.exists()) {
-                    // Check user logic if needed, but we did this in the selection screen.
-                    // Double check just in case.
-                }
+                // 2. Verify Profile (Career) - OPTIMIZATION: Skipped to avoid waterfall. 
+                // Profile is already verified in selection screen.
+                // const docSnap = await getDoc(doc(db, "users", user.uid));
 
                 // 3. Fetch Questions
                 let loadedQuestions: Question[] = [];
@@ -116,8 +112,11 @@ const SimulationContent = () => {
                         loadedQuestions.push({ id: doc.id, ...doc.data() } as Question);
                     });
 
-                    // Simple shuffle
-                    loadedQuestions.sort(() => Math.random() - 0.5);
+                    // Fisher-Yates Shuffle (Randomness Perfection)
+                    for (let i = loadedQuestions.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [loadedQuestions[i], loadedQuestions[j]] = [loadedQuestions[j], loadedQuestions[i]];
+                    }
                     loadedQuestions = loadedQuestions.slice(0, limitCount);
                 }
 

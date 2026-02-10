@@ -108,7 +108,7 @@ export default function RegisterPage() {
 
 
     return (
-        <div className="flex min-h-screen bg-[#050505]">
+        <div className="flex min-h-screen bg-metal-black">
             {/* Left Side - Branding (Desktop Only) */}
             <div className="hidden lg:flex w-1/2 bg-[#0a0a0a] relative overflow-hidden flex-col justify-between p-16 border-r border-white/5">
                 <div className="absolute inset-0 bg-gradient-to-br from-black/95 via-black/80 to-[#0A0A0A]"></div>
@@ -201,7 +201,7 @@ export default function RegisterPage() {
                                 <div className="flex items-start gap-3">
                                     <input type="checkbox" id="terms" {...register("terms")} className="mt-1 h-4 w-4 rounded border-metal-silver text-metal-gold focus:ring-metal-gold bg-metal-dark/50" />
                                     <label htmlFor="terms" className="text-xs text-metal-silver/70 leading-relaxed">
-                                        Al crear mi cuenta acepto los <Link href="/terms" target="_blank" className="text-metal-gold underline hover:text-white">Términos de Uso</Link>, <Link href="/privacy" target="_blank" className="text-metal-gold underline hover:text-white">Política de Privacidad</Link> y el uso de <Link href="/cookies" target="_blank" className="text-metal-gold underline hover:text-white">Cookies</Link>.
+                                        Al crear mi cuenta acepto los <Link href="/legal/terms" target="_blank" className="text-metal-gold underline hover:text-white">Términos de Uso</Link>, <Link href="/legal/privacy" target="_blank" className="text-metal-gold underline hover:text-white">Política de Privacidad</Link> y el uso de <Link href="/legal/cookies" target="_blank" className="text-metal-gold underline hover:text-white">Cookies</Link>.
                                     </label>
                                 </div>
                                 {errors.terms && <p className="text-xs text-red-400 ml-1">{errors.terms.message}</p>}

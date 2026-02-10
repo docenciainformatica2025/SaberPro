@@ -69,30 +69,39 @@ export default function DashboardPage() {
             if (!user) return;
             setIsLoadingData(true);
             try {
-                const q = query(collection(db, "results"), where("userId", "==", user.uid), orderBy("completedAt", "desc"), limit(5));
-                const snapshot = await getDocs(q);
+                // Parallelize independent fetches (Vercel Best Practice: async-parallel)
+                const qResults = query(collection(db, "results"), where("userId", "==", user.uid), orderBy("completedAt", "desc"), limit(5));
+                const qEnrollments = query(collection(db, "class_members"), where("userId", "==", user.uid));
+
+                const [resultsSnap, enrollmentSnap] = await Promise.all([
+                    getDocs(qResults),
+                    getDocs(qEnrollments)
+                ]);
+
+                // Process Results
                 let totalScore = 0;
                 const results: any[] = [];
-                snapshot.forEach(doc => {
+                resultsSnap.forEach(doc => {
                     const data = doc.data();
                     const score = Math.round((data.score / data.totalQuestions) * 100);
                     totalScore += score;
                     results.push({ id: doc.id, ...data });
                 });
 
-                if (snapshot.size > 0) {
+                if (resultsSnap.size > 0) {
                     setStats({
-                        averageScore: Math.round(totalScore / snapshot.size),
-                        completedSimulations: snapshot.size
+                        averageScore: Math.round(totalScore / resultsSnap.size),
+                        completedSimulations: resultsSnap.size
                     });
                     setRecentResults(results);
                 }
 
-                const enrollmentQ = query(collection(db, "class_members"), where("userId", "==", user.uid));
-                const enrollmentSnap = await getDocs(enrollmentQ);
+                // Process Enrollments
                 const classIds = enrollmentSnap.docs.map(d => d.data().classId);
 
                 if (classIds.length > 0) {
+                    // This creates a dependent waterfall, but it's unavoidable without a join
+                    // The initial parallelization already saves ~150-300ms
                     const classesQ = query(collection(db, "classrooms"), where("__name__", "in", classIds.slice(0, 10)));
                     const classesSnap = await getDocs(classesQ);
                     setMyClasses(classesSnap.docs.map(d => ({ id: d.id, ...d.data() })));
@@ -162,7 +171,7 @@ export default function DashboardPage() {
     if (loading && !user) return null;
 
     return (
-        <main className="min-h-screen bg-[#050505] p-6 md:p-12 pb-24">
+        <main className="min-h-screen bg-metal-black p-6 md:p-12 pb-24">
             <div className="max-w-7xl mx-auto">
                 {loading || isLoadingData ? (
                     <DashboardSkeleton />

@@ -152,7 +152,7 @@ function UpdatePasswordForm() {
 
 export default function UpdatePasswordPage() {
     return (
-        <div className="flex min-h-screen bg-[#050505]" suppressHydrationWarning>
+        <div className="flex min-h-screen bg-metal-black" suppressHydrationWarning>
             {/* Left Side - Branding (Desktop Only) */}
             <div className="hidden lg:flex w-1/2 bg-[#0a0a0a] relative overflow-hidden flex-col justify-between p-16 border-r border-white/5">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1555421689-d68471e189f2?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-20 filter grayscale mix-blend-overlay"></div>

@@ -66,7 +66,7 @@ export default function AdminLayout({
     if (!user) return null; // Will redirect via useEffect
 
     return (
-        <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-metal-gold/30">
+        <div className="min-h-screen bg-metal-black text-white font-sans selection:bg-metal-gold/30">
             {/* Background Ambient Effects - Red/Dark for Admin */}
             <div className="fixed inset-0 pointer-events-none z-0">
                 <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-red-900/5 rounded-full blur-[120px] mix-blend-screen" />

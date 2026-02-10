@@ -1,10 +1,15 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 /* === ULTRA-PREMIUM VIEWPORT FIX (Silicon Valley Standard) === */
 html,
 body {
-  background-color: #050505;
-  /* Matches --metal-dark */
+  background-color: var(--color-metal-black);
+  /* Matches --metal-black */
   overscroll-behavior: none;
   /* Prevents white rubber-band effect */
   min-height: 100vh;
@@ -453,26 +458,16 @@ h3 {
   box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
 }
 
-/* === EMERGENCY VISIBILITY FIX (v4.1.11) === */
-/* User reported "se carga y se opaca". forcing solid opacity globally. */
-/* This overrides tailwindcss-animate classes to prevent FOUC/Ghosting */
-.animate-in,
-.fade-in,
-.zoom-in,
-.slide-in-from-bottom,
-.slide-in-from-top,
-.duration-700,
-.delay-100,
-.delay-200,
-.delay-300 {
-  animation: none !important;
-  opacity: 1 !important;
-  transform: none !important;
-  filter: none !important;
-  transition: none !important;
+/* === WORLD-CLASS LEGIBILITY & VISIBILITY (v4.2.0 Gold Edition) === */
+/* Replaces previous emergency blocker with a professional solution */
+
+@layer base {
+  .animate-in {
+    animation-fill-mode: forwards;
+  }
 }
 
-/* Force Text Visibility */
+/* Ensure text remains sharp and visible after entry animations */
 h1,
 h2,
 h3,
@@ -487,17 +482,49 @@ button,
 input,
 label {
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Fix for specific Login/Footer text issues */
-.text-metal-silver\/80 {
-  color: rgba(229, 228, 226, 1) !important;
+/* Premium Shimmer Effect for Buttons/Badges */
+.shimmer-gold {
+  position: relative;
+  overflow: hidden;
 }
 
-.text-metal-silver\/60 {
-  color: rgba(229, 228, 226, 0.9) !important;
+.shimmer-gold::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+      transparent 45%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 55%);
+  animation: shimmer-sweep 3s infinite;
 }
 
-.text-metal-silver\/40 {
-  color: rgba(229, 228, 226, 0.8) !important;
+@keyframes shimmer-sweep {
+  0% {
+    transform: translate(-30%, -30%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(30%, 30%) rotate(0deg);
+  }
+}
+
+/* Fix for specific Login/Footer text issues - No longer using !important overrides */
+.text-metal-silver-high {
+  color: rgba(229, 228, 226, 0.95);
+}
+
+.text-metal-silver-mid {
+  color: rgba(229, 228, 226, 0.75);
+}
+
+.text-metal-silver-low {
+  color: rgba(229, 228, 226, 0.55);
 }
