@@ -32,8 +32,11 @@ export default function NumberTicker({ value, className, suffix = "" }: NumberTi
     }, [springValue]);
 
     return (
-        <span ref={ref} className={className}>
-            {displayValue}{suffix}
+        <span ref={ref} className={className} aria-atomic="true">
+            <span className="sr-only">{value}{suffix}</span>
+            <span aria-hidden="true">
+                {displayValue}{suffix}
+            </span>
         </span>
     );
 }
