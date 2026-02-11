@@ -15,6 +15,7 @@ Visual identity guidelines, assets, and design systems.
 ### 📂 [03_Technical_Reports](./03_Technical_Reports)
 Engineering audits, sprint reports, and architectural decisions.
 *   **[SPRINT_TECHNICAL_REPORT.md](./03_Technical_Reports/SPRINT_TECHNICAL_REPORT.md)**: Detailed engineering report of the production readiness sprint (ISO 25010 / OWASP).
+*   **[AUDIT_REPORT_PII_SECURITY_2026.md](./03_Technical_Reports/AUDIT_REPORT_PII_SECURITY_2026.md)**: Reporte oficial de limpieza de PII y auditoría de seguridad pre-producción.
 
 ### 📂 [04_Operational_Manuals](./04_Operational_Manuals)
 How-to guides, setup instructions, and deployment runbooks.
