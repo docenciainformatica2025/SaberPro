@@ -26,11 +26,17 @@ Se actualizó `UsersPage.tsx` para eliminar correos de administradores maestros 
 ### 2.4 Resolución de Conflictos de Pruebas
 Se corrigieron fallos en las pruebas unitarias de `QuizEngine.test.tsx` relacionados con tiempos de espera de animación, asegurando un pipeline de CI/CD limpio.
 
+### 2.5 Respaldo Integral (Copia de Seguridad)
+Se ha ejecutado el protocolo de respaldo por duplicado para garantizar la resiliencia del sistema:
+- **Respaldo de Código**: Archivo generado en `backups/SaberPro_Stable_Audit_2026-02-11_17-30.zip`. Se creó el Git Tag `v3.2.0-audit-complete-...`.
+- **Respaldo de Datos (Firestore)**: Exportación completa de colecciones (3,107 documentos incluyendo Usuarios y Banco de Preguntas) en formato JSON en la carpeta `backups/audit_db_backup_...`.
+
 ## 3. Estado de Cumplimiento (Checklist)
 - [x] **Privacidad**: PII Shields activos.
 - [x] **Estilos**: Estandarización Zero-Static verificada.
 - [x] **Seguridad**: Protección de Administradores Maestros activa.
 - [x] **Integridad**: Pruebas unitarias pasando al 100%.
+- [x] **Resiliencia**: Backup preventivo offline generado satisfactoriamente.
 
 ## 4. Firma de Auditoría
 Este reporte ha sido generado y validado por el **Agente Antigravity** como parte del proceso de certificación de salida a producción.

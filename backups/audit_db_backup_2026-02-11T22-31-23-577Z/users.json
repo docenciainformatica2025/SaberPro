@@ -1,0 +1,24 @@
+[
+  {
+    "id": "MGaK8Rs1VnfEnZbU82u6fnqi1WC3",
+    "gradeLevel": "11",
+    "email": "antonio_rburgos@msn.com",
+    "dreamUniversity": "",
+    "scoreGoal": "350",
+    "city": "Pasto",
+    "institution": "CIUDAD DE PASTO",
+    "targetCareer": "INGENIERIA",
+    "fullName": "ANTONIO",
+    "completedProfile": true,
+    "updatedAt": {
+      "_seconds": 1765903865,
+      "_nanoseconds": 290000000
+    },
+    "role": "admin",
+    "isSystem": true
+  },
+  {
+    "id": "rN2yKFnbzHO3wWJ3TAwy3QEiN9N2",
+    "role": "student"
+  }
+]
