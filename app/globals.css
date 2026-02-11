@@ -25,22 +25,27 @@
   --color-theme-border-soft: var(--border-subtle);
   --color-theme-divider: var(--divider);
 
-  /* Apple Typographic Scale */
-  --font-size-h1: 48px;
-  --font-size-h2: 32px;
-  --font-size-h3: 24px;
-  --font-size-body: 16px;
-  --font-size-small: 14px;
+  /* Modular Typographic Scale (1.25 Ratio) */
+  --font-size-h1: 3.052rem;
+  /* 48.8px */
+  --font-size-h2: 2.441rem;
+  /* 39px */
+  --font-size-h3: 1.953rem;
+  /* 31.25px */
+  --font-size-body: 1rem;
+  /* 16px */
+  --font-size-small: 0.8rem;
+  /* 12.8px */
 
-  --font-weight-h1: 600;
-  --font-weight-h2: 600;
-  --font-weight-h3: 500;
+  --font-weight-h1: 700;
+  --font-weight-h2: 700;
+  --font-weight-h3: 600;
   --font-weight-body: 400;
-  --font-weight-small: 400;
+  --font-weight-small: 500;
 
-  --line-height-h1: 1.2;
-  --line-height-h2: 1.3;
-  --line-height-h3: 1.4;
+  --line-height-h1: 1.1;
+  --line-height-h2: 1.2;
+  --line-height-h3: 1.3;
   --line-height-body: 1.6;
   --line-height-small: 1.5;
 }
@@ -65,26 +70,27 @@ body {
 }
 
 :root {
-  /* 🎯 Paleta Base (Apple Education) */
-  --brand-primary: #1E40AF;
-  /* Saber Blue */
-  --brand-success: #16A34A;
-  /* Calm Green */
-  --brand-accent: #F59E0B;
-  /* Focus Amber */
-  --brand-error: #DC2626;
-  /* Soft Red */
+  /* 🎯 Paleta Corporativa Pro 2026 (Deaudited Colors) */
+  --brand-primary: #1A237E;
+  /* Deep Academic Blue */
+  --brand-primary-light: #3949AB;
+  --brand-success: #00C853;
+  /* Success Green */
+  --brand-accent: #FF9100;
+  /* Amber Motivation */
+  --brand-error: #FF3D00;
+  /* Critical Red */
 
-  /* 🧾 Paleta Neutra (Apple-style) */
+  /* 🧾 Paleta Neutra (Elite Grays) */
   --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #94A3B8;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
 
-  --bg-app: #F8FAFC;
-  --surface-card: #FFFFFF;
-  --bg-overlay: rgba(255, 255, 255, 0.8);
-  --border-subtle: #E2E8F0;
-  --divider: #CBD5E1;
+  --bg-app: #FFFFFF;
+  --surface-card: #FAFAFA;
+  --bg-overlay: rgba(255, 255, 255, 0.85);
+  --border-subtle: #F1F5F9;
+  --divider: #E2E8F0;
 
   --theme-bg-base-light: var(--bg-app);
   --theme-bg-surface-light: var(--surface-card);
@@ -168,9 +174,14 @@ body {
   /* Muted Slate */
 
   /* 4K Visual Hardening System */
-  --border-4k: 0.5px solid rgba(255, 255, 255, 0.1);
+  --border-4k: 0.5px solid rgba(0, 0, 0, 0.05);
   --shadow-4k: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05), 0 12px 24px rgba(0, 0, 0, 0.05);
   --ring-4k: 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+
+  /* Depth System (Startup-Grade) */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.06);
 
   /* Global Layout Clearance */
   --header-safe-zone: 160px;

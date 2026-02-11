@@ -72,11 +72,11 @@ export default function Home() {
           </Badge>
 
 
-          <h1 className="text-5xl md:text-7xl font-semibold tracking-tight leading-tight md:leading-[1.1] mb-6 text-theme-text-primary">
-            <span className="block mb-2">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight md:leading-[1.1] mb-6 text-theme-text-primary text-balance">
+            <span className="block mb-2 text-theme-hero">
               Domina tu Futuro en el
             </span>
-            <span className="text-brand-primary py-1">
+            <span className="text-brand-primary">
               Saber Pro {BRAND_YEAR}
             </span>
           </h1>
@@ -100,7 +100,7 @@ export default function Home() {
             ) : (
               <Link href="/register">
                 {/* Specific Text Requested by Audit: "Comenzar Simulación Gratuita" is implicit in "Comenzar Ahora" but user report suggested "Comenzar Simulación" */}
-                <Button size="xl" variant="primary" icon={Brain} iconPosition="left" aria-label="Registrarse y comenzar simulación gratuita" className="h-16 px-10 text-lg font-semibold uppercase tracking-wider shadow-xl shadow-brand-primary/20 hover:scale-105 transition-all text-white bg-brand-primary border-none">
+                <Button size="xl" variant="primary" icon={Brain} iconPosition="left" aria-label="Registrarse y comenzar simulación gratuita" className="h-16 px-10 text-lg font-bold uppercase tracking-wider shadow-xl shadow-brand-primary/40 hover:scale-105 transition-all text-white bg-gradient-to-r from-brand-primary to-brand-primary-light border-none shimmer-gold">
                   COMENZAR SIMULACIÓN GRATUITA
                 </Button>
               </Link>
@@ -147,19 +147,19 @@ export default function Home() {
               <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-theme-text-secondary/10 via-brand-primary/30 to-theme-text-secondary/10 z-0" aria-hidden="true"></div>
 
               {[
-                { step: "01", title: "Crea tu Cuenta", desc: "Registro unificado en 30 segundos. Sin costos ocultos.", color: "text-[var(--theme-text-primary)]" },
+                { step: "01", title: "Crea tu Cuenta", desc: "Registro unificado en 30 segundos. Sin costos ocultos.", color: "text-theme-text-primary" },
                 { step: "02", title: "Diagnóstico IA", desc: "Evalúa tu nivel actual con nuestro motor de inteligencia artificial.", color: "text-brand-primary" },
-                { step: "03", title: "Entrena y Domina", desc: "Recibe un plan personalizado basado en tus debilidades.", color: "text-[var(--theme-text-primary)]" }
+                { step: "03", title: "Entrena y Domina", desc: "Recibe un plan personalizado basado en tus debilidades.", color: "text-theme-text-primary" }
               ].map((item, i) => (
                 <div key={i} className="relative z-10 flex flex-col items-center text-center group" role="listitem">
-                  <div className={`w-24 h-24 rounded-3xl bg-theme-bg-base border ${i === 1 ? 'border-brand-primary shadow-lg shadow-brand-primary/5' : 'border-theme-border-soft'} flex items-center justify-center text-3xl font-semibold ${item.color} mb-6 transition-transform duration-500 group-hover:scale-105`}>
+                  <div className={`w-28 h-28 rounded-[2rem] bg-theme-bg-base border ${i === 1 ? 'border-brand-primary shadow-xl shadow-brand-primary/10' : 'border-theme-border-soft shadow-sm'} flex items-center justify-center text-4xl font-bold ${item.color} mb-8 transition-all duration-500 group-hover:scale-105 group-hover:shadow-md`}>
                     {item.step}
                   </div>
-                  <h3 className="text-xl font-medium text-theme-text-primary uppercase tracking-wider mb-3 leading-tight">
+                  <h3 className="text-2xl font-bold text-theme-text-primary uppercase tracking-tighter mb-4 leading-tight">
                     <span className="sr-only">Paso {item.step}: </span>
                     {item.title}
                   </h3>
-                  <p className="text-[var(--theme-text-tertiary)] text-sm font-medium max-w-xs leading-relaxed">
+                  <p className="text-theme-text-secondary text-base font-medium max-w-xs leading-relaxed opacity-80">
                     {item.desc}
                   </p>
                 </div>
@@ -187,18 +187,18 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {[
-                { icon: Brain, title: "Algoritmos Adaptativos", desc: "El sistema aprende de tus errores y calibra la dificultad en tiempo real.", color: "text-purple-400" },
-                { icon: TrendingUp, title: "Analítica Predictiva", desc: "Proyecciones de puntaje basadas en datos históricos de 10 años.", color: "text-blue-400" },
-                { icon: ShieldCheck, title: "Simulación Realista", desc: "Entorno idéntico al examen real: Sin pausas, cronometrado y seguro.", color: "text-green-400" }
+                { icon: Brain, title: "Algoritmos Adaptativos", desc: "El sistema aprende de tus errores y calibra la dificultad en tiempo real.", color: "text-brand-primary" },
+                { icon: TrendingUp, title: "Analítica Predictiva", desc: "Proyecciones de puntaje basadas en datos históricos de 10 años.", color: "text-brand-accent" },
+                { icon: ShieldCheck, title: "Simulación Realista", desc: "Entorno idéntico al examen real: Sin pausas, cronometrado y seguro.", color: "text-brand-success" }
               ].map((item, i) => (
-                <Card key={i} variant="glass" className="p-10 group hover:-translate-y-2 transition-transform duration-500 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]/10">
-                  <div className={`w-16 h-16 rounded-2xl bg-theme-bg-base flex items-center justify-center mb-8 group-hover:bg-theme-bg-base/80 transition-colors shadow-sm`}>
-                    <item.icon className={item.color} size={32} strokeWidth={2} />
+                <Card key={i} variant="glass" className="p-12 group hover:-translate-y-3 transition-all duration-500 border-theme-border-soft bg-theme-bg-surface/5 shadow-sm hover:shadow-xl hover:shadow-brand-primary/5">
+                  <div className={`w-20 h-20 rounded-2xl bg-theme-bg-base flex items-center justify-center mb-10 group-hover:bg-theme-bg-base/80 transition-colors shadow-sm ring-1 ring-black/5`}>
+                    <item.icon className={item.color} size={36} strokeWidth={2.5} />
                   </div>
-                  <h3 className="text-2xl font-semibold text-theme-text-primary mb-4 italic tracking-tight">{item.title}</h3>
-                  <p className="text-theme-text-tertiary text-base font-medium leading-relaxed">{item.desc}</p>
+                  <h3 className="text-2xl font-bold text-theme-text-primary mb-6 tracking-tight">{item.title}</h3>
+                  <p className="text-theme-text-secondary text-lg font-medium leading-relaxed opacity-90">{item.desc}</p>
                 </Card>
               ))}
             </div>
