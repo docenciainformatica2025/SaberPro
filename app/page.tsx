@@ -131,13 +131,13 @@ export default function Home() {
         </section>
 
         {/* NEW: Process Roadmap Section (Audit Requirement) */}
-        <section className="py-20 border-t border-[var(--theme-border-soft)] bg-[var(--theme-bg-base)] relative z-20" aria-label="Cómo funciona">
+        <section className="py-24 border-t border-theme-border-soft bg-theme-bg-base relative z-20" aria-label="Cómo funciona">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <Badge variant="outline" className="text-theme-text-tertiary border-theme-border-soft px-4 py-1 uppercase tracking-wider text-[10px] font-semibold mb-4">
+            <div className="text-center mb-20">
+              <Badge variant="outline" className="text-theme-text-tertiary border-theme-border-soft px-4 py-1 uppercase tracking-wider text-[10px] font-semibold mb-6">
                 Ruta de Excelencia
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-semibold text-theme-text-primary tracking-tight">
+              <h2 className="text-4xl md:text-5xl font-bold text-theme-text-primary tracking-tight">
                 Tu camino al <span className="text-brand-primary">Puntaje Perfecto</span>
               </h2>
             </div>
@@ -169,21 +169,21 @@ export default function Home() {
         </section>
 
         {/* Features Section & Marketing Copy */}
-        <section className="py-20 relative bg-[var(--theme-bg-surface)]/20 border-t border-[var(--theme-border-soft)] backdrop-blur-sm">
+        <section className="py-24 relative bg-theme-bg-surface/30 border-t border-theme-border-soft backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-10 md:mb-20 space-y-4 md:space-y-6">
               <Badge variant="outline" className="text-brand-primary border-brand-primary/30 px-4 py-1 uppercase tracking-wider text-[10px] font-semibold">
                 Filosofía de Entrenamiento
               </Badge>
 
-              <h2 className="text-4xl md:text-6xl font-semibold text-theme-text-primary italic tracking-tight mb-6 leading-none">
+              <h2 className="text-4xl md:text-6xl font-bold text-theme-text-primary italic tracking-tight mb-8 leading-none">
                 &quot;El problema no es que no sepas.<br />
                 <span className="text-theme-text-secondary/50">Es que no sabes qué reforzar.&quot;</span>
               </h2>
 
-              <p className="text-[var(--theme-text-secondary)] max-w-2xl mx-auto text-lg font-medium">
-                El Saber Pro no se estudia. <span className="text-[var(--theme-text-primary)] font-bold">Se entrena.</span><br />
-                Entrena como los que sí pasan.
+              <p className="text-theme-text-secondary max-w-2xl mx-auto text-xl font-medium leading-relaxed">
+                El Saber Pro no se estudia. <span className="text-theme-text-primary font-bold">Se entrena.</span><br />
+                <span className="opacity-80">Entrena con el rigor de la élite académica.</span>
               </p>
             </div>
 
@@ -206,8 +206,8 @@ export default function Home() {
         </section>
 
         {/* Social Proof / Stats */}
-        <section className="py-6 md:py-12 bg-gradient-to-b from-brand-primary/5 to-transparent relative overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
+        <section className="py-24 bg-gradient-to-b from-brand-primary/10 to-transparent border-t border-theme-border-soft relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]"></div>
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
               <div>
