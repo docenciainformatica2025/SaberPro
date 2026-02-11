@@ -11,6 +11,9 @@ import { BRAND_YEAR, COPYRIGHT_TEXT } from "@/lib/config";
 import { Logo } from "@/components/ui/Logo";
 import ProFooter from "@/components/ui/ProFooter";
 import NumberTicker from "@/components/ui/NumberTicker";
+import { StepCard } from "@/components/ui/StepCard";
+import { FeatureValueCard } from "@/components/ui/FeatureValueCard";
+import { GridBackground } from "@/components/ui/GridBackground";
 
 export default function Home() {
   const { user, role } = useAuth();
@@ -146,24 +149,22 @@ export default function Home() {
               {/* Connector Line (Desktop) */}
               <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-theme-text-secondary/10 via-brand-primary/30 to-theme-text-secondary/10 z-0" aria-hidden="true"></div>
 
-              {[
-                { step: "01", title: "Crea tu Cuenta", desc: "Registro unificado en 30 segundos. Sin costos ocultos.", color: "text-theme-text-primary" },
-                { step: "02", title: "Diagnóstico IA", desc: "Evalúa tu nivel actual con nuestro motor de inteligencia artificial.", color: "text-brand-primary" },
-                { step: "03", title: "Entrena y Domina", desc: "Recibe un plan personalizado basado en tus debilidades.", color: "text-theme-text-primary" }
-              ].map((item, i) => (
-                <div key={i} className="relative z-10 flex flex-col items-center text-center group" role="listitem">
-                  <div className={`w-28 h-28 rounded-[2rem] bg-theme-bg-base border ${i === 1 ? 'border-brand-primary shadow-xl shadow-brand-primary/10' : 'border-theme-border-soft shadow-sm'} flex items-center justify-center text-4xl font-bold ${item.color} mb-8 transition-all duration-500 group-hover:scale-105 group-hover:shadow-md`}>
-                    {item.step}
-                  </div>
-                  <h3 className="text-2xl font-bold text-theme-text-primary uppercase tracking-tighter mb-4 leading-tight">
-                    <span className="sr-only">Paso {item.step}: </span>
-                    {item.title}
-                  </h3>
-                  <p className="text-theme-text-secondary text-base font-medium max-w-xs leading-relaxed opacity-80">
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
+              <StepCard
+                step="01"
+                title="Crea tu Cuenta"
+                description="Registro unificado en 30 segundos. Sin costos ocultos."
+              />
+              <StepCard
+                step="02"
+                title="Diagnóstico IA"
+                description="Evalúa tu nivel actual con nuestro motor de inteligencia artificial."
+                isPrimary
+              />
+              <StepCard
+                step="03"
+                title="Entrena y Domina"
+                description="Recibe un plan personalizado basado en tus debilidades."
+              />
             </div>
           </div>
         </section>
@@ -188,26 +189,30 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-              {[
-                { icon: Brain, title: "Algoritmos Adaptativos", desc: "El sistema aprende de tus errores y calibra la dificultad en tiempo real.", color: "text-brand-primary" },
-                { icon: TrendingUp, title: "Analítica Predictiva", desc: "Proyecciones de puntaje basadas en datos históricos de 10 años.", color: "text-brand-accent" },
-                { icon: ShieldCheck, title: "Simulación Realista", desc: "Entorno idéntico al examen real: Sin pausas, cronometrado y seguro.", color: "text-brand-success" }
-              ].map((item, i) => (
-                <Card key={i} variant="glass" className="p-12 group hover:-translate-y-3 transition-all duration-500 border-theme-border-soft bg-theme-bg-surface/5 shadow-sm hover:shadow-xl hover:shadow-brand-primary/5">
-                  <div className={`w-20 h-20 rounded-2xl bg-theme-bg-base flex items-center justify-center mb-10 group-hover:bg-theme-bg-base/80 transition-colors shadow-sm ring-1 ring-black/5`}>
-                    <item.icon className={item.color} size={36} strokeWidth={2.5} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-theme-text-primary mb-6 tracking-tight">{item.title}</h3>
-                  <p className="text-theme-text-secondary text-lg font-medium leading-relaxed opacity-90">{item.desc}</p>
-                </Card>
-              ))}
+              <FeatureValueCard
+                icon={Brain}
+                title="Algoritmos Adaptativos"
+                description="El sistema aprende de tus errores y calibra la dificultad en tiempo real."
+              />
+              <FeatureValueCard
+                icon={TrendingUp}
+                title="Analítica Predictiva"
+                description="Proyecciones de puntaje basadas en datos históricos de 10 años."
+                iconColor="text-brand-accent"
+              />
+              <FeatureValueCard
+                icon={ShieldCheck}
+                title="Simulación Realista"
+                description="Entorno idéntico al examen real: Sin pausas, cronometrado y seguro."
+                iconColor="text-brand-success"
+              />
             </div>
           </div>
         </section>
 
         {/* Social Proof / Stats */}
         <section className="py-24 bg-gradient-to-b from-brand-primary/10 to-transparent border-t border-theme-border-soft relative overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]"></div>
+          <GridBackground size={60} opacity={0.03} className="text-brand-primary" />
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
               <div>
