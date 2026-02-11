@@ -16,7 +16,7 @@ import {
     DollarSign,
     KeyRound
 } from "lucide-react";
-// import { cn } from "@/lib/utils";
+
 
 interface AdminSidebarProps {
     isOpen?: boolean;
@@ -58,7 +58,7 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
     return (
         <>
             {/* Desktop Sidebar (Always visible on lg) */}
-            <aside className="hidden lg:flex w-64 bg-[#0a0a0a] border-r border-white/5 flex-col h-screen sticky top-0 shrink-0">
+            <aside className="hidden lg:flex w-64 bg-[var(--theme-bg-surface)] border-r border-[var(--theme-border-soft)] flex-col h-screen sticky top-0 shrink-0 transition-colors">
                 <SidebarContent navGroups={navGroups} pathname={pathname} />
             </aside>
 
@@ -67,12 +67,12 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
                 <div className="fixed inset-0 z-50 lg:hidden font-sans">
                     {/* Backdrop */}
                     <div
-                        className="absolute inset-0 bg-black/80 backdrop-blur-sm animate-in fade-in duration-300"
+                        className="absolute inset-0 bg-[var(--theme-bg-base)]/60 backdrop-blur-sm animate-in fade-in duration-300"
                         onClick={onClose}
                     />
 
                     {/* Drawer */}
-                    <aside className="absolute top-0 left-0 w-3/4 max-w-[280px] h-full bg-[#0a0a0a] border-r border-white/10 shadow-2xl animate-in slide-in-from-left duration-300 flex flex-col">
+                    <aside className="absolute top-0 left-0 w-3/4 max-w-[280px] h-full bg-[var(--theme-bg-surface)] border-r border-[var(--theme-border-medium)] shadow-2xl animate-in slide-in-from-left duration-300 flex flex-col transition-colors">
                         <SidebarContent navGroups={navGroups} pathname={pathname} onClose={onClose} />
                     </aside>
                 </div>
@@ -86,14 +86,14 @@ function SidebarContent({ navGroups, pathname, onClose }: { navGroups: any[], pa
     return (
         <div className="flex flex-col h-full">
             {/* Header */}
-            <div className="p-6 border-b border-white/5">
-                <div className="flex items-center gap-3 text-metal-gold">
-                    <div className="p-2 bg-metal-gold/10 rounded-lg">
+            <div className="p-6 border-b border-[var(--theme-border-soft)]">
+                <div className="flex items-center gap-3 text-brand-primary">
+                    <div className="p-2 bg-brand-primary/10 rounded-lg">
                         <ShieldAlert size={24} />
                     </div>
                     <div>
-                        <h1 className="font-bold text-lg tracking-wider text-white">COMMAND</h1>
-                        <p className="text-[10px] text-metal-silver uppercase tracking-[0.2em]">Center</p>
+                        <h1 className="font-bold text-lg tracking-wider text-[var(--theme-text-primary)]">COMMAND</h1>
+                        <p className="text-[10px] text-[var(--theme-text-tertiary)] uppercase tracking-[0.2em]">Center</p>
                     </div>
                 </div>
             </div>
@@ -102,7 +102,7 @@ function SidebarContent({ navGroups, pathname, onClose }: { navGroups: any[], pa
             <nav className="flex-1 overflow-y-auto py-6 px-4 space-y-8 custom-scrollbar">
                 {navGroups.map((group: any, idx: number) => (
                     <div key={idx}>
-                        <h3 className="text-[10px] uppercase tracking-widest text-[#404040] font-bold mb-3 pl-3">
+                        <h3 className="text-[10px] uppercase tracking-wider text-[var(--theme-text-quaternary)] font-bold mb-3 pl-3">
                             {group.title}
                         </h3>
                         <div className="space-y-1">
@@ -116,12 +116,12 @@ function SidebarContent({ navGroups, pathname, onClose }: { navGroups: any[], pa
                                         className={`
                                             flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 group
                                             ${isActive
-                                                ? "bg-metal-gold text-black shadow-[0_0_15px_rgba(212,175,55,0.3)] font-black"
-                                                : "text-metal-silver hover:bg-white/10 hover:text-white"
+                                                ? "bg-brand-primary text-white shadow-[0_0_15px_rgba(30,64,175,0.3)] font-semibold"
+                                                : "text-[var(--theme-text-secondary)] hover:bg-[var(--theme-text-primary)]/5 hover:text-[var(--theme-text-primary)]"
                                             }
                                         `}
                                     >
-                                        <item.icon size={18} className={`${isActive ? "text-black" : "text-metal-silver group-hover:text-white"} transition-colors`} />
+                                        <item.icon size={18} className={`${isActive ? "text-white" : "text-[var(--theme-text-tertiary)] group-hover:text-[var(--theme-text-primary)]"} transition-colors`} />
                                         <span>{item.label}</span>
                                     </Link>
                                 );
@@ -132,12 +132,12 @@ function SidebarContent({ navGroups, pathname, onClose }: { navGroups: any[], pa
             </nav>
 
             {/* Footer */}
-            <div className="p-4 border-t border-white/5 bg-black/20">
+            <div className="p-4 border-t border-[var(--theme-border-soft)] bg-[var(--theme-text-primary)]/[0.02]">
                 <button
                     onClick={async () => {
                         await logout();
                     }}
-                    className="w-full flex items-center gap-3 px-4 py-3 text-metal-silver hover:text-white hover:bg-red-500/10 hover:border-red-500/20 border border-transparent rounded-lg transition-all group"
+                    className="w-full flex items-center gap-3 px-4 py-3 text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] hover:bg-red-500/10 hover:border-red-500/20 border border-transparent rounded-lg transition-all group"
                 >
                     <LogOut size={18} className="group-hover:text-red-400 transition-colors" />
                     <span className="text-sm font-medium">Cerrar Sesión</span>

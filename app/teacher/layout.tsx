@@ -44,7 +44,7 @@ export default function TeacherLayout({ children }: { children: React.ReactNode 
     // Show loader while checking auth
     if (loading) {
         return (
-            <div className="min-h-screen bg-metal-dark flex items-center justify-center">
+            <div className="min-h-screen bg-[var(--theme-bg-base)] flex items-center justify-center">
                 <AIProcessingLoader text="Verificando Credenciales" />
             </div>
         );
@@ -52,7 +52,7 @@ export default function TeacherLayout({ children }: { children: React.ReactNode 
 
     if (!user || role !== 'teacher') {
         return (
-            <div className="min-h-screen bg-metal-dark flex items-center justify-center">
+            <div className="min-h-screen bg-[var(--theme-bg-base)] flex items-center justify-center">
                 <AIProcessingLoader text="Redirigiendo..." />
             </div>
         );
@@ -71,19 +71,19 @@ export default function TeacherLayout({ children }: { children: React.ReactNode 
     ];
 
     return (
-        <div className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-metal-gold/30 overflow-x-hidden">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] text-[var(--theme-text-primary)] font-sans selection:bg-brand-primary/30 overflow-x-hidden transition-colors duration-500">
             {/* Background Ambient Effects */}
             <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-metal-gold/5 rounded-full blur-[120px] mix-blend-screen" />
-                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] mix-blend-screen" />
+                <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[var(--theme-accent)]/[0.03] dark:bg-[var(--theme-accent)]/5 rounded-full blur-[120px] mix-blend-screen" />
+                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[var(--theme-secondary)]/[0.03] dark:bg-[var(--theme-secondary)]/5 rounded-full blur-[120px] mix-blend-screen" />
             </div>
 
             {/* Main Content Area - Full Screen Canvas */}
-            <main className="relative z-10 w-[95%] max-w-[1800px] mx-auto">
+            <div className="relative z-10 w-[95%] max-w-[1800px] mx-auto">
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 ease-out">
                     {children}
                 </div>
-            </main>
+            </div>
         </div>
     );
 }

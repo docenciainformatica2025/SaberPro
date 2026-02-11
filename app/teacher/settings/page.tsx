@@ -54,7 +54,7 @@ export default function TeacherSettingsPage() {
             }, { merge: true });
             toast.success("¡Configuración Guardada!", {
                 description: "Tu perfil profesional ha sido actualizado correctamente.",
-                icon: <CheckCircle2 className="text-metal-gold" size={16} />
+                icon: <CheckCircle2 className="text-brand-primary" size={16} />
             });
         } catch (error) {
             console.error(error);
@@ -70,52 +70,52 @@ export default function TeacherSettingsPage() {
     return (
         <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div>
-                <h1 className="text-3xl font-bold text-white mb-2">Configuración de Perfil</h1>
-                <p className="text-metal-silver">Gestiona tu información personal y profesional.</p>
+                <h1 className="text-3xl font-bold text-[var(--theme-text-primary)] mb-2">Configuración de Perfil</h1>
+                <p className="text-[var(--theme-text-secondary)]">Gestiona tu información personal y profesional.</p>
             </div>
 
-            <div className="metallic-card p-8 rounded-2xl border border-metal-silver/10 bg-black/20">
+            <div className="metallic-card p-8 rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]/20">
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Full Name */}
                         <div>
-                            <label className="block text-sm font-bold text-metal-silver mb-2 flex items-center gap-2">
-                                <User size={16} className="text-metal-gold" /> Nombre Completo
+                            <label className="block text-sm font-bold text-[var(--theme-text-secondary)] mb-2 flex items-center gap-2">
+                                <User size={16} className="text-brand-primary" /> Nombre Completo
                             </label>
                             <input
                                 type="text"
                                 value={formData.fullName}
                                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                                className="w-full bg-black/40 border border-metal-silver/20 rounded-xl p-3 text-white focus:border-metal-gold outline-none"
+                                className="w-full bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] rounded-xl p-3 text-[var(--theme-text-primary)] focus:border-brand-primary outline-none"
                                 placeholder="Tu nombre completo"
                             />
                         </div>
 
                         {/* Institution */}
                         <div>
-                            <label className="block text-sm font-bold text-metal-silver mb-2 flex items-center gap-2">
-                                <School size={16} className="text-metal-blue" /> Institución Educativa
+                            <label className="block text-sm font-bold text-[var(--theme-text-secondary)] mb-2 flex items-center gap-2">
+                                <School size={16} className="text-blue-400" /> Institución Educativa
                             </label>
                             <input
                                 type="text"
                                 value={formData.institution}
                                 onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
-                                className="w-full bg-black/40 border border-metal-silver/20 rounded-xl p-3 text-white focus:border-metal-blue outline-none"
+                                className="w-full bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] rounded-xl p-3 text-[var(--theme-text-primary)] focus:border-blue-400 outline-none"
                                 placeholder="Nombre del colegio o universidad"
                             />
                         </div>
 
                         {/* Subject/Area */}
                         <div>
-                            <label className="block text-sm font-bold text-metal-silver mb-2 flex items-center gap-2">
+                            <label className="block text-sm font-bold text-[var(--theme-text-secondary)] mb-2 flex items-center gap-2">
                                 <BookOpen size={16} className="text-purple-400" /> Área / Asignatura Principal
                             </label>
                             <select
                                 value={formData.subject}
                                 onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                                className="w-full bg-black/40 border border-metal-silver/20 rounded-xl p-3 text-white focus:border-purple-500 outline-none appearance-none cursor-pointer"
+                                className="w-full bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] rounded-xl p-3 text-[var(--theme-text-primary)] focus:border-purple-500 outline-none appearance-none cursor-pointer"
                             >
-                                <option value="" disabled className="text-metal-silver/50">Selecciona tu área principal</option>
+                                <option value="" disabled className="text-[var(--theme-text-tertiary)]">Selecciona tu área principal</option>
                                 <option value="Matemáticas y Cuantitativo">Matemáticas y Razonamiento Cuantitativo</option>
                                 <option value="Lectura Crítica y Lenguaje">Lectura Crítica y Lenguaje</option>
                                 <option value="Ciencias Sociales y Ciudadanas">Ciencias Sociales y Competencias Ciudadanas</option>
@@ -131,11 +131,11 @@ export default function TeacherSettingsPage() {
                         </div>
                     </div>
 
-                    <div className="pt-4 border-t border-metal-silver/10 flex justify-end">
+                    <div className="pt-4 border-t border-theme-text-secondary/10 flex justify-end">
                         <button
                             type="submit"
                             disabled={loading}
-                            className="metallic-btn bg-metal-gold text-black font-bold px-8 py-3 rounded-xl flex items-center gap-2 disabled:opacity-50"
+                            className="metallic-btn bg-brand-primary text-[var(--theme-bg-base)] font-bold px-8 py-3 rounded-xl flex items-center gap-2 disabled:opacity-50"
                         >
                             <Save size={18} />
                             {loading ? 'Guardando...' : 'Guardar Cambios'}

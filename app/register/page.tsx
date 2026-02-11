@@ -108,22 +108,22 @@ export default function RegisterPage() {
 
 
     return (
-        <div className="flex min-h-screen bg-metal-black">
+        <div className="flex min-h-screen bg-[var(--theme-bg-base)]">
             {/* Left Side - Branding (Desktop Only) */}
-            <div className="hidden lg:flex w-1/2 bg-[#0a0a0a] relative overflow-hidden flex-col justify-between p-16 border-r border-white/5">
-                <div className="absolute inset-0 bg-gradient-to-br from-black/95 via-black/80 to-[#0A0A0A]"></div>
+            <div className="hidden lg:flex w-1/2 bg-[var(--theme-bg-surface)] relative overflow-hidden flex-col justify-between p-16 border-r border-[var(--theme-border-soft)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--theme-bg-base)]/95 via-[var(--theme-bg-base)]/80 to-[var(--theme-bg-base)]"></div>
                 <div className="relative z-10">
                     <div className="mb-8"><Logo variant="full" size="xl" /></div>
                 </div>
                 <div className="relative z-10 max-w-lg">
-                    <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
+                    <h2 className="text-5xl font-bold text-[var(--theme-text-primary)] mb-6 leading-tight">
                         Crea tu perfil y <br />
-                        <span className="text-metal-gold">empieza a entrenar.</span>
+                        <span className="text-brand-primary">empieza a entrenar.</span>
                     </h2>
                     <div className="space-y-4">
                         {["Diagnóstico de nivel inicial", "Práctica por áreas específicas", "Resultados inmediatos"].map((item, i) => (
-                            <div key={i} className="flex items-center gap-3 text-metal-silver">
-                                <CheckCircleIcon className="text-metal-gold" size={20} />
+                            <div key={i} className="flex items-center gap-3 text-[var(--theme-text-secondary)]">
+                                <CheckCircleIcon className="text-brand-primary" size={20} />
                                 <span>{item}</span>
                             </div>
                         ))}
@@ -137,7 +137,7 @@ export default function RegisterPage() {
                     {/* Public Navigation Pill */}
                     <div className="flex justify-between items-center mb-6">
                         <Link href="/">
-                            <Button variant="ghost" icon={ArrowLeftIcon} className="p-0 text-metal-silver text-[10px] font-black uppercase tracking-widest hover:text-white transition-colors">
+                            <Button variant="ghost" icon={ArrowLeftIcon} className="p-0 text-[var(--theme-text-tertiary)] text-[10px] font-semibold uppercase tracking-wider hover:text-[var(--theme-text-primary)] transition-colors">
                                 Regresar al Inicio
                             </Button>
                         </Link>
@@ -147,8 +147,8 @@ export default function RegisterPage() {
                     </div>
 
                     <div className="space-y-1">
-                        <h1 className="text-3xl font-black text-white uppercase italic tracking-tighter">Registro de Usuario</h1>
-                        <p className="text-metal-silver/60 text-sm">Crea tu cuenta institucional</p>
+                        <h1 className="text-3xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">Registro de Usuario</h1>
+                        <p className="text-[var(--theme-text-tertiary)] text-sm">Crea tu cuenta institucional</p>
                     </div>
 
 
@@ -156,8 +156,8 @@ export default function RegisterPage() {
                     <Button
                         onClick={handleGoogleLogin}
                         disabled={googleLoading}
-                        variant="silver"
-                        className="w-full bg-white text-black hover:bg-gray-100 border-none h-12"
+                        variant="outline"
+                        className="w-full border-none h-12"
                         isLoading={googleLoading}
                     >
                         Registrarse con Google
@@ -177,8 +177,8 @@ export default function RegisterPage() {
                             {/* Password Section */}
                             <div className="space-y-2">
                                 <div className="flex justify-between items-center">
-                                    <label className="text-xs font-semibold text-metal-silver/80 uppercase">Contraseña</label>
-                                    <button type="button" onClick={generatePassword} className="text-[10px] text-metal-gold hover:text-white flex items-center gap-1 uppercase font-bold">
+                                    <label className="text-xs font-semibold text-[var(--theme-text-secondary)] uppercase">Contraseña</label>
+                                    <button type="button" onClick={generatePassword} className="text-[10px] text-brand-primary hover:text-[var(--theme-text-primary)] flex items-center gap-1 uppercase font-bold">
                                         <RefreshIcon size={10} /> Generar
                                     </button>
                                 </div>
@@ -189,7 +189,7 @@ export default function RegisterPage() {
                                         {...register("password")}
                                         error={errors.password?.message}
                                     />
-                                    <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-3 text-metal-silver/40 hover:text-white">
+                                    <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-3 text-[var(--theme-text-tertiary)] hover:text-[var(--theme-text-primary)]">
                                         {showPassword ? <EyeOffIcon size={18} /> : <EyeIcon size={18} />}
                                     </button>
                                 </div>
@@ -197,16 +197,16 @@ export default function RegisterPage() {
                             <Input label="Confirmar" type="password" icon={LockIcon} {...register("confirmPassword")} error={errors.confirmPassword?.message} />
 
                             {/* Terms & Security Section (Unified) */}
-                            <div className="pt-4 border-t border-white/5 space-y-4">
+                            <div className="pt-4 border-t border-[var(--theme-border-soft)] space-y-4">
                                 <div className="flex items-start gap-3">
-                                    <input type="checkbox" id="terms" {...register("terms")} className="mt-1 h-4 w-4 rounded border-metal-silver text-metal-gold focus:ring-metal-gold bg-metal-dark/50" />
-                                    <label htmlFor="terms" className="text-xs text-metal-silver/70 leading-relaxed">
-                                        Al crear mi cuenta acepto los <Link href="/legal/terms" target="_blank" className="text-metal-gold underline hover:text-white">Términos de Uso</Link>, <Link href="/legal/privacy" target="_blank" className="text-metal-gold underline hover:text-white">Política de Privacidad</Link> y el uso de <Link href="/legal/cookies" target="_blank" className="text-metal-gold underline hover:text-white">Cookies</Link>.
+                                    <input type="checkbox" id="terms" {...register("terms")} className="mt-1 h-4 w-4 rounded border-[var(--theme-border-soft)] text-brand-primary focus:ring-brand-primary bg-[var(--theme-bg-base)]/50" />
+                                    <label htmlFor="terms" className="text-xs text-[var(--theme-text-tertiary)] leading-relaxed">
+                                        Al crear mi cuenta acepto los <Link href="/legal/terms" target="_blank" className="text-brand-primary underline hover:text-[var(--theme-text-primary)]">Términos de Uso</Link>, <Link href="/legal/privacy" target="_blank" className="text-brand-primary underline hover:text-[var(--theme-text-primary)]">Política de Privacidad</Link> y el uso de <Link href="/legal/cookies" target="_blank" className="text-brand-primary underline hover:text-[var(--theme-text-primary)]">Cookies</Link>.
                                     </label>
                                 </div>
                                 {errors.terms && <p className="text-xs text-red-400 ml-1">{errors.terms.message}</p>}
 
-                                <div className="flex justify-center bg-black/20 p-2 rounded-xl border border-white/5">
+                                <div className="flex justify-center bg-[var(--theme-bg-base)]/20 p-2 rounded-xl border border-[var(--theme-border-soft)]">
                                     <Turnstile sitekey="0x4AAAAAACH1Rmabzh7QI6OR" onVerify={(token) => setCaptchaToken(token)} theme="dark" />
                                 </div>
                             </div>
@@ -216,7 +216,7 @@ export default function RegisterPage() {
                             Crear Cuenta
                         </Button>
                     </form>
-                    <div className="text-center"><p className="text-sm text-metal-silver/60">¿Ya tienes cuenta? <Link href="/login" className="text-metal-gold hover:text-white font-medium">Iniciar Sesión</Link></p></div>
+                    <div className="text-center"><p className="text-sm text-[var(--theme-text-tertiary)]">¿Ya tienes cuenta? <Link href="/login" className="text-brand-primary hover:text-[var(--theme-text-primary)] font-medium">Iniciar Sesión</Link></p></div>
                 </div>
             </div>
         </div>

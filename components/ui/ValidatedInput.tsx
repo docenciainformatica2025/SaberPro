@@ -55,7 +55,7 @@ export default function ValidatedInput({
         if (error || validationState === 'invalid') return 'border-red-500/50 focus:border-red-500';
         if (validationState === 'valid') return 'border-green-500/50 focus:border-green-500';
         if (validationState === 'validating') return 'border-yellow-500/50 focus:border-yellow-500';
-        return 'border-metal-silver/10 focus:border-metal-gold';
+        return 'border-[var(--theme-border-soft)] focus:border-brand-primary';
     };
 
     const getValidationIcon = () => {
@@ -67,7 +67,7 @@ export default function ValidatedInput({
 
     return (
         <div className="space-y-2">
-            <label className="text-xs font-semibold text-metal-silver/80 uppercase tracking-wider ml-1">
+            <label className="text-xs font-semibold text-[var(--theme-text-secondary)] uppercase tracking-wider ml-1">
                 {label}
             </label>
 
@@ -75,7 +75,7 @@ export default function ValidatedInput({
                 {Icon && (
                     <Icon
                         size={18}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 text-metal-silver/40 pointer-events-none"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--theme-text-quaternary)] pointer-events-none"
                     />
                 )}
 
@@ -85,10 +85,10 @@ export default function ValidatedInput({
                     onChange={handleChange}
                     className={`
                         w-full h-12 rounded-xl border transition-all duration-300
-                        bg-metal-dark/50 text-white
+                        bg-[var(--theme-bg-surface)]/50 text-[var(--theme-text-primary)]
                         ${Icon ? 'pl-12' : 'pl-4'} 
                         pr-12
-                        placeholder:text-metal-silver/30
+                        placeholder:text-[var(--theme-text-quaternary)]/30
                         focus:outline-none focus:ring-2 focus:ring-offset-0
                         ${getBorderColor()}
                         ${className}

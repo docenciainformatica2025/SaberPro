@@ -7,6 +7,9 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/Button";
+import { Badge } from "@/components/ui/Badge";
+import { cn } from "@/lib/utils";
 
 interface Result {
     id: string;
@@ -82,34 +85,38 @@ export default function ResultDetailModal({ isOpen, onClose, result, userName }:
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-            <div className="relative w-full max-w-3xl bg-metal-dark border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[var(--theme-bg-base)]/80 backdrop-blur-xl animate-in fade-in duration-200">
+            <div className="relative w-full max-w-3xl bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] rounded-2xl shadow-[var(--theme-shadow-lg)] overflow-hidden flex flex-col max-h-[90vh]">
 
                 {/* Header Actions */}
-                <div className="flex justify-between items-center p-4 border-b border-white/10 bg-black/20">
-                    <h3 className="text-white font-bold text-lg flex items-center gap-2">
+                <div className="flex justify-between items-center p-4 border-b border-[var(--theme-border-soft)] bg-[var(--theme-bg-base)]/40">
+                    <h3 className="text-[var(--theme-text-primary)] font-bold text-lg flex items-center gap-2">
                         <FileTextIcon /> Reporte de Resultados
                     </h3>
                     <div className="flex items-center gap-2">
-                        <button
+                        <Button
                             onClick={handleDownloadPDF}
                             disabled={isDownloading}
-                            className={`flex items-center gap-2 px-4 py-2 text-black rounded-lg font-bold transition-colors disabled:opacity-50 ${isPro ? "bg-metal-gold hover:bg-white" : "bg-metal-silver/50 cursor-not-allowed hover:bg-metal-silver/60"}`}
-                            title={isPro ? "Descargar Certificado" : "Mejorar a Pro para descargar"}
+                            variant={isPro ? "premium" : "outline"}
+                            size="sm"
+                            className={!isPro ? "text-[var(--theme-text-tertiary)] border-[var(--theme-border-soft)]" : "shadow-gold"}
+                            icon={isPro ? Download : Lock}
+                            iconPosition="right"
                         >
-                            {isDownloading ? "Generando..." : "Descargar PDF"} {isPro ? <Download size={18} /> : <Lock size={18} />}
-                        </button>
-                        <button
+                            {isDownloading ? "Generando..." : "Descargar PDF"}
+                        </Button>
+                        <Button
                             onClick={onClose}
-                            className="p-2 text-metal-silver hover:text-white rounded-lg hover:bg-white/10 transition-colors"
-                        >
-                            <X size={24} />
-                        </button>
+                            variant="ghost"
+                            size="icon"
+                            icon={X}
+                            className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] hover:bg-[var(--theme-bg-base)]/10"
+                        />
                     </div>
                 </div>
 
                 {/* Report Content - Scrollable View */}
-                <div className="overflow-y-auto p-6 md:p-8 flex-1 bg-neutral-900">
+                <div className="overflow-y-auto p-6 md:p-8 flex-1 bg-[var(--theme-bg-base)] text-[var(--theme-text-secondary)]">
                     {/* The Printable Area - Letter Dimensions (roughly 216mm x 279mm) */}
                     <div
                         ref={reportRef}
@@ -119,11 +126,11 @@ export default function ResultDetailModal({ isOpen, onClose, result, userName }:
                         {/* Report Header */}
                         <div className="border-b-2 pb-8 mb-8 flex justify-between items-start" style={{ borderColor: '#f3f4f6' }}>
                             <div>
-                                <h1 className="text-3xl font-black mb-2 uppercase tracking-tight" style={{ color: '#111827' }}>Reporte Individual</h1>
+                                <h1 className="text-3xl font-semibold mb-2 uppercase tracking-tight" style={{ color: '#111827' }}>Reporte Individual</h1>
                                 <p className="font-medium" style={{ color: '#6b7280' }}>Simulacro Saber Pro 2026</p>
                             </div>
                             <div className="text-right">
-                                <div className="px-4 py-1 font-bold text-sm uppercase tracking-widest inline-block mb-2" style={{ backgroundColor: '#000000', color: '#ffffff' }}>
+                                <div className="px-4 py-1 font-bold text-sm uppercase tracking-wider inline-block mb-2" style={{ backgroundColor: '#000000', color: '#ffffff' }}>
                                     Simulacro
                                 </div>
                                 <p className="text-sm" style={{ color: '#9ca3af' }}>ID: {result.id.slice(0, 8).toUpperCase()}</p>
@@ -142,36 +149,37 @@ export default function ResultDetailModal({ isOpen, onClose, result, userName }:
                             </div>
                         </div>
 
-                        {/* Main Score */}
+                        {/* Main Score & Meaning */}
                         <div className="mb-12">
-                            <h2 className="text-lg font-bold mb-6 flex items-center gap-2 uppercase tracking-wide border-l-4 pl-3" style={{ color: '#111827', borderColor: '#000000' }}>
-                                Desempeño General - {result.module?.replace(/_/g, " ") || "Prueba General"}
+                            <h2 className="text-xl font-semibold mb-8 flex items-center gap-3 text-[var(--theme-text-primary)]">
+                                <div className="w-1.5 h-6 bg-brand-primary rounded-full" />
+                                Resumen de {result.module?.replace(/_/g, " ") || "Prueba General"}
                             </h2>
 
-                            <div className="flex items-stretch gap-6">
-                                <div className="flex-1 p-8 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden" style={{ backgroundColor: '#111827', color: '#ffffff' }}>
-                                    <div className="absolute top-0 right-0 p-32 rounded-full -mr-16 -mt-16" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}></div>
-                                    <span className="text-6xl font-black tracking-tighter relative z-10">{result.score}</span>
-                                    <span className="text-sm font-medium uppercase tracking-widest relative z-10" style={{ color: '#9ca3af' }}>Puntaje Obtenido</span>
-                                    <span className="text-xs mt-2 relative z-10" style={{ color: '#6b7280' }}>De {result.totalQuestions} posibles</span>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                                <div className="p-10 rounded-3xl bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] flex flex-col items-center justify-center text-center">
+                                    <span className="text-6xl font-bold text-[var(--theme-text-primary)] mb-2 tracking-tighter">
+                                        {result.score} <span className="text-2xl font-light text-[var(--theme-text-secondary)]/30">/ {result.totalQuestions}</span>
+                                    </span>
+                                    <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-primary">Aciertos Reales</p>
                                 </div>
 
-                                <div className="flex-1 border-2 rounded-2xl p-8 flex flex-col justify-center" style={{ borderColor: '#f3f4f6' }}>
+                                <div className="p-8 rounded-3xl bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] flex flex-col justify-center">
                                     <div className="flex items-center justify-between mb-4">
-                                        <span className="font-medium" style={{ color: '#6b7280' }}>Nivel de Desempeño</span>
-                                        <span
-                                            className="px-3 py-1 rounded-full text-xs font-black uppercase"
-                                            style={{ backgroundColor: level.bg, color: level.color }}
+                                        <span className="text-[10px] uppercase font-bold tracking-widest text-[var(--theme-text-secondary)]">Significado</span>
+                                        <Badge
+                                            variant="ghost"
+                                            className="px-2 py-0.5 text-[10px] font-bold uppercase"
+                                            style={{ color: level.color, backgroundColor: `${level.color}10` }}
                                         >
                                             Nivel {level.level}
-                                        </span>
+                                        </Badge>
                                     </div>
-                                    <p className="text-2xl font-bold mb-2" style={{ color: level.color }}>{level.desc}</p>
-                                    <p className="text-sm leading-relaxed" style={{ color: '#9ca3af' }}>
-                                        {level.level === 4 && "El estudiante demuestra un dominio avanzado de los conceptos evaluados, capaz de aplicar conocimientos en contextos complejos."}
-                                        {level.level === 3 && "El estudiante muestra un desempeño satisfactorio, con comprensión sólida de los conceptos fundamentales."}
-                                        {level.level === 2 && "El estudiante evidencia un desempeño mínimo aceptable, con dificultades en temas de mayor complejidad."}
-                                        {level.level === 1 && "El estudiante no alcanza los competencias mínimas requeridas. Se recomienda refuerzo intensivo."}
+                                    <h3 className="text-2xl font-semibold mb-3 tracking-tight" style={{ color: level.color }}>
+                                        {percentage >= 80 ? "Dominio Avanzado" : percentage >= 60 ? "Nivel Competitivo" : percentage >= 40 ? "Base Estable" : "Falta Refuerzo"}
+                                    </h3>
+                                    <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
+                                        De cada 10 preguntas, sueles acertar aproximandamente <strong>{Math.round(percentage / 10)}</strong>. {level.level === 4 ? "Excelente." : "Se recomienda práctica enfocada."}
                                     </p>
                                 </div>
                             </div>
@@ -204,7 +212,7 @@ export default function ResultDetailModal({ isOpen, onClose, result, userName }:
                         {/* Footer */}
                         <div className="mt-auto pt-8 border-t grid grid-cols-1 md:grid-cols-2 gap-6 items-end text-[10px]" style={{ borderColor: '#f3f4f6', color: '#6b7280' }}>
                             <div className="flex flex-col gap-1 w-full">
-                                <p className="font-bold" style={{ color: '#111827' }}>Copyright © Ing. Antonio Rodríguez 2024-2025</p>
+                                <p className="font-bold" style={{ color: '#111827' }}>Copyright © {process.env.NEXT_PUBLIC_AUTHOR_NAME || "SaberPro"} 2024-2025</p>
                                 <p className="font-medium mb-1" style={{ color: '#9ca3af' }}>© 2026 SaberPro Platform</p>
                                 <p className="leading-tight text-justify" style={{ color: '#9ca3af' }}>
                                     Este documento es un reporte de simulacro generado exclusivamente con fines académicos y de entrenamiento.
@@ -212,9 +220,9 @@ export default function ResultDetailModal({ isOpen, onClose, result, userName }:
                                 </p>
                             </div>
                             <div className="text-right flex flex-col gap-1">
-                                <span className="block font-bold uppercase tracking-widest text-[9px]" style={{ color: '#374151' }}>Fecha de Generación</span>
+                                <span className="block font-bold uppercase tracking-wider text-[9px]" style={{ color: '#374151' }}>Fecha de Generación</span>
                                 <span className="block font-mono" style={{ color: '#4b5563' }}>{date.toLocaleString("es-CO")}</span>
-                                <div className="mt-2 text-[9px] uppercase tracking-widest" style={{ color: '#d1d5db' }}>
+                                <div className="mt-2 text-[9px] uppercase tracking-wider" style={{ color: '#d1d5db' }}>
                                     Documento No Oficial
                                 </div>
                             </div>

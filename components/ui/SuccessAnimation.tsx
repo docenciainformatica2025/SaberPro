@@ -15,12 +15,12 @@ export default function SuccessAnimation({ message = "¡Excelente!", isVisible, 
             className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none"
             onAnimationEnd={onAnimationEnd}
         >
-            <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px] animate-in fade-in duration-300" />
-            <div className="bg-metal-dark border border-metal-gold/50 px-8 py-6 rounded-2xl shadow-[0_0_50px_rgba(212,175,55,0.2)] flex flex-col items-center gap-4 animate-success-pulse">
-                <div className="rounded-full bg-metal-gold/20 p-4">
-                    <CheckCircle className="text-metal-gold w-12 h-12" />
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] animate-in fade-in duration-300" />
+            <div className="bg-[var(--theme-bg-surface)] border border-brand-primary/50 px-8 py-6 rounded-2xl shadow-[var(--theme-accent-gold-soft)] flex flex-col items-center gap-4 animate-success-pulse">
+                <div className="rounded-full bg-brand-primary/10 p-4 border border-brand-primary/20">
+                    <CheckCircle className="text-brand-primary w-12 h-12" />
                 </div>
-                <h3 className="text-xl font-bold text-white tracking-wide">{message}</h3>
+                <h3 className="text-xl font-bold text-[var(--theme-text-primary)] tracking-wide">{message || "¡Éxito!"}</h3>
             </div>
         </div>
     );

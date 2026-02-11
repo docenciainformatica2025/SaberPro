@@ -125,8 +125,8 @@ export default function ClassAnalyticsDashboard({ students, classroomName }: Cla
         <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4">
             {/* Header Actions */}
             <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-black text-white flex items-center gap-2 uppercase tracking-tight">
-                    <TrendingUp className="text-metal-gold" /> Análisis de Grupo
+                <h2 className="text-xl font-semibold text-[var(--theme-text-primary)] flex items-center gap-2 uppercase tracking-tight">
+                    <TrendingUp className="text-brand-primary" /> Análisis de Grupo
                 </h2>
                 <Button
                     onClick={handleExportPDF}
@@ -140,44 +140,44 @@ export default function ClassAnalyticsDashboard({ students, classroomName }: Cla
 
             {/* KPI Cards */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <Card variant="glass" className="p-4 border-white/5 flex flex-col justify-between">
+                <Card variant="glass" className="p-4 border-[var(--theme-border-soft)] flex flex-col justify-between">
                     <div>
-                        <div className="text-metal-silver text-[10px] uppercase font-black tracking-widest mb-1 flex items-center gap-2 opacity-60">
+                        <div className="text-theme-text-secondary text-[10px] uppercase font-semibold tracking-wider mb-1 flex items-center gap-2 opacity-60">
                             <Target size={12} className="text-blue-400" /> Promedio Global
                         </div>
-                        <div className="text-3xl font-black text-white mb-1">{metrics.average}%</div>
+                        <div className="text-3xl font-semibold text-[var(--theme-text-primary)] mb-1">{metrics.average}%</div>
                     </div>
-                    <div className="text-[10px] text-metal-silver/40 font-medium">Base: {students.length} estudiantes</div>
+                    <div className="text-[10px] text-theme-text-secondary/40 font-medium">Base: {students.length} estudiantes</div>
                 </Card>
 
-                <Card variant="glass" className="p-4 border-white/5 flex flex-col justify-between">
+                <Card variant="glass" className="p-4 border-[var(--theme-border-soft)] flex flex-col justify-between">
                     <div>
-                        <div className="text-metal-silver text-[10px] uppercase font-black tracking-widest mb-1 flex items-center gap-2 opacity-60">
+                        <div className="text-theme-text-secondary text-[10px] uppercase font-semibold tracking-wider mb-1 flex items-center gap-2 opacity-60">
                             <AlertTriangle size={12} className="text-red-400" /> En Riesgo
                         </div>
-                        <div className="text-3xl font-black text-white mb-1">{metrics.riskCount}</div>
+                        <div className="text-3xl font-semibold text-[var(--theme-text-primary)] mb-1">{metrics.riskCount}</div>
                     </div>
-                    <div className="text-[10px] text-metal-silver/40 font-medium italic">Requieren refuerzo inmediato</div>
+                    <div className="text-[10px] text-theme-text-secondary/40 font-medium italic">Requieren refuerzo inmediato</div>
                 </Card>
 
-                <Card variant="glass" className="p-4 border-white/5 flex flex-col justify-between">
+                <Card variant="glass" className="p-4 border-[var(--theme-border-soft)] flex flex-col justify-between">
                     <div>
-                        <div className="text-metal-silver text-[10px] uppercase font-black tracking-widest mb-1 flex items-center gap-2 opacity-60">
+                        <div className="text-theme-text-secondary text-[10px] uppercase font-semibold tracking-wider mb-1 flex items-center gap-2 opacity-60">
                             <Users size={12} className="text-green-400" /> Destacados
                         </div>
-                        <div className="text-3xl font-black text-white mb-1">{metrics.highCount}</div>
+                        <div className="text-3xl font-semibold text-[var(--theme-text-primary)] mb-1">{metrics.highCount}</div>
                     </div>
-                    <div className="text-[10px] text-metal-silver/40 font-medium">Superan las metas</div>
+                    <div className="text-[10px] text-theme-text-secondary/40 font-medium">Superan las metas</div>
                 </Card>
 
-                <Card variant="glass" className="p-4 border-white/5 flex flex-col justify-between">
+                <Card variant="glass" className="p-4 border-[var(--theme-border-soft)] flex flex-col justify-between">
                     <div>
-                        <div className="text-metal-silver text-[10px] uppercase font-black tracking-widest mb-1 flex items-center gap-2 opacity-60">
+                        <div className="text-theme-text-secondary text-[10px] uppercase font-semibold tracking-wider mb-1 flex items-center gap-2 opacity-60">
                             <TrendingUp size={12} className="text-purple-400" /> Participación
                         </div>
-                        <div className="text-3xl font-black text-white mb-1">{Math.round((students.filter(s => s.lastScore !== undefined).length / (students.length || 1)) * 100)}%</div>
+                        <div className="text-3xl font-semibold text-[var(--theme-text-primary)] mb-1">{Math.round((students.filter(s => s.lastScore !== undefined).length / (students.length || 1)) * 100)}%</div>
                     </div>
-                    <div className="text-[10px] text-metal-silver/40 font-medium">Actividad reciente</div>
+                    <div className="text-[10px] text-theme-text-secondary/40 font-medium">Actividad reciente</div>
                 </Card>
             </div>
 
@@ -188,22 +188,22 @@ export default function ClassAnalyticsDashboard({ students, classroomName }: Cla
                      PerformanceChart supports 'line' and 'radar'. Let's stick to Radar for Competency and maybe create a simple custom bar for distribution if needed.
                      Actually, let's just use the Radar for Competencies as the "Hero" chart.
                  */}
-                <Card variant="glass" className="p-8 border-white/5">
-                    <h3 className="text-white font-black mb-6 uppercase tracking-widest text-xs opacity-60">Perfil de Competencias del Grupo</h3>
+                <Card variant="glass" className="p-8 border-[var(--theme-border-soft)]">
+                    <h3 className="text-[var(--theme-text-primary)] font-semibold mb-6 uppercase tracking-wider text-xs opacity-60">Perfil de Competencias del Grupo</h3>
                     <div className="h-[300px] w-full">
                         <PerformanceChart type="radar" data={metrics.radar} color="#D4AF37" />
                     </div>
                 </Card>
 
                 {/* Distribution Visual (Custom CSS Bar) */}
-                <Card variant="glass" className="p-8 border-white/5 flex flex-col justify-center">
-                    <h3 className="text-white font-black mb-8 uppercase tracking-widest text-xs opacity-60">Distribución de Rendimiento</h3>
+                <Card variant="glass" className="p-8 border-[var(--theme-border-soft)] flex flex-col justify-center">
+                    <h3 className="text-[var(--theme-text-primary)] font-semibold mb-8 uppercase tracking-wider text-xs opacity-60">Distribución de Rendimiento</h3>
 
                     <div className="space-y-6">
                         <div>
-                            <div className="flex justify-between text-[10px] mb-2 font-black uppercase tracking-wider">
+                            <div className="flex justify-between text-[10px] mb-2 font-semibold uppercase tracking-wider">
                                 <span className="text-green-400">Nivel Alto ({metrics.highCount})</span>
-                                <span className="text-white">{Math.round((metrics.highCount / (students.length || 1)) * 100)}%</span>
+                                <span className="text-[var(--theme-text-primary)]">{Math.round((metrics.highCount / (students.length || 1)) * 100)}%</span>
                             </div>
                             <div className="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
                                 <div className="h-full bg-green-500 transition-all duration-1000" style={{ width: `${(metrics.highCount / (students.length || 1)) * 100}%` }}></div>
@@ -211,21 +211,21 @@ export default function ClassAnalyticsDashboard({ students, classroomName }: Cla
                         </div>
 
                         <div>
-                            <div className="flex justify-between text-[10px] mb-2 font-black uppercase tracking-wider">
+                            <div className="flex justify-between text-[10px] mb-2 font-semibold uppercase tracking-wider">
                                 <span className="text-yellow-400">Nivel Medio ({metrics.distribution[1].value})</span>
-                                <span className="text-white">{Math.round((metrics.distribution[1].value / (students.length || 1)) * 100)}%</span>
+                                <span className="text-[var(--theme-text-primary)]">{Math.round((metrics.distribution[1].value / (students.length || 1)) * 100)}%</span>
                             </div>
-                            <div className="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
+                            <div className="w-full bg-[var(--theme-bg-base)]/10 rounded-full h-1.5 overflow-hidden">
                                 <div className="h-full bg-yellow-500 transition-all duration-1000" style={{ width: `${(metrics.distribution[1].value / (students.length || 1)) * 100}%` }}></div>
                             </div>
                         </div>
 
                         <div>
-                            <div className="flex justify-between text-[10px] mb-2 font-black uppercase tracking-wider">
+                            <div className="flex justify-between text-[10px] mb-2 font-semibold uppercase tracking-wider">
                                 <span className="text-red-400">Nivel Bajo ({metrics.riskCount})</span>
-                                <span className="text-white">{Math.round((metrics.riskCount / (students.length || 1)) * 100)}%</span>
+                                <span className="text-[var(--theme-text-primary)]">{Math.round((metrics.riskCount / (students.length || 1)) * 100)}%</span>
                             </div>
-                            <div className="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
+                            <div className="w-full bg-[var(--theme-bg-base)]/10 rounded-full h-1.5 overflow-hidden">
                                 <div className="h-full bg-red-500 transition-all duration-1000" style={{ width: `${(metrics.riskCount / (students.length || 1)) * 100}%` }}></div>
                             </div>
                         </div>
@@ -241,29 +241,29 @@ export default function ClassAnalyticsDashboard({ students, classroomName }: Cla
             </div>
 
             {/* Detailed Student List */}
-            <Card variant="glass" className="p-0 border-white/5 overflow-hidden">
-                <div className="p-6 border-b border-white/5">
-                    <h3 className="text-white font-black uppercase tracking-tight flex items-center gap-2">
-                        <Users size={18} className="text-metal-gold" /> Detalle de Estudiantes
+            <Card variant="glass" className="p-0 border-[var(--theme-border-soft)] overflow-hidden">
+                <div className="p-6 border-b border-[var(--theme-border-soft)]">
+                    <h3 className="text-[var(--theme-text-primary)] font-semibold uppercase tracking-tight flex items-center gap-2">
+                        <Users size={18} className="text-brand-primary" /> Detalle de Estudiantes
                     </h3>
                 </div>
                 <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
-                            <tr className="bg-white/5 text-[10px] uppercase font-black tracking-widest text-metal-silver">
+                            <tr className="bg-[var(--theme-bg-surface)]/50 text-[10px] uppercase font-semibold tracking-wider text-[var(--theme-text-tertiary)]">
                                 <th className="p-4 pl-6">Estudiante</th>
                                 <th className="p-4 text-center">Puntaje</th>
                                 <th className="p-4 text-center">Estado</th>
                                 <th className="p-4 pr-6 text-right">Acción</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-white/5">
+                        <tbody className="divide-y divide-[var(--theme-border-soft)]">
                             {students.map((student, index) => (
-                                <tr key={index} className="hover:bg-white/5 transition-colors group">
-                                    <td className="p-4 pl-6 font-bold text-white text-sm">
+                                <tr key={index} className="hover:bg-[var(--theme-bg-surface)]/40 transition-colors group">
+                                    <td className="p-4 pl-6 font-bold text-[var(--theme-text-primary)] text-sm">
                                         {student.studentName || "Estudiante"}
                                     </td>
-                                    <td className="p-4 text-center text-metal-silver font-medium">
+                                    <td className="p-4 text-center text-theme-text-secondary font-medium">
                                         {student.lastScore !== undefined ? (student.lastTotalQuestions ? `${student.lastScore}/${student.lastTotalQuestions}` : student.lastScore) : "---"}
                                     </td>
                                     <td className="p-4 text-center">

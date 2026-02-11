@@ -97,7 +97,7 @@ export default function TeacherAnalyticsPage() {
 
     if (loading) return (
         <div className="p-8 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 animate-pulse">
-            {[1, 2, 3, 4].map(i => <div key={i} className="h-32 bg-white/5 rounded-2xl" />)}
+            {[1, 2, 3, 4].map(i => <div key={i} className="h-32 bg-[var(--theme-bg-surface)] rounded-2xl" />)}
         </div>
     );
 
@@ -106,22 +106,22 @@ export default function TeacherAnalyticsPage() {
             {/* Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
-                        <BarChart3 className="text-metal-gold" /> Analíticas de Rendimiento
+                    <h1 className="text-3xl font-bold text-[var(--theme-text-primary)] mb-2 flex items-center gap-3">
+                        <BarChart3 className="text-brand-primary" /> Analíticas de Rendimiento
                     </h1>
-                    <p className="text-metal-silver">
+                    <p className="text-[var(--theme-text-secondary)]">
                         Monitorea el progreso y detecta áreas de mejora en tus clases.
                     </p>
                 </div>
                 <div className="flex gap-3">
                     <button
                         onClick={handleDownloadReport}
-                        className="metallic-btn bg-metal-gold text-black px-4 py-2 rounded-xl flex items-center gap-2 hover:bg-white transition-all font-bold"
+                        className="metallic-btn bg-brand-primary text-black px-4 py-2 rounded-xl flex items-center gap-2 hover:brightness-110 transition-all font-bold shadow-[0_0_20px_rgba(212,175,55,0.3)]"
                     >
                         <Download size={18} /> Exportar Reporte
                     </button>
                     {!isPro && (
-                        <Link href="/pricing" className="metallic-btn bg-metal-gold/10 border border-metal-gold text-metal-gold px-4 py-2 rounded-xl flex items-center gap-2 hover:bg-metal-gold hover:text-black transition-all">
+                        <Link href="/pricing" className="metallic-btn bg-brand-primary/10 border border-brand-primary text-brand-primary px-4 py-2 rounded-xl flex items-center gap-2 hover:bg-brand-primary hover:text-black transition-all">
                             <Crown size={16} /> Desbloquear
                         </Link>
                     )}
@@ -156,41 +156,41 @@ export default function TeacherAnalyticsPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Performance Chart - PRO ONLY */}
-                <div className="lg:col-span-2 metallic-card p-6 rounded-2xl border border-metal-silver/10 bg-black/20 relative overflow-hidden group">
+                <div className="lg:col-span-2 metallic-card p-6 rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] relative overflow-hidden group">
                     <div className="flex justify-between items-center mb-6 relative z-10">
-                        <h3 className="text-xl font-bold text-white">Tendencia de Puntajes</h3>
-                        <select className="bg-black/40 border border-metal-silver/20 rounded-lg text-xs text-metal-silver p-1 outline-none">
-                            <option>Últimos 6 meses</option>
+                        <h3 className="text-xl font-bold text-[var(--theme-text-primary)]">Tendencia de Puntajes</h3>
+                        <select className="bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] rounded-lg text-xs text-[var(--theme-text-secondary)] p-1 outline-none">
+                            <option className="bg-[var(--theme-bg-base)]">Últimos 6 meses</option>
                         </select>
                     </div>
 
                     <div className={`h-[300px] w-full ${!isPro ? 'blur-md opacity-30 select-none' : ''}`}>
                         <ResponsiveContainer width="100%" height="100%">
                             <LineChart data={performanceData}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" />
-                                <XAxis dataKey="name" stroke="#9ca3af" fontSize={12} />
-                                <YAxis stroke="#9ca3af" fontSize={12} />
+                                <CartesianGrid strokeDasharray="3 3" stroke="var(--theme-border-soft)" />
+                                <XAxis dataKey="name" stroke="var(--theme-text-tertiary)" fontSize={12} />
+                                <YAxis stroke="var(--theme-text-tertiary)" fontSize={12} />
                                 <Tooltip
-                                    contentStyle={{ backgroundColor: '#1a1a1a', border: '1px solid #333', borderRadius: '8px' }}
-                                    itemStyle={{ color: '#fff' }}
+                                    contentStyle={{ backgroundColor: 'var(--theme-bg-overlay)', border: '1px solid var(--theme-border-medium)', borderRadius: '12px', backdropFilter: 'blur(8px)' }}
+                                    itemStyle={{ color: 'var(--theme-text-primary)' }}
                                 />
-                                <Line type="monotone" dataKey="promedio" stroke="#D4AF37" strokeWidth={3} activeDot={{ r: 8 }} />
+                                <Line type="monotone" dataKey="promedio" stroke="var(--brand-primary)" strokeWidth={3} activeDot={{ r: 8 }} />
                             </LineChart>
                         </ResponsiveContainer>
                     </div>
 
                     {/* Lock Overlay for Basic */}
                     {!isPro && (
-                        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 bg-black/50 backdrop-blur-[2px]">
-                            <div className="p-4 bg-metal-dark border border-metal-gold/30 rounded-2xl shadow-2xl flex flex-col items-center text-center max-w-xs animate-in zoom-in-95 duration-300">
-                                <div className="w-12 h-12 bg-metal-gold/20 rounded-full flex items-center justify-center mb-3 text-metal-gold">
+                        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 bg-[var(--theme-bg-base)]/80 backdrop-blur-[4px]">
+                            <div className="p-6 bg-[var(--theme-bg-surface)] border border-brand-primary/30 rounded-2xl shadow-2xl flex flex-col items-center text-center max-w-xs animate-in zoom-in-95 duration-300">
+                                <div className="w-12 h-12 bg-brand-primary/20 rounded-full flex items-center justify-center mb-3 text-brand-primary">
                                     <Lock size={24} />
                                 </div>
-                                <h4 className="font-bold text-white mb-1">Gráficos Avanzados</h4>
-                                <p className="text-xs text-metal-silver mb-4">
+                                <h4 className="font-bold text-[var(--theme-text-primary)] mb-1">Gráficos Avanzados</h4>
+                                <p className="text-xs text-[var(--theme-text-secondary)] mb-4">
                                     Visualiza la evolución detallada de tus estudiantes con el Plan Pro.
                                 </p>
-                                <Link href="/pricing" className="metallic-btn bg-metal-gold text-black text-xs font-bold px-4 py-2 rounded-lg hover:brightness-110">
+                                <Link href="/pricing" className="metallic-btn bg-brand-primary text-black text-xs font-bold px-4 py-2 rounded-lg hover:brightness-110">
                                     Mejorar Plan
                                 </Link>
                             </div>
@@ -199,9 +199,9 @@ export default function TeacherAnalyticsPage() {
                 </div>
 
                 {/* At Risk List - PRO ONLY */}
-                <div className="metallic-card p-6 rounded-2xl border border-metal-silver/10 bg-black/20 relative overflow-hidden">
+                <div className="metallic-card p-6 rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] relative overflow-hidden">
                     <div className="flex justify-between items-center mb-6 relative z-10">
-                        <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                        <h3 className="text-xl font-bold text-[var(--theme-text-primary)] flex items-center gap-2">
                             <AlertTriangle className="text-red-400" size={20} />
                             En Riesgo
                         </h3>
@@ -211,8 +211,8 @@ export default function TeacherAnalyticsPage() {
                         {atRiskStudents.map((student, idx) => (
                             <div key={idx} className="flex items-center justify-between p-3 bg-red-500/5 border border-red-500/10 rounded-xl">
                                 <div>
-                                    <div className="font-bold text-white">{student.name}</div>
-                                    <div className="text-xs text-metal-silver">{student.class}</div>
+                                    <div className="font-bold text-[var(--theme-text-primary)]">{student.name}</div>
+                                    <div className="text-xs text-[var(--theme-text-secondary)]">{student.class}</div>
                                 </div>
                                 <div className="text-right">
                                     <div className="font-bold text-red-400">{student.score}</div>
@@ -224,16 +224,16 @@ export default function TeacherAnalyticsPage() {
 
                     {/* Lock Overlay for Basic */}
                     {!isPro && (
-                        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 bg-black/50 backdrop-blur-[2px]">
-                            <div className="p-4 bg-metal-dark border border-metal-gold/30 rounded-2xl shadow-2xl flex flex-col items-center text-center max-w-xs">
-                                <div className="w-12 h-12 bg-metal-gold/20 rounded-full flex items-center justify-center mb-3 text-metal-gold">
+                        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 bg-[var(--theme-bg-base)]/80 backdrop-blur-[4px]">
+                            <div className="p-6 bg-[var(--theme-bg-surface)] border border-brand-primary/30 rounded-2xl shadow-2xl flex flex-col items-center text-center max-w-xs animate-in zoom-in-95 duration-300">
+                                <div className="w-12 h-12 bg-brand-primary/20 rounded-full flex items-center justify-center mb-3 text-brand-primary">
                                     <Lock size={24} />
                                 </div>
-                                <h4 className="font-bold text-white mb-1">Alerta de Riesgo</h4>
-                                <p className="text-xs text-metal-silver mb-4">
+                                <h4 className="font-bold text-[var(--theme-text-primary)] mb-1">Alerta de Riesgo</h4>
+                                <p className="text-xs text-[var(--theme-text-secondary)] mb-4">
                                     Detecta automáticamente estudiantes que necesitan refuerzo.
                                 </p>
-                                <Link href="/pricing" className="metallic-btn bg-metal-gold text-black text-xs font-bold px-4 py-2 rounded-lg hover:brightness-110">
+                                <Link href="/pricing" className="metallic-btn bg-brand-primary text-black text-xs font-bold px-4 py-2 rounded-lg hover:brightness-110">
                                     Mejorar Plan
                                 </Link>
                             </div>
@@ -247,9 +247,9 @@ export default function TeacherAnalyticsPage() {
 
 function StatCard({ label, value, suffix = "", icon }: { label: string, value: number, suffix?: string, icon: React.ReactNode }) {
     return (
-        <div className="metallic-card p-6 rounded-2xl border border-metal-silver/10 bg-black/20 hover:bg-white/5 transition-colors group">
+        <div className="metallic-card p-6 rounded-2xl border border-theme-border-soft bg-theme-bg-surface hover:bg-theme-bg-base transition-colors group">
             <div className="flex justify-between items-start mb-4">
-                <div className="p-3 bg-white/5 rounded-xl group-hover:scale-110 transition-transform">
+                <div className="p-3 bg-[var(--theme-bg-base)] rounded-xl group-hover:scale-110 transition-transform">
                     {icon}
                 </div>
                 {/* Tiny trend indicator mockup */}
@@ -257,10 +257,10 @@ function StatCard({ label, value, suffix = "", icon }: { label: string, value: n
                     +4% <TrendingUp size={8} className="ml-1" />
                 </div>
             </div>
-            <div className="text-3xl font-bold text-white mb-1">
+            <div className="text-3xl font-bold text-[var(--theme-text-primary)] mb-1">
                 {value}{suffix}
             </div>
-            <div className="text-sm text-metal-silver font-medium">
+            <div className="text-sm text-[var(--theme-text-secondary)] font-medium">
                 {label}
             </div>
         </div>

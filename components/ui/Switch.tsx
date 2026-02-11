@@ -18,7 +18,7 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
                     ref={ref}
                     {...props}
                 />
-                <div className="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:bg-metal-gold after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full shadow-lg border border-white/5 transition-all"></div>
+                <div className="w-11 h-6 bg-[var(--theme-border-soft)] peer-focus:outline-none rounded-full peer peer-checked:bg-brand-primary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[var(--theme-bg-surface)] after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full shadow-lg border border-[var(--theme-border-soft)] transition-all"></div>
             </label>
         );
     }

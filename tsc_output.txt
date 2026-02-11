@@ -1,4 +1,0 @@
-app/analytics/page.tsx(329,26): error TS2741: Property 'userName' is missing in type '{ isOpen: boolean; onClose: () => void; result: any; }' but required in type 'ResultDetailModalProps'.
-tests/example.spec.ts(1,30): error TS2307: Cannot find module '@playwright/test' or its corresponding type declarations.
-tests/example.spec.ts(3,28): error TS7031: Binding element 'page' implicitly has an 'any' type.
-tests/example.spec.ts(10,35): error TS7031: Binding element 'page' implicitly has an 'any' type.

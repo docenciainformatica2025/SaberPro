@@ -12,8 +12,40 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Headers removed for troubleshooting Google Auth COOP/COEP issues
-  // Will be re-added one by one after verification
+  // Security Headers implementation
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self' https://*.vercel.app https://*.google.com https://*.google-analytics.com https://*.googletagmanager.com https://*.gstatic.com https://*.firebaseapp.com https://*.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.vercel.app https://*.google-analytics.com https://*.googletagmanager.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' blob: data: https://*.googleusercontent.com https://*.google-analytics.com https://*.googletagmanager.com https://*.gstatic.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.sentry.io; frame-src 'self' https://*.firebaseapp.com https://challenges.cloudflare.com; base-uri 'self';",
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocations=(), interest-cohort=()',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains; preload',
+          },
+        ],
+      },
+    ];
+  },
   // Suppress hydration errors from extensions (e.g., Grammarly, Translate)
   reactStrictMode: false,
   async redirects() {

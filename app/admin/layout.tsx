@@ -55,9 +55,15 @@ export default function AdminLayout({
 
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+    useEffect(() => {
+        const handleToggleSidebar = () => setIsMobileMenuOpen(prev => !prev);
+        window.addEventListener('saberpro:toggle-admin-sidebar', handleToggleSidebar);
+        return () => window.removeEventListener('saberpro:toggle-admin-sidebar', handleToggleSidebar);
+    }, []);
+
     if (loading || isCheckingRole) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-metal-dark">
+            <div className="min-h-screen flex items-center justify-center bg-[var(--theme-bg-base)]">
                 <AIProcessingLoader text="Verificando Privilegios" subtext="Acceso de Administrador" />
             </div>
         );
@@ -66,36 +72,22 @@ export default function AdminLayout({
     if (!user) return null; // Will redirect via useEffect
 
     return (
-        <div className="min-h-screen bg-metal-black text-white font-sans selection:bg-metal-gold/30">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] text-[var(--theme-text-primary)] font-sans selection:bg-brand-primary/30 transition-colors duration-500">
             {/* Background Ambient Effects - Red/Dark for Admin */}
-            <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-red-900/5 rounded-full blur-[120px] mix-blend-screen" />
-                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-metal-gold/5 rounded-full blur-[120px] mix-blend-screen" />
+            <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+                <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-red-900/[0.03] dark:bg-red-900/5 rounded-full blur-[120px] mix-blend-screen transition-opacity duration-1000" />
+                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-brand-primary/[0.03] dark:bg-brand-primary/5 rounded-full blur-[120px] mix-blend-screen transition-opacity duration-1000" />
             </div>
 
-            {/* Mobile Header */}
-            <div className="lg:hidden fixed top-0 left-0 right-0 h-16 bg-[#0a0a0a]/90 backdrop-blur-lg border-b border-white/5 z-50 flex items-center justify-between px-4">
-                <div className="flex items-center gap-2 text-metal-gold">
-                    <ShieldAlert size={20} />
-                    <span className="font-bold tracking-wider text-white">COMMAND</span>
-                </div>
-                <button
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="p-2 text-metal-silver hover:text-white"
-                >
-                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
-            </div>
-
-            <div className="flex relative z-10 pt-16 lg:pt-0">
+            <div className="flex relative z-10 transition-all duration-300">
                 <AdminSidebar isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
 
                 {/* Main Content Area - Full Screen Canvas */}
-                <main className="flex-1 w-full max-w-[1800px] mx-auto p-4 pb-32 lg:p-8 lg:pb-8">
+                <div className="flex-1 w-full max-w-[1800px] mx-auto p-4 pb-32 lg:p-8 lg:pb-8">
                     <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 ease-out">
                         {children}
                     </div>
-                </main>
+                </div>
             </div>
 
 

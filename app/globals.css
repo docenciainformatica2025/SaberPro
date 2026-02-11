@@ -1,142 +1,184 @@
 @import "tailwindcss";
 
+
 @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-success: var(--brand-success);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-error: var(--brand-error);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-theme-text-primary: var(--text-primary);
+  --color-theme-text-secondary: var(--text-secondary);
+  --color-theme-text-tertiary: var(--text-muted);
+
+  --color-theme-bg-base: var(--bg-app);
+  --color-theme-bg-surface: var(--surface-card);
+  --color-theme-border-soft: var(--border-subtle);
+  --color-theme-divider: var(--divider);
+
+  /* Apple Typographic Scale */
+  --font-size-h1: 48px;
+  --font-size-h2: 32px;
+  --font-size-h3: 24px;
+  --font-size-body: 16px;
+  --font-size-small: 14px;
+
+  --font-weight-h1: 600;
+  --font-weight-h2: 600;
+  --font-weight-h3: 500;
+  --font-weight-body: 400;
+  --font-weight-small: 400;
+
+  --line-height-h1: 1.2;
+  --line-height-h2: 1.3;
+  --line-height-h3: 1.4;
+  --line-height-body: 1.6;
+  --line-height-small: 1.5;
 }
 
-/* === ULTRA-PREMIUM VIEWPORT FIX (Silicon Valley Standard) === */
+/* === APPLE EDUCATION VIEWPORT === */
 html,
 body {
-  background-color: var(--color-metal-black);
-  /* Matches --metal-black */
+  background-color: var(--bg-app);
+  color: var(--text-primary);
   overscroll-behavior: none;
-  /* Prevents white rubber-band effect */
   min-height: 100vh;
   margin: 0;
   padding: 0;
 }
 
-/* === ACCESSIBILITY (ADA Section 508) === */
+/* === ACCESSIBILITY & FOCUS (APPLE STANDARD) === */
 :focus-visible {
-  outline: 2px solid #D4AF37;
-  /* Metal Gold High Contrast */
+  outline: 2px solid var(--brand-primary);
   outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.1);
+  transition: box-shadow var(--motion-fast) ease;
 }
 
 :root {
-  --background: rgb(25, 30, 35);
-  --foreground: rgb(229, 228, 226);
+  /* 🎯 Paleta Base (Apple Education) */
+  --brand-primary: #1E40AF;
+  /* Saber Blue */
+  --brand-success: #16A34A;
+  /* Calm Green */
+  --brand-accent: #F59E0B;
+  /* Focus Amber */
+  --brand-error: #DC2626;
+  /* Soft Red */
 
-  /* Define colors explicitly in root for var() usage */
-  --color-metal-dark: rgb(25, 30, 35);
-  --color-metal-black: rgb(10, 12, 15);
-  --color-metal-silver: rgb(229, 228, 226);
-  --color-metal-silver-dim: rgba(229, 228, 226, 0.7);
-  --color-metal-silver-deep: rgb(169, 169, 169);
-  --color-metal-gold: rgb(212, 175, 55);
-  --color-metal-gold-deep: rgb(184, 134, 11);
-  --color-metal-blue: rgb(70, 130, 180);
-  --color-metal-copper: rgb(184, 115, 51);
+  /* 🧾 Paleta Neutra (Apple-style) */
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
 
-  /* Unprefixed versions for component compatibility */
-  --metal-dark: rgb(25, 30, 35);
-  --metal-black: rgb(10, 12, 15);
-  --metal-silver: rgb(229, 228, 226);
-  --metal-silver-dim: rgba(229, 228, 226, 0.7);
-  --metal-silver-deep: rgb(169, 169, 169);
-  --metal-gold: rgb(212, 175, 55);
-  --metal-gold-deep: rgb(184, 134, 11);
-  --metal-blue: rgb(70, 130, 180);
-  --metal-copper: rgb(184, 115, 51);
+  --bg-app: #F8FAFC;
+  --surface-card: #FFFFFF;
+  --bg-overlay: rgba(255, 255, 255, 0.8);
+  --border-subtle: #E2E8F0;
+  --divider: #CBD5E1;
 
-  /* === MATERIAL DESIGN DARK MODE SYSTEM === */
-  /* Professional dark theme with elevation surfaces */
+  --theme-bg-base-light: var(--bg-app);
+  --theme-bg-surface-light: var(--surface-card);
+  --theme-bg-overlay-light: var(--bg-overlay);
+  --header-safe-zone: 120px;
+  --font-size-hero: 4.5rem;
 
-  /* Dark Mode Surfaces (Material Design) */
-  --surface-base: #121212;
-  /* Page background */
-  --surface-1: #1E1E1E;
-  /* Cards, inputs - 1dp elevation */
-  --surface-2: #252525;
-  /* Modals, dropdowns - 2dp elevation */
-  --surface-3: #2C2C2C;
-  /* Tooltips, popovers - 3dp elevation */
-
-  /* Dark Mode Text (Optimized - NO Opacity to prevent dimming issues) */
-  --text-high-emphasis: #FFFFFF;
-  /* Primary text - 100% white */
-  --text-medium-emphasis: #B0B0B0;
-  /* Secondary text - Solid Grey */
-  --text-disabled: #606060;
-  /* Disabled state - Solid Dark Grey */
-
-  /* Light Mode (For toggle) */
-  --surface-base-light: #F9FAFB;
-  --surface-1-light: #FFFFFF;
-  --surface-2-light: #F3F4F6;
-  --text-high-emphasis-light: #111827;
-  --text-medium-emphasis-light: #6B7280;
-
-  /* Active Theme Variables (defaulting to Dark Mode) */
-  --theme-bg-base: var(--surface-base);
-  --theme-bg-surface-1: var(--surface-1);
-  --theme-bg-surface-2: var(--surface-2);
-  --theme-bg-surface-3: var(--surface-3);
-  --theme-text-primary: var(--text-high-emphasis);
-  --theme-text-secondary: var(--text-medium-emphasis);
-  --theme-text-disabled: var(--text-disabled);
-
-  /* === ACCESSIBILITY FOCUS RING (ADA/WCAG AAA) === */
-  /* High visibility focus indicator for keyboard users */
-  --focus-ring-color: rgba(212, 175, 55, 0.6);
-  --focus-ring-offset: 2px;
-
-  /* === WORLD-CLASS TYPOGRAPHY SYSTEM === */
-
-  /* Optimized for prolonged reading (exam interfaces) */
-
-  /* Light Mode Colors (Future-ready) */
-  --text-primary-light: #111827;
-  /* Slate-900 - Less eye strain than #000 */
-  --text-secondary-light: #4B5563;
-  /* Gray-600 */
-  --bg-primary-light: #F9FAFB;
-  /* Gray-50 - Warmer than pure white */
-  --bg-secondary-light: #FFFFFF;
-
-  /* Optimal Line Heights for Different Contexts */
-  --line-height-tight: 1.25;
-  /* Headings */
-  --line-height-normal: 1.5;
-  /* Body text (WCAG recommended) */
-  --line-height-relaxed: 1.625;
-  /* Long-form reading (exam questions) */
-  --line-height-loose: 1.75;
-  /* Dense data tables */
-
-  /* Typography Scale - Modular (1.25 ratio for harmony) */
-  --text-xs: 0.75rem;
+  /* Spacing System (8px Grid - Apple Standards) */
+  --space-0-5: 0.125rem;
+  /* 2px */
+  --space-1: 0.25rem;
+  /* 4px */
+  --space-1-5: 0.375rem;
+  /* 6px */
+  --space-2: 0.5rem;
+  /* 8px */
+  --space-3: 0.75rem;
   /* 12px */
-  --text-sm: 0.875rem;
-  /* 14px */
-  --text-base: 1rem;
-  /* 16px - Base */
-  --text-lg: 1.125rem;
-  /* 18px */
-  --text-xl: 1.25rem;
+  --space-4: 1rem;
+  /* 16px */
+  --space-5: 1.25rem;
   /* 20px */
-  --text-2xl: 1.5rem;
+  --space-6: 1.5rem;
   /* 24px */
+  --space-8: 2rem;
+  /* 32px */
+  --space-10: 2.5rem;
+  /* 40px */
+  --space-12: 3rem;
+  /* 48px */
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Radius System (Apple Standards) */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
 
+  /* Motion System (Apple Protocol) */
+  --motion-fast: 120ms;
+  --motion-normal: 180ms;
+  --motion-slow: 240ms;
+  --motion-page: 400ms;
+  --ease-apple: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Legacy Compat (Mappeado a nuevos tokens) */
+  --theme-bg-base: var(--bg-app);
+  --theme-bg-surface: var(--surface-card);
+  --theme-text-primary: var(--text-primary);
+  --theme-text-secondary: var(--text-secondary);
+  --theme-text-tertiary: var(--text-muted);
+  --theme-text-quaternary: #64748B;
+  --theme-text-info: #3B82F6;
+  --theme-text-success: var(--brand-success);
+  --theme-text-error: var(--brand-error);
+  --theme-text-error: var(--brand-error);
+  --theme-border-soft: var(--border-subtle);
+
+  /* 🚦 Semantic Status Tokens (Backgrounds & Borders) */
+  --theme-bg-success-soft: rgba(22, 163, 74, 0.1);
+  --theme-border-success: rgba(22, 163, 74, 0.2);
+  --theme-bg-error-soft: rgba(220, 38, 38, 0.1);
+  --theme-border-error: rgba(220, 38, 38, 0.2);
+  --theme-bg-warning-soft: rgba(245, 158, 11, 0.1);
+  --theme-border-warning: rgba(245, 158, 11, 0.2);
+  --theme-bg-info-soft: rgba(59, 130, 246, 0.1);
+  --theme-border-info: rgba(59, 130, 246, 0.2);
+
+  /* 📊 Chart Palette - Startup Grade (Default/Dark) */
+  --chart-1: #3B82F6;
+  /* Primary Blue */
+  --chart-2: #10B981;
+  /* Success Green */
+  --chart-3: #F59E0B;
+  /* Warning Amber */
+  --chart-4: #8B5CF6;
+  /* Premium Purple */
+  --chart-5: #64748B;
+  /* Muted Slate */
+
+  /* 4K Visual Hardening System */
+  --border-4k: 0.5px solid rgba(255, 255, 255, 0.1);
+  --shadow-4k: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05), 0 12px 24px rgba(0, 0, 0, 0.05);
+  --ring-4k: 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+
+  /* Global Layout Clearance */
+  --header-safe-zone: 160px;
   --animate-shine: shine 1.5s infinite;
-  --animate-success-pulse: success-pulse 0.5s cubic-bezier(0.4, 0, 0.6, 1);
 }
 
 /* Base Utilities manually defined to ensure availability */
+/* Legacy Metal/Gold Utilities - DEPRECATED (Use theme tokens) */
 .bg-metal-dark {
   background-color: var(--color-metal-dark);
 }
@@ -151,6 +193,18 @@ body {
 
 .text-metal-silver {
   color: var(--color-metal-silver);
+}
+
+.text-metal-silver-dim {
+  color: var(--theme-text-secondary);
+}
+
+.text-tertiary {
+  color: var(--theme-text-tertiary);
+}
+
+.text-quaternary {
+  color: var(--theme-text-quaternary);
 }
 
 .text-metal-blue {
@@ -195,35 +249,125 @@ html {
 }
 
 ::selection {
-  background-color: rgba(212, 175, 55, 0.3);
-  /* Gold tint */
-  color: white;
+  background-color: rgba(30, 64, 175, 0.15);
+  /* Saber Blue tint */
+  color: inherit;
 }
 
-/* Dark mode default styles */
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 /* Light mode override */
 .light {
   color-scheme: light;
-  --theme-bg-base: var(--surface-base-light);
-  --theme-bg-surface-1: var(--surface-1-light);
-  --theme-bg-surface-2: var(--surface-2-light);
-  --theme-text-primary: var(--text-high-emphasis-light);
-  --theme-text-secondary: var(--text-medium-emphasis-light);
+  --theme-bg-base: var(--theme-bg-base-light);
+  --theme-bg-surface: var(--theme-bg-surface-light);
+  --theme-bg-overlay: var(--theme-bg-overlay-light);
+
+  --theme-text-primary: #1E293B;
+  --theme-text-secondary: #475569;
+  --theme-text-tertiary: #64748B;
+  --theme-text-quaternary: #94A3B8;
+  --theme-text-info: #2563EB;
+  --theme-text-success: #16A34A;
+  --theme-text-error: #DC2626;
+
+  --metal-gold: #B8860B;
+  /* Slightly deeper gold for light backgrounds */
+  --metal-silver: #64748B;
+
+  /* Chart Tokens - Light Mode */
+  --theme-chart-grid: rgba(0, 0, 0, 0.05);
+  --theme-chart-axis: #94A3B8;
+  --theme-chart-tooltip-bg: #FFFFFF;
+  --theme-chart-tooltip-border: rgba(0, 0, 0, 0.08);
+
+  /* Chart Palette - Light Mode */
+  --chart-1: #2563EB;
+  --chart-2: #059669;
+  --chart-3: #D97706;
+  --chart-4: #7C3AED;
+  --chart-5: #475569;
+
+  /* Global Depth System - Light Mode */
+  --theme-border-soft: rgba(0, 0, 0, 0.08);
+  --theme-border-medium: rgba(0, 0, 0, 0.15);
+  --theme-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --theme-shadow-md: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --theme-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Overrides for Base Variables */
+.dark {
+  color-scheme: dark;
+
+  /* Update base variables for consumers using them directly */
+  --bg-app: #020617;
+  --surface-card: #0F172A;
+  --bg-overlay: rgba(2, 6, 23, 0.8);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --divider: rgba(255, 255, 255, 0.06);
+
+  /* Update theme mapping */
+  --theme-bg-base: var(--bg-app);
+  --theme-bg-surface: var(--surface-card);
+  --theme-bg-overlay: var(--bg-overlay);
+  --theme-border-soft: var(--border-subtle);
+
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  --theme-text-primary: var(--text-primary);
+  --theme-text-secondary: var(--text-secondary);
+  --theme-text-tertiary: var(--text-muted);
+
+  /* Chart tokens for .dark specifically if needed */
+  --theme-chart-grid: rgba(255, 255, 255, 0.05);
+  --theme-chart-axis: #64748B;
+  --theme-chart-tooltip-bg: #0F172A;
+  --theme-chart-tooltip-border: rgba(255, 255, 255, 0.1);
 }
 
 body {
   background: var(--theme-bg-base);
   color: var(--theme-text-primary);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-body);
+  line-height: var(--line-height-body);
   min-height: 100vh;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv02", "cv05", "cv11", "ss01";
+  -webkit-text-size-adjust: 100%;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-h1);
+  line-height: var(--line-height-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-h2);
+  line-height: var(--line-height-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-h3);
+  line-height: var(--line-height-h3);
+}
+
+small {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-small);
+  line-height: var(--line-height-small);
 }
 
 /* Ensure background is consistently applied in dark mode if no class is present */
@@ -272,6 +416,19 @@ h3 {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  /* Intelligent Hero Gradient (Startup-Grade) */
+  .text-theme-hero {
+    background-image: linear-gradient(to right, var(--theme-text-primary), var(--theme-text-tertiary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: background-image 0.5s ease;
+  }
+
+  .dark .text-theme-hero {
+    background-image: linear-gradient(to right, #FFFFFF, var(--theme-text-tertiary), #FFFFFF);
   }
 
   /* Text Readability Utility */
@@ -332,43 +489,11 @@ h3 {
     /* Critical for flex containers */
   }
 
-  /* Multi-line clamping */
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    /* Standard property for compatibility */
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    /* Standard property for compatibility */
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  /* === WORLD-CLASS LEGIBILITY UTILITIES === */
-
-  /* Optimal max-width for reading (prevents eye fatigue on wide screens) */
-  .prose-optimal {
-    max-width: 65ch;
-    /* 65 characters - sweet spot for sustained reading */
-  }
-
-  .prose-narrow {
-    max-width: 60ch;
-    /* Denser content */
-  }
-
-  .prose-wide {
-    max-width: 75ch;
-    /* Maximum before eye jumps become fatiguing */
+  /* Apple Readability Rule: Max width 68ch */
+  .prose-apple {
+    max-width: 68ch;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   /* Line-height utilities for different content types */

@@ -1,0 +1,30 @@
+
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90mC:/SaberPro/web-app[39m
+
+ [31mÔØ»[39m __tests__/QuizEngine.test.tsx [2m([22m[2m4 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[33m 5675[2mms[22m[39m
+     [32mÔ£ô[39m renders the first question correctly[32m 157[2mms[22m[39m
+     [32mÔ£ô[39m allows selecting an option and navigating to next question[32m 271[2mms[22m[39m
+     [32mÔ£ô[39m shows review screen after last question[32m 226[2mms[22m[39m
+[31m     [31m├ù[31m submits results correctly[39m[33m 5019[2mms[22m[39m
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ» Failed Tests 1 ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+
+ FAIL  __tests__/QuizEngine.test.tsx > QuizEngine Component > submits results correctly
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ÔØ» __tests__/QuizEngine.test.tsx:112:5
+    110|     });
+    111| 
+    112|     it('submits results correctly', async () => {
+       |     ^
+    113|         vi.useFakeTimers();
+    114|         render(<QuizEngine questions={mockQuestions} moduleName="test_ÔÇª
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[1/1]ÔÄ»
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m3 passed[39m[22m[90m (4)[39m
+[2m   Start at [22m 16:43:22
+[2m   Duration [22m 10.10s[2m (transform 339ms, setup 306ms, import 1.78s, tests 5.68s, environment 1.63s)[22m
+

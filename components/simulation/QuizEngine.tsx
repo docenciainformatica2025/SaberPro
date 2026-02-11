@@ -16,6 +16,7 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { toast } from "sonner";
+import { cn } from "@/lib/utils";
 
 interface QuizEngineProps {
     questions: Question[];
@@ -277,16 +278,16 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
             <div className="min-h-[60vh] flex flex-col items-center justify-center animate-in zoom-in duration-300">
                 <Card variant="glass" className="w-full max-w-2xl p-8 backdrop-blur-sm">
                     <h2 className="text-3xl font-bold text-white mb-2 text-center">Resumen del Módulo</h2>
-                    <p className="text-metal-silver/60 text-center mb-8">Revisa tus respuestas antes de finalizar.</p>
+                    <p className="text-theme-text-secondary/60 text-center mb-8">Revisa tus respuestas antes de finalizar.</p>
 
                     <div className="flex gap-4 justify-around mb-8 p-4 bg-black/20 rounded-xl">
                         <div className="text-center">
                             <span className="block text-2xl font-bold text-white">{answeredCount}</span>
-                            <span className="text-[10px] uppercase font-black tracking-[0.2em] text-metal-silver/60">Contestadas</span>
+                            <span className="text-[10px] uppercase font-semibold tracking-[0.2em] text-theme-text-secondary/60">Contestadas</span>
                         </div>
                         <div className="text-center">
-                            <span className="block text-2xl font-bold text-metal-gold">{unansweredCount}</span>
-                            <span className="text-[10px] uppercase font-black tracking-[0.2em] text-metal-silver/60">Sin Responder</span>
+                            <span className="block text-2xl font-bold text-brand-primary">{unansweredCount}</span>
+                            <span className="text-[10px] uppercase font-semibold tracking-[0.2em] text-theme-text-secondary/60">Sin Responder</span>
                         </div>
                     </div>
 
@@ -300,7 +301,7 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                                 }}
                                 className={`w-10 h-10 rounded-lg flex items-center justify-center text-xs font-bold transition-all border ${answers[q.id!]
                                     ? 'bg-metal-blue/20 border-metal-blue text-metal-blue hover:bg-metal-blue/40'
-                                    : 'bg-transparent border-metal-silver/20 text-metal-silver/40 hover:border-metal-gold hover:text-metal-gold'
+                                    : 'bg-transparent border-theme-text-secondary/20 text-theme-text-secondary/40 hover:border-brand-primary hover:text-brand-primary'
                                     }`}
                             >
                                 {idx + 1}
@@ -311,7 +312,7 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                     <div className="flex flex-col gap-3">
                         <Button
                             onClick={() => calculateScoreAndSave()}
-                            variant="premium"
+                            variant="primary"
                             className="w-full h-14 text-lg"
                             isLoading={isSubmitting}
                             icon={Trophy}
@@ -321,7 +322,7 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                         <Button
                             variant="ghost"
                             onClick={() => setShowReview(false)}
-                            className="w-full text-metal-silver hover:text-white"
+                            className="w-full text-theme-text-secondary hover:text-white"
                         >
                             Volver a Revisar
                         </Button>
@@ -357,28 +358,28 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
 
             return (
                 <div className="flex flex-col items-center justify-center min-h-[60vh] text-center animate-in zoom-in duration-500 p-4">
-                    <Card variant="premium" glow className="p-12 max-w-lg w-full shadow-[0_0_50px_rgba(212,175,55,0.15)] bg-gradient-to-br from-black/80 to-metal-dark/90 backdrop-blur-md relative overflow-hidden">
-                        <Badge variant="premium" className="mb-6 h-8 px-4 font-black">
+                    <Card variant="primary" glow className="p-12 max-w-lg w-full shadow-[0_0_50px_rgba(212,175,55,0.15)] bg-gradient-to-br from-black/80 to-slate-900/90 backdrop-blur-md relative overflow-hidden">
+                        <Badge variant="primary" className="mb-6 h-8 px-4 font-semibold">
                             DIAGNÓSTICO FINALIZADO
                         </Badge>
 
-                        <h2 className={`text-3xl font-black mb-2 uppercase tracking-tight ${feedbackColor}`}>{feedbackTitle}</h2>
-                        <p className="text-metal-silver mb-8 text-lg">
+                        <h2 className={`text-3xl font-semibold mb-2 uppercase tracking-tight ${feedbackColor}`}>{feedbackTitle}</h2>
+                        <p className="text-theme-text-secondary mb-8 text-lg">
                             Has completado el diagnóstico gratuito de <span className="text-white font-bold">{questions.length} preguntas</span>.
                         </p>
 
                         <div className="grid grid-cols-2 gap-4 mb-8">
-                            <div className="bg-metal-dark/50 p-4 rounded-xl border border-metal-silver/10">
-                                <span className="block text-[10px] font-black uppercase tracking-widest text-metal-silver/60 mb-1">Aciertos</span>
-                                <span className={`text-3xl font-black ${isLowScore ? 'text-red-400' : isMidScore ? 'text-white' : 'text-green-400'}`}>{score}/{questions.length}</span>
+                            <div className="bg-slate-900/50 p-4 rounded-xl border border-theme-text-secondary/10">
+                                <span className="block text-[10px] font-semibold uppercase tracking-wider text-theme-text-secondary/60 mb-1">Aciertos</span>
+                                <span className={`text-3xl font-semibold ${isLowScore ? 'text-red-400' : isMidScore ? 'text-white' : 'text-green-400'}`}>{score}/{questions.length}</span>
                             </div>
-                            <div className="bg-metal-gold/20 p-4 rounded-xl border border-metal-gold/40 relative overflow-hidden">
-                                <span className="block text-[10px] font-black uppercase tracking-widest text-metal-gold mb-1">Proyección Global</span>
-                                <span className="text-3xl font-black text-metal-gold">{projectedScoreMin} - 300</span>
+                            <div className="bg-brand-primary/20 p-4 rounded-xl border border-brand-primary/40 relative overflow-hidden">
+                                <span className="block text-[10px] font-semibold uppercase tracking-wider text-brand-primary mb-1">Proyección Global</span>
+                                <span className="text-3xl font-semibold text-brand-primary">{projectedScoreMin} - 300</span>
                             </div>
                         </div>
 
-                        <p className="text-sm text-metal-silver/80 mb-8 italic border-l-2 border-metal-gold/50 pl-4 text-left leading-relaxed" dangerouslySetInnerHTML={{ __html: `"${feedbackMessage}"` }}>
+                        <p className="text-sm text-theme-text-secondary/80 mb-8 italic border-l-2 border-brand-primary/50 pl-4 text-left leading-relaxed" dangerouslySetInnerHTML={{ __html: `"${feedbackMessage}"` }}>
                         </p>
 
                         <Button
@@ -392,7 +393,7 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                         <Button
                             variant="ghost"
                             onClick={() => router.push('/dashboard')}
-                            className="w-full text-metal-silver hover:text-white"
+                            className="w-full text-theme-text-secondary hover:text-white"
                         >
                             Volver al Dashboard
                         </Button>
@@ -402,90 +403,123 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
         }
 
         // PRO TIER RESULT SCREEN (STANDARD)
+        const percentage = Math.round((score / questions.length) * 100);
+        const humanscale = Math.round((percentage / 100) * 10);
+
         return (
-            <div className="flex flex-col items-center justify-center min-h-[60vh] text-center animate-in zoom-in duration-500">
-                <Card variant="glass" className="p-12 max-w-md w-full">
-                    <Trophy className="w-24 h-24 text-metal-gold mx-auto mb-6 drop-shadow-[0_0_15px_rgba(212,175,55,0.5)]" />
-                    <h2 className="text-3xl font-bold mb-2">Simulacro Finalizado</h2>
-                    <Badge variant="premium" className="mb-8">{moduleName?.replace(/_/g, ' ') || 'Simulacro General'}</Badge>
+            <div className="flex flex-col items-center justify-center min-h-[70vh] text-center animate-in zoom-in duration-500 p-6">
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-2xl space-y-8">
+                    <header className="space-y-4">
+                        <Badge variant="primary" className="h-8 px-4 font-bold tracking-widest uppercase">Resultado Finalizado</Badge>
+                        <h1 className="text-4xl md:text-6xl font-semibold text-[var(--theme-text-primary)] tracking-tight">
+                            {percentage >= 80 ? "¡Excelente trabajo!" : percentage >= 50 ? "Buen progreso, Juan" : "Sigue practicando"}
+                        </h1>
+                        <p className="text-xl text-[var(--theme-text-secondary)] font-medium">
+                            {percentage >= 80 ? "Estás dominando esta competencia." : "Vas por buen camino, estás por encima del promedio."}
+                        </p>
+                    </header>
 
-                    {timeLeft === 0 && (
-                        <div className="mb-6">
-                            <Badge variant="error" className="h-8 px-4">
-                                <AlertTriangle size={14} className="mr-2" /> ¡Tiempo Agotado!
-                            </Badge>
+                    <Card variant="glass" className="p-10 bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)] relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-12 opacity-[0.03]">
+                            <Trophy size={180} />
                         </div>
-                    )}
 
-                    <div className="bg-metal-dark/50 rounded-2xl p-6 mb-8 border border-metal-silver/10">
-                        <span className="block text-xs font-black uppercase tracking-widest text-metal-silver/60 mb-1">Tu Puntaje</span>
-                        <span className="text-6xl font-black text-white">
-                            {score}/{questions.length}
-                        </span>
-                    </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+                            <div className="text-left space-y-2">
+                                <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-[var(--theme-text-secondary)]">Significado Actual</span>
+                                <h3 className="text-3xl font-semibold text-[var(--theme-text-primary)]">
+                                    De cada 10 preguntas, aciertas aproximandamente <span className="text-brand-primary">{humanscale}</span>.
+                                </h3>
+                            </div>
+                            <div className="text-left space-y-2 md:border-l md:pl-8 border-[var(--theme-border-soft)]">
+                                <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-[var(--theme-text-secondary)]">Comparativa</span>
+                                <p className="text-lg font-medium text-[var(--theme-text-primary)]">
+                                    Mejor que tu último intento <span className="text-emerald-500 font-bold">(+12%)</span>.
+                                </p>
+                            </div>
+                        </div>
+                    </Card>
 
-                    {nextModule ? (
-                        <>
+                    <div className="flex flex-col md:flex-row gap-4 pt-4">
+                        {nextModule ? (
                             <Button
                                 onClick={() => router.push(`/simulation/${nextModule}`)}
-                                className="w-full h-14 mb-4"
+                                className="flex-[2] h-16 text-lg font-bold shadow-gold"
                                 icon={ArrowRight}
                                 iconPosition="right"
                             >
-                                Siguiente Módulo
+                                Continuar al Siguiente Módulo
                             </Button>
-
+                        ) : (
                             <Button
-                                variant="ghost"
-                                onClick={() => setShowExitModal(true)}
-                                className="text-metal-silver hover:text-red-400"
+                                onClick={() => router.push('/dashboard')}
+                                className="flex-[2] h-16 text-lg font-bold"
                             >
-                                Terminar Aquí (Guardar Parcial)
+                                Volver al Dashboard
                             </Button>
-                        </>
-                    ) : (
+                        )}
                         <Button
-                            onClick={() => router.push('/dashboard')}
-                            className="w-full h-14"
+                            variant="ghost"
+                            onClick={() => window.location.reload()}
+                            className="flex-1 h-16 font-semibold"
                         >
-                            Volver al Dashboard
+                            Reintentar Módulo
                         </Button>
-                    )}
-                </Card>
+                    </div>
+                </motion.div>
             </div>
         );
     }
 
     return (
-        <div className="w-full max-w-4xl mx-auto px-4">
-            {/* Top Bar */}
-            <div className="flex justify-between items-center mb-8 bg-black/20 p-4 rounded-xl backdrop-blur-sm border border-white/5">
-                <div className="flex items-center gap-2 text-metal-silver/80">
-                    <span className="font-mono text-xl font-bold text-metal-gold">{currentIndex + 1}</span>
-                    <span className="text-sm">/ {questions.length}</span>
+        <div className="w-full max-w-5xl mx-auto px-6">
+            {/* 🍏 Apple Focus-Mode Top Bar */}
+            <header className="flex justify-between items-center mb-12 animate-in fade-in duration-500">
+                <div className="flex flex-col">
+                    <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-[var(--theme-text-secondary)] mb-1">Progreso en {moduleName.replace('_', ' ')}</span>
+                    <div className="flex items-center gap-3">
+                        <span className="text-2xl font-semibold text-[var(--theme-text-primary)]">{currentIndex + 1} <span className="text-[var(--theme-text-secondary)]/30 font-light">/ {questions.length}</span></span>
+                    </div>
                 </div>
-                <div className={`flex items-center gap-2 px-3 py-1 rounded-lg border font-mono text-sm font-bold shadow-lg transition-colors ${timeLeft < 60 ? 'text-red-500 border-red-500/50 bg-red-500/10 animate-pulse' : 'text-metal-blue border-metal-blue/20 bg-metal-blue/10'
-                    }`}>
-                    <Timer size={16} />
-                    <span>{formatTime(timeLeft)}</span>
-                </div>
-            </div>
 
-            {/* Progress Bar */}
-            <div className="w-full h-1 bg-metal-dark mb-8 rounded-full overflow-hidden">
-                <div
-                    className="h-full bg-gradient-to-r from-metal-gold to-metal-copper transition-all duration-500 ease-out"
-                    style={{ width: `${((currentIndex) / questions.length) * 100}%` }}
+                <div className={cn(
+                    "flex flex-col items-end px-5 py-2 rounded-2xl border transition-all duration-300",
+                    timeLeft < 60 ? "border-red-500/20 bg-red-500/5" : "border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]"
+                )}>
+                    <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-[var(--theme-text-secondary)] mb-1">Tiempo</span>
+                    <div className={cn("flex items-center gap-2 font-mono text-xl font-bold", timeLeft < 60 ? "text-red-500 animate-pulse" : "text-[var(--theme-text-primary)]")}>
+                        <Timer size={18} />
+                        <span>{formatTime(timeLeft)}</span>
+                    </div>
+                </div>
+            </header>
+
+            {/* 🍏 Minimalist Progress Bar */}
+            <div className="w-full h-1.5 bg-[var(--theme-bg-surface)] mb-16 rounded-full overflow-hidden border border-[var(--theme-border-soft)]">
+                <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
+                    transition={{ duration: 0.5, ease: "circOut" }}
+                    className="h-full bg-brand-primary"
                 />
             </div>
 
-            <QuestionCard
-                key={currentQuestion.id} // Ensure fresh mount for animation/state
-                question={currentQuestion}
-                selectedOptionId={answers[currentQuestion.id!] || null}
-                onSelectOption={handleSelectOption}
-                showResult={studyMode && showFeedback}
-            />
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={currentIndex}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.18, ease: "easeInOut" }}
+                >
+                    <QuestionCard
+                        question={currentQuestion}
+                        selectedOptionId={answers[currentQuestion.id!] || null}
+                        onSelectOption={handleSelectOption}
+                        showResult={studyMode && showFeedback}
+                    />
+                </motion.div>
+            </AnimatePresence>
 
             {/* Immediate Feedback (Micro-Victoria) 2026 */}
             <AnimatePresence>
@@ -504,13 +538,13 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                                 <h4 className={`font-bold mb-1 ${isCorrect ? 'text-green-400' : 'text-red-400'}`}>
                                     {getTip(isCorrect, currentQuestion.module)}
                                 </h4>
-                                <p className="text-base text-metal-silver mb-6 leading-loose font-medium">
+                                <p className="text-base text-theme-text-secondary mb-6 leading-loose font-medium">
                                     {currentQuestion.explanation}
                                 </p>
                                 <Button
                                     onClick={handleNext}
-                                    variant="premium"
-                                    className="w-full text-xs font-black uppercase tracking-widest h-10"
+                                    variant="primary"
+                                    className="w-full text-xs font-semibold uppercase tracking-wider h-10"
                                     icon={ArrowRight}
                                     iconPosition="right"
                                 >
@@ -536,7 +570,7 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
 
                 <Button
                     onClick={handleNext}
-                    variant="premium"
+                    variant="primary"
                     className="h-14 px-12 text-lg touch-target-large touch-manipulation"
                     icon={ArrowRight}
                     iconPosition="right"

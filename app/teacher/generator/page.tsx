@@ -118,10 +118,10 @@ export default function ExamGeneratorPage() {
     return (
         <div className="max-w-5xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4">
             <header>
-                <h1 className="text-3xl font-black text-white mb-2 flex items-center gap-3">
-                    <Sparkles className="text-metal-gold" /> Generador de Exámenes IA
+                <h1 className="text-3xl font-semibold text-[var(--theme-text-primary)] mb-2 flex items-center gap-3">
+                    <Sparkles className="text-brand-primary" /> Generador de Exámenes IA
                 </h1>
-                <p className="text-metal-silver">
+                <p className="text-[var(--theme-text-secondary)]">
                     Crea evaluaciones personalizadas en segundos utilizando nuestra base de conocimiento.
                 </p>
             </header>
@@ -129,69 +129,69 @@ export default function ExamGeneratorPage() {
             <div className="grid md:grid-cols-3 gap-8">
                 {/* CONFIG CARD */}
                 <div className="md:col-span-1 space-y-6">
-                    <div className="metallic-card bg-metal-dark border border-metal-gold/30 p-6 rounded-2xl shadow-lg shadow-metal-gold/5">
-                        <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                    <div className="metallic-card bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] p-6 rounded-2xl shadow-lg shadow-brand-primary/5">
+                        <h2 className="text-xl font-bold text-[var(--theme-text-primary)] mb-6 flex items-center gap-2">
                             <RefreshCw size={20} /> Configuración
                         </h2>
 
                         <div className="space-y-4">
                             <div>
-                                <label className="text-sm font-bold text-metal-silver mb-1 block">Título del Examen</label>
+                                <label className="text-sm font-bold text-[var(--theme-text-secondary)] mb-1 block">Título del Examen</label>
                                 <input
                                     value={config.title}
                                     onChange={e => setConfig({ ...config, title: e.target.value })}
-                                    className="w-full bg-black/40 border border-metal-silver/20 rounded-lg px-4 py-2 text-white outline-none focus:border-metal-gold"
+                                    className="w-full bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] rounded-lg px-4 py-2 text-[var(--theme-text-primary)] outline-none focus:border-brand-primary"
                                     placeholder="Ej: Parcial de Matemáticas"
                                 />
                             </div>
 
                             <div>
-                                <label className="text-sm font-bold text-metal-silver mb-1 block">Asignar a Clase</label>
+                                <label className="text-sm font-bold text-[var(--theme-text-secondary)] mb-1 block">Asignar a Clase</label>
                                 <select
                                     value={config.classId}
                                     onChange={e => setConfig({ ...config, classId: e.target.value })}
-                                    className="w-full bg-black/40 border border-metal-silver/20 rounded-lg px-4 py-2 text-white outline-none focus:border-metal-gold"
+                                    className="w-full bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] rounded-lg px-4 py-2 text-[var(--theme-text-primary)] outline-none focus:border-brand-primary"
                                 >
                                     <option value="">Seleccionar Clase...</option>
-                                    {classes.map(c => <option key={c.id} value={c.id}>{c.name} ({c.code})</option>)}
+                                    {classes.map(c => <option key={c.id} value={c.id} className="bg-[var(--theme-bg-base)]">{c.name} ({c.code})</option>)}
                                 </select>
                             </div>
 
                             <div>
-                                <label className="text-sm font-bold text-metal-silver mb-1 block">Área de Conocimiento</label>
+                                <label className="text-sm font-bold text-[var(--theme-text-secondary)] mb-1 block">Área de Conocimiento</label>
                                 <select
                                     value={config.subject}
                                     onChange={e => setConfig({ ...config, subject: e.target.value as any })}
-                                    className="w-full bg-black/40 border border-metal-silver/20 rounded-lg px-4 py-2 text-white outline-none focus:border-metal-gold"
+                                    className="w-full bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] rounded-lg px-4 py-2 text-[var(--theme-text-primary)] outline-none focus:border-brand-primary"
                                 >
-                                    <option value="lectura_critica">Lectura Crítica</option>
-                                    <option value="razonamiento_cuantitativo">Razonamiento Cuantitativo</option>
-                                    <option value="competencias_ciudadanas">Competencias Ciudadanas</option>
-                                    <option value="ingles">Inglés</option>
+                                    <option value="lectura_critica" className="bg-[var(--theme-bg-base)]">Lectura Crítica</option>
+                                    <option value="razonamiento_cuantitativo" className="bg-[var(--theme-bg-base)]">Razonamiento Cuantitativo</option>
+                                    <option value="competencias_ciudadanas" className="bg-[var(--theme-bg-base)]">Competencias Ciudadanas</option>
+                                    <option value="ingles" className="bg-[var(--theme-bg-base)]">Inglés</option>
                                 </select>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="text-sm font-bold text-metal-silver mb-1 block">Preguntas</label>
+                                    <label className="text-sm font-bold text-[var(--theme-text-secondary)] mb-1 block">Preguntas</label>
                                     <input
                                         type="number"
                                         min={1} max={50}
                                         value={config.questionCount}
                                         onChange={e => setConfig({ ...config, questionCount: parseInt(e.target.value) })}
-                                        className="w-full bg-black/40 border border-metal-silver/20 rounded-lg px-4 py-2 text-white outline-none focus:border-metal-gold"
+                                        className="w-full bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] rounded-lg px-4 py-2 text-[var(--theme-text-primary)] outline-none focus:border-brand-primary"
                                     />
                                 </div>
                                 <div>
-                                    <label className="text-sm font-bold text-metal-silver mb-1 block">Dificultad</label>
+                                    <label className="text-sm font-bold text-[var(--theme-text-secondary)] mb-1 block">Dificultad</label>
                                     <select
                                         value={config.difficulty}
                                         onChange={e => setConfig({ ...config, difficulty: e.target.value })}
-                                        className="w-full bg-black/40 border border-metal-silver/20 rounded-lg px-4 py-2 text-white outline-none focus:border-metal-gold"
+                                        className="w-full bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] rounded-lg px-4 py-2 text-[var(--theme-text-primary)] outline-none focus:border-brand-primary"
                                     >
-                                        <option value="baja">Baja</option>
-                                        <option value="media">Media</option>
-                                        <option value="alta">Alta</option>
+                                        <option value="baja" className="bg-[var(--theme-bg-base)]">Baja</option>
+                                        <option value="media" className="bg-[var(--theme-bg-base)]">Media</option>
+                                        <option value="alta" className="bg-[var(--theme-bg-base)]">Alta</option>
                                     </select>
                                 </div>
                             </div>
@@ -199,7 +199,7 @@ export default function ExamGeneratorPage() {
                             <button
                                 onClick={handleGenerate}
                                 disabled={loading}
-                                className="w-full metallic-btn bg-metal-gold text-black font-bold py-3 rounded-xl mt-4 flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] disabled:opacity-50 transition-all"
+                                className="w-full metallic-btn bg-brand-primary text-[var(--theme-bg-base)] font-bold py-3 rounded-xl mt-4 flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] disabled:opacity-50 transition-all"
                             >
                                 {loading ? (
                                     <>
@@ -218,14 +218,14 @@ export default function ExamGeneratorPage() {
                 {/* PREVIEW CARD */}
                 <div className="md:col-span-2 space-y-6">
                     {generatedQuestions.length > 0 ? (
-                        <div className="metallic-card bg-metal-dark border border-metal-silver/10 p-6 rounded-2xl animate-in fade-in zoom-in-95">
+                        <div className="metallic-card bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] p-6 rounded-2xl animate-in fade-in zoom-in-95">
                             <div className="flex justify-between items-center mb-6">
-                                <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                                <h2 className="text-xl font-bold text-[var(--theme-text-primary)] flex items-center gap-2">
                                     <FileText size={20} /> Vista Previa ({generatedQuestions.length})
                                 </h2>
                                 <button
                                     onClick={handleSaveExam}
-                                    className="px-4 py-2 bg-green-600 hover:bg-green-500 text-white rounded-lg font-bold flex items-center gap-2 transition-colors"
+                                    className="px-4 py-2 bg-brand-primary hover:bg-brand-primary/90 text-white rounded-lg font-bold flex items-center gap-2 transition-colors shadow-lg active:scale-95"
                                 >
                                     <Save size={18} /> Guardar y Asignar
                                 </button>
@@ -233,15 +233,15 @@ export default function ExamGeneratorPage() {
 
                             <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
                                 {generatedQuestions.map((q, idx) => (
-                                    <div key={idx} className="p-4 bg-white/5 rounded-xl border border-white/5">
+                                    <div key={idx} className="p-4 bg-[var(--theme-bg-base)] rounded-xl border border-[var(--theme-border-soft)]">
                                         <div className="flex justify-between mb-2">
-                                            <span className="font-bold text-metal-gold">Pregunta {idx + 1}</span>
-                                            <span className="text-xs text-metal-silver bg-black/30 px-2 py-1 rounded">IA Score: 98%</span>
+                                            <span className="font-bold text-brand-primary">Pregunta {idx + 1}</span>
+                                            <span className="text-xs text-[var(--theme-text-tertiary)] bg-[var(--theme-bg-surface)] px-2 py-1 rounded">IA Score: 98%</span>
                                         </div>
-                                        <p className="text-white mb-3">{q.text}</p>
-                                        <div className="space-y-2 pl-4 border-l-2 border-white/10">
+                                        <p className="text-[var(--theme-text-primary)] mb-3">{q.text}</p>
+                                        <div className="metallic-card p-8 rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]">
                                             {q.options.map((opt: any) => (
-                                                <div key={opt.id} className={`text-sm ${opt.id === q.correctAnswer ? 'text-green-400 font-bold' : 'text-metal-silver'}`}>
+                                                <div key={opt.id} className={`text-sm ${opt.id === q.correctAnswer ? 'text-green-400 font-bold' : 'text-[var(--theme-text-secondary)]'}`}>
                                                     {opt.id}. {opt.text}
                                                 </div>
                                             ))}
@@ -251,12 +251,12 @@ export default function ExamGeneratorPage() {
                             </div>
                         </div>
                     ) : (
-                        <div className="h-full flex flex-col items-center justify-center p-12 border-2 border-dashed border-metal-silver/10 rounded-3xl bg-white/5 text-center">
-                            <div className="w-20 h-20 bg-metal-gold/10 rounded-full flex items-center justify-center mb-6 text-metal-gold">
+                        <div className="h-full flex flex-col items-center justify-center p-12 border-2 border-dashed border-[var(--theme-border-soft)] rounded-3xl bg-[var(--theme-bg-base)] text-center">
+                            <div className="w-20 h-20 bg-brand-primary/10 rounded-full flex items-center justify-center mb-6 text-brand-primary">
                                 <Brain size={40} />
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-2">Listo para Crear</h3>
-                            <p className="text-metal-silver max-w-sm">
+                            <h3 className="text-xl font-bold text-[var(--theme-text-primary)] mb-2">Listo para Crear</h3>
+                            <p className="text-[var(--theme-text-secondary)] max-w-sm">
                                 Configura los parámetros a la izquierda y deja que nuestra IA estructure el examen perfecto para tus estudiantes.
                             </p>
                         </div>

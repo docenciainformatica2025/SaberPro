@@ -126,30 +126,32 @@ export default function NewQuestionPage() {
     };
 
     return (
-        <div className="max-w-5xl mx-auto space-y-8 pb-20">
-            {/* Header */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 animate-in fade-in slide-in-from-top-4 duration-500">
+        <main className="max-w-7xl mx-auto space-y-12 pb-12 p-4 lg:p-0 animate-in fade-in slide-in-from-bottom-8 duration-700" suppressHydrationWarning>
+            {/* Header Section */}
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 <div className="flex items-center gap-4">
                     <Link href="/admin/questions">
-                        <Button variant="ghost" size="sm" icon={ArrowLeft} className="rounded-full w-10 h-10 p-0" />
+                        <Button variant="ghost" size="sm" icon={ArrowLeft} className="rounded-full w-12 h-12 p-0 border border-white/5 hover:border-brand-primary/30" />
                     </Link>
                     <div>
-                        <h1 className="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-white via-metal-silver to-white/50 flex items-center gap-3">
-                            <Sparkles className="text-metal-gold" /> Nuevo Reactivo Académico
+                        <h1 className="text-4xl font-black text-theme-hero flex items-center gap-4 tracking-tighter italic uppercase">
+                            <Sparkles className="text-brand-primary" size={36} /> Nuevo Reactivo Académico
                         </h1>
-                        <p className="text-metal-silver/60 text-sm mt-1">Crea o importa contenido inmutable para la plataforma Saber Pro</p>
+                        <p className="text-[var(--theme-text-tertiary)] text-sm mt-1 flex items-center gap-2 font-medium">
+                            <Database size={14} className="text-brand-primary" /> Creación o importación de contenido inmutable para el Banco Saber Pro
+                        </p>
                     </div>
                 </div>
-                <div className="flex p-1 bg-white/5 rounded-2xl border border-white/5 backdrop-blur-xl">
+                <div className="flex p-1 bg-[var(--theme-bg-surface)]/50 rounded-2xl border border-[var(--theme-border-soft)] backdrop-blur-xl">
                     <button
                         onClick={() => setMode("manual")}
-                        className={`px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest flex items-center gap-2 transition-all ${mode === "manual" ? "bg-metal-gold text-black shadow-lg" : "text-metal-silver/40 hover:text-metal-silver"}`}
+                        className={`px-6 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider flex items-center gap-2 transition-all ${mode === "manual" ? "bg-[var(--brand-primary)] text-[var(--theme-bg-base)] shadow-lg" : "text-theme-text-tertiary hover:text-theme-text-secondary"}`}
                     >
                         <Type size={14} /> Manual
                     </button>
                     <button
                         onClick={() => setMode("json")}
-                        className={`px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest flex items-center gap-2 transition-all ${mode === "json" ? "bg-blue-500 text-white shadow-lg" : "text-metal-silver/40 hover:text-metal-silver"}`}
+                        className={`px-6 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider flex items-center gap-2 transition-all ${mode === "json" ? "bg-[var(--brand-primary)] text-[var(--theme-bg-base)] shadow-lg" : "text-theme-text-tertiary hover:text-theme-text-secondary"}`}
                     >
                         <FileJson size={14} /> Importar
                     </button>
@@ -157,7 +159,7 @@ export default function NewQuestionPage() {
             </div>
 
             {status && (
-                <div className={`p-5 rounded-2xl border flex items-center gap-4 animate-in zoom-in duration-300 ${status.type === 'error' ? "bg-red-500/10 border-red-500/20 text-red-400" : "bg-green-500/10 border-green-500/20 text-green-400"}`}>
+                <div className={`p-5 rounded-2xl border flex items-center gap-4 animate-in zoom-in duration-300 ${status.type === 'error' ? "bg-brand-error/10 border-brand-error/20 text-brand-error" : "bg-brand-success/10 border-brand-success/20 text-brand-success"}`}>
                     {status.type === 'error' ? <AlertCircle /> : <CheckCircle2 />}
                     <span className="text-sm font-bold">{status.message}</span>
                 </div>
@@ -174,34 +176,34 @@ export default function NewQuestionPage() {
                 <form onSubmit={handleManualSubmit} className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
                     <div className="lg:col-span-2 space-y-8">
                         <Card variant="solid" className="p-8 space-y-6">
-                            <div className="flex items-center gap-2 text-white border-b border-white/5 pb-4 mb-2">
-                                <Database className="text-metal-gold" size={18} />
-                                <h2 className="text-sm font-black uppercase tracking-widest italic">Contenido del Reactivo</h2>
+                            <div className="flex items-center gap-2 text-theme-text-primary border-b border-theme-border-soft pb-4 mb-2">
+                                <Database className="text-brand-primary" size={18} />
+                                <h2 className="text-sm font-semibold tracking-wide">Contenido del reactivo</h2>
                             </div>
 
                             <div className="space-y-4">
-                                <label className="text-[10px] font-black text-metal-silver/40 uppercase tracking-widest ml-1">Enunciado Principal</label>
+                                <label className="text-[10px] font-semibold text-theme-text-secondary/40 uppercase tracking-wider ml-1">Enunciado Principal</label>
                                 <textarea
                                     required
                                     rows={6}
                                     value={formData.text}
                                     onChange={(e) => setFormData({ ...formData, text: e.target.value })}
-                                    className="w-full bg-black/40 border border-white/10 rounded-2xl p-6 text-white text-lg font-medium focus:ring-1 focus:ring-metal-gold/50 focus:border-metal-gold/50 outline-none transition-all resize-none placeholder:text-white/10"
+                                    className="w-full bg-theme-bg-surface border border-theme-border-soft rounded-2xl p-6 text-theme-text-primary text-lg font-medium focus:ring-1 focus:ring-brand-primary/50 focus:border-brand-primary/50 outline-none transition-all resize-none placeholder:text-theme-text-tertiary"
                                     placeholder="Escribe el enunciado de la pregunta aquí..."
                                 />
                             </div>
 
                             <div className="space-y-4">
-                                <label className="text-[10px] font-black text-metal-silver/40 uppercase tracking-widest ml-1">Imagen de Apoyo (URL)</label>
+                                <label className="text-[10px] font-semibold text-theme-text-secondary/40 uppercase tracking-wider ml-1">Imagen de Apoyo (URL)</label>
                                 <Input
                                     value={formData.imageUrl}
                                     onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
                                     icon={ImageIcon}
-                                    className="bg-black/40 border-white/5 shadow-inner"
+                                    className="bg-[var(--theme-bg-surface)]/40 border-[var(--theme-border-soft)] shadow-inner"
                                     placeholder="https://servidor.com/esquema.png"
                                 />
                                 {formData.imageUrl && (
-                                    <div className="relative rounded-2xl overflow-hidden border border-white/5 mt-2 group aspect-video bg-black/40">
+                                    <div className="relative rounded-2xl overflow-hidden border border-[var(--theme-border-soft)] mt-2 group aspect-video bg-[var(--theme-bg-surface)]/40">
                                         <Image src={formData.imageUrl} alt="Vista previa de la pregunta" fill className="object-contain p-4 group-hover:scale-105 transition-transform duration-700" />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
                                             <Badge variant="info" className="bg-blue-500/20 text-blue-400">Vista Previa del Activo</Badge>
@@ -212,18 +214,18 @@ export default function NewQuestionPage() {
                         </Card>
 
                         <Card variant="solid" className="p-8 space-y-8">
-                            <div className="flex items-center gap-2 text-white border-b border-white/5 pb-4">
-                                <Layers className="text-metal-blue" size={18} />
-                                <h2 className="text-sm font-black uppercase tracking-widest italic">Opciones de Respuesta</h2>
+                            <div className="flex items-center gap-2 text-theme-text-primary border-b border-theme-border-soft pb-4">
+                                <Layers className="text-brand-primary" size={18} />
+                                <h2 className="text-sm font-semibold tracking-wide">Opciones de respuesta</h2>
                             </div>
 
                             <div className="grid gap-4">
                                 {["A", "B", "C", "D"].map((opt) => (
-                                    <div key={opt} className={`flex gap-4 items-center p-3 rounded-2xl bg-black/40 border transition-all ${formData.correctAnswer === opt ? "border-green-500/30 bg-green-500/[0.02]" : "border-white/5"}`}>
+                                    <div key={opt} className={`flex gap-4 items-center p-3 rounded-2xl bg-[var(--theme-bg-surface)]/40 border transition-all ${formData.correctAnswer === opt ? "border-brand-success/30 bg-brand-success/[0.02]" : "border-[var(--theme-border-soft)]"}`}>
                                         <button
                                             type="button"
                                             onClick={() => setFormData({ ...formData, correctAnswer: opt })}
-                                            className={`w-12 h-12 flex items-center justify-center rounded-xl font-black transition-all ${formData.correctAnswer === opt ? "bg-green-500 text-black shadow-[0_0_20px_rgba(34,197,94,0.3)]" : "bg-white/5 text-metal-silver/40 hover:text-white"}`}
+                                            className={`w-12 h-12 flex items-center justify-center rounded-xl font-semibold transition-all ${formData.correctAnswer === opt ? "bg-[var(--brand-success)] text-[var(--theme-bg-base)] shadow-[0_0_20px_rgba(22,163,74,0.3)]" : "bg-[var(--theme-bg-surface)]/10 text-theme-text-secondary/40 hover:text-[var(--theme-text-primary)]"}`}
                                         >
                                             {opt}
                                         </button>
@@ -232,7 +234,7 @@ export default function NewQuestionPage() {
                                             type="text"
                                             value={(formData as any)[`option${opt}`]}
                                             onChange={(e) => setFormData({ ...formData, [`option${opt}`]: e.target.value })}
-                                            className="flex-1 bg-transparent border-none focus:ring-0 text-white placeholder:text-white/10 py-3"
+                                            className="flex-1 bg-transparent border-none focus:ring-0 text-theme-text-primary placeholder:text-theme-text-tertiary py-3"
                                             placeholder={`Definir opción ${opt}...`}
                                         />
                                         {formData.correctAnswer === opt && (
@@ -246,14 +248,14 @@ export default function NewQuestionPage() {
 
                     <div className="space-y-8">
                         <Card variant="solid" className="p-8 space-y-8">
-                            <div className="flex items-center gap-2 text-white border-b border-white/5 pb-4 mb-2">
-                                <Settings className="text-metal-gold" size={18} />
-                                <h2 className="text-sm font-black uppercase tracking-widest italic">Metadatos</h2>
+                            <div className="flex items-center gap-2 text-theme-text-primary border-b border-theme-border-soft pb-4 mb-2">
+                                <Settings className="text-brand-primary" size={18} />
+                                <h2 className="text-sm font-semibold tracking-wide">Metadatos</h2>
                             </div>
 
                             <div className="space-y-6">
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-black text-metal-silver/40 uppercase tracking-widest ml-1">Módulo Académico</label>
+                                    <label className="text-[10px] font-semibold text-theme-text-secondary/40 uppercase tracking-wider ml-1">Módulo Académico</label>
                                     <Select
                                         required
                                         value={formData.module}
@@ -269,7 +271,7 @@ export default function NewQuestionPage() {
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-black text-metal-silver/40 uppercase tracking-widest ml-1">Nivel de Dificultad</label>
+                                    <label className="text-[10px] font-semibold text-theme-text-secondary/40 uppercase tracking-wider ml-1">Nivel de Dificultad</label>
                                     <Select
                                         required
                                         value={formData.difficulty}
@@ -284,29 +286,29 @@ export default function NewQuestionPage() {
                             </div>
 
                             <div className="space-y-4 pt-4 border-t border-white/5">
-                                <label className="text-[10px] font-black text-metal-silver/40 uppercase tracking-widest ml-1">Retroalimentación / IA (Opcional)</label>
+                                <label className="text-[10px] font-semibold text-theme-text-secondary/40 uppercase tracking-wider ml-1">Retroalimentación / IA (Opcional)</label>
                                 <textarea
                                     rows={4}
                                     value={formData.explanation}
                                     onChange={(e) => setFormData({ ...formData, explanation: e.target.value })}
-                                    className="w-full bg-black/40 border border-white/5 rounded-2xl p-4 text-xs font-medium focus:border-metal-gold/50 outline-none transition-all resize-none italic text-metal-silver/60"
+                                    className="w-full bg-theme-bg-surface border border-theme-border-soft rounded-2xl p-4 text-xs font-medium focus:border-brand-primary/50 outline-none transition-all resize-none italic text-theme-text-tertiary"
                                     placeholder="Explica la lógica de resolución..."
                                 />
                             </div>
 
                             <Button
                                 type="submit"
-                                variant="premium"
-                                className="w-full h-14 text-sm font-black uppercase tracking-widest"
+                                variant="primary"
+                                className="w-full h-14 text-sm font-semibold uppercase tracking-wider"
                                 icon={Save}
                             >
                                 Publicar Reactivo
                             </Button>
                         </Card>
 
-                        <div className="bg-metal-gold/5 p-6 rounded-3xl border border-metal-gold/10 flex gap-4">
-                            <HelpCircle className="text-metal-gold shrink-0" size={20} />
-                            <p className="text-[10px] text-metal-gold/60 leading-relaxed font-bold uppercase tracking-tight">
+                        <div className="bg-brand-primary/5 p-6 rounded-3xl border border-brand-primary/10 flex gap-4">
+                            <HelpCircle className="text-brand-primary shrink-0" size={20} />
+                            <p className="text-[10px] text-brand-primary/60 leading-relaxed font-bold uppercase tracking-tight">
                                 Cada pregunta guardada se integra inmediatamente en el motor de simulacros para miles de usuarios. Asegure la precisión académica.
                             </p>
                         </div>
@@ -315,16 +317,16 @@ export default function NewQuestionPage() {
             ) : (
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-in fade-in slide-in-from-bottom-4 duration-500 transition-all">
                     <Card variant="solid" className="lg:col-span-2 p-8 space-y-6">
-                        <div className="flex items-center gap-2 text-white border-b border-white/5 pb-4 mb-2">
+                        <div className="flex items-center gap-2 text-[var(--theme-text-primary)] border-b border-[var(--theme-border-soft)] pb-4 mb-2">
                             <FileJson className="text-blue-400" size={18} />
-                            <h2 className="text-sm font-black uppercase tracking-widest italic">Buffer de Importación JSON</h2>
+                            <h2 className="text-sm font-semibold uppercase tracking-wider italic">Buffer de Importación JSON</h2>
                         </div>
 
                         <textarea
                             rows={20}
                             value={jsonInput}
                             onChange={(e) => setJsonInput(e.target.value)}
-                            className="w-full bg-black/60 border border-white/10 rounded-2xl p-8 font-mono text-[11px] text-blue-400 focus:border-blue-500/50 outline-none transition-all resize-none shadow-inner"
+                            className="w-full bg-[var(--theme-bg-surface)]/60 border border-[var(--theme-border-soft)] rounded-2xl p-8 font-mono text-[11px] text-brand-primary focus:border-brand-primary/50 outline-none transition-all resize-none shadow-inner"
                             placeholder="[ { 'module': '...', 'text': '...' }, ... ]"
                         />
 
@@ -332,7 +334,7 @@ export default function NewQuestionPage() {
                             <Button
                                 onClick={handleJsonOverview}
                                 disabled={!jsonInput}
-                                variant="premium"
+                                variant="primary"
                                 className="px-10 h-14 bg-blue-600 border-blue-500 hover:bg-blue-500"
                                 icon={Database}
                             >
@@ -345,12 +347,12 @@ export default function NewQuestionPage() {
                         <Card variant="solid" className="p-8 space-y-6 bg-blue-500/[0.02]">
                             <div className="flex items-center gap-2 text-blue-400 border-b border-blue-500/10 pb-4 mb-2">
                                 <Info size={18} />
-                                <h2 className="text-sm font-black uppercase tracking-widest italic">Especificación Estándar</h2>
+                                <h2 className="text-sm font-semibold uppercase tracking-wider italic">Especificación Estándar</h2>
                             </div>
 
                             <div className="space-y-4 font-mono text-[10px]">
-                                <p className="text-blue-400/60 uppercase font-black">Esquema Requerido:</p>
-                                <div className="p-4 bg-black/40 rounded-xl border border-white/5 text-metal-silver/40">
+                                <p className="text-blue-400/60 uppercase font-semibold">Esquema Requerido:</p>
+                                <div className="p-4 bg-[var(--theme-bg-surface)]/80 rounded-xl border border-[var(--theme-border-soft)] text-[var(--theme-text-secondary)]">
                                     <pre className="whitespace-pre-wrap">
                                         {`{
   "module": "slug_string",
@@ -364,7 +366,7 @@ export default function NewQuestionPage() {
 }`}
                                     </pre>
                                 </div>
-                                <p className="text-[9px] italic text-metal-silver/20 italic">
+                                <p className="text-[9px] italic text-[var(--theme-text-tertiary)] italic">
                                     * El sistema rechazará entradas que no cumplan con el tipado estricto `Question`.
                                 </p>
                             </div>
@@ -372,6 +374,6 @@ export default function NewQuestionPage() {
                     </div>
                 </div>
             )}
-        </div>
+        </main>
     );
 }

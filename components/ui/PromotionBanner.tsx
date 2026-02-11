@@ -6,6 +6,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { Sparkles, X, Megaphone, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { Button } from "./Button";
 
 export default function PromotionBanner() {
     const [config, setConfig] = useState<any>(null);
@@ -31,7 +32,7 @@ export default function PromotionBanner() {
 
     if (!isVisible || !config) return null;
 
-    const promoText = config.monetization?.students?.promoText || "Oferta Especial por Tiempo Limitado";
+    const promoText = config.monetization?.students?.promoText || "Estamos contigo en cada paso de tu formación";
 
     return (
         <AnimatePresence>
@@ -39,32 +40,40 @@ export default function PromotionBanner() {
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                className="relative bg-gradient-to-r from-metal-gold via-yellow-400 to-metal-gold overflow-hidden"
+                className="relative bg-brand-primary overflow-hidden"
             >
                 <div className="absolute inset-0 bg-white/10 animate-pulse pointer-events-none" />
                 <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4 relative z-10">
                     <div className="flex items-center gap-3">
-                        <div className="bg-black/20 p-1.5 rounded-lg">
-                            <Megaphone size={16} className="text-black" />
+                        <div className="bg-white/10 p-1.5 rounded-lg">
+                            <Megaphone size={16} className="text-white" />
                         </div>
-                        <p className="text-xs md:text-sm font-black text-black uppercase tracking-tight italic flex items-center gap-2">
+                        <p className="text-xs md:text-sm font-semibold text-white uppercase tracking-tight italic flex items-center gap-2">
                             <Sparkles size={14} className="animate-bounce" /> {promoText}
                         </p>
                     </div>
 
                     <div className="flex items-center gap-6">
-                        <Link href="/pricing" className="hidden md:flex items-center gap-2 bg-black text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-xl">
-                            <Zap size={10} fill="currentColor" /> Obtener Beneficio
+                        <Link href="/pricing" className="hidden md:block">
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                icon={Zap}
+                                className="bg-white text-brand-primary hover:bg-white/90 border-none shadow-sm text-[10px]"
+                            >
+                                Obtener Beneficio
+                            </Button>
                         </Link>
-                        <button
+                        <Button
+                            variant="ghost"
+                            size="icon"
                             onClick={() => {
                                 setIsVisible(false);
                                 setDismissed(true);
                             }}
-                            className="p-1 hover:bg-black/10 rounded-full transition-colors"
-                        >
-                            <X size={18} className="text-black" />
-                        </button>
+                            icon={X}
+                            className="text-white hover:bg-white/10"
+                        />
                     </div>
                 </div>
             </motion.div>

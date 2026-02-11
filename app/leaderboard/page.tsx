@@ -94,7 +94,7 @@ export default function LeaderboardPage() {
     }, [user, timeFrame]);
 
     if (loading) return (
-        <div className="min-h-screen bg-metal-dark flex items-center justify-center">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] flex items-center justify-center">
             <AIProcessingLoader text="Cargando Clasificación" subtext="Calculando puntajes globales..." />
         </div>
     );
@@ -103,26 +103,26 @@ export default function LeaderboardPage() {
     const rest = leaders.slice(3);
 
     return (
-        <div className="min-h-screen bg-metal-dark pb-24">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] pb-24">
             {/* Header */}
-            <div className="sticky top-0 z-40 bg-metal-dark/90 backdrop-blur-md border-b border-white/5 p-4 md:px-8 flex justify-between items-center">
+            <div className="sticky top-0 z-40 bg-[var(--theme-bg-base)]/90 backdrop-blur-md border-b border-[var(--theme-border-soft)] p-4 md:px-8 flex justify-between items-center">
                 <Link href="/dashboard">
-                    <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-metal-silver hover:text-white">
-                        <span className="hidden md:inline">DASHBOARD</span>
+                    <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)]">
+                        <span className="hidden md:inline">PANEL CENTRAL</span>
                     </Button>
                 </Link>
                 <div className="flex gap-4 items-center">
-                    <h1 className="text-lg font-black uppercase tracking-widest text-white hidden md:block">Ranking Global</h1>
-                    <div className="bg-black/40 p-1 rounded-full border border-white/10 flex">
+                    <h1 className="text-lg font-semibold uppercase tracking-wider text-[var(--theme-text-primary)] hidden md:block">Ranking Global</h1>
+                    <div className="bg-[var(--theme-bg-surface)] p-1 rounded-full border border-[var(--theme-border-soft)] flex">
                         <button
                             onClick={() => setTimeFrame('weekly')}
-                            className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${timeFrame === 'weekly' ? 'bg-metal-gold text-black shadow-lg shadow-metal-gold/20' : 'text-metal-silver hover:text-white'}`}
+                            className={`px-4 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-wider transition-all ${timeFrame === 'weekly' ? 'bg-brand-primary text-black shadow-lg shadow-brand-primary/20' : 'text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)]'}`}
                         >
                             Semanal
                         </button>
                         <button
                             onClick={() => setTimeFrame('allTime')}
-                            className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${timeFrame === 'allTime' ? 'bg-metal-blue text-white shadow-lg shadow-metal-blue/20' : 'text-metal-silver hover:text-white'}`}
+                            className={`px-4 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-wider transition-all ${timeFrame === 'allTime' ? 'bg-metal-blue text-white shadow-lg shadow-metal-blue/20' : 'text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)]'}`}
                         >
                             Histórico
                         </button>
@@ -139,18 +139,18 @@ export default function LeaderboardPage() {
                     {topThree[1] && (
                         <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100">
                             <div className="mb-4 relative">
-                                <div className="w-16 h-16 rounded-full border-2 border-metal-silver bg-black overflow-hidden relative z-10">
+                                <div className="w-16 h-16 rounded-full border-2 border-theme-text-secondary bg-[var(--theme-bg-base)] overflow-hidden relative z-10">
                                     {/* Avatar */}
-                                    <div className="w-full h-full flex items-center justify-center bg-metal-silver/20 text-metal-silver font-bold">
+                                    <div className="w-full h-full flex items-center justify-center bg-theme-text-secondary/20 text-theme-text-secondary font-bold">
                                         {topThree[1].fullName[0]}
                                     </div>
                                 </div>
-                                <div className="absolute -bottom-2 -right-2 bg-metal-silver text-black text-xs font-black w-6 h-6 rounded-full flex items-center justify-center border-2 border-black z-20">2</div>
+                                <div className="absolute -bottom-2 -right-2 bg-theme-text-secondary text-black text-xs font-semibold w-6 h-6 rounded-full flex items-center justify-center border-2 border-black z-20">2</div>
                             </div>
-                            <div className="w-full bg-gradient-to-t from-metal-silver/20 to-metal-silver/5 rounded-t-xl h-32 flex flex-col justify-end p-4 text-center border-t border-x border-metal-silver/30 relative">
-                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-8 bg-metal-silver/50" />
-                                <h3 className="text-white font-bold text-xs truncate w-full mb-1">{topThree[1].fullName}</h3>
-                                <p className="text-metal-silver font-black text-lg">{topThree[1].points}</p>
+                            <div className="w-full bg-gradient-to-t from-theme-text-secondary/20 to-theme-text-secondary/5 rounded-t-xl h-32 flex flex-col justify-end p-4 text-center border-t border-x border-theme-text-secondary/30 relative">
+                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-8 bg-theme-text-secondary/50" />
+                                <h3 className="text-[var(--theme-text-primary)] font-bold text-xs truncate w-full mb-1">{topThree[1].fullName}</h3>
+                                <p className="text-theme-text-secondary font-semibold text-lg">{topThree[1].points}</p>
                             </div>
                         </div>
                     )}
@@ -158,19 +158,19 @@ export default function LeaderboardPage() {
                     {/* 1st Place */}
                     {topThree[0] && (
                         <div className="flex flex-col items-center z-10 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                            <Crown size={32} className="text-metal-gold mb-2 animate-bounce" />
+                            <Crown size={32} className="text-brand-primary mb-2 animate-bounce" />
                             <div className="mb-4 relative">
-                                <div className="w-20 h-20 rounded-full border-4 border-metal-gold bg-black overflow-hidden relative z-10 shadow-[0_0_30px_rgba(212,175,55,0.4)]">
-                                    <div className="w-full h-full flex items-center justify-center bg-metal-gold/20 text-metal-gold font-bold text-2xl">
+                                <div className="w-20 h-20 rounded-full border-4 border-brand-primary bg-[var(--theme-bg-base)] overflow-hidden relative z-10 shadow-[0_0_30px_rgba(212,175,55,0.4)]">
+                                    <div className="w-full h-full flex items-center justify-center bg-brand-primary/20 text-brand-primary font-bold text-2xl">
                                         {topThree[0].fullName[0]}
                                     </div>
                                 </div>
-                                <div className="absolute -bottom-3 -right-3 bg-metal-gold text-black text-sm font-black w-8 h-8 rounded-full flex items-center justify-center border-4 border-black z-20">1</div>
+                                <div className="absolute -bottom-3 -right-3 bg-brand-primary text-black text-sm font-semibold w-8 h-8 rounded-full flex items-center justify-center border-4 border-black z-20">1</div>
                             </div>
-                            <div className="w-full bg-gradient-to-t from-metal-gold/20 to-metal-gold/5 rounded-t-xl h-40 flex flex-col justify-end p-4 text-center border-t border-x border-metal-gold/30 relative shadow-[0_0_50px_rgba(212,175,55,0.1)]">
-                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-12 bg-metal-gold/50" />
-                                <h3 className="text-white font-bold text-sm truncate w-full mb-1">{topThree[0].fullName}</h3>
-                                <p className="text-metal-gold font-black text-2xl">{topThree[0].points}</p>
+                            <div className="w-full bg-gradient-to-t from-brand-primary/20 to-brand-primary/5 rounded-t-xl h-40 flex flex-col justify-end p-4 text-center border-t border-x border-brand-primary/30 relative shadow-[0_0_50px_rgba(212,175,55,0.1)]">
+                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-12 bg-brand-primary/50" />
+                                <h3 className="text-[var(--theme-text-primary)] font-bold text-sm truncate w-full mb-1">{topThree[0].fullName}</h3>
+                                <p className="text-brand-primary font-semibold text-2xl">{topThree[0].points}</p>
                             </div>
                         </div>
                     )}
@@ -179,17 +179,17 @@ export default function LeaderboardPage() {
                     {topThree[2] && (
                         <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
                             <div className="mb-4 relative">
-                                <div className="w-16 h-16 rounded-full border-2 border-orange-700 bg-black overflow-hidden relative z-10">
+                                <div className="w-16 h-16 rounded-full border-2 border-orange-700 bg-[var(--theme-bg-base)] overflow-hidden relative z-10">
                                     <div className="w-full h-full flex items-center justify-center bg-orange-900/20 text-orange-700 font-bold">
                                         {topThree[2].fullName[0]}
                                     </div>
                                 </div>
-                                <div className="absolute -bottom-2 -right-2 bg-orange-700 text-black text-xs font-black w-6 h-6 rounded-full flex items-center justify-center border-2 border-black z-20">3</div>
+                                <div className="absolute -bottom-2 -right-2 bg-orange-700 text-black text-xs font-semibold w-6 h-6 rounded-full flex items-center justify-center border-2 border-black z-20">3</div>
                             </div>
                             <div className="w-full bg-gradient-to-t from-orange-900/20 to-orange-900/5 rounded-t-xl h-24 flex flex-col justify-end p-4 text-center border-t border-x border-orange-700/30 relative">
                                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-8 bg-orange-700/50" />
-                                <h3 className="text-white font-bold text-xs truncate w-full mb-1">{topThree[2].fullName}</h3>
-                                <p className="text-orange-500 font-black text-lg">{topThree[2].points}</p>
+                                <h3 className="text-[var(--theme-text-primary)] font-bold text-xs truncate w-full mb-1">{topThree[2].fullName}</h3>
+                                <p className="text-orange-500 font-semibold text-lg">{topThree[2].points}</p>
                             </div>
                         </div>
                     )}
@@ -201,16 +201,16 @@ export default function LeaderboardPage() {
                         <Card
                             key={rUser.id}
                             variant={rUser.id === user?.uid ? "premium" : "glass"}
-                            className={`flex items-center p-4 ${rUser.id === user?.uid ? 'border-metal-gold' : 'border-white/5 bg-white/[0.02]'}`}
+                            className={`flex items-center p-4 ${rUser.id === user?.uid ? 'border-brand-primary' : 'border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]'}`}
                         >
-                            <span className="w-8 text-center text-metal-silver font-black text-lg mr-4">{rUser.rank}</span>
+                            <span className="w-8 text-center text-[var(--theme-text-secondary)] font-semibold text-lg mr-4">{rUser.rank}</span>
 
-                            <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center mr-4 text-metal-silver font-bold overflow-hidden">
+                            <div className="w-10 h-10 rounded-full bg-[var(--theme-bg-base)] flex items-center justify-center mr-4 text-[var(--theme-text-secondary)] font-bold overflow-hidden">
                                 <User size={20} />
                             </div>
 
                             <div className="flex-grow">
-                                <h4 className={`font-bold text-sm ${rUser.id === user?.uid ? 'text-white' : 'text-metal-silver'}`}>
+                                <h4 className={`font-bold text-sm ${rUser.id === user?.uid ? 'text-[var(--theme-text-primary)]' : 'text-[var(--theme-text-secondary)]'}`}>
                                     {rUser.fullName} {rUser.id === user?.uid && "(Tú)"}
                                 </h4>
                                 <div className="flex items-center gap-2 mt-1">
@@ -223,8 +223,8 @@ export default function LeaderboardPage() {
                             </div>
 
                             <div className="text-right">
-                                <span className={`font-black text-lg ${rUser.id === user?.uid ? 'text-metal-gold' : 'text-white'}`}>{rUser.points}</span>
-                                <span className="block text-[9px] text-metal-silver uppercase tracking-widest font-bold">XP</span>
+                                <span className={`font-semibold text-lg ${rUser.id === user?.uid ? 'text-brand-primary' : 'text-[var(--theme-text-primary)]'}`}>{rUser.points}</span>
+                                <span className="block text-[9px] text-[var(--theme-text-secondary)] uppercase tracking-wider font-bold">XP</span>
                             </div>
                         </Card>
                     ))}
@@ -233,22 +233,22 @@ export default function LeaderboardPage() {
 
             {/* Sticky Me (if not in top view or just always show for context) */}
             {userRank && (
-                <div className="fixed bottom-0 left-0 right-0 p-4 bg-metal-dark/95 backdrop-blur-xl border-t border-metal-gold/20 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] z-50 animate-in slide-in-from-bottom-full">
+                <div className="fixed bottom-0 left-0 right-0 p-4 bg-[var(--theme-bg-base)]/95 backdrop-blur-xl border-t border-brand-primary/20 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] z-50 animate-in slide-in-from-bottom-full">
                     <div className="max-w-3xl mx-auto flex items-center justify-between">
                         <div className="flex items-center gap-4">
-                            <span className="text-white font-black text-2xl">#{userRank.rank}</span>
+                            <span className="text-[var(--theme-text-primary)] font-semibold text-2xl">#{userRank.rank}</span>
                             <div className="flex flex-col">
-                                <span className="text-metal-gold font-bold text-sm uppercase tracking-wider">Tu Posición</span>
-                                <span className="text-metal-silver text-xs">Sigue practicando para subir</span>
+                                <span className="text-brand-primary font-bold text-sm uppercase tracking-wider">Tu Posición</span>
+                                <span className="text-[var(--theme-text-secondary)] text-xs">Sigue practicando para subir</span>
                             </div>
                         </div>
                         <div className="flex items-center gap-4">
                             <div className="text-right">
-                                <span className="block text-white font-black text-xl">{userRank.points}</span>
-                                <span className="text-[10px] text-metal-silver uppercase font-bold">Puntos XP</span>
+                                <span className="block text-[var(--theme-text-primary)] font-semibold text-xl">{userRank.points}</span>
+                                <span className="text-[10px] text-[var(--theme-text-secondary)] uppercase font-bold">Puntos XP</span>
                             </div>
                             <Link href="/simulation">
-                                <Button variant="premium" size="sm" className="shadow-lg shadow-metal-gold/20">Jugar</Button>
+                                <Button variant="primary" size="sm" className="shadow-lg shadow-brand-primary/20">Jugar</Button>
                             </Link>
                         </div>
                     </div>

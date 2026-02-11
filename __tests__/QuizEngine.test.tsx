@@ -83,7 +83,7 @@ describe('QuizEngine Component', () => {
         expect(screen.getByText(/\/ 2/)).toBeInTheDocument();
     });
 
-    it('allows selecting an option and navigating to next question', () => {
+    it('allows selecting an option and navigating to next question', async () => {
         render(<QuizEngine questions={mockQuestions} moduleName="test_module" />);
 
         const optionA = screen.getByText('Option A');
@@ -92,18 +92,17 @@ describe('QuizEngine Component', () => {
         const nextBtn = screen.getByText('Siguiente Pregunta');
         fireEvent.click(nextBtn);
 
-        expect(screen.getByText('Question 2 Text')).toBeInTheDocument();
+        expect(await screen.findByText('Question 2 Text')).toBeInTheDocument();
     });
 
-    it('shows review screen after last question', () => {
+    it('shows review screen after last question', async () => {
         render(<QuizEngine questions={mockQuestions} moduleName="test_module" />);
 
-        fireEvent.click(screen.getByText('Option A'));
         fireEvent.click(screen.getByText('Siguiente Pregunta'));
 
-        fireEvent.click(screen.getByText('Option D'));
+        fireEvent.click(await screen.findByText('Option D'));
 
-        const finishBtn = screen.getByText('Finalizar Examen');
+        const finishBtn = await screen.findByText('Finalizar Examen');
         expect(finishBtn).toBeInTheDocument();
         fireEvent.click(finishBtn);
 
@@ -111,7 +110,6 @@ describe('QuizEngine Component', () => {
     });
 
     it('submits results correctly', async () => {
-        vi.useFakeTimers();
         render(<QuizEngine questions={mockQuestions} moduleName="test_module" />);
 
         // Q1
@@ -119,11 +117,13 @@ describe('QuizEngine Component', () => {
         fireEvent.click(screen.getByText('Siguiente Pregunta'));
 
         // Q2
-        fireEvent.click(screen.getByText('Option D'));
-        fireEvent.click(screen.getByText('Finalizar Examen'));
+        fireEvent.click(await screen.findByText('Option D'));
+        fireEvent.click(await screen.findByText('Finalizar Examen'));
 
         // Review Screen
-        const confirmBtn = screen.getByText('CONFIRMAR Y FINALIZAR');
+        const confirmBtn = await screen.findByText('CONFIRMAR Y FINALIZAR');
+
+        vi.useFakeTimers();
         fireEvent.click(confirmBtn);
 
         // Advance timers for the 2s success animation + microtasks

@@ -46,21 +46,21 @@ export default function ModuleIntro({ moduleName, questionCount, timeLimitSecond
 
                 {/* Left Column: Info & Stats */}
                 <div className="flex flex-col justify-center">
-                    <Badge variant="premium" className="mb-6 h-7 px-4 w-fit">
+                    <Badge variant="primary" className="mb-6 h-7 px-4 w-fit">
                         <Target size={14} className="mr-2" /> Módulo Oficial
                     </Badge>
 
-                    <h1 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight uppercase tracking-tighter">
+                    <h1 className="text-4xl md:text-5xl font-semibold text-white mb-6 leading-tight uppercase tracking-tight">
                         {title}
                     </h1>
 
-                    <div className="flex items-center gap-8 mb-8 text-metal-silver">
+                    <div className="flex items-center gap-8 mb-8 text-theme-text-secondary">
                         <div className="flex items-center gap-3">
                             <div className="w-12 h-12 rounded-xl bg-metal-blue/10 flex items-center justify-center text-metal-blue border border-metal-blue/20">
                                 <Clock size={24} />
                             </div>
                             <div>
-                                <p className="text-[10px] font-black uppercase tracking-widest opacity-60">Tiempo Límite</p>
+                                <p className="text-[10px] font-semibold uppercase tracking-wider opacity-60">Tiempo Límite</p>
                                 <p className="text-xl font-bold text-white">{timeMinutes} Minutos</p>
                             </div>
                         </div>
@@ -70,26 +70,26 @@ export default function ModuleIntro({ moduleName, questionCount, timeLimitSecond
                                 <HelpCircle size={24} />
                             </div>
                             <div>
-                                <p className="text-[10px] font-black uppercase tracking-widest opacity-60">Preguntas</p>
+                                <p className="text-[10px] font-semibold uppercase tracking-wider opacity-60">Preguntas</p>
                                 <p className="text-xl font-bold text-white">{questionCount} Items</p>
                             </div>
                         </div>
                     </div>
 
-                    <p className="text-lg text-metal-silver/80 italic border-l-4 border-metal-gold pl-4 py-2 mb-10 leading-relaxed">
+                    <p className="text-lg text-theme-text-secondary/80 italic border-l-4 border-brand-primary pl-4 py-2 mb-10 leading-relaxed">
                         &quot;{quote}&quot;
                     </p>
 
                     <Button
                         onClick={onStart}
-                        className="h-16 text-xl font-black shadow-[0_0_30px_rgba(212,175,55,0.3)]"
+                        className="h-16 text-xl font-semibold shadow-[0_0_30px_rgba(212,175,55,0.3)]"
                         icon={ArrowRight}
                         iconPosition="right"
                     >
                         COMENZAR AHORA
                     </Button>
 
-                    <p className="text-center text-[10px] font-black text-metal-silver/70 mt-4 uppercase tracking-[0.2em]">
+                    <p className="text-center text-[10px] font-semibold text-theme-text-secondary/70 mt-4 uppercase tracking-[0.2em]">
                         El tiempo comenzará a correr inmediatamente.
                     </p>
                 </div>
@@ -101,43 +101,43 @@ export default function ModuleIntro({ moduleName, questionCount, timeLimitSecond
                         <Brain size={120} />
                     </div>
 
-                    <h3 className="text-xl font-black text-white mb-6 flex items-center gap-2">
-                        <Sparkles className="text-metal-gold" size={20} />
+                    <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+                        <Sparkles className="text-brand-primary" size={20} />
                         ORIENTACIONES PSICOLÓGICAS
                     </h3>
 
                     <ul className="space-y-6">
                         <li className="flex items-start gap-4 group">
-                            <div className="mt-1 w-6 h-6 rounded-full bg-metal-silver/10 flex items-center justify-center shrink-0 group-hover:bg-metal-gold group-hover:text-black transition-colors">
-                                <span className="text-[10px] font-black">1</span>
+                            <div className="mt-1 w-6 h-6 rounded-full bg-theme-text-secondary/10 flex items-center justify-center shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-colors">
+                                <span className="text-[10px] font-semibold">1</span>
                             </div>
                             <div>
-                                <h4 className="font-black text-white text-xs uppercase tracking-widest mb-1 group-hover:text-metal-gold transition-colors">Lectura Analítica</h4>
-                                <p className="text-sm text-metal-silver/60 leading-relaxed">
+                                <h4 className="font-semibold text-white text-xs uppercase tracking-wider mb-1 group-hover:text-brand-primary transition-colors">Lectura Analítica</h4>
+                                <p className="text-sm text-theme-text-secondary/60 leading-relaxed">
                                     No te apresures. Lee cada enunciado completamente antes de mirar las opciones. Identifica las palabras clave.
                                 </p>
                             </div>
                         </li>
 
                         <li className="flex items-start gap-4 group">
-                            <div className="mt-1 w-6 h-6 rounded-full bg-metal-silver/10 flex items-center justify-center shrink-0 group-hover:bg-metal-gold group-hover:text-black transition-colors">
-                                <span className="text-[10px] font-black">2</span>
+                            <div className="mt-1 w-6 h-6 rounded-full bg-theme-text-secondary/10 flex items-center justify-center shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-colors">
+                                <span className="text-[10px] font-semibold">2</span>
                             </div>
                             <div>
-                                <h4 className="font-black text-white text-xs uppercase tracking-widest mb-1 group-hover:text-metal-gold transition-colors">Gestión Emocional</h4>
-                                <p className="text-sm text-metal-silver/60 leading-relaxed">
+                                <h4 className="font-semibold text-white text-xs uppercase tracking-wider mb-1 group-hover:text-brand-primary transition-colors">Gestión Emocional</h4>
+                                <p className="text-sm text-theme-text-secondary/60 leading-relaxed">
                                     Si encuentras una pregunta difícil, no te bloquees. Respira, márcala mentalmente y continúa. Regresa si te sobra tiempo.
                                 </p>
                             </div>
                         </li>
 
                         <li className="flex items-start gap-4 group">
-                            <div className="mt-1 w-6 h-6 rounded-full bg-metal-silver/10 flex items-center justify-center shrink-0 group-hover:bg-metal-gold group-hover:text-black transition-colors">
-                                <span className="text-[10px] font-black">3</span>
+                            <div className="mt-1 w-6 h-6 rounded-full bg-theme-text-secondary/10 flex items-center justify-center shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-colors">
+                                <span className="text-[10px] font-semibold">3</span>
                             </div>
                             <div>
-                                <h4 className="font-black text-white text-xs uppercase tracking-widest mb-1 group-hover:text-metal-gold transition-colors">Confianza Racional</h4>
-                                <p className="text-sm text-metal-silver/60 leading-relaxed">
+                                <h4 className="font-semibold text-white text-xs uppercase tracking-wider mb-1 group-hover:text-brand-primary transition-colors">Confianza Racional</h4>
+                                <p className="text-sm text-theme-text-secondary/60 leading-relaxed">
                                     Tu primera intuición razonada suele ser correcta. Evita cambiar respuestas a menos que encuentres evidencia clara del error.
                                 </p>
                             </div>
@@ -146,8 +146,8 @@ export default function ModuleIntro({ moduleName, questionCount, timeLimitSecond
                         <li className="flex items-start gap-4 group">
                             <CheckCircle2 className="mt-1 w-6 h-6 text-green-500/50 group-hover:text-green-400 transition-colors shrink-0" />
                             <div>
-                                <h4 className="font-black text-white text-xs uppercase tracking-widest mb-1 group-hover:text-green-400 transition-colors">Objetividad</h4>
-                                <p className="text-sm text-metal-silver/60 leading-relaxed">
+                                <h4 className="font-semibold text-white text-xs uppercase tracking-wider mb-1 group-hover:text-green-400 transition-colors">Objetividad</h4>
+                                <p className="text-sm text-theme-text-secondary/60 leading-relaxed">
                                     Responde basándote únicamente en la información presentada o en tu conocimiento académico, evitando sesgos personales.
                                 </p>
                             </div>

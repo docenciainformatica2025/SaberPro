@@ -11,14 +11,14 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         return (
             <div className="relative group">
                 {Icon && (
-                    <div className="absolute left-3 top-1/2 -translate-y-1/2 text-metal-silver/40 group-focus-within:text-metal-gold transition-colors pointer-events-none">
+                    <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--theme-text-quaternary)] group-focus-within:text-brand-primary transition-colors pointer-events-none">
                         <Icon size={18} />
                     </div>
                 )}
                 <select
                     ref={ref}
                     className={cn(
-                        "w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-10 pr-10 text-white appearance-none focus:outline-none focus:ring-1 focus:ring-metal-gold/50 focus:border-metal-gold/50 transition-all cursor-pointer",
+                        "w-full bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] rounded-xl py-3 pl-10 pr-10 text-[var(--theme-text-primary)] appearance-none focus:outline-none focus:ring-1 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all cursor-pointer",
                         !Icon && "pl-4",
                         className
                     )}
@@ -26,7 +26,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
                 >
                     {children}
                 </select>
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-metal-silver/20 pointer-events-none">
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--theme-text-quaternary)]/50 pointer-events-none">
                     <ChevronDown size={14} />
                 </div>
             </div>

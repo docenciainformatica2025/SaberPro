@@ -19,47 +19,38 @@ export default function Error({
     }, [error]);
 
     return (
-        <div className="min-h-screen bg-metal-black flex items-center justify-center p-4">
-            <div className="max-w-md w-full bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 text-center space-y-6 shadow-[0_0_50px_rgba(255,0,0,0.1)]">
-
-                <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mx-auto ring-1 ring-red-500/20">
-                    <AlertTriangle className="text-red-500" size={32} />
+        <div className="min-h-screen bg-[var(--theme-bg-base)] flex items-center justify-center p-6 text-center">
+            <div className="max-w-md space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="w-24 h-24 bg-red-500/10 rounded-full flex items-center justify-center mx-auto border border-red-500/20">
+                    <AlertTriangle size={48} className="text-red-500" />
                 </div>
 
-                <div className="space-y-2">
-                    <h2 className="text-2xl font-bold text-white tracking-tight">
-                        Algo salió mal
-                    </h2>
-                    <p className="text-metal-silver text-sm leading-relaxed">
-                        Hemos detectado un error inesperado al procesar tu solicitud.
-                        Nuestro equipo ha sido notificado automáticamente.
+                <div className="space-y-4">
+                    <h1 className="text-4xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">
+                        Error de <span className="text-red-500">Sistema</span>
+                    </h1>
+                    <p className="text-[var(--theme-text-secondary)] text-lg">
+                        Ha ocurrido un error inesperado. Nuestros ingenieros han sido notificados.
                     </p>
-                    {/* Dev Info - Only visible if environment is NOT production ideally, 
-                        but for now we hide details to comply with Audit */}
                 </div>
 
-                <div className="flex flex-col gap-3 pt-4">
-                    <Button
+                <div className="flex flex-col gap-4">
+                    <button
                         onClick={() => reset()}
-                        variant="premium"
-                        className="w-full"
-                        icon={RefreshCcw}
+                        className="metallic-btn bg-white text-black font-semibold py-4 rounded-xl hover:scale-[1.02] transition-all uppercase tracking-wider text-sm flex items-center justify-center gap-2"
                     >
-                        Intentar nuevamente
-                    </Button>
-
+                        <RefreshCcw size={16} /> Reintentar Operación
+                    </button>
                     <Link href="/" className="block">
-                        <Button
-                            variant="outline"
-                            className="w-full border-white/5 hover:bg-white/5 text-metal-silver"
-                            icon={Home}
+                        <button
+                            className="w-full text-[var(--theme-text-tertiary)] hover:text-red-400 transition-colors flex items-center gap-2 justify-center text-sm font-bold uppercase tracking-wider"
                         >
-                            Volver al Inicio
-                        </Button>
+                            <Home size={16} /> Volver al Inicio
+                        </button>
                     </Link>
                 </div>
 
-                <div className="text-[10px] text-metal-silver/20 font-mono uppercase tracking-widest pt-4">
+                <div className="text-[10px] text-[var(--theme-text-tertiary)] font-mono uppercase tracking-wider pt-4 opacity-30">
                     Error Digest: {error.digest || 'UNKNOWN_ERROR'}
                 </div>
             </div>

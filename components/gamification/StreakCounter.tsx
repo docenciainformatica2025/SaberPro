@@ -39,7 +39,7 @@ export default function StreakCounter() {
                 relative flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all duration-300
                 ${isCompletedToday
                     ? "bg-gradient-to-r from-orange-500/10 to-red-500/10 border-orange-500/30 text-orange-500"
-                    : "bg-white/5 border-white/10 text-metal-silver grayscale hover:grayscale-0 hover:border-orange-500/30 hover:text-orange-400"
+                    : "bg-[var(--theme-bg-base)]/50 border-[var(--theme-border-soft)] text-theme-text-secondary grayscale hover:grayscale-0 hover:border-brand-primary/30 hover:text-brand-primary"
                 }
             `}
             title={isCompletedToday ? "¡Racha diaria completada!" : "¡Completa un simulacro para mantener tu racha!"}
@@ -63,7 +63,7 @@ export default function StreakCounter() {
                 )}
             </div>
 
-            <span className={`text-sm font-black tracking-tight ${isCompletedToday ? "text-transparent bg-clip-text bg-gradient-to-b from-orange-300 to-orange-600" : ""}`}>
+            <span className={`text-sm font-semibold tracking-tight ${isCompletedToday ? "text-transparent bg-clip-text bg-gradient-to-b from-orange-300 to-orange-600" : ""}`}>
                 {streak}
             </span>
 

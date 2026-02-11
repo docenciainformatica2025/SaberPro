@@ -224,34 +224,32 @@ export default function SeedPage() {
     const syncPercentage = Math.round((totalLive / totalLocal) * 100) || 0;
 
     return (
-        <div className="min-h-screen bg-metal-black text-white p-4 md:p-8 font-sans selection:bg-metal-gold/30">
+        <main className="max-w-7xl mx-auto space-y-12 pb-12 p-4 lg:p-0 animate-in fade-in slide-in-from-bottom-8 duration-700" suppressHydrationWarning>
             {/* Header / Command Bar */}
-            <div className="max-w-7xl mx-auto mb-10 border-b border-white/5 pb-8">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                    <div className="space-y-1">
-                        <div className="flex items-center gap-2 text-metal-gold text-[10px] font-black uppercase tracking-[0.4em]">
-                            <ShieldAlert size={12} /> Safe System / 2026 Protocol
-                        </div>
-                        <h1 className="text-4xl font-black tracking-tighter flex items-center gap-3 italic">
-                            Data Center <span className="text-white/20 font-light not-italic">/ Root</span>
-                        </h1>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div>
+                    <h1 className="text-5xl lg:text-6xl font-black text-theme-hero flex items-center gap-4 tracking-tighter italic uppercase">
+                        <Database className="text-brand-primary" size={48} /> Comando de Datos
+                    </h1>
+                    <p className="text-[var(--theme-text-tertiary)] text-xs mt-2 flex items-center gap-2 font-black uppercase tracking-widest opacity-70">
+                        <ShieldAlert size={14} className="text-brand-primary" /> Control Maestro v4.2 • Inyección Atmosférica
+                    </p>
+                </div>
+                <div className="flex items-center gap-3">
+                    <div className="flex flex-col items-end mr-4">
+                        <span className="text-[10px] font-black text-theme-text-secondary/40 uppercase tracking-[0.2em]">Cluster Status</span>
+                        <span className="text-xs font-black text-green-400 flex items-center gap-1.5 uppercase">
+                            <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div> Operacional
+                        </span>
                     </div>
-                    <div className="flex items-center gap-3">
-                        <div className="flex flex-col items-end mr-4">
-                            <span className="text-[10px] font-black text-white/20 uppercase tracking-widest">Global Status</span>
-                            <span className="text-xs font-bold text-green-400 flex items-center gap-1.5">
-                                <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div> Operational
-                            </span>
-                        </div>
-                        <Button
-                            variant="outline"
-                            onClick={checkLiveStatus}
-                            disabled={isCheckingLive || status === "loading"}
-                            className="bg-white/5 border-white/10 hover:bg-white/10 h-10 px-4"
-                        >
-                            <RefreshCw size={14} className={isCheckingLive ? "animate-spin" : ""} />
-                        </Button>
-                    </div>
+                    <Button
+                        variant="outline"
+                        onClick={checkLiveStatus}
+                        disabled={isCheckingLive || status === "loading"}
+                        className="bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)] hover:border-brand-primary/30 h-12 px-6"
+                    >
+                        <RefreshCw size={18} className={isCheckingLive ? "animate-spin" : ""} />
+                    </Button>
                 </div>
             </div>
 
@@ -261,39 +259,39 @@ export default function SeedPage() {
                 <div className="lg:col-span-8 space-y-8">
 
                     {/* Synchrony Master Widget */}
-                    <Card variant="solid" className="p-10 bg-gradient-to-br from-white/[0.03] to-transparent border-white/10 overflow-hidden relative">
-                        <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
+                    <Card variant="solid" className="p-10 bg-[var(--theme-bg-surface)] backdrop-blur-xl border-[var(--theme-border-soft)] overflow-hidden relative shadow-2xl">
+                        <div className="relative z-10 flex flex-col md:flex-row items-center gap-12">
                             {/* Visual Progress Circle or Bar */}
-                            <div className="relative w-48 h-48 shrink-0">
+                            <div className="relative w-56 h-56 shrink-0">
                                 <svg className="w-full h-full -rotate-90">
-                                    <circle cx="96" cy="96" r="88" className="stroke-white/5 fill-none" strokeWidth="12" />
+                                    <circle cx="112" cy="112" r="100" className="stroke-[var(--theme-border-soft)] fill-none" strokeWidth="16" />
                                     <circle
-                                        cx="96" cy="96" r="88"
-                                        className="stroke-metal-gold fill-none transition-all duration-1000 ease-out"
-                                        strokeWidth="12"
-                                        strokeDasharray={552.92}
-                                        strokeDashoffset={552.92 - (552.92 * (status === "loading" ? progress : syncPercentage)) / 100}
+                                        cx="112" cy="112" r="100"
+                                        className="stroke-brand-primary fill-none transition-all duration-1000 ease-out"
+                                        strokeWidth="16"
+                                        strokeDasharray={628.3}
+                                        strokeDashoffset={628.3 - (628.3 * (status === "loading" ? progress : syncPercentage)) / 100}
                                         strokeLinecap="round"
                                     />
                                 </svg>
                                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                    <span className="text-4xl font-black italic">{status === "loading" ? Math.round(progress) : syncPercentage}%</span>
-                                    <span className="text-[9px] font-black uppercase tracking-widest text-white/30">Synced</span>
+                                    <span className="text-5xl font-black italic tracking-tighter tabular-nums text-[var(--theme-text-primary)]">{status === "loading" ? Math.round(progress) : syncPercentage}%</span>
+                                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[var(--theme-text-tertiary)]">Synced</span>
                                 </div>
                             </div>
 
-                            <div className="flex-1 space-y-6 w-full text-center md:text-left">
-                                <div className="space-y-2">
-                                    <h2 className="text-2xl font-black tracking-tight italic uppercase">Sincronización Maestra</h2>
-                                    <p className="text-sm text-white/40 leading-relaxed max-w-sm font-medium">
-                                        Despliega el banco local de <span className="text-white">{totalLocal}</span> reactivos directamente al clúster regional de Firestore.
+                            <div className="flex-1 space-y-8 w-full text-center md:text-left">
+                                <div className="space-y-3">
+                                    <h2 className="text-3xl font-black tracking-tight italic uppercase text-[var(--theme-text-primary)]">Sincronización Maestra</h2>
+                                    <p className="text-xs text-[var(--theme-text-secondary)] leading-relaxed max-w-sm font-black uppercase tracking-widest opacity-60">
+                                        Despliega el banco local de <span className="text-brand-primary">{totalLocal}</span> reactivos directamente al clúster de producción.
                                     </p>
                                 </div>
 
                                 <div className="flex flex-col sm:flex-row gap-4">
                                     <Button
-                                        variant="premium"
-                                        className="flex-1 h-16 text-xs font-black uppercase tracking-[0.2em] italic shadow-2xl shadow-metal-gold/20"
+                                        variant="primary"
+                                        className="flex-1 h-16 text-[10px] font-black uppercase tracking-[0.3em] italic shadow-[var(--shadow-premium)] ring-1 ring-white/10"
                                         onClick={handleSeed}
                                         disabled={status === "loading" || status === "success"}
                                         icon={ArrowUpCircle}
@@ -301,25 +299,25 @@ export default function SeedPage() {
                                         {status === "loading" ? "Procesando Batch..." : "Desplegar a Firestore"}
                                     </Button>
                                     <Button
-                                        variant="danger"
-                                        className="h-16 px-8 bg-black/40 border-white/5 hover:bg-red-500/10 hover:border-red-500/20 text-red-500/80 font-black uppercase text-[10px] tracking-widest transition-all"
+                                        variant="error"
+                                        className="h-16 px-8 bg-[var(--theme-bg-base)] border-[var(--theme-border-soft)] hover:bg-red-500/10 hover:border-red-500/20 text-red-500/80 font-black uppercase text-[10px] tracking-widest transition-all"
                                         onClick={handleClear}
                                         disabled={status === "loading"}
                                     >
-                                        <Trash2 size={18} />
+                                        <Trash2 size={24} />
                                     </Button>
                                 </div>
 
                                 {/* Linear Progress Bar */}
                                 {status === "loading" && (
-                                    <div className="space-y-2 animate-in fade-in slide-in-from-top-2 duration-500">
+                                    <div className="space-y-3 animate-in fade-in slide-in-from-top-2 duration-500">
                                         <div className="flex justify-between items-end">
-                                            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-metal-gold">Transmitiendo Activos...</span>
-                                            <span className="text-xs font-mono font-black">{Math.round(progress)}%</span>
+                                            <span className="text-[9px] font-black uppercase tracking-[0.4em] text-brand-primary animate-pulse">Transmitiendo Activos Masivamente...</span>
+                                            <span className="text-xs font-mono font-black text-[var(--theme-text-primary)]">{Math.round(progress)}%</span>
                                         </div>
-                                        <div className="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
+                                        <div className="w-full bg-[var(--theme-bg-base)] rounded-full h-2 overflow-hidden ring-1 ring-[var(--theme-border-soft)]">
                                             <div
-                                                className="bg-metal-gold h-full transition-all duration-300 ease-out shadow-[0_0_10px_rgba(212,175,55,0.4)]"
+                                                className="bg-brand-primary h-full transition-all duration-300 ease-out shadow-[0_0_20px_rgba(212,175,55,0.6)]"
                                                 style={{ width: `${progress}%` }}
                                             ></div>
                                         </div>
@@ -329,37 +327,37 @@ export default function SeedPage() {
                         </div>
 
                         {/* Background Decoration */}
-                        <div className="absolute top-0 right-0 w-96 h-96 bg-metal-gold/5 blur-[120px] -translate-y-1/2 translate-x-1/2 rounded-full pointer-events-none"></div>
+                        <div className="absolute top-0 right-0 w-96 h-96 bg-brand-primary/5 blur-[120px] -translate-y-1/2 translate-x-1/2 rounded-full pointer-events-none"></div>
                     </Card>
 
                     {/* Activity Feed (Build Logs) */}
-                    <Card variant="solid" className="bg-black/40 border-white/5 flex flex-col min-h-[400px]">
-                        <div className="border-b border-white/5 p-5 flex items-center justify-between px-8">
-                            <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 flex items-center gap-2">
-                                <History size={14} className="text-metal-gold" /> Activity Logs
+                    <Card variant="solid" className="bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)] flex flex-col min-h-[400px] shadow-lg">
+                        <div className="border-b border-[var(--theme-border-soft)] p-5 flex items-center justify-between px-8">
+                            <h3 className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--theme-text-tertiary)] flex items-center gap-2">
+                                <History size={14} className="text-brand-primary" /> Activity Logs
                             </h3>
                             <div className="flex items-center gap-4">
-                                <span className="text-[9px] text-white/20 font-mono">Instance: SABERPRO-CORE-A1</span>
+                                <span className="text-[9px] text-[var(--theme-text-quaternary)] font-mono">Instance: SABERPRO-CORE-A1</span>
                             </div>
                         </div>
                         <div className="flex-1 p-8 font-mono text-[11px] space-y-3 overflow-y-auto max-h-[400px] custom-scrollbar selection:bg-white/20">
                             {log.length > 0 ? log.map((line, i) => (
                                 <div key={i} className="flex gap-6 group animate-in slide-in-from-left-2 duration-300">
-                                    <span className="text-white/10 shrink-0 w-24">[{line.time}]</span>
+                                    <span className="text-[var(--theme-text-quaternary)] shrink-0 w-24">[{line.time}]</span>
                                     <div className="flex-1 flex gap-2">
-                                        <span className={`uppercase font-black px-1.5 rounded-[2px] text-[8px] h-fit mt-0.5 ${line.type === 'error' ? 'bg-red-500/20 text-red-400' :
+                                        <span className={`uppercase font-semibold px-1.5 rounded-[2px] text-[8px] h-fit mt-0.5 ${line.type === 'error' ? 'bg-red-500/20 text-red-400' :
                                             line.type === 'success' ? 'bg-green-500/20 text-green-400' :
-                                                line.type === 'batch' ? 'bg-metal-gold/20 text-metal-gold' : 'bg-white/10 text-white/40'
+                                                line.type === 'batch' ? 'bg-brand-primary/20 text-brand-primary' : 'bg-[var(--theme-bg-base)] text-[var(--theme-text-tertiary)]'
                                             }`}>
                                             {line.type}
                                         </span>
-                                        <span className={`${line.type === 'error' ? 'text-red-300' : 'text-white/60'}`}>{line.msg}</span>
+                                        <span className={`${line.type === 'error' ? 'text-red-300' : 'text-[var(--theme-text-secondary)]'}`}>{line.msg}</span>
                                     </div>
                                 </div>
                             )) : (
                                 <div className="h-full flex flex-col items-center justify-center py-20 opacity-10">
                                     <LayoutDashboard size={48} className="mb-4" />
-                                    <p className="uppercase tracking-[0.4em] font-black text-xs">Waiting for events...</p>
+                                    <p className="uppercase tracking-[0.4em] font-semibold text-xs">Waiting for events...</p>
                                 </div>
                             )}
                         </div>
@@ -369,10 +367,10 @@ export default function SeedPage() {
                 {/* Regional Shards (Modules) */}
                 <div className="lg:col-span-4 space-y-6">
                     <div className="flex items-center justify-between mb-4 px-2">
-                        <h3 className="text-[11px] font-black text-white/30 uppercase tracking-[0.2em] flex items-center gap-2">
+                        <h3 className="text-[11px] font-semibold text-[var(--theme-text-tertiary)] uppercase tracking-[0.2em] flex items-center gap-2">
                             <Server size={14} /> Regional Shards
                         </h3>
-                        <Badge className="bg-white/5 border-white/10 text-[9px] text-white/40">5 Active</Badge>
+                        <Badge className="bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)] text-[9px] text-[var(--theme-text-secondary)]">5 Active</Badge>
                     </div>
 
                     <div className="space-y-3">
@@ -385,25 +383,25 @@ export default function SeedPage() {
                             const isSync = liveCount >= localCount && localCount > 0;
 
                             return (
-                                <Card key={mod.id} className="p-5 border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group overflow-hidden relative">
+                                <Card key={mod.id} className="p-5 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]/40 hover:bg-[var(--theme-bg-surface)]/60 transition-all group overflow-hidden relative">
                                     <div className="flex justify-between items-start relative z-10">
                                         <div className="space-y-1">
-                                            <span className="text-[10px] font-black text-metal-silver/40 uppercase tracking-tighter">{mod.label}</span>
+                                            <span className="text-[10px] font-semibold text-[var(--theme-text-tertiary)] uppercase tracking-tight">{mod.label}</span>
                                             <div className="flex items-center gap-2">
-                                                <div className={`w-1.5 h-1.5 rounded-full ${isSync ? 'bg-green-500' : 'bg-metal-gold'}`}></div>
-                                                <span className="text-[9px] font-black uppercase text-white/20 tracking-widest">{isSync ? 'Synced' : 'Pending'}</span>
+                                                <div className={`w-1.5 h-1.5 rounded-full ${isSync ? 'bg-green-500' : 'bg-brand-primary'}`}></div>
+                                                <span className="text-[9px] font-semibold uppercase text-[var(--theme-text-quaternary)] tracking-wider">{isSync ? 'Synced' : 'Pending'}</span>
                                             </div>
                                         </div>
                                         <div className="text-right">
-                                            <div className="text-xs font-black font-mono">
-                                                {liveCount} <span className="text-white/20 font-normal">/ {localCount}</span>
+                                            <div className="text-xs font-semibold font-mono text-[var(--theme-text-primary)]">
+                                                {liveCount} <span className="text-[var(--theme-text-tertiary)] font-normal">/ {localCount}</span>
                                             </div>
-                                            <div className="text-[7px] text-white/10 font-black uppercase tracking-widest mt-1">Status 2026 OK</div>
+                                            <div className="text-[7px] text-[var(--theme-text-quaternary)] font-semibold uppercase tracking-wider mt-1">Status 2026 OK</div>
                                         </div>
                                     </div>
                                     {/* Progress background */}
                                     <div
-                                        className="absolute bottom-0 left-0 h-[2px] bg-metal-gold/20 transition-all duration-700"
+                                        className="absolute bottom-0 left-0 h-[2px] bg-brand-primary/20 transition-all duration-700"
                                         style={{ width: `${(liveCount / localCount) * 100}%` }}
                                     ></div>
                                 </Card>
@@ -415,7 +413,7 @@ export default function SeedPage() {
                         <div className="flex gap-4">
                             <Cpu className="text-blue-400 shrink-0" size={20} />
                             <div className="space-y-2">
-                                <h4 className="text-[11px] font-black uppercase tracking-widest text-blue-300">Atomic Integrity</h4>
+                                <h4 className="text-[11px] font-semibold uppercase tracking-wider text-blue-300">Atomic Integrity</h4>
                                 <p className="text-[10px] text-blue-400/60 leading-relaxed italic">
                                     El motor de inyección utiliza un buffer de persistencia de 300ms entre ráfagas para evitar saturación de CPU y red.
                                 </p>
@@ -426,10 +424,10 @@ export default function SeedPage() {
             </div>
 
             {/* Footer Info */}
-            <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black text-white/10 uppercase tracking-[0.2em]">
+            <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-[var(--theme-border-soft)] flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-semibold text-[var(--theme-text-quaternary)] uppercase tracking-[0.2em]">
                 <div className="flex items-center gap-6">
-                    <span className="flex items-center gap-1.5 opacity-40"><Activity size={12} /> System Status: Optimal</span>
-                    <span className="flex items-center gap-1.5 opacity-40"><Cloud size={12} /> GCP Region: Latin-America-South1</span>
+                    <span className="flex items-center gap-1.5 opacity-60"><Activity size={12} /> System Status: Optimal</span>
+                    <span className="flex items-center gap-1.5 opacity-60"><Cloud size={12} /> GCP Region: Latin-America-South1</span>
                 </div>
                 <div className="text-center md:text-right opacity-30 italic">
                     Saber Pro Engine Core v2.4.5-stable • 2026 Docencia Informática
@@ -444,13 +442,13 @@ export default function SeedPage() {
                     background: transparent;
                 }
                 .custom-scrollbar::-webkit-scrollbar-thumb {
-                    background: rgba(255, 255, 255, 0.05);
+                    background: var(--theme-border-soft);
                     border-radius: 10px;
                 }
                 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                    background: rgba(255, 255, 255, 0.1);
+                    background: var(--theme-border-medium);
                 }
             `}</style>
-        </div>
+        </main>
     );
 }

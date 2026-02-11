@@ -21,7 +21,8 @@ export default function DarkModeToggle() {
         const theme = stored || (prefersDark ? 'dark' : 'light');
 
         setIsDark(theme === 'dark');
-        document.documentElement.classList.toggle('light', theme === 'light');
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        document.documentElement.classList.remove('light'); // Clean up legacy class
     }, []);
 
     if (!mounted) return null; // Prevent hydration mismatch
@@ -30,16 +31,16 @@ export default function DarkModeToggle() {
         const newTheme = isDark ? 'light' : 'dark';
         setIsDark(!isDark);
         localStorage.setItem('theme', newTheme);
-        document.documentElement.classList.toggle('light', newTheme === 'light');
+        document.documentElement.classList.toggle('dark', newTheme === 'dark');
     };
 
     return (
         <button
             onClick={toggle}
             className="
-                fixed bottom-20 right-6 md:bottom-6 md:right-6 
+                fixed bottom-40 right-6 md:bottom-6 md:right-48 
                 w-12 h-12 rounded-full 
-                bg-metal-gold hover:bg-metal-gold-deep
+                bg-brand-primary hover:bg-brand-primary-deep
                 flex items-center justify-center
                 shadow-lg hover:shadow-xl hover:scale-110
                 transition-all duration-300

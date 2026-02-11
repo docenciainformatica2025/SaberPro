@@ -3,7 +3,7 @@
 import { useAuth } from "@/context/AuthContext";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, Suspense } from "react";
-import { ArrowLeft, Brain, Sparkles, Zap, Timer, Clock, HelpCircle } from "lucide-react";
+import { ArrowLeft, Brain, Sparkles, Zap, Timer, Clock, HelpCircle, ShieldAlert } from "lucide-react";
 import Link from "next/link";
 import { toast } from "sonner";
 import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
@@ -13,6 +13,8 @@ import { SubscriptionPlan } from "@/types/finance";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 export default function SimulationSelectionPage() {
     return (
@@ -30,8 +32,19 @@ function SimulationSelectionContent() {
     const [checkingProfile, setCheckingProfile] = useState(true);
     const [loadingAssignment, setLoadingAssignment] = useState(!!assignmentId);
     const [simulationCount, setSimulationCount] = useState(0);
+    const [step, setStep] = useState(1); // 1: Mode, 2: Module, 3: Pre-flight
+    const [selectedModule, setSelectedModule] = useState<any>(null);
+    const [isFullSim, setIsFullSim] = useState(false);
 
     const isPro = subscription?.plan === SubscriptionPlan.PRO || subscription?.plan === SubscriptionPlan.TEACHER_PRO || subscription?.plan === SubscriptionPlan.INSTITUTION;
+
+    const modules = [
+        { id: "razonamiento_cuantitativo", label: "Razonamiento Cuantitativo", icon: Zap, desc: "Matemáticas y lógica aplicada" },
+        { id: "lectura_critica", label: "Lectura Crítica", icon: Brain, desc: "Análisis de textos y argumentación" },
+        { id: "competencias_ciudadanas", label: "Competencias Ciudadanas", icon: Sparkles, desc: "Constitución y sociedad" },
+        { id: "ingles", label: "Inglés", icon: Brain, desc: "Vocabulario y gramática" },
+        { id: "comunicacion_escrita", label: "Comunicación Escrita", icon: Brain, desc: "Redacción y ortografía" },
+    ];
 
     // Check Limits
     useEffect(() => {
@@ -61,7 +74,6 @@ function SimulationSelectionContent() {
                 setLoadingAssignment(true);
                 try {
                     const assignDoc = await getDoc(doc(db, "assignments", assignmentId));
-
                     if (assignDoc.exists()) {
                         const data = assignDoc.data();
                         router.push(`/simulation/${data.subject}?assignmentId=${assignmentId}`);
@@ -87,16 +99,13 @@ function SimulationSelectionContent() {
                     const docSnap = await getDoc(doc(db, "users", user.uid));
                     if (docSnap.exists()) {
                         const data = docSnap.data();
-                        // Only require targetCareer for students
                         if (!data.targetCareer && role !== 'teacher') {
-
-                            // Non-blocking approach
                             toast.warning("Configuración Requerida", {
                                 description: "Para calibrar el simulacro, necesitamos conocer tu Carrera de Interés.",
                                 duration: 5000,
                             });
                             router.push("/profile");
-                            return; // Stop further execution/loading of this page state
+                            return;
                         }
                     }
                 } catch (e) {
@@ -112,137 +121,157 @@ function SimulationSelectionContent() {
     }, [user, loading, router]);
 
     if (loading || checkingProfile || loadingAssignment) return (
-        <div className="min-h-screen flex items-center justify-center bg-metal-dark">
+        <div className="min-h-screen flex items-center justify-center bg-[var(--theme-bg-base)]">
             <AIProcessingLoader text={loadingAssignment ? "Cargando Asignación..." : "Preparando Simulacro"} subtext={loadingAssignment ? "Obteniendo preguntas del docente..." : "Verificando perfil y calibrando dificultad..."} />
         </div>
     );
 
-    const modules = [
-        { id: "razonamiento_cuantitativo", label: "Razonamiento Cuantitativo", icon: Zap, desc: "Matemáticas y lógica aplicada" },
-        { id: "lectura_critica", label: "Lectura Crítica", icon: Brain, desc: "Análisis de textos y argumentación" },
-        { id: "competencias_ciudadanas", label: "Competencias Ciudadanas", icon: Sparkles, desc: "Constitución y sociedad" },
-        { id: "ingles", label: "Inglés", icon: Brain, desc: "Vocabulario y gramática" },
-        { id: "comunicacion_escrita", label: "Comunicación Escrita", icon: Brain, desc: "Redacción y ortografía" },
-    ];
+    const handleStartSimulation = () => {
+        if (!isPro && simulationCount >= 3) {
+            toast.error("🔒 Límite Gratuito Alcanzado", {
+                description: "Has completado tus simulacros de prueba. Mejora a Pro para continuar.",
+                action: { label: "Ver Planes", onClick: () => router.push('/pricing') }
+            });
+            return;
+        }
+
+        if (isFullSim) {
+            const sessionId = crypto.randomUUID();
+            sessionStorage.setItem('currentSessionId', sessionId);
+            sessionStorage.setItem('isFullSimulation', 'true');
+            router.push("/simulation/razonamiento_cuantitativo");
+        } else if (selectedModule) {
+            sessionStorage.removeItem('currentSessionId');
+            sessionStorage.removeItem('isFullSimulation');
+            router.push(`/simulation/${selectedModule.id}`);
+        }
+    };
 
     return (
-        <div className="min-h-screen bg-metal-dark p-6 md:p-12 pb-32">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] p-6 md:p-12 pb-32">
             <div className="max-w-7xl mx-auto animate-in fade-in duration-700">
-                <Link href={role === 'teacher' ? "/teacher" : "/dashboard"}>
-                    <Button variant="ghost" icon={ArrowLeft} className="mb-8 p-0 hover:bg-transparent text-metal-silver hover:text-white uppercase tracking-widest text-[10px] font-black">
-                        {role === 'teacher' ? "Volver al Panel Docente" : "Volver al Dashboard"}
+                <div className="flex justify-between items-center mb-8">
+                    <Button variant="ghost" icon={ArrowLeft} onClick={() => step > 1 ? setStep(step - 1) : router.push("/dashboard")} className="p-0 hover:bg-transparent text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] uppercase tracking-wider text-[10px] font-semibold">
+                        {step > 1 ? "Regresar" : "Volver al Dashboard"}
                     </Button>
-                </Link>
-
-                <div className="text-center mb-16 relative">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-metal-gold/5 rounded-full blur-[100px] pointer-events-none"></div>
-                    <Badge variant="premium" className="mb-6 px-4 py-1.5 text-[10px] uppercase font-black tracking-[0.2em] shadow-[0_0_20px_rgba(212,175,55,0.3)]">
-                        Modo Examen Real
-                    </Badge>
-                    <h1 className="text-4xl md:text-6xl font-black text-white mb-6 italic tracking-tighter uppercase leading-tight">
-                        Simulacro <span className="block md:inline text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-white to-metal-gold">Saber Pro</span>
-                    </h1>
-                    <p className="text-metal-silver/60 text-lg font-medium max-w-2xl mx-auto leading-relaxed">
-                        Mide tus conocimientos en condiciones reales. Sin pausas, sin ayudas de IA y con límite de tiempo por pregunta.
-                    </p>
+                    <div className="flex gap-2">
+                        {[1, 2, 3].map(i => (
+                            <div key={i} className={cn("h-1 w-8 rounded-full transition-all duration-300", step >= i ? "bg-brand-primary" : "bg-[var(--theme-border-soft)]")} />
+                        ))}
+                    </div>
                 </div>
 
-                {/* Full Simulation Option */}
-                <Card
-                    variant="premium"
-                    className="p-10 mb-20 flex flex-col md:flex-row items-center justify-between gap-10 cursor-pointer group relative overflow-hidden border-metal-gold/30 hover:border-metal-gold/60 hover:shadow-[0_0_50px_rgba(212,175,55,0.2)] transition-all duration-500 bg-black/60 backdrop-blur-xl"
-                    onClick={() => {
-                        if (!isPro && simulationCount >= 3) {
-                            toast.error("🔒 Límite Gratuito Alcanzado", {
-                                description: "Para acceder al Simulacro Completo y analíticas, necesitas un plan Pro.",
-                                action: {
-                                    label: "Ver Planes",
-                                    onClick: () => router.push('/pricing')
-                                }
-                            });
-                            return;
-                        }
-                        const sessionId = crypto.randomUUID();
-                        sessionStorage.setItem('currentSessionId', sessionId);
-                        sessionStorage.setItem('isFullSimulation', 'true');
-                        router.push("/simulation/razonamiento_cuantitativo");
-                    }}
-                >
-                    <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none group-hover:scale-110 transition-transform duration-700">
-                        <Timer size={300} className="text-metal-gold -rotate-12" />
-                    </div>
-
-                    <div className="relative z-10 max-w-2xl">
-                        <Badge variant="premium" className="mb-4 w-fit animate-pulse">
-                            <Zap size={12} fill="currentColor" className="mr-2" /> RECOMENDADO
-                        </Badge>
-                        <h2 className="text-4xl font-black text-white mb-4 italic uppercase tracking-tight group-hover:text-metal-gold transition-colors">Simulacro Completo</h2>
-                        <p className="text-metal-silver text-lg mb-6 leading-relaxed">
-                            Enfréntate a la experiencia real. 5 módulos consecutivos, temporizador estricto y resultados consolidados al final.
-                        </p>
-                        <div className="flex items-center gap-8 text-sm font-bold text-metal-silver/60 uppercase tracking-widest">
-                            <span className="flex items-center gap-2"><Clock size={16} className="text-metal-gold" /> 4h 48m</span>
-                            <span className="flex items-center gap-2"><HelpCircle size={16} className="text-metal-gold" /> 100 Preguntas</span>
+                {step === 1 && (
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-12">
+                        <div className="text-center">
+                            <Badge variant="primary" className="mb-4">Paso 1: Selecciona tu Objetivo</Badge>
+                            <h1 className="text-4xl md:text-5xl font-semibold text-[var(--theme-text-primary)] italic uppercase tracking-tight">
+                                ¿Cómo quieres <span className="text-brand-primary">Entrenar</span> hoy?
+                            </h1>
                         </div>
-                    </div>
 
-                    <Button variant="premium" className="h-16 px-10 text-xs font-black uppercase tracking-widest shadow-[0_0_30px_rgba(212,175,55,0.3)] group-hover:shadow-[0_0_50px_rgba(212,175,55,0.5)] transform group-hover:scale-105 transition-all">
-                        Comenzar Ahora
-                    </Button>
-                </Card>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                            <Card
+                                interactive
+                                variant="primary"
+                                className="p-10 cursor-pointer text-center space-y-6"
+                                onClick={() => { setIsFullSim(true); setStep(3); }}
+                            >
+                                <div className="w-10 h-10 rounded-xl bg-[var(--theme-bg-base)] flex items-center justify-center text-[var(--theme-text-primary)] group-hover:bg-brand-primary group-hover:text-[var(--theme-bg-base)] transition-all">
+                                    <Timer size={20} />
+                                </div>
+                                <div>
+                                    <h3 className="text-2xl font-semibold text-[var(--theme-text-primary)] uppercase italic">Simulacro Completo</h3>
+                                    <p className="text-[var(--theme-text-secondary)]/60 text-sm mt-2">La experiencia real del examen Saber Pro (4h 48m, 100 preguntas).</p>
+                                </div>
+                                <Button variant="primary" className="w-full">Seleccionar</Button>
+                            </Card>
 
-                <div className="flex items-center gap-6 mb-12">
-                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-                    <span className="text-metal-silver/30 text-[10px] uppercase tracking-[0.3em] font-black">ENTRENAMIENTO MODULAR</span>
-                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-                </div>
+                            <Card
+                                interactive
+                                variant="glass"
+                                className="p-10 cursor-pointer text-center space-y-6"
+                                onClick={() => { setIsFullSim(false); setStep(2); }}
+                            >
+                                <div className="w-20 h-20 bg-[var(--theme-bg-base)] rounded-3xl flex items-center justify-center mx-auto text-[var(--theme-text-primary)]">
+                                    <Zap size={40} strokeWidth={3} />
+                                </div>
+                                <div>
+                                    <h3 className="text-2xl font-semibold text-[var(--theme-text-primary)] uppercase italic">Entrenamiento Modular</h3>
+                                    <p className="text-[var(--theme-text-secondary)]/60 text-sm mt-2">Practica una competencia específica a tu propio ritmo.</p>
+                                </div>
+                                <Button variant="outline" className="w-full">Seleccionar</Button>
+                            </Card>
+                        </div>
+                    </motion.div>
+                )}
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {modules.map((module) => (
-                        <Card
-                            key={module.id}
-                            variant="glass"
-                            onClick={() => {
-                                if (!isPro && simulationCount >= 3) {
-                                    toast.error("🔒 Límite Gratuito Alcanzado", {
-                                        description: "Has completado tus 3 simulacros de prueba. Mejora a Pro para continuar.",
-                                        action: {
-                                            label: "Ver Planes",
-                                            onClick: () => router.push('/pricing')
-                                        }
-                                    });
-                                    return;
-                                }
-                                sessionStorage.removeItem('currentSessionId');
-                                sessionStorage.removeItem('isFullSimulation');
-                                router.push(`/simulation/${module.id}`);
-                            }}
-                            className="p-8 hover:border-metal-blue/50 transition-all hover:-translate-y-2 cursor-pointer group flex flex-col h-full justify-between bg-white/[0.02] hover:bg-white/[0.04] backdrop-blur-lg border-white/5"
-                        >
-                            <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
-                                <module.icon size={120} className="text-metal-blue rotate-12" />
+                {step === 2 && (
+                    <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-10">
+                        <div className="text-center">
+                            <Badge variant="info" className="mb-4">Paso 2: Competencia</Badge>
+                            <h2 className="text-3xl md:text-5xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">
+                                Escoge un <span className="text-brand-primary">Módulo</span>
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {modules.map((m) => (
+                                <Card
+                                    key={m.id}
+                                    interactive
+                                    variant={selectedModule?.id === m.id ? "premium" : "glass"}
+                                    className={cn("p-8 cursor-pointer border-2 transition-all", selectedModule?.id === m.id ? "border-brand-primary shadow-gold" : "border-transparent")}
+                                    onClick={() => setSelectedModule(m)}
+                                >
+                                    <m.icon size={32} className={cn("mb-4", selectedModule?.id === m.id ? "text-[var(--theme-text-primary)]" : "text-brand-primary")} />
+                                    <h3 className="text-xl font-semibold text-[var(--theme-text-primary)] uppercase italic">{m.label}</h3>
+                                    <p className="text-xs text-[var(--theme-text-secondary)]/50 mt-2">{m.desc}</p>
+                                    {selectedModule?.id === m.id && (
+                                        <Button onClick={() => setStep(3)} className="mt-8 w-full" size="sm">Continuar</Button>
+                                    )}
+                                </Card>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+
+                {step === 3 && (
+                    <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="max-w-3xl mx-auto">
+                        <Card variant="primary" className="p-12 text-center space-y-8 relative overflow-hidden backdrop-blur-3xl">
+                            <div className="absolute top-0 right-0 p-8 opacity-5">
+                                <ShieldAlert size={200} />
                             </div>
 
-                            <div className="relative z-10 h-full flex flex-col">
-                                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 flex items-center justify-center text-white mb-6 group-hover:scale-110 group-hover:border-metal-blue/30 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] transition-all duration-300">
-                                    <module.icon size={32} />
-                                </div>
-                                <h3 className="text-2xl font-black text-white mb-3 group-hover:text-metal-blue transition-colors italic uppercase tracking-tight">
-                                    {module.label}
-                                </h3>
-                                <p className="text-sm text-metal-silver/50 mb-8 flex-grow font-medium leading-relaxed">
-                                    {module.desc}
-                                </p>
-                                <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between group-hover:border-metal-blue/20 transition-colors">
-                                    <span className="text-[10px] font-black text-metal-silver/40 uppercase tracking-widest group-hover:text-white transition-colors">Iniciar Módulo</span>
-                                    <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white group-hover:bg-metal-blue group-hover:text-black transition-all">
-                                        <ArrowLeft className="rotate-180" size={14} strokeWidth={3} />
-                                    </div>
-                                </div>
+                            <Badge variant="warning" className="animate-pulse">Protocolo de Examen Activo</Badge>
+                            <h2 className="text-3xl md:text-4xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">
+                                Listo para <span className="text-brand-primary">Despegar</span>?
+                            </h2>
+
+                            <div className="space-y-4 text-left bg-[var(--theme-bg-base)]/60 p-6 rounded-2xl border border-[var(--theme-border-soft)]">
+                                <h4 className="text-[10px] font-semibold text-brand-primary uppercase tracking-[0.2em] mb-4">Reglas del Simulacro:</h4>
+                                <ul className="space-y-3">
+                                    {[
+                                        "No se permite el uso de calculadoras ni IA.",
+                                        "El temporizador no se detiene si cierras la pestaña.",
+                                        "Debes completar todas las preguntas para recibir certificado.",
+                                        isFullSim ? "Módulos automáticos de 50 preguntas cada uno." : "Foco exclusivo en el módulo seleccionado."
+                                    ].map((text, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-sm text-[var(--theme-text-secondary)]">
+                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-primary" />
+                                            {text}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div className="flex flex-col md:flex-row gap-4">
+                                <Button variant="ghost" onClick={() => setStep(isFullSim ? 1 : 2)} className="flex-1">Cambiar Configuración</Button>
+                                <Button variant="primary" onClick={handleStartSimulation} className="flex-[2] h-16 shadow-gold">¡Comenzar Simulacro!</Button>
                             </div>
                         </Card>
-                    ))}
-                </div>
+                    </motion.div>
+                )}
             </div>
         </div>
     );

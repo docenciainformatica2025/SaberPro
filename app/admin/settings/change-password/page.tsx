@@ -74,124 +74,124 @@ export default function ChangePasswordPage() {
     };
 
     return (
-        <div className="max-w-xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <main className="max-w-7xl mx-auto space-y-12 pb-12 p-4 lg:p-0 animate-in fade-in slide-in-from-bottom-8 duration-700" suppressHydrationWarning>
             {/* Header Section */}
-            <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-3">
-                    <div className="p-3 bg-metal-gold/10 rounded-2xl text-metal-gold border border-metal-gold/20 shadow-[0_0_20px_rgba(212,175,55,0.1)]">
-                        <KeyRound size={24} />
-                    </div>
-                    <div>
-                        <h1 className="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-white via-metal-silver to-white/50 tracking-tighter uppercase italic">
-                            Seguridad de Acceso
-                        </h1>
-                        <p className="text-[10px] text-metal-silver/40 font-bold uppercase tracking-[0.2em] mt-1">Gestión de Credenciales Administrativas</p>
-                    </div>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div>
+                    <h1 className="text-5xl lg:text-6xl font-black text-theme-hero flex items-center gap-4 tracking-tighter italic uppercase animate-in fade-in slide-in-from-left-8 duration-700">
+                        <KeyRound className="text-brand-primary" size={48} /> Seguridad de Acceso
+                    </h1>
+                    <p className="text-[var(--theme-text-tertiary)] text-xs mt-2 flex items-center gap-2 font-black uppercase tracking-widest opacity-70">
+                        <ShieldCheck size={14} className="text-brand-primary" /> Protocolo de Criptografía v6.2 • Zero-Trust Mode
+                    </p>
                 </div>
             </div>
 
-            <Card variant="solid" className="p-8 border-white/5 bg-black/40 backdrop-blur-xl relative overflow-hidden group">
-                {/* Decorative Elements */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-metal-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-metal-gold/10 transition-all duration-500" />
+            <div className="max-w-xl mx-auto space-y-8">
 
-                <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-                    <div className="space-y-4">
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-black text-metal-silver/40 uppercase tracking-widest ml-1">Contraseña Actual</label>
-                            <div className="relative">
-                                <Input
-                                    type={showCurrentPassword ? "text" : "password"}
-                                    icon={Lock}
-                                    required
-                                    value={currentPassword}
-                                    onChange={(e) => setCurrentPassword(e.target.value)}
-                                    placeholder="••••••••"
-                                    className="bg-black/60 border-white/5 focus:border-metal-gold/50 transition-all pr-12"
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                                    className="absolute right-3 top-2.5 text-metal-silver/40 hover:text-white transition-colors"
-                                >
-                                    {showCurrentPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                                </button>
+                <Card variant="premium" className="p-8 relative overflow-hidden group">
+                    {/* Decorative Elements */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-brand-primary/10 transition-all duration-500" />
+
+                    <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                        <div className="space-y-4">
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-semibold text-theme-text-secondary/60 uppercase tracking-wider ml-1">Contraseña Actual</label>
+                                <div className="relative group">
+                                    <Input
+                                        type={showCurrentPassword ? "text" : "password"}
+                                        icon={Lock}
+                                        required
+                                        value={currentPassword}
+                                        onChange={(e) => setCurrentPassword(e.target.value)}
+                                        placeholder="••••••••"
+                                        className="bg-[var(--theme-bg-base)] border-[var(--theme-border-soft)] focus:border-brand-primary/50 transition-all pr-12 text-[var(--theme-text-primary)]"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+                                        className="absolute right-3 top-2.5 text-theme-text-secondary/40 hover:text-[var(--theme-text-primary)] transition-colors"
+                                    >
+                                        {showCurrentPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="h-px bg-gradient-to-r from-transparent via-[var(--theme-border-soft)] to-transparent my-4" />
+
+                            <div className="space-y-2">
+                                <label className="text-xs font-black text-theme-text-secondary/80 uppercase tracking-widest ml-1">Nueva Contraseña</label>
+                                <div className="relative group">
+                                    <Input
+                                        type={showNewPassword ? "text" : "password"}
+                                        icon={ShieldCheck}
+                                        required
+                                        value={newPassword}
+                                        onChange={(e) => setNewPassword(e.target.value)}
+                                        placeholder="Mínimo 8 caracteres"
+                                        className="bg-[var(--theme-bg-base)] border-[var(--theme-border-soft)] focus:border-brand-primary/50 transition-all pr-12 text-[var(--theme-text-primary)]"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowNewPassword(!showNewPassword)}
+                                        className="absolute right-3 top-2.5 text-theme-text-secondary/40 hover:text-[var(--theme-text-primary)] transition-colors"
+                                    >
+                                        {showNewPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-semibold text-theme-text-secondary/60 uppercase tracking-wider ml-1">Confirmar Nueva Contraseña</label>
+                                <div className="relative group">
+                                    <Input
+                                        type={showConfirmPassword ? "text" : "password"}
+                                        icon={CheckCircle2}
+                                        required
+                                        value={confirmPassword}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
+                                        placeholder="Repite la nueva contraseña"
+                                        className="bg-[var(--theme-bg-base)] border-[var(--theme-border-soft)] focus:border-brand-primary/50 transition-all pr-12 text-[var(--theme-text-primary)]"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                        className="absolute right-3 top-2.5 text-theme-text-secondary/40 hover:text-[var(--theme-text-primary)] transition-colors"
+                                    >
+                                        {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent my-4" />
-
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-black text-metal-silver/40 uppercase tracking-widest ml-1">Nueva Contraseña</label>
-                            <div className="relative">
-                                <Input
-                                    type={showNewPassword ? "text" : "password"}
-                                    icon={ShieldCheck}
-                                    required
-                                    value={newPassword}
-                                    onChange={(e) => setNewPassword(e.target.value)}
-                                    placeholder="Mínimo 8 caracteres"
-                                    className="bg-black/60 border-white/5 focus:border-metal-gold/50 transition-all pr-12"
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() => setShowNewPassword(!showNewPassword)}
-                                    className="absolute right-3 top-2.5 text-metal-silver/40 hover:text-white transition-colors"
-                                >
-                                    {showNewPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                                </button>
+                        <div className="p-4 bg-brand-primary/5 rounded-xl border border-brand-primary/10 flex gap-4 items-start">
+                            <AlertCircle className="text-brand-primary shrink-0 mt-0.5" size={16} />
+                            <div className="space-y-1">
+                                <p className="text-[10px] text-[var(--theme-text-primary)] font-semibold uppercase tracking-tight">Política de Seguridad 2026</p>
+                                <p className="text-[9px] text-theme-text-secondary/60 leading-relaxed italic">
+                                    Al cambiar tu clave, se cerrarán todas las sesiones activas en otros dispositivos para garantizar la integridad de tu cuenta administrativa.
+                                </p>
                             </div>
                         </div>
 
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-black text-metal-silver/40 uppercase tracking-widest ml-1">Confirmar Nueva Contraseña</label>
-                            <div className="relative">
-                                <Input
-                                    type={showConfirmPassword ? "text" : "password"}
-                                    icon={CheckCircle2}
-                                    required
-                                    value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                    placeholder="Repite la nueva contraseña"
-                                    className="bg-black/60 border-white/5 focus:border-metal-gold/50 transition-all pr-12"
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                                    className="absolute right-3 top-2.5 text-metal-silver/40 hover:text-white transition-colors"
-                                >
-                                    {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                        <Button
+                            type="submit"
+                            disabled={loading}
+                            variant="primary"
+                            className="w-full h-12 shadow-[0_0_20px_rgba(212,175,55,0.15)] hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] transition-all font-bold uppercase tracking-wider text-xs"
+                            icon={loading ? RefreshCw : ArrowRight}
+                            iconPosition="right"
+                        >
+                            {loading ? "Sincronizando..." : "Aplicar Nuevas Credenciales"}
+                        </Button>
+                    </form>
+                </Card>
 
-                    <div className="p-4 bg-metal-gold/5 rounded-xl border border-metal-gold/10 flex gap-4 items-start">
-                        <AlertCircle className="text-metal-gold shrink-0 mt-0.5" size={16} />
-                        <div className="space-y-1">
-                            <p className="text-[10px] text-white font-black uppercase tracking-tight">Política de Seguridad 2026</p>
-                            <p className="text-[9px] text-metal-silver/60 leading-relaxed italic">
-                                Al cambiar tu clave, se cerrarán todas las sesiones activas en otros dispositivos para garantizar la integridad de tu cuenta administrativa.
-                            </p>
-                        </div>
-                    </div>
-
-                    <Button
-                        type="submit"
-                        disabled={loading}
-                        variant="premium"
-                        className="w-full h-12 shadow-[0_0_20px_rgba(212,175,55,0.15)] hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] transition-all"
-                        icon={loading ? RefreshCw : ArrowRight}
-                        iconPosition="right"
-                    >
-                        {loading ? "Sincronizando..." : "Aplicar Nuevas Credenciales"}
-                    </Button>
-                </form>
-            </Card>
-
-            <div className="flex justify-between items-center text-[9px] text-metal-silver/20 px-2 uppercase font-black tracking-[0.2em]">
-                <span>Módulo de Criptografía v2.1</span>
-                <span className="flex items-center gap-1 opacity-50"><ShieldCheck size={10} /> AES-256 Auth Encryption</span>
+                <div className="flex justify-between items-center text-[10px] text-theme-text-secondary/30 px-2 uppercase font-black tracking-[0.2em] opacity-40">
+                    <span>Módulo de Criptografía v4.0</span>
+                    <span className="flex items-center gap-1"><ShieldCheck size={10} /> AES-256 Quantum Resistant</span>
+                </div>
             </div>
-        </div>
+        </main>
     );
 }

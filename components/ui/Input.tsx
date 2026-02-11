@@ -13,25 +13,24 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         return (
             <div className="w-full space-y-1.5">
                 {label && (
-                    <label className="text-[10px] font-bold text-metal-silver/60 uppercase tracking-widest ml-1">
+                    <label className="text-[10px] font-bold text-theme-text-tertiary uppercase tracking-wider ml-1">
                         {label}
                     </label>
                 )}
                 <div className="relative group">
                     {Icon && (
-                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-metal-silver/40 group-focus-within:text-metal-gold transition-colors duration-300">
+                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-theme-text-quaternary group-focus-within:text-brand-primary transition-colors duration-300">
                             <Icon size={18} strokeWidth={2} />
                         </div>
                     )}
                     <input
                         type={type}
                         className={cn(
-                            "w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 outline-none transition-all duration-300",
-                            "hover:bg-white/[0.05] hover:border-white/20",
-                            "focus:bg-white/[0.08] focus:border-metal-gold/50 focus:ring-4 focus:ring-metal-gold/5 focus:shadow-[0_0_20px_rgba(212,175,55,0.1)]",
+                            "w-full bg-[var(--theme-bg-surface)] border-[0.5px] border-theme-border-soft rounded-[var(--radius-md)] px-4 py-3.5 text-theme-text-primary placeholder-theme-text-tertiary outline-none transition-all duration-300 font-medium",
+                            "hover:border-theme-border-medium focus:border-brand-primary/50 focus:ring-4 focus:ring-brand-primary/5 focus:shadow-[var(--shadow-4k)] ring-1 ring-black/5",
                             "disabled:opacity-50 disabled:cursor-not-allowed",
                             Icon && "pl-11",
-                            error && "border-red-500/50 focus:border-red-500/50 focus:ring-red-500/5",
+                            error && "border-brand-error/50 focus:border-brand-error/5 focus:ring-brand-error/5",
                             className
                         )}
                         ref={ref}

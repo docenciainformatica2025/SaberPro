@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Clarity from "@/components/analytics/Clarity";
 import { Toaster } from "@/components/ui/Toaster";
@@ -30,14 +30,16 @@ if (typeof window !== "undefined") {
 
 // ... existing code ...
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: 'swap',
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -55,15 +57,17 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/icon.svg",
-  }
+  },
 };
 
-// PREVENT WHITE BARS ON MOBILE BROWSERS (Silicon Valley Standard)
 export const viewport = {
-  themeColor: "#0A0C0F", // Matches --metal-black
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1, // Optional: Prevents zoom if app-like
+  maximumScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F8FAFC" },
+    { media: "(prefers-color-scheme: dark)", color: "#0A0C0F" },
+  ],
 };
 
 export default function RootLayout({
@@ -72,16 +76,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning style={{ backgroundColor: '#0A0C0F', overscrollBehavior: 'none' }}>
+    <html lang="es" suppressHydrationWarning className="bg-[var(--theme-bg-base)]">
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-metal-black`}
-        style={{ backgroundColor: '#0A0C0F', overscrollBehavior: 'none', margin: 0, padding: 0 }}
+        className={`${inter.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-[var(--theme-bg-base)] transition-colors duration-500`}
       >
         <AuthProvider>
           <OnboardingGuard>
             <RoleBasedNavigation />
-            <main className="flex-grow flex flex-col pt-20 pb-12 md:pb-32" suppressHydrationWarning>
+            <main className="flex-grow flex flex-col pt-[var(--header-safe-zone)] pb-8 md:pb-12" suppressHydrationWarning>
               <PageTransition>
                 {children}
               </PageTransition>
@@ -100,29 +103,42 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
-              "name": BRAND_NAME_SPACED,
-              "applicationCategory": "EducationalApplication",
-              "operatingSystem": "Web",
-              "softwareVersion": APP_VERSION,
-              "url": "https://saberpro-app.vercel.app",
-              "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "COP"
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": `${BRAND_NAME_SPACED} Simulador`,
+                "url": "https://saberpro-app.vercel.app/",
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "https://saberpro-app.vercel.app/training?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
               },
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.9",
-                "ratingCount": "5200"
-              },
-              "author": {
-                "@type": "Person",
-                "name": "Ing. Antonio Rodríguez"
+              {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": BRAND_NAME_SPACED,
+                "applicationCategory": "EducationalApplication",
+                "operatingSystem": "Web",
+                "softwareVersion": APP_VERSION,
+                "url": "https://saberpro-app.vercel.app",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "COP"
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": "4.9",
+                  "ratingCount": "5200"
+                },
+                "author": {
+                  "@type": "Person",
+                  "name": process.env.NEXT_PUBLIC_AUTHOR_NAME || "SaberPro Team"
+                }
               }
-            })
+            ])
           }}
         />
       </body>

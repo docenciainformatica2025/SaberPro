@@ -13,13 +13,16 @@
 - **Brand Excellence:** Dynamic branding system for 2026 compliance and Gold Premium aesthetics.
 - **Performance Optimized:** Interaction to Next Paint (INP) < 200ms across all critical paths.
 
-## 📋 Documentation & Standards
+- [Identity Manual](./BRAND_MANUAL.md) - [Design System Standards](./documentation/DESIGN_SYSTEM.md)
 
-This project adheres to strict international engineering standards:
-- **Versioning:** [SemVer 2.0.0](https://semver.org/)
-- **Documentation:** [Technical Release Notes (v2.1.0)](./documentation/RELEASE_NOTES_v2.1.0.md)
-- **Compliance:** [Engineering Sprint Report (ISO-25010)](./SPRINT_TECHNICAL_REPORT.md)
-- **Branding:** [Brand Identity Manual](./BRAND_MANUAL.md)
+## 🛠️ Coding Standards & Best Practices
+
+To maintain code excellence, this project follows these principles:
+- **SOLID & DRY:** Prioritize maintainability and reusability over quick hacks.
+- **Component Atomicity:** UI must be broken down into atomic, accessible components.
+- **Accessibility (A11y):** All interactive elements MUST have `aria-label` or semantic roles.
+- **Clean Commits:** Use conventional commits (feat, fix, refactor, docs, chore).
+- **TypeScript Strictness:** No `any` types allowed; interface everything.
 
 ## 🛠️ Development
 

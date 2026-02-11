@@ -1,4 +1,10 @@
 import jsPDF from "jspdf";
+import {
+    BRAND_YEAR,
+    COMPANY_NAME,
+    SALES_EMAIL,
+    COPYRIGHT_TEXT
+} from "@/lib/config";
 
 // Brand Metrics (Consistent with pdfGenerator.ts)
 // Brand Metrics (Light Mode)
@@ -57,7 +63,7 @@ export const invoiceGenerator = {
             doc.setFont("helvetica", "normal");
             doc.setFontSize(9);
             doc.setTextColor(TECH_GRAY[0], TECH_GRAY[1], TECH_GRAY[2]);
-            doc.text("Training Suite 2025", margin + 12, ly + 11);
+            doc.text(`Training Suite ${BRAND_YEAR}`, margin + 12, ly + 11);
 
             // --- ZONE B: METADATA (Right) ---
             const rx = pageWidth - margin;
@@ -106,7 +112,7 @@ export const invoiceGenerator = {
             // Stamp / Brand info
             doc.setTextColor(INK_BLACK[0], INK_BLACK[1], INK_BLACK[2]);
             doc.setFont("helvetica", "bold");
-            doc.text("© 2025 Saber Pro Suite. Todos los derechos reservados.", pageWidth / 2, footerY + 38, { align: 'center' });
+            doc.text(COPYRIGHT_TEXT, pageWidth / 2, footerY + 38, { align: 'center' });
             doc.setFont("helvetica", "normal");
             doc.text(`Generado: ${dateStr}`, pageWidth - 20, footerY + 45, { align: 'right' });
         };
@@ -128,9 +134,9 @@ export const invoiceGenerator = {
         doc.setTextColor(TEXT_MAIN[0], TEXT_MAIN[1], TEXT_MAIN[2]);
 
         // Left: Seller
-        doc.text("SaberPro Inc.", 20, y);
+        doc.text(COMPANY_NAME, 20, y);
         doc.text("NIT: 900.888.777-1", 20, y + 6);
-        doc.text("facturacion@saberpro.app", 20, y + 12);
+        doc.text(SALES_EMAIL, 20, y + 12);
 
         // Right: Buyer
         doc.text(user.fullName || "Usuario SaberPro", pageWidth / 2 + 10, y);

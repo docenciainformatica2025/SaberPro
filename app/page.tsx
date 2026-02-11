@@ -17,10 +17,10 @@ export default function Home() {
   const dashboardLink = role === 'teacher' ? '/teacher' : role === 'admin' ? '/admin/dashboard' : '/dashboard';
 
   return (
-    <div className="flex flex-col min-h-screen bg-metal-black selection:bg-metal-gold/30">
+    <div className="flex flex-col min-h-screen bg-theme-bg-base selection:bg-brand-primary/10">
 
       {/* Navigation (Transparent) */}
-      <nav className="fixed top-0 w-full z-50 backdrop-blur-md border-b border-white/5 bg-black/50">
+      <nav className="fixed top-0 w-full z-50 backdrop-blur-md border-b border-theme-border-soft bg-theme-bg-base/80">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <Link href="/">
             <Logo variant="full" size="md" />
@@ -28,23 +28,23 @@ export default function Home() {
           <div className="flex gap-3 md:gap-4 items-center">
             {user ? (
               <Link href={dashboardLink}>
-                <Button variant="premium" className="text-[10px] md:text-xs font-black uppercase tracking-widest h-9 md:h-10 px-4 md:px-6 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                <Button variant="primary" className="text-[10px] md:text-xs font-semibold uppercase tracking-wider h-9 md:h-10 px-4 md:px-6 shadow-md shadow-brand-primary/10">
                   Dashboard
                 </Button>
               </Link>
             ) : (
               <>
                 <Link href="/login" className="hidden md:block">
-                  <Button variant="ghost" className="text-sm font-bold uppercase tracking-widest text-metal-silver hover:text-white">
+                  <Button variant="ghost" className="text-sm font-bold uppercase tracking-wider text-[var(--theme-text-tertiary)] hover:text-[var(--theme-text-primary)]">
                     Acceder a Plataforma
                   </Button>
                 </Link>
                 {/* Mobile Login Icon/Link */}
-                <Link href="/login" className="md:hidden text-metal-silver hover:text-white font-bold text-xs uppercase tracking-wider mr-2">
+                <Link href="/login" className="md:hidden text-[var(--theme-text-tertiary)] hover:text-[var(--theme-text-primary)] font-bold text-xs uppercase tracking-wider mr-2">
                   Entrar
                 </Link>
                 <Link href="/register">
-                  <Button variant="premium" className="text-[10px] md:text-xs font-black uppercase tracking-widest h-9 md:h-10 px-4 md:px-6 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                  <Button variant="primary" className="text-[10px] md:text-xs font-semibold uppercase tracking-wider h-9 md:h-10 px-4 md:px-6 shadow-md shadow-brand-primary/10">
                     Empezar
                   </Button>
                 </Link>
@@ -60,53 +60,53 @@ export default function Home() {
 
         {/* ACCESSIBILITY OVERLAY (P0 Audit Fix) */}
         {/* Dark overlay to guarantee 4.5:1 contrast for text over any background */}
-        <div className="absolute inset-0 bg-black/60 z-0 pointer-events-none" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[var(--theme-bg-base)]/60 z-0 pointer-events-none" aria-hidden="true" />
 
         {/* Background Ambience (Behind Overlay) */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-metal-gold/10 rounded-full blur-[120px] pointer-events-none animate-pulse -z-10" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-brand-primary/10 rounded-full blur-[120px] pointer-events-none animate-pulse -z-10" />
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-metal-blue/10 rounded-full blur-[120px] pointer-events-none -z-10" />
 
         <div className="relative z-10 max-w-5xl space-y-8">
-          <Badge variant="premium" className="mx-auto px-6 py-2 text-xs font-black tracking-[0.2em] uppercase shadow-[0_0_30px_rgba(212,175,55,0.2)] border-metal-gold/30 text-white">
+          <Badge variant="primary" className="mx-auto px-6 py-2 text-xs font-semibold tracking-wider uppercase shadow-sm border-brand-primary/10 text-brand-primary bg-brand-primary/5">
             Plataforma Oficial {BRAND_YEAR}
           </Badge>
 
 
-          <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight md:leading-[1.0] mb-6 text-white drop-shadow-xl">
+          <h1 className="text-5xl md:text-7xl font-semibold tracking-tight leading-tight md:leading-[1.1] mb-6 text-theme-text-primary">
             <span className="block mb-2">
               Prepárate para el
             </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-white to-metal-gold py-1">
+            <span className="text-brand-primary py-1">
               Saber Pro {BRAND_YEAR}
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-[#E0E0E0] max-w-4xl mx-auto font-medium leading-relaxed mb-4 drop-shadow-md">
-            El Saber Pro no se estudia. <span className="text-white font-bold">Se entrena.</span>
+          <p className="text-xl md:text-2xl text-[var(--theme-text-secondary)] max-w-4xl mx-auto font-medium leading-relaxed mb-4 drop-shadow-md">
+            El Saber Pro no se estudia. <span className="text-[var(--theme-text-primary)] font-bold">Se entrena.</span>
           </p>
 
-          <p className="text-sm md:text-base text-white/90 uppercase tracking-widest font-black mb-8 drop-shadow-lg">
-            <span className="text-metal-gold">Diagnóstico gratuito</span> • <span className="text-metal-gold">Plan personalizado</span> • <span className="text-metal-gold">Resultados medibles</span>
+          <p className="text-sm md:text-base text-theme-text-primary/90 uppercase tracking-wider font-semibold mb-8">
+            <span className="text-brand-primary">Diagnóstico gratuito</span> • <span className="text-brand-primary">Plan personalizado</span> • <span className="text-brand-primary">Resultados medibles</span>
           </p>
 
           {/* PRIMARY CALL TO ACTION (P0 Audit Fix) */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-8">
             {user ? (
               <Link href={dashboardLink}>
-                <Button size="xl" variant="premium" icon={ArrowRight} iconPosition="right" aria-label="Ir a mi Dashboard" className="h-16 px-10 text-lg font-black uppercase tracking-widest shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:shadow-[0_0_60px_rgba(212,175,55,0.6)] hover:scale-105 transition-all text-black bg-[#D4AF37] hover:bg-[#FCC200] border-none">
+                <Button size="xl" variant="primary" icon={ArrowRight} iconPosition="right" aria-label="Ir a mi Dashboard" className="h-16 px-10 text-lg font-semibold uppercase tracking-wider shadow-xl shadow-brand-primary/20 hover:scale-105 transition-all text-white bg-brand-primary hover:bg-brand-primary/90 border-none">
                   Continuar Entrenamiento
                 </Button>
               </Link>
             ) : (
               <Link href="/register">
                 {/* Specific Text Requested by Audit: "Comenzar Simulación Gratuita" is implicit in "Comenzar Ahora" but user report suggested "Comenzar Simulación" */}
-                <Button size="xl" variant="premium" icon={Brain} iconPosition="left" aria-label="Registrarse y comenzar simulación gratuita" className="h-16 px-10 text-lg font-black uppercase tracking-widest shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:shadow-[0_0_60px_rgba(212,175,55,0.6)] hover:scale-105 transition-all text-[#000000] bg-[#D4AF37] hover:bg-[#FCC200] border-none">
+                <Button size="xl" variant="primary" icon={Brain} iconPosition="left" aria-label="Registrarse y comenzar simulación gratuita" className="h-16 px-10 text-lg font-semibold uppercase tracking-wider shadow-xl shadow-brand-primary/20 hover:scale-105 transition-all text-white bg-brand-primary border-none">
                   COMENZAR SIMULACIÓN GRATUITA
                 </Button>
               </Link>
             )}
             <Link href="/methodology">
-              <Button variant="outline" size="xl" aria-label="Ver metodología de entrenamiento" className="h-16 px-10 text-lg font-bold uppercase tracking-widest border-white/20 text-white hover:bg-white/10 backdrop-blur-md">
+              <Button variant="outline" size="xl" aria-label="Ver metodología de entrenamiento" className="h-16 px-10 text-lg font-bold uppercase tracking-wider border-[var(--theme-border-medium)] text-[var(--theme-text-primary)] hover:bg-[var(--theme-bg-surface)]/10 backdrop-blur-md">
                 Ver cómo funciona
               </Button>
             </Link>
@@ -116,47 +116,47 @@ export default function Home() {
 
       <main className="flex-grow">
         {/* Trust Bar */}
-        <section aria-label="Instituciones que confían en nosotros" className="py-8 bg-black/20 border-y border-white/5">
+        <section aria-label="Instituciones que confían en nosotros" className="py-8 bg-[var(--theme-bg-surface)]/20 border-y border-[var(--theme-border-soft)]">
           <div className="max-w-7xl mx-auto px-4 text-center">
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#808080] mb-8">Confianza de Estudiantes de</p>
-            <div className="flex flex-wrap justify-center gap-12 md:gap-24 items-center opacity-50 hover:opacity-100 transition-opacity duration-500">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-theme-text-tertiary mb-8">Confianza de Estudiantes de</p>
+            <div className="flex flex-wrap justify-center gap-12 md:gap-24 items-center opacity-40 hover:opacity-100 transition-opacity duration-500">
               {/* Using text spans instead of images ensures NO Alt Text violations, while keeping visual impact strong */}
-              <span className="text-xl font-serif font-bold text-white tracking-widest">UNAL</span>
-              <span className="text-xl font-serif font-bold text-white tracking-widest">ANDES</span>
-              <span className="text-xl font-serif font-bold text-white tracking-widest">JAVERIANA</span>
-              <span className="text-xl font-serif font-bold text-white tracking-widest">EAFIT</span>
-              <span className="text-xl font-serif font-bold text-white tracking-widest">UNIVALLE</span>
+              <span className="text-xl font-serif font-semibold text-theme-text-primary tracking-wider">UNAL</span>
+              <span className="text-xl font-serif font-semibold text-theme-text-primary tracking-wider">ANDES</span>
+              <span className="text-xl font-serif font-semibold text-theme-text-primary tracking-wider">JAVERIANA</span>
+              <span className="text-xl font-serif font-semibold text-theme-text-primary tracking-wider">EAFIT</span>
+              <span className="text-xl font-serif font-semibold text-theme-text-primary tracking-wider">UNIVALLE</span>
             </div>
           </div>
         </section>
 
         {/* NEW: Process Roadmap Section (Audit Requirement) */}
-        <section className="py-20 border-t border-white/5 bg-[#080808] relative z-20" aria-label="Cómo funciona">
+        <section className="py-20 border-t border-[var(--theme-border-soft)] bg-[var(--theme-bg-base)] relative z-20" aria-label="Cómo funciona">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
-              <Badge variant="outline" className="text-metal-silver border-metal-silver/30 px-4 py-1 uppercase tracking-widest text-[10px] font-black mb-4">
+              <Badge variant="outline" className="text-theme-text-tertiary border-theme-border-soft px-4 py-1 uppercase tracking-wider text-[10px] font-semibold mb-4">
                 Ruta de Excelencia
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter">
-                Tu camino al <span className="text-metal-gold">Puntaje Perfecto</span>
+              <h2 className="text-3xl md:text-4xl font-semibold text-theme-text-primary tracking-tight">
+                Tu camino al <span className="text-brand-primary">Puntaje Perfecto</span>
               </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
               {/* Connector Line (Desktop) */}
-              <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-metal-silver/10 via-metal-gold/30 to-metal-silver/10 z-0"></div>
+              <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-theme-text-secondary/10 via-brand-primary/30 to-theme-text-secondary/10 z-0"></div>
 
               {[
-                { step: "01", title: "Crea tu Cuenta", desc: "Registro unificado en 30 segundos. Sin costos ocultos.", color: "text-white" },
-                { step: "02", title: "Diagnóstico IA", desc: "Evalúa tu nivel actual con nuestro motor de inteligencia artificial.", color: "text-metal-gold" },
-                { step: "03", title: "Entrena y Domina", desc: "Recibe un plan personalizado basado en tus debilidades.", color: "text-white" }
+                { step: "01", title: "Crea tu Cuenta", desc: "Registro unificado en 30 segundos. Sin costos ocultos.", color: "text-[var(--theme-text-primary)]" },
+                { step: "02", title: "Diagnóstico IA", desc: "Evalúa tu nivel actual con nuestro motor de inteligencia artificial.", color: "text-brand-primary" },
+                { step: "03", title: "Entrena y Domina", desc: "Recibe un plan personalizado basado en tus debilidades.", color: "text-[var(--theme-text-primary)]" }
               ].map((item, i) => (
                 <div key={i} className="relative z-10 flex flex-col items-center text-center group">
-                  <div className={`w-24 h-24 rounded-3xl bg-[#0A0A0A] border ${i === 1 ? 'border-metal-gold shadow-[0_0_30px_rgba(212,175,55,0.15)]' : 'border-white/10'} flex items-center justify-center text-3xl font-black ${item.color} mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2`}>
+                  <div className={`w-24 h-24 rounded-3xl bg-theme-bg-base border ${i === 1 ? 'border-brand-primary shadow-lg shadow-brand-primary/5' : 'border-theme-border-soft'} flex items-center justify-center text-3xl font-semibold ${item.color} mb-6 transition-transform duration-500 group-hover:scale-105`}>
                     {item.step}
                   </div>
-                  <h3 className="text-xl font-bold text-white uppercase tracking-wider mb-3">{item.title}</h3>
-                  <p className="text-metal-silver/60 text-sm font-medium max-w-xs leading-relaxed">
+                  <h3 className="text-xl font-medium text-theme-text-primary uppercase tracking-wider mb-3">{item.title}</h3>
+                  <p className="text-[var(--theme-text-tertiary)] text-sm font-medium max-w-xs leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -166,20 +166,20 @@ export default function Home() {
         </section>
 
         {/* Features Section & Marketing Copy */}
-        <section className="py-6 md:py-12 relative bg-black/50 border-t border-white/5 backdrop-blur-sm">
+        <section className="py-6 md:py-12 relative bg-[var(--theme-bg-surface)]/20 border-t border-[var(--theme-border-soft)] backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-10 md:mb-20 space-y-4 md:space-y-6">
-              <Badge variant="outline" className="text-metal-gold border-metal-gold/30 px-4 py-1 uppercase tracking-widest text-[10px] font-black">
+              <Badge variant="outline" className="text-brand-primary border-brand-primary/30 px-4 py-1 uppercase tracking-wider text-[10px] font-semibold">
                 Filosofía de Entrenamiento
               </Badge>
 
-              <h2 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter mb-6 leading-none">
+              <h2 className="text-4xl md:text-6xl font-semibold text-theme-text-primary italic tracking-tight mb-6 leading-none">
                 &quot;El problema no es que no sepas.<br />
-                <span className="text-metal-silver/50">Es que no sabes qué reforzar.&quot;</span>
+                <span className="text-theme-text-secondary/50">Es que no sabes qué reforzar.&quot;</span>
               </h2>
 
-              <p className="text-metal-silver max-w-2xl mx-auto text-lg font-medium">
-                El Saber Pro no se estudia. <span className="text-white font-bold">Se entrena.</span><br />
+              <p className="text-[var(--theme-text-secondary)] max-w-2xl mx-auto text-lg font-medium">
+                El Saber Pro no se estudia. <span className="text-[var(--theme-text-primary)] font-bold">Se entrena.</span><br />
                 Entrena como los que sí pasan.
               </p>
             </div>
@@ -190,12 +190,12 @@ export default function Home() {
                 { icon: TrendingUp, title: "Analítica Predictiva", desc: "Proyecciones de puntaje basadas en datos históricos de 10 años.", color: "text-blue-400" },
                 { icon: ShieldCheck, title: "Simulación Realista", desc: "Entorno idéntico al examen real: Sin pausas, cronometrado y seguro.", color: "text-green-400" }
               ].map((item, i) => (
-                <Card key={i} variant="glass" className="p-10 group hover:-translate-y-2 transition-transform duration-500 border-white/5 bg-white/[0.02]">
-                  <div className={`w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 group-hover:bg-white/10 transition-colors`}>
+                <Card key={i} variant="glass" className="p-10 group hover:-translate-y-2 transition-transform duration-500 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]/10">
+                  <div className={`w-16 h-16 rounded-2xl bg-theme-bg-base flex items-center justify-center mb-8 group-hover:bg-theme-bg-base/80 transition-colors shadow-sm`}>
                     <item.icon className={item.color} size={32} strokeWidth={2} />
                   </div>
-                  <h3 className="text-2xl font-black text-white mb-4 italic uppercase tracking-tight">{item.title}</h3>
-                  <p className="text-metal-silver text-base font-medium leading-relaxed">{item.desc}</p>
+                  <h3 className="text-2xl font-semibold text-theme-text-primary mb-4 italic tracking-tight">{item.title}</h3>
+                  <p className="text-theme-text-tertiary text-base font-medium leading-relaxed">{item.desc}</p>
                 </Card>
               ))}
             </div>
@@ -203,33 +203,33 @@ export default function Home() {
         </section>
 
         {/* Social Proof / Stats */}
-        <section className="py-6 md:py-12 bg-gradient-to-b from-metal-gold/5 to-transparent relative overflow-hidden">
+        <section className="py-6 md:py-12 bg-gradient-to-b from-brand-primary/5 to-transparent relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
               <div>
-                <div className="text-5xl font-black text-white mb-2 tracking-tighter flex items-center justify-center">
+                <div className="text-5xl font-semibold text-theme-text-primary mb-2 tracking-tight flex items-center justify-center">
                   <NumberTicker value={5000} suffix="+" />
                 </div>
-                <div className="text-xs font-bold text-metal-gold uppercase tracking-widest">Estudiantes Activos</div>
+                <div className="text-xs font-semibold text-brand-primary uppercase tracking-wider">Estudiantes Activos</div>
               </div>
               <div>
-                <div className="text-5xl font-black text-white mb-2 tracking-tighter flex items-center justify-center">
+                <div className="text-5xl font-semibold text-theme-text-primary mb-2 tracking-tight flex items-center justify-center">
                   <NumberTicker value={98} suffix="%" />
                 </div>
-                <div className="text-xs font-bold text-metal-gold uppercase tracking-widest">Tasa de Aprobación</div>
+                <div className="text-xs font-semibold text-brand-primary uppercase tracking-wider">Tasa de Aprobación</div>
               </div>
               <div>
-                <div className="text-5xl font-black text-white mb-2 tracking-tighter flex items-center justify-center">
+                <div className="text-5xl font-semibold text-theme-text-primary mb-2 tracking-tight flex items-center justify-center">
                   <NumberTicker value={24} suffix="/7" />
                 </div>
-                <div className="text-xs font-bold text-metal-gold uppercase tracking-widest">Disponibilidad</div>
+                <div className="text-xs font-semibold text-brand-primary uppercase tracking-wider">Disponibilidad</div>
               </div>
               <div>
-                <div className="text-5xl font-black text-white mb-2 tracking-tighter flex items-center justify-center">
+                <div className="text-5xl font-semibold text-theme-text-primary mb-2 tracking-tight flex items-center justify-center">
                   #<NumberTicker value={1} />
                 </div>
-                <div className="text-xs font-bold text-metal-gold uppercase tracking-widest">Plataforma LatAm</div>
+                <div className="text-xs font-semibold text-brand-primary uppercase tracking-wider">Plataforma LatAm</div>
               </div>
             </div>
           </div>

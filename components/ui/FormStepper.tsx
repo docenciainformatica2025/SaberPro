@@ -23,11 +23,11 @@ export default function FormStepper({ steps, currentStep }: FormStepperProps) {
         <div className="w-full py-6">
             <div className="flex items-center justify-between relative">
                 {/* Progress Line Background */}
-                <div className="absolute top-5 left-0 right-0 h-0.5 bg-metal-silver/10 -z-10" />
+                <div className="absolute top-5 left-0 right-0 h-0.5 bg-theme-text-secondary/10 -z-10" />
 
                 {/* Progress Line Filled */}
                 <div
-                    className="absolute top-5 left-0 h-0.5 bg-metal-gold transition-all duration-500 ease-out -z-10"
+                    className="absolute top-5 left-0 h-0.5 bg-brand-primary transition-all duration-500 ease-out -z-10"
                     style={{
                         width: `${(currentStep / (steps.length - 1)) * 100}%`
                     }}
@@ -48,8 +48,8 @@ export default function FormStepper({ steps, currentStep }: FormStepperProps) {
                                     ${isCompleted
                                         ? 'bg-green-500 text-white scale-110'
                                         : isCurrent
-                                            ? 'bg-metal-gold text-black scale-110 shadow-[0_0_20px_rgba(212,175,55,0.5)]'
-                                            : 'bg-metal-dark border-2 border-metal-silver/20 text-metal-silver/40'
+                                            ? 'bg-brand-primary text-[var(--theme-bg-base)] scale-110 shadow-[var(--theme-accent-gold-soft)]'
+                                            : 'bg-[var(--theme-bg-surface)] border-2 border-[var(--theme-border-soft)] text-[var(--theme-text-quaternary)]'
                                     }
                                 `}
                             >
@@ -65,16 +65,16 @@ export default function FormStepper({ steps, currentStep }: FormStepperProps) {
                                 <p className={`
                                     text-xs font-bold uppercase tracking-wider transition-colors
                                     ${isCurrent
-                                        ? 'text-metal-gold'
+                                        ? 'text-brand-primary'
                                         : isCompleted
                                             ? 'text-green-400'
-                                            : 'text-metal-silver/40'
+                                            : 'text-[var(--theme-text-quaternary)]'
                                     }
                                 `}>
                                     {step.title}
                                 </p>
                                 {step.description && isCurrent && (
-                                    <p className="text-[10px] text-metal-silver/60 mt-1 max-w-[80px]">
+                                    <p className="text-[10px] text-theme-text-secondary/60 mt-1 max-w-[80px]">
                                         {step.description}
                                     </p>
                                 )}

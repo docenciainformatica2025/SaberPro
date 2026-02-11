@@ -43,7 +43,7 @@ export default function TrainingSelectionPage() {
     }, [user, loading]);
 
     if (loading || (user && fetchingProfile)) return (
-        <div className="min-h-screen fbg-metal-dark flex items-center justify-center">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] flex items-center justify-center">
             <AIProcessingLoader text="Modo Entrenamiento" subtext="Iniciando protocolos de simulación" />
         </div>
     );
@@ -77,27 +77,27 @@ export default function TrainingSelectionPage() {
     });
 
     return (
-        <div className="min-h-screen bg-metal-dark p-6 md:p-12 pb-24">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] p-6 md:p-12 pb-24">
             <div className="max-w-6xl mx-auto space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
 
                 {/* Header */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-white/5 pb-8">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-[var(--theme-border-soft)] pb-8">
                     <div className="space-y-4">
                         <Link href={role === 'teacher' ? "/teacher" : "/dashboard"}>
-                            <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-metal-silver hover:text-white uppercase tracking-widest text-[10px] pl-0">
+                            <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-[var(--theme-text-tertiary)] hover:text-[var(--theme-text-primary)] uppercase tracking-wider text-[10px] pl-0">
                                 {role === 'teacher' ? "Volver al Panel" : "Volver al Dashboard"}
                             </Button>
                         </Link>
                         <div>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-metal-gold/10 border border-metal-gold/20 text-metal-gold text-[10px] font-black tracking-widest uppercase mb-3">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-[10px] font-semibold tracking-wider uppercase mb-3">
                                 <Sparkles size={12} /> Nueva Funcionalidad IA
                             </div>
-                            <h1 className="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter">
-                                Modo <span className="text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-white to-metal-gold">Entrenamiento</span>
+                            <h1 className="text-4xl md:text-5xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">
+                                Modo <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-[var(--theme-text-primary)] to-brand-primary">Entrenamiento</span>
                             </h1>
                         </div>
                     </div>
-                    <p className="text-metal-silver/60 text-sm md:text-base max-w-md font-medium leading-relaxed text-right hidden md:block">
+                    <p className="text-[var(--theme-text-secondary)] text-sm md:text-base max-w-md font-medium leading-relaxed text-right hidden md:block">
                         Practica sin límite de tiempo. Recibe retroalimentación inmediata y explicaciones personalizadas por Inteligencia Artificial.
                     </p>
                 </div>
@@ -109,35 +109,35 @@ export default function TrainingSelectionPage() {
                             <Link key={module.id} href={`/training/${module.id}`}>
                                 <Card
                                     variant={isRecommended ? "premium" : "glass"}
-                                    className={`h-full p-8 group transition-transform duration-500 hover:-translate-y-2 relative overflow-hidden ${isRecommended ? 'shadow-[0_0_40px_rgba(212,175,55,0.15)] ring-1 ring-metal-gold/50' : 'bg-white/[0.02]'}`}
+                                    className={`h-full p-8 group transition-transform duration-500 hover:-translate-y-2 relative overflow-hidden ${isRecommended ? 'shadow-[0_0_40px_rgba(212,175,55,0.15)] ring-1 ring-brand-primary/50' : 'bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)]'}`}
                                 >
                                     {isRecommended && (
                                         <div className="absolute top-4 right-4 z-20">
-                                            <Badge variant="premium" className="text-[9px] px-2 py-0.5 uppercase tracking-wider font-black shadow-lg">
+                                            <Badge variant="primary" className="text-[9px] px-2 py-0.5 uppercase tracking-wider font-semibold shadow-lg">
                                                 Recomendado
                                             </Badge>
                                         </div>
                                     )}
 
                                     {/* Abstract BG Icon */}
-                                    <div className={`absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity rotate-12 ${isRecommended ? 'text-black' : 'text-white'}`}>
+                                    <div className={`absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity rotate-12 ${isRecommended ? 'text-[var(--theme-bg-base)]' : 'text-[var(--theme-text-primary)]'}`}>
                                         <module.icon size={120} />
                                     </div>
 
                                     <div className="relative z-10 flex flex-col h-full">
-                                        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all group-hover:scale-110 shadow-lg ${isRecommended ? 'bg-black text-metal-gold' : 'bg-white/5 text-metal-silver group-hover:bg-metal-gold/20 group-hover:text-metal-gold'}`}>
+                                        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all group-hover:scale-110 shadow-lg ${isRecommended ? 'bg-[var(--theme-bg-base)] text-brand-primary' : 'bg-[var(--theme-bg-base)] text-[var(--theme-text-secondary)] group-hover:bg-brand-primary/20 group-hover:text-brand-primary'}`}>
                                             <module.icon size={28} strokeWidth={2} />
                                         </div>
 
-                                        <h3 className="text-xl font-black text-white mb-2 uppercase italic tracking-tight group-hover:text-metal-gold transition-colors">
+                                        <h3 className="text-xl font-semibold text-[var(--theme-text-primary)] mb-2 uppercase italic tracking-tight group-hover:text-brand-primary transition-colors">
                                             {module.label}
                                         </h3>
 
-                                        <p className={`text-xs font-medium mb-8 leading-relaxed flex-grow ${isRecommended ? 'text-white/80' : 'text-metal-silver/60'}`}>
+                                        <p className={`text-xs font-medium mb-8 leading-relaxed flex-grow ${isRecommended ? 'text-[var(--theme-text-secondary)]' : 'text-[var(--theme-text-tertiary)]'}`}>
                                             {module.desc}
                                         </p>
 
-                                        <div className={`flex items-center text-[10px] font-black uppercase tracking-widest transition-colors ${isRecommended ? 'text-black' : 'text-metal-gold group-hover:text-white'}`}>
+                                        <div className={`flex items-center text-[10px] font-semibold uppercase tracking-wider transition-colors ${isRecommended ? 'text-black' : 'text-brand-primary group-hover:text-[var(--theme-text-primary)]'}`}>
                                             Iniciar Práctica <ChevronRight size={14} className="ml-1 group-hover:translate-x-1 transition-transform" />
                                         </div>
                                     </div>

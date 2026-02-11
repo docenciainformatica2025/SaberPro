@@ -14,17 +14,17 @@ import Link from "next/link";
 import PaymentGateway from "@/components/finance/PaymentGateway";
 
 const FeatureItem = ({ text, included = true }: { text: string, included?: boolean }) => (
-    <li className={`flex items-center gap-3 ${included ? 'text-white' : 'text-metal-silver/30'}`}>
+    <li className={`flex items-center gap-3 ${included ? 'text-[var(--theme-text-primary)]' : 'text-[var(--theme-text-quaternary)]/30'}`}>
         {included ? (
-            <div className="w-5 h-5 rounded-full bg-metal-gold/20 flex items-center justify-center text-metal-gold">
+            <div className="w-5 h-5 rounded-full bg-brand-primary/20 flex items-center justify-center text-brand-primary">
                 <Check size={12} strokeWidth={3} />
             </div>
         ) : (
-            <div className="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center text-metal-silver/30">
+            <div className="w-5 h-5 rounded-full bg-[var(--theme-bg-surface)] flex items-center justify-center text-[var(--theme-text-quaternary)]/30">
                 <X size={12} strokeWidth={3} />
             </div>
         )}
-        <span className={`text-sm font-medium ${included ? '' : 'line-through decoration-metal-silver/30'}`}>{text}</span>
+        <span className={`text-sm font-medium ${included ? '' : 'line-through decoration-[var(--theme-text-quaternary)]/30'}`}>{text}</span>
     </li>
 );
 
@@ -98,42 +98,42 @@ export default function PricingPage() {
     const isTeacher = viewMode === 'teacher';
 
     return (
-        <div className="min-h-screen bg-metal-dark flex flex-col items-center justify-center py-24 px-4 relative overflow-hidden">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] flex flex-col items-center justify-center py-24 px-4 relative overflow-hidden">
 
             {/* Background Effects */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-metal-gold/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
             {/* Header */}
             <div className="relative z-10 text-center space-y-6 mb-16 animate-in fade-in slide-in-from-top-4 duration-700">
                 <Link href="/">
-                    <Button variant="ghost" size="sm" className="absolute left-0 -top-20 text-metal-silver/40 hover:text-white uppercase tracking-widest text-[10px] hidden md:flex">
+                    <Button variant="ghost" size="sm" className="absolute left-0 -top-20 text-[var(--theme-text-secondary)]/40 hover:text-[var(--theme-text-primary)] uppercase tracking-wider text-[10px] hidden md:flex">
                         <ArrowRight className="rotate-180 mr-2" size={14} /> Volver
                     </Button>
                 </Link>
 
-                <Badge variant="premium" className="mx-auto px-4 py-1.5 text-[10px] uppercase font-black tracking-[0.3em] shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                <Badge variant="primary" className="mx-auto px-4 py-1.5 text-[10px] uppercase font-semibold tracking-[0.3em] shadow-[0_0_20px_rgba(212,175,55,0.2)]">
                     Membresía
                 </Badge>
 
-                <h1 className="text-5xl md:text-6xl font-black tracking-tighter text-white uppercase italic">
-                    Planes de <span className="text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-white to-metal-gold">Acceso</span>
+                <h1 className="text-5xl md:text-6xl font-semibold tracking-tight text-[var(--theme-text-primary)] uppercase italic">
+                    Planes de <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-[var(--theme-text-primary)] to-brand-primary">Acceso</span>
                 </h1>
 
-                <p className="text-xl text-metal-silver/60 max-w-2xl mx-auto font-light">
+                <p className="text-xl text-[var(--theme-text-secondary)]/60 max-w-2xl mx-auto font-light">
                     Herramientas profesionales para quien toma su preparación en serio.
                 </p>
 
                 {/* Switch */}
-                <div className="inline-flex p-1 bg-black/40 border border-white/10 rounded-full backdrop-blur-md">
+                <div className="inline-flex p-1 bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] rounded-full backdrop-blur-md">
                     <button
                         onClick={() => setViewMode('student')}
-                        className={`px-8 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-300 ${!isTeacher ? 'bg-metal-gold text-black shadow-lg shadow-metal-gold/20' : 'text-metal-silver hover:text-white'}`}
+                        className={`px-8 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${!isTeacher ? 'bg-brand-primary text-[var(--theme-bg-base)] shadow-lg shadow-brand-primary/20' : 'text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)]'}`}
                     >
                         Estudiantes
                     </button>
                     <button
                         onClick={() => setViewMode('teacher')}
-                        className={`px-8 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-300 ${isTeacher ? 'bg-metal-blue text-white shadow-lg shadow-metal-blue/20' : 'text-metal-silver hover:text-white'}`}
+                        className={`px-8 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${isTeacher ? 'bg-metal-blue text-white shadow-lg shadow-metal-blue/20' : 'text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)]'}`}
                     >
                         Docentes
                     </button>
@@ -143,17 +143,17 @@ export default function PricingPage() {
             {/* Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full relative z-10">
                 {/* Free / Basic Plan */}
-                <Card variant="glass" className="p-10 flex flex-col border-white/5 bg-white/[0.02] hover:border-white/10 transition-colors">
+                <Card variant="glass" className="p-10 flex flex-col border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] hover:border-[var(--theme-border-medium)] transition-colors">
                     <div className="mb-8">
-                        <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-metal-silver mb-6">
+                        <div className="w-12 h-12 rounded-xl bg-[var(--theme-bg-base)] flex items-center justify-center text-[var(--theme-text-secondary)] mb-6">
                             <Shield size={24} />
                         </div>
-                        <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-2">Acceso Básico</h3>
+                        <h3 className="text-2xl font-semibold text-[var(--theme-text-primary)] uppercase tracking-tight mb-2">Acceso Básico</h3>
                         <div className="flex items-baseline gap-1">
-                            <span className="text-4xl font-bold text-white">$0</span>
-                            <span className="text-metal-silver text-sm uppercase font-bold">/ Siempre</span>
+                            <span className="text-4xl font-bold text-[var(--theme-text-primary)]">$0</span>
+                            <span className="text-[var(--theme-text-secondary)] text-sm uppercase font-bold">/ Siempre</span>
                         </div>
-                        <p className="text-metal-silver/60 text-sm mt-4 font-medium leading-relaxed">
+                        <p className="text-[var(--theme-text-secondary)]/60 text-sm mt-4 font-medium leading-relaxed">
                             Ideal para conocer la plataforma y realizar diagnósticos iniciales.
                         </p>
                     </div>
@@ -166,38 +166,38 @@ export default function PricingPage() {
                         <FeatureItem text="Certificado de Excelencia" included={false} />
                     </ul>
                     <Link href="/register">
-                        <Button variant="outline" className="w-full h-12 border-white/10 hover:bg-white/5 uppercase tracking-widest font-bold text-xs">
+                        <Button variant="outline" className="w-full h-12 border-[var(--theme-border-soft)] hover:bg-[var(--theme-bg-base)] uppercase tracking-wider font-bold text-xs">
                             Crear Cuenta Gratis
                         </Button>
                     </Link>
                 </Card>
 
                 {/* PRO Plan */}
-                <Card variant="premium" className="p-10 flex flex-col relative overflow-hidden transform md:-translate-y-4 shadow-[0_0_50px_rgba(212,175,55,0.15)] ring-1 ring-metal-gold/50">
+                <Card variant="primary" className="p-10 flex flex-col relative overflow-hidden transform md:-translate-y-4 shadow-[0_0_50px_rgba(212,175,55,0.15)] ring-1 ring-brand-primary/50">
                     <div className="absolute top-0 right-0 p-4">
-                        <div className="bg-gradient-to-r from-metal-gold to-yellow-500 text-black text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-lg">
+                        <div className="bg-brand-primary text-[var(--theme-bg-base)] text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full shadow-lg">
                             Recomendado
                         </div>
                     </div>
 
                     <div className="mb-8">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-metal-gold to-yellow-600 flex items-center justify-center text-black mb-6 shadow-lg shadow-metal-gold/20">
+                        <div className="w-12 h-12 rounded-xl bg-brand-primary flex items-center justify-center text-[var(--theme-bg-base)] mb-6 shadow-lg shadow-brand-primary/20">
                             <Crown size={24} strokeWidth={2.5} />
                         </div>
-                        <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-2">
+                        <h3 className="text-2xl font-semibold text-[var(--theme-text-primary)] uppercase tracking-tight mb-2">
                             {isTeacher ? "Licencia Docente" : "Plan Élite Pro"}
                         </h3>
                         <div className="flex items-baseline gap-1">
-                            <span className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-metal-gold">
+                            <span className="text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-[var(--theme-text-primary)] to-brand-primary">
                                 {new Intl.NumberFormat(currency === 'COP' ? 'es-CO' : 'en-US', {
                                     style: 'currency',
                                     currency: currency,
                                     maximumFractionDigits: 0
                                 }).format(isTeacher ? pricing.teacher : pricing.student)}
                             </span>
-                            <span className="text-metal-gold text-sm uppercase font-bold">/ {isTeacher ? 'Mes' : 'Único'}</span>
+                            <span className="text-brand-primary text-sm uppercase font-bold">/ {isTeacher ? 'Mes' : 'Único'}</span>
                         </div>
-                        <p className="text-white/80 text-sm mt-4 font-medium leading-relaxed">
+                        <p className="text-[var(--theme-text-primary)]/80 text-sm mt-4 font-medium leading-relaxed">
                             {isTeacher ? "Para docentes que gestionan el progreso de sus grupos." : "Entrenamiento completo sin restricciones."}
                         </p>
                     </div>
@@ -223,8 +223,8 @@ export default function PricingPage() {
                     </ul>
 
                     <Button
-                        variant="premium"
-                        className="w-full h-14 text-sm font-black uppercase tracking-widest shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] hover:scale-105 transition-all"
+                        variant="primary"
+                        className="w-full h-14 text-sm font-semibold uppercase tracking-wider shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] hover:scale-105 transition-all"
                         onClick={handleUpgrade}
                         icon={Zap}
                     >
@@ -234,8 +234,8 @@ export default function PricingPage() {
             </div>
 
             <div className="mt-16 flex items-center gap-2 opacity-40 hover:opacity-100 transition-opacity">
-                <Shield size={14} className="text-metal-gold" />
-                <span className="text-[10px] uppercase font-bold text-metal-silver tracking-widest">Pagos procesados de forma segura con Wompi</span>
+                <Shield size={14} className="text-brand-primary" />
+                <span className="text-[10px] uppercase font-bold text-[var(--theme-text-secondary)] tracking-wider">Pagos procesados de forma segura con Wompi</span>
             </div>
 
             {/* Payment Modal */}

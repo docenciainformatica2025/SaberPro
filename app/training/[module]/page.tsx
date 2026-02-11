@@ -198,43 +198,43 @@ export default function TrainingModulePage({ params }: TrainingPageProps) {
         const accuracy = Math.round((score / questions.length) * 100);
 
         return (
-            <div className="min-h-screen flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-500">
-                <div className="metallic-card max-w-lg w-full p-8 rounded-2xl border-metal-gold/50 shadow-[0_0_50px_rgba(212,175,55,0.2)] text-center relative overflow-hidden">
+            <div className="min-h-screen flex items-center justify-center p-4 bg-[var(--theme-bg-overlay)] backdrop-blur-sm animate-in fade-in duration-500">
+                <div className="metallic-card max-w-lg w-full p-8 rounded-2xl border border-[var(--theme-border-medium)] bg-[var(--theme-bg-surface)] shadow-[0_0_50px_rgba(212,175,55,0.2)] text-center relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-metal-gold via-yellow-200 to-metal-gold animate-shimmer"></div>
 
                     <div className="w-20 h-20 bg-metal-gold/20 rounded-full flex items-center justify-center mx-auto mb-6 text-metal-gold animate-in zoom-in spin-in-180 duration-700">
                         <CheckCircle size={40} />
                     </div>
 
-                    <h2 className="text-3xl font-bold text-white mb-2">¡Racha Diaria Completada!</h2>
-                    <p className="text-metal-silver mb-8 text-lg">
+                    <h2 className="text-3xl font-bold text-[var(--theme-text-primary)] mb-2">¡Racha Diaria Completada!</h2>
+                    <p className="text-[var(--theme-text-secondary)] mb-8 text-lg">
                         Has completado tus <span className="text-metal-gold font-bold">{questions.length} preguntas</span> de hoy.
                         Tu constancia es clave para el éxito.
                     </p>
 
-                    <div className="bg-metal-dark/50 p-6 rounded-xl border border-metal-silver/10 mb-8">
+                    <div className="bg-[var(--theme-bg-base)] p-6 rounded-xl border border-[var(--theme-border-soft)] mb-8">
                         <div className="flex justify-between items-center mb-4">
-                            <span className="text-sm text-metal-silver">Tu Precisión</span>
+                            <span className="text-sm text-[var(--theme-text-secondary)]">Tu Precisión</span>
                             <span className="text-xl font-bold text-green-400">{accuracy}%</span>
                         </div>
-                        <div className="w-full bg-metal-dark h-2 rounded-full overflow-hidden">
+                        <div className="w-full bg-[var(--theme-bg-surface)] h-2 rounded-full overflow-hidden">
                             <div className="h-full bg-green-500 transition-all duration-1000" style={{ width: `${accuracy}%` }}></div>
                         </div>
-                        <p className="mt-4 text-xs text-metal-silver/60 italic">
+                        <p className="mt-4 text-xs text-[var(--theme-text-tertiary)] italic">
                             &quot;Los usuarios Pro practican 3x más preguntas y obtienen puntajes 40% más altos.&quot;
                         </p>
                     </div>
 
                     <button
                         onClick={() => router.push('/pricing')}
-                        className="w-full metallic-btn bg-gradient-to-r from-metal-gold to-yellow-600 text-black font-bold py-4 rounded-xl mb-4 hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all flex items-center justify-center gap-2 transform hover:scale-[1.02]"
+                        className="w-full metallic-btn bg-[var(--theme-btn-primary)] text-[var(--theme-btn-primary-text)] font-bold py-4 rounded-xl mb-4 hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all flex items-center justify-center gap-2 transform hover:scale-[1.02]"
                     >
                         <Sparkles size={20} /> DESBLOQUEAR PRÁCTICA ILIMITADA
                     </button>
 
                     <button
                         onClick={() => router.push('/training')}
-                        className="text-metal-silver hover:text-white text-sm underline decoration-metal-silver/30 hover:decoration-white underline-offset-4"
+                        className="text-[var(--theme-text-tertiary)] hover:text-[var(--theme-text-primary)] text-sm underline decoration-[var(--theme-border-soft)] hover:decoration-[var(--theme-text-primary)] underline-offset-4"
                     >
                         Volver al menú (Esperar a mañana)
                     </button>
@@ -243,20 +243,14 @@ export default function TrainingModulePage({ params }: TrainingPageProps) {
         );
     }
 
-    if (questions.length === 0) return <div className="min-h-screen text-white flex items-center justify-center">No hay preguntas disponibles para este módulo aún.</div>;
+    if (questions.length === 0) return <div className="min-h-screen bg-[var(--theme-bg-base)] text-[var(--theme-text-primary)] flex items-center justify-center">No hay preguntas disponibles para este módulo aún.</div>;
 
     return (
-        <div className="min-h-screen bg-metal-dark p-4 md:p-8">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] p-4 md:p-8">
             <div className="max-w-4xl mx-auto">
                 {/* ... (Existing Render) ... */}
                 <div className="flex justify-between items-center mb-8">
-                    <Link href={role === 'teacher' ? "/training" : "/training"} className="text-metal-silver hover:text-white flex items-center gap-2">
-                        {/* Note: /training handles role-based back link internally, so link to /training is safeish, but let's be explicit if needed. 
-                            Actually, /training goes to the selection page. That page has a back link. 
-                            Wait, the user wants to go 'Back' from the Question Page. 
-                            If they go to /training, that is the selection page. That seems correct for both students and teachers.
-                            But wait, let's keep it consistent.
-                        */}
+                    <Link href={role === 'teacher' ? "/training" : "/training"} className="text-[var(--theme-text-tertiary)] hover:text-[var(--theme-text-primary)] flex items-center gap-2">
                         <ArrowLeft size={20} /> Salir
                     </Link>
                     <div className="text-metal-gold font-bold">
@@ -293,7 +287,7 @@ export default function TrainingModulePage({ params }: TrainingPageProps) {
                         <div className="flex justify-end mt-6">
                             <button
                                 onClick={handleNext}
-                                className="metallic-btn bg-white/10 hover:bg-white/20 text-white px-8 py-3 rounded-xl font-bold flex items-center gap-2"
+                                className="metallic-btn bg-[var(--theme-bg-surface)] hover:bg-[var(--theme-bg-overlay)] text-[var(--theme-text-primary)] border border-[var(--theme-border-soft)] hover:border-[var(--theme-border-medium)] px-8 py-3 rounded-xl font-bold flex items-center gap-2"
                             >
                                 {currentIndex === questions.length - 1 ? "Finalizar Set" : "Siguiente"} <ArrowRight size={18} />
                             </button>

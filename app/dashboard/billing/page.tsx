@@ -89,7 +89,7 @@ export default function BillingPage() {
     };
 
     return (
-        <div className="min-h-screen bg-metal-dark p-6 md:p-10">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] p-6 md:p-10">
             <div className="max-w-5xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
 
                 {/* Header with Back Button */}
@@ -97,49 +97,49 @@ export default function BillingPage() {
                     <div>
                         <button
                             onClick={() => router.push(role === 'teacher' ? '/teacher' : '/dashboard')}
-                            className="group flex items-center gap-2 text-metal-silver hover:text-white mb-4 transition-colors text-sm font-medium"
+                            className="group flex items-center gap-2 text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] mb-4 transition-colors text-sm font-medium"
                         >
                             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                             Volver al Panel
                         </button>
-                        <h1 className="text-3xl font-black text-white flex items-center gap-3">
-                            <CreditCard className="text-metal-gold" /> Facturación
+                        <h1 className="text-3xl font-semibold text-[var(--theme-text-primary)] flex items-center gap-3">
+                            <CreditCard className="text-brand-primary" /> Facturación
                         </h1>
-                        <p className="text-metal-silver mt-1">Gestiona tus pagos y descarga tus comprobantes fiscales.</p>
+                        <p className="text-[var(--theme-text-secondary)] mt-1">Gestiona tus pagos y descarga tus comprobantes fiscales.</p>
                     </div>
                 </header>
 
                 {/* Subscription Status Card - Premium Design */}
-                <div className="relative overflow-hidden bg-gradient-to-br from-[#1a1a1a] to-black border border-metal-gold rounded-2xl p-8 shadow-[0_0_50px_rgba(212,175,55,0.05)]">
-                    <div className="absolute top-0 right-0 p-32 bg-metal-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+                <div className="relative overflow-hidden bg-[var(--theme-bg-surface)] border border-[var(--theme-border-medium)] rounded-2xl p-8 shadow-[0_0_50px_rgba(212,175,55,0.05)]">
+                    <div className="absolute top-0 right-0 p-32 bg-brand-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
 
                     <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
                         <div className="flex items-center gap-6">
-                            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-metal-gold to-yellow-600 flex items-center justify-center shadow-lg shadow-metal-gold/20">
+                            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-primary to-yellow-600 flex items-center justify-center shadow-lg shadow-brand-primary/20">
                                 <CreditCard className="text-black w-8 h-8" />
                             </div>
                             <div>
-                                <h3 className="text-sm text-metal-silver uppercase tracking-widest font-bold mb-1">Tu Plan Actual</h3>
-                                <div className="text-3xl font-black text-white uppercase tracking-tight flex items-center gap-3">
+                                <h3 className="text-sm text-[var(--theme-text-tertiary)] uppercase tracking-wider font-bold mb-1">Tu Plan Actual</h3>
+                                <div className="text-3xl font-semibold text-[var(--theme-text-primary)] uppercase tracking-tight flex items-center gap-3">
                                     {subscription?.plan === 'pro' || subscription?.plan === 'teacher' ? 'MIEMBRO ELITE' : (subscription?.plan || 'GRATUITO').toUpperCase()}
-                                    {subscription?.status === 'active' && <span className="bg-green-500/20 text-green-400 text-[10px] px-2 py-1 rounded-full border border-green-500/30">ACTIVO</span>}
+                                    {subscription?.status === 'active' && <span className="bg-[var(--theme-bg-success-soft)] text-[var(--theme-text-success)] text-[10px] px-2 py-1 rounded-full border border-[var(--theme-border-success)]">ACTIVO</span>}
                                 </div>
-                                <div className="flex items-center gap-2 mt-2 text-sm text-metal-silver/80">
-                                    <Clock size={14} className="text-metal-gold" />
+                                <div className="flex items-center gap-2 mt-2 text-sm text-[var(--theme-text-secondary)]">
+                                    <Clock size={14} className="text-brand-primary" />
                                     {subscription?.status === 'active'
-                                        ? <span>Renovación automática el <b className="text-white">{formatDate(subscription.validUntil)}</b></span>
+                                        ? <span>Renovación automática el <b className="text-[var(--theme-text-primary)]">{formatDate(subscription.validUntil)}</b></span>
                                         : 'No tienes una suscripción activa actualmente.'}
                                 </div>
                             </div>
                         </div>
                         {subscription?.plan !== 'free' && (
                             <div className="flex gap-4">
-                                <button className="px-5 py-2.5 rounded-lg border border-red-500/30 text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all text-sm font-bold flex items-center gap-2">
+                                <button className="px-5 py-2.5 rounded-lg border border-[var(--theme-border-error)] text-[var(--theme-text-error)] hover:bg-[var(--theme-bg-error-soft)] transition-all text-sm font-bold flex items-center gap-2">
                                     Cancelar Suscripción
                                 </button>
                                 <button
                                     onClick={() => router.push('/pricing')}
-                                    className="px-5 py-2.5 rounded-lg bg-metal-gold text-black font-bold hover:bg-yellow-400 transition-all text-sm shadow-lg shadow-metal-gold/20"
+                                    className="px-5 py-2.5 rounded-lg bg-brand-primary text-black font-bold hover:bg-yellow-400 transition-all text-sm shadow-lg shadow-brand-primary/20"
                                 >
                                     Cambiar Plan
                                 </button>
@@ -148,7 +148,7 @@ export default function BillingPage() {
                         {subscription?.plan === 'free' && (
                             <button
                                 onClick={() => router.push('/pricing')}
-                                className="px-8 py-3 rounded-xl bg-gradient-to-r from-metal-gold to-yellow-500 text-black font-black hover:scale-105 transition-transform shadow-[0_0_20px_rgba(212,175,55,0.4)]"
+                                className="px-8 py-3 rounded-xl bg-gradient-to-r from-brand-primary to-yellow-500 text-black font-semibold hover:scale-105 transition-transform shadow-[0_0_20px_rgba(212,175,55,0.4)]"
                             >
                                 MEJORAR AHORA
                             </button>
@@ -158,8 +158,8 @@ export default function BillingPage() {
 
                 {/* Transactions List */}
                 <div className="space-y-6">
-                    <h2 className="text-xl font-bold text-white flex items-center gap-3 pb-4 border-b border-white/5">
-                        <Receipt size={20} className="text-metal-gold" />
+                    <h2 className="text-xl font-bold text-[var(--theme-text-primary)] flex items-center gap-3 pb-4 border-b border-[var(--theme-border-soft)]">
+                        <Receipt size={20} className="text-brand-primary" />
                         Historial de Transacciones
                     </h2>
 
@@ -170,22 +170,22 @@ export default function BillingPage() {
                             ))}
                         </div>
                     ) : transactions.length === 0 ? (
-                        <div className="text-center py-24 border border-dashed border-white/10 rounded-2xl bg-white/5">
-                            <Receipt className="mx-auto w-12 h-12 text-metal-silver/20 mb-4" />
-                            <p className="text-metal-silver font-medium">Aún no tienes transacciones registradas.</p>
+                        <div className="text-center py-24 border border-dashed border-[var(--theme-border-soft)] rounded-2xl bg-[var(--theme-bg-surface)]">
+                            <Receipt className="mx-auto w-12 h-12 text-tertiary mb-4" />
+                            <p className="text-[var(--theme-text-secondary)] font-medium">Aún no tienes transacciones registradas.</p>
                         </div>
                     ) : (
                         <div className="grid gap-3">
                             {transactions.map((tx) => (
-                                <div key={tx.id} className="group bg-[#0f0f0f] border border-white/5 hover:border-metal-gold/30 rounded-xl p-5 flex flex-col md:flex-row items-center justify-between transition-all duration-300 hover:bg-[#151515]">
+                                <div key={tx.id} className="group bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] hover:border-brand-primary/30 rounded-xl p-5 flex flex-col md:flex-row items-center justify-between transition-all duration-300 hover:bg-[var(--theme-bg-overlay)]">
                                     <div className="flex items-center gap-5 w-full md:w-auto">
-                                        <div className={`p-3 rounded-xl transition-colors ${tx.status === PaymentStatus.COMPLETED ? 'bg-green-500/10 text-green-500' : 'bg-yellow-500/10 text-yellow-500'}`}>
+                                        <div className={`p-3 rounded-xl transition-colors ${tx.status === PaymentStatus.COMPLETED ? 'bg-[var(--theme-bg-success-soft)] text-[var(--theme-text-success)]' : 'bg-[var(--theme-bg-warning-soft)] text-yellow-600'}`}>
                                             {tx.status === PaymentStatus.COMPLETED ? <CheckCircle size={24} /> : <AlertCircle size={24} />}
                                         </div>
                                         <div>
-                                            <div className="font-bold text-white text-lg group-hover:text-metal-gold transition-colors">{tx.description}</div>
-                                            <div className="text-xs text-metal-silver font-mono flex items-center gap-2 mt-1">
-                                                <span className="bg-white/10 px-1.5 py-0.5 rounded text-[10px] text-white/70">REF: {tx.reference}</span>
+                                            <div className="font-bold text-[var(--theme-text-primary)] text-lg group-hover:text-brand-primary transition-colors">{tx.description}</div>
+                                            <div className="text-xs text-[var(--theme-text-tertiary)] font-mono flex items-center gap-2 mt-1">
+                                                <span className="bg-[var(--theme-bg-base)] px-1.5 py-0.5 rounded text-[10px] text-[var(--theme-text-secondary)]">REF: {tx.reference}</span>
                                                 <span>•</span>
                                                 <span>{formatDate(tx.createdAt)}</span>
                                             </div>
@@ -194,7 +194,7 @@ export default function BillingPage() {
 
                                     <div className="flex items-center gap-8 w-full md:w-auto mt-4 md:mt-0 justify-between md:justify-end">
                                         <div className="text-right">
-                                            <div className="font-black text-white text-xl tracking-tight">
+                                            <div className="font-semibold text-[var(--theme-text-primary)] text-xl tracking-tight">
                                                 {new Intl.NumberFormat('es-CO', { style: 'currency', currency: tx.currency }).format(tx.amount)}
                                             </div>
                                             <div className="flex justify-end mt-1">
@@ -202,11 +202,11 @@ export default function BillingPage() {
                                             </div>
                                         </div>
 
-                                        <div className="w-px h-10 bg-white/10 hidden md:block"></div>
+                                        <div className="w-px h-10 bg-[var(--theme-border-soft)] hidden md:block"></div>
 
                                         <button
                                             onClick={() => handleDownloadInvoice(tx)}
-                                            className="p-3 rounded-lg bg-white/5 text-metal-silver hover:bg-white/10 hover:text-white transition-all flex flex-col items-center gap-1 group/btn"
+                                            className="p-3 rounded-lg bg-[var(--theme-bg-base)] text-[var(--theme-text-tertiary)] hover:bg-[var(--theme-bg-surface)] hover:text-[var(--theme-text-primary)] transition-all flex flex-col items-center gap-1 group/btn"
                                             title="Descargar Factura"
                                         >
                                             <Download size={20} className="group-hover/btn:-translate-y-1 transition-transform" />

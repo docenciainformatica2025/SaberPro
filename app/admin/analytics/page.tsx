@@ -1,9 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { db } from "@/lib/firebase";
 import { collection, getDocs } from "firebase/firestore";
-import { BarChart3, TrendingUp, Users, DollarSign, Activity, Calendar, Zap, ShieldAlert } from "lucide-react";
+import { BarChart3, TrendingUp, Users, DollarSign, Activity, Calendar, Zap, ShieldAlert, ArrowUpRight } from "lucide-react";
 import {
     LineChart,
     Line,
@@ -24,10 +25,10 @@ import { Badge } from "@/components/ui/Badge";
 
 // Configuración de Colores de Marca
 const BRAND_COLORS = {
-    gold: '#D4AF37',
-    silver: '#E5E4E2',
-    blue: '#3b82f6',
-    dark: '#0F0F0F'
+    gold: 'var(--brand-primary)',
+    silver: 'var(--theme-text-secondary)',
+    blue: 'var(--theme-text-info)',
+    dark: 'var(--theme-bg-base)'
 };
 
 const CHART_COLORS = [BRAND_COLORS.silver, BRAND_COLORS.gold, BRAND_COLORS.blue];
@@ -115,68 +116,73 @@ export default function AdminAnalyticsPage() {
     if (loading) return <AIProcessingLoader text="Sincronizando Inteligencia" subtext="Analizando métricas de crecimiento..." />;
 
     return (
-        <div className="space-y-12 pb-44">
+        <main className="max-w-7xl mx-auto space-y-12 pb-12 p-4 lg:p-0 animate-in fade-in slide-in-from-bottom-8 duration-700" suppressHydrationWarning>
             {/* Header */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-in fade-in slide-in-from-top-4 duration-500">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 animate-in fade-in slide-in-from-top-8 duration-700">
                 <div>
-                    <h1 className="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-white via-metal-silver to-white/50 flex items-center gap-3">
-                        <BarChart3 className="text-metal-gold" /> Analíticas de Rendimiento
+                    <h1 className="text-5xl lg:text-6xl font-black text-theme-hero flex items-center gap-4 tracking-tighter italic uppercase">
+                        <BarChart3 className="text-brand-primary" size={48} /> Analíticas de Rendimiento
                     </h1>
-                    <p className="text-metal-silver/60 text-sm mt-1 flex items-center gap-2">
-                        <Activity size={14} /> Monitor de crecimiento y monetización en tiempo real
+                    <p className="text-[var(--theme-text-tertiary)] text-xs mt-2 flex items-center gap-2 font-black uppercase tracking-widest opacity-70">
+                        <Activity size={14} className="text-brand-primary" /> Intelligence Core v3.0 • Real-Time Engine
                     </p>
                 </div>
-                <Badge variant="info" className="bg-blue-500/10 text-blue-400 border-blue-500/20 px-4 py-1.5 font-black uppercase tracking-widest">
-                    <Zap size={12} className="mr-2" /> Sincronizado
+                <Badge variant="info" className="bg-[var(--theme-bg-info-soft)] text-blue-400 border-[var(--theme-border-info)] px-6 py-2 font-black uppercase tracking-widest text-[10px]">
+                    Latam South Region
                 </Badge>
             </div>
 
-            {/* Top Cards Metric Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-100">
-                <Card variant="solid" className="p-6 relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-green-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
-                    <div className="flex justify-between items-start mb-4">
-                        <div className="p-3 bg-green-500/10 rounded-xl text-green-400 border border-green-500/20 shadow-lg group-hover:scale-110 transition-transform">
-                            <DollarSign size={20} />
+            {/* KPI Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Active Users */}
+                <Link href="/admin/users" className="group relative overflow-hidden rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] p-6 transition-all hover:bg-[var(--theme-bg-overlay)] hover:shadow-2xl">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--theme-bg-success-soft)] rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                    <div className="relative z-10 flex items-start justify-between">
+                        <div className="p-3 bg-[var(--theme-bg-success-soft)] rounded-xl text-[var(--theme-text-success)] border border-[var(--theme-border-success)] shadow-lg group-hover:scale-110 transition-transform">
+                            <Users size={24} />
                         </div>
-                        <Badge variant="success" className="text-[10px] uppercase font-black tracking-widest">+12.4%</Badge>
+                        <Badge variant="success" className="text-[10px] uppercase font-semibold tracking-wider">
+                            <ArrowUpRight size={12} className="mr-1" /> {Math.round((stats.activeUsers / (stats.totalUsers || 1)) * 100)}%
+                        </Badge>
                     </div>
-                    <div className="space-y-1">
-                        <p className="text-metal-silver/40 text-[10px] uppercase font-black tracking-widest">MRR Estimado</p>
-                        <h3 className="text-4xl font-black text-white tabular-nums">${stats.revenue.toLocaleString('es-CO')}</h3>
-                        <p className="text-[9px] text-metal-silver/20 font-medium italic">Basado en suscripciones activas</p>
+                    <div className="space-y-1 mt-4">
+                        <p className="text-theme-text-secondary/40 text-[10px] uppercase font-semibold tracking-wider">Usuarios Activos</p>
+                        <h3 className="text-4xl font-bold text-[var(--theme-text-primary)] tabular-nums">{stats.activeUsers}</h3>
+                        <p className="text-[9px] text-tertiary font-medium italic">Últimos 30 días</p>
                     </div>
-                </Card>
+                </Link>
 
-                <Card variant="solid" className="p-6 relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
-                    <div className="flex justify-between items-start mb-4">
-                        <div className="p-3 bg-blue-500/10 rounded-xl text-blue-400 border border-blue-500/20 shadow-lg group-hover:scale-110 transition-transform">
-                            <Users size={20} />
+                {/* Total Revenue */}
+                <Link href="/admin/revenue" className="group relative overflow-hidden rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] p-6 transition-all hover:bg-[var(--theme-bg-overlay)] hover:shadow-2xl">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--theme-bg-warning-soft)] rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                    <div className="relative z-10 flex items-start justify-between">
+                        <div className="p-3 bg-[var(--theme-bg-warning-soft)] rounded-xl text-[var(--theme-text-warning)] border border-[var(--theme-border-warning)] shadow-lg group-hover:scale-110 transition-transform">
+                            <DollarSign size={24} />
                         </div>
-                        <Badge variant="info" className="text-[10px] uppercase font-black tracking-widest">Retención</Badge>
+                        <Badge variant="warning" className="text-[10px] uppercase font-semibold tracking-wider">
+                            <ArrowUpRight size={12} className="mr-1" /> +12.4%
+                        </Badge>
                     </div>
-                    <div className="space-y-1">
-                        <p className="text-metal-silver/40 text-[10px] uppercase font-black tracking-widest">Usuarios Activos (30d)</p>
-                        <h3 className="text-4xl font-black text-white tabular-nums">{stats.activeUsers}</h3>
-                        <p className="text-[9px] text-blue-400/40 font-medium italic flex items-center gap-1">
-                            <Activity size={10} /> {Math.round((stats.activeUsers / stats.totalUsers) * 100)}% de alcance total
-                        </p>
+                    <div className="space-y-1 mt-4">
+                        <p className="text-theme-text-secondary/40 text-[10px] uppercase font-semibold tracking-wider">MRR Estimado</p>
+                        <h3 className="text-4xl font-bold text-[var(--theme-text-primary)] tabular-nums">${stats.revenue.toLocaleString('es-CO')}</h3>
+                        <p className="text-[9px] text-tertiary font-medium italic">Basado en suscripciones activas</p>
                     </div>
-                </Card>
+                </Link>
 
+                {/* Conversion Rate */}
                 <Card variant="solid" className="p-6 relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-metal-gold/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-brand-primary/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
                     <div className="flex justify-between items-start mb-4">
-                        <div className="p-3 bg-metal-gold/10 rounded-xl text-metal-gold border border-metal-gold/20 shadow-lg group-hover:scale-110 transition-transform">
+                        <div className="p-3 bg-brand-primary/10 rounded-xl text-brand-primary border border-brand-primary/20 shadow-lg group-hover:scale-110 transition-transform">
                             <TrendingUp size={20} />
                         </div>
-                        <Badge variant="premium" className="text-[10px] uppercase font-black tracking-widest">Premium</Badge>
+                        <Badge variant="primary" className="text-[10px] uppercase font-bold tracking-wider">Premium</Badge>
                     </div>
                     <div className="space-y-1">
-                        <p className="text-metal-silver/40 text-[10px] uppercase font-black tracking-widest">Conversión PRO</p>
-                        <h3 className="text-4xl font-black text-metal-gold tabular-nums">{stats.conversionRate.toFixed(1)}%</h3>
-                        <p className="text-[9px] text-metal-silver/20 font-medium italic uppercase tracking-tighter">Eficiencia del embudo PRO</p>
+                        <p className="text-theme-text-secondary/40 text-[10px] uppercase font-bold tracking-wider">Conversión PRO</p>
+                        <h3 className="text-4xl font-bold text-brand-primary tabular-nums">{stats.conversionRate.toFixed(1)}%</h3>
+                        <p className="text-[9px] text-tertiary font-medium italic uppercase tracking-tight">Eficiencia del embudo PRO</p>
                     </div>
                 </Card>
             </div>
@@ -187,15 +193,15 @@ export default function AdminAnalyticsPage() {
                 <Card variant="solid" className="lg:col-span-2 p-8">
                     <div className="flex justify-between items-center mb-8">
                         <div>
-                            <h3 className="text-xl font-black text-white flex items-center gap-2 italic uppercase tracking-tighter">
-                                <Calendar className="text-metal-gold" size={18} /> Crecimiento de Usuarios
+                            <h3 className="text-xl font-bold text-[var(--theme-text-primary)] flex items-center gap-2 italic uppercase tracking-tight">
+                                <Calendar className="text-brand-primary" size={18} /> Crecimiento de Usuarios
                             </h3>
-                            <p className="text-xs text-metal-silver/40">Adquisición histórica de los últimos 6 meses</p>
+                            <p className="text-xs text-[var(--theme-text-secondary)]/60">Adquisición histórica de los últimos 6 meses</p>
                         </div>
                         <div className="flex items-center gap-4">
                             <div className="flex items-center gap-1.5">
-                                <div className="w-1.5 h-1.5 rounded-full bg-metal-gold"></div>
-                                <span className="text-[10px] font-bold text-metal-silver/60">ESTUDIANTES</span>
+                                <div className="w-1.5 h-1.5 rounded-full bg-brand-primary"></div>
+                                <span className="text-[10px] font-bold text-[var(--theme-text-secondary)]/60">ESTUDIANTES</span>
                             </div>
                         </div>
                     </div>
@@ -207,14 +213,14 @@ export default function AdminAnalyticsPage() {
                             >
                                 <defs>
                                     <linearGradient id="colorUsers" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor="#D4AF37" stopOpacity={0.3} />
-                                        <stop offset="95%" stopColor="#D4AF37" stopOpacity={0} />
+                                        <stop offset="5%" stopColor="var(--brand-primary)" stopOpacity={0.3} />
+                                        <stop offset="95%" stopColor="var(--brand-primary)" stopOpacity={0} />
                                     </linearGradient>
                                 </defs>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.03)" vertical={false} />
+                                <CartesianGrid strokeDasharray="3 3" stroke="var(--theme-border-soft)" vertical={false} />
                                 <XAxis
                                     dataKey="month"
-                                    stroke="#404040"
+                                    stroke="var(--theme-text-secondary)"
                                     fontSize={10}
                                     tickLine={false}
                                     axisLine={false}
@@ -222,7 +228,7 @@ export default function AdminAnalyticsPage() {
                                     fontStyle="italic"
                                 />
                                 <YAxis
-                                    stroke="#404040"
+                                    stroke="var(--theme-text-secondary)"
                                     fontSize={10}
                                     tickLine={false}
                                     axisLine={false}
@@ -230,19 +236,20 @@ export default function AdminAnalyticsPage() {
                                 />
                                 <Tooltip
                                     contentStyle={{
-                                        backgroundColor: '#0A0A0A',
-                                        border: '1px solid rgba(255,255,255,0.1)',
+                                        backgroundColor: 'var(--theme-bg-surface)',
+                                        borderColor: 'var(--theme-border-soft)',
                                         borderRadius: '12px',
                                         fontSize: '12px',
-                                        boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
+                                        boxShadow: 'var(--shadow-premium)',
+                                        color: 'var(--theme-text-primary)'
                                     }}
-                                    itemStyle={{ color: '#D4AF37', fontWeight: 'bold' }}
+                                    itemStyle={{ color: 'var(--brand-primary)', fontWeight: 'bold' }}
                                 />
                                 <Area
                                     type="monotone"
                                     dataKey="users"
                                     name="Registros"
-                                    stroke="#D4AF37"
+                                    stroke="var(--brand-primary)"
                                     strokeWidth={3}
                                     fillOpacity={1}
                                     fill="url(#colorUsers)"
@@ -255,18 +262,18 @@ export default function AdminAnalyticsPage() {
                 {/* Conversion Pie Chart */}
                 <Card variant="solid" className="p-8 flex flex-col items-center justify-between min-h-[550px] relative overflow-hidden group">
                     {/* Background Glow */}
-                    <div className="absolute -top-24 -right-24 w-48 h-48 bg-metal-gold/5 rounded-full blur-[80px] pointer-events-none" />
+                    <div className="absolute -top-24 -right-24 w-48 h-48 bg-brand-primary/5 rounded-full blur-[80px] pointer-events-none" />
 
-                    <div className="w-full text-center border-b border-white/5 pb-6 mb-6">
-                        <h3 className="text-xl font-black text-white italic uppercase tracking-tighter">Segmentación</h3>
-                        <p className="text-[10px] text-metal-silver/40 font-bold uppercase tracking-widest">Distribución de planes activos</p>
+                    <div className="w-full text-center border-b border-[var(--theme-border-soft)] pb-6 mb-6">
+                        <h3 className="text-xl font-bold text-[var(--theme-text-primary)] italic uppercase tracking-tight">Segmentación</h3>
+                        <p className="text-[10px] text-theme-text-secondary/40 font-bold uppercase tracking-wider">Distribución de planes activos</p>
                     </div>
 
                     <div className="h-[280px] w-full relative mb-10">
                         {/* Center Label Overlay */}
                         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                            <span className="text-[10px] text-metal-silver/30 font-black uppercase tracking-widest">Total Activos</span>
-                            <span className="text-4xl font-black text-white tabular-nums tracking-tighter drop-shadow-2xl">{stats.totalUsers}</span>
+                            <span className="text-[10px] text-theme-text-secondary/30 font-bold uppercase tracking-wider">Total Activos</span>
+                            <span className="text-4xl font-bold text-[var(--theme-text-primary)] tabular-nums tracking-tight drop-shadow-2xl">{stats.totalUsers}</span>
                         </div>
 
                         <ResponsiveContainer width="100%" height="100%">
@@ -294,11 +301,12 @@ export default function AdminAnalyticsPage() {
                                 </Pie>
                                 <Tooltip
                                     contentStyle={{
-                                        backgroundColor: '#0A0A0A',
-                                        border: '1px solid rgba(255,255,255,0.1)',
+                                        backgroundColor: 'var(--theme-bg-surface)',
+                                        borderColor: 'var(--theme-border-soft)',
                                         borderRadius: '16px',
                                         fontSize: '11px',
-                                        boxShadow: '0 20px 40px rgba(0,0,0,0.8)'
+                                        boxShadow: 'var(--shadow-premium)',
+                                        color: 'var(--theme-text-primary)'
                                     }}
                                 />
                             </PieChart>
@@ -307,7 +315,7 @@ export default function AdminAnalyticsPage() {
 
                     <div className="w-full space-y-4">
                         {conversionData.map((item, idx) => (
-                            <div key={idx} className="flex justify-between items-center p-4 rounded-3xl bg-white/[0.03] border border-white/5 hover:bg-white/10 hover:border-white/10 transition-all duration-300 group/item">
+                            <div key={idx} className="flex justify-between items-center p-4 rounded-3xl bg-[var(--theme-bg-surface)]/20 border border-[var(--theme-border-soft)] hover:bg-[var(--theme-bg-surface)]/40 hover:border-[var(--theme-border-medium)] transition-all duration-300 group/item">
                                 <div className="flex items-center gap-4">
                                     <div
                                         className="w-4 h-4 rounded-full shadow-lg"
@@ -316,14 +324,14 @@ export default function AdminAnalyticsPage() {
                                             boxShadow: `0 0 10px ${CHART_COLORS[idx % CHART_COLORS.length]}40`
                                         }}
                                     />
-                                    <span className="text-xs font-black tracking-widest text-metal-silver/60 group-hover/item:text-white transition-colors uppercase">
+                                    <span className="text-xs font-bold tracking-wider text-theme-text-secondary/60 group-hover/item:text-[var(--theme-text-primary)] transition-colors uppercase">
                                         {item.name}
                                     </span>
                                 </div>
                                 <div className="flex items-center gap-4">
-                                    <span className="text-xl font-mono font-black text-white tabular-nums">{item.value}</span>
-                                    <div className="h-4 w-px bg-white/10" />
-                                    <span className="text-[10px] text-metal-gold font-black bg-metal-gold/10 px-2 py-1 rounded-lg border border-metal-gold/20">
+                                    <span className="text-xl font-mono font-bold text-[var(--theme-text-primary)] tabular-nums">{item.value}</span>
+                                    <div className="h-4 w-px bg-[var(--theme-border-soft)]" />
+                                    <span className="text-[10px] text-brand-primary font-bold bg-brand-primary/10 px-2 py-1 rounded-lg border border-brand-primary/20">
                                         {Math.round((item.value / (stats.totalUsers || 1)) * 100)}%
                                     </span>
                                 </div>
@@ -334,10 +342,10 @@ export default function AdminAnalyticsPage() {
             </div>
 
             {/* Footer Insights */}
-            <div className="flex justify-between items-center text-[10px] text-metal-silver/30 px-2 uppercase font-black tracking-[0.2em] border-t border-white/5 pt-8">
+            <div className="flex justify-between items-center text-[10px] text-theme-text-secondary/30 px-2 uppercase font-semibold tracking-[0.2em] border-t border-[var(--theme-border-soft)] pt-8">
                 <span className="flex items-center gap-2 italic"><Activity size={10} /> Análisis Predictivo Saber Pro v2.0</span>
-                <span className="flex items-center gap-2"><ShieldAlert size={10} className="text-metal-gold" /> Datos inmutables de Firebase Network</span>
+                <span className="flex items-center gap-2"><ShieldAlert size={10} className="text-brand-primary" /> Datos inmutables de Firebase Network</span>
             </div>
-        </div>
+        </main>
     );
 }

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /diagnostic/results/
+
+Sitemap: https://saberpro-app.vercel.app/sitemap.xml

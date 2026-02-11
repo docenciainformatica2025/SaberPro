@@ -88,10 +88,10 @@ export default function AssignmentsPage() {
             {/* Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold text-white mb-2">
+                    <h1 className="text-3xl font-bold text-[var(--theme-text-primary)] mb-2">
                         Gestión de Tareas
                     </h1>
-                    <p className="text-metal-silver max-w-2xl">
+                    <p className="text-[var(--theme-text-secondary)] max-w-2xl">
                         Asigna simulacros y prácticas a tus clases.
                         {subscription?.plan === 'free' && (
                             <span className="text-yellow-500 ml-2 font-bold">
@@ -102,7 +102,7 @@ export default function AssignmentsPage() {
                 </div>
                 <button
                     onClick={() => setIsModalOpen(true)}
-                    className="metallic-btn bg-metal-gold text-black font-bold px-6 py-3 rounded-xl shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] flex items-center gap-2 transform hover:scale-105 transition-all"
+                    className="metallic-btn bg-brand-primary text-black font-bold px-6 py-3 rounded-xl shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] flex items-center gap-2 transform hover:scale-105 transition-all"
                 >
                     <Plus size={20} /> Crear Nueva Tarea
                 </button>
@@ -112,46 +112,46 @@ export default function AssignmentsPage() {
             {loading ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[1, 2, 3].map(i => (
-                        <div key={i} className="h-48 bg-white/5 rounded-2xl animate-pulse" />
+                        <div key={i} className="h-48 bg-[var(--theme-bg-surface)] rounded-2xl animate-pulse" />
                     ))}
                 </div>
             ) : assignments.length === 0 ? (
-                <div className="text-center py-20 bg-white/5 rounded-3xl border border-white/10 border-dashed">
-                    <div className="w-16 h-16 bg-metal-silver/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <CheckCircle size={32} className="text-metal-silver" />
+                <div className="text-center py-20 bg-[var(--theme-bg-surface)] rounded-3xl border border-[var(--theme-border-soft)] border-dashed">
+                    <div className="w-16 h-16 bg-[var(--theme-bg-base)] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <CheckCircle size={32} className="text-[var(--theme-text-tertiary)]" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-2">No hay tareas activas</h3>
-                    <p className="text-metal-silver mb-6">Crea tu primera asignación para tus estudiantes.</p>
+                    <h3 className="text-xl font-bold text-[var(--theme-text-primary)] mb-2">No hay tareas activas</h3>
+                    <p className="text-[var(--theme-text-tertiary)] mb-6">Crea tu primera asignación para tus estudiantes.</p>
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {assignments.map((assignment) => (
-                        <div key={assignment.id} className="group relative bg-metal-dark border border-metal-silver/10 p-6 rounded-2xl hover:border-metal-gold/30 transition-all hover:-translate-y-1">
+                        <div key={assignment.id} className="group relative bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] p-6 rounded-2xl hover:border-brand-primary/30 transition-all hover:-translate-y-1">
                             <div className="flex justify-between items-start mb-4">
                                 <div className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${assignment.requiresPro
                                     ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
-                                    : 'bg-metal-silver/10 text-metal-silver border border-metal-silver/20'
+                                    : 'bg-[var(--theme-bg-base)] text-[var(--theme-text-tertiary)] border border-[var(--theme-border-soft)]'
                                     }`}>
                                     {assignment.requiresPro ? 'Simulacro Pro' : 'Práctica Standard'}
                                 </div>
                                 <button
                                     onClick={() => handleDelete(assignment.id)}
-                                    className="text-metal-silver/50 hover:text-red-400 transition-colors"
+                                    className="text-[var(--theme-text-tertiary)]/50 hover:text-red-400 transition-colors"
                                 >
                                     <Trash2 size={18} />
                                 </button>
                             </div>
 
-                            <h3 className="text-xl font-bold text-white mb-2 line-clamp-2">
+                            <h3 className="text-xl font-bold text-[var(--theme-text-primary)] mb-2 line-clamp-2">
                                 {assignment.title}
                             </h3>
 
                             <div className="space-y-3 mt-4">
-                                <div className="flex items-center gap-2 text-sm text-metal-silver">
-                                    <Clock size={16} className="text-metal-gold" />
+                                <div className="flex items-center gap-2 text-sm text-[var(--theme-text-secondary)]">
+                                    <Clock size={16} className="text-brand-primary" />
                                     <span>Vence: {formatDate(assignment.dueDate)}</span>
                                 </div>
-                                <div className="flex items-center gap-2 text-sm text-metal-silver">
+                                <div className="flex items-center gap-2 text-sm text-[var(--theme-text-secondary)]">
                                     <Users size={16} className="text-metal-blue" />
                                     <span>Asignado a clase (ID: {assignment.classId.substring(0, 4)}...)</span>
                                 </div>

@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { X, Lock, CreditCard, ShieldCheck, Loader2, AlertCircle, CheckCircle, Smartphone, Building2, Landmark, ChevronRight, Globe } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import OrderSummary from "./OrderSummary";
 
@@ -66,120 +68,143 @@ export default function PaymentGateway({ planName, price, onSuccess, onCancel, c
     };
 
     return (
-        <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 animate-in fade-in duration-300">
+        <div className="fixed inset-0 z-[100] bg-[var(--theme-bg-base)]/80 backdrop-blur-3xl flex items-center justify-center p-4 md:p-8 animate-in fade-in duration-300">
             {/* Main Container */}
-            <div className={`w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-8 ${step === 'success' ? 'scale-95 opacity-0' : 'scale-100 opacity-100'} transition-all duration-500`}>
+            <div className={`w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 ${step === 'success' ? 'scale-95 opacity-0' : 'scale-100 opacity-100'} transition-all duration-500`}>
 
                 {/* Left: Summary */}
-                <div className="order-2 lg:order-1 h-full">
+                <div className="order-2 lg:order-1 flex flex-col justify-center">
                     <OrderSummary planName={planName} price={price} billingPeriod="Anual" currency={currency} />
-
                 </div>
 
                 {/* Right: Payment Interface */}
-                <div className="order-1 lg:order-2 metallic-card bg-[#0F0F0F] border border-white/10 rounded-2xl p-6 lg:p-8 relative overflow-hidden flex flex-col h-full min-h-[500px]">
-                    <button onClick={onCancel} aria-label="Cerrar pasarela de pago" className="absolute top-4 right-4 text-metal-silver hover:text-white transition-colors z-10">
+                <div className="order-1 lg:order-2 bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] rounded-[var(--radius-lg)] p-8 lg:p-12 shadow-2xl relative overflow-hidden flex flex-col h-full min-h-[550px]">
+                    <button
+                        onClick={onCancel}
+                        aria-label="Cerrar pasarela de pago"
+                        className="absolute top-6 right-6 p-2 rounded-full hover:bg-[var(--theme-bg-overlay)] text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] transition-all duration-120"
+                    >
                         <X size={24} />
                     </button>
 
-                    <div className="mb-8">
-                        <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                            <Lock className="text-metal-gold" /> Checkout Seguro
+                    <div className="mb-10 space-y-1">
+                        <div className="flex items-center gap-2 text-brand-primary">
+                            <Lock size={16} strokeWidth={3} />
+                            <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Secure Checkout</span>
+                        </div>
+                        <h2 className="text-4xl font-semibold text-[var(--theme-text-primary)] tracking-tight">
+                            Checkout Seguro
                         </h2>
-                        <p className="text-sm text-metal-silver mt-1">Seleccione su método de pago preferido</p>
+                        <p className="text-[var(--theme-text-secondary)] font-medium">Seleccione su método de pago preferido</p>
                     </div>
 
                     {step === 'selection' && (
-                        <div className="flex-1 flex flex-col animate-in slide-in-from-right duration-300">
+                        <div className="flex-1 flex flex-col animate-in slide-in-from-right duration-180">
 
                             {/* Method Grid */}
-                            <div className="grid grid-cols-1 gap-3 mb-6">
+                            <div className="grid grid-cols-1 gap-4 mb-8">
                                 {methods.map((m) => (
                                     <button
                                         key={m.id}
                                         onClick={() => setSelectedMethod(m.id as any)}
-                                        className={`relative group p-4 rounded-xl border flex items-center justify-between transition-all duration-300 ${selectedMethod === m.id
-                                            ? 'bg-metal-gold/10 border-metal-gold'
-                                            : 'bg-black/40 border-white/10 hover:border-white/20 hover:bg-white/5'
-                                            }`}
+                                        className={cn(
+                                            "relative group p-6 rounded-2xl border flex items-center justify-between transition-all duration-120",
+                                            selectedMethod === m.id
+                                                ? "bg-brand-primary/[0.03] border-brand-primary ring-1 ring-brand-primary"
+                                                : "bg-transparent border-[var(--theme-border-soft)] hover:border-brand-primary/30"
+                                        )}
                                     >
-                                        <div className="flex items-center gap-4">
-                                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${selectedMethod === m.id ? 'bg-metal-gold text-black' : 'bg-white/10 text-metal-silver'}`}>
+                                        <div className="flex items-center gap-5">
+                                            <div className={cn(
+                                                "w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-180",
+                                                selectedMethod === m.id ? "bg-brand-primary text-white shadow-gold" : "bg-[var(--theme-bg-overlay)] text-[var(--theme-text-secondary)]"
+                                            )}>
                                                 {m.icon}
                                             </div>
                                             <div className="text-left">
-                                                <div className={`font-bold ${selectedMethod === m.id ? 'text-white' : 'text-metal-silver group-hover:text-white'}`}>
+                                                <div className={cn(
+                                                    "font-bold text-lg transition-colors",
+                                                    selectedMethod === m.id ? "text-[var(--theme-text-primary)]" : "text-[var(--theme-text-secondary)] group-hover:text-[var(--theme-text-primary)]"
+                                                )}>
                                                     {m.label}
                                                 </div>
-                                                <div className="text-[10px] text-metal-silver/50 uppercase tracking-wider">
+                                                <div className="text-[10px] text-[var(--theme-text-secondary)]/50 uppercase font-bold tracking-widest mt-0.5">
                                                     {m.logos.join(' • ')}
                                                 </div>
                                             </div>
                                         </div>
                                         {selectedMethod === m.id && (
-                                            <div className="w-5 h-5 rounded-full bg-metal-gold flex items-center justify-center animate-in zoom-in">
-                                                <CheckCircle size={12} className="text-black" />
+                                            <div className="w-6 h-6 rounded-full bg-brand-primary text-white flex items-center justify-center animate-in zoom-in duration-120">
+                                                <CheckCircle size={14} strokeWidth={3} />
                                             </div>
                                         )}
                                     </button>
                                 ))}
                             </div>
 
-                            {/* Divider with Secure Info */}
-                            <div className="mt-auto space-y-4">
+                            {/* Footer Actions */}
+                            <div className="mt-auto space-y-6">
                                 {/* Legal Checkbox */}
                                 <div
-                                    className="bg-metal-blue/5 rounded-lg p-3 border border-metal-blue/10 flex gap-3 items-start cursor-pointer hover:bg-metal-blue/10 transition-colors select-none"
+                                    className="bg-[var(--theme-bg-overlay)] rounded-xl p-4 border border-[var(--theme-border-soft)] flex gap-4 items-start cursor-pointer hover:bg-[var(--theme-bg-surface)] transition-all duration-120 select-none group"
                                     onClick={() => setLegalAccepted(!legalAccepted)}
                                 >
-                                    <div className={`mt-0.5 w-4 h-4 rounded border flex items-center justify-center transition-colors ${legalAccepted ? 'bg-metal-gold border-metal-gold' : 'border-metal-silver bg-black/50'}`}>
-                                        {legalAccepted && <CheckCircle size={12} className="text-black" />}
+                                    <div className={cn(
+                                        "mt-0.5 w-5 h-5 rounded-md border flex items-center justify-center transition-all duration-120",
+                                        legalAccepted ? "bg-brand-primary border-brand-primary" : "border-[var(--theme-border-medium)] bg-transparent group-hover:border-brand-primary/50"
+                                    )}>
+                                        {legalAccepted && <CheckCircle size={12} strokeWidth={3} className="text-white" />}
                                     </div>
-                                    <p className="text-[10px] text-metal-silver/80 leading-relaxed">
-                                        Acepto iniciar el servicio inmediatamente y <Link href="/legal/terms" target="_blank" className="text-metal-gold hover:underline" onClick={(e) => e.stopPropagation()}>renuncio al derecho de retracto</Link>.
+                                    <p className="text-[11px] text-[var(--theme-text-secondary)] font-medium leading-relaxed">
+                                        Acepto iniciar el servicio inmediatamente y <Link href="/legal/terms" target="_blank" className="text-brand-primary hover:underline font-bold" onClick={(e) => e.stopPropagation()}>renuncio al derecho de retracto</Link>.
                                     </p>
                                 </div>
 
                                 <button
                                     onClick={handlePay}
                                     disabled={!legalAccepted}
-                                    className={`w-full metallic-btn bg-metal-gold text-black font-black py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 text-lg transform transition-all ${legalAccepted
-                                        ? 'hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-[1.02] cursor-pointer'
-                                        : 'opacity-50 cursor-not-allowed grayscale'
-                                        }`}
+                                    className={cn(
+                                        "w-full h-16 rounded-full flex items-center justify-center gap-3 text-lg font-bold transition-all duration-180",
+                                        legalAccepted
+                                            ? "bg-brand-primary text-white shadow-gold hover:brightness-105 active:scale-[0.98]"
+                                            : "bg-[var(--theme-bg-overlay)] text-[var(--theme-text-quaternary)] cursor-not-allowed opacity-50"
+                                    )}
                                 >
-                                    PAGAR {new Intl.NumberFormat(currency === 'COP' ? 'es-CO' : 'en-US', {
+                                    Pagar {new Intl.NumberFormat(currency === 'COP' ? 'es-CO' : 'en-US', {
                                         style: 'currency',
                                         currency: currency,
                                         maximumFractionDigits: 0
                                     }).format(price)} <ChevronRight size={20} />
                                 </button>
 
-                                <div className="flex justify-center gap-4 opacity-30 pt-2 text-metal-silver">
-                                    {/* Simple Icons as Footers */}
-                                    <div className="flex items-center gap-1 text-[10px]"><Lock size={10} /> SSL ENCRYPTED</div>
-                                    <div className="flex items-center gap-1 text-[10px]"><Globe size={10} /> GLOBAL SECURE</div>
+                                <div className="flex justify-center gap-6 opacity-30 pt-2 text-[var(--theme-text-secondary)]">
+                                    <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest"><Lock size={12} /> SSL ENCRYPTED</div>
+                                    <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest"><Globe size={12} /> GLOBAL SECURE</div>
                                 </div>
                             </div>
                         </div>
                     )}
 
                     {step === 'redirecting' && (
-                        <div className="flex-1 flex flex-col items-center justify-center space-y-8 animate-in fade-in duration-500">
-                            <div className="relative w-24 h-24 flex items-center justify-center">
-                                <div className="absolute inset-0 border-4 border-t-metal-gold border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin"></div>
-                                <Lock size={32} className="text-white animate-pulse" />
+                        <div className="flex-1 flex flex-col items-center justify-center space-y-10 animate-in fade-in duration-500">
+                            <div className="relative w-32 h-32 flex items-center justify-center">
+                                <motion.div
+                                    animate={{ rotate: 360 }}
+                                    transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                                    className="absolute inset-0 border-4 border-[var(--theme-border-soft)] border-t-brand-primary rounded-full transition-colors"
+                                />
+                                <Lock size={40} className="text-brand-primary animate-pulse" />
                             </div>
-                            <div className="text-center">
-                                <h3 className="text-xl font-bold text-white mb-2">Redirigiendo a Pasarela Segura</h3>
-                                <p className="text-metal-silver text-sm max-w-xs mx-auto">
-                                    Estamos transfiriéndolo al sitio seguro de su banco/entidad para completar el pago.
+                            <div className="text-center space-y-4">
+                                <h3 className="text-2xl font-semibold text-[var(--theme-text-primary)]">Conexión Segura</h3>
+                                <p className="text-[var(--theme-text-secondary)] font-medium max-w-xs mx-auto leading-relaxed">
+                                    Estamos conectando con su entidad financiera. Por favor, no cierre esta ventana.
                                 </p>
-                                <div className="mt-6 flex flex-col items-center gap-2">
-                                    <div className="h-1 w-32 bg-white/10 rounded-full overflow-hidden">
-                                        <div className="h-full bg-metal-gold animate-progress w-full origin-left" style={{ animation: 'progress 2s linear' }}></div>
+                                <div className="mt-8 flex flex-col items-center gap-3">
+                                    <div className="h-1.5 w-40 bg-[var(--theme-bg-overlay)] rounded-full overflow-hidden border border-[var(--theme-border-soft)]">
+                                        <div className="h-full bg-brand-primary animate-progress w-full origin-left" style={{ animation: 'progress 3s ease-in-out' }}></div>
                                     </div>
-                                    <span className="text-[10px] text-metal-silver/40 font-mono">HANDSHAKE TLS 1.3 ESTABLISHED</span>
+                                    <span className="text-[10px] text-[var(--theme-text-secondary)]/30 font-bold tracking-[0.2em] uppercase">Handshake TLS 1.3</span>
                                 </div>
                             </div>
                         </div>
@@ -189,17 +214,30 @@ export default function PaymentGateway({ planName, price, onSuccess, onCancel, c
 
             {/* Global Success View */}
             {step === 'success' && (
-                <div className="fixed inset-0 z-[110] bg-black flex flex-col items-center justify-center text-center p-8 animate-in zoom-in duration-700">
-                    <div className="relative mb-8">
-                        <div className="w-32 h-32 rounded-full bg-green-500 flex items-center justify-center text-black relative z-10 shadow-[0_0_100px_rgba(34,197,94,0.6)]">
-                            <CheckCircle size={64} className="animate-bounce" />
-                        </div>
-                        <div className="absolute inset-0 rounded-full border-2 border-green-500 scale-150 opacity-20 animate-ping"></div>
-                        <div className="absolute inset-0 rounded-full border border-green-500 scale-125 opacity-40 animate-pulse"></div>
+                <div className="fixed inset-0 z-[110] bg-[var(--theme-bg-base)] flex flex-col items-center justify-center text-center p-8 animate-in zoom-in duration-500">
+                    <div className="relative mb-10">
+                        <motion.div
+                            initial={{ scale: 0.5, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                            className="w-40 h-40 rounded-full bg-brand-success flex items-center justify-center text-white relative z-10 shadow-gold"
+                        >
+                            <CheckCircle size={80} strokeWidth={3} className="animate-bounce" />
+                        </motion.div>
+                        <div className="absolute inset-0 rounded-full border-2 border-brand-success scale-150 opacity-20 animate-ping"></div>
+                        <div className="absolute inset-0 rounded-full border border-brand-success scale-125 opacity-40 animate-pulse"></div>
                     </div>
-                    <h2 className="text-4xl font-black text-white mb-2 tracking-tight">¡PAGO EXITOSO!</h2>
-                    <p className="text-xl text-metal-silver mb-8">Tu plan <span className="text-metal-gold font-bold">PRO</span> ha sido activado.</p>
-                    <p className="text-sm text-metal-silver/40">Redirigiendo a tu panel de control...</p>
+                    <div className="space-y-4 max-w-md">
+                        <h2 className="text-5xl font-semibold text-[var(--theme-text-primary)] tracking-tight">¡Pago Exitoso!</h2>
+                        <p className="text-xl text-[var(--theme-text-secondary)] font-medium leading-relaxed">
+                            Tu suscripción <span className="text-brand-primary font-bold">Pro</span> ha sido activada con éxito.
+                        </p>
+                        <div className="pt-8">
+                            <p className="text-sm text-[var(--theme-text-quaternary)] font-bold uppercase tracking-[0.3em] animate-pulse">
+                                Redirigiendo a tu Dashboard
+                            </p>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

@@ -3,17 +3,17 @@
 import {
     AreaChart,
     Area,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
     ResponsiveContainer,
     RadarChart,
-    PolarGrid,
-    PolarAngleAxis,
-    PolarRadiusAxis,
-    Radar
+    Radar,
+    PolarGrid
 } from "recharts";
+import {
+    ThemedGrid,
+    ThemedXAxis,
+    ThemedYAxis,
+    ThemedTooltip
+} from "@/components/ui/ThemedChart";
 
 import { useState, useEffect } from "react";
 
@@ -28,11 +28,11 @@ interface PerformanceChartProps {
 const CustomTooltip = ({ active, payload, label, color }: any) => {
     if (active && payload && payload.length) {
         return (
-            <div className="bg-metal-black/80 backdrop-blur-xl border border-metal-silver/10 p-4 rounded-xl shadow-2xl shadow-black/50 animate-in fade-in zoom-in duration-200">
-                <p className="text-[10px] font-black uppercase tracking-widest text-metal-silver/40 mb-1">{label}</p>
+            <div className="bg-[var(--theme-bg-surface)]/80 backdrop-blur-xl border border-[var(--theme-border-soft)] p-4 rounded-xl shadow-2xl animate-in fade-in zoom-in duration-200">
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-[var(--theme-text-tertiary)] mb-1">{label}</p>
                 <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full" style={{ backgroundColor: color }} />
-                    <p className="text-lg font-black text-white italic">
+                    <p className="text-lg font-semibold text-[var(--theme-text-primary)] italic">
                         {payload[0].value}%
                     </p>
                 </div>
@@ -50,14 +50,14 @@ export default function PerformanceChart({ type, data, dataKey = "value", catego
     }, []);
 
     if (!mounted) return (
-        <div className="h-64 flex items-center justify-center text-metal-silver/10 border border-white/5 rounded-xl bg-black/20">
+        <div className="h-64 flex items-center justify-center text-[var(--theme-text-tertiary)] border border-[var(--theme-border-soft)] rounded-xl bg-[var(--theme-bg-surface)]/20">
             <div className="animate-pulse">Cargando visualización...</div>
         </div>
     );
 
     if (data.length === 0) {
         return (
-            <div className="h-64 flex items-center justify-center text-metal-silver/30 border border-white/5 rounded-xl bg-black/20">
+            <div className="h-64 flex items-center justify-center text-[var(--theme-text-tertiary)] border border-[var(--theme-border-soft)] rounded-xl bg-[var(--theme-bg-surface)]/20">
                 <p>No hay datos suficientes para graficar</p>
             </div>
         );
@@ -74,24 +74,10 @@ export default function PerformanceChart({ type, data, dataKey = "value", catego
                                 <stop offset="95%" stopColor={color} stopOpacity={0} />
                             </linearGradient>
                         </defs>
-                        <CartesianGrid strokeDasharray="5 5" stroke="#ffffff05" vertical={false} />
-                        <XAxis
-                            dataKey={categoryKey}
-                            stroke="#ffffff60"
-                            fontSize={10}
-                            tickLine={false}
-                            axisLine={false}
-                            dy={10}
-                        />
-                        <YAxis
-                            stroke="#ffffff60"
-                            fontSize={10}
-                            tickLine={false}
-                            axisLine={false}
-                            domain={[0, 100]}
-                            dx={-10}
-                        />
-                        <Tooltip content={<CustomTooltip color={color} />} />
+                        <ThemedGrid />
+                        <ThemedXAxis dataKey={categoryKey} />
+                        <ThemedYAxis domain={[0, 100]} />
+                        <ThemedTooltip content={<CustomTooltip color={color} />} />
                         <Area
                             type="monotone"
                             dataKey={dataKey}
@@ -112,17 +98,7 @@ export default function PerformanceChart({ type, data, dataKey = "value", catego
             <div className="h-64 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                     <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
-                        <PolarGrid stroke="#ffffff10" />
-                        <PolarAngleAxis
-                            dataKey={categoryKey}
-                            tick={{ fill: "#ffffff99", fontSize: 10, fontWeight: "bold" }}
-                        />
-                        <PolarRadiusAxis
-                            angle={30}
-                            domain={[0, 100]}
-                            tick={false}
-                            axisLine={false}
-                        />
+                        <PolarGrid stroke="var(--theme-border-soft)" />
                         <Radar
                             name="Desempeño"
                             dataKey={dataKey}
@@ -131,7 +107,7 @@ export default function PerformanceChart({ type, data, dataKey = "value", catego
                             fillOpacity={0.5}
                             animationDuration={1500}
                         />
-                        <Tooltip content={<CustomTooltip color={color} />} />
+                        <ThemedTooltip content={<CustomTooltip color={color} />} />
                     </RadarChart>
                 </ResponsiveContainer>
             </div>

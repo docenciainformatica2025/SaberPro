@@ -172,7 +172,7 @@ export default function AnalyticsPage() {
     };
 
     return (
-        <div className="min-h-screen bg-metal-dark p-6 md:p-12 pb-24">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] p-6 md:p-12 pb-24">
             <div className="max-w-7xl mx-auto">
                 {isLoadingData ? (
                     <AnalyticsSkeleton />
@@ -194,17 +194,17 @@ export default function AnalyticsPage() {
                         className="space-y-12"
                     >
                         {/* Header */}
-                        <motion.div variants={itemVariant} className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8 border-b border-white/5 pb-8">
+                        <motion.div variants={itemVariant} className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8 border-b border-[var(--theme-border-soft)] pb-8">
                             <div>
                                 <Link href="/dashboard">
-                                    <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-metal-silver hover:text-white uppercase tracking-widest text-[10px] pl-0 mb-4">
+                                    <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] uppercase tracking-wider text-[10px] pl-0 mb-4">
                                         Volver al Dashboard
                                     </Button>
                                 </Link>
-                                <h1 className="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter">
-                                    Analíticas de <span className="text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-white to-metal-gold">Rendimiento</span>
+                                <h1 className="text-4xl md:text-5xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">
+                                    Analíticas de <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-[var(--theme-text-primary)] to-brand-primary">Rendimiento</span>
                                 </h1>
-                                <p className="text-metal-silver/60 text-sm mt-2 font-medium">
+                                <p className="text-[var(--theme-text-secondary)]/60 text-sm mt-2 font-medium">
                                     Monitoreo en tiempo real de tu evolución académica.
                                 </p>
                             </div>
@@ -214,11 +214,11 @@ export default function AnalyticsPage() {
                                     size="sm"
                                     icon={Download}
                                     onClick={handleDownloadReport}
-                                    className="bg-white/5 border-white/10 text-metal-silver hover:text-white"
+                                    className="bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)] text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)]"
                                 >
                                     Descargar Reporte PDF
                                 </Button>
-                                <Badge variant="premium" className="px-4 py-2 text-xs font-black tracking-widest uppercase shadow-[0_0_20px_rgba(212,175,55,0.2)] flex items-center gap-2">
+                                <Badge variant="primary" className="px-4 py-2 text-xs font-semibold tracking-wider uppercase shadow-[0_0_20px_rgba(212,175,55,0.2)] flex items-center gap-2">
                                     <Brain size={14} />
                                     Proyección IA: {kpis.averageScore > 0 ? (kpis.averageScore * 3).toString() + " / 300" : "Pendiente"}
                                 </Badge>
@@ -227,44 +227,44 @@ export default function AnalyticsPage() {
 
                         {/* KPIs Grid */}
                         <motion.div variants={itemVariant} className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                            <Card variant="glass" className="p-6 border-white/5 bg-white/[0.02] hover:-translate-y-1 transition-transform">
+                            <Card variant="glass" className="p-6 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] hover:-translate-y-1 transition-transform">
                                 <div className="flex items-center gap-2 mb-4">
                                     <div className="p-2 bg-yellow-500/10 rounded-lg text-yellow-500">
                                         <Trophy size={18} />
                                     </div>
-                                    <span className="text-[10px] uppercase tracking-widest font-black text-metal-silver">Puntaje Máximo</span>
+                                    <span className="text-[10px] uppercase tracking-wider font-semibold text-[var(--theme-text-secondary)]">Puntaje Máximo</span>
                                 </div>
-                                <div className="text-4xl font-black text-white tracking-tight">{kpis.highestScore}%</div>
+                                <div className="text-4xl font-semibold text-[var(--theme-text-primary)] tracking-tight">{kpis.highestScore}%</div>
                             </Card>
 
-                            <Card variant="glass" className="p-6 border-white/5 bg-white/[0.02] hover:-translate-y-1 transition-transform">
+                            <Card variant="glass" className="p-6 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] hover:-translate-y-1 transition-transform">
                                 <div className="flex items-center gap-2 mb-4">
                                     <div className="p-2 bg-blue-500/10 rounded-lg text-blue-400">
                                         <Target size={18} />
                                     </div>
-                                    <span className="text-[10px] uppercase tracking-widest font-black text-metal-silver">Promedio Global</span>
+                                    <span className="text-[10px] uppercase tracking-wider font-semibold text-[var(--theme-text-secondary)]">Promedio Global</span>
                                 </div>
-                                <div className={`text-4xl font-black tracking-tight ${kpis.averageScore >= 60 ? "text-green-400" : "text-white"}`}>{kpis.averageScore}%</div>
+                                <div className={`text-4xl font-semibold tracking-tight ${kpis.averageScore >= 60 ? "text-green-400" : "text-[var(--theme-text-primary)]"}`}>{kpis.averageScore}%</div>
                             </Card>
 
-                            <Card variant="glass" className="p-6 border-white/5 bg-white/[0.02] hover:-translate-y-1 transition-transform">
+                            <Card variant="glass" className="p-6 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] hover:-translate-y-1 transition-transform">
                                 <div className="flex items-center gap-2 mb-4">
                                     <div className="p-2 bg-purple-500/10 rounded-lg text-purple-400">
                                         <TrendingUp size={18} />
                                     </div>
-                                    <span className="text-[10px] uppercase tracking-widest font-black text-metal-silver">Simulacros</span>
+                                    <span className="text-[10px] uppercase tracking-wider font-semibold text-[var(--theme-text-secondary)]">Simulacros</span>
                                 </div>
-                                <div className="text-4xl font-black text-white tracking-tight">{kpis.totalSimulations}</div>
+                                <div className="text-4xl font-semibold text-[var(--theme-text-primary)] tracking-tight">{kpis.totalSimulations}</div>
                             </Card>
 
-                            <Card variant="glass" className="p-6 border-white/5 bg-white/[0.02] hover:-translate-y-1 transition-transform">
+                            <Card variant="glass" className="p-6 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] hover:-translate-y-1 transition-transform">
                                 <div className="flex items-center gap-2 mb-4">
                                     <div className="p-2 bg-pink-500/10 rounded-lg text-pink-400">
                                         <Brain size={18} />
                                     </div>
-                                    <span className="text-[10px] uppercase tracking-widest font-black text-metal-silver">Preguntas</span>
+                                    <span className="text-[10px] uppercase tracking-wider font-semibold text-[var(--theme-text-secondary)]">Preguntas</span>
                                 </div>
-                                <div className="text-4xl font-black text-white tracking-tight">{kpis.questionsAnswered}</div>
+                                <div className="text-4xl font-semibold text-[var(--theme-text-primary)] tracking-tight">{kpis.questionsAnswered}</div>
                             </Card>
                         </motion.div>
 
@@ -275,20 +275,20 @@ export default function AnalyticsPage() {
 
                         {/* Charts Section */}
                         <motion.div variants={itemVariant} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                            <Card variant="glass" className="p-8 border-white/5 bg-white/[0.02]">
-                                <div className="mb-8 border-b border-white/5 pb-4">
-                                    <h3 className="text-xl font-black text-white uppercase italic tracking-tight">Evolución de Puntaje</h3>
-                                    <p className="text-xs font-bold text-metal-silver/50 uppercase tracking-widest mt-1">Tendencia de tus últimos 7 simulacros</p>
+                            <Card variant="glass" className="p-8 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]">
+                                <div className="mb-8 border-b border-[var(--theme-border-soft)] pb-4">
+                                    <h3 className="text-xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">Evolución de Puntaje</h3>
+                                    <p className="text-xs font-bold text-[var(--theme-text-secondary)]/50 uppercase tracking-wider mt-1">Tendencia de tus últimos 7 simulacros</p>
                                 </div>
                                 <div className="h-[300px] w-full">
                                     <PerformanceChart type="line" data={trendData} color="#D4AF37" />
                                 </div>
                             </Card>
 
-                            <Card variant="glass" className="p-8 border-white/5 bg-white/[0.02]">
-                                <div className="mb-8 border-b border-white/5 pb-4">
-                                    <h3 className="text-xl font-black text-white uppercase italic tracking-tight">Balance de Competencias</h3>
-                                    <p className="text-xs font-bold text-metal-silver/50 uppercase tracking-widest mt-1">Fortalezas vs. Debilidades (Promedio)</p>
+                            <Card variant="glass" className="p-8 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]">
+                                <div className="mb-8 border-b border-[var(--theme-border-soft)] pb-4">
+                                    <h3 className="text-xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">Balance de Competencias</h3>
+                                    <p className="text-xs font-bold text-[var(--theme-text-secondary)]/50 uppercase tracking-wider mt-1">Fortalezas vs. Debilidades (Promedio)</p>
                                 </div>
                                 <div className="h-[300px] w-full flex items-center justify-center">
                                     <PerformanceChart type="radar" data={radarData} color="#60a5fa" />
@@ -298,13 +298,13 @@ export default function AnalyticsPage() {
 
                         {/* History Section */}
                         <motion.div variants={itemVariant}>
-                            <Card variant="glass" className="p-8 border-white/5 bg-white/[0.02]">
-                                <div className="mb-8 border-b border-white/5 pb-4 flex justify-between items-end">
+                            <Card variant="glass" className="p-8 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]">
+                                <div className="mb-8 border-b border-[var(--theme-border-soft)] pb-4 flex justify-between items-end">
                                     <div>
-                                        <h3 className="text-xl font-black text-white uppercase italic tracking-tight">Historial de Simulacros</h3>
-                                        <p className="text-xs font-bold text-metal-silver/50 uppercase tracking-widest mt-1">Registro detallado y reportes de resultados</p>
+                                        <h3 className="text-xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">Historial de Simulacros</h3>
+                                        <p className="text-xs font-bold text-[var(--theme-text-secondary)]/50 uppercase tracking-wider mt-1">Registro detallado y reportes de resultados</p>
                                     </div>
-                                    <Badge variant="default" className="text-[10px] bg-white/5 text-metal-silver border-white/10">{fullResults.length} REGISTROS</Badge>
+                                    <Badge variant="default" className="text-[10px] bg-[var(--theme-bg-base)] text-[var(--theme-text-secondary)] border-[var(--theme-border-soft)]">{fullResults.length} REGISTROS</Badge>
                                 </div>
                                 <ResultsHistoryList results={fullResults} onViewReport={handleViewReport} />
                             </Card>

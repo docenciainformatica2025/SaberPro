@@ -3,6 +3,7 @@
 import { useAuth } from "@/context/AuthContext";
 import { Lock, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 
 interface PremiumGuardProps {
     children: React.ReactNode;
@@ -14,7 +15,7 @@ export default function PremiumGuard({ children, fallback }: PremiumGuardProps) 
 
     if (loading) {
         // Can render a skeleton or nothing while checking
-        return <div className="animate-pulse h-32 bg-metal-silver/10 rounded-xl w-full"></div>;
+        return <div className="animate-pulse h-32 bg-[var(--theme-bg-surface)] rounded-xl w-full border border-[var(--theme-border-soft)]"></div>;
     }
 
     if (subscription?.plan === 'pro') {
@@ -27,26 +28,27 @@ export default function PremiumGuard({ children, fallback }: PremiumGuardProps) 
 
     // Default "Locked" UI
     return (
-        <div className="relative overflow-hidden rounded-2xl border border-metal-gold/30 bg-metal-dark/50 p-8 text-center backdrop-blur-sm group hover:border-metal-gold/60 transition-colors">
-            {/* Background Glow */}
-            <div className="absolute inset-0 bg-gradient-to-br from-metal-gold/5 via-transparent to-metal-blue/5 pointer-events-none" />
+        <div className="relative overflow-hidden rounded-2xl border border-theme-border-soft bg-surface-card p-8 text-center group hover:border-brand-primary/20 transition-all duration-300 shadow-sm">
+            {/* Ambient Background */}
+            <div className="absolute inset-0 bg-brand-primary/[0.02] pointer-events-none" />
 
             <div className="relative z-10 flex flex-col items-center gap-4">
-                <div className="p-4 bg-metal-gold/10 rounded-full border border-metal-gold/20 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:scale-110 transition-transform duration-300">
-                    <Lock className="w-8 h-8 text-metal-gold" />
+                <div className="p-4 bg-brand-primary/5 rounded-full border border-brand-primary/10 group-hover:scale-110 transition-transform duration-500">
+                    <Lock className="w-8 h-8 text-brand-primary" />
                 </div>
 
-                <h3 className="text-xl font-bold text-white">Contenido Premium</h3>
-                <p className="text-metal-silver/80 max-w-sm">
-                    Esta función está reservada para usuarios Pro. Desbloquea simulacros ilimitados y análisis avanzado con IA.
+                <h3 className="text-xl font-bold text-theme-text-primary">Contenido Pro</h3>
+                <p className="text-theme-text-secondary max-w-sm font-medium">
+                    Esta función está disponible en el nivel <span className="text-brand-primary font-bold">Pro</span>. Desbloquea simulacros ilimitados y análisis avanzado.
                 </p>
 
                 <Link
                     href="/pricing"
-                    className="mt-2 metallic-btn bg-gradient-to-r from-metal-gold to-[#B8860B] text-black font-bold px-6 py-3 rounded-xl shadow-lg flex items-center gap-2 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all"
+                    className="mt-2"
                 >
-                    <Sparkles size={18} />
-                    Actualizar a Pro
+                    <Button variant="primary" icon={Sparkles}>
+                        Actualizar a Pro
+                    </Button>
                 </Link>
             </div>
         </div>

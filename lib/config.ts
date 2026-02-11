@@ -14,4 +14,7 @@ export const COPYRIGHT_TEXT = `© ${CURRENT_YEAR} Saber Pro Suite. Todos los der
 export const DEVELOPER_COPYRIGHT = `© ${CURRENT_YEAR} – Saber Pro Trainer v${APP_VERSION}`;
 
 // Email remains static as it's a specific address
-export const CONTACT_EMAIL = "docenciainformatica2025@gmail.com";
+export const AUTHOR_NAME = process.env.NEXT_PUBLIC_AUTHOR_NAME || "SaberPro Team";
+export const COMPANY_NAME = process.env.NEXT_PUBLIC_COMPANY_NAME || "Saber Pro Suite";
+export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "support@saberpro.com";
+export const SALES_EMAIL = process.env.NEXT_PUBLIC_SALES_EMAIL || "ventas@saberpro.app";

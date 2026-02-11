@@ -8,24 +8,28 @@ export interface AdaptiveAdvice {
 }
 
 export const adaptiveEngine = {
-    analyzeProfile: (radarData: any[], kpis: any): AdaptiveAdvice => {
+    analyzeProfile: (radarData: any[], kpis: any, userProfile?: any): AdaptiveAdvice => {
         if (!radarData || radarData.length === 0) {
             return {
-                criticalModule: { name: "N/A", value: 0 },
-                strengthModule: { name: "N/A", value: 0 },
+                criticalModule: { name: "Lectura Crítica", value: 0 },
+                strengthModule: { name: "General", value: 0 },
                 overallStatus: 'improving',
-                advice: "Aún no hay suficientes datos para un análisis detallado. Completa más simulacros.",
+                advice: userProfile?.career
+                    ? `Como estudiante de ${userProfile.career}, te recomendamos iniciar con Lectura Crítica.`
+                    : "Aún no hay suficientes datos para un análisis detallado. Completa más simulacros.",
                 actionStep: "Realizar un simulacro general para establecer una base.",
                 nextRecommendedModule: "Lectura Crítica"
             };
         }
 
-        // Encontrar punto más bajo y más alto (excluyendo los de valor 0 si es posible)
+        // Encontrar punto más bajo y más alto
         const sorted = [...radarData].sort((a, b) => a.value - b.value);
         const critical = sorted[0];
         const strength = sorted[sorted.length - 1];
 
         const avg = kpis.averageScore;
+        const goal = userProfile?.goal || 'excellence';
+
         let status: AdaptiveAdvice['overallStatus'] = 'improving';
         if (avg >= 85) status = 'excellent';
         else if (avg >= 70) status = 'good';
@@ -34,17 +38,19 @@ export const adaptiveEngine = {
 
         let advice = "";
         let actionStep = "";
-        let nextModule = critical.name;
 
-        if (status === 'excellent') {
-            advice = `Mantienes un nivel excepcional en ${strength.name}. Tu perfil es altamente competitivo.`;
-            actionStep = "Enfócate en la gestión del tiempo para limar los últimos segundos de duda.";
+        // Career-aware advice logic
+        const careerContext = userProfile?.career ? `Para tu perfil en ${userProfile.career}, ` : "";
+
+        if (status === 'excellent' && goal === 'excellence') {
+            advice = `${careerContext}Mantienes un nivel excepcional. Estás en el top nacional.`;
+            actionStep = "Práctica " + critical.name + " para asegurar el puntaje máximo.";
         } else if (status === 'good') {
-            advice = `Tienes bases sólidas, especialmente en ${strength.name}. El reto ahora es elevar tu rendimiento en ${critical.name}.`;
-            actionStep = "Realiza 3 sesiones cortas de entrenamiento enfocadas únicamente en temas de " + critical.name;
+            advice = `${careerContext}Tienes bases sólidas. Tu fortaleza es ${strength.name}, pero ${critical.name} necesita atención.`;
+            actionStep = "Realiza un entrenamiento intensivo en " + critical.name;
         } else {
-            advice = `Se observa una brecha importante en ${critical.name} (${critical.value}%). Esto podría estar afectando tu puntaje global de ${avg}%.`;
-            actionStep = "Usa el modo Entrenamiento con IA para recibir explicaciones paso a paso en " + critical.name;
+            advice = `${careerContext}Se observa progreso, pero el enfoque en ${critical.name} es vital para alcanzar tu meta de ${goal === 'excellence' ? 'Excelencia' : 'mejora'}.`;
+            actionStep = "Usa el simulacro modular de " + critical.name;
         }
 
         return {
@@ -53,7 +59,39 @@ export const adaptiveEngine = {
             overallStatus: status,
             advice,
             actionStep,
-            nextRecommendedModule: nextModule
+            nextRecommendedModule: critical.name
+        };
+    },
+
+    /**
+     * Determines the next best step for the user based on their current state.
+     */
+    getRecommendedAction: (stats: any, profile: any) => {
+        if (!stats || stats.totalSims === 0) {
+            return {
+                type: 'DIAGNOSTIC',
+                module: 'Lectura Crítica',
+                reason: 'Establecer línea base',
+                priority: 'high'
+            };
+        }
+
+        const critical = stats.radarData.sort((a: any, b: any) => a.value - b.value)[0];
+
+        if (critical.value < 60) {
+            return {
+                type: 'STUDY',
+                module: critical.name,
+                reason: `Dominio bajo (${critical.value}%)`,
+                priority: 'critical'
+            };
+        }
+
+        return {
+            type: 'PRACTICE',
+            module: stats.radarData[0].name, // Switch to next or keep improving
+            reason: 'Mantener consistencia',
+            priority: 'normal'
         };
     },
 

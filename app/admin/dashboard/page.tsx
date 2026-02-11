@@ -21,10 +21,6 @@ import Link from "next/link";
 import {
     BarChart,
     Bar,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
     ResponsiveContainer,
     LineChart,
     Line,
@@ -32,23 +28,20 @@ import {
     Pie,
     Cell
 } from "recharts";
+import { ThemedGrid, ThemedXAxis, ThemedYAxis, ThemedTooltip } from "@/components/ui/ThemedChart";
 import { DashboardSkeleton } from "@/components/ui/DashboardSkeleton";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { StatCardPremium } from "@/components/ui/StatCardPremium";
 
-// Configuración de Colores de Marca (Consistencia Global)
-const BRAND_COLORS = {
-    gold: '#D4AF37',
-    silver: '#E5E4E2',
-    blue: '#3b82f6',
-    purple: '#a855f7',
-    green: '#22c55e',
-    dark: '#0A0A0A'
-};
-
-const CHART_COLORS = [BRAND_COLORS.gold, BRAND_COLORS.blue, BRAND_COLORS.purple, BRAND_COLORS.silver];
+const CHART_COLORS = [
+    'var(--chart-1)',
+    'var(--chart-2)',
+    'var(--chart-3)',
+    'var(--chart-4)',
+    'var(--chart-5)'
+];
 
 // Enhanced Mock Data for "World Class" Feel
 // Enhanced Mock Data for "World Class" Feel
@@ -170,26 +163,26 @@ export default function AdminDashboard() {
     if (loading) return <DashboardSkeleton />;
 
     return (
-        <main className="min-h-screen bg-metal-black space-y-12 pb-44 p-6 md:p-12">
+        <main className="max-w-7xl mx-auto space-y-12 pb-12 p-4 lg:p-0 animate-in fade-in slide-in-from-bottom-8 duration-700">
             {/* Header Pro */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 <div>
-                    <h1 className="text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-white via-metal-silver to-white flex items-center gap-4 tracking-tighter">
-                        <Activity className="text-metal-gold" size={36} /> Comando Central
+                    <h1 className="text-4xl font-black text-theme-hero flex items-center gap-4 tracking-tighter uppercase italic">
+                        <Activity className="text-brand-primary" size={36} /> Comando Central
                     </h1>
-                    <p className="text-metal-silver/40 text-sm mt-1 flex items-center gap-2 font-medium">
-                        <ShieldAlert size={14} className="text-metal-gold" /> Monitor de Operaciones e Inteligencia de Negocio
+                    <p className="text-[var(--theme-text-tertiary)] text-sm mt-1 flex items-center gap-2 font-medium">
+                        <ShieldAlert size={14} className="text-brand-primary" /> Monitor de Operaciones e Inteligencia de Negocio
                     </p>
                 </div>
 
                 <div className="flex items-center gap-3">
                     <Link href="/admin/audit">
-                        <Button variant="outline" size="sm" icon={ShieldAlert} className="border-white/5 hover:border-white/10 px-6 font-bold uppercase tracking-widest text-[10px]">
+                        <Button variant="outline" size="sm" icon={ShieldAlert} className="border-[var(--theme-border-soft)] hover:border-[var(--theme-border-medium)] px-6 font-bold uppercase tracking-wider text-[10px]">
                             Auditoría
                         </Button>
                     </Link>
                     <Link href="/admin/seed">
-                        <Button variant="premium" size="sm" icon={Database} className="shadow-lg shadow-metal-gold/10 px-6 font-bold uppercase tracking-widest text-[10px]">
+                        <Button variant="primary" size="sm" icon={Database} className="shadow-lg shadow-brand-primary/10 px-6 font-bold uppercase tracking-wider text-[10px]">
                             Cargar Datos
                         </Button>
                     </Link>
@@ -232,41 +225,84 @@ export default function AdminDashboard() {
                 />
             </div>
 
+            {/* 🧠 Intelligence Central (New Phase 10) */}
+            <section className="space-y-6">
+                <div className="flex items-center gap-3 px-2">
+                    <div className="w-1.5 h-6 bg-brand-primary rounded-full" />
+                    <h2 className="text-xl font-bold text-[var(--theme-text-primary)] italic uppercase tracking-tight">Intelligence Central</h2>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-brand-primary">
+                        <div className="flex items-center gap-3 text-brand-primary">
+                            <Target size={20} />
+                            <span className="text-[10px] font-bold uppercase tracking-widest">Alerta de Rendimiento</span>
+                        </div>
+                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Detección de Brecha: Razonamiento</h4>
+                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
+                            El 35% de los estudiantes de <strong>Ingeniería</strong> han mostrado un descenso en Razonamiento Cuantitativo. Se recomienda activar refuerzo modular.
+                        </p>
+                        <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Ver Análisis de Cohorte</Button>
+                    </Card>
+
+                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-brand-accent">
+                        <div className="flex items-center gap-3 text-brand-accent">
+                            <TrendingUp size={20} />
+                            <span className="text-[10px] font-bold uppercase tracking-widest">Oportunidad de Crecimiento</span>
+                        </div>
+                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Pico de Engagament: Bogotá</h4>
+                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
+                            Aumento del 42% en actividad nocturna durante la última semana. Oportunidad para lanzar campaña de "Examen Mañana".
+                        </p>
+                        <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Lanzar Notificación IA</Button>
+                    </Card>
+
+                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-brand-success">
+                        <div className="flex items-center gap-3 text-brand-success">
+                            <ShieldAlert size={20} />
+                            <span className="text-[10px] font-bold uppercase tracking-widest">Salud del Producto</span>
+                        </div>
+                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Tasa de Éxito: Onboarding</h4>
+                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
+                            El nuevo flujo de onboarding ha incrementado la retención de primer día a un <strong>68%</strong>. Sincronización exitosa con Firebase.
+                        </p>
+                        <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Ver Embudo de Conversión</Button>
+                    </Card>
+                </div>
+            </section>
+
             {/* Charts Section */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Main Activity Chart */}
                 <Card variant="solid" className="lg:col-span-2 p-8">
                     <div className="flex justify-between items-center mb-8">
                         <div>
-                            <h3 className="text-xl font-black text-white flex items-center gap-2 italic uppercase tracking-tighter">
-                                <TrendingUp className="text-metal-gold" size={18} /> Rendimiento de Red
+                            <h3 className="text-xl font-bold text-[var(--theme-text-primary)] flex items-center gap-2 italic uppercase tracking-tight">
+                                <TrendingUp className="text-brand-primary" size={18} /> Rendimiento de Red
                             </h3>
-                            <p className="text-xs text-metal-silver/40">Actividad de usuarios vs Proyecciones de ingresos</p>
+                            <p className="text-xs text-[var(--theme-text-tertiary)]">Actividad de usuarios vs Proyecciones de ingresos</p>
                         </div>
                         <div className="flex gap-4">
                             <div className="flex items-center gap-1.5">
-                                <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
-                                <span className="text-[10px] font-bold text-metal-silver/60">TRÁFICO</span>
+                                <div className="w-1.5 h-1.5 rounded-full bg-[var(--chart-1)]"></div>
+                                <span className="text-[10px] font-bold text-[var(--theme-text-tertiary)]">TRÁFICO</span>
                             </div>
                             <div className="flex items-center gap-1.5">
-                                <div className="w-1.5 h-1.5 rounded-full bg-metal-gold"></div>
-                                <span className="text-[10px] font-bold text-metal-silver/60">CAPITAL</span>
+                                <div className="w-1.5 h-1.5 rounded-full bg-[var(--chart-2)]"></div>
+                                <span className="text-[10px] font-bold text-[var(--theme-text-tertiary)]">CAPITAL</span>
                             </div>
                         </div>
                     </div>
                     <div className="h-[350px] w-full mt-4">
                         <ResponsiveContainer width="100%" height="100%">
                             <LineChart data={activityData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.03)" vertical={false} />
-                                <XAxis dataKey="day" stroke="#404040" fontSize={10} axisLine={false} tickLine={false} dy={10} fontStyle="italic" fontWeight="bold" />
-                                <YAxis yAxisId="left" stroke="#404040" fontSize={10} axisLine={false} tickLine={false} fontWeight="bold" />
-                                <YAxis yAxisId="right" orientation="right" stroke="#404040" fontSize={10} axisLine={false} tickLine={false} tickFormatter={(v) => `$${(v / 1000000).toFixed(1)}M`} fontWeight="bold" />
-                                <Tooltip
-                                    contentStyle={{ backgroundColor: '#0A0A0A', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', fontSize: '11px' }}
-                                    itemStyle={{ fontSize: '12px', fontWeight: 'bold' }}
-                                />
-                                <Line yAxisId="left" type="monotone" dataKey="users" stroke={BRAND_COLORS.blue} strokeWidth={3} dot={false} activeDot={{ r: 6, strokeWidth: 0 }} />
-                                <Line yAxisId="right" type="monotone" dataKey="revenue" stroke={BRAND_COLORS.gold} strokeWidth={3} dot={false} activeDot={{ r: 6, strokeWidth: 0 }} />
+                                <ThemedGrid />
+                                <ThemedXAxis dataKey="day" />
+                                <ThemedYAxis yAxisId="left" />
+                                <ThemedYAxis yAxisId="right" orientation="right" tickFormatter={(v) => `$${((v as number) / 1000000).toFixed(1)}M`} />
+                                <ThemedTooltip />
+                                <Line yAxisId="left" type="monotone" dataKey="users" stroke="var(--chart-1)" strokeWidth={3} dot={false} activeDot={{ r: 6, strokeWidth: 0 }} />
+                                <Line yAxisId="right" type="monotone" dataKey="revenue" stroke="var(--chart-2)" strokeWidth={3} dot={false} activeDot={{ r: 6, strokeWidth: 0 }} />
                             </LineChart>
                         </ResponsiveContainer>
                     </div>
@@ -274,11 +310,11 @@ export default function AdminDashboard() {
 
                 {/* Geography Chart */}
                 <Card variant="solid" className="p-8 flex flex-col items-center justify-between min-h-[500px] relative overflow-hidden group">
-                    <div className="absolute -top-24 -right-24 w-48 h-48 bg-metal-gold/5 rounded-full blur-[80px] pointer-events-none transition-all group-hover:bg-metal-gold/10" />
+                    <div className="absolute -top-24 -right-24 w-48 h-48 bg-brand-primary/5 rounded-full blur-[80px] pointer-events-none transition-all group-hover:bg-brand-primary/10" />
 
-                    <div className="w-full text-center border-b border-white/5 pb-6 mb-6">
-                        <h3 className="text-xl font-black text-white italic uppercase tracking-tighter">Geolocalización</h3>
-                        <p className="text-[10px] text-metal-silver/40 font-bold uppercase tracking-widest">Nodos de mayor actividad</p>
+                    <div className="w-full text-center border-b border-[var(--theme-border-soft)] pb-6 mb-6">
+                        <h3 className="text-xl font-bold text-[var(--theme-text-primary)] italic uppercase tracking-tight">Geolocalización</h3>
+                        <p className="text-[10px] text-[var(--theme-text-quaternary)] font-bold uppercase tracking-wider">Nodos de mayor actividad</p>
                     </div>
 
                     <div className="h-[240px] w-full relative">
@@ -297,21 +333,19 @@ export default function AdminDashboard() {
                                         <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} className="outline-none" />
                                     ))}
                                 </Pie>
-                                <Tooltip
-                                    contentStyle={{ backgroundColor: '#0A0A0A', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
-                                />
+                                <ThemedTooltip />
                             </PieChart>
                         </ResponsiveContainer>
                     </div>
 
                     <div className="w-full space-y-3 mt-6">
                         {locationData.slice(0, 4).map((entry, index) => (
-                            <div key={index} className="flex justify-between items-center p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/5 transition-colors">
+                            <div key={index} className="flex justify-between items-center p-3 rounded-xl bg-[var(--theme-bg-overlay)] border border-[var(--theme-border-soft)] hover:bg-[var(--theme-bg-surface)] transition-colors">
                                 <div className="flex items-center gap-3">
                                     <div className="w-2 h-2 rounded-full" style={{ backgroundColor: CHART_COLORS[index % CHART_COLORS.length] }} />
-                                    <span className="text-[10px] font-black text-metal-silver/60 uppercase tracking-widest">{entry.name}</span>
+                                    <span className="text-[10px] font-bold text-[var(--theme-text-tertiary)] uppercase tracking-wider">{entry.name}</span>
                                 </div>
-                                <span className="text-sm font-black text-white">{entry.value}</span>
+                                <span className="text-sm font-bold text-[var(--theme-text-primary)]">{entry.value}</span>
                             </div>
                         ))}
                     </div>
@@ -321,46 +355,43 @@ export default function AdminDashboard() {
             {/* Sub-Charts Row */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <Card variant="solid" className="p-8">
-                    <h3 className="text-xl font-black text-white mb-8 flex items-center gap-3 italic uppercase tracking-tighter">
-                        <BookOpen className="text-metal-gold" size={18} /> Nicho Profesional
+                    <h3 className="text-xl font-bold text-[var(--theme-text-primary)] mb-8 flex items-center gap-3 italic uppercase tracking-tight">
+                        < BookOpen className="text-brand-primary" size={18} /> Nicho Profesional
                     </h3>
                     <div className="h-[300px] w-full">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={careerData} layout="vertical" margin={{ left: 20, right: 30 }}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.03)" horizontal={false} />
-                                <XAxis type="number" hide />
-                                <YAxis dataKey="name" type="category" stroke="#666" fontSize={10} width={120} tickLine={false} axisLine={false} fontWeight="bold" />
-                                <Tooltip
-                                    cursor={{ fill: 'rgba(255,255,255,0.02)' }}
-                                    contentStyle={{ backgroundColor: '#0A0A0A', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
-                                />
-                                <Bar dataKey="value" fill={BRAND_COLORS.gold} radius={[0, 4, 4, 0]} barSize={20} />
+                                <ThemedGrid horizontal={false} />
+                                <ThemedXAxis type="number" hide />
+                                <ThemedYAxis dataKey="name" type="category" width={120} tick={{ fontSize: 9 }} />
+                                <ThemedTooltip cursor={{ fill: 'var(--theme-border-soft)', opacity: 0.5 }} />
+                                <Bar dataKey="value" fill="var(--chart-1)" radius={[0, 4, 4, 0]} barSize={20} className="drop-shadow-[0_0_8px_rgba(37,99,235,0.2)]" />
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
                 </Card>
 
                 <Card variant="solid" className="p-8">
-                    <h3 className="text-xl font-black text-white mb-8 flex items-center gap-3 italic uppercase tracking-tighter">
-                        <School className="text-purple-400" size={18} /> Top Aspiraciones
+                    <h3 className="text-xl font-bold text-[var(--theme-text-primary)] mb-8 flex items-center gap-3 italic uppercase tracking-tight">
+                        <School className="text-[var(--chart-4)]" size={18} /> Top Aspiraciones
                     </h3>
                     <div className="space-y-6">
                         {universityData.length > 0 ? universityData.map((uni, idx) => (
                             <div key={idx} className="group">
                                 <div className="flex justify-between items-end mb-2">
-                                    <span className="text-[10px] font-black text-metal-silver/40 uppercase tracking-widest truncate max-w-[70%] group-hover:text-metal-silver transition-colors">{uni.name}</span>
-                                    <Badge variant="ghost" className="text-[10px] font-black text-purple-400">{uni.value} Aspirantes</Badge>
+                                    <span className="text-[10px] font-bold text-[var(--theme-text-tertiary)] uppercase tracking-wider truncate max-w-[70%] group-hover:text-[var(--theme-text-primary)] transition-colors">{uni.name}</span>
+                                    <Badge variant="ghost" className="text-[10px] font-bold text-purple-400">{uni.value} Aspirantes</Badge>
                                 </div>
-                                <div className="h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                                <div className="h-1.5 bg-[var(--theme-bg-base)] rounded-full overflow-hidden border border-[var(--theme-border-soft)]">
                                     <div
-                                        className="h-full bg-gradient-to-r from-purple-500 to-indigo-500 transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(168,85,247,0.3)]"
+                                        className="h-full bg-gradient-to-r from-[var(--chart-4)] to-[var(--chart-1)] transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(139,92,246,0.3)]"
                                         style={{ width: `${(uni.value / Math.max(...universityData.map(u => u.value))) * 100}%` }}
                                     />
                                 </div>
                             </div>
                         )) : (
-                            <div className="py-20 text-center border-2 border-dashed border-white/5 rounded-3xl">
-                                <p className="text-metal-silver/20 font-black uppercase text-xs tracking-widest">Esperando Telemetría de Aspiraciones</p>
+                            <div className="py-20 text-center border-2 border-dashed border-[var(--theme-border-soft)] rounded-3xl bg-[var(--theme-bg-base)]/30">
+                                <p className="text-[var(--theme-text-tertiary)] font-bold uppercase text-xs tracking-wider">Esperando Telemetría de Aspiraciones</p>
                             </div>
                         )}
                     </div>

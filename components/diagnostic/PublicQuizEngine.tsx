@@ -138,7 +138,7 @@ export default function PublicQuizEngine() {
         <div className="max-w-xl mx-auto space-y-8">
             {/* Progress Bar */}
             <div className="space-y-2">
-                <div className="flex justify-between text-xs text-metal-silver uppercase font-bold tracking-widest">
+                <div className="flex justify-between text-xs text-theme-text-secondary uppercase font-bold tracking-wider">
                     <span>Progreso</span>
                     <span>{currentIdx + 1} / {shuffledQuestions.length}</span>
                 </div>
@@ -146,7 +146,7 @@ export default function PublicQuizEngine() {
                     <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${progress}%` }}
-                        className="h-full bg-gradient-to-r from-metal-gold to-yellow-600"
+                        className="h-full bg-gradient-to-r from-brand-primary to-yellow-600"
                     />
                 </div>
             </div>
@@ -159,8 +159,8 @@ export default function PublicQuizEngine() {
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.3 }}
                 >
-                    <Card variant="glass" className="p-8 border-metal-gold/20 shadow-[0_0_50px_rgba(212,175,55,0.05)]">
-                        <span className="inline-block px-3 py-1 bg-white/5 text-metal-gold text-[10px] font-black uppercase tracking-widest rounded-full mb-4">
+                    <Card variant="glass" className="p-8 border-brand-primary/20 shadow-[0_0_50px_rgba(212,175,55,0.05)]">
+                        <span className="inline-block px-3 py-1 bg-white/5 text-brand-primary text-[10px] font-semibold uppercase tracking-wider rounded-full mb-4">
                             {currentQ.category}
                         </span>
 
@@ -170,14 +170,14 @@ export default function PublicQuizEngine() {
 
                         <div className="space-y-3">
                             {currentQ.options.map((opt, idx) => {
-                                let btnClass = "w-full p-4 rounded-xl text-left border border-white/5 bg-white/5 hover:bg-white/10 transition-all font-medium text-metal-silver flex justify-between items-center group";
+                                let btnClass = "w-full p-4 rounded-xl text-left border border-white/5 bg-white/5 hover:bg-white/10 transition-all font-medium text-theme-text-secondary flex justify-between items-center group";
 
                                 if (showFeedback) {
                                     if (idx === currentQ.correct) btnClass = "w-full p-4 rounded-xl text-left border border-green-500/50 bg-green-500/10 text-white font-bold";
                                     else if (idx === selectedOption && idx !== currentQ.correct) btnClass = "w-full p-4 rounded-xl text-left border border-red-500/50 bg-red-500/10 text-white opacity-50";
-                                    else btnClass = "w-full p-4 rounded-xl text-left border border-white/5 bg-black/20 text-metal-silver opacity-30";
+                                    else btnClass = "w-full p-4 rounded-xl text-left border border-white/5 bg-black/20 text-theme-text-secondary opacity-30";
                                 } else if (selectedOption === idx) {
-                                    btnClass += " ring-2 ring-metal-gold bg-metal-gold/10 text-white";
+                                    btnClass += " ring-2 ring-brand-primary bg-brand-primary/10 text-white";
                                 }
 
                                 return (
@@ -214,14 +214,14 @@ export default function PublicQuizEngine() {
                                 <h4 className={`font-bold mb-1 ${isCorrect ? 'text-green-400' : 'text-red-400'}`}>
                                     {isCorrect ? '✔ Evaluador Experto: Correcto. Tu análisis es coherente con la matriz 2026.' : '⚠ Evaluador Experto: Aquí suele fallar el 70% de aspirantes por falta de rigor técnico.'}
                                 </h4>
-                                <p className="text-base text-metal-silver mb-6 leading-loose font-medium">
+                                <p className="text-base text-theme-text-secondary mb-6 leading-loose font-medium">
                                     {currentQ.explanation}
                                 </p>
 
                                 {/* Tip Saber Pro 2026 */}
-                                <div className="mb-6 p-4 bg-metal-gold/5 border-l-2 border-metal-gold rounded-r-lg">
-                                    <span className="block text-[10px] font-black text-metal-gold uppercase tracking-widest mb-1">Tip Saber Pro 2026</span>
-                                    <p className="text-xs italic text-metal-silver/80">
+                                <div className="mb-6 p-4 bg-brand-primary/5 border-l-2 border-brand-primary rounded-r-lg">
+                                    <span className="block text-[10px] font-semibold text-brand-primary uppercase tracking-wider mb-1">Tip Saber Pro 2026</span>
+                                    <p className="text-xs italic text-theme-text-secondary/80">
                                         {isCorrect
                                             ? "Mantén este nivel de detalle. En 2026, las inferencias no son solo literales, requieren entender la intención oculta del autor."
                                             : "No te dejes llevar por la respuesta que suena 'más bonita'. En Competencias Ciudadanas, prioriza siempre el marco constitucional vigente."}
@@ -230,8 +230,8 @@ export default function PublicQuizEngine() {
 
                                 <Button
                                     onClick={handleNext}
-                                    variant="premium"
-                                    className="w-full text-xs font-black uppercase tracking-widest h-10"
+                                    variant="primary"
+                                    className="w-full text-xs font-semibold uppercase tracking-wider h-10"
                                     icon={ArrowRight}
                                     iconPosition="right"
                                 >

@@ -111,8 +111,8 @@ export default function StudentAssignments({ user }: StudentAssignmentsProps) {
 
     if (loading) {
         return (
-            <div className="animate-pulse flex items-center gap-2 text-metal-silver mb-8">
-                <div className="w-4 h-4 bg-metal-silver/20 rounded-full"></div>
+            <div className="animate-pulse flex items-center gap-2 text-theme-text-secondary mb-8">
+                <div className="w-4 h-4 bg-theme-text-secondary/20 rounded-full"></div>
                 <span className="text-xs">Buscando tareas asignadas...</span>
             </div>
         );
@@ -124,9 +124,9 @@ export default function StudentAssignments({ user }: StudentAssignmentsProps) {
         <div className="mb-12">
             <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold text-white flex items-center gap-3">
-                    <BookOpen className="text-metal-gold" /> Tareas Pendientes ({assignments.length})
+                    <BookOpen className="text-brand-primary" /> Tareas Pendientes ({assignments.length})
                 </h2>
-                <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-xs font-bold text-metal-gold hover:underline border border-metal-gold/30 px-3 py-1 rounded-full hover:bg-metal-gold/10 transition-colors">
+                <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-xs font-bold text-brand-primary hover:underline border border-brand-primary/30 px-3 py-1 rounded-full hover:bg-brand-primary/10 transition-colors">
                     VE A TUS CLASES ACTIVAS
                 </button>
             </div>
@@ -148,16 +148,16 @@ export default function StudentAssignments({ user }: StudentAssignmentsProps) {
                         <motion.div
                             variants={itemVariants}
                             key={assign.id}
-                            className="metallic-card bg-metal-dark border border-metal-silver/10 p-6 rounded-2xl relative overflow-hidden group hover:border-metal-gold/30 transition-all shadow-lg hover:shadow-metal-gold/5"
+                            className="metallic-card bg-slate-900 border border-theme-text-secondary/10 p-6 rounded-2xl relative overflow-hidden group hover:border-brand-primary/30 transition-all shadow-lg hover:shadow-brand-primary/5"
                         >
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-metal-gold/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-metal-gold/10 transition-all blur-2xl"></div>
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-brand-primary/10 transition-all blur-2xl"></div>
                             <div className="relative z-10">
                                 <div className="flex justify-between items-start mb-4">
-                                    <div className="px-3 py-1 rounded-lg bg-metal-blue/10 text-metal-blue text-[10px] font-black uppercase tracking-wider border border-metal-blue/20">
+                                    <div className="px-3 py-1 rounded-lg bg-metal-blue/10 text-metal-blue text-[10px] font-semibold uppercase tracking-wider border border-metal-blue/20">
                                         {assign.subject?.replace('_', ' ') || 'EXAMEN'}
                                     </div>
                                     {assign.createdAt && (
-                                        <div className="flex items-center gap-1 text-[10px] text-metal-silver font-mono">
+                                        <div className="flex items-center gap-1 text-[10px] text-theme-text-secondary font-mono">
                                             <Clock size={12} />
                                             {new Date(assign.createdAt?.seconds * 1000).toLocaleDateString()}
                                         </div>
@@ -166,13 +166,13 @@ export default function StudentAssignments({ user }: StudentAssignmentsProps) {
                                 <h3 className="text-lg font-bold text-white mb-3 line-clamp-2 min-h-[56px] leading-tight">
                                     {assign.title}
                                 </h3>
-                                <div className="flex items-center gap-3 text-xs text-metal-silver mb-6 bg-black/20 p-2 rounded-lg w-fit">
-                                    <Brain size={14} className="text-metal-gold" />
+                                <div className="flex items-center gap-3 text-xs text-theme-text-secondary mb-6 bg-black/20 p-2 rounded-lg w-fit">
+                                    <Brain size={14} className="text-brand-primary" />
                                     <span>{assign.questions?.length || 0} Preguntas</span>
                                 </div>
                                 <a
                                     href={`/simulation?assignmentId=${assign.id}`}
-                                    className="w-full relative overflow-hidden group/btn bg-white/5 hover:bg-metal-gold border border-white/10 hover:border-metal-gold text-white hover:text-black font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-md hover:shadow-metal-gold/20"
+                                    className="w-full relative overflow-hidden group/btn bg-white/5 hover:bg-brand-primary border border-white/10 hover:border-brand-primary text-white hover:text-black font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-md hover:shadow-brand-primary/20"
                                 >
                                     <span className="relative z-10 flex items-center gap-2">
                                         INICIAR AHORA <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
@@ -184,12 +184,12 @@ export default function StudentAssignments({ user }: StudentAssignmentsProps) {
                 </motion.div>
             ) : (
                 <div className="mb-8 p-4 bg-white/5 border border-white/5 rounded-2xl flex items-center gap-4">
-                    <div className="p-3 bg-metal-silver/10 rounded-full text-metal-silver">
+                    <div className="p-3 bg-theme-text-secondary/10 rounded-full text-theme-text-secondary">
                         <CheckCircle size={20} />
                     </div>
                     <div>
                         <h3 className="text-white font-bold text-sm">Todo al día</h3>
-                        <p className="text-metal-silver text-xs">No tienes evaluaciones pendientes en tus {classCount} clases.</p>
+                        <p className="text-theme-text-secondary text-xs">No tienes evaluaciones pendientes en tus {classCount} clases.</p>
                     </div>
                 </div>
             )}

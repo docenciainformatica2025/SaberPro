@@ -77,13 +77,13 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="flex min-h-screen bg-metal-black">
+        <div className="flex min-h-screen bg-[var(--theme-bg-base)]">
             {/* Left Side - Branding (Desktop Only) */}
-            <div className="hidden lg:flex w-1/2 bg-[#0a0a0a] relative overflow-hidden flex-col justify-between p-16 border-r border-white/5">
+            <div className="hidden lg:flex w-1/2 bg-[var(--theme-bg-surface)] relative overflow-hidden flex-col justify-between p-16 border-r border-[var(--theme-border-soft)]">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497864149936-d7e61461c302?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 filter grayscale mix-blend-overlay"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-black/95 via-black/80 to-[#0A0A0A]"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--theme-bg-base)]/95 via-[var(--theme-bg-base)]/80 to-[var(--theme-bg-base)]"></div>
 
-                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-metal-gold/5 rounded-full blur-[100px]"></div>
+                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[100px]"></div>
                 <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-metal-blue/5 rounded-full blur-[100px]"></div>
 
                 <div className="relative z-10">
@@ -93,12 +93,12 @@ export default function LoginPage() {
                 </div>
 
                 <div className="relative z-10 max-w-lg">
-                    <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
-                        Accede a tu <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-metal-gold via-[#ffd700] to-metal-gold">espacio de entrenamiento.</span>
+                    <h2 className="text-5xl font-semibold text-theme-text-primary mb-6 leading-tight">
+                        Tu éxito empieza aquí. <br />
+                        <span className="text-brand-primary">Estamos listos para acompañarte.</span>
                     </h2>
-                    <p className="text-metal-silver/80 text-lg leading-relaxed mb-8">
-                        Continúa tu preparación con métodos validados y seguimiento detallado de tu progreso.
+                    <p className="text-theme-text-secondary text-lg leading-relaxed mb-8">
+                        Accede a un espacio diseñado para tu crecimiento, con herramientas que transforman tu esfuerzo en resultados reales.
                     </p>
 
                     <div className="space-y-4">
@@ -107,18 +107,18 @@ export default function LoginPage() {
                             "Métricas de desempeño",
                             "Seguimiento de progreso"
                         ].map((item, i) => (
-                            <div key={i} className="flex items-center gap-3 text-metal-silver">
-                                <CheckCircle2 className="text-metal-gold" size={20} />
+                            <div key={i} className="flex items-center gap-3 text-[var(--theme-text-secondary)]">
+                                <CheckCircle2 className="text-brand-primary" size={20} />
                                 <span>{item}</span>
                             </div>
                         ))}
                     </div>
                 </div>
 
-                <div className="relative z-10 text-xs text-metal-silver/40 space-y-2">
+                <div className="relative z-10 text-xs text-[var(--theme-text-tertiary)] space-y-2">
                     <p>{COPYRIGHT_TEXT}</p>
                     <p>
-                        Desarrollado por <span className="text-metal-silver/60">Ing. Antonio Rodriguez</span><br />
+                        Desarrollado por <span className="text-[var(--theme-text-secondary)]">Ing. Antonio Rodriguez</span><br />
                         para Docencia Informática.
                     </p>
                 </div>
@@ -132,30 +132,30 @@ export default function LoginPage() {
                     <div className="lg:hidden text-center mb-6">
                         <div className="flex justify-between items-center mb-4">
                             <Link href="/">
-                                <Button variant="ghost" icon={ArrowRight} className="rotate-180 p-0 text-metal-silver text-[10px] font-black uppercase tracking-widest">
+                                <Button variant="ghost" icon={ArrowRight} className="rotate-180 p-0 text-[var(--theme-text-tertiary)] text-[10px] font-semibold uppercase tracking-wider">
                                     Inicio
                                 </Button>
                             </Link>
                             <Logo variant="full" size="md" />
                             <div className="w-10"></div> {/* Spacer */}
                         </div>
-                        <p className="text-[10px] font-black text-metal-silver/40 uppercase tracking-[0.2em]">Entrenamiento Profesional</p>
+                        <p className="text-[10px] font-semibold text-[var(--theme-text-tertiary)] uppercase tracking-[0.2em]">Entrenamiento Profesional</p>
                     </div>
 
                     <div className="space-y-1">
-                        <h1 className="text-3xl font-black text-white tracking-tighter italic uppercase">Bienvenido</h1>
-                        <p className="text-metal-silver/60 text-sm">Ingresa tus credenciales para acceder al simulador.</p>
+                        <h1 className="text-3xl font-semibold text-theme-text-primary tracking-tight">¡Qué bueno verte de nuevo!</h1>
+                        <p className="text-theme-text-tertiary text-sm">Ingresa tus datos para continuar tu camino al éxito.</p>
                     </div>
 
                     {/* Social Login */}
                     <Button
                         onClick={handleGoogleLogin}
                         disabled={googleLoading}
-                        variant="silver"
-                        className="w-full bg-white text-black hover:bg-gray-100 border-none h-12"
+                        variant="outline"
+                        className="w-full h-12 text-theme-text-primary border-theme-border-soft hover:bg-theme-bg-base"
                         isLoading={googleLoading}
                     >
-                        Continuar con Google
+                        <Chrome className="mr-2 h-4 w-4" /> Continuar con Google
                     </Button>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -169,8 +169,8 @@ export default function LoginPage() {
 
                         <div className="space-y-2">
                             <div className="flex justify-between items-center ml-1">
-                                <label className="text-xs font-semibold text-metal-silver/80 uppercase tracking-wider">Contraseña</label>
-                                <Link href="/forgot-password" className="text-xs text-metal-gold hover:text-white transition-colors">¿Olvidaste tu contraseña?</Link>
+                                <label className="text-xs font-semibold text-[var(--theme-text-secondary)] uppercase tracking-wider">Contraseña</label>
+                                <Link href="/forgot-password" className="text-xs text-brand-primary hover:text-[var(--theme-text-primary)] transition-colors">¿Olvidaste tu contraseña?</Link>
                             </div>
                             <div className="relative">
                                 <Input
@@ -182,7 +182,7 @@ export default function LoginPage() {
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-3 top-3 text-metal-silver/40 hover:text-white"
+                                    className="absolute right-3 top-3 text-[var(--theme-text-tertiary)] hover:text-[var(--theme-text-primary)]"
                                 >
                                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                                 </button>
@@ -195,9 +195,9 @@ export default function LoginPage() {
                     </form>
 
                     <div className="text-center">
-                        <p className="text-sm text-metal-silver/60">
+                        <p className="text-sm text-[var(--theme-text-tertiary)]">
                             ¿Aún no tienes cuenta?{' '}
-                            <Link href="/register" className="text-metal-gold hover:text-white font-medium transition-colors">Crear nueva cuenta</Link>
+                            <Link href="/register" className="text-brand-primary hover:text-[var(--theme-text-primary)] font-medium transition-colors">Crear nueva cuenta</Link>
                         </p>
                     </div>
                 </div>

@@ -78,13 +78,13 @@ export default function SystemStatusPage() {
 
     const StatusIndicator = ({ state }: { state: string }) => {
         const colors: any = {
-            online: "bg-green-500",
-            excellent: "bg-green-500",
-            good: "bg-yellow-500",
-            slow: "bg-orange-500",
-            offline: "bg-red-500",
-            error: "bg-red-500",
-            checking: "bg-gray-500 animate-pulse"
+            online: "bg-[var(--brand-success)]",
+            excellent: "bg-[var(--brand-success)]",
+            good: "bg-[var(--brand-primary)]",
+            slow: "bg-[var(--brand-accent)]", // Mapped 'slow' to the new 'warning' color
+            offline: "bg-[var(--brand-error)]",
+            error: "bg-[var(--brand-error)]",
+            checking: "bg-[var(--theme-text-tertiary)] animate-pulse"
         };
         const labels: any = {
             online: "Operativo",
@@ -98,8 +98,8 @@ export default function SystemStatusPage() {
 
         return (
             <div className="flex items-center gap-2">
-                <div className={`w-2 h-2 rounded-full ${colors[state] || "bg-gray-500"}`} />
-                <span className={`text-xs font-bold uppercase tracking-wider ${state === 'checking' ? 'text-gray-400' : 'text-white'}`}>
+                <div className={`w-2 h-2 rounded-full ${colors[state] || "bg-[var(--theme-text-tertiary)]"}`} />
+                <span className={`text-xs font-bold uppercase tracking-wider ${state === 'checking' ? 'text-[var(--theme-text-tertiary)]' : 'text-[var(--theme-text-primary)]'}`}>
                     {labels[state] || state}
                 </span>
             </div>
@@ -107,20 +107,20 @@ export default function SystemStatusPage() {
     };
 
     return (
-        <div className="space-y-8 animate-in fade-in duration-700">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <main className="max-w-[1400px] mx-auto space-y-12 pb-12 p-4 lg:p-0 animate-in fade-in slide-in-from-bottom-8 duration-700" suppressHydrationWarning>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 <div>
-                    <h1 className="text-3xl font-black text-white italic uppercase tracking-tighter mb-2">
+                    <h1 className="text-5xl lg:text-6xl font-black text-theme-hero italic uppercase tracking-tighter mb-2">
                         Estado del Sistema
                     </h1>
-                    <p className="text-metal-silver text-sm font-medium">
-                        Monitoreo en tiempo real de infraestructura, recursos y red.
+                    <p className="text-[var(--theme-text-tertiary)] text-xs font-black uppercase tracking-widest opacity-70 flex items-center gap-2">
+                        <Activity size={14} className="text-brand-primary" /> Sentinel Runtime v5.0 • Infrastructure Live
                     </p>
                 </div>
-                <Badge variant="outline" className="flex items-center gap-2 px-4 py-2 border-metal-gold/30 text-metal-gold">
+                <Badge variant="outline" className="flex items-center gap-2 px-6 py-2 border-brand-primary/30 text-brand-primary bg-brand-primary/5">
                     <Clock size={14} />
                     <span className="text-[10px] font-black uppercase tracking-widest">
-                        Actualizado: {lastCheck.toLocaleTimeString()}
+                        Check: {lastCheck.toLocaleTimeString()}
                     </span>
                 </Badge>
             </div>
@@ -129,14 +129,14 @@ export default function SystemStatusPage() {
                 {/* Database Status */}
                 <Card variant="glass" className="p-6 relative overflow-hidden group">
                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <Database size={64} />
+                        <Database size={64} className="text-[var(--theme-text-primary)]" />
                     </div>
                     <div className="relative z-10 space-y-4">
-                        <div className="p-3 bg-blue-500/10 w-fit rounded-xl text-blue-400">
+                        <div className="p-3 bg-blue-500/10 w-fit rounded-xl text-blue-400 border border-blue-500/20">
                             <Database size={24} />
                         </div>
                         <div>
-                            <h3 className="text-lg font-bold text-white mb-1">Base de Datos</h3>
+                            <h3 className="text-lg font-bold text-[var(--theme-text-primary)] mb-1">Base de Datos</h3>
                             <StatusIndicator state={status.database} />
                         </div>
                     </div>
@@ -145,14 +145,14 @@ export default function SystemStatusPage() {
                 {/* Auth Status */}
                 <Card variant="glass" className="p-6 relative overflow-hidden group">
                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <ShieldCheck size={64} />
+                        <ShieldCheck size={64} className="text-[var(--theme-text-primary)]" />
                     </div>
                     <div className="relative z-10 space-y-4">
-                        <div className="p-3 bg-purple-500/10 w-fit rounded-xl text-purple-400">
+                        <div className="p-3 bg-purple-500/10 w-fit rounded-xl text-purple-400 border border-purple-500/20">
                             <ShieldCheck size={24} />
                         </div>
                         <div>
-                            <h3 className="text-lg font-bold text-white mb-1">Autenticación</h3>
+                            <h3 className="text-lg font-bold text-[var(--theme-text-primary)] mb-1">Autenticación</h3>
                             <StatusIndicator state={status.auth} />
                         </div>
                     </div>
@@ -161,18 +161,18 @@ export default function SystemStatusPage() {
                 {/* API / Latency Status */}
                 <Card variant="glass" className="p-6 relative overflow-hidden group">
                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <Wifi size={64} />
+                        <Wifi size={64} className="text-[var(--theme-text-primary)]" />
                     </div>
                     <div className="relative z-10 space-y-4">
-                        <div className="p-3 bg-green-500/10 w-fit rounded-xl text-green-400">
+                        <div className="p-3 bg-green-500/10 w-fit rounded-xl text-green-400 border border-green-500/20">
                             <Wifi size={24} />
                         </div>
                         <div>
-                            <h3 className="text-lg font-bold text-white mb-1">Latencia API</h3>
+                            <h3 className="text-lg font-bold text-[var(--theme-text-primary)] mb-1">Latencia API</h3>
                             <div className="flex items-center gap-2">
                                 <StatusIndicator state={status.api} />
                                 {status.latency > 0 && (
-                                    <span className="text-[10px] text-metal-silver font-mono bg-white/5 px-2 rounded">
+                                    <span className="text-[10px] text-[var(--theme-text-primary)] font-mono bg-[var(--theme-bg-base)] px-2 rounded border border-[var(--theme-border-soft)]">
                                         {status.latency}ms
                                     </span>
                                 )}
@@ -182,20 +182,20 @@ export default function SystemStatusPage() {
                 </Card>
 
                 {/* Server Resources (New) */}
-                <Card variant="glass" className="p-6 relative overflow-hidden group border-metal-gold/20">
+                <Card variant="glass" className="p-6 relative overflow-hidden group border-brand-primary/20">
                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <Server size={64} />
+                        <Server size={64} className="text-[var(--theme-text-primary)]" />
                     </div>
                     <div className="relative z-10 space-y-4">
-                        <div className="p-3 bg-metal-gold/10 w-fit rounded-xl text-metal-gold">
+                        <div className="p-3 bg-brand-primary/10 w-fit rounded-xl text-brand-primary border border-brand-primary/20">
                             <Server size={24} />
                         </div>
                         <div>
-                            <h3 className="text-lg font-bold text-white mb-1">Recursos (RAM)</h3>
+                            <h3 className="text-lg font-bold text-[var(--theme-text-primary)] mb-1">Recursos (RAM)</h3>
                             {status.server ? (
                                 <div className="flex flex-col">
-                                    <span className="text-sm text-white font-mono font-bold">{status.server.memory?.rss || 'N/A'}</span>
-                                    <span className="text-[10px] text-metal-silver uppercase tracking-wider">
+                                    <span className="text-sm text-[var(--theme-text-primary)] font-mono font-bold">{status.server.memory?.rss || 'N/A'}</span>
+                                    <span className="text-[10px] text-[var(--theme-text-secondary)] uppercase tracking-wider">
                                         Uptime: {status.server.uptime ? Math.round(status.server.uptime) + 's' : '0s'}
                                     </span>
                                 </div>
@@ -210,30 +210,30 @@ export default function SystemStatusPage() {
             {/* Detailed Logs */}
             <Card variant="glass" className="p-8">
                 <div className="flex items-center gap-3 mb-6">
-                    <Activity size={20} className="text-metal-gold" />
-                    <h3 className="text-xl font-bold text-white uppercase tracking-tight">Logs de Diagnóstico Recientes</h3>
+                    <Activity size={20} className="text-brand-primary" />
+                    <h3 className="text-xl font-bold text-[var(--theme-text-primary)] uppercase tracking-tight">Logs de Diagnóstico Recientes</h3>
                 </div>
 
                 <div className="space-y-2 font-mono text-xs">
                     {status.server && (
-                        <div className="flex gap-4 p-3 rounded bg-black/40 border-l-2 border-metal-gold">
-                            <span className="text-metal-silver">{new Date().toLocaleTimeString()}</span>
-                            <span className="text-metal-gold font-bold">[SERVER]</span>
-                            <span className="text-gray-300">
-                                Health Check OK. Environment: {status.server.env}. Heap Used: {status.server.memory?.heapUsed}.
+                        <div className="flex gap-4 p-3 rounded bg-[var(--theme-bg-base)] border-l-2 border-brand-primary">
+                            <span className="text-[var(--theme-text-secondary)]">{new Date().toLocaleTimeString()}</span>
+                            <span className="text-brand-primary font-bold">[SERVIDOR]</span>
+                            <span className="text-[var(--theme-text-secondary)]">
+                                Verificación de Salud OK. Entorno: {status.server.env}. Heap Usado: {status.server.memory?.heapUsed}.
                             </span>
                         </div>
                     )}
-                    <div className="flex gap-4 p-3 rounded bg-black/40 border-l-2 border-green-500">
-                        <span className="text-metal-silver">{new Date(lastCheck.getTime() - 100).toLocaleTimeString()}</span>
+                    <div className="flex gap-4 p-3 rounded bg-[var(--theme-bg-base)] border-l-2 border-green-500">
+                        <span className="text-[var(--theme-text-secondary)]">{new Date(lastCheck.getTime() - 100).toLocaleTimeString()}</span>
                         <span className="text-green-400 font-bold">[DB]</span>
-                        <span className="text-gray-300">Firebase Firestore Connection Established. Cloud operations ready.</span>
+                        <span className="text-[var(--theme-text-secondary)]">Conexión con Firebase Firestore Establecida. Operaciones en la nube listas.</span>
                     </div>
                     {status.auth === 'error' && (
                         <div className="flex gap-4 p-3 rounded bg-red-900/20 border-l-2 border-red-500 animate-pulse">
-                            <span className="text-metal-silver">{new Date().toLocaleTimeString()}</span>
-                            <span className="text-red-400 font-bold">[CRITICAL]</span>
-                            <span className="text-gray-300">Auth Service Unreachable. Check 'Authorized Domains' in Firebase Console.</span>
+                            <span className="text-[var(--theme-text-secondary)]">{new Date().toLocaleTimeString()}</span>
+                            <span className="text-red-400 font-bold">[CRITICO]</span>
+                            <span className="text-[var(--theme-text-secondary)]">Servicio de Autenticación Inalcanzable. Verifique los 'Dominios Autorizados' en la Consola de Firebase.</span>
                         </div>
                     )}
                 </div>
@@ -243,11 +243,11 @@ export default function SystemStatusPage() {
                 <Smartphone className="text-blue-400 shrink-0 mt-1" size={20} />
                 <div>
                     <h4 className="text-sm font-bold text-blue-400 uppercase tracking-wider mb-1">Métricas de Serverless (Vercel)</h4>
-                    <p className="text-xs text-blue-200/80 leading-relaxed">
+                    <p className="text-xs text-[var(--theme-text-secondary)]/80 leading-relaxed">
                         Al usar arquitectura Serverless, la métrica de &quot;Carga CPU&quot; es efímera. Se muestra el <strong>Uptime de la Instancia</strong> y el <strong>Uso de Memoria (RSS)</strong> del contenedor actual ejecución. Tiempos de respuesta (Latencia API) bajos indican buena salud del sistema.
                     </p>
                 </div>
             </div>
-        </div>
+        </main>
     );
 }

@@ -7,6 +7,7 @@ import { useAuth } from "@/context/AuthContext";
 import { db } from "@/lib/firebase";
 import { collection, query, where, getDocs, addDoc, serverTimestamp, getCountFromServer } from "firebase/firestore";
 import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 
 interface CreateAssignmentModalProps {
     isOpen: boolean;
@@ -113,26 +114,30 @@ export default function CreateAssignmentModal({ isOpen, onClose, onAssignmentCre
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-            <div className="bg-metal-dark border border-metal-silver/20 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl animate-in zoom-in-95 duration-200">
-                <div className="p-6 border-b border-metal-silver/10 flex justify-between items-center sticky top-0 bg-metal-dark z-10">
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                        <BookOpen className="text-metal-gold" /> Nueva Asignación
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--theme-bg-base)]/80 backdrop-blur-xl p-4 animate-in fade-in duration-300">
+            <div className="bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-[var(--theme-shadow-lg)] animate-in zoom-in-95 duration-200">
+                <div className="p-6 border-b border-[var(--theme-border-soft)] flex justify-between items-center sticky top-0 bg-[var(--theme-bg-surface)]/95 backdrop-blur-sm z-10">
+                    <h2 className="text-2xl font-bold text-[var(--theme-text-primary)] flex items-center gap-2 tracking-tight">
+                        <BookOpen className="text-brand-primary" /> Nueva Asignación
                     </h2>
-                    <button onClick={onClose} aria-label="Cerrar modal" className="text-metal-silver hover:text-white transition-colors">
-                        <X size={24} />
-                    </button>
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={onClose}
+                        icon={X}
+                        className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] hover:bg-[var(--theme-bg-base)]/10"
+                    />
                 </div>
 
                 <div className="p-6">
                     {!isPro && activeAssignmentsCount >= 3 && (
-                        <div className="mb-6 p-4 bg-yellow-900/20 border border-yellow-500/30 rounded-xl flex items-start gap-3">
-                            <AlertTriangle className="text-yellow-500 shrink-0" />
+                        <div className="mb-6 p-4 bg-[var(--theme-bg-warning-soft)] border border-[var(--theme-border-warning)] rounded-xl flex items-start gap-3">
+                            <AlertTriangle className="text-[var(--theme-text-warning)] shrink-0" />
                             <div>
-                                <h4 className="font-bold text-yellow-500">Límite de Tareas Alcanzado</h4>
-                                <p className="text-sm text-yellow-200/70 mt-1">
+                                <h4 className="font-bold text-[var(--theme-text-warning)]">Límite de Tareas Alcanzado</h4>
+                                <p className="text-sm text-[var(--theme-text-warning)]/80 mt-1">
                                     En el plan gratuito solo puedes tener 3 tareas activas.
-                                    <Link href="/pricing" className="text-white underline ml-2 font-bold hover:text-metal-gold">
+                                    <Link href="/pricing" className="text-[var(--theme-text-primary)] underline ml-2 font-bold hover:text-brand-primary">
                                         Mejorar a Pro
                                     </Link>
                                 </p>
@@ -143,11 +148,11 @@ export default function CreateAssignmentModal({ isOpen, onClose, onAssignmentCre
                     <form onSubmit={handleSubmit} className="space-y-6">
                         {/* Class Selector */}
                         <div>
-                            <label className="block text-sm font-bold text-metal-silver mb-2">Asignar a Clase</label>
+                            <label className="block text-sm font-bold text-[var(--theme-text-secondary)] mb-2 uppercase tracking-wide">Asignar a Clase</label>
                             <select
                                 value={selectedClass}
                                 onChange={(e) => setSelectedClass(e.target.value)}
-                                className="w-full bg-black/40 border border-metal-silver/20 rounded-xl p-3 text-white focus:border-metal-gold outline-none"
+                                className="w-full bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] rounded-xl p-3 text-[var(--theme-text-primary)] focus:border-brand-primary outline-none transition-all"
                                 required
                             >
                                 <option value="">Seleccionar Clase...</option>
@@ -159,7 +164,7 @@ export default function CreateAssignmentModal({ isOpen, onClose, onAssignmentCre
 
                         {/* Module Type Selector */}
                         <div>
-                            <label className="block text-sm font-bold text-metal-silver mb-2">Tipo de Actividad</label>
+                            <label className="block text-sm font-bold text-[var(--theme-text-secondary)] mb-2 uppercase tracking-wide">Tipo de Actividad</label>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 {/* Basic Options */}
                                 {['razonamiento_cuantitativo', 'lectura_critica', 'competencias_ciudadanas', 'ingles'].map((type) => (
@@ -167,8 +172,8 @@ export default function CreateAssignmentModal({ isOpen, onClose, onAssignmentCre
                                         key={type}
                                         onClick={() => setAssignmentType(type)}
                                         className={`cursor-pointer p-4 rounded-xl border transition-all ${assignmentType === type
-                                            ? 'bg-metal-gold/20 border-metal-gold text-white'
-                                            : 'bg-black/20 border-metal-silver/10 text-metal-silver hover:bg-white/5'
+                                            ? 'bg-brand-primary/10 border-brand-primary text-[var(--theme-text-primary)] shadow-sm'
+                                            : 'bg-[var(--theme-bg-base)]/50 border-[var(--theme-border-soft)] text-[var(--theme-text-secondary)] hover:bg-[var(--theme-bg-overlay)]'
                                             }`}
                                     >
                                         <div className="font-bold capitalize mb-1">
@@ -181,16 +186,16 @@ export default function CreateAssignmentModal({ isOpen, onClose, onAssignmentCre
                                 <div
                                     onClick={() => isPro && setAssignmentType('simulation_full')}
                                     className={`relative cursor-pointer p-4 rounded-xl border transition-all ${assignmentType === 'simulation_full'
-                                        ? 'bg-purple-500/20 border-purple-500 text-white'
-                                        : 'bg-black/20 border-metal-silver/10 text-metal-silver'
-                                        } ${!isPro ? 'opacity-60 cursor-not-allowed' : 'hover:bg-purple-500/10'}`}
+                                        ? 'bg-purple-500/10 border-purple-500 text-[var(--theme-text-primary)] shadow-sm'
+                                        : 'bg-[var(--theme-bg-base)]/50 border-[var(--theme-border-soft)] text-[var(--theme-text-secondary)]'
+                                        } ${!isPro ? 'opacity-60 cursor-not-allowed' : 'hover:bg-purple-500/5'}`}
                                 >
                                     <div className="font-bold flex items-center justify-between">
                                         Simulacro Completo
-                                        {!isPro && <Lock size={16} className="text-metal-silver" />}
+                                        {!isPro && <Lock size={16} className="text-[var(--theme-text-tertiary)]" />}
                                     </div>
-                                    <div className="text-xs mt-1 text-purple-300 flex items-center gap-1">
-                                        <Zap size={10} className="fill-purple-300" />
+                                    <div className="text-xs mt-1 text-purple-500 font-medium flex items-center gap-1">
+                                        <Zap size={10} className="fill-purple-500" />
                                         Exclusivo Premium: Incluye IA y Resultados Globales
                                     </div>
                                 </div>
@@ -200,45 +205,47 @@ export default function CreateAssignmentModal({ isOpen, onClose, onAssignmentCre
                         {/* Title and Date */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label className="block text-sm font-bold text-metal-silver mb-2">Título Personalizado (Opcional)</label>
+                                <label className="block text-sm font-bold text-[var(--theme-text-secondary)] mb-2 uppercase tracking-wide">Título Personalizado (Opcional)</label>
                                 <input
                                     type="text"
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
                                     placeholder={getTitleForType(assignmentType)}
-                                    className="w-full bg-black/40 border border-metal-silver/20 rounded-xl p-3 text-white focus:border-metal-gold outline-none"
+                                    className="w-full bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] rounded-xl p-3 text-[var(--theme-text-primary)] focus:border-brand-primary outline-none transition-all placeholder:text-[var(--theme-text-tertiary)]"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-bold text-metal-silver mb-2">Fecha Límite</label>
+                                <label className="block text-sm font-bold text-[var(--theme-text-secondary)] mb-2 uppercase tracking-wide">Fecha Límite</label>
                                 <div className="relative">
                                     <input
                                         type="datetime-local"
                                         value={dueDate}
                                         onChange={(e) => setDueDate(e.target.value)}
-                                        className="w-full bg-black/40 border border-metal-silver/20 rounded-xl p-3 text-white focus:border-metal-gold outline-none"
+                                        className="w-full bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] rounded-xl p-3 text-[var(--theme-text-primary)] focus:border-brand-primary outline-none transition-all"
                                     />
-                                    <Calendar className="absolute right-3 top-3.5 text-metal-silver pointer-events-none" size={18} />
+                                    <Calendar className="absolute right-3 top-3.5 text-[var(--theme-text-tertiary)] pointer-events-none" size={18} />
                                 </div>
                             </div>
                         </div>
 
-                        {/* Action Buttons */}
-                        <div className="flex justify-end gap-3 pt-4 border-t border-metal-silver/10">
-                            <button
+                        <div className="flex justify-end gap-3 pt-4 border-t border-[var(--theme-border-soft)]">
+                            <Button
                                 type="button"
+                                variant="ghost"
                                 onClick={onClose}
-                                className="px-6 py-2 rounded-xl text-metal-silver hover:bg-white/5 transition-colors"
+                                className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)]"
                             >
                                 Cancelar
-                            </button>
-                            <button
+                            </Button>
+                            <Button
                                 type="submit"
+                                variant="primary"
+                                className="shadow-gold font-bold uppercase tracking-wide text-xs h-10"
+                                isLoading={submitting}
                                 disabled={submitting || (!isPro && activeAssignmentsCount >= 3)}
-                                className="metallic-btn bg-metal-gold text-black font-bold px-8 py-2 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                             >
                                 {submitting ? 'Asignando...' : 'Crear Asignación'}
-                            </button>
+                            </Button>
                         </div>
                     </form>
                 </div>

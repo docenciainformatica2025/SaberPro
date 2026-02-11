@@ -173,7 +173,7 @@ const SimulationContent = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-metal-dark">
+            <div className="min-h-screen flex items-center justify-center bg-[var(--theme-bg-base)]">
                 <AIProcessingLoader text="Cargando Simulacro" subtext="Preparando entorno de examen real..." />
             </div>
         );
@@ -181,13 +181,13 @@ const SimulationContent = () => {
 
     if (error) {
         return (
-            <div className="min-h-screen flex flex-col items-center justify-center p-4 text-center bg-metal-dark">
+            <div className="min-h-screen flex flex-col items-center justify-center p-4 text-center bg-[var(--theme-bg-base)]">
                 <Card variant="solid" className="p-10 max-w-md border-red-500/30 bg-red-500/5 backdrop-blur-md">
                     <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-6 text-red-500">
                         <AlertCircle size={32} />
                     </div>
                     <h2 className="text-red-400 font-bold text-2xl mb-4 uppercase tracking-tight">Error de Carga</h2>
-                    <p className="text-metal-silver mb-8 font-medium">{error}</p>
+                    <p className="text-[var(--theme-text-secondary)] mb-8 font-medium">{error}</p>
                     <Link href={role === 'teacher' ? "/teacher" : "/dashboard"} className="block w-full">
                         <Button variant="outline" className="w-full border-red-500/20 text-red-400 hover:text-red-300 hover:bg-red-500/10" icon={ArrowLeft}>
                             {role === 'teacher' ? "Volver al Panel" : "Regresar al Inicio"}
@@ -217,7 +217,7 @@ const SimulationContent = () => {
     const isStudyMode = searchParams.get('mode') === 'study';
 
     return (
-        <div className="min-h-screen py-6 md:py-12 bg-metal-dark text-white selection:bg-metal-gold/30">
+        <div className="min-h-screen py-6 md:py-12 bg-[var(--theme-bg-base)] text-[var(--theme-text-primary)] selection:bg-[var(--theme-accent-color)]/30">
             <QuizEngine
                 questions={questions}
                 moduleName={moduleName}
@@ -233,7 +233,7 @@ const SimulationContent = () => {
 
 export default function SimulationPage() {
     return (
-        <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-metal-dark"><AIProcessingLoader text="Iniciando..." /></div>}>
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[var(--theme-bg-base)]"><AIProcessingLoader text="Iniciando..." /></div>}>
             <SimulationContent />
         </Suspense>
     );
