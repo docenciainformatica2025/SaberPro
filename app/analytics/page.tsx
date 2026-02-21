@@ -38,9 +38,9 @@ export default function AnalyticsPage() {
     const { user, loading } = useAuth();
     const router = useRouter();
     const [isLoadingData, setIsLoadingData] = useState(true);
-    const [trendData, setTrendData] = useState<any[]>([]);
-    const [radarData, setRadarData] = useState<any[]>([]);
-    const [fullResults, setFullResults] = useState<any[]>([]);
+    const [trendData, setTrendData] = useState<{ name: string; value: number; fullDate: Date }[]>([]);
+    const [radarData, setRadarData] = useState<{ name: string; value: number; fullMark: number }[]>([]);
+    const [fullResults, setFullResults] = useState<any[]>([]); // Keep as any[] for now as its complex but handle safely
     const [selectedResult, setSelectedResult] = useState<any | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [userName, setUserName] = useState("Estudiante");
@@ -125,8 +125,7 @@ export default function AnalyticsPage() {
 
                 // Generate AI Analysis
                 const analysis = adaptiveEngine.analyzeProfile(radar, {
-                    averageScore: snapshot.size > 0 ? Math.round(totalScoreSum / snapshot.size) : 0,
-                    totalSimulations: snapshot.size
+                    averageScore: snapshot.size > 0 ? Math.round(totalScoreSum / snapshot.size) : 0
                 });
                 setAiAnalysis(analysis);
             } catch (error) {
@@ -281,7 +280,11 @@ export default function AnalyticsPage() {
                                     <p className="text-xs font-bold text-[var(--theme-text-secondary)]/50 uppercase tracking-wider mt-1">Tendencia de tus últimos 7 simulacros</p>
                                 </div>
                                 <div className="h-[300px] w-full">
-                                    <PerformanceChart type="line" data={trendData} color="#D4AF37" />
+                                    <PerformanceChart
+                                        type="line"
+                                        data={trendData.map(({ fullDate, ...rest }) => rest)}
+                                        color="#D4AF37"
+                                    />
                                 </div>
                             </Card>
 

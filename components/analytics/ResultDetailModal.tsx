@@ -16,7 +16,7 @@ interface Result {
     module: string;
     score: number;
     totalQuestions: number;
-    completedAt: any;
+    completedAt: { toDate: () => Date } | Date | number | string | null;
     isPartial?: boolean;
 }
 
@@ -37,7 +37,9 @@ export default function ResultDetailModal({ isOpen, onClose, result, userName }:
     if (!isOpen || !result) return null;
 
     const percentage = Math.round((result.score / result.totalQuestions) * 100);
-    const date = result.completedAt?.toDate ? result.completedAt.toDate() : new Date();
+    const date = (result.completedAt && typeof result.completedAt === 'object' && 'toDate' in result.completedAt)
+        ? result.completedAt.toDate()
+        : (result.completedAt instanceof Date ? result.completedAt : new Date());
 
     // Mock Level Calculation (ICFES uses 1-4 scale) - Using HEX for PDF compatibility
     const getLevel = (pct: number) => {
@@ -234,7 +236,7 @@ export default function ResultDetailModal({ isOpen, onClose, result, userName }:
     );
 }
 
-function FileTextIcon(props: any) {
+function FileTextIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}

@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 
 
 @theme {
@@ -70,17 +70,18 @@ body {
   transition: box-shadow var(--motion-fast) ease;
 }
 
+
 :root {
-  /* 🎯 Paleta Corporativa Pro 2026 (Deaudited Colors) */
+  /* 🎯 Paleta Corporativa Pro 2026 (Actualizada) */
   --brand-primary: #1A237E;
   /* Deep Academic Blue */
   --brand-primary-light: #3949AB;
   --brand-success: #00C853;
-  /* Success Green */
+  /* Verde Éxito Profesional */
   --brand-accent: #FF9100;
-  /* Amber Motivation */
-  --brand-error: #FF3D00;
-  /* Critical Red */
+  /* Ámbar de Motivación */
+  --brand-error: #D32F2F;
+  /* Rojo Crítico Refinado */
 
   /* 🧾 Paleta Neutra (Elite Grays) */
   --text-primary: #0F172A;
@@ -174,9 +175,11 @@ body {
   --chart-5: #64748B;
   /* Muted Slate */
 
-  /* 4K Visual Hardening System */
-  --border-4k: 0.5px solid rgba(0, 0, 0, 0.05);
-  --shadow-4k: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05), 0 12px 24px rgba(0, 0, 0, 0.05);
+  /* Sistema de Refuerzo Visual 4K */
+  --border-4k: 0.5px solid rgba(15, 23, 42, 0.08);
+  --shadow-4k: 0 0 0 1px rgba(0, 0, 0, 0.02),
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 12px 24px rgba(0, 0, 0, 0.06);
   --ring-4k: 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
 
   /* Depth System (Startup-Grade) */

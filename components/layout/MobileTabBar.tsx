@@ -91,8 +91,8 @@ export default function MobileTabBar() {
     return (
         <>
             {/* Fixed Bottom Tab Bar (Mobile Only) */}
-            <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[var(--theme-bg-overlay)] backdrop-blur-xl border-t border-white/10 dark:border-white/5 shadow-[0_-4px_16px_rgba(0,0,0,0.1)] dark:shadow-[0_-4px_16px_rgba(0,0,0,0.5)] transition-colors">
-                <div className="flex justify-around items-center h-16 px-2">
+            <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[var(--theme-bg-overlay)] backdrop-blur-2xl border-t border-white/5 shadow-[0_-8px_30px_rgba(0,0,0,0.12)] transition-colors">
+                <div className="flex justify-around items-center h-14 px-1">
                     {navItems.map((item) => {
                         const isActive = pathname === item.href || pathname.startsWith(item.href + '/');
                         const Icon = item.icon;
@@ -102,23 +102,23 @@ export default function MobileTabBar() {
                                 key={item.href}
                                 onClick={() => handleProtectedNavigation(item.href)}
                                 className={`
-                                    flex flex-col items-center justify-center gap-1
-                                    min-w-[48px] min-h-[48px] px-3 py-2 rounded-xl
+                                    flex flex-col items-center justify-center gap-0.5
+                                    min-w-[48px] h-full px-2
                                     transition-all duration-300 ease-out
-                                    active:scale-95 touch-manipulation
+                                    active:scale-90 touch-manipulation
                                     ${isActive
-                                        ? 'text-brand-primary bg-brand-primary/10'
-                                        : 'text-[var(--theme-text-tertiary)] hover:text-[var(--theme-text-primary)] hover:bg-[var(--theme-text-primary)]/5'
+                                        ? 'text-brand-primary'
+                                        : 'text-[var(--theme-text-tertiary)] opacity-60'
                                     }
                                 `}
                                 aria-label={item.name}
                             >
                                 <Icon
-                                    size={20}
-                                    strokeWidth={2.5}
-                                    className={`transition-transform ${isActive ? 'scale-110' : ''}`}
+                                    size={18}
+                                    strokeWidth={isActive ? 2.5 : 2}
+                                    className={`transition-all ${isActive ? 'scale-110 drop-shadow-[0_0_8px_rgba(var(--brand-primary-rgb),0.5)]' : ''}`}
                                 />
-                                <span className="text-[10px] font-semibold uppercase tracking-wider leading-none">
+                                <span className="text-[8px] font-black uppercase tracking-[0.1em] leading-none">
                                     {item.name}
                                 </span>
                             </button>

@@ -28,7 +28,7 @@ export default function AdminRoleSwitcher() {
     };
 
     return (
-        <div className="fixed bottom-24 right-6 md:bottom-10 md:right-10 z-[99999] animate-in slide-in-from-bottom-10 duration-700">
+        <div className="fixed bottom-24 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-auto md:right-10 md:bottom-10 z-[99999] animate-in slide-in-from-bottom-10 duration-700 w-[95vw] md:w-auto flex justify-center">
             {isMinimized ? (
                 <button
                     onClick={() => setIsMinimized(false)}
@@ -37,7 +37,7 @@ export default function AdminRoleSwitcher() {
                     <Zap size={24} className="group-hover:animate-pulse" />
                 </button>
             ) : (
-                <div className="bg-[var(--theme-bg-overlay)] backdrop-blur-3xl border border-[var(--theme-border-soft)] rounded-2xl p-2.5 flex items-center gap-3 shadow-[0_30px_60px_rgba(0,0,0,0.3)] ring-1 ring-white/10 transition-all">
+                <div className="bg-[var(--theme-bg-overlay)] backdrop-blur-3xl border border-[var(--theme-border-soft)] rounded-2xl p-1.5 md:p-2.5 flex items-center gap-1.5 md:gap-3 shadow-[0_30px_60px_rgba(0,0,0,0.3)] ring-1 ring-white/10 transition-all">
                     <div className="px-5 py-2 border-r border-[var(--theme-border-soft)] hidden md:block">
                         <div className="flex items-center gap-3">
                             <Zap size={16} className="text-brand-primary animate-pulse" />
@@ -52,7 +52,7 @@ export default function AdminRoleSwitcher() {
                                 <button
                                     key={r.id}
                                     onClick={() => handleSwitch(r.id as 'admin' | 'student' | 'teacher', r.path)}
-                                    className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all duration-500 ${isActive
+                                    className={`flex items-center gap-2 px-3 py-2 md:px-5 md:py-2.5 rounded-xl text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all duration-500 ${isActive
                                         ? `${r.bg} ${r.color} ring-1 ring-brand-primary/20 shadow-[0_0_20px_rgba(212,175,55,0.1)]`
                                         : 'text-[var(--theme-text-secondary)]/50 hover:text-[var(--theme-text-primary)] hover:bg-[var(--theme-text-primary)]/10'
                                         }`}

@@ -39,6 +39,29 @@ const BRAND_COLORS = {
 
 const CHART_COLORS = ['var(--chart-1)', 'var(--chart-2)', 'var(--chart-3)', 'var(--chart-4)'];
 
+function FileTextIcon(props: React.SVGProps<SVGSVGElement>) {
+    return (
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+            <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+            <path d="M10 9H8" />
+            <path d="M16 13H8" />
+            <path d="M16 17H8" />
+        </svg>
+    );
+}
+
 export default function FinanceDashboard() {
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [userMap, setUserMap] = useState<Record<string, FinanceUserProfile>>({});
@@ -224,7 +247,7 @@ export default function FinanceDashboard() {
                                 <ThemedXAxis dataKey="name" />
                                 <ThemedYAxis tickFormatter={(v) => `$${(v as number) / 1000}k`} />
                                 <ThemedTooltip
-                                    formatter={(v: any) => [`$${v?.toLocaleString('es-CO') || 0}`, "Ingresos"]}
+                                    formatter={(v: number) => [`$${v?.toLocaleString('es-CO') || 0}`, "Ingresos"]}
                                 />
                                 <Area type="monotone" dataKey="value" stroke="var(--brand-primary)" strokeWidth={3} fillOpacity={1} fill="url(#colorRev)" />
                             </AreaChart>
@@ -349,7 +372,15 @@ export default function FinanceDashboard() {
                                             className="h-8 text-[10px] uppercase font-bold tracking-wider hover:text-brand-primary hover:bg-[var(--theme-bg-surface)]/20"
                                             onClick={async () => {
                                                 const { invoiceGenerator } = await import("@/utils/invoiceGenerator");
-                                                invoiceGenerator.generateInvoice(tx, {
+                                                // Convert Firebase timestamp to Date for type compatibility
+                                                const createdAtDate = tx.createdAt?.seconds
+                                                    ? new Date(tx.createdAt.seconds * 1000)
+                                                    : new Date();
+
+                                                invoiceGenerator.generateInvoice({
+                                                    ...tx,
+                                                    createdAt: createdAtDate
+                                                } as any, {
                                                     fullName: userName,
                                                     email: u.email || "---",
                                                     uid: tx.userId
@@ -430,7 +461,15 @@ export default function FinanceDashboard() {
                                                     className="hover:scale-125 active:scale-90 transition-transform"
                                                     onClick={async () => {
                                                         const { invoiceGenerator } = await import("@/utils/invoiceGenerator");
-                                                        invoiceGenerator.generateInvoice(tx, {
+                                                        // Convert Firebase timestamp to Date for type compatibility
+                                                        const createdAtDate = tx.createdAt?.seconds
+                                                            ? new Date(tx.createdAt.seconds * 1000)
+                                                            : new Date();
+
+                                                        invoiceGenerator.generateInvoice({
+                                                            ...tx,
+                                                            createdAt: createdAtDate
+                                                        } as any, {
                                                             fullName: userName,
                                                             email: u.email || "---",
                                                             uid: tx.userId

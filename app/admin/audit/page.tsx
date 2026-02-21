@@ -69,18 +69,18 @@ export default function AuditPage() {
 
     return (
         <main className="max-w-7xl mx-auto space-y-12 pb-12 p-4 lg:p-0 animate-in fade-in slide-in-from-bottom-8 duration-700" suppressHydrationWarning>
-            {/* Header Area */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            {/* Header Area Minimalista */}
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md p-5 rounded-2xl border border-slate-200/60 dark:border-slate-800/60">
                 <div>
-                    <h1 className="text-5xl lg:text-6xl font-black text-theme-hero flex items-center gap-4 tracking-tighter italic uppercase">
-                        <Terminal className="text-brand-primary" size={48} /> Auditoría Central
+                    <h1 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2.5 tracking-tight">
+                        <Terminal className="text-brand-primary" size={20} /> Auditoría Central
                     </h1>
-                    <p className="text-[var(--theme-text-tertiary)] text-xs mt-2 flex items-center gap-2 font-black uppercase tracking-widest opacity-70">
-                        <ShieldAlert size={14} className="text-brand-primary" /> Ledger Inmutable v4.5 • Trazabilidad Total
+                    <p className="text-[10px] text-slate-500 mt-1 flex items-center gap-2 font-black uppercase tracking-widest opacity-80 ml-7">
+                        <ShieldAlert size={12} className="text-brand-primary" /> Ledger Inmutable v4.5 • Trazabilidad Total
                     </p>
                 </div>
-                <Badge variant="success" className="bg-green-500/10 text-green-400 border-green-500/20 animate-pulse font-black uppercase tracking-widest text-[10px] px-6 py-2.5 shadow-[0_0_20px_rgba(34,197,94,0.1)]">
-                    ● Monitoreo en Tiempo Real
+                <Badge variant="success" className="bg-emerald-500/10 text-emerald-500 border-none font-black uppercase tracking-widest text-[9px] px-4 py-1.5 shadow-sm">
+                    ● Monitoreo Activo
                 </Badge>
             </div>
 

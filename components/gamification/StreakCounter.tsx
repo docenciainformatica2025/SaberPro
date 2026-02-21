@@ -42,15 +42,15 @@ export default function StreakCounter() {
                     : "bg-[var(--theme-bg-base)]/50 border-[var(--theme-border-soft)] text-theme-text-secondary grayscale hover:grayscale-0 hover:border-brand-primary/30 hover:text-brand-primary"
                 }
             `}
-            title={isCompletedToday ? "¡Racha diaria completada!" : "¡Completa un simulacro para mantener tu racha!"}
+            title={isCompletedToday ? "¡Racha diaria completada!" : "¡Sigue entrenando para mantener tu racha!"}
         >
-            <div className={`relative ${isCompletedToday ? "animate-pulse" : ""}`}>
+            <div className={`relative ${isCompletedToday ? "opacity-90" : ""}`}>
                 <Flame
-                    size={18}
+                    size={16}
                     className={`
                         transition-all duration-500
-                        ${isCompletedToday ? "fill-orange-500 text-orange-600 drop-shadow-[0_0_8px_rgba(249,115,22,0.8)]" : "fill-transparent text-current"}
-                        ${animated ? "scale-125 rotate-12" : ""}
+                        ${isCompletedToday ? "fill-brand-accent text-brand-accent drop-shadow-[0_0_4px_rgba(255,145,0,0.4)]" : "fill-transparent text-current"}
+                        ${animated ? "scale-110" : ""}
                     `}
                 />
 

@@ -10,7 +10,7 @@ interface PageTransitionProps {
 export default function PageTransition({ children }: PageTransitionProps) {
     // Disabled animations to prevent FOUC/Opacity issues per user report "se carga y se opaca"
     return (
-        <div className="w-full flex-grow flex flex-col">
+        <div className="w-full flex-grow flex flex-col" suppressHydrationWarning>
             {children}
         </div>
     );

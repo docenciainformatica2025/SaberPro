@@ -15,8 +15,7 @@ import {
     ShieldAlert
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { collection, getCountFromServer, query, getDocs, limit, where } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { adminService, DashboardUser } from "@/services/admin/admin.service";
 import Link from "next/link";
 import {
     BarChart,
@@ -63,13 +62,7 @@ const activityData: ActivityDatum[] = [
     { day: 'DOM', users: 380, revenue: 18962000 },
 ];
 
-interface DashboardUser {
-    id: string;
-    city?: string;
-    targetCareer?: string;
-    dreamUniversity?: string;
-    [key: string]: unknown;
-}
+// La interfaz DashboardUser ahora se importa de @/services/adminService
 
 interface ChartDataItem {
     name: string;
@@ -93,36 +86,16 @@ export default function AdminDashboard() {
     useEffect(() => {
         async function fetchStats() {
             try {
-                // 1. Core Counts
-                const usersColl = collection(db, "users");
-                const questionsColl = collection(db, "questions");
-                const resultsColl = collection(db, "results");
-
-                // Count Pro Users
-                const qPro = query(usersColl, where("subscription.plan", "==", "pro"));
-                const qUsers = query(usersColl, limit(100));
-
-                const [usersSnapshot, questionsSnapshot, resultsSnapshot, proSnapshot, userDocs] = await Promise.all([
-                    getCountFromServer(usersColl),
-                    getCountFromServer(questionsColl),
-                    getCountFromServer(resultsColl),
-                    getCountFromServer(qPro),
-                    getDocs(qUsers)
+                // 1. Obtener estadísticas y usuarios mediante el servicio centralizado
+                const [dashboardStats, users] = await Promise.all([
+                    adminService.getDashboardStats(),
+                    adminService.getRecentUsers(100)
                 ]);
 
-                setStats({
-                    users: usersSnapshot.data().count,
-                    questions: questionsSnapshot.data().count,
-                    simulations: resultsSnapshot.data().count,
-                    proUsers: proSnapshot.data().count
-                });
-
-                // 2. Analytics Data (Sample)
-                const users = userDocs.docs.map(d => ({ id: d.id, ...d.data() } as DashboardUser));
-
+                setStats(dashboardStats);
                 setRecentUsers(users.slice(0, 5));
 
-                // Aggregations
+                // 2. Procesamiento de agregaciones (mantenido en cliente para reactividad local)
                 const cityCounts: Record<string, number> = {};
                 const careerCounts: Record<string, number> = {};
                 const uniCounts: Record<string, number> = {};
@@ -144,7 +117,7 @@ export default function AdminDashboard() {
                 setUniversityData(transformForChart(uniCounts));
 
             } catch (error) {
-                console.error("Error fetching admin stats:", error);
+                console.error("Error fetching admin stats via service:", error);
             } finally {
                 setLoading(false);
             }
@@ -163,15 +136,15 @@ export default function AdminDashboard() {
     if (loading) return <DashboardSkeleton />;
 
     return (
-        <main className="max-w-7xl mx-auto space-y-12 pb-12 p-4 lg:p-0 animate-in fade-in slide-in-from-bottom-8 duration-700">
+        <main className="max-w-7xl mx-auto space-y-12 pb-12 p-4 lg:p-0 animate-in fade-in slide-in-from-bottom-8 duration-700" suppressHydrationWarning>
             {/* Header Pro */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800/60">
                 <div>
-                    <h1 className="text-4xl font-black text-theme-hero flex items-center gap-4 tracking-tighter uppercase italic">
-                        <Activity className="text-brand-primary" size={36} /> Comando Central
+                    <h1 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 tracking-tight">
+                        <Activity className="text-brand-primary" size={20} /> Comando Central
                     </h1>
-                    <p className="text-[var(--theme-text-tertiary)] text-sm mt-1 flex items-center gap-2 font-medium">
-                        <ShieldAlert size={14} className="text-brand-primary" /> Monitor de Operaciones e Inteligencia de Negocio
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 flex items-center gap-1.5 font-medium ml-7">
+                        Inteligencia de Negocio & Operaciones
                     </p>
                 </div>
 
@@ -229,7 +202,7 @@ export default function AdminDashboard() {
             <section className="space-y-6">
                 <div className="flex items-center gap-3 px-2">
                     <div className="w-1.5 h-6 bg-brand-primary rounded-full" />
-                    <h2 className="text-xl font-bold text-[var(--theme-text-primary)] italic uppercase tracking-tight">Intelligence Central</h2>
+                    <h2 className="text-xl font-bold text-[var(--theme-text-primary)] italic uppercase tracking-tight">Inteligencia Estratégica</h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -242,7 +215,9 @@ export default function AdminDashboard() {
                         <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
                             El 35% de los estudiantes de <strong>Ingeniería</strong> han mostrado un descenso en Razonamiento Cuantitativo. Se recomienda activar refuerzo modular.
                         </p>
-                        <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Ver Análisis de Cohorte</Button>
+                        <Link href="/admin/analytics">
+                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Ver Análisis de Cohorte</Button>
+                        </Link>
                     </Card>
 
                     <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-brand-accent">
@@ -252,9 +227,11 @@ export default function AdminDashboard() {
                         </div>
                         <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Pico de Engagament: Bogotá</h4>
                         <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
-                            Aumento del 42% en actividad nocturna durante la última semana. Oportunidad para lanzar campaña de "Examen Mañana".
+                            Aumento del 42% en actividad nocturna durante la última semana. Oportunidad para lanzar campaña de &quot;Examen Mañana&quot;.
                         </p>
-                        <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Lanzar Notificación IA</Button>
+                        <Link href="/admin/analytics">
+                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Lanzar Notificación IA</Button>
+                        </Link>
                     </Card>
 
                     <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-brand-success">
@@ -266,7 +243,93 @@ export default function AdminDashboard() {
                         <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
                             El nuevo flujo de onboarding ha incrementado la retención de primer día a un <strong>68%</strong>. Sincronización exitosa con Firebase.
                         </p>
-                        <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Ver Embudo de Conversión</Button>
+                        <Link href="/admin/analytics">
+                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Ver Embudo de Conversión</Button>
+                        </Link>
+                    </Card>
+
+                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-orange-500">
+                        <div className="flex items-center gap-3 text-orange-500">
+                            <Users size={20} />
+                            <span className="text-[10px] font-bold uppercase tracking-widest">Retención de Usuarios</span>
+                        </div>
+                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Riesgo de Fuga: Cohorte Marzo</h4>
+                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
+                            Se detectó inactividad &gt; 5 días en el <strong>12%</strong> de usuarios nuevos. Se sugiere activar secuencia de reactivación por email.
+                        </p>
+                        <Link href="/admin/users">
+                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Activar Secuencia</Button>
+                        </Link>
+                    </Card>
+
+                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-blue-400">
+                        <div className="flex items-center gap-3 text-blue-400">
+                            <Activity size={20} />
+                            <span className="text-[10px] font-bold uppercase tracking-widest">Infraestructura</span>
+                        </div>
+                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Latencia del Sistema: 45ms</h4>
+                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
+                            Rendimiento óptimo. El tiempo de respuesta de la API se ha reducido en un <strong>15%</strong> tras la última optimización de índices.
+                        </p>
+                        <Link href="/admin/system">
+                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Reporte Técnico</Button>
+                        </Link>
+                    </Card>
+
+                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-purple-500">
+                        <div className="flex items-center gap-3 text-purple-500">
+                            <DollarSign size={20} />
+                            <span className="text-[10px] font-bold uppercase tracking-widest">Financiero</span>
+                        </div>
+                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Proyección de Cierre: +18%</h4>
+                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
+                            Basado en el MRR actual, se proyecta superar la meta mensual. Los planes <strong>Pro Semestrales</strong> lideran la facturación.
+                        </p>
+                        <Link href="/admin/finance">
+                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Detalle Financiero</Button>
+                        </Link>
+                    </Card>
+
+                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-red-500">
+                        <div className="flex items-center gap-3 text-red-500">
+                            <AlertCircle size={20} />
+                            <span className="text-[10px] font-bold uppercase tracking-widest">Seguridad</span>
+                        </div>
+                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Intentos de Acceso: Bloqueados</h4>
+                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
+                            Se bloquearon <strong>3 IPs sospechosas</strong> intentando fuerza bruta en el panel administrativo. El firewall está activo.
+                        </p>
+                        <Link href="/admin/audit">
+                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Ver Logs de Seguridad</Button>
+                        </Link>
+                    </Card>
+
+                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-teal-500">
+                        <div className="flex items-center gap-3 text-teal-500">
+                            <FileQuestion size={20} />
+                            <span className="text-[10px] font-bold uppercase tracking-widest">Contenido</span>
+                        </div>
+                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Calidad del Banco: 4.9/5</h4>
+                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
+                            Los estudiantes han calificado positivamente las explicaciones de las nuevas preguntas de <strong>Competencias Ciudadanas</strong>.
+                        </p>
+                        <Link href="/admin/questions">
+                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Gestionar Preguntas</Button>
+                        </Link>
+                    </Card>
+
+                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-pink-500">
+                        <div className="flex items-center gap-3 text-pink-500">
+                            <School size={20} />
+                            <span className="text-[10px] font-bold uppercase tracking-widest">Soporte & CX</span>
+                        </div>
+                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">NPS Actual: 72 (Excelente)</h4>
+                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
+                            La satisfacción del usuario se mantiene alta. El principal feedback positivo es la velocidad de la plataforma.
+                        </p>
+                        <Link href="/admin/analytics">
+                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Leer Comentarios</Button>
+                        </Link>
                     </Card>
                 </div>
             </section>
@@ -325,11 +388,10 @@ export default function AdminDashboard() {
                                     innerRadius={70}
                                     outerRadius={95}
                                     paddingAngle={5}
-                                    cornerRadius={6}
                                     dataKey="value"
                                     stroke="none"
                                 >
-                                    {(locationData.length > 0 ? locationData : [{ name: 'Sin Datos', value: 1 }]).map((entry, index) => (
+                                    {(locationData.length > 0 ? locationData : [{ name: 'Sin Datos', value: 1 }]).map((entry: ChartDataItem, index: number) => (
                                         <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} className="outline-none" />
                                     ))}
                                 </Pie>
@@ -339,7 +401,7 @@ export default function AdminDashboard() {
                     </div>
 
                     <div className="w-full space-y-3 mt-6">
-                        {locationData.slice(0, 4).map((entry, index) => (
+                        {locationData.slice(0, 4).map((entry: ChartDataItem, index: number) => (
                             <div key={index} className="flex justify-between items-center p-3 rounded-xl bg-[var(--theme-bg-overlay)] border border-[var(--theme-border-soft)] hover:bg-[var(--theme-bg-surface)] transition-colors">
                                 <div className="flex items-center gap-3">
                                     <div className="w-2 h-2 rounded-full" style={{ backgroundColor: CHART_COLORS[index % CHART_COLORS.length] }} />
@@ -376,7 +438,7 @@ export default function AdminDashboard() {
                         <School className="text-[var(--chart-4)]" size={18} /> Top Aspiraciones
                     </h3>
                     <div className="space-y-6">
-                        {universityData.length > 0 ? universityData.map((uni, idx) => (
+                        {universityData.length > 0 ? universityData.map((uni: ChartDataItem, idx: number) => (
                             <div key={idx} className="group">
                                 <div className="flex justify-between items-end mb-2">
                                     <span className="text-[10px] font-bold text-[var(--theme-text-tertiary)] uppercase tracking-wider truncate max-w-[70%] group-hover:text-[var(--theme-text-primary)] transition-colors">{uni.name}</span>
@@ -385,7 +447,7 @@ export default function AdminDashboard() {
                                 <div className="h-1.5 bg-[var(--theme-bg-base)] rounded-full overflow-hidden border border-[var(--theme-border-soft)]">
                                     <div
                                         className="h-full bg-gradient-to-r from-[var(--chart-4)] to-[var(--chart-1)] transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(139,92,246,0.3)]"
-                                        style={{ width: `${(uni.value / Math.max(...universityData.map(u => u.value))) * 100}%` }}
+                                        style={{ width: `${(uni.value / Math.max(...universityData.map((u: ChartDataItem) => u.value))) * 100}%` }}
                                     />
                                 </div>
                             </div>

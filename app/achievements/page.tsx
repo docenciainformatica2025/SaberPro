@@ -2,118 +2,177 @@
 
 import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
-import { ArrowLeft, Lock, Star, Trophy, Zap, Target, BookOpen } from "lucide-react";
+import {
+    Crown,
+    Brain,
+    Calculator,
+    Search,
+    Award,
+    Briefcase,
+    Scale,
+    Share2,
+    CheckCircle2
+} from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
+import BottomNav from "@/components/layout/BottomNav";
 
-// Mock Achievements Config
-const ACHIEVEMENTS = [
-    { id: 'first_steps', title: 'Primeros Pasos', desc: 'Completa tu primer simulacro', icon: Star, color: 'text-yellow-400', xp: 50 },
-    { id: 'math_wiz', title: 'Mente Maestra', desc: 'Obtén 80%+ en Razonamiento Cuantitativo', icon: Zap, color: 'text-blue-400', xp: 200 },
-    { id: 'streak_3', title: 'En Llamas', desc: 'Mantén una racha de 3 días', icon: Trophy, color: 'text-orange-500', xp: 150 },
-    { id: 'reader', title: 'Lector Voraz', desc: 'Completa 5 módulos de Lectura Crítica', icon: BookOpen, color: 'text-green-400', xp: 100 },
-    { id: 'perfectionist', title: 'Perfeccionista', desc: 'Obtén 100% en cualquier módulo', icon: Target, color: 'text-purple-500', xp: 500 },
-    { id: 'veteran', title: 'Veterano', desc: 'Completa 50 simulacros totales', icon: Trophy, color: 'text-brand-primary', xp: 1000 },
+// Mock Data matching the screenshot
+const SKILL_HEXAGONS = [
+    { title: "Critical Thinking", icon: Brain, score: null, color: "text-blue-200" },
+    { title: "Quantitative Reasoning", icon: Calculator, score: null, color: "text-blue-200" },
+    { title: "Data Analysis", icon: Search, score: null, color: "text-blue-200" },
+    { title: "Strategic Leadership", icon: Award, score: "90%", color: "text-amber-400" },
+    { title: "Project Management", icon: Briefcase, score: "75%", color: "text-amber-400" },
+    { title: "Ethical Decision-Making", icon: Scale, score: "82%", color: "text-amber-400" },
+];
+
+const CERTIFICATES = [
+    {
+        title: "Advanced Data Analysis",
+        issued: "Oct 26, 2023",
+        id: "cert_001"
+    },
+    {
+        title: "Strategic Leadership",
+        issued: "Sept 15, 2023",
+        id: "cert_002"
+    }
 ];
 
 export default function AchievementsPage() {
-    const { user, profile } = useAuth(); // In real app, profile contains unlocked achievement IDs
-
-    // Mock user progress
-    const unlockedIds = ['first_steps', 'reader'];
-    const currentXP = 250;
-    const nextLevelXP = 500;
-    const level = 1;
+    const { user } = useAuth();
 
     return (
-        <div className="min-h-screen bg-[var(--theme-bg-base)] pb-24">
-            {/* Header */}
-            <div className="sticky top-0 z-40 bg-[var(--theme-bg-base)]/90 backdrop-blur-md border-b border-[var(--theme-border-soft)] p-4 md:px-8 flex justify-between items-center">
-                <Link href="/dashboard">
-                    <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)]">
-                        <span className="hidden md:inline">DASHBOARD</span>
-                    </Button>
-                </Link>
-                <h1 className="text-lg font-semibold uppercase tracking-wider text-[var(--theme-text-primary)]">Logros y Medallas</h1>
-                <div className="w-10" />
-            </div>
+        <div className="min-h-screen bg-gray-50 pb-24 font-sans">
+            {/* Dark Header Section */}
+            <div className="bg-[#0B1221] pt-8 pb-12 px-6 rounded-b-[2.5rem] relative overflow-hidden shadow-2xl">
+                {/* Background Glows */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
-            <div className="max-w-5xl mx-auto pt-8 px-4">
-
-                {/* Level / XP Header */}
-                <div className="mb-12 text-center animate-in fade-in slide-in-from-bottom-4 duration-700">
-                    <div className="inline-block relative mb-4">
-                        <div className="w-24 h-24 rounded-full border-4 border-brand-primary bg-[var(--theme-bg-base)] flex items-center justify-center relative z-10 shadow-[0_0_40px_rgba(212,175,55,0.3)]">
-                            <span className="text-4xl font-semibold text-[var(--theme-text-primary)]">{level}</span>
-                        </div>
-                        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-brand-primary text-black text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full z-20">
-                            Nivel
-                        </div>
+                <div className="relative z-10 max-w-md mx-auto text-center space-y-6">
+                    <div>
+                        <h1 className="text-2xl font-bold text-white tracking-tight">
+                            Professional Mastery<br />& Achievements
+                        </h1>
+                        <p className="text-blue-200/80 text-sm mt-1">Tu Nivel de Maestría</p>
                     </div>
 
-                    <h2 className="text-2xl font-bold text-[var(--theme-text-primary)] mb-2">Aprendiz Iniciado</h2>
-                    <p className="text-[var(--theme-text-secondary)] text-sm mb-6 max-w-md mx-auto">
-                        Sigue completando logros para ganar XP y subir de nivel.
-                    </p>
+                    {/* Master Level Card */}
+                    <div className="bg-[#151F32] border border-blue-800/50 rounded-2xl p-5 shadow-lg relative overflow-hidden group">
+                        <div className="flex justify-between items-center mb-3">
+                            <span className="text-xs font-bold text-blue-100 uppercase tracking-widest">Master Level</span>
+                            <div className="flex items-center gap-2">
+                                <span className="text-xs font-medium text-blue-200">88% Complete</span>
+                                <Crown size={16} className="text-amber-400 fill-amber-400 animate-pulse" />
+                            </div>
+                        </div>
 
-                    <div className="max-w-md mx-auto bg-[var(--theme-bg-surface)] rounded-full h-3 relative overflow-hidden">
-                        <div
-                            className="bg-gradient-to-r from-brand-primary to-yellow-400 h-full rounded-full transition-all duration-1000 ease-out"
-                            style={{ width: `${(currentXP / nextLevelXP) * 100}%` }}
-                        />
-                    </div>
-                    <div className="flex justify-between max-w-md mx-auto mt-2 text-[10px] font-semibold uppercase tracking-wider text-[var(--theme-text-secondary)]/50">
-                        <span>{currentXP} XP</span>
-                        <span>{nextLevelXP} XP</span>
+                        {/* Progress Bar Container */}
+                        <div className="h-4 bg-[#0B1221] rounded-full overflow-hidden border border-blue-900/50 relative">
+                            {/* Gold Gradient Bar */}
+                            <div
+                                className="h-full bg-gradient-to-r from-amber-600 via-amber-400 to-yellow-200 rounded-full relative shadow-[0_0_15px_rgba(251,191,36,0.5)]"
+                                style={{ width: "88%" }}
+                            >
+                                {/* Shimmer Effect */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent w-full -translate-x-full animate-[shimmer_2s_infinite]" />
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                {/* Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                    {ACHIEVEMENTS.map(ach => {
-                        const isUnlocked = unlockedIds.includes(ach.id);
-                        const Icon = ach.icon;
+            <div className="max-w-md mx-auto px-6 -mt-6 relative z-20 space-y-8">
+                {/* City Ranking Pill */}
+                <div className="bg-white shadow-xl shadow-blue-900/5 rounded-xl py-3 px-4 flex items-center justify-center gap-2 text-sm font-medium text-slate-700 border border-slate-100">
+                    <span className="text-brand-primary">↗</span>
+                    Estás en el top <span className="font-bold text-slate-900">5%</span> de tu ciudad
+                </div>
 
-                        return (
-                            <Card
-                                key={ach.id}
-                                variant={isUnlocked ? "glass" : "solid"}
-                                className={`
-                                    p-6 text-center flex flex-col items-center justify-center aspect-square transition-all duration-300
-                                    ${isUnlocked
-                                        ? "bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)] hover:border-brand-primary/30 hover:-translate-y-1 hover:shadow-xl"
-                                        : "bg-[var(--theme-bg-surface)]/40 border-[var(--theme-border-soft)]/5 opacity-60 grayscale"
-                                    }
-                                `}
-                            >
-                                <div className={`
-                                    w-16 h-16 rounded-full flex items-center justify-center mb-4 transition-transform duration-500
-                                    ${isUnlocked
-                                        ? `bg-[var(--theme-bg-base)] ${ach.color} shadow-[0_0_20px_currentColor] group-hover:scale-110`
-                                        : "bg-[var(--theme-bg-base)] text-[var(--theme-text-secondary)]"
-                                    }
-                                `}>
-                                    {isUnlocked ? <Icon size={32} /> : <Lock size={24} />}
+                {/* Hexagonal Grid */}
+                <div className="grid grid-cols-3 gap-y-4 gap-x-2 justify-items-center sm:gap-x-6">
+                    {SKILL_HEXAGONS.map((skill, idx) => (
+                        <div key={idx} className="flex flex-col items-center">
+                            {/* Hexagon Shape */}
+                            <div className="w-[88px] h-[100px] relative flex items-center justify-center group cursor-pointer transition-transform hover:-translate-y-1">
+                                <svg
+                                    viewBox="0 0 88 100"
+                                    className="absolute inset-0 w-full h-full drop-shadow-lg"
+                                    style={{ filter: "drop-shadow(0px 4px 6px rgba(0,0,0,0.1))" }}
+                                >
+                                    <path
+                                        d="M44 0 L88 25 L88 75 L44 100 L0 75 L0 25 Z"
+                                        fill="#1E293B"
+                                        stroke={skill.score ? "#D97706" : "#475569"}
+                                        strokeWidth="3"
+                                        className="transition-colors duration-300 group-hover:fill-[#0F172A]"
+                                    />
+                                </svg>
+
+                                <div className="relative z-10 flex flex-col items-center justify-center text-center p-2">
+                                    <skill.icon size={20} className={`${skill.color} mb-1`} />
+                                    <span className="text-[9px] font-bold text-white/90 leading-tight line-clamp-2 w-16">
+                                        {skill.title}
+                                    </span>
+                                    {skill.score && (
+                                        <div className="mt-1 w-8 h-8 rounded-full border border-amber-500/50 flex items-center justify-center bg-amber-950/50 backdrop-blur-sm">
+                                            <span className="text-[8px] font-bold text-amber-400">{skill.score}</span>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Certificates Section */}
+                <div className="space-y-4">
+                    {CERTIFICATES.map((cert, idx) => (
+                        <div key={idx} className="bg-white rounded-xl border border-blue-100 shadow-sm overflow-hidden relative group">
+                            {/* Decorative Borders */}
+                            <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-amber-400 rounded-tl-lg" />
+                            <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-amber-400 rounded-tr-lg" />
+                            <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-amber-400 rounded-bl-lg" />
+                            <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-amber-400 rounded-br-lg" />
+
+                            <div className="p-6 text-center space-y-4">
+                                <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Certificate of Competency</p>
+
+                                <div className="relative inline-block">
+                                    <h3 className="font-serif text-xl italic text-slate-900 border-b border-slate-200 pb-2 px-4">
+                                        - {cert.title}
+                                    </h3>
                                 </div>
 
-                                <h3 className={`font-bold text-sm uppercase tracking-tight mb-2 ${isUnlocked ? "text-[var(--theme-text-primary)]" : "text-[var(--theme-text-secondary)]"}`}>
-                                    {ach.title}
-                                </h3>
+                                <div className="flex items-center justify-between mt-4 md:px-8">
+                                    <div className="flex flex-col items-center">
+                                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-300 to-amber-500 flex items-center justify-center shadow-lg shadow-amber-200/50 mb-1">
+                                            <CheckCircle2 size={24} className="text-white" />
+                                        </div>
+                                    </div>
 
-                                <p className="text-xs text-[var(--theme-text-secondary)]/60 leading-tight mb-4 flex-grow">
-                                    {ach.desc}
-                                </p>
+                                    <div className="text-right">
+                                        <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Issued: {cert.issued}</p>
 
-                                <Badge variant="outline" className={`text-[9px] border-[var(--theme-border-soft)] ${isUnlocked ? "text-brand-primary" : "text-[var(--theme-text-secondary)]/30"}`}>
-                                    +{ach.xp} XP
-                                </Badge>
-                            </Card>
-                        );
-                    })}
+                                        <Button
+                                            variant="outline"
+                                            size="sm"
+                                            className="mt-2 h-8 text-[10px] font-bold border-slate-200 hover:border-blue-600 hover:text-blue-600 gap-2 rounded-full"
+                                        >
+                                            Share on LinkedIn <Share2 size={10} />
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
+            <BottomNav />
         </div>
     );
 }

@@ -1,9 +1,10 @@
 import { db } from "@/lib/firebase";
 import { collection, query, where, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
+import { Classroom } from "@/types/classroom";
 
 export class StudentService {
 
-    static async joinClassByCode(userId: string, code: string, studentName: string): Promise<{ success: boolean; message: string; classData?: any }> {
+    static async joinClassByCode(userId: string, code: string, studentName: string): Promise<{ success: boolean; message: string; classData?: Classroom }> {
         try {
             // 1. Validate Code
             const q = query(collection(db, "classrooms"), where("code", "==", code.toUpperCase()));
@@ -40,7 +41,7 @@ export class StudentService {
             return {
                 success: true,
                 message: `Te has unido a: ${classData.name}`,
-                classData: { id: classDoc.id, ...classData }
+                classData: { id: classDoc.id, ...classData } as Classroom
             };
 
         } catch (error) {

@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { ReactNode } from "react";
+import { ReactNode, memo } from "react";
 import NumberTicker from "@/components/ui/NumberTicker";
 
 interface StatCardPremiumProps {
@@ -12,7 +12,7 @@ interface StatCardPremiumProps {
     color: 'gold' | 'blue' | 'purple' | 'green';
 }
 
-export function StatCardPremium({ title, value, icon, trend, trendUp, color }: StatCardPremiumProps) {
+export const StatCardPremium = memo(({ title, value, icon, trend, trendUp, color }: StatCardPremiumProps) => {
     const theme = {
         gold: { bg: 'bg-brand-primary/10', text: 'text-brand-primary', border: 'border-brand-primary/20 shadow-sm shadow-brand-primary/5' },
         blue: { bg: 'bg-brand-primary/10', text: 'text-brand-primary', border: 'border-brand-primary/20 shadow-sm shadow-brand-primary/5' },
@@ -51,6 +51,8 @@ export function StatCardPremium({ title, value, icon, trend, trendUp, color }: S
             </div>
         </Card>
     );
-}
+});
+
+StatCardPremium.displayName = "StatCardPremium";
 
 export default StatCardPremium;

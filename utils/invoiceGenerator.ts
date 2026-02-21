@@ -22,7 +22,7 @@ interface InvoiceTransaction {
     id: string;
     amount: number;
     plan?: string;
-    createdAt?: any;
+    createdAt?: Date | number | string;
     method?: string | { type: string; provider: string };
 }
 

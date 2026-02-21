@@ -4,10 +4,10 @@
 import { useState, useEffect } from "react";
 import { X, Calendar, BookOpen, Brain, Zap, Lock, AlertTriangle } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
-import { db } from "@/lib/firebase";
-import { collection, query, where, getDocs, addDoc, serverTimestamp, getCountFromServer } from "firebase/firestore";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { ClassService } from "@/services/teacher/class.service";
+import { AssignmentService } from "@/services/teacher/assignment.service";
 
 interface CreateAssignmentModalProps {
     isOpen: boolean;
@@ -31,30 +31,26 @@ export default function CreateAssignmentModal({ isOpen, onClose, onAssignmentCre
     const isPro = subscription?.plan === 'pro';
 
     useEffect(() => {
-        if (isOpen && user) {
-            fetchClasses();
-            checkAssignmentQuota();
-        }
+        const loadInitialData = async () => {
+            if (isOpen && user) {
+                setLoading(true);
+                try {
+                    const [fetchedClasses, quota] = await Promise.all([
+                        ClassService.getClassesByTeacher(user.uid),
+                        AssignmentService.getActiveAssignmentsCount(user.uid)
+                    ]);
+                    setClasses(fetchedClasses);
+                    setActiveAssignmentsCount(quota);
+                } catch (error) {
+                    console.error("Error loading modal data:", error);
+                } finally {
+                    setLoading(false);
+                }
+            }
+        };
+
+        loadInitialData();
     }, [isOpen, user]);
-
-    const fetchClasses = async () => {
-        if (!user) return;
-        const q = query(collection(db, "classrooms"), where("teacherId", "==", user.uid));
-        const snapshot = await getDocs(q);
-        setClasses(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-    };
-
-    const checkAssignmentQuota = async () => {
-        if (!user) return;
-        // Count active assignments for this teacher
-        const q = query(
-            collection(db, "assignments"),
-            where("teacherId", "==", user.uid),
-            where("isActive", "==", true)
-        );
-        const snapshot = await getCountFromServer(q);
-        setActiveAssignmentsCount(snapshot.data().count);
-    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -75,16 +71,12 @@ export default function CreateAssignmentModal({ isOpen, onClose, onAssignmentCre
         setSubmitting(true);
 
         try {
-            await addDoc(collection(db, "assignments"), {
-                classId: selectedClass,
-                teacherId: user.uid,
-                type: assignmentType,
-                title: title || getTitleForType(assignmentType),
-                moduleId: assignmentType === 'simulation_full' ? 'full_simulation' : assignmentType,
-                dueDate: dueDate ? new Date(dueDate) : new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // Default 1 week
-                createdAt: serverTimestamp(),
-                isActive: true,
-                requiresPro: assignmentType === 'simulation_full' // Flag for student restrictions
+            await AssignmentService.createAssignment({
+                selectedClass,
+                assignmentType,
+                title,
+                dueDate,
+                teacherId: user.uid
             });
 
             onAssignmentCreated();

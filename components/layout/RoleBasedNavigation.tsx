@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, memo, useMemo } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -24,14 +24,15 @@ import {
     Trophy,
     Calendar,
     DollarSign,
-    Menu
+    Menu,
+    TrendingUp
 } from "lucide-react";
 import StreakCounter from "@/components/gamification/StreakCounter";
 import LevelBadge from "@/components/gamification/LevelBadge";
 import GlobalExitModal from "@/components/auth/GlobalExitModal";
 import { Logo } from "@/components/ui/Logo";
 
-export default function RoleBasedNavigation() {
+export const RoleBasedNavigation = memo(() => {
     const { user, profile, role, logout, loading, activeActivity } = useAuth();
     const pathname = usePathname();
     const router = useRouter();
@@ -41,19 +42,8 @@ export default function RoleBasedNavigation() {
         type: 'logout'
     });
 
-    // 1. Hide on public pages or authenticating
-    if (loading) return null;
-    if (!user) return null;
-    if (pathname === '/onboarding') return null;
-
-    // Hide on specific landing/login routes if needed, 
-    // but AuthProvider usually handles protection. 
-    // We definitely don't want this on "/" (Landing) if the user happens to be logged in but viewing landing? 
-    // Usually logged in users redirect to dashboard.
-    // Let's assume standard behavior.
-
-    // 2. Define Menus per Role
-    const teacherItems = [
+    // 2. Define Menus per Role (Memoized MUST be before early returns)
+    const teacherItems = useMemo(() => [
         { name: "Panel", href: "/teacher", icon: LayoutDashboard },
         { name: "Clases", href: "/teacher/classes", icon: Users },
         { name: "Tareas", href: "/teacher/assignments", icon: BookOpen },
@@ -62,10 +52,9 @@ export default function RoleBasedNavigation() {
         { name: "Simulacros", href: "/simulation", icon: Timer },
         { name: "Analíticas", href: "/teacher/analytics", icon: BarChart3 },
         { name: "Facturación", href: "/dashboard/billing", icon: CreditCard },
-        // Settings is handled separately
-    ];
+    ], []);
 
-    const adminItems = [
+    const adminItems = useMemo(() => [
         { name: "Panel", href: "/admin/dashboard", icon: LayoutDashboard },
         { name: "Finanzas", href: "/admin/finance", icon: DollarSign },
         { name: "Usuarios", href: "/admin/users", icon: Users },
@@ -73,50 +62,58 @@ export default function RoleBasedNavigation() {
         { name: "Analíticas", href: "/admin/analytics", icon: BarChart3 },
         { name: "Carga", href: "/admin/seed", icon: Database },
         { name: "Sistema", href: "/admin/system", icon: ShieldAlert },
-    ];
+    ], []);
 
-    const studentItems = [
+    const studentItems = useMemo(() => [
         { name: "Inicio", href: "/dashboard", icon: Home },
         { name: "Entrenar", href: "/training", icon: Sparkles },
+        { name: "Biblioteca", href: "/library", icon: BookOpen },
         { name: "Simulacros", href: "/simulation", icon: Timer },
         { name: "Analíticas", href: "/analytics", icon: BarChart3 },
+        { name: "Evolución", href: "/profile/evolution", icon: TrendingUp },
         { name: "Ranking", href: "/leaderboard", icon: Trophy },
         { name: "Planificador", href: "/planner", icon: Calendar },
         { name: "Suscripción", href: "/dashboard/billing", icon: CreditCard },
-    ];
+    ], []);
 
-    let navItems = [];
-    let brandSubtext = "Estudiante";
-    let brandIcon = <GraduationCap size={18} strokeWidth={2.5} className="text-[var(--theme-bg-base)]" />;
+    const branding = useMemo(() => {
+        if (role === 'teacher') {
+            return {
+                navItems: teacherItems,
+                brandSubtext: "Docente",
+                brandIcon: (
+                    <div className="p-1.5 bg-brand-primary/10 rounded-lg shadow-sm">
+                        <GraduationCap className="text-brand-primary" size={18} strokeWidth={2.5} />
+                    </div>
+                )
+            };
+        } else if (role === 'admin' || (user?.email && (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "").includes(user.email))) {
+            return {
+                navItems: adminItems,
+                brandSubtext: "Administrador",
+                brandIcon: (
+                    <div className="p-1.5 bg-brand-primary/10 rounded-lg shadow-sm">
+                        <ShieldAlert className="text-brand-primary" size={18} strokeWidth={2.5} />
+                    </div>
+                )
+            };
+        } else {
+            return {
+                navItems: studentItems,
+                brandSubtext: "Estudiante",
+                brandIcon: (
+                    <div className="p-1.5 bg-brand-primary/10 rounded-lg shadow-sm">
+                        <User className="text-brand-primary" size={18} strokeWidth={2.5} />
+                    </div>
+                )
+            };
+        }
+    }, [role, user?.email, teacherItems, adminItems, studentItems]);
 
-    // Theme Configuration
-    if (role === 'teacher') {
-        navItems = teacherItems;
-        brandSubtext = "Docente";
-        brandIcon = (
-            <div className="p-1.5 bg-brand-primary/10 rounded-lg shadow-sm">
-                <GraduationCap className="text-brand-primary" size={18} strokeWidth={2.5} />
-            </div>
-        );
-    } else if (role === 'admin' || (user.email && (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "").includes(user.email))) {
-        // Fallback for role='admin' or explicit email check if context not fully updated
-        navItems = adminItems;
-        brandSubtext = "Administrador";
-        brandIcon = (
-            <div className="p-1.5 bg-brand-primary/10 rounded-lg shadow-sm">
-                <ShieldAlert className="text-brand-primary" size={18} strokeWidth={2.5} />
-            </div>
-        );
-    } else {
-        // Default Student
-        navItems = studentItems;
-        brandSubtext = "Estudiante";
-        brandIcon = (
-            <div className="p-1.5 bg-brand-primary/10 rounded-lg shadow-sm">
-                <User className="text-brand-primary" size={18} strokeWidth={2.5} />
-            </div>
-        );
-    }
+    // 1. Hide on public pages or authenticating (After hooks declaration)
+    if (loading) return null;
+    if (!user) return null;
+    if (pathname === '/onboarding') return null;
 
     // Settings Link Logic (Standardized)
     const settingsHref = role === 'teacher' ? "/teacher/settings" : role === 'admin' ? "/admin/settings" : "/profile";
@@ -158,8 +155,8 @@ export default function RoleBasedNavigation() {
 
     return (
         <>
-            {/* 1. Top Floating Status Bar - Scaled Up */}
-            <header className="fixed top-6 left-6 right-6 z-50 flex items-center justify-between pointer-events-none">
+            {/* 1. Top Floating Status Bar - Scaled responsively */}
+            <header className="fixed top-2 left-2 right-2 md:top-6 md:left-6 md:right-6 z-50 flex items-center justify-between pointer-events-none">
                 {/* Brand Pill */}
                 <div
                     onClick={() => {
@@ -169,20 +166,20 @@ export default function RoleBasedNavigation() {
                             handleProtectedNavigation('/dashboard');
                         }
                     }}
-                    className="flex items-center gap-4 pointer-events-auto bg-surface-card/90 backdrop-blur-2xl border border-theme-border-soft px-6 py-3 rounded-full shadow-xl animate-in fade-in slide-in-from-top-4 duration-700 cursor-pointer hover:border-brand-primary/30 transition-all transition-colors"
+                    className="flex items-center gap-2 md:gap-4 pointer-events-auto bg-surface-card/90 backdrop-blur-2xl border border-theme-border-soft px-2.5 py-1.5 md:px-6 md:py-3 rounded-full shadow-xl animate-in fade-in slide-in-from-top-4 duration-700 cursor-pointer hover:border-brand-primary/30 transition-all"
                 >
                     <div className="flex items-center gap-3">
-                        {brandIcon}
+                        {branding.brandIcon}
                         {role === 'admin' && pathname.startsWith('/admin') && (
-                            <div className="lg:hidden p-1.5 bg-brand-error/10 rounded-lg animate-in fade-in zoom-in duration-300">
-                                <Menu className="text-brand-error" size={16} />
+                            <div className="lg:hidden p-1 bg-brand-error/10 rounded-lg animate-in fade-in zoom-in duration-300">
+                                <Menu className="text-brand-error" size={14} />
                             </div>
                         )}
                     </div>
-                    <div>
-                        <h1 className="font-semibold text-base tracking-tight leading-none text-theme-text-primary">SaberPro</h1>
-                        <p className={`text-[10px] font-semibold tracking-wider uppercase ${role === 'admin' ? 'text-brand-error' : 'text-brand-primary'}`}>
-                            {brandSubtext}
+                    <div className="flex flex-col">
+                        <h1 className="font-bold text-sm md:text-base tracking-tight leading-none text-theme-text-primary">SaberPro</h1>
+                        <p className={`text-[8px] md:text-[10px] font-bold tracking-wider uppercase leading-none mt-0.5 ${role === 'admin' ? 'text-brand-error' : 'text-brand-primary'}`}>
+                            {branding.brandSubtext}
                         </p>
                     </div>
                 </div>
@@ -194,22 +191,22 @@ export default function RoleBasedNavigation() {
                 </div>
 
                 {/* Profile Pill */}
-                <div className="flex items-center gap-4 pointer-events-auto bg-surface-card/90 backdrop-blur-2xl border border-theme-border-soft pl-6 pr-3 py-3 rounded-full shadow-xl animate-in fade-in slide-in-from-top-4 duration-700 delay-100 group hover:border-brand-primary/10 transition-all">
-                    <div className="text-right hidden sm:block">
+                <div className="flex items-center gap-2 md:gap-4 pointer-events-auto bg-surface-card/90 backdrop-blur-2xl border border-theme-border-soft pl-2.5 md:pl-6 pr-1.5 py-1.5 md:py-3 rounded-full shadow-xl animate-in fade-in slide-in-from-top-4 duration-700 delay-100 group hover:border-brand-primary/10 transition-all">
+                    <div className="text-right hidden md:block">
                         <p className="text-sm font-semibold text-theme-text-primary leading-none">
                             {profile?.fullName || user?.displayName || user?.email?.split('@')[0]}
                         </p>
                         <p className="text-[10px] text-theme-text-tertiary font-mono mt-0.5">{role?.toUpperCase() || "ESTUDIANTE"}</p>
                     </div>
-                    <div className="w-10 h-10 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-brand-primary flex items-center justify-center text-sm font-semibold shadow-sm">
+                    <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-brand-primary flex items-center justify-center text-[10px] md:text-sm font-bold shadow-sm">
                         {(profile?.fullName || user?.displayName || user?.email)?.[0].toUpperCase()}
                     </div>
                     <button
                         onClick={() => handleProtectedNavigation('/', true)}
-                        className="p-2.5 rounded-full hover:bg-brand-error/10 text-theme-text-tertiary hover:text-brand-error transition-colors"
+                        className="p-1.5 md:p-2.5 rounded-full hover:bg-brand-error/10 text-theme-text-tertiary hover:text-brand-error transition-colors"
                         title="Cerrar Sesión"
                     >
-                        <LogOut size={20} />
+                        <LogOut size={14} className="md:w-5 md:h-5" />
                     </button>
                 </div>
             </header>
@@ -224,7 +221,7 @@ export default function RoleBasedNavigation() {
 
             {/* 2. The "World Class" Floating Dock - Scaled Up */}
             <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 hidden md:flex items-end gap-3 px-6 py-4 bg-surface-card/80 backdrop-blur-3xl border border-theme-border-soft rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all hover:scale-[1.01] max-w-[90vw] overflow-x-auto no-scrollbar touch-pan-x">
-                {navItems.map((item) => {
+                {branding.navItems.map((item) => {
                     const Icon = item.icon;
 
                     let isActive = pathname === item.href;
@@ -275,4 +272,8 @@ export default function RoleBasedNavigation() {
             </nav>
         </>
     );
-}
+});
+
+RoleBasedNavigation.displayName = "RoleBasedNavigation";
+
+export default RoleBasedNavigation;

@@ -133,7 +133,13 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
 
                 if (!classSnap.empty) {
                     const updates = classSnap.docs.map(doc => {
-                        const updateData: any = {
+                        const updateData: {
+                            lastScore: number;
+                            lastTotalQuestions: number;
+                            lastModule: string;
+                            lastActivity: any; // serverTimestamp return
+                            completedAssignments?: any; // arrayUnion return
+                        } = {
                             lastScore: correctCount,
                             lastTotalQuestions: questions.length,
                             lastModule: moduleName,
@@ -153,10 +159,13 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                 // 3. Update User Gamification (XP & Badges)
                 const scorePercentage = (correctCount / questions.length) * 100;
                 const earnedXP = adaptiveEngine.calculateXP(scorePercentage, isPartial ? 0 : timeLeft);
-                const newBadges = adaptiveEngine.checkNewAchievements(profile, correctCount, questions.length, timeLeft);
+
+                // Ensure profile exists for badges check
+                const profileContext = profile || { gamification: { badges: [] } };
+                const newBadges = adaptiveEngine.checkNewAchievements(profileContext, correctCount, questions.length, timeLeft);
 
                 const userRef = doc(db, "users", user.uid);
-                const userUpdates: any = {
+                const userUpdates: Record<string, any> = {
                     "gamification.xp": increment(earnedXP),
                     "gamification.streak.lastActiveDate": new Date().toISOString().split('T')[0],
                 };
@@ -165,7 +174,7 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                     userUpdates["gamification.badges"] = arrayUnion(...newBadges);
                     // Notify for each new badge
                     newBadges.forEach(badge => {
-                        const badgeNames: any = {
+                        const badgeNames: Record<string, string> = {
                             'first_step': '¡Primer Paso Completado! 🎓',
                             'perfect_score': '¡Puntaje Perfecto! ✨',
                             'speed_demon': '¡Demonio de la Velocidad! ⚡'
@@ -187,8 +196,7 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                 // Everything saved successfully
                 setFinished(true);
 
-            } catch (error: any) {
-                console.error("Error saving result:", error);
+            } catch (error) {
                 console.error("Error saving result:", error);
                 toast.error("Error de Guardado", {
                     description: "No se guardó el resultado. Por favor, toma una captura de este error.",

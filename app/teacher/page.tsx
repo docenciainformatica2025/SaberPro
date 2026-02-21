@@ -28,18 +28,18 @@ export default function TeacherDashboard() {
             <PromotionBanner />
             {/* Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                    <h1 className="text-4xl font-black text-theme-hero mb-2 flex items-center gap-3 text-balance tracking-tighter uppercase italic">
-                        ¡Qué bueno verte, {teacherName}! 👋
-                        {profile?.role === 'teacher' && <Badge variant="primary" className="text-[10px] font-semibold tracking-wider px-3 py-1 bg-brand-primary text-[var(--theme-bg-base)] border-none normal-case">Pro</Badge>}
+                <div className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-md p-6 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 flex-1">
+                    <h1 className="text-xl font-bold text-slate-900 dark:text-white mb-1 flex items-center gap-2 tracking-tight">
+                        ¡Hola, {teacherName}! 👋
+                        {profile?.role === 'teacher' && <Badge variant="primary" className="text-[9px] font-black tracking-widest px-2 py-0.5 bg-brand-primary text-white border-none uppercase">Pro</Badge>}
                     </h1>
-                    <p className="text-theme-text-secondary">
+                    <p className="text-[12px] text-slate-500 font-medium">
                         Tus estudiantes están progresando. Aquí tienes el pulso de tu clase hoy.
                     </p>
                 </div>
                 <Link href="/teacher/classes">
-                    <Button variant="primary" className="px-8 shadow-md shadow-brand-primary/20" icon={Plus}>
-                        Crear Nueva Clase
+                    <Button variant="primary" size="sm" className="px-6 h-10 shadow-lg shadow-brand-primary/10 text-[11px] font-bold uppercase tracking-widest" icon={Plus}>
+                        Nueva Clase
                     </Button>
                 </Link>
             </div>

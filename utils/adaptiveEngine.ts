@@ -7,8 +7,10 @@ export interface AdaptiveAdvice {
     nextRecommendedModule: string;
 }
 
+export interface RadarPoint { name: string; value: number }
+
 export const adaptiveEngine = {
-    analyzeProfile: (radarData: any[], kpis: any, userProfile?: any): AdaptiveAdvice => {
+    analyzeProfile: (radarData: RadarPoint[], kpis: { averageScore: number }, userProfile?: { career?: string; goal?: string }): AdaptiveAdvice => {
         if (!radarData || radarData.length === 0) {
             return {
                 criticalModule: { name: "Lectura Crítica", value: 0 },
@@ -66,7 +68,7 @@ export const adaptiveEngine = {
     /**
      * Determines the next best step for the user based on their current state.
      */
-    getRecommendedAction: (stats: any, profile: any) => {
+    getRecommendedAction: (stats: { totalSims: number; radarData: RadarPoint[] }, profile?: any) => {
         if (!stats || stats.totalSims === 0) {
             return {
                 type: 'DIAGNOSTIC',
@@ -76,7 +78,7 @@ export const adaptiveEngine = {
             };
         }
 
-        const critical = stats.radarData.sort((a: any, b: any) => a.value - b.value)[0];
+        const critical = stats.radarData.sort((a, b) => a.value - b.value)[0];
 
         if (critical.value < 60) {
             return {
@@ -128,7 +130,7 @@ export const adaptiveEngine = {
     /**
      * Verifica y retorna nuevos logros desbloqueados.
      */
-    checkNewAchievements: (profile: any, score: number, totalQuestions: number, timeLeft: number): string[] => {
+    checkNewAchievements: (profile: { gamification?: { badges?: string[] } }, score: number, totalQuestions: number, timeLeft: number): string[] => {
         const newBadges: string[] = [];
         const currentBadges = profile?.gamification?.badges || [];
 

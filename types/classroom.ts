@@ -21,3 +21,14 @@ export interface ClassSession {
     currentQuestionIndex: number;
     startTime?: Timestamp;
 }
+
+export interface ClassMember {
+    id: string;
+    classId: string;
+    userId: string;
+    joinedAt: Timestamp;
+    role: 'student' | 'teacher';
+    studentName: string;
+    lastScore?: number;
+    progress?: number;
+}

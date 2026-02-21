@@ -22,6 +22,7 @@ import {
 import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
+import { AnalyticsService, AnalyticsStats, ChartDataPoint } from "@/services/admin/analytics.service";
 
 // Configuración de Colores de Marca
 const BRAND_COLORS = {
@@ -35,7 +36,7 @@ const CHART_COLORS = [BRAND_COLORS.silver, BRAND_COLORS.gold, BRAND_COLORS.blue]
 
 export default function AdminAnalyticsPage() {
     const [loading, setLoading] = useState(true);
-    const [stats, setStats] = useState({
+    const [stats, setStats] = useState<AnalyticsStats>({
         revenue: 0,
         activeUsers: 0,
         totalUsers: 0,
@@ -43,61 +44,14 @@ export default function AdminAnalyticsPage() {
         freeCount: 0,
         conversionRate: 0
     });
-    const [chartData, setChartData] = useState<any[]>([]);
+    const [chartData, setChartData] = useState<ChartDataPoint[]>([]);
 
     useEffect(() => {
         const fetchAnalytics = async () => {
             try {
-                const snapshot = await getDocs(collection(db, "users"));
-                const users = snapshot.docs.map(doc => doc.data());
-
-                let totalRevenue = 0;
-                let activeCount = 0;
-                let pro = 0;
-                let free = 0;
-
-                const thirtyDaysAgo = new Date();
-                thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-
-                const monthlyGrowth: Record<string, number> = {};
-
-                users.forEach((u: any) => {
-                    if (u.subscription?.plan === 'pro') {
-                        pro++;
-                        totalRevenue += 24.99;
-                    } else {
-                        free++;
-                    }
-
-                    const lastActive = u.lastLogin ? u.lastLogin.toDate() : (u.createdAt?.toDate() || new Date(0));
-                    if (lastActive > thirtyDaysAgo) {
-                        activeCount++;
-                    }
-
-                    if (u.createdAt) {
-                        const date = u.createdAt.toDate();
-                        const monthKey = date.toLocaleString('es-ES', { month: 'short' });
-                        monthlyGrowth[monthKey] = (monthlyGrowth[monthKey] || 0) + 1;
-                    }
-                });
-
-                const graphData = Object.keys(monthlyGrowth).map(key => ({
-                    month: key.toUpperCase(),
-                    users: monthlyGrowth[key],
-                    revenue: monthlyGrowth[key] * (pro / users.length) * 25
-                })).slice(-6);
-
-                setStats({
-                    revenue: totalRevenue,
-                    activeUsers: activeCount > 0 ? activeCount : Math.floor(users.length * 0.4),
-                    totalUsers: users.length,
-                    proCount: pro,
-                    freeCount: free,
-                    conversionRate: users.length > 0 ? (pro / users.length) * 100 : 0
-                });
-
-                setChartData(graphData);
-
+                const { stats, chartData } = await AnalyticsService.getGrowthMetrics();
+                setStats(stats);
+                setChartData(chartData);
             } catch (error) {
                 console.error("Error calculating analytics:", error);
             } finally {

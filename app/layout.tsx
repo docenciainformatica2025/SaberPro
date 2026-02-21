@@ -16,15 +16,24 @@ import AdminRoleSwitcher from "@/components/admin/AdminRoleSwitcher";
 import MobileTabBar from "@/components/layout/MobileTabBar";
 import DarkModeToggle from "@/components/ui/DarkModeToggle";
 
-// Hack to suppress the noisy hydration warning from extensions
+// Hydration Error Suppression for Browser Extensions (Bitwarden, Bloom, etc.)
 if (typeof window !== "undefined") {
   const originalError = console.error;
   console.error = (...args) => {
-    const errorString = args.map(arg => String(arg)).join(" ");
-    if (errorString.includes("bis_skin_checked") || errorString.includes("Hydration failed") || errorString.includes("text content does not match")) {
+    const msg = args.map(arg => String(arg)).join(" ");
+    // Silent specific hydration mismatch logs common in production/extensions
+    const silentErrors = [
+      "bis_skin_checked",
+      "Hydration failed",
+      "text content does not match",
+      "did not match",
+      "warning: extra attributes from the server"
+    ];
+
+    if (silentErrors.some(error => msg.includes(error))) {
       return;
     }
-    originalError.call(console, ...args);
+    originalError.apply(console, args);
   };
 }
 

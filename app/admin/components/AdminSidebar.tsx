@@ -87,14 +87,17 @@ function SidebarContent({ navGroups, pathname, onClose }: { navGroups: any[], pa
         <div className="flex flex-col h-full">
             {/* Header */}
             <div className="p-6 border-b border-[var(--theme-border-soft)]">
-                <div className="flex items-center gap-3 text-brand-primary">
-                    <div className="p-2 bg-brand-primary/10 rounded-lg">
-                        <ShieldAlert size={24} />
-                    </div>
+                <div className="flex items-center gap-2.5 text-brand-primary px-1">
+                    <ShieldAlert size={18} />
                     <div>
-                        <h1 className="font-bold text-lg tracking-wider text-[var(--theme-text-primary)]">COMMAND</h1>
-                        <p className="text-[10px] text-[var(--theme-text-tertiary)] uppercase tracking-[0.2em]">Center</p>
+                        <h1 className="font-bold text-sm tracking-tight text-slate-900 dark:text-white">Panel Control</h1>
+                        <p className="text-[9px] text-slate-500 dark:text-slate-400 uppercase tracking-widest font-bold">Admin</p>
                     </div>
+                </div>
+                {/* Status Indicator sutil */}
+                <div className="mt-3 flex items-center gap-2 px-1">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Sistema Activo</span>
                 </div>
             </div>
 

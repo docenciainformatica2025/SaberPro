@@ -19,13 +19,20 @@ import { useState, useEffect } from "react";
 
 interface PerformanceChartProps {
     type: "line" | "radar";
-    data: Record<string, any>[];
+    data: { [key: string]: string | number }[];
     dataKey?: string;
     categoryKey?: string;
     color?: string;
 }
 
-const CustomTooltip = ({ active, payload, label, color }: any) => {
+interface TooltipProps {
+    active?: boolean;
+    payload?: { value: number;[key: string]: any }[];
+    label?: string;
+    color: string;
+}
+
+const CustomTooltip = ({ active, payload, label, color }: TooltipProps) => {
     if (active && payload && payload.length) {
         return (
             <div className="bg-[var(--theme-bg-surface)]/80 backdrop-blur-xl border border-[var(--theme-border-soft)] p-4 rounded-xl shadow-2xl animate-in fade-in zoom-in duration-200">

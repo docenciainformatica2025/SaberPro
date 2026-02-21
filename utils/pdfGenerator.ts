@@ -28,7 +28,7 @@ const generateContentHash = async (content: string) => {
     }
 };
 
-const drawSecuritySeal = async (doc: any, y: number, hash: string, margin: number, pageWidth: number) => {
+const drawSecuritySeal = async (doc: jsPDF, y: number, hash: string, margin: number, pageWidth: number) => {
     doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
     doc.setLineWidth(0.5);
     doc.roundedRect(margin, y, pageWidth - 2 * margin, 25, 1, 1, 'S');
@@ -41,7 +41,7 @@ const drawSecuritySeal = async (doc: any, y: number, hash: string, margin: numbe
     for (let i = 0; i < 40; i++) { doc.rect(pageWidth - margin - 10 - (i * 1.2), y + 5, 0.5, 15, 'F'); }
 };
 
-const drawHeader = (doc: any, title: string, margin: number, pageWidth: number, dateStr: string, verifID: string, suiteName: string = "Analytics Executive Suite") => {
+const drawHeader = (doc: jsPDF, title: string, margin: number, pageWidth: number, dateStr: string, verifID: string, suiteName: string = "Analytics Executive Suite") => {
     const ly = 15;
     doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]); doc.roundedRect(margin, ly, 10, 10, 2, 2, 'F');
     doc.setFont("helvetica", "bold"); doc.setFontSize(10); doc.setTextColor(0, 0, 0); doc.text("S", margin + 3.5, ly + 7.5);
@@ -55,7 +55,7 @@ const drawHeader = (doc: any, title: string, margin: number, pageWidth: number, 
     doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]); doc.setLineWidth(1); doc.line(margin, ly + 18, pageWidth - margin, ly + 18);
 };
 
-const drawFooter = (doc: any, pageNo: number, pageHeight: number, pageWidth: number, margin: number, verifID: string, dateStr: string, copyrightText: string = "© 2026 Saber Pro Suite. Trazabilidad Académica 2026.") => {
+const drawFooter = (doc: jsPDF, pageNo: number, pageHeight: number, pageWidth: number, margin: number, verifID: string, dateStr: string, copyrightText: string = "© 2026 Saber Pro Suite. Trazabilidad Académica 2026.") => {
     const footerY = pageHeight - 35;
     doc.setFillColor(LIGHT_BG[0], LIGHT_BG[1], LIGHT_BG[2]); doc.rect(0, footerY, pageWidth, 35, 'F');
     doc.setTextColor(TEXT_LIGHT[0], TEXT_LIGHT[1], TEXT_LIGHT[2]); doc.setFont("helvetica", "bold"); doc.setFontSize(7);

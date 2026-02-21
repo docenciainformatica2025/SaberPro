@@ -12,6 +12,7 @@ import { Trophy, Medal, Crown, ArrowLeft, Search, User, Sparkles } from "lucide-
 import Link from "next/link";
 import StreakCounter from "@/components/gamification/StreakCounter";
 import Image from "next/image";
+import { GridBackground } from "@/components/ui/GridBackground";
 
 interface LeaderboardUser {
     id: string;
@@ -103,32 +104,35 @@ export default function LeaderboardPage() {
     const rest = leaders.slice(3);
 
     return (
-        <div className="min-h-screen bg-[var(--theme-bg-base)] pb-24">
-            {/* Header */}
-            <div className="sticky top-0 z-40 bg-[var(--theme-bg-base)]/90 backdrop-blur-md border-b border-[var(--theme-border-soft)] p-4 md:px-8 flex justify-between items-center">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] pb-24 relative overflow-hidden">
+            <GridBackground size={40} opacity={0.04} className="text-brand-primary mask-gradient-to-b absolute inset-0 pointer-events-none" />
+
+            {/* Encabezado - Glassmorphism Refined */}
+            <div className="sticky top-0 z-40 bg-[var(--theme-bg-base)]/80 backdrop-blur-2xl border-b border-[var(--theme-border-soft)] p-3 md:px-8 flex justify-between items-center">
                 <Link href="/dashboard">
-                    <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)]">
-                        <span className="hidden md:inline">PANEL CENTRAL</span>
+                    <Button variant="ghost" size="sm" className="text-[var(--theme-text-tertiary)] hover:text-brand-primary transition-colors">
+                        <ArrowLeft size={16} className="mr-1" />
+                        <span className="text-[10px] font-black tracking-widest uppercase hidden md:inline">Volver</span>
                     </Button>
                 </Link>
                 <div className="flex gap-4 items-center">
-                    <h1 className="text-lg font-semibold uppercase tracking-wider text-[var(--theme-text-primary)] hidden md:block">Ranking Global</h1>
+                    <h1 className="text-sm font-black uppercase tracking-[0.2em] text-[var(--theme-text-primary)] hidden lg:block">Ranking Global</h1>
                     <div className="bg-[var(--theme-bg-surface)] p-1 rounded-full border border-[var(--theme-border-soft)] flex">
                         <button
                             onClick={() => setTimeFrame('weekly')}
-                            className={`px-4 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-wider transition-all ${timeFrame === 'weekly' ? 'bg-brand-primary text-black shadow-lg shadow-brand-primary/20' : 'text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)]'}`}
+                            className={`px-4 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-wider transition-all duration-300 ${timeFrame === 'weekly' ? 'bg-brand-primary text-white shadow-lg shadow-brand-primary/20 scale-105' : 'text-[var(--theme-text-tertiary)] hover:text-brand-primary'}`}
                         >
                             Semanal
                         </button>
                         <button
                             onClick={() => setTimeFrame('allTime')}
-                            className={`px-4 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-wider transition-all ${timeFrame === 'allTime' ? 'bg-metal-blue text-white shadow-lg shadow-metal-blue/20' : 'text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)]'}`}
+                            className={`px-4 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-wider transition-all duration-300 ${timeFrame === 'allTime' ? 'bg-brand-primary/10 text-brand-primary border border-brand-primary/20' : 'text-[var(--theme-text-tertiary)] hover:text-brand-primary'}`}
                         >
                             Histórico
                         </button>
                     </div>
                 </div>
-                <div className="w-10" /> {/* Spacer */}
+                <div className="w-10 md:hidden lg:block lg:w-32"></div> {/* Spacer balance */}
             </div>
 
             <div className="max-w-3xl mx-auto pt-8 px-4">
@@ -179,52 +183,52 @@ export default function LeaderboardPage() {
                     {topThree[2] && (
                         <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
                             <div className="mb-4 relative">
-                                <div className="w-16 h-16 rounded-full border-2 border-orange-700 bg-[var(--theme-bg-base)] overflow-hidden relative z-10">
-                                    <div className="w-full h-full flex items-center justify-center bg-orange-900/20 text-orange-700 font-bold">
+                                <div className="w-16 h-16 rounded-full border-2 border-brand-primary/40 bg-[var(--theme-bg-base)] overflow-hidden relative z-10">
+                                    <div className="w-full h-full flex items-center justify-center bg-brand-primary/5 text-brand-primary/60 font-bold">
                                         {topThree[2].fullName[0]}
                                     </div>
                                 </div>
-                                <div className="absolute -bottom-2 -right-2 bg-orange-700 text-black text-xs font-semibold w-6 h-6 rounded-full flex items-center justify-center border-2 border-black z-20">3</div>
+                                <div className="absolute -bottom-2 -right-2 bg-brand-primary/40 text-[var(--theme-text-primary)] text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center border-2 border-[var(--theme-bg-base)] z-20">3</div>
                             </div>
-                            <div className="w-full bg-gradient-to-t from-orange-900/20 to-orange-900/5 rounded-t-xl h-24 flex flex-col justify-end p-4 text-center border-t border-x border-orange-700/30 relative">
-                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-8 bg-orange-700/50" />
+                            <div className="w-full bg-gradient-to-t from-brand-primary/10 to-transparent rounded-t-xl h-24 flex flex-col justify-end p-4 text-center border-t border-x border-[var(--theme-border-soft)] relative">
+                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-8 bg-brand-primary/20" />
                                 <h3 className="text-[var(--theme-text-primary)] font-bold text-xs truncate w-full mb-1">{topThree[2].fullName}</h3>
-                                <p className="text-orange-500 font-semibold text-lg">{topThree[2].points}</p>
+                                <p className="text-brand-primary/60 font-bold text-lg">{topThree[2].points}</p>
                             </div>
                         </div>
                     )}
                 </div>
 
-                {/* List */}
-                <div className="space-y-4">
+                {/* Lista de Competidores */}
+                <div className="space-y-3">
                     {rest.map((rUser, i) => (
                         <Card
                             key={rUser.id}
                             variant={rUser.id === user?.uid ? "premium" : "glass"}
-                            className={`flex items-center p-4 ${rUser.id === user?.uid ? 'border-brand-primary' : 'border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]'}`}
+                            className={`flex items-center p-4 transition-all duration-500 ${rUser.id === user?.uid ? 'border-brand-primary ring-1 ring-brand-primary/20 shadow-lg shadow-brand-primary/10 scale-[1.02]' : 'border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]/50'}`}
                         >
-                            <span className="w-8 text-center text-[var(--theme-text-secondary)] font-semibold text-lg mr-4">{rUser.rank}</span>
+                            <span className="w-8 text-center text-[var(--theme-text-quaternary)] font-bold text-xs mr-4 tracking-tighter italic">{rUser.rank}</span>
 
-                            <div className="w-10 h-10 rounded-full bg-[var(--theme-bg-base)] flex items-center justify-center mr-4 text-[var(--theme-text-secondary)] font-bold overflow-hidden">
-                                <User size={20} />
+                            <div className="w-9 h-9 rounded-full bg-brand-primary/5 flex items-center justify-center mr-4 text-brand-primary/40 font-bold overflow-hidden border border-brand-primary/10 shadow-inner">
+                                <User size={16} />
                             </div>
 
                             <div className="flex-grow">
-                                <h4 className={`font-bold text-sm ${rUser.id === user?.uid ? 'text-[var(--theme-text-primary)]' : 'text-[var(--theme-text-secondary)]'}`}>
+                                <h4 className={`font-bold text-sm tracking-tight ${rUser.id === user?.uid ? 'text-brand-primary' : 'text-[var(--theme-text-primary)]'}`}>
                                     {rUser.fullName} {rUser.id === user?.uid && "(Tú)"}
                                 </h4>
-                                <div className="flex items-center gap-2 mt-1">
+                                <div className="flex items-center gap-2 mt-0.5">
                                     {rUser.streak > 2 && (
-                                        <Badge variant="default" className="text-[9px] px-1 py-0 h-4 bg-orange-500/10 text-orange-500 border-orange-500/20">
-                                            🔥 {rUser.streak} días
+                                        <Badge variant="ghost" className="text-[8px] px-1.5 py-0 h-4 bg-brand-primary/5 text-brand-primary/60 border-brand-primary/10 font-black uppercase shadow-none">
+                                            🔥 {rUser.streak} DÍAS
                                         </Badge>
                                     )}
                                 </div>
                             </div>
 
                             <div className="text-right">
-                                <span className={`font-semibold text-lg ${rUser.id === user?.uid ? 'text-brand-primary' : 'text-[var(--theme-text-primary)]'}`}>{rUser.points}</span>
-                                <span className="block text-[9px] text-[var(--theme-text-secondary)] uppercase tracking-wider font-bold">XP</span>
+                                <span className={`font-black text-base tracking-tight ${rUser.id === user?.uid ? 'text-brand-primary' : 'text-[var(--theme-text-primary)]'}`}>{rUser.points}</span>
+                                <span className="block text-[7px] text-[var(--theme-text-quaternary)] uppercase tracking-[0.2em] font-black">XP</span>
                             </div>
                         </Card>
                     ))}
@@ -244,11 +248,11 @@ export default function LeaderboardPage() {
                         </div>
                         <div className="flex items-center gap-4">
                             <div className="text-right">
-                                <span className="block text-[var(--theme-text-primary)] font-semibold text-xl">{userRank.points}</span>
-                                <span className="text-[10px] text-[var(--theme-text-secondary)] uppercase font-bold">Puntos XP</span>
+                                <span className="block text-[var(--theme-text-primary)] font-bold text-lg">{userRank.points}</span>
+                                <span className="text-[8px] text-[var(--theme-text-quaternary)] uppercase font-black tracking-widest">XP ACUMULADA</span>
                             </div>
                             <Link href="/simulation">
-                                <Button variant="primary" size="sm" className="shadow-lg shadow-brand-primary/20">Jugar</Button>
+                                <Button variant="primary" size="sm" className="shadow-lg shadow-brand-primary/20 h-9 px-6 text-[10px] uppercase font-black tracking-widest">Entrenar</Button>
                             </Link>
                         </div>
                     </div>

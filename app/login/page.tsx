@@ -77,7 +77,7 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="flex min-h-screen bg-[var(--theme-bg-base)]">
+        <div className="flex min-h-screen bg-[var(--theme-bg-base)] text-[var(--theme-text-primary)]" suppressHydrationWarning>
             {/* Left Side - Branding (Desktop Only) */}
             <div className="hidden lg:flex w-1/2 bg-[var(--theme-bg-surface)] relative overflow-hidden flex-col justify-between p-16 border-r border-[var(--theme-border-soft)]">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497864149936-d7e61461c302?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 filter grayscale mix-blend-overlay"></div>
@@ -128,23 +128,24 @@ export default function LoginPage() {
             <div className="w-full lg:w-1/2 flex items-center justify-center p-8 relative">
                 <div className="w-full max-w-md space-y-8">
 
-                    {/* Mobile Header (Standardized) */}
+                    {/* Mobile Header (Minimal Premium 2026) */}
                     <div className="lg:hidden text-center mb-6">
-                        <div className="flex justify-between items-center mb-4">
+                        <div className="flex justify-between items-center mb-6 px-1">
                             <Link href="/">
-                                <Button variant="ghost" icon={ArrowRight} className="rotate-180 p-0 text-[var(--theme-text-tertiary)] text-[10px] font-semibold uppercase tracking-wider">
-                                    Inicio
+                                <Button variant="ghost" size="sm" className="h-9 px-3 text-[var(--theme-text-tertiary)] hover:text-brand-primary transition-colors border border-theme-border-soft hover:border-brand-primary/20 rounded-full">
+                                    <ArrowLeft size={14} className="mr-1.5" />
+                                    <span className="text-[9px] font-black uppercase tracking-widest">Inicio</span>
                                 </Button>
                             </Link>
-                            <Logo variant="full" size="md" />
-                            <div className="w-10"></div> {/* Spacer */}
+                            <Logo variant="full" size="sm" />
+                            <div className="w-[88px]"></div> {/* Visual balance for the back button */}
                         </div>
-                        <p className="text-[10px] font-semibold text-[var(--theme-text-tertiary)] uppercase tracking-[0.2em]">Entrenamiento Profesional</p>
+                        <div className="h-px w-12 bg-brand-primary/20 mx-auto mb-4" />
                     </div>
 
-                    <div className="space-y-1">
-                        <h1 className="text-3xl font-semibold text-theme-text-primary tracking-tight">¡Qué bueno verte de nuevo!</h1>
-                        <p className="text-theme-text-tertiary text-sm">Ingresa tus datos para continuar tu camino al éxito.</p>
+                    <div className="space-y-2">
+                        <h1 className="text-2xl md:text-3xl font-bold text-theme-text-primary tracking-tight leading-tight">¡Qué bueno verte de nuevo!</h1>
+                        <p className="text-theme-text-tertiary text-sm md:text-base">Ingresa tus datos para continuar tu camino al éxito.</p>
                     </div>
 
                     {/* Social Login */}

@@ -3,17 +3,15 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Save, GraduationCap, Target, School, User as UserIcon, Layout, MapPin, Sparkles } from "lucide-react";
+import { UserService, UserProfile } from "@/services/user.service";
 import Link from "next/link";
-import { db } from "@/lib/firebase";
-import { doc, getDoc, setDoc } from "firebase/firestore";
 import { Card } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { toast } from "sonner";
 import { BRAND_NAME } from "@/lib/config";
-import { CheckCircle2, AlertCircle } from "lucide-react";
+import { CheckCircle2, AlertCircle, User as UserIcon, GraduationCap, Target, School, MapPin, Sparkles, ArrowLeft, Save } from "lucide-react";
 
 export default function ProfilePage() {
     const { user, loading: authLoading, role } = useAuth();
@@ -46,22 +44,20 @@ export default function ProfilePage() {
         async function fetchProfile() {
             if (user) {
                 try {
-                    const docRef = doc(db, "users", user.uid);
-                    const docSnap = await getDoc(docRef);
-                    if (docSnap.exists()) {
-                        const data = docSnap.data();
+                    const profile = await UserService.getUserProfile(user.uid);
+                    if (profile) {
                         setFormData({
-                            fullName: data.fullName || "",
-                            gradeLevel: data.gradeLevel || "11",
-                            targetCareer: data.targetCareer || "",
-                            dreamUniversity: data.dreamUniversity || "",
-                            institution: data.institution || "",
-                            city: data.city || "",
-                            scoreGoal: data.scoreGoal || "350"
-                        });
+                            fullName: profile.fullName || "",
+                            gradeLevel: profile.gradeLevel || "11",
+                            targetCareer: profile.targetCareer || "",
+                            dreamUniversity: profile.dreamUniversity || "",
+                            institution: profile.institution || "",
+                            city: profile.city || "",
+                            scoreGoal: profile.scoreGoal || "350"
+                        } as any);
                     }
                 } catch (error) {
-                    console.error("Error fetching profile:", error);
+                    console.error("Error fetching profile via service:", error);
                 }
             }
         }
@@ -81,13 +77,11 @@ export default function ProfilePage() {
 
         setSaving(true);
         try {
-            await setDoc(doc(db, "users", user.uid), {
+            await UserService.updateProfile(user.uid, {
                 ...formData,
-                email: user.email,
-                completedProfile: true,
-                updatedAt: new Date(),
-                createdAt: (await getDoc(doc(db, "users", user.uid))).data()?.createdAt || new Date()
-            }, { merge: true });
+                email: user.email!,
+                onboardingCompleted: true
+            } as any);
 
             toast.success("¡Perfil Actualizado!", {
                 description: `Tu identidad digital en ${BRAND_NAME} ha sido sincronizada.`,
@@ -97,7 +91,7 @@ export default function ProfilePage() {
                 window.location.href = "/dashboard";
             }, 1500);
         } catch (error) {
-            console.error("Error updating profile:", error);
+            console.error("Error updating profile via service:", error);
             toast.error("Error de Sincronización", {
                 description: "No se pudieron guardar los cambios. Intente de nuevo.",
                 icon: <AlertCircle className="text-red-500" size={16} />
@@ -108,7 +102,7 @@ export default function ProfilePage() {
     };
 
     return (
-        <div className="min-h-screen bg-[var(--theme-bg-base)] py-12 px-6 flex items-center justify-center">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] py-12 px-6 flex items-center justify-center" suppressHydrationWarning>
             <div className="max-w-4xl w-full mx-auto animate-in fade-in zoom-in-95 duration-500">
 
                 <div className="mb-8 flex items-center justify-between">

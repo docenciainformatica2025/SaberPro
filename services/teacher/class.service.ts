@@ -1,6 +1,6 @@
 import { db } from "@/lib/firebase";
 import { collection, query, where, getDocs, addDoc, serverTimestamp, doc, getDoc, updateDoc, onSnapshot } from "firebase/firestore";
-import { Classroom } from "@/types/classroom";
+import { Classroom, ClassMember } from "@/types/classroom";
 
 export class ClassService {
 
@@ -43,18 +43,18 @@ export class ClassService {
         return null;
     }
 
-    static async getStudentsInClass(classId: string): Promise<any[]> {
+    static async getStudentsInClass(classId: string): Promise<ClassMember[]> {
         const q = query(collection(db, "class_members"), where("classId", "==", classId));
         const snapshot = await getDocs(q);
-        return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as ClassMember));
     }
 
-    static subscribeToClassStudents(classId: string, callback: (students: any[]) => void): () => void {
+    static subscribeToClassStudents(classId: string, callback: (students: ClassMember[]) => void): () => void {
         const q = query(collection(db, "class_members"), where("classId", "==", classId));
         return onSnapshot(q, (snapshot) => {
-            const students = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            const students = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as ClassMember));
             // Order by score descending
-            students.sort((a: any, b: any) => (b.lastScore || 0) - (a.lastScore || 0));
+            students.sort((a, b) => (b.lastScore || 0) - (a.lastScore || 0));
             callback(students);
         });
     }

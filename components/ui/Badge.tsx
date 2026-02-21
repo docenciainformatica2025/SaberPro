@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { motion, HTMLMotionProps } from "framer-motion";
 
 export interface BadgeProps extends HTMLMotionProps<"span"> {
-    variant?: 'default' | 'primary' | 'success' | 'warning' | 'error' | 'info' | 'premium' | 'ghost' | 'outline';
+    variant?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'premium' | 'ghost' | 'outline';
 }
 
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
@@ -11,6 +11,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         const variants: Record<string, string> = {
             default: "bg-surface-card text-theme-text-secondary border-theme-border-soft",
             primary: "bg-brand-primary/10 text-brand-primary border-brand-primary/20",
+            secondary: "bg-[var(--theme-bg-secondary)] text-[var(--theme-text-primary)] border-[var(--theme-border-soft)]",
             success: "bg-brand-success/10 text-brand-success border-brand-success/20",
             warning: "bg-brand-accent/10 text-brand-accent border-brand-accent/20",
             error: "bg-brand-error/10 text-brand-error border-brand-error/20",

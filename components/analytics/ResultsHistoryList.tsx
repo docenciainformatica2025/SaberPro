@@ -12,7 +12,7 @@ interface Result {
     module: string;
     score: number;
     totalQuestions: number;
-    completedAt: any;
+    completedAt: { toDate: () => Date } | Date | number | string;
     isPartial?: boolean;
 }
 
@@ -57,7 +57,9 @@ export default function ResultsHistoryList({ results, onViewReport }: ResultsHis
                 className="md:hidden space-y-4"
             >
                 {results.slice().reverse().map((result) => {
-                    const date = result.completedAt?.toDate ? result.completedAt.toDate() : new Date();
+                    const date = (result.completedAt && typeof result.completedAt === 'object' && 'toDate' in result.completedAt)
+                        ? result.completedAt.toDate()
+                        : (result.completedAt instanceof Date ? result.completedAt : new Date());
                     const percentage = Math.round((result.score / result.totalQuestions) * 100);
 
                     return (
@@ -123,7 +125,9 @@ export default function ResultsHistoryList({ results, onViewReport }: ResultsHis
                         className="divide-y divide-white/5"
                     >
                         {results.slice().reverse().map((result) => {
-                            const date = result.completedAt?.toDate ? result.completedAt.toDate() : new Date();
+                            const date = (result.completedAt && typeof result.completedAt === 'object' && 'toDate' in result.completedAt)
+                                ? result.completedAt.toDate()
+                                : (result.completedAt instanceof Date ? result.completedAt : new Date());
                             const percentage = Math.round((result.score / result.totalQuestions) * 100);
 
                             return (
