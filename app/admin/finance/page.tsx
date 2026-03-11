@@ -7,7 +7,8 @@ import {
     PieChart, Pie, Cell, AreaChart, Area, ResponsiveContainer
 } from "recharts";
 import { ThemedGrid, ThemedXAxis, ThemedYAxis, ThemedTooltip } from "@/components/ui/ThemedChart";
-import { DollarSign, TrendingUp, Users, CreditCard, Download, ShieldCheck, Printer, Calendar, FileText } from "lucide-react";
+import { DollarSign, TrendingUp, Users, CreditCard, Download, ShieldCheck, Printer, Calendar, FileText, Ticket } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -63,6 +64,7 @@ function FileTextIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export default function FinanceDashboard() {
+    const router = useRouter();
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [userMap, setUserMap] = useState<Record<string, FinanceUserProfile>>({});
     const [stats, setStats] = useState({
@@ -144,6 +146,15 @@ export default function FinanceDashboard() {
                     </p>
                 </div>
                 <div className="flex items-center gap-4">
+                    <Button
+                        variant="outline"
+                        size="sm"
+                        icon={Ticket}
+                        onClick={() => router.push('/admin/finance/coupons')}
+                        className="border-[var(--theme-border-soft)] hover:border-brand-primary/30 px-8 h-12 text-[10px] font-black uppercase tracking-widest"
+                    >
+                        Cupones
+                    </Button>
                     <Button
                         variant="outline"
                         size="sm"

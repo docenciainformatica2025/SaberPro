@@ -8,6 +8,7 @@ import { z } from "zod";
 const explainSchema = z.object({
     question: z.object({
         text: z.string().min(1, "El texto de la pregunta es requerido"),
+        isPromptOnly: z.boolean().optional(),
     }),
     selectedOption: z.string().min(1),
     correctAnswer: z.string().min(1),
@@ -28,20 +29,29 @@ export async function POST(req: Request) {
             );
         }
 
-        const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+
+        const isPromptOnly = question.isPromptOnly === true;
+        const isCorrect = isPromptOnly ? true : (selectedOption === correctAnswer);
 
         const prompt = `
       Actúa como un profesor experto en preparación para pruebas Saber Pro / ICFES.
       El estudiante quiere estudiar: ${userProfile?.targetCareer || "una carrera universitaria"}.
       
       Pregunta del examen: "${question.text}"
-      Opción Correcta: "${correctAnswer}"
-      El estudiante eligió: "${selectedOption}" (Incorrecto)
+      ${isPromptOnly ? `Respuesta/Análisis del estudiante: "${selectedOption}"` : `Opción Correcta: "${correctAnswer}"
+      El estudiante eligió: "${selectedOption}" (${isCorrect ? "Correcto" : "Incorrecto"})`}
 
       Tu tarea:
-      1. Explica brevemente por qué la opción elegida es incorrecta.
-      2. Explica por qué la opción correcta es la acertada.
-      3. Usa una analogía o ejemplo relacionado con el área de "${userProfile?.targetCareer}" para que entienda mejor el concepto.
+      ${isPromptOnly ?
+                `1. Analiza el texto del estudiante y dale retroalimentación constructiva sobre su capacidad de argumentación y coherencia.
+         2. Explica los puntos clave que debería contener una respuesta ideal para esta tarea.
+         3. Usa una analogía o ejemplo relacionado con "${userProfile?.targetCareer || 'su carrera'}" para reforzar la importancia de este concepto.`
+                :
+                `1. ${isCorrect ? "Felicita brevemente al estudiante y refuerza por qué su elección es la más acertada." : "Explica brevemente por qué la opción elegida es incorrecta."}
+         2. Explica la lógica profunda detrás de la opción correcta.
+         3. Usa una analogía o ejemplo relacionado con el área de "${userProfile?.targetCareer || 'su carrera'}" para que entienda mejor el concepto.`
+            }
       4. Mantén un tono motivador y corto (máximo 150 palabras).
     `;
 

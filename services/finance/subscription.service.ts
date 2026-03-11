@@ -1,5 +1,5 @@
 import { db } from "@/lib/firebase";
-import { doc, updateDoc, setDoc, serverTimestamp, getDoc } from "firebase/firestore";
+import { doc, updateDoc, setDoc, serverTimestamp, getDoc, runTransaction } from "firebase/firestore";
 
 // Types
 interface PaymentResult {
@@ -79,4 +79,92 @@ export const upgradeUserSubscription = async (userId: string, planName: 'pro', t
         console.error("Error upgrading user:", error);
         throw error;
     }
+};
+
+/**
+ * Redeems an access code / coupon for a premium plan (Atomic Transaction)
+ */
+export const redeemCoupon = async (userId: string, code: string) => {
+    try {
+        const cleanedCode = code.toUpperCase().trim();
+        const couponRef = doc(db, "coupons", cleanedCode);
+        const userRef = doc(db, "users", userId);
+
+        return await runTransaction(db, async (transaction) => {
+            const couponSnap = await transaction.get(couponRef);
+
+            if (!couponSnap.exists()) {
+                throw new Error("El código ingresado no existe.");
+            }
+
+            const couponData = couponSnap.data();
+
+            if (couponData.isUsed) {
+                throw new Error("Este código ya ha sido utilizado.");
+            }
+
+            if (couponData.expiresAt && couponData.expiresAt.toDate() < new Date()) {
+                throw new Error("Este código ha expirado.");
+            }
+
+            // 1. Mark coupon as used in the transaction
+            transaction.update(couponRef, {
+                isUsed: true,
+                usedBy: userId,
+                usedAt: serverTimestamp()
+            });
+
+            // 2. Upgrade User in the transaction
+            transaction.update(userRef, {
+                "subscription.plan": couponData.plan,
+                "subscription.status": "active",
+                "subscription.renewsAt": new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(), // 1 year
+                "subscription.updatedAt": serverTimestamp(),
+                "subscription.method": "coupon",
+                "subscription.couponCode": cleanedCode
+            });
+
+            // 3. Log pseudo-transaction for audit (Atomic set)
+            const transactionId = `COUPON-${cleanedCode}-${Date.now()}`;
+            const txRef = doc(db, "transactions", transactionId);
+            transaction.set(txRef, {
+                userId,
+                amount: 0,
+                currency: 'COP',
+                plan: couponData.plan,
+                status: 'completed',
+                provider: 'PromoSystem',
+                method: 'Access Code',
+                createdAt: serverTimestamp(),
+                metadata: { couponCode: cleanedCode }
+            });
+
+            return { success: true, plan: couponData.plan };
+        });
+    } catch (error: any) {
+        console.error("Error redeeming coupon:", error.message);
+        throw error;
+    }
+};
+
+/**
+ * Admin: Generate multiple coupons
+ */
+export const generateCoupons = async (count: number, plan: 'pro' | 'teacher', description: string = "Promo Admin") => {
+    const results = [];
+    for (let i = 0; i < count; i++) {
+        const code = Math.random().toString(36).substring(2, 10).toUpperCase();
+        const couponRef = doc(db, "coupons", code);
+        const data = {
+            code,
+            plan,
+            isUsed: false,
+            createdAt: serverTimestamp(),
+            description,
+            expiresAt: null // Optional: set default expiry
+        };
+        await setDoc(couponRef, data);
+        results.push(data);
+    }
+    return results;
 };

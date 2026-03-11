@@ -70,3 +70,18 @@ export const PLAN_PRICES: Record<SubscriptionPlan, number> = {
     [SubscriptionPlan.TEACHER_PRO]: 89900,
     [SubscriptionPlan.INSTITUTION]: 0 // Custom
 };
+
+/**
+ * Access Code / Coupon System
+ */
+export interface Coupon {
+    id?: string;
+    code: string;
+    plan: SubscriptionPlan;
+    isUsed: boolean;
+    usedBy?: string;
+    usedAt?: any; // Timestamp
+    createdAt: any; // Timestamp
+    expiresAt?: any; // Timestamp
+    description?: string;
+}

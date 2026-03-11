@@ -9,8 +9,13 @@ export default defineConfig({
         environment: 'jsdom',
         globals: true,
         setupFiles: './vitest.setup.ts',
+        server: {
+            deps: {
+                inline: [/@exodus\/bytes/, /html-encoding-sniffer/],
+            },
+        },
         alias: {
-            '@': path.resolve(__dirname, './'),
+            '@': path.resolve(process.cwd(), './'),
         },
     },
 });

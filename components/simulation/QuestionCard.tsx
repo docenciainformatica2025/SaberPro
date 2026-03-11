@@ -23,8 +23,9 @@ import { cn } from "@/lib/utils";
 
 export default function QuestionCard({ question, selectedOptionId, onSelectOption, showResult = false, aiUsageCount = 0, onAiUsed }: QuestionCardProps) {
     const [explanation, setExplanation] = useState<string | null>(null);
+    const [promptResponse, setPromptResponse] = useState("");
     const [loadingExpl, setLoadingExpl] = useState(false);
-    const { user, subscription } = useAuth(); // Ensure subscription is pulled
+    const { user, profile, subscription } = useAuth(); // Ensure subscription is pulled
 
     const handleExplain = async () => {
         setLoadingExpl(true);
@@ -36,9 +37,9 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     question,
-                    selectedOption: question.options.find(o => o.id === selectedOptionId)?.text || "Ninguna",
-                    correctAnswer: question.options.find(o => o.id === question.correctAnswer)?.text,
-                    userProfile: { targetCareer: "Ingeniería" } // TODO: Fetch real profile if needed, or pass it down
+                    selectedOption: question.isPromptOnly ? promptResponse : (question.options.find(o => o.id === selectedOptionId)?.text || "Ninguna"),
+                    correctAnswer: question.isPromptOnly ? "Respuesta Abierta / Argumentación" : (question.options.find(o => o.id === question.correctAnswer)?.text || "N/A"),
+                    userProfile: profile || { targetCareer: "Ingeniería" }
                 })
             });
             const data = await res.json();
@@ -89,6 +90,8 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
                         className="w-full h-48 p-6 rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] text-[var(--theme-text-primary)] focus:border-brand-primary outline-none transition-all duration-180 ease-out placeholder:text-[var(--theme-text-secondary)]/30"
                         placeholder="Escribe tu análisis aquí..."
                         disabled={showResult}
+                        value={promptResponse}
+                        onChange={(e) => setPromptResponse(e.target.value)}
                     />
                     <p className="text-xs text-[var(--theme-text-secondary)]/40 italic pl-2">
                         * Esta es una tarea de respuesta abierta para desarrollar tus habilidades de argumentación.

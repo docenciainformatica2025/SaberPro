@@ -4,7 +4,7 @@ import { useAuth } from "@/context/AuthContext";
 import { Check, X, Zap, Crown, Shield, ArrowRight, Star } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { upgradeUserSubscription } from "@/services/finance/subscription.service";
+import { upgradeUserSubscription, redeemCoupon } from "@/services/finance/subscription.service";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { Card } from "@/components/ui/Card";
@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import Link from "next/link";
 import PaymentGateway from "@/components/finance/PaymentGateway";
+import { Ticket } from "lucide-react";
 
 const FeatureItem = ({ text, included = true }: { text: string, included?: boolean }) => (
     <li className={`flex items-center gap-3 ${included ? 'text-[var(--theme-text-primary)]' : 'text-[var(--theme-text-quaternary)]/30'}`}>
@@ -38,6 +39,8 @@ export default function PricingPage() {
     const [loading, setLoading] = useState(false);
     const [pricing, setPricing] = useState({ student: 49900, teacher: 89900 });
     const [currency, setCurrency] = useState("COP");
+    const [couponCode, setCouponCode] = useState("");
+    const [redeeming, setRedeeming] = useState(false);
 
     useEffect(() => {
         const fetchConfig = async () => {
@@ -58,6 +61,25 @@ export default function PricingPage() {
         };
         fetchConfig();
     }, []);
+
+    const handleRedeemCoupon = async () => {
+        if (!user) {
+            router.push('/login?redirect=/pricing');
+            return;
+        }
+        if (!couponCode.trim()) return;
+
+        setRedeeming(true);
+        try {
+            const result = await redeemCoupon(user.uid, couponCode);
+            alert(`¡Éxito! Plan ${result.plan.toUpperCase()} activado correctamente.`);
+            router.push('/dashboard?promo_success=true');
+        } catch (e: any) {
+            alert(e.message || "Error al canjear el código.");
+        } finally {
+            setRedeeming(false);
+        }
+    };
 
     const handleUpgrade = async () => {
         if (!user) {
@@ -233,7 +255,36 @@ export default function PricingPage() {
                 </Card>
             </div>
 
-            <div className="mt-16 flex items-center gap-2 opacity-40 hover:opacity-100 transition-opacity">
+            <div className="mt-16 w-full max-w-lg animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
+                <Card variant="solid" className="p-6 bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)]">
+                    <div className="flex items-center gap-3 mb-4 text-brand-primary">
+                        <Ticket size={20} />
+                        <h4 className="text-xs font-bold uppercase tracking-widest text-[var(--theme-text-primary)]">¿Tienes un código de acceso?</h4>
+                    </div>
+                    <div className="flex gap-2">
+                        <input
+                            type="text"
+                            placeholder="Ej: PROMO-2025"
+                            value={couponCode}
+                            onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
+                            className="flex-1 h-12 bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] rounded-xl px-4 text-xs font-bold text-[var(--theme-text-primary)] focus:border-brand-primary outline-none transition-all"
+                        />
+                        <Button
+                            variant="primary"
+                            className="px-6 h-12 text-[10px] font-bold uppercase tracking-widest"
+                            onClick={handleRedeemCoupon}
+                            isLoading={redeeming}
+                        >
+                            Canjear
+                        </Button>
+                    </div>
+                    <p className="mt-3 text-[9px] text-[var(--theme-text-tertiary)] italic text-center uppercase tracking-wider">
+                        * Los códigos promocionales son de un solo uso.
+                    </p>
+                </Card>
+            </div>
+
+            <div className="mt-12 flex items-center gap-2 opacity-40 hover:opacity-100 transition-opacity">
                 <Shield size={14} className="text-brand-primary" />
                 <span className="text-[10px] uppercase font-bold text-[var(--theme-text-secondary)] tracking-wider">Pagos procesados de forma segura con Wompi</span>
             </div>
