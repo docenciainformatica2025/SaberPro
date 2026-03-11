@@ -21,15 +21,20 @@ export default function DiagnosticResultsPage() {
     }, []);
 
     useEffect(() => {
-        // 1. Read from localStorage
         const saved = localStorage.getItem("saberpro_diagnostic_results");
         if (!saved) {
-            router.push("/diagnostic"); // No data? Go back to start
+            router.push("/diagnostic");
             return;
         }
 
         const timer = setTimeout(() => {
-            setData(JSON.parse(saved));
+            const parsed = JSON.parse(saved);
+            // Support both old format (no totalCorrect) and new format
+            if (!parsed.totalCorrect && parsed.answers) {
+                parsed.totalCorrect = parsed.answers.filter((a: any) => a.correct).length;
+                parsed.total = parsed.answers.length || 5;
+            }
+            setData(parsed);
             setLoading(false);
         }, 0);
 
@@ -38,17 +43,32 @@ export default function DiagnosticResultsPage() {
 
     if (loading || !data) return null;
 
-    // Mock Radar Data based on score (Simplified logic for Micro-Diagnostic)
+    // Build chart from per-category answers if available
+    const categoryMap: Record<string, boolean[]> = {};
+    (data.answers || []).forEach((a: any) => {
+        if (!categoryMap[a.category]) categoryMap[a.category] = [];
+        categoryMap[a.category].push(a.correct);
+    });
+
+    const categoryScore = (cat: string) => {
+        const arr = categoryMap[cat];
+        if (!arr || arr.length === 0) return data.score > 60 ? 70 : 40;
+        return Math.round((arr.filter(Boolean).length / arr.length) * 100);
+    };
+
     const chartData = [
-        { subject: 'Cuantitativo', A: data.score > 60 ? 80 : 40, fullMark: 100 },
-        { subject: 'Lectura', A: data.score > 60 ? 70 : 50, fullMark: 100 },
-        { subject: 'Ciudadanas', A: data.score > 80 ? 90 : 60, fullMark: 100 },
-        { subject: 'Inglés', A: data.score > 40 ? 60 : 30, fullMark: 100 },
-        { subject: 'Lógica', A: data.score > 50 ? 85 : 45, fullMark: 100 },
+        { subject: 'Cuantitativo', A: categoryScore('Razonamiento Cuantitativo'), fullMark: 100 },
+        { subject: 'Lectura', A: categoryScore('Lectura Crítica'), fullMark: 100 },
+        { subject: 'Ciudadanas', A: categoryScore('Competencias Ciudadanas'), fullMark: 100 },
+        { subject: 'Inglés', A: categoryScore('Inglés (B2)'), fullMark: 100 },
+        { subject: 'Comunicación', A: categoryScore('Comunicación Escrita'), fullMark: 100 },
     ];
 
     const gap = 100 - data.score;
-    const projectedScore = Math.round(data.score * 1.3); // Promesa de valor
+
+    const correctLabel = data.totalCorrect !== undefined
+        ? `${data.totalCorrect} de ${data.total ?? 5} correctas`
+        : null;
 
     return (
         <div className="min-h-screen bg-[var(--theme-bg-base)] selection:bg-brand-primary/30 p-6 flex items-center justify-center">
@@ -63,6 +83,11 @@ export default function DiagnosticResultsPage() {
                         <h1 className="text-4xl md:text-5xl font-semibold text-[var(--theme-text-primary)] italic uppercase leading-none mb-2">
                             Tu Nivel Actual: <span className={gap > 40 ? "text-red-500" : "text-yellow-500"}>{data.score}%</span>
                         </h1>
+                        {correctLabel && (
+                            <p className="text-sm text-[var(--theme-text-secondary)] font-bold mb-2">
+                                {correctLabel}
+                            </p>
+                        )}
                         <p className="text-xl text-[var(--theme-text-secondary)] font-light mb-4">
                             {gap > 40
                                 ? "No estás mal. Solo necesitas reforzar 3 áreas clave."

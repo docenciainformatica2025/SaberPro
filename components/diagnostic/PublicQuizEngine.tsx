@@ -100,9 +100,10 @@ export default function PublicQuizEngine() {
         setIsCorrect(correct);
         setShowFeedback(true);
 
-        if (correct) setScore(s => s + 1);
+        const newScore = correct ? score + 1 : score;
+        if (correct) setScore(newScore);
 
-        // Save result temporarily
+        // Save result
         const result = {
             questionId: currentQ.id,
             category: currentQ.category,
@@ -117,17 +118,22 @@ export default function PublicQuizEngine() {
             setSelectedOption(null);
             setCurrentIdx(i => i + 1);
         } else {
-            // Finish Quiz
-            const finalScore = Math.round(((score + (isCorrect ? 0 : 0)) / shuffledQuestions.length) * 100);
+            // Include the CURRENT answer in the final tally
+            const totalCorrect = score + (isCorrect ? 1 : 0);
+            const finalScore = Math.round((totalCorrect / shuffledQuestions.length) * 100);
 
-            // Save to localStorage for migration later
+            // Detailed results array (include current question)
+            const finalResults = [...results]; // already includes current via handleSelect
+
+            // Save to localStorage for results page
             localStorage.setItem("saberpro_diagnostic_results", JSON.stringify({
                 score: finalScore,
-                answers: results,
+                totalCorrect,
+                total: shuffledQuestions.length,
+                answers: finalResults,
                 date: new Date().toISOString()
             }));
 
-            // Redirect to Results Page (Hook visual)
             router.push("/diagnostic/results");
         }
     };
