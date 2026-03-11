@@ -141,59 +141,58 @@ export default function LeaderboardPage() {
                 <div className="grid grid-cols-3 gap-2 items-end mb-12 h-64">
                     {/* 2nd Place */}
                     {topThree[1] && (
-                        <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100">
+                        <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100 min-w-0">
                             <div className="mb-4 relative">
                                 <div className="w-16 h-16 rounded-full border-2 border-theme-text-secondary bg-[var(--theme-bg-base)] overflow-hidden relative z-10">
-                                    {/* Avatar */}
-                                    <div className="w-full h-full flex items-center justify-center bg-theme-text-secondary/20 text-theme-text-secondary font-bold">
+                                    <div className="w-full h-full flex items-center justify-center bg-theme-text-secondary/20 text-theme-text-secondary font-bold text-xl">
                                         {topThree[1].fullName[0]}
                                     </div>
                                 </div>
                                 <div className="absolute -bottom-2 -right-2 bg-theme-text-secondary text-black text-xs font-semibold w-6 h-6 rounded-full flex items-center justify-center border-2 border-black z-20">2</div>
                             </div>
-                            <div className="w-full bg-gradient-to-t from-theme-text-secondary/20 to-theme-text-secondary/5 rounded-t-xl h-32 flex flex-col justify-end p-4 text-center border-t border-x border-theme-text-secondary/30 relative">
+                            <div className="w-full bg-gradient-to-t from-theme-text-secondary/20 to-theme-text-secondary/5 rounded-t-xl h-32 flex flex-col justify-end p-3 text-center border-t border-x border-theme-text-secondary/30 relative overflow-hidden">
                                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-8 bg-theme-text-secondary/50" />
-                                <h3 className="text-[var(--theme-text-primary)] font-bold text-xs truncate w-full mb-1">{topThree[1].fullName}</h3>
-                                <p className="text-theme-text-secondary font-semibold text-lg">{topThree[1].points}</p>
+                                <p className="text-[var(--theme-text-primary)] font-bold text-[11px] leading-tight line-clamp-2 break-words hyphens-auto mb-1">{topThree[1].fullName}</p>
+                                <p className="text-theme-text-secondary font-semibold text-base">{topThree[1].points}</p>
                             </div>
                         </div>
                     )}
 
                     {/* 1st Place */}
                     {topThree[0] && (
-                        <div className="flex flex-col items-center z-10 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                        <div className="flex flex-col items-center z-10 animate-in fade-in slide-in-from-bottom-8 duration-700 min-w-0">
                             <Crown size={32} className="text-brand-primary mb-2 animate-bounce" />
                             <div className="mb-4 relative">
-                                <div className="w-20 h-20 rounded-full border-4 border-brand-primary bg-[var(--theme-bg-base)] overflow-hidden relative z-10 shadow-[0_0_30px_rgba(212,175,55,0.4)]">
+                                <div className="w-20 h-20 rounded-full border-4 border-brand-primary bg-[var(--theme-bg-base)] overflow-hidden relative z-10 shadow-[0_0_30px_rgba(30,64,175,0.3)]">
                                     <div className="w-full h-full flex items-center justify-center bg-brand-primary/20 text-brand-primary font-bold text-2xl">
                                         {topThree[0].fullName[0]}
                                     </div>
                                 </div>
-                                <div className="absolute -bottom-3 -right-3 bg-brand-primary text-black text-sm font-semibold w-8 h-8 rounded-full flex items-center justify-center border-4 border-black z-20">1</div>
+                                <div className="absolute -bottom-3 -right-3 bg-brand-primary text-white text-sm font-semibold w-8 h-8 rounded-full flex items-center justify-center border-4 border-[var(--theme-bg-base)] z-20">1</div>
                             </div>
-                            <div className="w-full bg-gradient-to-t from-brand-primary/20 to-brand-primary/5 rounded-t-xl h-40 flex flex-col justify-end p-4 text-center border-t border-x border-brand-primary/30 relative shadow-[0_0_50px_rgba(212,175,55,0.1)]">
+                            <div className="w-full bg-gradient-to-t from-brand-primary/20 to-brand-primary/5 rounded-t-xl h-40 flex flex-col justify-end p-3 text-center border-t border-x border-brand-primary/30 relative shadow-[0_0_50px_rgba(30,64,175,0.08)] overflow-hidden">
                                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-12 bg-brand-primary/50" />
-                                <h3 className="text-[var(--theme-text-primary)] font-bold text-sm truncate w-full mb-1">{topThree[0].fullName}</h3>
-                                <p className="text-brand-primary font-semibold text-2xl">{topThree[0].points}</p>
+                                <p className="text-[var(--theme-text-primary)] font-bold text-[11px] leading-tight line-clamp-2 break-words hyphens-auto mb-1">{topThree[0].fullName}</p>
+                                <p className="text-brand-primary font-bold text-xl">{topThree[0].points}</p>
                             </div>
                         </div>
                     )}
 
                     {/* 3rd Place */}
                     {topThree[2] && (
-                        <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
+                        <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 min-w-0">
                             <div className="mb-4 relative">
                                 <div className="w-16 h-16 rounded-full border-2 border-brand-primary/40 bg-[var(--theme-bg-base)] overflow-hidden relative z-10">
-                                    <div className="w-full h-full flex items-center justify-center bg-brand-primary/5 text-brand-primary/60 font-bold">
+                                    <div className="w-full h-full flex items-center justify-center bg-brand-primary/5 text-brand-primary/60 font-bold text-xl">
                                         {topThree[2].fullName[0]}
                                     </div>
                                 </div>
                                 <div className="absolute -bottom-2 -right-2 bg-brand-primary/40 text-[var(--theme-text-primary)] text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center border-2 border-[var(--theme-bg-base)] z-20">3</div>
                             </div>
-                            <div className="w-full bg-gradient-to-t from-brand-primary/10 to-transparent rounded-t-xl h-24 flex flex-col justify-end p-4 text-center border-t border-x border-[var(--theme-border-soft)] relative">
+                            <div className="w-full bg-gradient-to-t from-brand-primary/10 to-transparent rounded-t-xl h-24 flex flex-col justify-end p-3 text-center border-t border-x border-[var(--theme-border-soft)] relative overflow-hidden">
                                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-8 bg-brand-primary/20" />
-                                <h3 className="text-[var(--theme-text-primary)] font-bold text-xs truncate w-full mb-1">{topThree[2].fullName}</h3>
-                                <p className="text-brand-primary/60 font-bold text-lg">{topThree[2].points}</p>
+                                <p className="text-[var(--theme-text-primary)] font-bold text-[11px] leading-tight line-clamp-2 break-words hyphens-auto mb-1">{topThree[2].fullName}</p>
+                                <p className="text-brand-primary/60 font-bold text-base">{topThree[2].points}</p>
                             </div>
                         </div>
                     )}

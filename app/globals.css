@@ -468,11 +468,18 @@ h3 {
     scrollbar-width: none;
   }
 
-  /* Ultra-Premium Glassmorphism */
+  /* Ultra-Premium Glassmorphism — Mode-Aware */
   .glass-elite {
-    background-color: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: var(--theme-bg-surface);
+    border: 1px solid var(--theme-border-soft);
     backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: var(--theme-shadow-md, 0 4px 20px rgba(0, 0, 0, 0.06));
+  }
+
+  .dark .glass-elite {
+    background-color: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
   }
 
@@ -481,9 +488,15 @@ h3 {
   }
 
   .glass-card-hover:hover {
+    background-color: var(--theme-bg-surface);
+    border-color: rgba(30, 64, 175, 0.2);
+    box-shadow: 0 0 40px -10px rgba(30, 64, 175, 0.15);
+  }
+
+  .dark .glass-card-hover:hover {
     background-color: rgba(255, 255, 255, 0.06);
-    border-color: rgba(212, 175, 55, 0.3);
-    box-shadow: 0 0 40px -10px rgba(212, 175, 55, 0.3);
+    border-color: rgba(30, 64, 175, 0.3);
+    box-shadow: 0 0 40px -10px rgba(30, 64, 175, 0.3);
   }
 
   /* Modern Text Utilities - 2026 Best Practices */

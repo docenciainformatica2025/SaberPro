@@ -165,25 +165,30 @@ export default function PublicQuizEngine() {
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.3 }}
                 >
-                    <Card variant="glass" className="p-8 border-brand-primary/20 shadow-[0_0_50px_rgba(212,175,55,0.05)]">
-                        <span className="inline-block px-3 py-1 bg-white/5 text-brand-primary text-[10px] font-semibold uppercase tracking-wider rounded-full mb-4">
+                    <Card variant="glass" className="p-8 border-brand-primary/20 shadow-[0_0_50px_rgba(30,64,175,0.08)]">
+                        <span className="inline-block px-3 py-1 bg-brand-primary/10 text-brand-primary text-[10px] font-semibold uppercase tracking-wider rounded-full mb-4">
                             {currentQ.category}
                         </span>
 
-                        <h2 className="text-xl font-bold text-white mb-8 leading-relaxed">
+                        <h2 className="text-xl font-bold text-[var(--theme-text-primary)] mb-8 leading-relaxed">
                             {currentQ.question}
                         </h2>
 
                         <div className="space-y-3">
                             {currentQ.options.map((opt, idx) => {
-                                let btnClass = "w-full p-4 rounded-xl text-left border border-white/5 bg-white/5 hover:bg-white/10 transition-all font-medium text-theme-text-secondary flex justify-between items-center group";
+                                let btnClass = "w-full p-4 rounded-xl text-left border transition-all font-medium flex justify-between items-center gap-2";
 
                                 if (showFeedback) {
-                                    if (idx === currentQ.correct) btnClass = "w-full p-4 rounded-xl text-left border border-green-500/50 bg-green-500/10 text-white font-bold";
-                                    else if (idx === selectedOption && idx !== currentQ.correct) btnClass = "w-full p-4 rounded-xl text-left border border-red-500/50 bg-red-500/10 text-white opacity-50";
-                                    else btnClass = "w-full p-4 rounded-xl text-left border border-white/5 bg-black/20 text-theme-text-secondary opacity-30";
+                                    if (idx === currentQ.correct)
+                                        btnClass += " border-green-500/50 bg-green-500/10 text-[var(--theme-text-primary)] font-bold";
+                                    else if (idx === selectedOption && idx !== currentQ.correct)
+                                        btnClass += " border-red-500/40 bg-red-500/10 text-[var(--theme-text-secondary)] opacity-60";
+                                    else
+                                        btnClass += " border-[var(--theme-border-soft)] bg-[var(--theme-bg-base)] text-[var(--theme-text-tertiary)] opacity-40";
                                 } else if (selectedOption === idx) {
-                                    btnClass += " ring-2 ring-brand-primary bg-brand-primary/10 text-white";
+                                    btnClass += " border-brand-primary bg-brand-primary/10 text-[var(--theme-text-primary)] ring-2 ring-brand-primary/30";
+                                } else {
+                                    btnClass += " border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]/60 text-[var(--theme-text-secondary)] hover:bg-brand-primary/5 hover:border-brand-primary/30 hover:text-[var(--theme-text-primary)]";
                                 }
 
                                 return (
@@ -193,9 +198,9 @@ export default function PublicQuizEngine() {
                                         disabled={showFeedback}
                                         className={btnClass}
                                     >
-                                        <span>{opt}</span>
-                                        {showFeedback && idx === currentQ.correct && <CheckCircle2 className="text-green-400" size={20} />}
-                                        {showFeedback && idx === selectedOption && idx !== currentQ.correct && <XCircle className="text-red-400" size={20} />}
+                                        <span className="flex-1 text-left leading-snug">{opt}</span>
+                                        {showFeedback && idx === currentQ.correct && <CheckCircle2 className="text-green-500 shrink-0" size={20} />}
+                                        {showFeedback && idx === selectedOption && idx !== currentQ.correct && <XCircle className="text-red-400 shrink-0" size={20} />}
                                     </button>
                                 );
                             })}
@@ -212,32 +217,31 @@ export default function PublicQuizEngine() {
                         animate={{ opacity: 1, y: 0 }}
                         className="glass-elite rounded-xl p-8 transition-all duration-500"
                     >
-                        <div className="flex items-start gap-6">
-                            <div className={`p-2 rounded-lg ${isCorrect ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'}`}>
-                                <Brain size={24} />
+                        <div className="flex items-start gap-4">
+                            <div className={`p-2.5 rounded-xl shrink-0 ${isCorrect ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-400'}`}>
+                                <Brain size={22} />
                             </div>
-                            <div className="flex-1">
-                                <h4 className={`font-bold mb-1 ${isCorrect ? 'text-green-400' : 'text-red-400'}`}>
-                                    {isCorrect ? '✔ Evaluador Experto: Correcto. Tu análisis es coherente con la matriz 2026.' : '⚠ Evaluador Experto: Aquí suele fallar el 70% de aspirantes por falta de rigor técnico.'}
+                            <div className="flex-1 min-w-0">
+                                <h4 className={`font-bold mb-2 text-sm leading-snug ${isCorrect ? 'text-green-500' : 'text-red-400'}`}>
+                                    {isCorrect ? '✔ Correcto. Tu análisis es coherente con la matriz 2026.' : '⚠ Aquí suele fallar el 70% de aspirantes. Revisa el razonamiento.'}
                                 </h4>
-                                <p className="text-base text-theme-text-secondary mb-6 leading-loose font-medium">
+                                <p className="text-sm text-[var(--theme-text-secondary)] mb-5 leading-relaxed">
                                     {currentQ.explanation}
                                 </p>
 
-                                {/* Tip Saber Pro 2026 */}
-                                <div className="mb-6 p-4 bg-brand-primary/5 border-l-2 border-brand-primary rounded-r-lg">
-                                    <span className="block text-[10px] font-semibold text-brand-primary uppercase tracking-wider mb-1">Tip Saber Pro 2026</span>
-                                    <p className="text-xs italic text-theme-text-secondary/80">
+                                <div className="mb-5 p-3 bg-brand-primary/5 border-l-2 border-brand-primary rounded-r-lg">
+                                    <span className="block text-[10px] font-bold text-brand-primary uppercase tracking-wider mb-1">Tip Saber Pro 2026</span>
+                                    <p className="text-xs text-[var(--theme-text-secondary)] leading-relaxed">
                                         {isCorrect
-                                            ? "Mantén este nivel de detalle. En 2026, las inferencias no son solo literales, requieren entender la intención oculta del autor."
-                                            : "No te dejes llevar por la respuesta que suena 'más bonita'. En Competencias Ciudadanas, prioriza siempre el marco constitucional vigente."}
+                                            ? "Mantén este nivel de detalle. Las inferencias requieren entender la intención oculta del autor."
+                                            : "No te dejes llevar por la respuesta que suena 'más bonita'. Prioriza el marco constitucional vigente."}
                                     </p>
                                 </div>
 
                                 <Button
                                     onClick={handleNext}
                                     variant="primary"
-                                    className="w-full text-xs font-semibold uppercase tracking-wider h-10"
+                                    className="w-full text-xs font-semibold uppercase tracking-wider h-11"
                                     icon={ArrowRight}
                                     iconPosition="right"
                                 >
