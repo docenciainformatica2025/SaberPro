@@ -27,56 +27,52 @@ export default function LeaderboardPage() {
     const { user, profile } = useAuth();
     const [leaders, setLeaders] = useState<LeaderboardUser[]>([]);
     const [loading, setLoading] = useState(true);
-    const [timeFrame, setTimeFrame] = useState<'weekly' | 'allTime'>('weekly'); // Mock filter for now
+    const [timeFrame, setTimeFrame] = useState<'weekly' | 'allTime'>('allTime');
     const [userRank, setUserRank] = useState<LeaderboardUser | null>(null);
 
     useEffect(() => {
         const fetchLeaderboard = async () => {
             try {
-                // In a real scenario, we would have a 'points' field indexed.
-                // For now, assuming 'gamification.points' exists or falling back to a mock score calculation based on subscription/role for visual check
-                // OR better: fetching users and sorting client side if dataset is small (MVP approach)
+                // Query published user profiles with points from 'users' collection.
+                // Only read public-safe fields; Firestore rules protect private data.
+                const q = query(
+                    collection(db, "users"),
+                    where("gamification.points", ">", 0),
+                    orderBy("gamification.points", "desc"),
+                    limit(50)
+                );
+                const snapshot = await getDocs(q);
 
-                // --- SECURE IMPLEMENTATION ---
-                // Instead of reading all users (insecure), we generate a competitive landscape
-                // and inject the current user into it. This mimics "Big Tech" separation of public/private data.
-
-                const generateMockUsers = (count: number): LeaderboardUser[] => {
-                    const firstNames = ["Sofia", "Mateo", "Valentina", "Santiago", "Isabella", "Nicolas", "Camila", "Samuel", "Mariana", "Lucas", "Daniela", "Alejandro", "Valeria", "Diego", "Gabriela"];
-                    const lastNames = ["Rodriguez", "Gomez", "Lopez", "Gonzalez", "Martinez", "Garcia", "Perez", "Hernandez", "Ramirez", "Torres"];
-
-                    return Array.from({ length: count }).map((_, i) => {
-                        const scoreBase = 4500 - (i * (50 + Math.random() * 100)); // Declining curve
-                        return {
-                            id: `mock_${i}`,
-                            fullName: `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`,
-                            points: Math.max(100, Math.floor(scoreBase)),
-                            streak: Math.floor(Math.random() * 30),
-                        };
-                    });
-                };
-
-                let allUsers = generateMockUsers(49);
-
-                // Inject Real User if logged in
-                if (user && profile) {
-                    const realUserScore = (profile as any)?.gamification?.points || 120; // Default starter score
-                    const realUser: LeaderboardUser = {
-                        id: user.uid,
-                        fullName: profile.fullName || user.email?.split('@')[0] || "Tu Usuario",
-                        photoURL: user.photoURL || undefined,
-                        points: realUserScore,
-                        streak: (profile as any)?.gamification?.streak?.current || 0
+                let allUsers: LeaderboardUser[] = snapshot.docs.map(doc => {
+                    const data = doc.data();
+                    return {
+                        id: doc.id,
+                        fullName: data.fullName || data.displayName || "Estudiante",
+                        photoURL: data.photoURL || undefined,
+                        points: data.gamification?.points || 0,
+                        streak: data.gamification?.streak?.current || 0,
                     };
-                    allUsers.push(realUser);
+                });
+
+                // If current user has no points yet (new user), inject them at the bottom
+                if (user && profile) {
+                    const alreadyIn = allUsers.find(u => u.id === user.uid);
+                    if (!alreadyIn) {
+                        const myPoints = (profile as any)?.gamification?.points || 0;
+                        if (myPoints > 0) {
+                            allUsers.push({
+                                id: user.uid,
+                                fullName: (profile as any)?.fullName || user.email?.split('@')[0] || "Tú",
+                                photoURL: user.photoURL || undefined,
+                                points: myPoints,
+                                streak: (profile as any)?.gamification?.streak?.current || 0,
+                            });
+                            allUsers.sort((a, b) => b.points - a.points);
+                        }
+                    }
                 }
 
-                // Sort descending
-                allUsers.sort((a, b) => b.points - a.points);
-
-                // Assign ranks
                 const rankedUsers = allUsers.map((u, index) => ({ ...u, rank: index + 1 }));
-
                 setLeaders(rankedUsers);
 
                 if (user) {

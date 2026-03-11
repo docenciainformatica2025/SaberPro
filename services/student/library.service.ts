@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where, limit } from "firebase/firestore";
+import { collection, getDocs, query, where, limit, orderBy } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
 export interface LibraryItem {
@@ -15,43 +15,51 @@ export interface LibraryItem {
 
 export class LibraryService {
     /**
-     * Obtiene recursos recomendados por la IA para el estudiante.
-     * En una fase posterior, esto consultará un motor de recomendaciones.
+     * Obtiene recursos recomendados desde Firestore (colección 'resources').
+     * Retorna array vacío si no hay recursos publicados todavía.
      */
     static async getRecommendedResources(): Promise<LibraryItem[]> {
-        // Por ahora retornamos los mocks que estaban en el componente, 
-        // pero preparados para ser consumidos de forma asíncrona.
-        return [
-            {
-                id: 'rec_1',
-                type: 'video',
-                title: 'Dominando las Fracciones Complejas',
-                desc: 'Tu Mentor notó que este tema te tomó más tiempo ayer.',
-                duration: '5 min',
-                match: '98% Match',
-                priority: 'ALTA PRIORIDAD',
-                image: 'bg-gradient-to-br from-slate-300 to-slate-400'
-            },
-            {
-                id: 'rec_2',
-                type: 'practice',
-                title: 'Reto de Geometría',
-                desc: 'Potencia tu visión espacial con ejercicios rápidos.',
-                match: '95% Match',
-                priority: 'PRÁCTICA',
-                image: 'bg-gradient-to-br from-teal-300 to-teal-400'
-            }
-        ];
+        try {
+            const q = query(
+                collection(db, "resources"),
+                where("published", "==", true),
+                orderBy("createdAt", "desc"),
+                limit(10)
+            );
+            const snapshot = await getDocs(q);
+            if (snapshot.empty) return [];
+            return snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            })) as LibraryItem[];
+        } catch (error) {
+            console.error("Error fetching recommended resources:", error);
+            return [];
+        }
     }
 
     /**
-     * Obtiene los recursos guardados por el usuario.
+     * Obtiene los recursos guardados por el usuario desde Firestore.
+     * Retorna array vacío si el usuario no ha guardado nada aún.
      */
     static async getSavedResources(userId: string): Promise<LibraryItem[]> {
-        // Simulación de consulta a Firestore
-        return [
-            { id: 'save_1', title: 'Teoría de Probabilidades: Guía Visual', type: 'reading', status: 'Leído' },
-            { id: 'save_2', title: 'Ecuaciones de Segundo Grado', type: 'video', status: 'Continuar' },
-        ];
+        if (!userId) return [];
+        try {
+            const q = query(
+                collection(db, "savedResources"),
+                where("userId", "==", userId),
+                orderBy("savedAt", "desc"),
+                limit(20)
+            );
+            const snapshot = await getDocs(q);
+            if (snapshot.empty) return [];
+            return snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            })) as LibraryItem[];
+        } catch (error) {
+            console.error("Error fetching saved resources:", error);
+            return [];
+        }
     }
 }
