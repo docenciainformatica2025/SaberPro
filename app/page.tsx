@@ -12,6 +12,7 @@ import NumberTicker from "@/components/ui/NumberTicker";
 import { StepCard } from "@/components/ui/StepCard";
 import { FeatureValueCard } from "@/components/ui/FeatureValueCard";
 import { GridBackground } from "@/components/ui/GridBackground";
+import SmartNav from "@/components/layout/SmartNav";
 
 export default function Home() {
   const { user, role } = useAuth();
@@ -19,36 +20,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-theme-bg-base selection:bg-brand-primary/10 overflow-x-hidden">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 backdrop-blur-xl border-b border-white/5 bg-background/60 supports-[backdrop-filter]:bg-background/60">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link href="/" className="hover:opacity-80 transition-opacity">
-            <Logo variant="full" size="md" />
-          </Link>
-          <div className="flex gap-4 items-center">
-            {user ? (
-              <Link href={dashboardLink}>
-                <Button variant="primary" className="text-xs font-bold uppercase tracking-widest h-10 px-6 shadow-2xl shadow-brand-primary/20 hover:shadow-brand-primary/40 transition-all hover:-translate-y-0.5">
-                  Dashboard
-                </Button>
-              </Link>
-            ) : (
-              <>
-                <Link href="/login" className="hidden md:block">
-                  <span className="text-sm font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
-                    Acceder
-                  </span>
-                </Link>
-                <Link href="/register">
-                  <Button variant="primary" className="text-xs font-bold uppercase tracking-widest h-10 px-6 shadow-2xl shadow-brand-primary/20 hover:shadow-brand-primary/40 transition-all hover:-translate-y-0.5 bg-gradient-to-r from-brand-primary to-brand-primary-light">
-                    Empezar Gratis
-                  </Button>
-                </Link>
-              </>
-            )}
-          </div>
-        </div>
-      </nav>
+      {/* Navigation — Smart Auto-hide */}
+      <SmartNav />
 
       <main className="flex-grow">
         {/* Hero Section */}
@@ -87,7 +60,7 @@ export default function Home() {
                 </Link>
               )}
               <Link href="/methodology" className="w-full sm:w-auto">
-                <Button variant="outline" size="lg" className="w-full h-12 px-6 text-[12px] font-bold uppercase tracking-widest border border-slate-200 hover:bg-slate-50 rounded-full bg-white text-slate-600">
+                <Button variant="outline" size="lg" className="w-full h-12 px-6 text-[12px] font-bold uppercase tracking-widest rounded-full">
                   Saber más
                 </Button>
               </Link>
@@ -141,18 +114,18 @@ export default function Home() {
         </section>
 
         {/* Filosofía de Entrenamiento Section */}
-        <section className="py-24 relative overflow-hidden bg-[#0B0F19] text-white">
-          <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-brand-primary/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+        <section className="py-24 relative overflow-hidden bg-[var(--theme-bg-surface)] border-t border-[var(--theme-border-soft)]">
+          <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-brand-primary/8 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-6">
+              <h2 className="text-3xl md:text-5xl font-black tracking-tight text-[var(--theme-text-primary)] mb-6">
                 Filosofía de Entrenamiento
               </h2>
-              <p className="text-xl text-gray-400 italic font-serif">
+              <p className="text-xl text-[var(--theme-text-secondary)] italic font-serif">
                 &quot;El problema no es que no sepas. Es que no sabes qué reforzar.&quot;
               </p>
-              <p className="text-sm text-gray-500 mt-6 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-sm text-[var(--theme-text-tertiary)] mt-6 max-w-2xl mx-auto leading-relaxed">
                 La plataforma de Saber Pro {BRAND_YEAR} está diseñada con una metodología única basada en datos, adaptando el contenido a tu ritmo de aprendizaje real.
               </p>
             </div>
@@ -163,21 +136,21 @@ export default function Home() {
                 title="Algoritmos Adaptativos"
                 description="El sistema aprende de tus errores y ajusta la dificultad para optimizar tu tiempo de estudio."
                 iconColor="text-brand-primary"
-                className="bg-white text-foreground shadow-xl shadow-black/5 border-0"
+                className="bg-[var(--theme-bg-base)] shadow-[var(--shadow-md)] border border-[var(--theme-border-soft)]"
               />
               <FeatureValueCard
                 icon={TrendingUp}
                 title="Analítica Predictiva"
                 description="Conoce tu probabilidad de éxito antes del examen con proyecciones basadas en data histórica."
-                iconColor="text-brand-accent"
-                className="bg-white text-foreground shadow-xl shadow-black/5 border-0"
+                iconColor="text-brand-primary"
+                className="bg-[var(--theme-bg-base)] shadow-[var(--shadow-md)] border border-[var(--theme-border-soft)]"
               />
               <FeatureValueCard
                 icon={ShieldCheck}
                 title="Simulación Realista"
                 description="Entrena en un entorno idéntico al del examen real para eliminar la ansiedad y mejorar tu rendimiento."
-                iconColor="text-brand-success"
-                className="bg-white text-foreground shadow-xl shadow-black/5 border-0"
+                iconColor="text-brand-primary"
+                className="bg-[var(--theme-bg-base)] shadow-[var(--shadow-md)] border border-[var(--theme-border-soft)]"
               />
             </div>
           </div>
