@@ -38,14 +38,15 @@ export default function DarkModeToggle() {
         <button
             onClick={toggle}
             className="
-                fixed bottom-40 right-6 md:bottom-6 md:right-48 
-                w-12 h-12 rounded-full 
-                bg-brand-primary hover:bg-brand-primary-deep
+                fixed bottom-4 left-4
+                md:bottom-6 md:right-6 md:left-auto
+                w-11 h-11 md:w-12 md:h-12 rounded-full
+                bg-brand-primary hover:bg-brand-primary/90
                 flex items-center justify-center
-                shadow-lg hover:shadow-xl hover:scale-110
+                shadow-lg hover:shadow-xl hover:scale-105
                 transition-all duration-300
-                touch-target-large touch-manipulation
-                z-50
+                touch-manipulation
+                z-40
                 animate-in fade-in slide-in-from-bottom-4
             "
             aria-label={isDark ? "Activar modo claro" : "Activar modo oscuro"}

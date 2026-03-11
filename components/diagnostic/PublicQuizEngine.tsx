@@ -144,15 +144,15 @@ export default function PublicQuizEngine() {
         <div className="max-w-xl mx-auto space-y-8">
             {/* Progress Bar */}
             <div className="space-y-2">
-                <div className="flex justify-between text-xs text-theme-text-secondary uppercase font-bold tracking-wider">
+                <div className="flex justify-between text-xs text-[var(--theme-text-secondary)] uppercase font-bold tracking-wider">
                     <span>Progreso</span>
                     <span>{currentIdx + 1} / {shuffledQuestions.length}</span>
                 </div>
-                <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+                <div className="h-2 bg-[var(--theme-border-soft)] rounded-full overflow-hidden">
                     <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${progress}%` }}
-                        className="h-full bg-gradient-to-r from-brand-primary to-yellow-600"
+                        className="h-full bg-gradient-to-r from-brand-primary to-brand-accent"
                     />
                 </div>
             </div>
@@ -165,12 +165,12 @@ export default function PublicQuizEngine() {
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.3 }}
                 >
-                    <Card variant="glass" className="p-8 border-brand-primary/20 shadow-[0_0_50px_rgba(30,64,175,0.08)]">
-                        <span className="inline-block px-3 py-1 bg-brand-primary/10 text-brand-primary text-[10px] font-semibold uppercase tracking-wider rounded-full mb-4">
+                    <Card variant="glass" className="p-4 sm:p-6 md:p-8 border-brand-primary/20 shadow-[0_0_50px_rgba(30,64,175,0.08)]">
+                        <span className="inline-block px-3 py-1 bg-brand-primary/10 text-brand-primary text-[10px] font-semibold uppercase tracking-wider rounded-full mb-3">
                             {currentQ.category}
                         </span>
 
-                        <h2 className="text-xl font-bold text-[var(--theme-text-primary)] mb-8 leading-relaxed">
+                        <h2 className="text-lg sm:text-xl font-bold text-[var(--theme-text-primary)] mb-6 leading-snug">
                             {currentQ.question}
                         </h2>
 
