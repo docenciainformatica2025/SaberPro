@@ -132,8 +132,8 @@ export default function RegisterPage() {
             </div>
 
             {/* Right Side - Register Form */}
-            <div className="w-full lg:w-1/2 flex items-center justify-center p-8 relative">
-                <div className="w-full max-w-md space-y-8">
+            <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-8 relative">
+                <div className="w-full max-w-md space-y-6 pb-20 md:pb-8">
                     {/* Public Navigation Pill */}
                     <div className="flex justify-between items-center mb-6">
                         <Link href="/">
@@ -147,7 +147,7 @@ export default function RegisterPage() {
                     </div>
 
                     <div className="space-y-1">
-                        <h1 className="text-3xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">Registro de Usuario</h1>
+                        <h1 className="text-2xl sm:text-3xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">Registro de Usuario</h1>
                         <p className="text-[var(--theme-text-tertiary)] text-sm">Crea tu cuenta institucional</p>
                     </div>
 

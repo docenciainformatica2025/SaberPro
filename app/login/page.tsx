@@ -125,8 +125,8 @@ export default function LoginPage() {
             </div>
 
             {/* Right Side - Login Form */}
-            <div className="w-full lg:w-1/2 flex items-center justify-center p-8 relative">
-                <div className="w-full max-w-md space-y-8">
+            <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-8 relative">
+                <div className="w-full max-w-md space-y-8 pb-20 md:pb-8">
 
                     {/* Mobile Header (Minimal Premium 2026) */}
                     <div className="lg:hidden text-center mb-6">
