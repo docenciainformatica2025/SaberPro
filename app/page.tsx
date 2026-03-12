@@ -162,21 +162,21 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-border/40">
               <div className="px-4 py-4 md:py-0">
                 <p className="text-5xl font-black tracking-tight mb-2 text-foreground">
-                  <NumberTicker value={1240} suffix="+" />
+                  <NumberTicker value={100} suffix="+" />
                 </p>
-                <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Estudiantes Activos</p>
+                <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground transition-all">Estudiantes Entrenando</p>
               </div>
               <div className="px-4 py-4 md:py-0">
                 <p className="text-5xl font-black tracking-tight mb-2 text-foreground">
-                  <NumberTicker value={94} suffix="%" />
+                  <NumberTicker value={24} suffix="/7" />
                 </p>
-                <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Tasa de Aprobación</p>
+                <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Disponibilidad IA</p>
               </div>
               <div className="px-4 py-4 md:py-0">
                 <p className="text-5xl font-black tracking-tight mb-2 text-foreground">
-                  <NumberTicker value={4.8} suffix="/5" />
+                  <NumberTicker value={100} suffix="%" />
                 </p>
-                <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Valoración Global</p>
+                <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Cobertura Icfes</p>
               </div>
             </div>
           </div>

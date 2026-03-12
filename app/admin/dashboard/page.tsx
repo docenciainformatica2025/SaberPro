@@ -42,9 +42,6 @@ const CHART_COLORS = [
     'var(--chart-5)'
 ];
 
-// Enhanced Mock Data for "World Class" Feel
-// Enhanced Mock Data for "World Class" Feel
-// Mock data adjusted for COP scale
 interface ActivityDatum {
     day: string;
     users: number;
@@ -52,15 +49,8 @@ interface ActivityDatum {
     trend?: number;
 }
 
-const activityData: ActivityDatum[] = [
-    { day: 'LUN', users: 120, revenue: 5988000 },
-    { day: 'MAR', users: 190, revenue: 9481000 },
-    { day: 'MIÉ', users: 150, revenue: 7485000 },
-    { day: 'JUE', users: 250, revenue: 12475000 },
-    { day: 'VIE', users: 320, revenue: 15968000 },
-    { day: 'SÁB', users: 450, revenue: 22455000 }, // Fixed key from 'trend' to 'revenue' for consistency if needed, assuming chart logic
-    { day: 'DOM', users: 380, revenue: 18962000 },
-];
+// Real activity data will be fetched from telemetry collection in next update
+const activityData: ActivityDatum[] = [];
 
 // La interfaz DashboardUser ahora se importa de @/services/adminService
 
@@ -168,7 +158,7 @@ export default function AdminDashboard() {
                     title="Revenue Estimado (M)"
                     value={`$${(stats.proUsers * 49900).toLocaleString('es-CO')}`}
                     icon={<DollarSign size={22} />}
-                    trend="+18.4% MRR"
+                    trend="Calculado"
                     trendUp={true}
                     color="gold"
                 />
@@ -184,7 +174,7 @@ export default function AdminDashboard() {
                     title="Simulacros Ejecutados"
                     value={stats.simulations.toLocaleString('es-CO')}
                     icon={<Target size={22} />}
-                    trend="+500 hoy"
+                    trend="En tiempo real"
                     trendUp={true}
                     color="purple"
                 />
@@ -192,7 +182,7 @@ export default function AdminDashboard() {
                     title="Conversión Pro"
                     value={`${((stats.proUsers / (stats.users || 1)) * 100).toFixed(1)}%`}
                     icon={<TrendingUp size={22} />}
-                    trend="Meta: 15%"
+                    trend="Sincronizado"
                     trendUp={true}
                     color="green"
                 />
@@ -205,132 +195,16 @@ export default function AdminDashboard() {
                     <h2 className="text-xl font-bold text-[var(--theme-text-primary)] italic uppercase tracking-tight">Inteligencia Estratégica</h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-brand-primary">
-                        <div className="flex items-center gap-3 text-brand-primary">
-                            <Target size={20} />
-                            <span className="text-[10px] font-bold uppercase tracking-widest">Alerta de Rendimiento</span>
+                <div className="py-20 text-center border-2 border-dashed border-[var(--theme-border-soft)] rounded-[2.5rem] bg-[var(--theme-bg-surface)]/30">
+                    <div className="max-w-md mx-auto space-y-4">
+                        <div className="w-16 h-16 bg-brand-primary/10 rounded-full flex items-center justify-center mx-auto text-brand-primary">
+                            <Activity size={32} />
                         </div>
-                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Detección de Brecha: Razonamiento</h4>
-                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
-                            El 35% de los estudiantes de <strong>Ingeniería</strong> han mostrado un descenso en Razonamiento Cuantitativo. Se recomienda activar refuerzo modular.
+                        <h3 className="text-xl font-bold text-[var(--theme-text-primary)] uppercase italic tracking-tight">Sin Alertas Críticas</h3>
+                        <p className="text-[var(--theme-text-secondary)] text-sm">
+                            El sistema de Inteligencia Estratégica aparecerá aquí cuando se detecten anomalías o picos de actividad en la telemetría global.
                         </p>
-                        <Link href="/admin/analytics">
-                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Ver Análisis de Cohorte</Button>
-                        </Link>
-                    </Card>
-
-                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-brand-accent">
-                        <div className="flex items-center gap-3 text-brand-accent">
-                            <TrendingUp size={20} />
-                            <span className="text-[10px] font-bold uppercase tracking-widest">Oportunidad de Crecimiento</span>
-                        </div>
-                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Pico de Engagament: Bogotá</h4>
-                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
-                            Aumento del 42% en actividad nocturna durante la última semana. Oportunidad para lanzar campaña de &quot;Examen Mañana&quot;.
-                        </p>
-                        <Link href="/admin/analytics">
-                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Lanzar Notificación IA</Button>
-                        </Link>
-                    </Card>
-
-                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-brand-success">
-                        <div className="flex items-center gap-3 text-brand-success">
-                            <ShieldAlert size={20} />
-                            <span className="text-[10px] font-bold uppercase tracking-widest">Salud del Producto</span>
-                        </div>
-                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Tasa de Éxito: Onboarding</h4>
-                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
-                            El nuevo flujo de onboarding ha incrementado la retención de primer día a un <strong>68%</strong>. Sincronización exitosa con Firebase.
-                        </p>
-                        <Link href="/admin/analytics">
-                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Ver Embudo de Conversión</Button>
-                        </Link>
-                    </Card>
-
-                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-orange-500">
-                        <div className="flex items-center gap-3 text-orange-500">
-                            <Users size={20} />
-                            <span className="text-[10px] font-bold uppercase tracking-widest">Retención de Usuarios</span>
-                        </div>
-                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Riesgo de Fuga: Cohorte Marzo</h4>
-                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
-                            Se detectó inactividad &gt; 5 días en el <strong>12%</strong> de usuarios nuevos. Se sugiere activar secuencia de reactivación por email.
-                        </p>
-                        <Link href="/admin/users">
-                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Activar Secuencia</Button>
-                        </Link>
-                    </Card>
-
-                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-blue-400">
-                        <div className="flex items-center gap-3 text-blue-400">
-                            <Activity size={20} />
-                            <span className="text-[10px] font-bold uppercase tracking-widest">Infraestructura</span>
-                        </div>
-                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Latencia del Sistema: 45ms</h4>
-                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
-                            Rendimiento óptimo. El tiempo de respuesta de la API se ha reducido en un <strong>15%</strong> tras la última optimización de índices.
-                        </p>
-                        <Link href="/admin/system">
-                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Reporte Técnico</Button>
-                        </Link>
-                    </Card>
-
-                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-purple-500">
-                        <div className="flex items-center gap-3 text-purple-500">
-                            <DollarSign size={20} />
-                            <span className="text-[10px] font-bold uppercase tracking-widest">Financiero</span>
-                        </div>
-                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Proyección de Cierre: +18%</h4>
-                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
-                            Basado en el MRR actual, se proyecta superar la meta mensual. Los planes <strong>Pro Semestrales</strong> lideran la facturación.
-                        </p>
-                        <Link href="/admin/finance">
-                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Detalle Financiero</Button>
-                        </Link>
-                    </Card>
-
-                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-red-500">
-                        <div className="flex items-center gap-3 text-red-500">
-                            <AlertCircle size={20} />
-                            <span className="text-[10px] font-bold uppercase tracking-widest">Seguridad</span>
-                        </div>
-                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Intentos de Acceso: Bloqueados</h4>
-                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
-                            Se bloquearon <strong>3 IPs sospechosas</strong> intentando fuerza bruta en el panel administrativo. El firewall está activo.
-                        </p>
-                        <Link href="/admin/audit">
-                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Ver Logs de Seguridad</Button>
-                        </Link>
-                    </Card>
-
-                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-teal-500">
-                        <div className="flex items-center gap-3 text-teal-500">
-                            <FileQuestion size={20} />
-                            <span className="text-[10px] font-bold uppercase tracking-widest">Contenido</span>
-                        </div>
-                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">Calidad del Banco: 4.9/5</h4>
-                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
-                            Los estudiantes han calificado positivamente las explicaciones de las nuevas preguntas de <strong>Competencias Ciudadanas</strong>.
-                        </p>
-                        <Link href="/admin/questions">
-                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Gestionar Preguntas</Button>
-                        </Link>
-                    </Card>
-
-                    <Card variant="premium" className="p-8 space-y-4 border-l-4 border-l-pink-500">
-                        <div className="flex items-center gap-3 text-pink-500">
-                            <School size={20} />
-                            <span className="text-[10px] font-bold uppercase tracking-widest">Soporte & CX</span>
-                        </div>
-                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)]">NPS Actual: 72 (Excelente)</h4>
-                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
-                            La satisfacción del usuario se mantiene alta. El principal feedback positivo es la velocidad de la plataforma.
-                        </p>
-                        <Link href="/admin/analytics">
-                            <Button variant="outline" size="sm" className="w-full text-[10px] font-bold">Leer Comentarios</Button>
-                        </Link>
-                    </Card>
+                    </div>
                 </div>
             </section>
 
@@ -341,34 +215,32 @@ export default function AdminDashboard() {
                     <div className="flex justify-between items-center mb-8">
                         <div>
                             <h3 className="text-xl font-bold text-[var(--theme-text-primary)] flex items-center gap-2 italic uppercase tracking-tight">
-                                <TrendingUp className="text-brand-primary" size={18} /> Rendimiento de Red
+                                <TrendingUp className="text-brand-primary" size={18} /> Telemetría de Red
                             </h3>
-                            <p className="text-xs text-[var(--theme-text-tertiary)]">Actividad de usuarios vs Proyecciones de ingresos</p>
-                        </div>
-                        <div className="flex gap-4">
-                            <div className="flex items-center gap-1.5">
-                                <div className="w-1.5 h-1.5 rounded-full bg-[var(--chart-1)]"></div>
-                                <span className="text-[10px] font-bold text-[var(--theme-text-tertiary)]">TRÁFICO</span>
-                            </div>
-                            <div className="flex items-center gap-1.5">
-                                <div className="w-1.5 h-1.5 rounded-full bg-[var(--chart-2)]"></div>
-                                <span className="text-[10px] font-bold text-[var(--theme-text-tertiary)]">CAPITAL</span>
-                            </div>
+                            <p className="text-xs text-[var(--theme-text-tertiary)]">Actividad de usuarios en tiempo real</p>
                         </div>
                     </div>
-                    <div className="h-[350px] w-full mt-4">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <LineChart data={activityData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                                <ThemedGrid />
-                                <ThemedXAxis dataKey="day" />
-                                <ThemedYAxis yAxisId="left" />
-                                <ThemedYAxis yAxisId="right" orientation="right" tickFormatter={(v) => `$${((v as number) / 1000000).toFixed(1)}M`} />
-                                <ThemedTooltip />
-                                <Line yAxisId="left" type="monotone" dataKey="users" stroke="var(--chart-1)" strokeWidth={3} dot={false} activeDot={{ r: 6, strokeWidth: 0 }} />
-                                <Line yAxisId="right" type="monotone" dataKey="revenue" stroke="var(--chart-2)" strokeWidth={3} dot={false} activeDot={{ r: 6, strokeWidth: 0 }} />
-                            </LineChart>
-                        </ResponsiveContainer>
-                    </div>
+                    {activityData.length > 0 ? (
+                        <div className="h-[350px] w-full mt-4">
+                            <ResponsiveContainer width="100%" height="100%">
+                                <LineChart data={activityData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                                    <ThemedGrid />
+                                    <ThemedXAxis dataKey="day" />
+                                    <ThemedYAxis yAxisId="left" />
+                                    <ThemedYAxis yAxisId="right" orientation="right" tickFormatter={(v) => `$${((v as number) / 1000000).toFixed(1)}M`} />
+                                    <ThemedTooltip />
+                                    <Line yAxisId="left" type="monotone" dataKey="users" stroke="var(--chart-1)" strokeWidth={3} dot={false} activeDot={{ r: 6, strokeWidth: 0 }} />
+                                    <Line yAxisId="right" type="monotone" dataKey="revenue" stroke="var(--chart-2)" strokeWidth={3} dot={false} activeDot={{ r: 6, strokeWidth: 0 }} />
+                                </LineChart>
+                            </ResponsiveContainer>
+                        </div>
+                    ) : (
+                        <div className="h-[350px] flex items-center justify-center border-2 border-dashed border-[var(--theme-border-soft)] rounded-3xl bg-[var(--theme-bg-base)]/30">
+                            <p className="text-[var(--theme-text-tertiary)] font-bold uppercase text-xs tracking-widest text-center">
+                                Esperando Flujo de Datos...
+                            </p>
+                        </div>
+                    )}
                 </Card>
 
                 {/* Geography Chart */}

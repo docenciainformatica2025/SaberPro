@@ -5,6 +5,7 @@ import { ArrowLeft, Mail, HelpCircle, Shield, AlertTriangle, Check, MessageSquar
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { AUTHOR_NAME, CONTACT_EMAIL } from "@/lib/config";
 
 export default function SupportPage() {
     return (
@@ -45,7 +46,7 @@ export default function SupportPage() {
 
                         <div className="grid gap-4">
                             {[
-                                { q: "¿Esta App es oficial del ICFES?", a: "No. SaberPro es una herramienta de simulación educativa independiente creada por el Ing. Antonio Rodríguez. No tenemos vinculación con el ICFES ni con el Gobierno Nacional." },
+                                { q: "¿Esta App es oficial del ICFES?", a: `No. SaberPro es una herramienta de simulación educativa independiente creada por el Ing. ${AUTHOR_NAME}. No tenemos vinculación con el ICFES ni con el Gobierno Nacional.` },
                                 { q: "¿Las preguntas que aparecen aquí saldrán en el examen real?", a: "No podemos garantizarlo. Las preguntas son simulacros diseñados para que practiques la lógica y la estructura del examen, pero no son filtraciones de la prueba oficial." },
                                 { q: "La App se cierra sola o va lenta.", a: "Por favor, asegúrate de tener la última versión instalada. Intenta borrar la memoria caché de la App en los ajustes de tu teléfono o prueba reinstalando." },
                                 { q: "Olvidé mi contraseña.", a: "Utiliza la opción '¿Olvidaste tu contraseña?' en la pantalla de inicio para restablecerla vía correo electrónico." }
@@ -72,17 +73,17 @@ export default function SupportPage() {
                         </div>
 
                         <p className="mb-8 text-sm text-[var(--theme-text-secondary)] leading-relaxed relative z-10 font-medium">
-                            Si tu problema persiste no dudes en escribirnos. El equipo de soporte (dirigido por el Ing. Antonio Rodríguez) responderá en <strong>24-48 horas hábiles</strong>.
+                            Si tu problema persiste no dudes en escribirnos. El equipo de soporte (dirigido por el Ing. {AUTHOR_NAME}) responderá en <strong>24-48 horas hábiles</strong>.
                         </p>
 
                         <div className="flex flex-col md:flex-row gap-6 relative z-10">
-                            <a href="mailto:docenciainformatica2025@gmail.com" className="flex-1 bg-[var(--theme-bg-base)]/40 border border-[var(--theme-border-soft)] p-6 rounded-xl flex items-center gap-6 hover:bg-[var(--theme-bg-base)]/60 transition-colors group hover:border-brand-primary/50">
+                            <a href={`mailto:${CONTACT_EMAIL}`} className="flex-1 bg-[var(--theme-bg-base)]/40 border border-[var(--theme-border-soft)] p-6 rounded-xl flex items-center gap-6 hover:bg-[var(--theme-bg-base)]/60 transition-colors group hover:border-brand-primary/50">
                                 <div className="p-4 bg-brand-primary text-black rounded-xl group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(212,175,55,0.4)]">
                                     <Mail size={24} />
                                 </div>
                                 <div>
                                     <p className="text-[10px] text-[var(--theme-text-tertiary)] uppercase tracking-wider font-semibold mb-1">Correo de Soporte</p>
-                                    <p className="text-[var(--theme-text-primary)] font-bold text-sm md:text-base break-all">docenciainformatica2025@gmail.com</p>
+                                    <p className="text-[var(--theme-text-primary)] font-bold text-sm md:text-base break-all">{CONTACT_EMAIL}</p>
                                 </div>
                             </a>
                         </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
 import { Users, BookOpen, TrendingUp, Clock, Plus } from "lucide-react";
@@ -14,12 +15,52 @@ import { Info } from "lucide-react";
 export default function TeacherDashboard() {
     const { user, profile, subscription } = useAuth();
 
-    const stats = [
-        { title: "Estudiantes Activos", value: 125, trend: "+4% hoy", trendUp: true, icon: <Users />, color: "blue" as const },
-        { title: "Clases Creadas", value: 8, trend: "En meta", trendUp: true, icon: <BookOpen />, color: "blue" as const },
-        { title: "Promedio Global", value: 375, trend: "+12 pts", trendUp: true, icon: <TrendingUp />, color: "green" as const },
-        { title: "Horas de Práctica", value: 1240, trend: "Estable", trendUp: true, icon: <Clock />, color: "purple" as const },
-    ];
+    const [stats, setStats] = useState([
+        { title: "Estudiantes Activos", value: 0, trend: "Sincronizado", trendUp: true, icon: <Users />, color: "blue" as const },
+        { title: "Clases Creadas", value: 0, trend: "En meta", trendUp: true, icon: <BookOpen />, color: "blue" as const },
+        { title: "Promedio Global", value: 0, trend: "Actualizando", trendUp: true, icon: <TrendingUp />, color: "green" as const },
+        { title: "Horas de Práctica", value: 0, trend: "Real-time", trendUp: true, icon: <Clock />, color: "purple" as const },
+    ]);
+
+    useEffect(() => {
+        async function fetchTeacherStats() {
+            if (!user) return;
+            try {
+                const { collection, query, where, getDocs, getCountFromServer } = await import("firebase/firestore");
+                const { db } = await import("@/lib/firebase");
+
+                // 1. Classes Count
+                const qClasses = query(collection(db, "classrooms"), where("teacherId", "==", user.uid));
+                const classesSnap = await getCountFromServer(qClasses);
+                const classCount = classesSnap.data().count;
+
+                // 2. Students Count (Across all classes)
+                // Need to fetch classes first, then members
+                const classDocs = await getDocs(qClasses);
+                const classIds = classDocs.docs.map(d => d.id);
+
+                let totalStudents = 0;
+                if (classIds.length > 0) {
+                    // Firestore 'in' limit is 10, but usually teachers don't have > 10 classes in this v1
+                    // For safety, loop or just query all members with classId in restricted list
+                    const qMembers = query(collection(db, "class_members"), where("classId", "in", classIds.slice(0, 10)));
+                    const membersSnap = await getCountFromServer(qMembers);
+                    totalStudents = membersSnap.data().count;
+                }
+
+                setStats([
+                    { title: "Estudiantes Activos", value: totalStudents, trend: "Desde tus clases", trendUp: true, icon: <Users />, color: "blue" as const },
+                    { title: "Clases Creadas", value: classCount, trend: "En meta", trendUp: true, icon: <BookOpen />, color: "blue" as const },
+                    { title: "Promedio Global", value: 0, trend: "Próximamente", trendUp: true, icon: <TrendingUp />, color: "green" as const },
+                    { title: "Horas de Práctica", value: 0, trend: "Sincronizado", trendUp: true, icon: <Clock />, color: "purple" as const },
+                ]);
+
+            } catch (err) {
+                console.error("Error fetching teacher stats:", err);
+            }
+        }
+        fetchTeacherStats();
+    }, [user]);
 
     const teacherName = profile?.fullName?.split(' ')[0] || user?.displayName?.split(' ')[0] || "Profe";
 

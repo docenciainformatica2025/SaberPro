@@ -5,6 +5,7 @@ import { ChevronLeft, Code2, GraduationCap, Mail, Terminal } from "lucide-react"
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
+import { AUTHOR_NAME, SALES_EMAIL } from "@/lib/config";
 
 export default function CreditsPage() {
     return (
@@ -43,7 +44,7 @@ export default function CreditsPage() {
                         </div>
                         <h3 className="text-xl font-bold text-theme-text-primary mb-2 tracking-wide">Desarrollo & Ingeniería</h3>
                         <p className="text-theme-text-secondary text-sm leading-relaxed mb-6">
-                            Esta plataforma fue diseñada y programada integralmente por el <strong>Ing. Antonio Rodríguez</strong>. No es una plantilla ni un producto de agencia, sino una solución construida desde cero con código moderno (Next.js, React, IA).
+                            Esta plataforma fue diseñada y programada integralmente por el <strong>Ing. {AUTHOR_NAME}</strong>. No es una plantilla ni un producto de agencia, sino una solución construida desde cero con código moderno (Next.js, React, IA).
                         </p>
                         <div className="flex flex-wrap gap-2">
                             <span className="px-2 py-1 rounded bg-theme-bg-surface/60 border border-theme-border-soft text-[10px] font-mono text-theme-text-tertiary">Ingeniería de Software</span>
@@ -89,7 +90,7 @@ export default function CreditsPage() {
                             Si representas a una institución educativa y deseas adaptar esta tecnología, hablemos.
                         </p>
 
-                        <a href="mailto:contacto@saberpro.app" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--brand-primary)] text-[var(--theme-bg-base)] font-bold tracking-wider text-xs rounded-xl hover:opacity-90 transition-opacity shadow-lg shadow-brand-primary/20">
+                        <a href={`mailto:${SALES_EMAIL}`} className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--brand-primary)] text-[var(--theme-bg-base)] font-bold tracking-wider text-xs rounded-xl hover:opacity-90 transition-opacity shadow-lg shadow-brand-primary/20">
                             <Mail size={16} /> Contactar al Desarrollador
                         </a>
                     </div>

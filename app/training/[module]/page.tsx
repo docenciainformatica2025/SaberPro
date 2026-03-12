@@ -67,57 +67,11 @@ export default function TrainingModulePage({ params }: TrainingPageProps) {
                 const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Question));
 
 
-                // --- FALLBACK MOCK DATA IF DB IS EMPTY ---
+                // --- DATABASE EMPTY HANDLING ---
                 if (data.length === 0) {
-
-                    const mockQ: Question[] = [
-                        {
-                            id: "mock_1",
-                            text: "En un texto argumentativo, la tesis se define como:",
-                            options: [
-                                { id: "A", text: "La opinión central que el autor defiende." },
-                                { id: "B", text: "El resumen final del texto." },
-                                { id: "C", text: "La evidencia científica presentada." },
-                                { id: "D", text: "La biografía del autor." }
-                            ],
-                            correctAnswer: "A",
-                            module: moduleName as any,
-                            difficulty: "media",
-                            explanation: "La tesis es la columna vertebral de un argumento."
-                        },
-                        {
-                            id: "mock_2",
-                            text: "¿Cuál es el propósito de un conector de contraste?",
-                            options: [
-                                { id: "A", text: "Añadir información similar." },
-                                { id: "B", text: "Introducir una oposición." },
-                                { id: "C", text: "Concluir el párrafo." },
-                                { id: "D", text: "Resaltar una cita." }
-                            ],
-                            correctAnswer: "B",
-                            module: moduleName as any,
-                            difficulty: "media",
-                            explanation: "Conectores como 'pero' u 'obstante' indican oposición."
-                        },
-                        {
-                            id: "mock_3",
-                            text: "Si 5 máquinas hacen 5 artículos en 5 minutos, ¿100 máquinas cuántos minutos tardan en hacer 100 artículos?",
-                            options: [
-                                { id: "A", text: "100" },
-                                { id: "B", text: "5" },
-                                { id: "C", text: "20" },
-                                { id: "D", text: "1" }
-                            ],
-                            correctAnswer: "B",
-                            module: moduleName as any,
-                            difficulty: "alta",
-                            explanation: "Cada máquina es independiente y tarda 5 min por unidad."
-                        }
-                    ];
-                    // Duplicate to fill up to limit if needed
-                    while (data.length < questionsLimit) {
-                        data.push({ ...mockQ[data.length % mockQ.length], id: `mock_${data.length}` });
-                    }
+                    setQuestions([]);
+                    setLoading(false);
+                    return;
                 }
                 // -----------------------------------------
 

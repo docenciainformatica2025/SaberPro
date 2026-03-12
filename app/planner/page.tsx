@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
 // --- Types ---
@@ -78,48 +78,47 @@ export default function PlannerPage() {
     useEffect(() => {
         const fetchPlanner = async () => {
             if (!user) return;
-            // Mock Fetch
-            // In reality: const docSnap = await getDoc(doc(db, "users", user.uid, "planner", "config"));
-            // if (docSnap.exists()) setConfig(docSnap.data());
+            try {
+                const docSnap = await getDoc(doc(db, "planners", user.uid));
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    setConfig(data.config);
+                    setPlannerData(data.plannerData || {});
+                }
+            } catch (err) {
+                console.error("Error fetching planner", err);
+            }
         };
         fetchPlanner();
     }, [user]);
 
     const handleGeneratePlan = async () => {
+        if (!user) return;
         setIsGenerating(true);
-        setTimeout(() => {
-            // Mock Generation Logic
+        try {
+            // Logic to generate a personalized plan
             const newPlannerData: Record<string, PlannerDay> = {};
             const today = new Date();
+            const examDate = "2026-03-30"; // Default goal for Saber Pro
 
-            // Generate for next 30 days
             for (let i = 0; i < 30; i++) {
                 const date = new Date(today);
                 date.setDate(today.getDate() + i);
                 const dateKey = date.toISOString().split('T')[0];
+                const dayOfWeek = date.getDay();
 
-                // Randomly assign rest or study
-                const isRest = i % 7 === 6; // Sunday rest
-                const isSim = i % 14 === 13; // Simulation every 2 weeks
+                const isRest = dayOfWeek === 0; // Sundays
+                const isSim = i === 14 || i === 28; // Simulation every 2 weeks
 
                 const sessions = [];
                 if (!isRest && !isSim) {
                     sessions.push({
                         id: `s-${i}-1`,
                         moduleId: MODULES[i % MODULES.length].id,
-                        title: `Sesión de ${MODULES[i % MODULES.length].title}`,
+                        title: `Estudio: ${MODULES[i % MODULES.length].title}`,
                         durationMinutes: 45,
                         completed: false
                     });
-                    if (Math.random() > 0.5) {
-                        sessions.push({
-                            id: `s-${i}-2`,
-                            moduleId: MODULES[(i + 1) % MODULES.length].id,
-                            title: `Práctica de ${MODULES[(i + 1) % MODULES.length].title}`,
-                            durationMinutes: 30,
-                            completed: false
-                        });
-                    }
                 }
 
                 newPlannerData[dateKey] = {
@@ -129,10 +128,22 @@ export default function PlannerPage() {
                 };
             }
 
+            const finalConfig: PlannerConfig = { examDate, studyDays: [1, 2, 3, 4, 5, 6], intensity: "medium" };
+
+            await setDoc(doc(db, "planners", user.uid), {
+                userId: user.uid,
+                config: finalConfig,
+                plannerData: newPlannerData,
+                createdAt: new Date().toISOString()
+            });
+
             setPlannerData(newPlannerData);
-            setConfig({ examDate: "2025-11-01", studyDays: [1, 2, 3, 4, 5], intensity: "medium" });
+            setConfig(finalConfig);
+        } catch (err) {
+            console.error("Error generating plan", err);
+        } finally {
             setIsGenerating(false);
-        }, 2000);
+        }
     };
 
     const toggleSession = (dayKey: string, sessionId: string) => {
