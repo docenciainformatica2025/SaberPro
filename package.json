@@ -1,12 +1,13 @@
 {
   "name": "web-app",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "postbuild": "node scripts/sync-version.js",
     "prepare": "husky && husky install",
     "test": "vitest",
     "test:watch": "vitest watch",

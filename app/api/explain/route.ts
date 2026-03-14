@@ -3,6 +3,36 @@ import { NextResponse } from "next/server";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
+// --- MODERN FALLBACK SYSTEM 2026 ---
+const MODELS = [
+    "gemini-2.0-flash",     // Primary
+    "gemini-2.0-flash-lite", // Fallback 1 (Lower cost/quota)
+    "gemini-2.0-flash-001",  // Fallback 2 (Specific version)
+    "gemini-flash-latest",   // Fallback 3 (Dynamic)
+];
+
+async function generateWithFallback(prompt: string) {
+    let lastError = null;
+
+    for (const modelName of MODELS) {
+        try {
+            const model = genAI.getGenerativeModel({ model: modelName });
+            const result = await model.generateContent(prompt);
+            const response = await result.response;
+            return response.text();
+        } catch (error: any) {
+            lastError = error;
+            console.warn(`Falló IA con modelo ${modelName}:`, error.message);
+            // Si el error no es de cuota o modelo no encontrado, tal vez no valga la pena reintentar
+            // Pero seguimos adelante para agotar opciones.
+            if (error.status === 429) {
+                console.warn(`Cuota agotada para ${modelName}, reintentando con el siguiente...`);
+            }
+        }
+    }
+    throw lastError;
+}
+
 import { z } from "zod";
 
 const explainSchema = z.object({
@@ -29,8 +59,6 @@ export async function POST(req: Request) {
             );
         }
 
-        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-
         const isPromptOnly = question.isPromptOnly === true;
         const isCorrect = isPromptOnly ? true : (selectedOption === correctAnswer);
 
@@ -55,23 +83,29 @@ export async function POST(req: Request) {
       4. Mantén un tono motivador y corto (máximo 150 palabras).
     `;
 
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        const text = response.text();
+        const text = await generateWithFallback(prompt);
 
         return NextResponse.json({ explanation: text });
-    } catch (error: unknown) {
-        const err = error as { status?: number; message?: string };
-        console.error("Error completo de IA:", err);
-        // Verificar si es error de API Key
-        if (err.status === 400 && err.message?.includes('API key')) {
+    } catch (error: any) {
+        console.error("Error completo de IA:", error);
+
+        // Mensajes amigables según el tipo de fallo
+        if (error.status === 429) {
             return NextResponse.json(
-                { error: "Clave API inválida o expirada." },
+                { error: "Límite de IA alcanzado para este minuto. Por favor intenta de nuevo en 60 segundos." },
+                { status: 429 }
+            );
+        }
+
+        if (error.status === 400 && error.message?.includes('API key')) {
+            return NextResponse.json(
+                { error: "La clave de IA no es válida o ha caducado." },
                 { status: 500 }
             );
         }
+
         return NextResponse.json(
-            { error: `Error generando explicación: ${err.message || 'Desconocido'}` },
+            { error: `Error generando explicación: ${error.message || 'Desconocido'}` },
             { status: 500 }
         );
     }

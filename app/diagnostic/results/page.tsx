@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -10,6 +11,7 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Responsi
 import Link from "next/link";
 
 export default function DiagnosticResultsPage() {
+    const { user } = useAuth();
     const router = useRouter();
     const [data, setData] = useState<any>(null);
     const [loading, setLoading] = useState(true);
@@ -162,14 +164,14 @@ export default function DiagnosticResultsPage() {
                             </div>
                         </div>
 
-                        <Link href="/register?s=diagnostic" className="block">
+                        <Link href={user ? "/dashboard" : "/register?s=diagnostic"} className="block">
                             <Button
                                 variant="primary"
                                 size="xl"
                                 className="w-full h-16 text-sm font-semibold uppercase tracking-[0.2em] shadow-[0_0_40px_rgba(212,175,55,0.4)] animate-pulse hover:animate-none"
                                 icon={Zap}
                             >
-                                Crear mi plan personalizado
+                                {user ? "Ir a mi Dashboard" : "Crear mi plan personalizado"}
                             </Button>
                         </Link>
 

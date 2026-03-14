@@ -19,6 +19,7 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
+import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
 export default function QuestionCard({ question, selectedOptionId, onSelectOption, showResult = false, aiUsageCount = 0, onAiUsed }: QuestionCardProps) {
@@ -43,9 +44,18 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
                 })
             });
             const data = await res.json();
-            setExplanation(data.explanation);
+            if (data.error) {
+                toast.error("Error de IA", {
+                    description: data.error
+                });
+            } else {
+                setExplanation(data.explanation);
+            }
         } catch (error) {
             console.error("Failed to explain", error);
+            toast.error("Error de Conexión", {
+                description: "No se pudo conectar con el servicio de IA."
+            });
         } finally {
             setLoadingExpl(false);
         }

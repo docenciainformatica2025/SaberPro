@@ -152,19 +152,27 @@ export const redeemCoupon = async (userId: string, code: string) => {
  */
 export const generateCoupons = async (count: number, plan: 'pro' | 'teacher', description: string = "Promo Admin") => {
     const results = [];
+    console.log(`Iniciando generación de ${count} cupones para plan ${plan}...`);
+
     for (let i = 0; i < count; i++) {
-        const code = Math.random().toString(36).substring(2, 10).toUpperCase();
-        const couponRef = doc(db, "coupons", code);
-        const data = {
-            code,
-            plan,
-            isUsed: false,
-            createdAt: serverTimestamp(),
-            description,
-            expiresAt: null // Optional: set default expiry
-        };
-        await setDoc(couponRef, data);
-        results.push(data);
+        try {
+            const code = Math.random().toString(36).substring(2, 10).toUpperCase();
+            const couponRef = doc(db, "coupons", code);
+            const data = {
+                code,
+                plan,
+                isUsed: false,
+                createdAt: serverTimestamp(),
+                description,
+                expiresAt: null
+            };
+            await setDoc(couponRef, data);
+            results.push(data);
+            console.log(` Cupón generado: ${code}`);
+        } catch (error: any) {
+            console.error(` Error generando cupón en iteración ${i}:`, error);
+            throw new Error(`Falló la generación masiva: ${error.message}`);
+        }
     }
     return results;
 };

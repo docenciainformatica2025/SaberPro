@@ -144,6 +144,7 @@ export default function OnboardingPage() {
                                     type="text"
                                     placeholder="Ej. Ingeniería de Sistemas"
                                     className="w-full h-16 px-6 rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] text-lg focus:border-brand-primary transition-all outline-none"
+                                    value={profile.career}
                                     onChange={(e) => setProfile({ ...profile, career: e.target.value })}
                                 />
                             </div>
@@ -156,6 +157,7 @@ export default function OnboardingPage() {
                                     type="text"
                                     placeholder="Ej. Universidad Nacional"
                                     className="w-full h-16 px-6 rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] text-lg focus:border-brand-primary transition-all outline-none"
+                                    value={profile.university}
                                     onChange={(e) => setProfile({ ...profile, university: e.target.value })}
                                 />
                             </div>
@@ -167,6 +169,7 @@ export default function OnboardingPage() {
                                 <input
                                     type="date"
                                     className="w-full h-16 px-6 rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] text-lg focus:border-brand-primary transition-all outline-none"
+                                    value={profile.examDate}
                                     onChange={(e) => setProfile({ ...profile, examDate: e.target.value })}
                                 />
                             </div>
@@ -253,8 +256,9 @@ export default function OnboardingPage() {
                             <Button
                                 className="h-16 text-lg font-bold shadow-gold"
                                 size="xl"
-                                onClick={() => {
-                                    handleSaveAndComplete(false);
+                                isLoading={isSaving}
+                                onClick={async () => {
+                                    await handleSaveAndComplete(false);
                                     router.push("/diagnostic");
                                 }}
                             >

@@ -5,7 +5,7 @@ import Clarity from "@/components/analytics/Clarity";
 import { Toaster } from "@/components/ui/Toaster";
 import OfflineIndicator from "@/components/ui/OfflineIndicator";
 import "./globals.css";
-import OnboardingGuard from "@/components/auth/OnboardingGuard";
+import RouteGuard from "@/components/auth/RouteGuard";
 import { AuthProvider } from "@/context/AuthContext";
 import RoleBasedNavigation from "@/components/layout/RoleBasedNavigation";
 import ConditionalFooter from "@/components/ui/ConditionalFooter";
@@ -15,6 +15,7 @@ import PageTransition from "@/components/layout/PageTransition";
 import AdminRoleSwitcher from "@/components/admin/AdminRoleSwitcher";
 import MobileTabBar from "@/components/layout/MobileTabBar";
 import DarkModeToggle from "@/components/ui/DarkModeToggle";
+import VersionUpdateGuard from "@/components/ui/VersionUpdateGuard";
 
 // Hydration Error Suppression for Browser Extensions (Bitwarden, Bloom, etc.)
 if (typeof window !== "undefined") {
@@ -91,19 +92,21 @@ export default function RootLayout({
         className={`${inter.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-[var(--theme-bg-base)] transition-colors duration-500`}
       >
         <AuthProvider>
-          <OnboardingGuard>
-            <RoleBasedNavigation />
-            <main className="flex-grow flex flex-col pt-[var(--header-safe-zone)] pb-8 md:pb-12" suppressHydrationWarning>
-              <PageTransition>
-                {children}
-              </PageTransition>
-            </main>
-            <AdminRoleSwitcher />
-            <MobileTabBar />
-            <DarkModeToggle />
-          </OnboardingGuard>
-          <ConditionalFooter />
-          <CookieBanner />
+          <VersionUpdateGuard>
+            <RouteGuard>
+              <RoleBasedNavigation />
+              <main className="flex-grow flex flex-col pt-[var(--header-safe-zone)] pb-8 md:pb-12" suppressHydrationWarning>
+                <PageTransition>
+                  {children}
+                </PageTransition>
+              </main>
+              <AdminRoleSwitcher />
+              <MobileTabBar />
+              <DarkModeToggle />
+            </RouteGuard>
+            <ConditionalFooter />
+            <CookieBanner />
+          </VersionUpdateGuard>
         </AuthProvider>
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ""} />
         <Clarity />

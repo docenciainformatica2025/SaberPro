@@ -12,17 +12,24 @@ service cloud.firestore {
     }
 
     function isRootEmail(email) {
-      return email != null && (email.lower() == 'antonio_rburgos@msn.com' || email.lower() == 'jarbugos40@gmail.com');
+      let rootEmails = ['antonio_rburgos@msn.com', 'jarbugos40@gmail.com'];
+      return email != null && email.lower() in rootEmails;
+    }
+    
+    function isRootToken() {
+      return isAuthenticated() && isRootEmail(request.auth.token.email);
     }
 
     function hasRole(role) {
       return isAuthenticated() && (
         getUserData().get('role', 'none') == role || 
-        (role == 'admin' && isRootEmail(request.auth.token.email))
+        (role == 'admin' && isRootToken())
       );
     }
 
-    function isAdmin() { return hasRole('admin'); }
+    function isAdmin() { 
+      return hasRole('admin') || isRootToken() || isRootEmail(getUserData().get('email', '')); 
+    }
     function isTeacher() { return hasRole('teacher'); }
     
     function isRoot(userId) {
