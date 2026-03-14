@@ -112,7 +112,7 @@ export default function LeaderboardPage() {
                     </Button>
                 </Link>
                 <div className="flex gap-4 items-center">
-                    <h1 className="text-sm font-black uppercase tracking-[0.2em] text-[var(--theme-text-primary)] hidden lg:block">Ranking Global</h1>
+                    <h1 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 hidden lg:block">Ranking Global</h1>
                     <div className="bg-[var(--theme-bg-surface)] p-1 rounded-full border border-[var(--theme-border-soft)] flex">
                         <button
                             onClick={() => setTimeFrame('weekly')}

@@ -13,21 +13,21 @@ export const Logo: React.FC<LogoProps> = ({
     size = 'md'
 }) => {
 
-    // Tamaños escalables
+    // Tamaños escalables - Refined for "Elite 2026"
     const sizes = {
-        sm: { box: 'h-8 w-8', text: 'text-lg', sub: 'text-[0.6rem]' },
-        md: { box: 'h-10 w-10', text: 'text-xl', sub: 'text-xs' },
-        lg: { box: 'h-12 w-12', text: 'text-2xl', sub: 'text-sm' },
-        xl: { box: 'h-16 w-16', text: 'text-4xl', sub: 'text-base' },
+        sm: { box: 'h-6 w-6', text: 'text-sm', sub: 'text-[0.5rem]' },
+        md: { box: 'h-8 w-8', text: 'text-base', sub: 'text-[0.6rem]' },
+        lg: { box: 'h-10 w-10', text: 'text-lg', sub: 'text-[0.7rem]' },
+        xl: { box: 'h-12 w-12', text: 'text-2xl', sub: 'text-sm' },
     };
 
     const currentSize = sizes[size];
 
     return (
-        <div className={`flex items-center gap-3 select-none ${className}`}>
+        <div className={`flex items-center gap-2.5 select-none ${className}`}>
 
             {/* --- ISOTIPO (El Símbolo) --- */}
-            <div className="w-10 h-10 rounded-xl bg-brand-primary flex items-center justify-center shadow-lg shadow-brand-primary/20 group-hover:scale-105 transition-all duration-500 overflow-hidden relative">
+            <div className={`${currentSize.box} rounded-lg bg-brand-primary flex items-center justify-center shadow-md shadow-brand-primary/20 group-hover:scale-105 transition-all duration-500 overflow-hidden relative`}>
                 {/* SVG Geométrico Personalizado de la 'S' */}
                 <svg
                     viewBox="0 0 24 24"

@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect } from "react";
 import { Button } from "./Button";
 import { X } from "lucide-react";

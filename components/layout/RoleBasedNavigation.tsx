@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, memo, useMemo } from "react";
+import React, { useState, memo, useMemo } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -82,8 +82,8 @@ export const RoleBasedNavigation = memo(() => {
                 navItems: teacherItems,
                 brandSubtext: "Docente",
                 brandIcon: (
-                    <div className="p-1.5 bg-brand-primary/10 rounded-lg shadow-sm">
-                        <GraduationCap className="text-brand-primary" size={18} strokeWidth={2.5} />
+                    <div className="p-1 bg-brand-primary/10 rounded-md">
+                        <GraduationCap className="text-brand-primary" size={14} strokeWidth={2.5} />
                     </div>
                 )
             };
@@ -92,8 +92,8 @@ export const RoleBasedNavigation = memo(() => {
                 navItems: adminItems,
                 brandSubtext: "Administrador",
                 brandIcon: (
-                    <div className="p-1.5 bg-brand-primary/10 rounded-lg shadow-sm">
-                        <ShieldAlert className="text-brand-primary" size={18} strokeWidth={2.5} />
+                    <div className="p-1 bg-brand-primary/10 rounded-md">
+                        <ShieldAlert className="text-brand-primary" size={14} strokeWidth={2.5} />
                     </div>
                 )
             };
@@ -102,8 +102,8 @@ export const RoleBasedNavigation = memo(() => {
                 navItems: studentItems,
                 brandSubtext: "Estudiante",
                 brandIcon: (
-                    <div className="p-1.5 bg-brand-primary/10 rounded-lg shadow-sm">
-                        <User className="text-brand-primary" size={18} strokeWidth={2.5} />
+                    <div className="p-1 bg-brand-primary/10 rounded-md">
+                        <User className="text-brand-primary" size={14} strokeWidth={2.5} />
                     </div>
                 )
             };
@@ -157,7 +157,7 @@ export const RoleBasedNavigation = memo(() => {
         <>
             {/* 1. Top Floating Status Bar - Scaled responsively */}
             <header className="fixed top-2 left-2 right-2 md:top-6 md:left-6 md:right-6 z-50 flex items-center justify-between pointer-events-none">
-                {/* Brand Pill */}
+                {/* Brand Pill - Refined Scale */}
                 <div
                     onClick={() => {
                         if (role === 'admin' && pathname.startsWith('/admin')) {
@@ -166,19 +166,21 @@ export const RoleBasedNavigation = memo(() => {
                             handleProtectedNavigation('/dashboard');
                         }
                     }}
-                    className="flex items-center gap-2 md:gap-4 pointer-events-auto bg-surface-card/90 backdrop-blur-2xl border border-theme-border-soft px-2.5 py-1.5 md:px-6 md:py-3 rounded-full shadow-xl animate-in fade-in slide-in-from-top-4 duration-700 cursor-pointer hover:border-brand-primary/30 transition-all"
+                    className="flex items-center gap-1.5 pointer-events-auto bg-surface-card/85 backdrop-blur-3xl border border-theme-border-soft px-2 py-0.5 md:px-2.5 md:py-1 rounded-full shadow-md animate-in fade-in slide-in-from-top-4 duration-700 cursor-pointer hover:border-brand-primary/20 transition-all scale-[0.8] origin-left"
                 >
-                    <div className="flex items-center gap-3">
-                        {branding.brandIcon}
+                    <div className="flex items-center gap-1">
+                        <div className="scale-[0.65] transform origin-left">
+                            {branding.brandIcon}
+                        </div>
                         {role === 'admin' && pathname.startsWith('/admin') && (
-                            <div className="lg:hidden p-1 bg-brand-error/10 rounded-lg animate-in fade-in zoom-in duration-300">
-                                <Menu className="text-brand-error" size={14} />
+                            <div className="lg:hidden p-0.5 bg-brand-error/10 rounded-md animate-in fade-in zoom-in duration-300">
+                                <Menu className="text-brand-error" size={8} />
                             </div>
                         )}
                     </div>
                     <div className="flex flex-col">
-                        <h1 className="font-bold text-sm md:text-base tracking-tight leading-none text-theme-text-primary">SaberPro</h1>
-                        <p className={`text-[8px] md:text-[10px] font-bold tracking-wider uppercase leading-none mt-0.5 ${role === 'admin' ? 'text-brand-error' : 'text-brand-primary'}`}>
+                        <h1 className="font-bold text-[9px] md:text-[10px] tracking-tight leading-none text-slate-800">SaberPro</h1>
+                        <p className={`text-[6px] md:text-[7px] font-bold tracking-widest uppercase leading-none mt-0.5 ${role === 'admin' ? 'text-brand-error' : 'text-slate-400'}`}>
                             {branding.brandSubtext}
                         </p>
                     </div>
@@ -190,23 +192,23 @@ export const RoleBasedNavigation = memo(() => {
                     <StreakCounter />
                 </div>
 
-                {/* Profile Pill */}
-                <div className="flex items-center gap-2 md:gap-4 pointer-events-auto bg-surface-card/90 backdrop-blur-2xl border border-theme-border-soft pl-2.5 md:pl-6 pr-1.5 py-1.5 md:py-3 rounded-full shadow-xl animate-in fade-in slide-in-from-top-4 duration-700 delay-100 group hover:border-brand-primary/10 transition-all">
-                    <div className="text-right hidden md:block">
-                        <p className="text-sm font-semibold text-theme-text-primary leading-none">
-                            {profile?.fullName || user?.displayName || user?.email?.split('@')[0]}
+                {/* Profile Pill - Refined Scale */}
+                <div className="flex items-center gap-2 pointer-events-auto bg-white/80 backdrop-blur-3xl border border-slate-100 pl-2 pr-1 py-1 rounded-full shadow-sm animate-in fade-in slide-in-from-top-4 duration-700 delay-100 group transition-all scale-[0.85] origin-right">
+                    <div className="text-right hidden md:block pr-1">
+                        <p className="text-[10px] font-bold text-slate-700 leading-none tracking-tight">
+                            {profile?.fullName?.split(' ')[0] || user?.displayName?.split(' ')[0] || user?.email?.split('@')[0]}
                         </p>
-                        <p className="text-[10px] text-theme-text-tertiary font-mono mt-0.5">{role?.toUpperCase() || "ESTUDIANTE"}</p>
+                        <p className="text-[7px] text-slate-400 font-bold mt-0.5 uppercase tracking-widest">{role || "Estudiante"}</p>
                     </div>
-                    <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-brand-primary flex items-center justify-center text-[10px] md:text-sm font-bold shadow-sm">
+                    <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-brand-primary flex items-center justify-center text-[9px] md:text-xs font-black shadow-sm">
                         {(profile?.fullName || user?.displayName || user?.email)?.[0].toUpperCase()}
                     </div>
                     <button
                         onClick={() => handleProtectedNavigation('/', true)}
-                        className="p-1.5 md:p-2.5 rounded-full hover:bg-brand-error/10 text-theme-text-tertiary hover:text-brand-error transition-colors"
+                        className="p-1 px-1.5 md:p-1.5 md:px-2 rounded-full hover:bg-brand-error/10 text-theme-text-tertiary hover:text-brand-error transition-colors"
                         title="Cerrar Sesión"
                     >
-                        <LogOut size={14} className="md:w-5 md:h-5" />
+                        <LogOut size={10} className="md:w-3 md:h-3" />
                     </button>
                 </div>
             </header>

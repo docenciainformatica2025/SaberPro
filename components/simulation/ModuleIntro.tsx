@@ -50,7 +50,7 @@ export default function ModuleIntro({ moduleName, questionCount, timeLimitSecond
                         <Target size={14} className="mr-2" /> Módulo Oficial
                     </Badge>
 
-                    <h1 className="text-4xl md:text-5xl font-semibold text-white mb-6 leading-tight uppercase tracking-tight">
+                    <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 leading-tight uppercase tracking-tight">
                         {title}
                     </h1>
 
@@ -60,8 +60,8 @@ export default function ModuleIntro({ moduleName, questionCount, timeLimitSecond
                                 <Clock size={24} />
                             </div>
                             <div>
-                                <p className="text-[10px] font-semibold uppercase tracking-wider opacity-60">Tiempo Límite</p>
-                                <p className="text-xl font-bold text-white">{timeMinutes} Minutos</p>
+                                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-theme-text-secondary/60">Tiempo Límite</p>
+                                <p className="text-xl font-black text-slate-700 dark:text-white">{timeMinutes} Minutos</p>
                             </div>
                         </div>
 
@@ -70,13 +70,13 @@ export default function ModuleIntro({ moduleName, questionCount, timeLimitSecond
                                 <HelpCircle size={24} />
                             </div>
                             <div>
-                                <p className="text-[10px] font-semibold uppercase tracking-wider opacity-60">Preguntas</p>
-                                <p className="text-xl font-bold text-white">{questionCount} Items</p>
+                                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-theme-text-secondary/60">Preguntas</p>
+                                <p className="text-xl font-black text-slate-700 dark:text-white">{questionCount} Items</p>
                             </div>
                         </div>
                     </div>
 
-                    <p className="text-lg text-theme-text-secondary/80 italic border-l-4 border-brand-primary pl-4 py-2 mb-10 leading-relaxed">
+                    <p className="text-lg text-slate-600 dark:text-theme-text-secondary/80 italic border-l-4 border-brand-primary pl-4 py-2 mb-10 leading-relaxed font-medium">
                         &quot;{quote}&quot;
                     </p>
 
@@ -89,7 +89,7 @@ export default function ModuleIntro({ moduleName, questionCount, timeLimitSecond
                         COMENZAR AHORA
                     </Button>
 
-                    <p className="text-center text-[10px] font-semibold text-theme-text-secondary/70 mt-4 uppercase tracking-[0.2em]">
+                    <p className="text-center text-[10px] font-bold text-slate-400 dark:text-theme-text-secondary/70 mt-4 uppercase tracking-[0.2em]">
                         El tiempo comenzará a correr inmediatamente.
                     </p>
                 </div>
@@ -101,7 +101,7 @@ export default function ModuleIntro({ moduleName, questionCount, timeLimitSecond
                         <Brain size={120} />
                     </div>
 
-                    <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
                         <Sparkles className="text-brand-primary" size={20} />
                         ORIENTACIONES PSICOLÓGICAS
                     </h3>
@@ -112,8 +112,8 @@ export default function ModuleIntro({ moduleName, questionCount, timeLimitSecond
                                 <span className="text-[10px] font-semibold">1</span>
                             </div>
                             <div>
-                                <h4 className="font-semibold text-white text-xs uppercase tracking-wider mb-1 group-hover:text-brand-primary transition-colors">Lectura Analítica</h4>
-                                <p className="text-sm text-theme-text-secondary/60 leading-relaxed">
+                                <h4 className="font-bold text-slate-800 dark:text-white text-xs uppercase tracking-wider mb-1 group-hover:text-brand-primary transition-colors">Lectura Analítica</h4>
+                                <p className="text-sm text-slate-500 dark:text-theme-text-secondary/60 leading-relaxed font-medium">
                                     No te apresures. Lee cada enunciado completamente antes de mirar las opciones. Identifica las palabras clave.
                                 </p>
                             </div>

@@ -38,26 +38,26 @@ export default function AdminRoleSwitcher() {
                 </button>
             ) : (
                 <div className="bg-[var(--theme-bg-overlay)] backdrop-blur-3xl border border-[var(--theme-border-soft)] rounded-2xl p-1.5 md:p-2.5 flex items-center gap-1.5 md:gap-3 shadow-[0_30px_60px_rgba(0,0,0,0.3)] ring-1 ring-white/10 transition-all">
-                    <div className="px-5 py-2 border-r border-[var(--theme-border-soft)] hidden md:block">
-                        <div className="flex items-center gap-3">
-                            <Zap size={16} className="text-brand-primary animate-pulse" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-primary">GOD MODE</span>
+                    <div className="px-3 py-1 border-r border-[var(--theme-border-soft)] hidden md:block">
+                        <div className="flex items-center gap-2">
+                            <Zap size={12} className="text-brand-primary animate-pulse" />
+                            <span className="text-[8px] font-black uppercase tracking-[0.2em] text-brand-primary">ROOT</span>
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1">
                         {roles.map((r) => {
                             const isActive = currentActiveRole === r.id;
                             return (
                                 <button
                                     key={r.id}
                                     onClick={() => handleSwitch(r.id as 'admin' | 'student' | 'teacher', r.path)}
-                                    className={`flex items-center gap-2 px-3 py-2 md:px-5 md:py-2.5 rounded-xl text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all duration-500 ${isActive
-                                        ? `${r.bg} ${r.color} ring-1 ring-brand-primary/20 shadow-[0_0_20px_rgba(212,175,55,0.1)]`
-                                        : 'text-[var(--theme-text-secondary)]/50 hover:text-[var(--theme-text-primary)] hover:bg-[var(--theme-text-primary)]/10'
+                                    className={`flex items-center gap-2 px-2.5 py-1.5 md:px-3 md:py-1.5 rounded-lg text-[8px] md:text-[9px] font-black uppercase tracking-widest transition-all duration-500 ${isActive
+                                        ? `${r.bg} ${r.color} ring-1 ring-brand-primary/10 shadow-sm`
+                                        : 'text-[var(--theme-text-secondary)]/40 hover:text-[var(--theme-text-primary)] hover:bg-[var(--theme-text-primary)]/5'
                                         }`}
                                 >
-                                    <r.icon size={16} />
+                                    <r.icon size={13} />
                                     <span className="hidden sm:inline">{r.label}</span>
                                 </button>
                             );

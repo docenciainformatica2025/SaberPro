@@ -35,12 +35,17 @@ export default function AICoachMessage({ analysis }: AICoachMessageProps) {
                                 AI COACH PRO
                             </Badge>
                             <span className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded border ${statusColors[analysis.overallStatus]}`}>
-                                Estado: {analysis.overallStatus}
+                                Estado: {{
+                                    excellent: "Excelente",
+                                    good: "Bueno",
+                                    improving: "En Mejora",
+                                    critical: "Crítico"
+                                }[analysis.overallStatus]}
                             </span>
                         </div>
                         <h3 className="text-2xl font-semibold text-white italic tracking-tight flex items-center gap-2 uppercase">
                             <Sparkles className="text-brand-primary" size={24} />
-                            Análisis Predicitivo de Desempeño
+                            Análisis Predictivo de Desempeño
                         </h3>
                     </div>
                 </div>
@@ -106,7 +111,7 @@ export default function AICoachMessage({ analysis }: AICoachMessageProps) {
                                 </div>
                                 <div>
                                     <div className="text-[10px] font-semibold text-theme-text-secondary uppercase tracking-wider">Proyección Estimada</div>
-                                    <div className="text-xl font-semibold text-white tracking-wider">GLOBAL SCORE</div>
+                                    <div className="text-xl font-semibold text-white tracking-wider">PUNTAJE GLOBAL</div>
                                 </div>
                             </div>
                             <div className="text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-white italic">

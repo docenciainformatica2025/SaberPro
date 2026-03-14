@@ -77,132 +77,177 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="flex min-h-screen bg-[var(--theme-bg-base)] text-[var(--theme-text-primary)]" suppressHydrationWarning>
-            {/* Left Side - Branding (Desktop Only) */}
-            <div className="hidden lg:flex w-1/2 bg-[var(--theme-bg-surface)] relative overflow-hidden flex-col justify-between p-16 border-r border-[var(--theme-border-soft)]">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497864149936-d7e61461c302?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 filter grayscale mix-blend-overlay"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--theme-bg-base)]/95 via-[var(--theme-bg-base)]/80 to-[var(--theme-bg-base)]"></div>
-
-                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[100px]"></div>
-                <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-metal-blue/5 rounded-full blur-[100px]"></div>
-
-                <div className="relative z-10">
-                    <div className="mb-8">
-                        <Logo variant="full" size="xl" />
-                    </div>
-                </div>
-
-                <div className="relative z-10 max-w-lg">
-                    <h2 className="text-5xl font-semibold text-theme-text-primary mb-6 leading-tight">
-                        Tu éxito empieza aquí. <br />
-                        <span className="text-brand-primary">Estamos listos para acompañarte.</span>
-                    </h2>
-                    <p className="text-theme-text-secondary text-lg leading-relaxed mb-8">
-                        Accede a un espacio diseñado para tu crecimiento, con herramientas que transforman tu esfuerzo en resultados reales.
-                    </p>
-
-                    <div className="space-y-4">
-                        {[
-                            "Simulación de examen real",
-                            "Métricas de desempeño",
-                            "Seguimiento de progreso"
-                        ].map((item, i) => (
-                            <div key={i} className="flex items-center gap-3 text-[var(--theme-text-secondary)]">
-                                <CheckCircle2 className="text-brand-primary" size={20} />
-                                <span>{item}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                <div className="relative z-10 text-xs text-[var(--theme-text-tertiary)] space-y-2">
-                    <p>{COPYRIGHT_TEXT}</p>
-                    <p>
-                        Desarrollado por <span className="text-[var(--theme-text-secondary)]">Ing. Antonio Rodriguez</span><br />
-                        para Docencia Informática.
-                    </p>
-                </div>
+        <div className="flex min-h-screen bg-[var(--theme-bg-base)] text-[var(--theme-text-primary)] selection:bg-brand-primary/20 transition-colors duration-500" suppressHydrationWarning>
+            {/* Ambient Background Layer */}
+            <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+                <div className="absolute top-[-15%] right-[-10%] w-[800px] h-[800px] bg-brand-primary/10 rounded-full blur-[160px] animate-pulse"></div>
+                <div className="absolute bottom-[-15%] left-[-10%] w-[800px] h-[800px] bg-metal-blue/10 rounded-full blur-[160px] animate-pulse" style={{ animationDelay: '3s' }}></div>
             </div>
 
-            {/* Right Side - Login Form */}
-            <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-8 relative">
-                <div className="w-full max-w-md space-y-8 pb-20 md:pb-8">
+            {/* Side A: Brand Immersion (Hidden on Mobile) */}
+            <div className="hidden lg:flex w-1/2 bg-[var(--theme-bg-surface)] relative overflow-hidden flex-col justify-between p-24 border-r border-white-[0.03]">
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop')] bg-cover bg-center opacity-[0.07] grayscale mix-blend-luminosity"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--theme-bg-base)] via-[var(--theme-bg-base)]/90 to-transparent"></div>
 
-                    {/* Mobile Header (Minimal Premium 2026) */}
-                    <div className="lg:hidden text-center mb-6">
-                        <div className="flex justify-between items-center mb-6 px-1">
-                            <Link href="/">
-                                <Button variant="ghost" size="sm" className="h-9 px-3 text-[var(--theme-text-tertiary)] hover:text-brand-primary transition-colors border border-theme-border-soft hover:border-brand-primary/20 rounded-full">
-                                    <ArrowLeft size={14} className="mr-1.5" />
-                                    <span className="text-[9px] font-black uppercase tracking-widest">Inicio</span>
-                                </Button>
-                            </Link>
-                            <Logo variant="full" size="sm" />
-                            <div className="w-[88px]"></div> {/* Visual balance for the back button */}
+                <div className="relative z-10 transition-transform hover:scale-105 duration-700">
+                    <Logo variant="full" size="xl" />
+                </div>
+
+                <div className="relative z-10 space-y-10">
+                    <div className="space-y-4">
+                        <div className="flex items-center gap-3">
+                            <div className="h-px w-10 bg-brand-primary/40" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-primary">Elite Learning System</span>
                         </div>
-                        <div className="h-px w-12 bg-brand-primary/20 mx-auto mb-4" />
+                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight">
+                            Libera tu <br />
+                            <span className="text-brand-primary italic">potencial</span>
+                        </h2>
                     </div>
 
-                    <div className="space-y-2">
-                        <h1 className="text-2xl md:text-3xl font-bold text-theme-text-primary tracking-tight leading-tight">¡Qué bueno verte de nuevo!</h1>
-                        <p className="text-theme-text-tertiary text-sm md:text-base">Ingresa tus datos para continuar tu camino al éxito.</p>
-                    </div>
+                    <p className="text-xl text-[var(--theme-text-secondary)] font-medium leading-relaxed max-w-md opacity-80">
+                        La plataforma definitiva para el entrenamiento Saber Pro, rediseñada para ofrecerte una ventaja competitiva real.
+                    </p>
 
-                    {/* Social Login */}
-                    <Button
-                        onClick={handleGoogleLogin}
-                        disabled={googleLoading}
-                        variant="outline"
-                        className="w-full h-12 text-theme-text-primary border-theme-border-soft hover:bg-theme-bg-base"
-                        isLoading={googleLoading}
-                    >
-                        <Chrome className="mr-2 h-4 w-4" /> Continuar con Google
-                    </Button>
-
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                        <Input
-                            label="Correo Electrónico"
-                            type="email"
-                            icon={Mail}
-                            {...register("email")}
-                            error={errors.email?.message}
-                        />
-
-                        <div className="space-y-2">
-                            <div className="flex justify-between items-center ml-1">
-                                <label className="text-xs font-semibold text-[var(--theme-text-secondary)] uppercase tracking-wider">Contraseña</label>
-                                <Link href="/forgot-password" className="text-xs text-brand-primary hover:text-[var(--theme-text-primary)] transition-colors">¿Olvidaste tu contraseña?</Link>
-                            </div>
-                            <div className="relative">
-                                <Input
-                                    type={showPassword ? "text" : "password"}
-                                    icon={Lock}
-                                    {...register("password")}
-                                    error={errors.password?.message}
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-3 top-3 text-[var(--theme-text-tertiary)] hover:text-[var(--theme-text-primary)]"
-                                >
-                                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                                </button>
-                            </div>
+                    <div className="flex flex-wrap gap-8 pt-6">
+                        <div className="space-y-1">
+                            <p className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">98%</p>
+                            <p className="text-[9px] font-black uppercase tracking-widest text-brand-primary/60">Efectividad Predictiva</p>
                         </div>
+                        <div className="w-px h-12 bg-slate-200 dark:bg-white/10" />
+                        <div className="space-y-1">
+                            <p className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">2.4x</p>
+                            <p className="text-[9px] font-black uppercase tracking-widest text-brand-primary/60">Velocidad de Mejora</p>
+                        </div>
+                    </div>
+                </div>
 
-                        <Button type="submit" isLoading={isSubmitting} icon={ArrowRight} iconPosition="right" className="w-full h-12 mt-2">
-                            {isSubmitting ? "Autenticando..." : "Ingresar al Sistema"}
-                        </Button>
-                    </form>
-
-                    <div className="text-center">
-                        <p className="text-sm text-[var(--theme-text-tertiary)]">
-                            ¿Aún no tienes cuenta?{' '}
-                            <Link href="/register" className="text-brand-primary hover:text-[var(--theme-text-primary)] font-medium transition-colors">Crear nueva cuenta</Link>
+                <div className="relative z-10">
+                    <div className="flex items-center gap-8 mb-4">
+                        <div className="flex -space-x-3">
+                            {[1, 2, 3, 4].map(i => (
+                                <div key={i} className="w-10 h-10 rounded-full border-2 border-[var(--theme-bg-surface)] bg-slate-800 flex items-center justify-center overflow-hidden">
+                                    <img src={`https://i.pravatar.cc/40?img=${i + 20}`} alt="User avatar" />
+                                </div>
+                            ))}
+                        </div>
+                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                            Únete a más de <span className="text-slate-900 dark:text-white font-black">+5,000 estudiantes</span> destacados
                         </p>
                     </div>
                 </div>
+            </div>
+
+            {/* Side B: Access Gateway */}
+            <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12 relative z-10">
+                <div className="w-full max-w-md space-y-12">
+
+                    {/* Header: Identity & Welcome */}
+                    <div className="space-y-4">
+                        <div className="lg:hidden flex justify-center mb-10">
+                            <Logo variant="full" size="md" />
+                        </div>
+                        <div className="space-y-2">
+                            <div className="flex items-center gap-2">
+                                <div className="p-1.5 bg-brand-primary/10 rounded-lg">
+                                    <CheckCircle2 size={16} className="text-brand-primary" />
+                                </div>
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-primary">Acceso Seguro v4.0</span>
+                            </div>
+                            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
+                                ¡Hola de <span className="text-brand-primary italic">nuevo!</span>
+                            </h1>
+                            <p className="text-[var(--theme-text-secondary)] text-sm font-medium opacity-60">Entra a tu zona de entrenamiento de alto rendimiento.</p>
+                        </div>
+                    </div>
+
+                    {/* Form Container: Advanced Glassmorphism */}
+                    <div className="bg-white/80 dark:bg-slate-900/40 backdrop-blur-2xl border border-slate-200 dark:border-white/5 p-8 sm:p-10 rounded-[2.5rem] shadow-xl dark:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] relative overflow-hidden group">
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-primary to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-700" />
+
+                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                            <Input
+                                label="CORREO ELECTRÓNICO"
+                                type="email"
+                                icon={Mail}
+                                {...register("email")}
+                                error={errors.email?.message}
+                                className="bg-[var(--theme-bg-base)]/50 border-white/5 focus:border-brand-primary/40 text-sm h-14 rounded-2xl transition-all"
+                            />
+
+                            <div className="space-y-3">
+                                <div className="flex justify-between items-center px-1">
+                                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Contraseña</label>
+                                    <Link href="/forgot-password" title="Recuperar contraseña" className="text-[10px] font-black uppercase tracking-tighter text-brand-primary/60 hover:text-brand-primary transition-all hover:tracking-normal">¿Olvidaste tu contraseña?</Link>
+                                </div>
+                                <div className="relative group/pass">
+                                    <Input
+                                        type={showPassword ? "text" : "password"}
+                                        icon={Lock}
+                                        {...register("password")}
+                                        error={errors.password?.message}
+                                        className="bg-[var(--theme-bg-base)]/50 border-white/5 focus:border-brand-primary/40 text-sm h-14 rounded-2xl transition-all"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        className="absolute right-4 top-4 text-slate-400 dark:text-white/20 group-hover/pass:text-brand-primary transition-colors"
+                                    >
+                                        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                    </button>
+                                </div>
+                            </div>
+
+                            <Button
+                                type="submit"
+                                isLoading={isSubmitting}
+                                icon={ArrowRight}
+                                iconPosition="right"
+                                className="w-full h-14 mt-4 bg-brand-primary hover:bg-brand-primary/90 text-white shadow-2xl shadow-brand-primary/30 text-[11px] font-black uppercase tracking-[0.3em] rounded-2xl transform hover:translate-y-[-2px] active:translate-y-0 transition-all shimmer-gold"
+                            >
+                                {isSubmitting ? "Autenticando..." : "Ingresar al Sistema"}
+                            </Button>
+                        </form>
+
+                        <div className="relative my-10">
+                            <div className="absolute inset-0 flex items-center">
+                                <div className="w-full border-t border-white/5"></div>
+                            </div>
+                            <div className="relative flex justify-center text-[9px] font-black uppercase tracking-[0.3em]">
+                                <span className="bg-white dark:bg-[#121212] px-4 text-slate-400 dark:text-white/30 truncate">O continúa con</span>
+                            </div>
+                        </div>
+
+                        <Button
+                            onClick={handleGoogleLogin}
+                            disabled={googleLoading}
+                            variant="outline"
+                            className="w-full h-12 text-[10px] font-black uppercase tracking-[0.25em] border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-white-[0.02] hover:bg-slate-100 dark:hover:bg-white-[0.05] text-slate-700 dark:text-white rounded-2xl transition-all"
+                            isLoading={googleLoading}
+                        >
+                            <Chrome size={18} className="mr-3" /> Google Autenticación
+                        </Button>
+                    </div>
+
+                    {/* Footer: Redirection & Legal */}
+                    <div className="text-center pt-2">
+                        <p className="text-xs font-medium text-[var(--theme-text-tertiary)]">
+                            ¿Aún no tienes cuenta?{' '}
+                            <Link href="/register" className="text-brand-primary hover:text-slate-900 dark:hover:text-white font-black uppercase tracking-widest ml-3 transition-all hover:tracking-[0.2em]">ÚNETE AHORA</Link>
+                        </p>
+                    </div>
+
+                    <div className="pt-12 flex justify-between items-center opacity-70 text-[9px] font-black uppercase tracking-widest text-slate-400 dark:text-white/50 border-t border-slate-100 dark:border-white/5">
+                        <span>{BRAND_YEAR} • {COPYRIGHT_TEXT}</span>
+                        <div className="flex gap-4">
+                            <Link href="/terms" className="hover:text-white transition-colors">Términos</Link>
+                            <Link href="/privacy" className="hover:text-white transition-colors">Privacidad</Link>
+                        </div>
+                    </div>
+
+                </div>
             </div >
         </div >
+
     );
 }

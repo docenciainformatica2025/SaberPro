@@ -171,7 +171,7 @@ export default function AnalyticsPage() {
     };
 
     return (
-        <div className="min-h-screen bg-[var(--theme-bg-base)] p-6 md:p-12 pb-24">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] p-6 md:p-12 pb-24" suppressHydrationWarning>
             <div className="max-w-7xl mx-auto">
                 {isLoadingData ? (
                     <AnalyticsSkeleton />
@@ -192,78 +192,88 @@ export default function AnalyticsPage() {
                         variants={staggerContainer}
                         className="space-y-12"
                     >
-                        {/* Header */}
-                        <motion.div variants={itemVariant} className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8 border-b border-[var(--theme-border-soft)] pb-8">
-                            <div>
+                        {/* Header - Elite Style */}
+                        <motion.div variants={itemVariant} className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-12 border-b border-[var(--theme-border-soft)] pb-12">
+                            <div className="space-y-4">
                                 <Link href="/dashboard">
-                                    <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] uppercase tracking-wider text-[10px] pl-0 mb-4">
-                                        Volver al Dashboard
+                                    <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-slate-500 hover:text-brand-primary uppercase tracking-[0.2em] font-black text-[9px] pl-0 mb-2 transition-all">
+                                        Volver al Inicio
                                     </Button>
                                 </Link>
-                                <h1 className="text-4xl md:text-5xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">
-                                    Analíticas de <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-[var(--theme-text-primary)] to-brand-primary">Rendimiento</span>
-                                </h1>
-                                <p className="text-[var(--theme-text-secondary)]/60 text-sm mt-2 font-medium">
-                                    Monitoreo en tiempo real de tu evolución académica.
-                                </p>
+                                <div className="space-y-2">
+                                    <h1 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight leading-none">
+                                        Analíticas de <span className="text-brand-primary italic">Rendimiento</span>
+                                    </h1>
+                                    <p className="text-xs font-black text-slate-500 tracking-[0.3em] uppercase ml-1">
+                                        Monitoreo de evolución académica en tiempo real
+                                    </p>
+                                </div>
                             </div>
-                            <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+                            <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
                                 <Button
                                     variant="outline"
-                                    size="sm"
+                                    size="lg"
                                     icon={Download}
                                     onClick={handleDownloadReport}
-                                    className="bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)] text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)]"
+                                    className="h-14 px-8 rounded-2xl bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:shadow-xl transition-all"
                                 >
-                                    Descargar Reporte PDF
+                                    Reporte PDF
                                 </Button>
-                                <Badge variant="primary" className="px-4 py-2 text-xs font-semibold tracking-wider uppercase shadow-[0_0_20px_rgba(212,175,55,0.2)] flex items-center gap-2">
-                                    <Brain size={14} />
-                                    Proyección IA: {kpis.averageScore > 0 ? (kpis.averageScore * 3).toString() + " / 300" : "Pendiente"}
-                                </Badge>
+                                <div className="px-6 py-4 rounded-2xl bg-brand-primary/5 border border-brand-primary/10 shadow-2xl shadow-brand-primary/5 group transition-all hover:bg-brand-primary/10">
+                                    <div className="flex items-center gap-3 text-brand-primary text-[10px] font-black tracking-widest uppercase mb-1">
+                                        <Brain size={16} /> Proyección IA
+                                    </div>
+                                    <div className="text-2xl font-black text-slate-900 dark:text-[var(--theme-text-primary)] tracking-tighter leading-none">
+                                        {kpis.averageScore > 0 ? (kpis.averageScore * 3).toString() + " / 300" : "PROCESANDO..."}
+                                    </div>
+                                </div>
                             </div>
                         </motion.div>
 
-                        {/* KPIs Grid */}
-                        <motion.div variants={itemVariant} className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                            <Card variant="glass" className="p-6 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] hover:-translate-y-1 transition-transform">
-                                <div className="flex items-center gap-2 mb-4">
-                                    <div className="p-2 bg-yellow-500/10 rounded-lg text-yellow-500">
-                                        <Trophy size={18} />
+                        {/* KPIs Grid - Elite Cards */}
+                        <motion.div variants={itemVariant} className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                            <Card variant="glass" className="p-10 border-[3px] border-brand-primary/5 bg-brand-primary/[0.01] rounded-[2.5rem] hover:-translate-y-2 transition-all group overflow-hidden relative">
+                                <div className="absolute -top-12 -right-12 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="flex items-center gap-3 mb-8 relative z-10">
+                                    <div className="p-3 bg-yellow-500/10 rounded-2xl text-yellow-500 shadow-sm">
+                                        <Trophy size={20} />
                                     </div>
-                                    <span className="text-[10px] uppercase tracking-wider font-semibold text-[var(--theme-text-secondary)]">Puntaje Máximo</span>
+                                    <span className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-600">Dominio Máximo</span>
                                 </div>
-                                <div className="text-4xl font-semibold text-[var(--theme-text-primary)] tracking-tight">{kpis.highestScore}%</div>
+                                <div className="text-4xl font-bold text-slate-800 tracking-tight leading-none relative z-10">{kpis.highestScore}%</div>
                             </Card>
 
-                            <Card variant="glass" className="p-6 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] hover:-translate-y-1 transition-transform">
-                                <div className="flex items-center gap-2 mb-4">
-                                    <div className="p-2 bg-blue-500/10 rounded-lg text-blue-400">
-                                        <Target size={18} />
+                            <Card variant="glass" className="p-10 border-[3px] border-brand-primary/5 bg-brand-primary/[0.01] rounded-[2.5rem] hover:-translate-y-2 transition-all group overflow-hidden relative">
+                                <div className="absolute -top-12 -right-12 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="flex items-center gap-3 mb-8 relative z-10">
+                                    <div className="p-3 bg-blue-500/10 rounded-2xl text-blue-400 shadow-sm">
+                                        <Target size={20} />
                                     </div>
-                                    <span className="text-[10px] uppercase tracking-wider font-semibold text-[var(--theme-text-secondary)]">Promedio Global</span>
+                                    <span className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-600">Nivel de Maestría</span>
                                 </div>
-                                <div className={`text-4xl font-semibold tracking-tight ${kpis.averageScore >= 60 ? "text-green-400" : "text-[var(--theme-text-primary)]"}`}>{kpis.averageScore}%</div>
+                                <div className={`text-4xl font-bold tracking-tight leading-none relative z-10 ${kpis.averageScore >= 60 ? "text-emerald-500" : "text-slate-800"}`}>{kpis.averageScore}%</div>
                             </Card>
 
-                            <Card variant="glass" className="p-6 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] hover:-translate-y-1 transition-transform">
-                                <div className="flex items-center gap-2 mb-4">
-                                    <div className="p-2 bg-purple-500/10 rounded-lg text-purple-400">
-                                        <TrendingUp size={18} />
+                            <Card variant="glass" className="p-10 border-[3px] border-brand-primary/5 bg-brand-primary/[0.01] rounded-[2.5rem] hover:-translate-y-2 transition-all group overflow-hidden relative">
+                                <div className="absolute -top-12 -right-12 w-32 h-32 bg-purple-500/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="flex items-center gap-3 mb-8 relative z-10">
+                                    <div className="p-3 bg-purple-500/10 rounded-2xl text-purple-400 shadow-sm">
+                                        <TrendingUp size={20} />
                                     </div>
-                                    <span className="text-[10px] uppercase tracking-wider font-semibold text-[var(--theme-text-secondary)]">Simulacros</span>
+                                    <span className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-600">Desafíos</span>
                                 </div>
-                                <div className="text-4xl font-semibold text-[var(--theme-text-primary)] tracking-tight">{kpis.totalSimulations}</div>
+                                <div className="text-4xl font-bold text-slate-800 tracking-tight leading-none relative z-10">{kpis.totalSimulations}</div>
                             </Card>
 
-                            <Card variant="glass" className="p-6 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] hover:-translate-y-1 transition-transform">
-                                <div className="flex items-center gap-2 mb-4">
-                                    <div className="p-2 bg-pink-500/10 rounded-lg text-pink-400">
-                                        <Brain size={18} />
+                            <Card variant="glass" className="p-10 border-[3px] border-brand-primary/5 bg-brand-primary/[0.01] rounded-[2.5rem] hover:-translate-y-2 transition-all group overflow-hidden relative">
+                                <div className="absolute -top-12 -right-12 w-32 h-32 bg-pink-500/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="flex items-center gap-3 mb-8 relative z-10">
+                                    <div className="p-3 bg-pink-500/10 rounded-2xl text-pink-400 shadow-sm">
+                                        <Brain size={20} />
                                     </div>
-                                    <span className="text-[10px] uppercase tracking-wider font-semibold text-[var(--theme-text-secondary)]">Preguntas</span>
+                                    <span className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-600">Interacciones</span>
                                 </div>
-                                <div className="text-4xl font-semibold text-[var(--theme-text-primary)] tracking-tight">{kpis.questionsAnswered}</div>
+                                <div className="text-4xl font-bold text-slate-800 tracking-tight leading-none relative z-10">{kpis.questionsAnswered}</div>
                             </Card>
                         </motion.div>
 
@@ -276,8 +286,8 @@ export default function AnalyticsPage() {
                         <motion.div variants={itemVariant} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                             <Card variant="glass" className="p-8 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]">
                                 <div className="mb-8 border-b border-[var(--theme-border-soft)] pb-4">
-                                    <h3 className="text-xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">Evolución de Puntaje</h3>
-                                    <p className="text-xs font-bold text-[var(--theme-text-secondary)]/50 uppercase tracking-wider mt-1">Tendencia de tus últimos 7 simulacros</p>
+                                    <h3 className="text-xl font-bold text-slate-900 uppercase italic tracking-tight">Evolución de Puntaje</h3>
+                                    <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Tendencia de tus últimos 7 simulacros</p>
                                 </div>
                                 <div className="h-[300px] w-full">
                                     <PerformanceChart
@@ -290,8 +300,8 @@ export default function AnalyticsPage() {
 
                             <Card variant="glass" className="p-8 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]">
                                 <div className="mb-8 border-b border-[var(--theme-border-soft)] pb-4">
-                                    <h3 className="text-xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">Balance de Competencias</h3>
-                                    <p className="text-xs font-bold text-[var(--theme-text-secondary)]/50 uppercase tracking-wider mt-1">Fortalezas vs. Debilidades (Promedio)</p>
+                                    <h3 className="text-xl font-bold text-slate-900 uppercase italic tracking-tight">Balance de Competencias</h3>
+                                    <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Fortalezas vs. Debilidades (Promedio)</p>
                                 </div>
                                 <div className="h-[300px] w-full flex items-center justify-center">
                                     <PerformanceChart type="radar" data={radarData} color="#60a5fa" />
@@ -304,10 +314,10 @@ export default function AnalyticsPage() {
                             <Card variant="glass" className="p-8 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]">
                                 <div className="mb-8 border-b border-[var(--theme-border-soft)] pb-4 flex justify-between items-end">
                                     <div>
-                                        <h3 className="text-xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">Historial de Simulacros</h3>
-                                        <p className="text-xs font-bold text-[var(--theme-text-secondary)]/50 uppercase tracking-wider mt-1">Registro detallado y reportes de resultados</p>
+                                        <h3 className="text-xl font-bold text-slate-900 uppercase italic tracking-tight">Historial de Simulacros</h3>
+                                        <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Registro detallado y reportes de resultados</p>
                                     </div>
-                                    <Badge variant="default" className="text-[10px] bg-[var(--theme-bg-base)] text-[var(--theme-text-secondary)] border-[var(--theme-border-soft)]">{fullResults.length} REGISTROS</Badge>
+                                    <Badge variant="default" className="text-[10px] bg-slate-50 text-slate-500 border-slate-100">{fullResults.length} REGISTROS</Badge>
                                 </div>
                                 <ResultsHistoryList results={fullResults} onViewReport={handleViewReport} />
                             </Card>

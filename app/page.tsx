@@ -19,64 +19,77 @@ export default function Home() {
   const dashboardLink = role === 'teacher' ? '/teacher' : role === 'admin' ? '/admin/dashboard' : '/dashboard';
 
   return (
-    <div className="flex flex-col min-h-screen bg-theme-bg-base selection:bg-brand-primary/10 overflow-x-hidden">
+    <div className="flex flex-col min-h-screen bg-[var(--theme-bg-base)] selection:bg-brand-primary/10 overflow-x-hidden transition-colors duration-700" suppressHydrationWarning>
       {/* Navigation — Smart Auto-hide */}
       <SmartNav />
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative pt-40 pb-32 px-4 flex flex-col items-center text-center overflow-hidden">
-          {/* Enhanced Background Effects */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-primary/10 via-background to-background pointer-events-none" />
-          <GridBackground size={40} opacity={0.03} className="text-brand-primary absolute inset-0 mask-gradient-to-b" />
+        <section className="relative pt-48 pb-32 px-6 flex flex-col items-center text-center overflow-hidden">
+          {/* Enhanced Background Effects - Elite 2026 */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-brand-primary/10 rounded-full blur-[140px] animate-pulse" style={{ animationDuration: '8s' }} />
+            <div className="absolute bottom-[5%] left-[-5%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '10s' }} />
+          </div>
 
-          <div className="relative z-10 max-w-4xl space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-foreground text-balance mb-6">
-              Domina tu Futuro en el
-              <span className="block text-brand-primary mt-2">Saber Pro {BRAND_YEAR}</span>
-            </h1>
+          <GridBackground size={40} opacity={0.05} className="text-brand-primary absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
 
-            <div className="space-y-4 max-w-2xl mx-auto">
-              <p className="text-xl md:text-2xl font-medium text-foreground">
-                El Saber Pro no se estudia. <span className="text-brand-primary font-bold">Se entrena.</span>
-              </p>
-              <p className="text-lg text-muted-foreground font-medium">
-                Diagnóstico Gratuito + Plan Personalizado + Resultados Medibles
-              </p>
+          <div className="relative z-10 max-w-5xl space-y-10 animate-in fade-in slide-in-from-bottom-12 duration-1000">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200 mb-6 backdrop-blur-md shadow-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-40"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-primary"></span>
+              </span>
+              <span className="text-[9px] font-bold uppercase tracking-widest text-slate-700">Convocatoria {BRAND_YEAR} Abierta</span>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10 w-full max-w-lg mx-auto">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900 leading-[1.1] text-balance">
+              Entrena para el <span className="text-brand-primary italic">Éxito Total</span>
+            </h1>
+
+            <div className="max-w-2xl mx-auto space-y-6">
+              <p className="text-lg md:text-xl font-medium text-slate-500 leading-relaxed">
+                No dejes tu puntaje al azar. Domina las pruebas con el sistema de entrenamiento más avanzado de Colombia.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                <span className="flex items-center gap-1.5"><CheckCircle2 size={13} /> IA Adaptativa</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 size={13} /> Simulacros 4K</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 size={13} /> Mentoría 24/7</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12 w-full max-w-xl mx-auto">
               {user ? (
                 <Link href={dashboardLink} className="w-full sm:w-auto">
-                  <Button size="lg" variant="primary" icon={ArrowRight} iconPosition="right" className="w-full h-12 px-6 text-[12px] font-bold uppercase tracking-widest shadow-lg shadow-brand-primary/10 hover:shadow-brand-primary/20 transition-all bg-brand-primary text-white rounded-full">
-                    Ir a mi el Entrenamiento
+                  <Button size="lg" variant="primary" icon={ArrowRight} iconPosition="right" className="w-full h-12 px-8 text-[10px] font-bold uppercase tracking-widest bg-brand-primary text-white rounded-xl hover:-translate-y-0.5 transition-all">
+                    Entrar al panel
                   </Button>
                 </Link>
               ) : (
                 <Link href="/register" className="w-full sm:w-auto">
-                  <Button size="lg" variant="primary" className="w-full h-12 px-6 text-[12px] font-bold uppercase tracking-widest shadow-lg shadow-brand-primary/10 hover:shadow-brand-primary/20 transition-all bg-brand-primary text-white rounded-full">
-                    Prueba Gratuita
+                  <Button size="lg" variant="primary" className="w-full h-12 px-8 text-[10px] font-bold uppercase tracking-widest bg-brand-primary text-white rounded-xl hover:-translate-y-0.5 transition-all shadow-lg shadow-brand-primary/20">
+                    Prueba gratuita
                   </Button>
                 </Link>
               )}
               <Link href="/methodology" className="w-full sm:w-auto">
-                <Button variant="outline" size="lg" className="w-full h-12 px-6 text-[12px] font-bold uppercase tracking-widest rounded-full">
-                  Saber más
+                <Button variant="outline" size="lg" className="w-full h-12 px-8 text-[10px] font-bold uppercase tracking-widest rounded-xl border-slate-200 hover:bg-slate-50 transition-all text-slate-600">
+                  Metodología
                 </Button>
               </Link>
             </div>
           </div>
         </section>
 
-        {/* Trust Section */}
-        <section className="py-12 border-y border-border/40 bg-muted/20 backdrop-blur-sm">
-          <div className="max-w-7xl mx-auto px-6 text-center">
-            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/60 mb-8">
-              Confianza de Estudiantes de
+        {/* Dynamic Trust Section */}
+        <section className="py-16 border-y border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] backdrop-blur-xl relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <p className="text-[9px] font-black uppercase tracking-[0.5em] text-slate-400 dark:text-[var(--theme-text-tertiary)] mb-12 opacity-80">
+              ESTUDIANTES DE LAS MEJORES INSTITUCIONES CONFÍAN EN NOSOTROS
             </p>
-            <div className="flex flex-wrap justify-center gap-x-16 gap-y-8 items-center opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+            <div className="flex flex-wrap justify-center gap-x-20 gap-y-10 items-center">
               {["UNAL", "ANDES", "JAVERIANA", "EAFIT", "UNIVALLE"].map((uni) => (
-                <span key={uni} className="text-lg md:text-xl font-serif font-bold text-foreground tracking-widest hover:text-brand-primary transition-colors cursor-default">
+                <span key={uni} className="text-2xl md:text-3xl font-black text-[var(--theme-text-primary)] tracking-widest opacity-25 hover:opacity-100 hover:text-brand-primary transition-all duration-500 cursor-default grayscale hover:grayscale-0">
                   {uni}
                 </span>
               ))}
@@ -84,100 +97,151 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Ruta de Excelencia Section */}
-        <section className="py-24 relative bg-theme-bg-surface/30">
+        {/* Ruta de Excelencia - Refined Cards */}
+        <section className="py-32 relative bg-[var(--theme-bg-base)]">
           <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black tracking-tight text-foreground mb-4">
-                Ruta de Excelencia
+            <div className="text-center mb-20">
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-800 mb-4">
+                Tu ruta de <span className="text-brand-primary italic">Élite</span>
               </h2>
+              <div className="w-12 h-1 bg-brand-primary/20 mx-auto rounded-full" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative items-start">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               <StepCard
                 step="01"
-                title="Crea tu Cuenta"
-                description="Accede a la plataforma y personaliza tu perfil según tu carrera y objetivos académicos."
+                title="ESTRATEGIA"
+                description="Personalizamos tu entrenamiento según tu carrera y debilidades detectadas por IA."
+                className="transform hover:-translate-y-2 transition-transform duration-500"
               />
               <StepCard
                 step="02"
-                title="Diagnóstico IA"
-                description="Realiza una prueba inicial adaptativa para identificar tus fortalezas y áreas de mejora con precisión."
+                title="PRECISIÓN"
+                description="Practica con simulacros dinámicos que se adaptan a tu nivel real de conocimiento."
+                className="transform hover:-translate-y-2 transition-transform duration-500"
               />
               <StepCard
                 step="03"
-                title="Entrena y Domina"
-                description="Sigue tu plan personalizado, practica con simulacros reales y asegura tu puntaje superior."
+                title="MAESTRÍA"
+                description="Domina cada área y asegura un puntaje superior con análisis predictivo de resultados."
+                className="transform hover:-translate-y-2 transition-transform duration-500"
               />
             </div>
           </div>
         </section>
 
-        {/* Filosofía de Entrenamiento Section */}
-        <section className="py-24 relative overflow-hidden bg-[var(--theme-bg-surface)] border-t border-[var(--theme-border-soft)]">
-          <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-brand-primary/8 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+        {/* Philosophy - Visual Storytelling */}
+        <section className="py-32 relative overflow-hidden bg-[var(--theme-bg-surface)] border-y border-[var(--theme-border-soft)]">
+          <div className="absolute top-1/2 left-1/2 w-[900px] h-[900px] bg-brand-primary/5 rounded-full blur-[140px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight text-[var(--theme-text-primary)] mb-6">
-                Filosofía de Entrenamiento
-              </h2>
-              <p className="text-xl text-[var(--theme-text-secondary)] italic font-serif">
-                &quot;El problema no es que no sepas. Es que no sabes qué reforzar.&quot;
-              </p>
-              <p className="text-sm text-[var(--theme-text-tertiary)] mt-6 max-w-2xl mx-auto leading-relaxed">
-                La plataforma de Saber Pro {BRAND_YEAR} está diseñada con una metodología única basada en datos, adaptando el contenido a tu ritmo de aprendizaje real.
-              </p>
-            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+              <div className="space-y-10">
+                <div className="space-y-4">
+                  <h2 className="text-3xl md:text-5xl font-black tracking-tightest text-[var(--theme-text-primary)] leading-[0.9] uppercase">
+                    FILOSOFÍA DE <br /> <span className="text-brand-primary italic">PODER</span>
+                  </h2>
+                  <p className="text-xl text-[var(--theme-text-secondary)] font-medium italic border-l-4 border-brand-primary pl-6 py-2">
+                    &quot;El problema no es que no sepas. Es que no sabes en qué fallas.&quot;
+                  </p>
+                </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <FeatureValueCard
-                icon={Brain}
-                title="Algoritmos Adaptativos"
-                description="El sistema aprende de tus errores y ajusta la dificultad para optimizar tu tiempo de estudio."
-                iconColor="text-brand-primary"
-                className="bg-[var(--theme-bg-base)] shadow-[var(--shadow-md)] border border-[var(--theme-border-soft)]"
-              />
-              <FeatureValueCard
-                icon={TrendingUp}
-                title="Analítica Predictiva"
-                description="Conoce tu probabilidad de éxito antes del examen con proyecciones basadas en data histórica."
-                iconColor="text-brand-primary"
-                className="bg-[var(--theme-bg-base)] shadow-[var(--shadow-md)] border border-[var(--theme-border-soft)]"
-              />
-              <FeatureValueCard
-                icon={ShieldCheck}
-                title="Simulación Realista"
-                description="Entrena en un entorno idéntico al del examen real para eliminar la ansiedad y mejorar tu rendimiento."
-                iconColor="text-brand-primary"
-                className="bg-[var(--theme-bg-base)] shadow-[var(--shadow-md)] border border-[var(--theme-border-soft)]"
-              />
+                <p className="text-lg text-slate-500 dark:text-[var(--theme-text-secondary)] leading-relaxed max-w-xl">
+                  Nuestra plataforma utiliza algoritmos de última generación para mapear tu cerebro académico y entregarte exactamente lo que necesitas reforzar, segundo a segundo.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center shrink-0">
+                      <Zap size={20} className="text-brand-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-black text-sm text-[var(--theme-text-primary)] uppercase tracking-wider">RESPUESTA FLASH</h4>
+                      <p className="text-xs text-[var(--theme-text-tertiary)]">Optimización de tiempos por pregunta.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center shrink-0">
+                      <Star size={20} className="text-brand-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-black text-sm text-[var(--theme-text-primary)] uppercase tracking-wider">RANKING ELITE</h4>
+                      <p className="text-xs text-[var(--theme-text-tertiary)]">Compite con los mejores del país.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-6 relative">
+                <div className="absolute -inset-4 bg-brand-primary/5 blur-3xl rounded-full opacity-50" />
+                <FeatureValueCard
+                  icon={Brain}
+                  title="ALGORITMOS ADAPTATIVOS"
+                  description="El sistema detecta tus patrones de error en tiempo real."
+                  iconColor="text-brand-primary"
+                  className="bg-[var(--theme-bg-base)] shadow-2xl border border-brand-primary/5 hover:border-brand-primary/20 transition-all rounded-[2rem]"
+                />
+                <FeatureValueCard
+                  icon={TrendingUp}
+                  title="ANALÍTICA PREDICTIVA"
+                  description="Proyectamos tu puntaje Icfes con una precisión del 94.2%."
+                  iconColor="text-brand-primary"
+                  className="bg-[var(--theme-bg-base)] shadow-2xl border border-brand-primary/5 hover:border-brand-primary/20 transition-all rounded-[2rem]"
+                />
+                <FeatureValueCard
+                  icon={ShieldCheck}
+                  title="SIMULACIÓN REALISTA"
+                  description="Un entorno idéntico al examen para eliminar la ansiedad."
+                  iconColor="text-brand-primary"
+                  className="bg-[var(--theme-bg-base)] shadow-2xl border border-brand-primary/5 hover:border-brand-primary/20 transition-all rounded-[2rem]"
+                />
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Light Stats Section */}
-        <section className="py-20 bg-theme-bg-surface border-t border-border/40">
+        {/* Stats - Digital Precision - Refined Scale */}
+        <section className="py-20 bg-[var(--theme-bg-base)] relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-border/40">
-              <div className="px-4 py-4 md:py-0">
-                <p className="text-5xl font-black tracking-tight mb-2 text-foreground">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+              <div className="group">
+                <p className="text-4xl md:text-5xl font-bold tracking-tight text-brand-primary mb-2">
                   <NumberTicker value={100} suffix="+" />
                 </p>
-                <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground transition-all">Estudiantes Entrenando</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Estudiantes activos</p>
               </div>
-              <div className="px-4 py-4 md:py-0">
-                <p className="text-5xl font-black tracking-tight mb-2 text-foreground">
+              <div className="group">
+                <p className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-2">
                   <NumberTicker value={24} suffix="/7" />
                 </p>
-                <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Disponibilidad IA</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Disponibilidad total</p>
               </div>
-              <div className="px-4 py-4 md:py-0">
-                <p className="text-5xl font-black tracking-tight mb-2 text-foreground">
+              <div className="group">
+                <p className="text-4xl md:text-5xl font-bold tracking-tight text-brand-primary mb-2">
                   <NumberTicker value={100} suffix="%" />
                 </p>
-                <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Cobertura Icfes</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Cobertura curricular</p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA - Refined Scale */}
+        <section className="py-24 px-6 mb-12">
+          <div className="max-w-4xl mx-auto bg-brand-primary rounded-[2.5rem] p-10 md:p-16 text-center relative overflow-hidden shadow-2xl shadow-brand-primary/40">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+            <div className="relative z-10 space-y-6">
+              <h2 className="text-3xl md:text-5xl font-black text-white tracking-tightest leading-none uppercase">
+                EMPIEZA TU CAMINO <br /> A LA EXCELENCIA HOY
+              </h2>
+              <p className="text-white/70 text-base max-w-lg mx-auto font-medium">
+                Únete a la nueva generación de estudiantes que transforman su futuro con tecnología.
+              </p>
+              <Link href="/register">
+                <Button variant="primary" className="h-12 px-8 bg-white text-brand-primary hover:bg-slate-50 font-bold text-[10px] uppercase tracking-widest rounded-lg shadow-xl border-none">
+                  Crear mi cuenta gratis
+                </Button>
+              </Link>
             </div>
           </div>
         </section>

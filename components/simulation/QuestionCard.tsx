@@ -74,8 +74,8 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
         <Card variant="glass" className="p-6 md:p-10 w-full max-w-3xl mx-auto shadow-sm border-[var(--theme-border-soft)]">
             <div className="mb-8 flex justify-between items-center">
                 <div className="flex gap-2">
-                    <Badge variant="outline" className="h-6 px-2 text-[10px] uppercase font-bold tracking-wider opacity-50 border-[var(--theme-border-soft)]">
-                        {(question.module || "General").replace("_", " ")}
+                    <Badge variant="outline" className="h-6 px-3 text-[10px] uppercase font-bold tracking-wider text-slate-500 border-slate-200 dark:border-white/10">
+                        {question.module ? question.module.replace("_", " ") : "General"}
                     </Badge>
                 </div>
                 <Badge
@@ -89,7 +89,7 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
                 </Badge>
             </div>
 
-            <h2 className="text-2xl md:text-3xl font-medium text-[var(--theme-text-primary)] leading-relaxed mb-10 tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-[var(--theme-text-primary)] leading-tight mb-10 tracking-tight">
                 {question.text}
             </h2>
 
@@ -97,14 +97,14 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
             {question.isPromptOnly ? (
                 <div className="space-y-4 mb-8">
                     <textarea
-                        className="w-full h-48 p-6 rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] text-[var(--theme-text-primary)] focus:border-brand-primary outline-none transition-all duration-180 ease-out placeholder:text-[var(--theme-text-secondary)]/30"
+                        className="w-full h-48 p-6 rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[var(--theme-bg-surface)] text-slate-900 dark:text-[var(--theme-text-primary)] focus:border-brand-primary outline-none transition-all duration-180 ease-out placeholder:text-slate-300 dark:placeholder:text-[var(--theme-text-secondary)]/30 font-medium"
                         placeholder="Escribe tu análisis aquí..."
                         disabled={showResult}
                         value={promptResponse}
                         onChange={(e) => setPromptResponse(e.target.value)}
                     />
-                    <p className="text-xs text-[var(--theme-text-secondary)]/40 italic pl-2">
-                        * Esta es una tarea de respuesta abierta para desarrollar tus habilidades de argumentación.
+                    <p className="text-[10px] text-slate-400 dark:text-[var(--theme-text-secondary)] font-bold italic pl-2 uppercase tracking-wide">
+                        * Tarea de argumentación abierta (Rúbrica 2026)
                     </p>
                 </div>
             ) : (
@@ -113,7 +113,7 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
                         const isSelected = selectedOptionId === option.id;
                         const isCorrect = option.id === question.correctAnswer;
 
-                        let optionStyle = "bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)] text-[var(--theme-text-secondary)] hover:border-brand-primary/50 hover:bg-brand-primary/[0.02]";
+                        let optionStyle = "bg-white dark:bg-[var(--theme-bg-surface)] border-slate-200 dark:border-white/10 text-slate-600 dark:text-[var(--theme-text-secondary)] hover:border-brand-primary/50 hover:bg-brand-primary/[0.02]";
 
                         if (showResult) {
                             if (isCorrect) {
@@ -156,21 +156,21 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
                 <div className="mt-4 animate-in fade-in slide-in-from-top-2 duration-300">
                     {showPaywall ? (
                         <Card variant="glass" className="p-5 flex items-center gap-4 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]">
-                            <div className="bg-slate-900/50 p-3 rounded-full relative z-10 transition-colors group-hover:bg-brand-primary/20">
-                                <Brain className="text-theme-text-secondary group-hover:text-brand-primary transition-colors" />
+                            <div className="bg-brand-primary/10 p-3 rounded-full relative z-10 transition-colors group-hover:bg-brand-primary/20">
+                                <Brain className="text-brand-primary" />
                             </div>
                             <div className="relative z-10">
-                                <h4 className="font-semibold text-white text-sm uppercase tracking-wider">Límite de IA Alcanzado (5/5)</h4>
-                                <p className="text-sm text-theme-text-secondary">Pásate a PRO para explicaciones ilimitadas.</p>
+                                <h4 className="font-bold text-[var(--theme-text-primary)] text-sm uppercase tracking-wider">Límite de IA Alcanzado (5/5)</h4>
+                                <p className="text-sm text-[var(--theme-text-secondary)] font-medium">Pásate a PRO para explicaciones ilimitadas.</p>
                             </div>
                             <Link href="/pricing" aria-label="Ver planes de precios" className="absolute inset-0 z-20" />
                         </Card>
                     ) : (
-                        <div className="bg-slate-900/30 rounded-xl border border-theme-text-secondary/10 overflow-hidden">
-                            <div className="p-4 bg-gradient-to-r from-brand-primary/10 to-transparent flex items-center gap-2 border-b border-theme-text-secondary/10">
-                                <Brain className="text-brand-primary w-5 h-5" />
-                                <h3 className="font-bold text-white text-[10px] uppercase tracking-[0.2em]">
-                                    Análisis Inteligente {(!isPro) && <span className="opacity-50 text-[10px] ml-2">({aiUsageCount}/5 Usos Gratuitos)</span>}
+                        <div className="bg-slate-100 dark:bg-slate-900/30 rounded-xl border border-slate-200 dark:border-theme-text-secondary/10 overflow-hidden shadow-inner">
+                            <div className="p-4 bg-brand-primary text-white flex items-center gap-2">
+                                <Brain className="text-white w-5 h-5" />
+                                <h3 className="font-black text-[10px] uppercase tracking-[0.2em] italic">
+                                    ANÁLISIS ESTRATÉGICO IA {(!isPro) && <span className="opacity-70 text-[10px] ml-2">({aiUsageCount}/5 USOS)</span>}
                                 </h3>
                             </div>
 
@@ -181,16 +181,16 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
                                     ) : (
                                         <Button
                                             onClick={handleExplain}
-                                            variant="ghost"
-                                            className="w-full h-12 border border-metal-blue/30 text-metal-blue hover:bg-metal-blue/10 font-semibold tracking-wider uppercase text-xs"
+                                            variant="primary"
+                                            className="w-full h-12 font-black tracking-[0.15em] uppercase text-[10px] rounded-xl shadow-lg border-none"
                                             icon={Brain}
                                         >
-                                            Solicitar Explicación
+                                            SOLICITAR ANÁLISIS IA
                                         </Button>
                                     )
                                 ) : (
-                                    <div className="prose prose-invert prose-sm max-w-none">
-                                        <p className="text-theme-text-secondary leading-exam prose-optimal mx-auto whitespace-pre-line animate-in fade-in">
+                                    <div className="prose prose-slate dark:prose-invert prose-sm max-w-none">
+                                        <p className="text-[var(--theme-text-primary)] font-medium leading-relaxed whitespace-pre-line animate-in fade-in duration-500">
                                             {explanation}
                                         </p>
                                     </div>

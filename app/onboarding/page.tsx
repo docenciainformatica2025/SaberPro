@@ -96,14 +96,14 @@ export default function OnboardingPage() {
                         </div>
 
                         <div className="space-y-4">
-                            <Badge variant="ghost" className="text-brand-primary font-bold tracking-widest uppercase px-4 h-8 bg-brand-primary/5 border border-brand-primary/10">
-                                BIENVENIDO A SABER PRO ONE
+                            <Badge variant="ghost" className="text-slate-400 font-bold tracking-widest uppercase px-3 h-7 bg-slate-50 border border-slate-100">
+                                Bienvenido a Saber Pro
                             </Badge>
-                            <h1 className="text-5xl md:text-7xl font-semibold text-[var(--theme-text-primary)] tracking-tight text-pretty">
+                            <h1 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight text-pretty">
                                 Tu mejor resultado empieza hoy.
                             </h1>
-                            <p className="text-xl md:text-2xl text-[var(--theme-text-secondary)] font-medium max-w-lg mx-auto leading-relaxed">
-                                Hemos diseñado un mapa de aprendizaje inteligente pensado exclusivamente para ti.
+                            <p className="text-lg md:text-xl text-slate-500 font-medium max-w-lg mx-auto leading-relaxed">
+                                Hemos diseñado un mapa de aprendizaje inteligente pensado para ti.
                             </p>
                         </div>
 
@@ -130,9 +130,9 @@ export default function OnboardingPage() {
                         className="max-w-xl w-full space-y-10"
                     >
                         <header className="space-y-2">
-                            <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-brand-primary">Paso 1 de 3</span>
-                            <h2 className="text-4xl font-semibold text-[var(--theme-text-primary)] tracking-tight">Cúentanos sobre ti</h2>
-                            <p className="text-[var(--theme-text-secondary)] font-medium">Esto nos ayuda a calibrar la dificultad y los módulos.</p>
+                            <span className="text-[9px] uppercase font-bold tracking-widest text-slate-400">Paso 1 de 3</span>
+                            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">Cuéntanos sobre ti</h2>
+                            <p className="text-slate-500 font-medium">Esto nos ayuda a calibrar la dificultad y los módulos.</p>
                         </header>
 
                         <div className="space-y-6">
@@ -197,9 +197,9 @@ export default function OnboardingPage() {
                         className="max-w-xl w-full space-y-10"
                     >
                         <header className="space-y-2">
-                            <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-brand-primary">Paso 2 de 3</span>
-                            <h2 className="text-4xl font-semibold text-[var(--theme-text-primary)] tracking-tight">¿Cuál es tu meta?</h2>
-                            <p className="text-[var(--theme-text-secondary)] font-medium">Personalizaremos tu camino según tu ambición.</p>
+                            <span className="text-[9px] uppercase font-bold tracking-widest text-slate-400">Paso 2 de 3</span>
+                            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">¿Cuál es tu meta?</h2>
+                            <p className="text-slate-500 font-medium">Personalizaremos tu camino según tu ambición.</p>
                         </header>
 
                         <div className="grid grid-cols-1 gap-4">
@@ -246,9 +246,9 @@ export default function OnboardingPage() {
                             <Target size={40} />
                         </div>
                         <div className="space-y-3">
-                            <h2 className="text-4xl font-semibold text-[var(--theme-text-primary)]">¿Hacemos un diagnóstico rápido?</h2>
-                            <p className="text-lg text-[var(--theme-text-secondary)] leading-relaxed">
-                                Solo 5 preguntas para entender tu nivel actual y crear un plan **realmente** adaptativo.
+                            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">¿Deseas un diagnóstico rápido?</h2>
+                            <p className="text-lg text-slate-500 leading-relaxed max-w-md mx-auto">
+                                Solo 5 preguntas para entender tu nivel actual y crear un plan adaptativo.
                             </p>
                         </div>
 

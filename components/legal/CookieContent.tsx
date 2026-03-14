@@ -3,24 +3,24 @@ import { AUTHOR_NAME, COMPANY_NAME } from "@/lib/config";
 
 export default function CookieContent() {
     return (
-        <div className="space-y-10 text-theme-text-secondary">
-            {/* Header Section - Premium Gold Theme */}
-            <div className="bg-gradient-to-r from-brand-primary/20 to-black p-6 rounded-xl border border-brand-primary/20 flex flex-col md:flex-row justify-between gap-4">
+        <div className="space-y-10 text-theme-text-secondary" suppressHydrationWarning>
+            {/* Header Section - Premium Audit Theme */}
+            <div className="bg-gradient-to-r from-brand-primary/5 to-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col md:flex-row justify-between gap-4">
                 <div>
-                    <h3 className="text-brand-primary font-bold mb-2 uppercase tracking-wider text-sm">POLÍTICA DE COOKIES</h3>
-                    <p className="text-xs text-brand-primary/60">Tecnologías de rastreo y almacenamiento local.</p>
+                    <h3 className="text-brand-primary font-bold mb-1 uppercase tracking-widest text-[10px]">Política de Cookies</h3>
+                    <p className="text-[10px] text-slate-500">Tecnologías de rastreo y almacenamiento local.</p>
                 </div>
-                <div className="text-xs space-y-1 text-right text-theme-text-secondary/80">
-                    <div className="font-bold text-white">© 2025 {COMPANY_NAME}.</div>
-                    <div>Todos los derechos reservados.</div>
-                    <div className="pt-1 opacity-70">
-                        Desarrollado por <strong>{AUTHOR_NAME}</strong><br />
-                        para <em>{COMPANY_NAME}</em>.
+                <div className="text-xs space-y-1 text-right">
+                    <div className="font-bold text-slate-900 text-[11px]">© 2025 {COMPANY_NAME}.</div>
+                    <div className="text-slate-500 text-[10px]">Todos los derechos reservados.</div>
+                    <div className="pt-1 text-slate-600 text-[10px]">
+                        Desarrollado por <strong className="text-slate-800">{AUTHOR_NAME}</strong><br />
+                        para <em className="text-slate-800">{COMPANY_NAME}</em>.
                     </div>
-                    <div className="pt-1 font-mono text-[10px] opacity-50">
+                    <div className="pt-1 font-mono text-[9px] text-slate-400">
                         Jurisdicción: Colombia
                     </div>
-                    <div className="pt-1 font-mono text-[10px] text-brand-primary">
+                    <div className="pt-1 font-mono text-[9px] text-brand-primary font-bold">
                         v2.1 (Tech Audit)
                     </div>
                 </div>
@@ -28,12 +28,12 @@ export default function CookieContent() {
 
             {/* Section 1 */}
             <section className="space-y-4">
-                <h2 className="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                    <Cookie className="text-brand-primary" />
-                    1. ¿Qué son las Cookies?
+                <h2 className="text-lg md:text-xl font-bold text-slate-800 flex items-center gap-2">
+                    <Cookie className="text-brand-primary" size={18} />
+                    1. ¿Qué son las cookies?
                 </h2>
                 <div className="p-4 rounded-lg bg-brand-primary/5 border border-brand-primary/10">
-                    <p className="leading-relaxed text-sm">
+                    <p className="leading-relaxed text-sm text-slate-700">
                         Una cookie es un pequeño archivo de texto que se almacena en su navegador. El &quot;Local Storage&quot; permite almacenar datos en su dispositivo de manera más persistente y segura.
                     </p>
                 </div>
@@ -43,14 +43,14 @@ export default function CookieContent() {
 
             {/* Section 2 */}
             <section className="space-y-6">
-                <h2 className="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                    <Eye className="text-brand-primary" />
+                <h2 className="text-lg md:text-xl font-bold text-slate-800 flex items-center gap-2">
+                    <Eye className="text-brand-primary" size={18} />
                     2. Tipos de cookies utilizadas
                 </h2>
 
-                <div className="overflow-hidden rounded-xl border border-brand-primary/10 bg-black/20">
+                <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
                     <table className="w-full text-left border-collapse">
-                        <thead className="bg-brand-primary/10 text-brand-primary text-xs uppercase tracking-wider">
+                        <thead className="bg-slate-50 text-slate-600 text-xs uppercase tracking-wider border-b border-slate-100">
                             <tr>
                                 <th className="p-4 font-bold">Tipo</th>
                                 <th className="p-4 font-bold hidden md:table-cell">Propiedad</th>
@@ -59,24 +59,24 @@ export default function CookieContent() {
                         </thead>
                         <tbody className="divide-y divide-white/5 text-sm">
                             <tr className="hover:bg-white/5 transition-colors">
-                                <td className="p-4 font-bold text-white">Sesión</td>
-                                <td className="p-4 hidden md:table-cell"><span className="px-2 py-1 rounded bg-blue-500/10 text-blue-400 text-xs">Propia</span></td>
-                                <td className="p-4">Gestionar el login y mantener la sesión activa.</td>
+                                <td className="p-4 font-bold text-slate-800">Sesión</td>
+                                <td className="p-4 hidden md:table-cell"><span className="px-2 py-1 rounded bg-blue-500/10 text-blue-600 text-xs">Propia</span></td>
+                                <td className="p-4 text-slate-600">Gestionar el login y mantener la sesión activa.</td>
                             </tr>
-                            <tr className="hover:bg-white/5 transition-colors">
-                                <td className="p-4 font-bold text-white">Seguridad</td>
-                                <td className="p-4 hidden md:table-cell"><span className="px-2 py-1 rounded bg-blue-500/10 text-blue-400 text-xs">Propia</span></td>
-                                <td className="p-4">Prevenir ataques y proteger tus datos.</td>
+                            <tr className="hover:bg-slate-50 transition-colors">
+                                <td className="p-4 font-bold text-slate-800">Seguridad</td>
+                                <td className="p-4 hidden md:table-cell"><span className="px-2 py-1 rounded bg-blue-500/10 text-blue-600 text-xs">Propia</span></td>
+                                <td className="p-4 text-slate-600">Prevenir ataques y proteger tus datos.</td>
                             </tr>
-                            <tr className="hover:bg-white/5 transition-colors">
-                                <td className="p-4 font-bold text-white">Analítica</td>
-                                <td className="p-4 hidden md:table-cell"><span className="px-2 py-1 rounded bg-purple-500/10 text-purple-400 text-xs">Terceros</span></td>
-                                <td className="p-4">Estadísticas de uso anónimas.</td>
+                            <tr className="hover:bg-slate-50 transition-colors">
+                                <td className="p-4 font-bold text-slate-800">Analítica</td>
+                                <td className="p-4 hidden md:table-cell"><span className="px-2 py-1 rounded bg-purple-500/10 text-purple-600 text-xs">Terceros</span></td>
+                                <td className="p-4 text-slate-600">Estadísticas de uso anónimas.</td>
                             </tr>
-                            <tr className="hover:bg-white/5 transition-colors">
-                                <td className="p-4 font-bold text-white">Preferencias</td>
-                                <td className="p-4 hidden md:table-cell"><span className="px-2 py-1 rounded bg-blue-500/10 text-blue-400 text-xs">Propia</span></td>
-                                <td className="p-4">Recordar configuración (tema, idioma).</td>
+                            <tr className="hover:bg-slate-50 transition-colors">
+                                <td className="p-4 font-bold text-slate-800">Preferencias</td>
+                                <td className="p-4 hidden md:table-cell"><span className="px-2 py-1 rounded bg-blue-500/10 text-blue-600 text-xs">Propia</span></td>
+                                <td className="p-4 text-slate-600">Recordar configuración (tema, idioma).</td>
                             </tr>
                         </tbody>
                     </table>
@@ -87,8 +87,8 @@ export default function CookieContent() {
 
             {/* Section 3 */}
             <section className="space-y-4">
-                <h2 className="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                    <Settings className="text-brand-primary" />
+                <h2 className="text-lg md:text-xl font-bold text-slate-800 flex items-center gap-2">
+                    <Settings className="text-brand-primary" size={18} />
                     3. Gestión
                 </h2>
                 <p className="leading-relaxed text-sm">

@@ -11,6 +11,7 @@ import { db } from "@/lib/firebase";
 import { addDoc, collection, serverTimestamp, query, where, getDocs, updateDoc, arrayUnion, increment, doc } from "firebase/firestore";
 import { adaptiveEngine } from "@/utils/adaptiveEngine";
 import GlobalExitModal from "@/components/auth/GlobalExitModal";
+import Link from "next/link";
 import SuccessAnimation from "@/components/ui/SuccessAnimation";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -284,18 +285,18 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
 
         return (
             <div className="min-h-[60vh] flex flex-col items-center justify-center animate-in zoom-in duration-300">
-                <Card variant="glass" className="w-full max-w-2xl p-8 backdrop-blur-sm">
-                    <h2 className="text-3xl font-bold text-white mb-2 text-center">Resumen del Módulo</h2>
-                    <p className="text-theme-text-secondary/60 text-center mb-8">Revisa tus respuestas antes de finalizar.</p>
+                <Card variant="glass" className="w-full max-w-2xl p-8 backdrop-blur-sm border-slate-100 dark:border-white/10">
+                    <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-2 text-center">Resumen del Módulo</h2>
+                    <p className="text-slate-500 dark:text-[var(--theme-text-secondary)] text-center mb-8 font-medium">Revisa tus respuestas antes de finalizar.</p>
 
-                    <div className="flex gap-4 justify-around mb-8 p-4 bg-black/20 rounded-xl">
+                    <div className="flex gap-4 justify-around mb-8 p-4 bg-slate-50 dark:bg-black/20 rounded-xl border border-slate-100 dark:border-transparent">
                         <div className="text-center">
-                            <span className="block text-2xl font-bold text-white">{answeredCount}</span>
-                            <span className="text-[10px] uppercase font-semibold tracking-[0.2em] text-theme-text-secondary/60">Contestadas</span>
+                            <span className="block text-2xl font-black text-slate-900 dark:text-white">{answeredCount}</span>
+                            <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-slate-400 dark:text-theme-text-secondary/60">Contestadas</span>
                         </div>
                         <div className="text-center">
-                            <span className="block text-2xl font-bold text-brand-primary">{unansweredCount}</span>
-                            <span className="text-[10px] uppercase font-semibold tracking-[0.2em] text-theme-text-secondary/60">Sin Responder</span>
+                            <span className="block text-2xl font-black text-brand-primary">{unansweredCount}</span>
+                            <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-slate-400 dark:text-theme-text-secondary/60">Sin Responder</span>
                         </div>
                     </div>
 
@@ -330,7 +331,7 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                         <Button
                             variant="ghost"
                             onClick={() => setShowReview(false)}
-                            className="w-full text-theme-text-secondary hover:text-white"
+                            className="w-full text-slate-500 dark:text-theme-text-secondary hover:text-brand-primary dark:hover:text-white font-bold"
                         >
                             Volver a Revisar
                         </Button>
@@ -398,13 +399,11 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                             DESBLOQUEAR EXAMEN REAL
                         </Button>
 
-                        <Button
-                            variant="ghost"
-                            onClick={() => router.push('/dashboard')}
-                            className="w-full text-theme-text-secondary hover:text-white"
-                        >
-                            Volver al Dashboard
-                        </Button>
+                        <Link href="/dashboard">
+                            <Button variant="ghost" className="w-full text-theme-text-secondary hover:text-white">
+                                Volver al Inicio
+                            </Button>
+                        </Link>
                     </Card>
                 </div>
             );
@@ -463,7 +462,7 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                                 onClick={() => router.push('/dashboard')}
                                 className="flex-[2] h-16 text-lg font-bold"
                             >
-                                Volver al Dashboard
+                                Volver al Inicio
                             </Button>
                         )}
                         <Button
@@ -575,7 +574,6 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                 >
                     Anterior
                 </Button>
-
                 <Button
                     onClick={handleNext}
                     variant="primary"

@@ -21,7 +21,7 @@ export default function VersionUpdateGuard({ children }: { children: React.React
 
     useEffect(() => {
         // Listen to system configuration in real-time
-        const configRef = doc(db, "config", "system");
+        const configRef = doc(db, "system", "config");
 
         const unsubscribe = onSnapshot(configRef, (snapshot) => {
             if (snapshot.exists()) {

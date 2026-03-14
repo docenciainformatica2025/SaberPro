@@ -67,22 +67,26 @@ export default function TeacherDashboard() {
     return (
         <main className="max-w-7xl mx-auto space-y-12 pb-12 p-4 lg:p-0 animate-in fade-in slide-in-from-bottom-8 duration-700">
             <PromotionBanner />
-            {/* Header */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-md p-6 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 flex-1">
-                    <h1 className="text-xl font-bold text-slate-900 dark:text-white mb-1 flex items-center gap-2 tracking-tight">
-                        ¡Hola, {teacherName}! 👋
-                        {profile?.role === 'teacher' && <Badge variant="primary" className="text-[9px] font-black tracking-widest px-2 py-0.5 bg-brand-primary text-white border-none uppercase">Pro</Badge>}
-                    </h1>
-                    <p className="text-[12px] text-slate-500 font-medium">
-                        Tus estudiantes están progresando. Aquí tienes el pulso de tu clase hoy.
-                    </p>
+            {/* Header - Unified Elite Style */}
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 pb-4">
+                <div className="space-y-4">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-brand-primary text-[10px] font-black tracking-[0.2em] uppercase shadow-sm">
+                        Panel Docente v4.0.0
+                    </div>
+                    <div className="space-y-1">
+                        <h1 className="text-5xl md:text-7xl font-black text-[var(--theme-text-primary)] tracking-tightest leading-none">
+                            ¡HOLA, <span className="text-theme-hero italic uppercase">{teacherName}</span>! 👋
+                        </h1>
+                        <p className="text-xs font-medium text-slate-400 tracking-widest uppercase ml-1">El pulso de tus clases en tiempo real</p>
+                    </div>
                 </div>
-                <Link href="/teacher/classes">
-                    <Button variant="primary" size="sm" className="px-6 h-10 shadow-lg shadow-brand-primary/10 text-[11px] font-bold uppercase tracking-widest" icon={Plus}>
-                        Nueva Clase
-                    </Button>
-                </Link>
+                <div className="flex items-center gap-4">
+                    <Link href="/teacher/classes">
+                        <Button variant="primary" size="lg" className="px-8 h-14 shadow-2xl shadow-brand-primary/20 text-[11px] font-black uppercase tracking-[0.15em] rounded-2xl shimmer-gold" icon={Plus}>
+                            Nueva Clase
+                        </Button>
+                    </Link>
+                </div>
             </div>
 
             {/* Stats Grid */}
@@ -119,23 +123,27 @@ export default function TeacherDashboard() {
                 </Card>
             )}
 
-            {/* Empty State / CTA */}
-            <Card variant="glass" className="p-16 text-center flex flex-col items-center justify-center min-h-[400px] border-dashed border-[var(--theme-border-soft)]">
-                <div className="w-24 h-24 bg-[var(--theme-bg-surface)]/10 rounded-full flex items-center justify-center mb-8 animate-pulse relative">
-                    <div className="absolute inset-0 bg-brand-primary/10 rounded-full blur-xl shadow-[0_0_40px_rgba(30,64,175,0.1)]"></div>
-                    <BookOpen size={48} className="text-brand-primary/50 relative z-10" />
+            {/* Empty State / CTA - Enhanced Premium Style */}
+            <Card variant="glass" className="p-20 text-center flex flex-col items-center justify-center min-h-[500px] border-[3px] border-dashed border-brand-primary/5 bg-brand-primary/[0.01] rounded-[3rem] relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+
+                <div className="w-32 h-32 bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl shadow-brand-primary/10 flex items-center justify-center mb-10 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3 relative z-10 border border-brand-primary/5">
+                    <BookOpen size={56} className="text-brand-primary" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-2xl font-bold text-theme-text-primary mb-3 tracking-tight">Tu espacio de enseñanza</h3>
-                <p className="text-theme-text-tertiary max-w-md mx-auto mb-10 text-sm leading-relaxed prose-apple">
-                    Crea tu primera clase para invitar estudiantes, asignar simulacros y monitorear su progreso en tiempo real con nuestra analítica Pro.
+
+                <h3 className="text-3xl font-black text-theme-text-primary mb-4 tracking-tightest uppercase relative z-10">Tu Ecosistema de Enseñanza</h3>
+                <p className="text-theme-text-tertiary max-w-lg mx-auto mb-12 text-sm font-medium leading-relaxed opacity-60 relative z-10 uppercase tracking-widest">
+                    Digitaliza tus clases y desbloquea el potencial real de tus estudiantes con el análisis IA más avanzado.
                 </p>
-                <div className="flex gap-4">
+
+                <div className="flex flex-col md:flex-row gap-6 relative z-10">
                     <Link href="/teacher/classes">
-                        <Button variant="primary" icon={Plus}>Empezar Ahora</Button>
+                        <Button variant="primary" size="lg" className="px-10 h-16 rounded-2xl shadow-xl shadow-brand-primary/20 font-black text-[11px] uppercase tracking-[0.2em] shimmer-gold" icon={Plus}>Empezar Ahora</Button>
                     </Link>
                     <Button
                         variant="outline"
-                        className="opacity-60 hover:opacity-100"
+                        size="lg"
+                        className="px-10 h-16 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] border-slate-200 dark:border-slate-800 opacity-60 hover:opacity-100 transition-all"
                         onClick={() => {
                             toast.info("¡Estamos listos para ayudarte!", {
                                 description: "1. Crea una clase. 2. Comparte el código. 3. Observa cómo tus estudiantes brillan.",
@@ -143,7 +151,7 @@ export default function TeacherDashboard() {
                             });
                         }}
                     >
-                        Ver Tutorial
+                        Ver Guía Rápida
                     </Button>
                 </div>
             </Card>

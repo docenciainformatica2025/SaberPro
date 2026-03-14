@@ -18,7 +18,7 @@ export const StatCardPremium = memo(({ title, value, icon, trend, trendUp, color
         blue: { bg: 'bg-brand-primary/10', text: 'text-brand-primary', border: 'border-brand-primary/20 shadow-sm shadow-brand-primary/5' },
         purple: { bg: 'bg-brand-accent/10', text: 'text-brand-accent', border: 'border-brand-accent/20 shadow-sm shadow-brand-accent/5' },
         green: { bg: 'bg-brand-success/10', text: 'text-brand-success', border: 'border-brand-success/20 shadow-sm shadow-brand-success/5' },
-    }[color] || { bg: 'bg-surface-card', text: 'text-theme-text-primary', border: 'border-theme-border-soft' };
+    }[color] || { bg: 'bg-white dark:bg-surface-card', text: 'text-slate-900 dark:text-theme-text-primary', border: 'border-slate-200 dark:border-theme-border-soft' };
 
     const isNumeric = typeof value === 'number' || (!isNaN(Number(value)) && typeof value === 'string' && !value.includes('%'));
     const numericValue = typeof value === 'number' ? value : Number(value);
@@ -37,7 +37,7 @@ export const StatCardPremium = memo(({ title, value, icon, trend, trendUp, color
             </div>
 
             <div className="relative z-10">
-                <h3 className="text-4xl font-bold text-[var(--theme-text-primary)] tracking-tight tabular-nums mb-1">
+                <h3 className="text-4xl font-bold text-slate-900 dark:text-[var(--theme-text-primary)] tracking-tight tabular-nums mb-1">
                     {isNumeric ? (
                         <NumberTicker value={numericValue} />
                     ) : (
@@ -45,7 +45,7 @@ export const StatCardPremium = memo(({ title, value, icon, trend, trendUp, color
                     )}
                     {typeof value === 'string' && value.includes('%') && '%'}
                 </h3>
-                <p className="text-[var(--theme-text-tertiary)] text-xs font-black uppercase tracking-widest leading-none">
+                <p className="text-slate-500 dark:text-[var(--theme-text-tertiary)] text-xs font-black uppercase tracking-widest leading-none">
                     {title}
                 </p>
             </div>

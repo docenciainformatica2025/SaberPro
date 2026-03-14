@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import PrivacyContent from "@/components/legal/PrivacyContent";
+import { Button } from "@/components/ui/Button";
 
 export default function PrivacyPage() {
     return (
@@ -9,10 +12,12 @@ export default function PrivacyPage() {
 
                 {/* Header */}
                 <div className="space-y-6 text-center">
-                    <Link href="/" className="inline-flex items-center gap-2 text-[var(--theme-text-secondary)] hover:text-brand-primary transition-colors mb-4 group">
-                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Volver al Inicio
+                    <Link href="/">
+                        <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-slate-500 hover:text-brand-primary uppercase tracking-[0.2em] font-black text-[9px] mb-2 transition-all">
+                            Volver al Inicio
+                        </Button>
                     </Link>
-                    <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--theme-text-primary)] via-[var(--theme-text-secondary)] to-[var(--theme-text-primary)]">
+                    <h1 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight leading-none">
                         Política de Privacidad
                     </h1>
                 </div>

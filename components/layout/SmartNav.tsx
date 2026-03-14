@@ -87,7 +87,7 @@ export default function SmartNav() {
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
                 <Link href="/" className="hover:opacity-80 transition-opacity">
-                    <Logo variant="full" size="md" />
+                    <Logo variant="full" size="sm" />
                 </Link>
 
                 <div className="flex gap-3 sm:gap-4 items-center">
@@ -97,13 +97,13 @@ export default function SmartNav() {
                                 variant="primary"
                                 className="text-xs font-bold uppercase tracking-widest h-9 sm:h-10 px-4 sm:px-6 shadow-lg shadow-brand-primary/20 hover:shadow-brand-primary/40 transition-all hover:-translate-y-0.5"
                             >
-                                Dashboard
+                                Mi Panel
                             </Button>
                         </Link>
                     ) : (
                         <>
                             <Link href="/login" className="hidden md:block">
-                                <span className="text-sm font-bold uppercase tracking-widest text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] transition-colors">
+                                <span className="text-sm font-bold uppercase tracking-widest text-slate-600 dark:text-[var(--theme-text-secondary)] hover:text-slate-900 dark:hover:text-[var(--theme-text-primary)] transition-colors">
                                     Acceder
                                 </span>
                             </Link>

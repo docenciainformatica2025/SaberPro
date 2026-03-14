@@ -246,11 +246,11 @@ export default function PlannerPage() {
                     <div className="space-y-4">
                         <Link href="/dashboard">
                             <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] uppercase tracking-wider text-[10px] pl-0">
-                                Volver al Dashboard
+                                Volver al Inicio
                             </Button>
                         </Link>
-                        <h1 className="text-4xl md:text-5xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">
-                            Tu Plan de <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-[var(--theme-text-primary)] to-brand-primary">Estudio</span>
+                        <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
+                            Tu plan de <span className="text-brand-primary italic">estudio</span>
                         </h1>
                     </div>
 
@@ -338,7 +338,7 @@ export default function PlannerPage() {
                             <p className="text-[10px] bg-[var(--theme-bg-surface)] text-brand-primary inline-block px-2 py-1 rounded uppercase font-bold tracking-wider mb-2">
                                 {selectedDate.toLocaleDateString('es-CO', { weekday: 'long' })}
                             </p>
-                            <h2 className="text-3xl font-semibold text-[var(--theme-text-primary)] uppercase italic">
+                            <h2 className="text-2xl font-bold text-slate-800 tracking-tight">
                                 {selectedDate.toLocaleDateString('es-CO', { day: 'numeric', month: 'long' })}
                             </h2>
                         </div>

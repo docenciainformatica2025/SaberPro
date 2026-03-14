@@ -19,15 +19,15 @@ export default function CreditsPage() {
                 {/* Header with Back Button */}
                 <div className="relative text-center">
                     <Link href="/">
-                        <Button variant="ghost" size="sm" icon={ChevronLeft} className="absolute left-0 top-0 text-theme-text-secondary/60 hover:text-brand-primary tracking-wide text-[10px] hidden md:flex">
+                        <Button variant="ghost" size="sm" icon={ChevronLeft} className="absolute left-0 top-0 text-slate-600 hover:text-brand-primary tracking-widest text-[9px] uppercase font-black transition-all">
                             Volver
                         </Button>
                     </Link>
-                    <Badge variant="outline" className="mb-6 px-4 py-1 text-[10px] font-semibold tracking-wider border-theme-border-soft text-theme-text-tertiary">
+                    <Badge variant="ghost" className="mb-6 px-3 h-7 bg-slate-50 border border-slate-200 text-[10px] font-bold tracking-widest uppercase text-slate-600">
                         Transparencia
                     </Badge>
-                    <h1 className="text-4xl md:text-5xl font-semibold text-theme-text-primary tracking-tight mb-4">
-                        Acerca del <span className="text-brand-primary">Autor</span>
+                    <h1 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight mb-4">
+                        Acerca del <span className="text-brand-primary italic">Autor</span>
                     </h1>
                     <p className="text-lg text-theme-text-secondary font-medium max-w-xl mx-auto">
                         La filosofía y tecnología detrás de Saber Pro Trainer.

@@ -61,26 +61,28 @@ export default function TrainingSelectionPage() {
         <div className="min-h-screen bg-[var(--theme-bg-base)] p-6 md:p-12 pb-24">
             <div className="max-w-6xl mx-auto space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
 
-                {/* Header */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-[var(--theme-border-soft)] pb-8">
-                    <div className="space-y-4">
+                {/* Header - Unified with Dashboard Style */}
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 border-b border-brand-primary/5 pb-12">
+                    <div className="space-y-6">
                         <Link href={role === 'teacher' ? "/teacher" : "/dashboard"}>
-                            <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-[var(--theme-text-tertiary)] hover:text-[var(--theme-text-primary)] uppercase tracking-wider text-[10px] pl-0">
-                                {role === 'teacher' ? "Volver al Panel" : "Volver al Dashboard"}
+                            <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-slate-500 hover:text-brand-primary uppercase tracking-[0.2em] text-[10px] font-black pl-0 transition-all hover:pl-2">
+                                {role === 'teacher' ? "Volver al Panel" : "Volver al Inicio"}
                             </Button>
                         </Link>
                         <div>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-[10px] font-semibold tracking-wider uppercase mb-3">
-                                <Sparkles size={12} /> Nueva Funcionalidad IA
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-100 text-slate-500 text-[9px] font-bold tracking-widest uppercase mb-4 shadow-sm">
+                                <Sparkles size={11} strokeWidth={2} /> Nueva Experiencia IA
                             </div>
-                            <h1 className="text-4xl md:text-5xl font-semibold text-[var(--theme-text-primary)] uppercase italic tracking-tight">
-                                Modo <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-[var(--theme-text-primary)] to-brand-primary">Entrenamiento</span>
+                            <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-none mb-1">
+                                Modo <span className="text-brand-primary italic">Entrenamiento</span>
                             </h1>
                         </div>
                     </div>
-                    <p className="text-[var(--theme-text-secondary)] text-sm md:text-base max-w-md font-medium leading-relaxed text-right hidden md:block">
-                        Practica sin límite de tiempo. Recibe retroalimentación inmediata y explicaciones personalizadas por Inteligencia Artificial.
-                    </p>
+                    <div className="bg-brand-primary/[0.03] p-6 rounded-2xl border border-brand-primary/5 max-w-sm hidden md:block backdrop-blur-sm">
+                        <p className="text-slate-600 text-sm font-medium leading-relaxed italic">
+                            "La práctica constante es la única ruta hacia la maestría. Explora tus límites con nuestro motor de IA."
+                        </p>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -90,36 +92,36 @@ export default function TrainingSelectionPage() {
                             <Link key={module.id} href={`/training/${module.id}`}>
                                 <Card
                                     variant={isRecommended ? "premium" : "glass"}
-                                    className={`h-full p-8 group transition-transform duration-500 hover:-translate-y-2 relative overflow-hidden ${isRecommended ? 'shadow-[0_0_40px_rgba(212,175,55,0.15)] ring-1 ring-brand-primary/50' : 'bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)]'}`}
+                                    className={`h-full p-8 md:p-10 group transition-all duration-500 hover:-translate-y-3 relative overflow-hidden rounded-[2.5rem] ${isRecommended ? 'shadow-2xl shadow-brand-primary/20 ring-2 ring-brand-primary/20 bg-white' : 'bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)] shadow-xl shadow-slate-200/50'}`}
                                 >
                                     {isRecommended && (
-                                        <div className="absolute top-4 right-4 z-20">
-                                            <Badge variant="primary" className="text-[9px] px-2 py-0.5 uppercase tracking-wider font-semibold shadow-lg">
+                                        <div className="absolute top-6 right-6 z-20">
+                                            <Badge variant="primary" className="text-[8px] px-3 py-1 uppercase tracking-[0.2em] font-black shadow-lg bg-brand-primary text-white border-none shimmer-gold">
                                                 Recomendado
                                             </Badge>
                                         </div>
                                     )}
 
-                                    {/* Abstract BG Icon */}
-                                    <div className={`absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity rotate-12 ${isRecommended ? 'text-[var(--theme-bg-base)]' : 'text-[var(--theme-text-primary)]'}`}>
-                                        <module.icon size={120} />
+                                    {/* Abstract BG Icon - Larger for depth */}
+                                    <div className={`absolute -right-8 -bottom-8 opacity-5 group-hover:opacity-10 transition-all duration-700 rotate-12 group-hover:rotate-0 scale-110 ${isRecommended ? 'text-brand-primary' : 'text-slate-400'}`}>
+                                        <module.icon size={180} strokeWidth={1} />
                                     </div>
 
                                     <div className="relative z-10 flex flex-col h-full">
-                                        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all group-hover:scale-110 shadow-lg ${isRecommended ? 'bg-[var(--theme-bg-base)] text-brand-primary' : 'bg-[var(--theme-bg-base)] text-[var(--theme-text-secondary)] group-hover:bg-brand-primary/20 group-hover:text-brand-primary'}`}>
-                                            <module.icon size={28} strokeWidth={2} />
+                                        <div className={`w-16 h-16 rounded-[1.25rem] flex items-center justify-center mb-8 transition-all duration-500 group-hover:scale-110 shadow-2xl ${isRecommended ? 'bg-brand-primary text-white shadow-brand-primary/30' : 'bg-white text-slate-400 group-hover:bg-brand-primary/10 group-hover:text-brand-primary shadow-slate-200/50'}`}>
+                                            <module.icon size={32} strokeWidth={2.5} />
                                         </div>
 
-                                        <h3 className="text-xl font-semibold text-[var(--theme-text-primary)] mb-2 uppercase italic tracking-tight group-hover:text-brand-primary transition-colors">
+                                        <h3 className="text-xl font-bold text-slate-800 mb-2 tracking-tight group-hover:text-brand-primary transition-colors leading-none">
                                             {module.label}
                                         </h3>
 
-                                        <p className={`text-xs font-medium mb-8 leading-relaxed flex-grow ${isRecommended ? 'text-[var(--theme-text-secondary)]' : 'text-[var(--theme-text-tertiary)]'}`}>
+                                        <p className={`text-[12px] font-medium mb-8 leading-relaxed flex-grow ${isRecommended ? 'text-slate-600' : 'text-slate-500'}`}>
                                             {module.desc}
                                         </p>
 
-                                        <div className={`flex items-center text-[10px] font-semibold uppercase tracking-wider transition-colors ${isRecommended ? 'text-black' : 'text-brand-primary group-hover:text-[var(--theme-text-primary)]'}`}>
-                                            Iniciar Práctica <ChevronRight size={14} className="ml-1 group-hover:translate-x-1 transition-transform" />
+                                        <div className={`flex items-center text-[11px] font-black uppercase tracking-[0.25em] transition-all ${isRecommended ? 'text-brand-primary' : 'text-slate-700 group-hover:text-brand-primary'}`}>
+                                            Iniciar <ChevronRight size={14} strokeWidth={3} className="ml-2 group-hover:translate-x-2 transition-transform" />
                                         </div>
                                     </div>
                                 </Card>

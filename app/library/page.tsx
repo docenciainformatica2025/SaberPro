@@ -52,7 +52,7 @@ export default function LibraryPage() {
                         <div className="w-9 h-9 rounded-xl bg-brand-primary/5 flex items-center justify-center text-brand-primary border border-brand-primary/10 shadow-sm">
                             <Sparkles size={18} />
                         </div>
-                        <h1 className="text-xl font-bold tracking-tight text-[var(--theme-text-primary)]">Tu Biblioteca</h1>
+                        <h1 className="text-lg font-bold tracking-tight text-slate-800">Tu Biblioteca</h1>
                     </div>
                     <div className="p-2 rounded-full hover:bg-[var(--theme-bg-surface)] transition-colors cursor-pointer text-[var(--theme-text-tertiary)]">
                         <Search size={20} />
@@ -66,8 +66,8 @@ export default function LibraryPage() {
                             key={filter}
                             onClick={() => setActiveFilter(filter)}
                             className={`px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider whitespace-nowrap flex items-center gap-2 transition-all duration-300 ${activeFilter === filter
-                                    ? "bg-brand-primary text-white shadow-lg shadow-brand-primary/20 scale-105"
-                                    : "bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] text-[var(--theme-text-tertiary)] hover:border-brand-primary/30"
+                                ? "bg-brand-primary text-white shadow-lg shadow-brand-primary/20 scale-105"
+                                : "bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] text-[var(--theme-text-tertiary)] hover:border-brand-primary/30"
                                 }`}
                         >
                             {filter === "Lectura" && <BookOpen size={10} />}

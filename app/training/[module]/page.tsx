@@ -8,6 +8,7 @@ import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
 import { ArrowRight, Sparkles, CheckCircle, XCircle, ArrowLeft, RefreshCcw } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import { cn } from "@/lib/utils";
 import { db } from "@/lib/firebase";
 import { collection, query, where, getDocs, limit, doc, getDoc } from "firebase/firestore";
 
@@ -223,27 +224,43 @@ export default function TrainingModulePage({ params }: TrainingPageProps) {
                 />
 
                 {feedback && (
-                    <div className="mt-6 animate-in fade-in slide-in-from-bottom-4">
-                        {/* ... (Feedback UI) ... */}
-                        <div className={`p-4 rounded-xl border ${feedback === 'correct' ? 'bg-green-500/10 border-green-500/30' : 'bg-red-500/10 border-red-500/30'} flex items-start gap-3`}>
-                            {feedback === 'correct' ? (
-                                <CheckCircle className="text-green-500 shrink-0 mt-1" />
-                            ) : (
-                                <XCircle className="text-red-500 shrink-0 mt-1" />
-                            )}
-                            <div>
-                                <h3 className={`font-bold ${feedback === 'correct' ? 'text-green-400' : 'text-red-400'}`}>
-                                    {feedback === 'correct' ? '¡Excelente! Respuesta Correcta' : 'Incorrecto'}
-                                </h3>
-                            </div>
-                        </div>
+                    <div className="mt-8 animate-in fade-in slide-in-from-bottom-6 duration-700">
+                        <div className={cn(
+                            "p-8 rounded-[2.5rem] border backdrop-blur-3xl shadow-2xl flex flex-col md:flex-row items-center gap-6 relative overflow-hidden",
+                            feedback === 'correct'
+                                ? "bg-green-500/10 border-green-500/20 shadow-green-500/10"
+                                : "bg-red-500/10 border-red-500/20 shadow-red-500/10"
+                        )}>
+                            {/* Ambient Light */}
+                            <div className={cn(
+                                "absolute -top-24 -left-24 w-48 h-48 rounded-full blur-[80px] opacity-20",
+                                feedback === 'correct' ? "bg-green-400" : "bg-red-400"
+                            )} />
 
-                        <div className="flex justify-end mt-6">
+                            <div className={cn(
+                                "w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 transition-transform duration-700 animate-in zoom-in",
+                                feedback === 'correct' ? "bg-green-500 text-white shadow-lg shadow-green-500/30" : "bg-red-500 text-white shadow-lg shadow-red-500/30"
+                            )}>
+                                {feedback === 'correct' ? <CheckCircle size={32} strokeWidth={2.5} /> : <XCircle size={32} strokeWidth={2.5} />}
+                            </div>
+
+                            <div className="flex-grow text-center md:text-left">
+                                <h3 className={cn(
+                                    "text-3xl font-black mb-2 tracking-tightest uppercase italic",
+                                    feedback === 'correct' ? "text-green-500" : "text-red-500"
+                                )}>
+                                    {feedback === 'correct' ? '¡MAESTRÍA DEMOSTRADA!' : 'PUNTO DE APRENDIZAJE'}
+                                </h3>
+                                <p className="text-[11px] font-black text-[var(--theme-text-primary)] opacity-80 tracking-[0.2em] uppercase mb-6">
+                                    {feedback === 'correct' ? 'Has analizado correctamente los parámetros del problema.' : 'La excelencia nace de la persistencia. Revisa la explicación IA.'}
+                                </p>
+                            </div>
+
                             <button
                                 onClick={handleNext}
-                                className="metallic-btn bg-[var(--theme-bg-surface)] hover:bg-[var(--theme-bg-overlay)] text-[var(--theme-text-primary)] border border-[var(--theme-border-soft)] hover:border-[var(--theme-border-medium)] px-8 py-3 rounded-xl font-bold flex items-center gap-2"
+                                className="metallic-btn bg-white dark:bg-slate-900 px-12 h-16 rounded-2xl font-black text-[11px] uppercase tracking-[0.3em] shadow-2xl hover:shadow-brand-primary/20 transition-all hover:-translate-y-1 flex items-center gap-3 border border-slate-200 dark:border-slate-800"
                             >
-                                {currentIndex === questions.length - 1 ? "Finalizar Set" : "Siguiente"} <ArrowRight size={18} />
+                                {currentIndex === questions.length - 1 ? "FINALIZAR" : "SIGUIENTE"} <ArrowRight size={20} strokeWidth={3} className="animate-pulse text-brand-primary" />
                             </button>
                         </div>
                     </div>

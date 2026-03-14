@@ -103,54 +103,61 @@ export default function TeacherAnalyticsPage() {
 
     return (
         <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            {/* Header */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                    <h1 className="text-3xl font-bold text-[var(--theme-text-primary)] mb-2 flex items-center gap-3">
-                        <BarChart3 className="text-brand-primary" /> Analíticas de Rendimiento
-                    </h1>
-                    <p className="text-[var(--theme-text-secondary)]">
-                        Monitorea el progreso y detecta áreas de mejora en tus clases.
-                    </p>
+            {/* Header - Elite Style */}
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-12 border-b border-slate-200 dark:border-slate-800 pb-12">
+                <div className="space-y-4">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-brand-primary text-[10px] font-black tracking-[0.2em] uppercase shadow-sm">
+                        Métrica Avanzada v4.0
+                    </div>
+                    <div className="space-y-1">
+                        <h1 className="text-5xl md:text-7xl font-black text-[var(--theme-text-primary)] tracking-tightest leading-none">
+                            ANALÍTICAS DE <span className="text-theme-hero italic uppercase">RENDIMIENTO</span>
+                        </h1>
+                        <p className="text-xs font-medium text-slate-400 tracking-[0.3em] uppercase ml-1">
+                            El pulso pro de tus clases en tiempo real
+                        </p>
+                    </div>
                 </div>
-                <div className="flex gap-3">
+                <div className="flex items-center gap-4">
                     <button
                         onClick={handleDownloadReport}
-                        className="metallic-btn bg-brand-primary text-black px-4 py-2 rounded-xl flex items-center gap-2 hover:brightness-110 transition-all font-bold shadow-[0_0_20px_rgba(212,175,55,0.3)]"
+                        className="h-14 px-8 rounded-2xl bg-brand-primary text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-brand-primary/30 hover:brightness-110 mb-2 transition-all flex items-center gap-2"
                     >
                         <Download size={18} /> Exportar Reporte
                     </button>
                     {!isPro && (
-                        <Link href="/pricing" className="metallic-btn bg-brand-primary/10 border border-brand-primary text-brand-primary px-4 py-2 rounded-xl flex items-center gap-2 hover:bg-brand-primary hover:text-black transition-all">
-                            <Crown size={16} /> Desbloquear
+                        <Link href="/pricing">
+                            <button className="h-14 px-8 rounded-2xl bg-brand-primary/5 border border-brand-primary/20 text-brand-primary text-[10px] font-black uppercase tracking-[0.2em] hover:bg-brand-primary/10 mb-2 transition-all flex items-center gap-2">
+                                <Crown size={16} /> Desbloquear Pro
+                            </button>
                         </Link>
                     )}
                 </div>
             </div>
 
-            {/* Overview Cards (Access for ALL) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Overview Cards - Elite Style */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                 <StatCard
-                    label="Estudiantes Activos"
+                    label="Alumnos Activos"
                     value={stats.totalStudents}
-                    icon={<Users size={20} className="text-blue-400" />}
+                    icon={<Users size={20} className="text-blue-500" />}
                 />
                 <StatCard
-                    label="Promedio Global"
+                    label="Maestría Global"
                     value={stats.avgScore}
                     suffix=" pts"
-                    icon={<TrendingUp size={20} className="text-green-400" />}
+                    icon={<TrendingUp size={20} className="text-green-500" />}
                 />
                 <StatCard
-                    label="Tasa de Completitud"
+                    label="Tasa de Éxito"
                     value={stats.completionRate}
                     suffix="%"
-                    icon={<BarChart3 size={20} className="text-purple-400" />}
+                    icon={<BarChart3 size={20} className="text-purple-500" />}
                 />
                 <StatCard
-                    label="Tareas Activas"
+                    label="Misiones Activas"
                     value={stats.activeAssignments}
-                    icon={<AlertTriangle size={20} className="text-yellow-400" />}
+                    icon={<AlertTriangle size={20} className="text-yellow-500" />}
                 />
             </div>
 
@@ -247,20 +254,21 @@ export default function TeacherAnalyticsPage() {
 
 function StatCard({ label, value, suffix = "", icon }: { label: string, value: number, suffix?: string, icon: React.ReactNode }) {
     return (
-        <div className="metallic-card p-6 rounded-2xl border border-theme-border-soft bg-theme-bg-surface hover:bg-theme-bg-base transition-colors group">
-            <div className="flex justify-between items-start mb-4">
-                <div className="p-3 bg-[var(--theme-bg-base)] rounded-xl group-hover:scale-110 transition-transform">
+        <div className="p-10 border-[3px] border-brand-primary/5 bg-brand-primary/[0.01] rounded-[2.5rem] hover:-translate-y-2 transition-all group overflow-hidden relative">
+            <div className="absolute -top-12 -right-12 w-32 h-32 bg-brand-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+
+            <div className="flex justify-between items-start mb-8 relative z-10">
+                <div className="p-3 bg-white dark:bg-slate-900 rounded-2xl shadow-sm group-hover:scale-110 transition-transform border border-slate-100 dark:border-slate-800">
                     {icon}
                 </div>
-                {/* Tiny trend indicator mockup */}
-                <div className="text-[10px] font-bold text-green-400 bg-green-400/10 px-2 py-1 rounded-full flex items-center">
-                    +4% <TrendingUp size={8} className="ml-1" />
+                <div className="text-[10px] font-black text-green-500 bg-green-500/5 px-3 py-1 rounded-full flex items-center tracking-widest uppercase">
+                    +4% <TrendingUp size={10} className="ml-1" />
                 </div>
             </div>
-            <div className="text-3xl font-bold text-[var(--theme-text-primary)] mb-1">
-                {value}{suffix}
+            <div className="text-5xl font-black text-[var(--theme-text-primary)] mb-2 tracking-tightest leading-none relative z-10">
+                {value}<span className="text-xl font-medium text-slate-400 align-top ml-1">{suffix}</span>
             </div>
-            <div className="text-sm text-[var(--theme-text-secondary)] font-medium">
+            <div className="text-[10px] text-slate-400 font-black uppercase tracking-[0.2em] relative z-10">
                 {label}
             </div>
         </div>
