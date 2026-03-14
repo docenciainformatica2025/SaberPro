@@ -7,20 +7,29 @@ service cloud.firestore {
     function isOwner(userId) { return isAuthenticated() && request.auth.uid == userId; }
     
     function getUserData() {
-      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+      let path = /databases/$(database)/documents/users/$(request.auth.uid);
+      return exists(path) ? get(path).data : {};
+    }
+
+    function isRootEmail(email) {
+      return email != null && (email.lower() == 'antonio_rburgos@msn.com' || email.lower() == 'jarbugos40@gmail.com');
     }
 
     function hasRole(role) {
-      return isAuthenticated() && getUserData().get('role', 'none') == role;
+      return isAuthenticated() && (
+        getUserData().get('role', 'none') == role || 
+        (role == 'admin' && isRootEmail(request.auth.token.email))
+      );
     }
 
     function isAdmin() { return hasRole('admin'); }
     function isTeacher() { return hasRole('teacher'); }
     
-    // Lista Blanca de Administradores Maestros (Inmutable)
     function isRoot(userId) {
-      let email = get(/databases/$(database)/documents/users/$(userId)).data.email;
-      return email == 'antonio_rburgos@msn.com' || email == 'jarbugos40@gmail.com';
+      return isAuthenticated() && (
+        isRootEmail(request.auth.token.email) ||
+        isRootEmail(get(/databases/$(database)/documents/users/$(userId)).data.get('email', ''))
+      );
     }
 
     // Validación de Sanitización (Anti-Injection)
