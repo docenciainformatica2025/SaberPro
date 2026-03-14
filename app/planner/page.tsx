@@ -8,9 +8,11 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
-import { doc, getDoc, setDoc, collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
+import { toast } from "sonner";
+import { AnimatePresence, motion } from "framer-motion";
 
 // --- Types ---
 interface StudySession {
@@ -60,7 +62,7 @@ const MODULES = [
 ];
 
 export default function PlannerPage() {
-    const { user, loading } = useAuth();
+    const { user, profile, loading } = useAuth();
     const router = useRouter();
     const [config, setConfig] = useState<PlannerConfig | null>(null);
     const [plannerData, setPlannerData] = useState<Record<string, PlannerDay>>({});
@@ -99,7 +101,14 @@ export default function PlannerPage() {
             // Logic to generate a personalized plan
             const newPlannerData: Record<string, PlannerDay> = {};
             const today = new Date();
-            const examDate = "2026-03-30"; // Default goal for Saber Pro
+            // Fecha dinámica: de perfil o fallback (+6 meses)
+            const examDate = profile?.examDate || new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
+            // Prompt dinámico (Pre-Simulación de IA)
+            const prompt = `Genera un plan de estudio para ${profile?.targetCareer || 'un estudiante de grado 11'} 
+                enfocado en el examen Saber Pro que se presentará el ${examDate}. 
+                El usuario tiene un nivel de maestría del ${profile?.overallMastery || 0}%.`;
+
 
             for (let i = 0; i < 30; i++) {
                 const date = new Date(today);
@@ -128,7 +137,11 @@ export default function PlannerPage() {
                 };
             }
 
-            const finalConfig: PlannerConfig = { examDate, studyDays: [1, 2, 3, 4, 5, 6], intensity: "medium" };
+            const finalConfig: PlannerConfig = {
+                examDate: examDate as string,
+                studyDays: [1, 2, 3, 4, 5, 6],
+                intensity: "medium"
+            };
 
             await setDoc(doc(db, "planners", user.uid), {
                 userId: user.uid,
@@ -141,6 +154,9 @@ export default function PlannerPage() {
             setConfig(finalConfig);
         } catch (err) {
             console.error("Error generating plan", err);
+            toast.error("Error al generar el plan", {
+                description: "No pudimos guardar tu plan en este momento. Por favor, intenta de nuevo."
+            });
         } finally {
             setIsGenerating(false);
         }
@@ -164,9 +180,16 @@ export default function PlannerPage() {
 
     if (isGenerating) {
         return (
-            <div className="min-h-screen bg-[var(--theme-bg-base)] flex items-center justify-center">
-                <AIProcessingLoader text="Diseñando tu Plan de Estudio" subtext="Analizando tus debilidades y optimizando tiempos..." />
-            </div>
+            <AnimatePresence mode="wait">
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="min-h-screen bg-[var(--theme-bg-base)] flex items-center justify-center"
+                >
+                    <AIProcessingLoader text="Diseñando tu Plan de Estudio" subtext="Analizando tus debilidades y optimizando tiempos..." />
+                </motion.div>
+            </AnimatePresence>
         );
     }
 

@@ -3,7 +3,7 @@
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ArrowLeft, Brain, Sparkles, Zap, ChevronRight, Target } from "lucide-react";
+import { ArrowLeft, Brain, Sparkles, Zap, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
 import { Card } from "@/components/ui/Card";
@@ -11,10 +11,8 @@ import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 
 export default function TrainingSelectionPage() {
-    const { user, loading, role } = useAuth();
+    const { user, profile, loading, role } = useAuth();
     const router = useRouter();
-    const [userProfile, setUserProfile] = useState<any>(null);
-    const [fetchingProfile, setFetchingProfile] = useState(true);
 
     useEffect(() => {
         if (!loading && !user) {
@@ -22,27 +20,7 @@ export default function TrainingSelectionPage() {
         }
     }, [user, loading, router]);
 
-    useEffect(() => {
-        async function fetchProfile() {
-            if (user) {
-                try {
-                    const { doc, getDoc } = await import("firebase/firestore");
-                    const { db } = await import("@/lib/firebase");
-                    const docSnap = await getDoc(doc(db, "users", user.uid));
-                    if (docSnap.exists()) setUserProfile(docSnap.data());
-                } catch (e) {
-                    console.error("Error fetching profile", e);
-                } finally {
-                    setFetchingProfile(false);
-                }
-            } else if (!loading) {
-                setFetchingProfile(false);
-            }
-        }
-        if (!loading) fetchProfile();
-    }, [user, loading]);
-
-    if (loading || (user && fetchingProfile)) return (
+    if (loading) return (
         <div className="min-h-screen bg-[var(--theme-bg-base)] flex items-center justify-center">
             <AIProcessingLoader text="Modo Entrenamiento" subtext="Iniciando protocolos de simulación" />
         </div>
@@ -58,7 +36,10 @@ export default function TrainingSelectionPage() {
         artes: ["lectura_critica", "ingles"]
     };
 
-    const recommendedModules = userProfile?.targetCareer ? CAREER_PRIORITIES[userProfile.targetCareer] || [] : [];
+    const recommendedByCareer = profile?.targetCareer ? CAREER_PRIORITIES[profile.targetCareer] || [] : [];
+
+    // Determine weakest module if status exists (optional but intuitive)
+    // For now, let's stick to career, but sorting them better
 
     const baseModules = [
         { id: "razonamiento_cuantitativo", label: "Razonamiento Cuantitativo", icon: Zap, desc: "Matemáticas y lógica aplicada" },
@@ -69,10 +50,10 @@ export default function TrainingSelectionPage() {
     ];
 
     const modules = [...baseModules].sort((a, b) => {
-        const isARec = recommendedModules.includes(a.id);
-        const isBRec = recommendedModules.includes(b.id);
+        const isARec = recommendedByCareer.includes(a.id);
+        const isBRec = recommendedByCareer.includes(b.id);
         if (isARec && !isBRec) return -1;
-        if (!isARec && isBRec) return 1;
+        if (!isBRec && isARec) return 1;
         return 0;
     });
 
@@ -104,7 +85,7 @@ export default function TrainingSelectionPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {modules.map((module) => {
-                        const isRecommended = recommendedModules.includes(module.id);
+                        const isRecommended = recommendedByCareer.includes(module.id);
                         return (
                             <Link key={module.id} href={`/training/${module.id}`}>
                                 <Card

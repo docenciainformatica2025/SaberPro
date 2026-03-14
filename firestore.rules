@@ -67,6 +67,10 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
+    match /planners/{userId} {
+      allow read, write: if isOwner(userId) || isAdmin();
+    }
+
     match /questions/{questionId} {
       allow read: if isAuthenticated(); 
       allow write: if isAdmin();
@@ -81,6 +85,22 @@ service cloud.firestore {
       allow read: if isAdmin();
       allow create: if isAuthenticated(); // Permitir logs de sistema
       allow update, delete: if false;
+    }
+
+    match /library/{docId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    match /assignments/{docId} {
+      allow read: if isAuthenticated() && (resource.data.studentId == request.auth.uid || isTeacher() || isAdmin());
+      allow create: if isTeacher() || isAdmin();
+      allow update, delete: if isAdmin() || (isTeacher() && resource.data.teacherId == request.auth.uid);
+    }
+
+    match /subscriptions/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if isRoot(request.auth.uid); // Solo root/backend gestiona suscripciones
     }
 
     match /{document=**} {

@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { StudentService, DashboardStats, DailyChallenge } from "@/services/student/student.service";
+import { toast } from "sonner";
 
 // Simple illustration placeholder (in a real app, use next/image)
 const HikerIllustration = () => (
@@ -35,11 +37,32 @@ const HikerIllustration = () => (
 export default function DashboardPage() {
     const { user, profile } = useAuth();
     const [userName, setUserName] = useState("Estudiante");
+    const [stats, setStats] = useState<DashboardStats | null>(null);
+    const [challenge, setChallenge] = useState<DailyChallenge | null>(null);
+    const [isLoadingStats, setIsLoadingStats] = useState(true);
 
     useEffect(() => {
-        if (user) {
-            setUserName(profile?.firstName || user.displayName?.split(' ')[0] || "Estudiante");
-        }
+        if (!user) return;
+        setUserName(profile?.firstName || user.displayName?.split(' ')[0] || "Estudiante");
+
+        const loadData = async () => {
+            setIsLoadingStats(true);
+            try {
+                const dashboardStats = await StudentService.getDashboardStats(user.uid);
+                if (dashboardStats) {
+                    setStats(dashboardStats);
+                    const dailyChallenge = await StudentService.getDailyChallenge(user.uid, dashboardStats);
+                    setChallenge(dailyChallenge);
+                }
+            } catch (err) {
+                console.error("Dashboard load error", err);
+                toast.error("Error al cargar estadísticas");
+            } finally {
+                setIsLoadingStats(false);
+            }
+        };
+
+        loadData();
     }, [user, profile]);
 
     return (
@@ -65,21 +88,29 @@ export default function DashboardPage() {
                         <div className="flex justify-between items-start">
                             {/* Circular Progress */}
                             <div className="relative w-18 h-18 sm:w-20 sm:h-20">
-                                <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
-                                    <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" strokeWidth="3" className="text-[var(--theme-border-soft)]" />
-                                    <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" strokeWidth="3" strokeDasharray="85, 100" strokeLinecap="round" className="text-brand-primary drop-shadow-[0_0_8px_rgba(26,35,126,0.3)]" />
-                                </svg>
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <span className="text-lg font-bold text-[var(--theme-text-primary)]">85%</span>
-                                </div>
+                                {isLoadingStats ? (
+                                    <div className="w-full h-full rounded-full border-4 border-[var(--theme-border-soft)] animate-pulse" />
+                                ) : (
+                                    <>
+                                        <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
+                                            <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" strokeWidth="3" className="text-[var(--theme-border-soft)]" />
+                                            <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" strokeWidth="3" strokeDasharray={`${stats?.weeklyProgress || 0}, 100`} strokeLinecap="round" className="text-brand-primary drop-shadow-[0_0_8px_rgba(26,35,126,0.3)]" />
+                                        </svg>
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <span className="text-lg font-bold text-[var(--theme-text-primary)]">{stats?.weeklyProgress || 0}%</span>
+                                        </div>
+                                    </>
+                                )}
                             </div>
 
                             <div className="flex-1 pl-4 sm:pl-6 pt-1">
                                 <h2 className="text-base sm:text-lg font-bold text-[var(--theme-text-primary)] leading-tight">
-                                    Buen progreso
+                                    {(stats?.weeklyProgress ?? 0) >= 80 ? "¡Excelente ritmo!" : (stats?.weeklyProgress ?? 0) >= 50 ? "Buen progreso" : "Buen inicio"}
                                 </h2>
                                 <p className="text-[11px] text-[var(--theme-text-tertiary)] mt-1 max-w-[80%]">
-                                    Solo te falta un <span className="text-brand-primary font-bold">15%</span> para tu meta semanal.
+                                    {(stats?.weeklyProgress ?? 0) >= 100
+                                        ? "Meta semanal cumplida. ¡Sigue así!"
+                                        : `Te falta un ${100 - (stats?.weeklyProgress ?? 0)}% para tu meta semanal.`}
                                 </p>
                             </div>
                         </div>
@@ -98,20 +129,28 @@ export default function DashboardPage() {
                 <div className="bg-[var(--theme-bg-surface)] rounded-[2rem] p-6 sm:p-8 text-center shadow-[var(--shadow-lg)] relative overflow-hidden border border-[var(--theme-border-soft)]">
                     <h3 className="text-lg sm:text-xl font-bold text-brand-primary mb-5">Tu reto del día</h3>
 
-                    <div className="bg-brand-primary/5 rounded-2xl p-5 relative overflow-hidden group hover:scale-[1.02] transition-transform border border-brand-primary/10">
-                        <div className="w-14 h-14 bg-[var(--theme-bg-base)] rounded-2xl mx-auto mb-4 flex items-center justify-center shadow-sm text-brand-primary border border-brand-primary/10">
-                            <Gift size={28} strokeWidth={2.5} />
+                    {isLoadingStats ? (
+                        <div className="h-40 flex items-center justify-center">
+                            <div className="w-full max-w-[200px] h-32 bg-[var(--theme-border-soft)]/20 animate-pulse rounded-2xl" />
                         </div>
+                    ) : (
+                        <div className="bg-brand-primary/5 rounded-2xl p-5 relative overflow-hidden group hover:scale-[1.02] transition-transform border border-brand-primary/10">
+                            <div className="w-14 h-14 bg-[var(--theme-bg-base)] rounded-2xl mx-auto mb-4 flex items-center justify-center shadow-sm text-brand-primary border border-brand-primary/10">
+                                <Gift size={28} strokeWidth={2.5} />
+                            </div>
 
-                        <p className="text-[var(--theme-text-secondary)] font-medium mb-1 text-sm">Completa la lección:</p>
-                        <h4 className="text-base sm:text-lg font-black text-[var(--theme-text-primary)] mb-5">“Geografía Humana”</h4>
+                            <p className="text-[var(--theme-text-secondary)] font-medium mb-1 text-sm">Completa la lección:</p>
+                            <h4 className="text-base sm:text-lg font-black text-[var(--theme-text-primary)] mb-5">“{challenge?.label || 'Lectura Crítica'}”</h4>
 
-                        <Button
-                            className="w-full bg-brand-primary hover:bg-brand-primary/90 text-white font-bold rounded-2xl h-11 text-sm shadow-md"
-                        >
-                            Aceptar Reto
-                        </Button>
-                    </div>
+                            <Link href={`/training/${challenge?.module || 'lectura_critica'}`}>
+                                <Button
+                                    className="w-full bg-brand-primary hover:bg-brand-primary/90 text-white font-bold rounded-2xl h-11 text-sm shadow-md"
+                                >
+                                    Aceptar Reto
+                                </Button>
+                            </Link>
+                        </div>
+                    )}
                 </div>
 
             </div>

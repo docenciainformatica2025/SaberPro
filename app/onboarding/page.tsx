@@ -7,19 +7,75 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { ArrowRight, BookOpen, Target, Sparkles, GraduationCap, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/context/AuthContext";
+import { db } from "@/lib/firebase";
+import { doc, updateDoc } from "firebase/firestore";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 type Step = "welcome" | "profile" | "goals" | "diagnostic" | "generating";
 
 export default function OnboardingPage() {
     const [step, setStep] = useState<Step>("welcome");
+    const { user, profile: authProfile, loading } = useAuth();
+    const router = useRouter();
+    const [isSaving, setIsSaving] = useState(false);
     const [profile, setProfile] = useState({
         career: "",
         university: "",
         examDate: "",
-        goal: "excellence", // "pass" | "improve" | "excellence"
+        goal: "excellence",
     });
 
-    const nextStep = (next: Step) => setStep(next);
+    // State recovery: sync authProfile to local state and advance steps if data exists
+    useEffect(() => {
+        if (!loading && authProfile) {
+            setProfile(prev => ({
+                ...prev,
+                career: authProfile.career || prev.career,
+                university: authProfile.university || prev.university,
+                examDate: authProfile.examDate || prev.examDate,
+                goal: authProfile.goal || prev.goal,
+            }));
+
+            // Auto-advance logic
+            if (step === "welcome" && authProfile.career) setStep("goals");
+            if (step === "goals" && authProfile.goal && authProfile.career) setStep("diagnostic");
+        }
+    }, [authProfile, loading, step]);
+
+    const nextStep = (next: Step) => {
+        setStep(next);
+        if (next === "generating") {
+            handleSaveAndComplete();
+        }
+    };
+
+    const handleSaveAndComplete = async (skipDiagnostic = false) => {
+        if (!user) return;
+        setIsSaving(true);
+        try {
+            const userRef = doc(db, "users", user.uid);
+            await updateDoc(userRef, {
+                ...profile,
+                role: 'student',
+                completedProfile: true,
+                updatedAt: new Date().toISOString()
+            });
+
+            if (skipDiagnostic) {
+                setStep("generating");
+            }
+        } catch (err) {
+            console.error("Error saving onboarding data", err);
+            toast.error("Error al guardar tu perfil");
+            setStep("goals");
+        } finally {
+            setIsSaving(false);
+        }
+    };
+
+    const isProfileValid = profile.career.trim().length > 3 && profile.university.trim().length > 3;
 
     return (
         <div className="min-h-screen bg-[var(--theme-bg-base)] flex flex-col items-center justify-center p-6 sm:p-12 overflow-hidden">
@@ -94,6 +150,18 @@ export default function OnboardingPage() {
 
                             <div className="space-y-3">
                                 <label className="text-sm font-bold text-[var(--theme-text-secondary)] uppercase tracking-wider ml-1 flex items-center gap-2">
+                                    <BookOpen size={16} className="text-brand-primary" /> Universidad
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Ej. Universidad Nacional"
+                                    className="w-full h-16 px-6 rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] text-lg focus:border-brand-primary transition-all outline-none"
+                                    onChange={(e) => setProfile({ ...profile, university: e.target.value })}
+                                />
+                            </div>
+
+                            <div className="space-y-3">
+                                <label className="text-sm font-bold text-[var(--theme-text-secondary)] uppercase tracking-wider ml-1 flex items-center gap-2">
                                     <Calendar size={16} className="text-brand-primary" /> Fecha de tu examen
                                 </label>
                                 <input
@@ -106,7 +174,13 @@ export default function OnboardingPage() {
 
                         <div className="flex gap-4 pt-4">
                             <Button variant="ghost" className="flex-1 h-14" onClick={() => nextStep("welcome")}>Atrás</Button>
-                            <Button className="flex-[2] h-14 font-bold" onClick={() => nextStep("goals")}>Continuar</Button>
+                            <Button
+                                className="flex-[2] h-14 font-bold"
+                                onClick={() => nextStep("goals")}
+                                disabled={!isProfileValid}
+                            >
+                                Continuar
+                            </Button>
                         </div>
                     </motion.div>
                 )}
@@ -176,10 +250,17 @@ export default function OnboardingPage() {
                         </div>
 
                         <div className="flex flex-col gap-3">
-                            <Button className="h-16 text-lg font-bold shadow-gold" size="xl">
+                            <Button
+                                className="h-16 text-lg font-bold shadow-gold"
+                                size="xl"
+                                onClick={() => {
+                                    handleSaveAndComplete(false);
+                                    router.push("/diagnostic");
+                                }}
+                            >
                                 Iniciar Diagnóstico (2 min)
                             </Button>
-                            <Button variant="ghost" className="h-14 opacity-60 hover:opacity-100" onClick={() => nextStep("generating")}>
+                            <Button variant="ghost" className="h-14 opacity-60 hover:opacity-100" onClick={() => handleSaveAndComplete(true)}>
                                 Omitir por ahora
                             </Button>
                         </div>
@@ -214,7 +295,7 @@ export default function OnboardingPage() {
                             </p>
                         </div>
 
-                        <GeneratingProgress onComplete={() => window.location.href = '/dashboard'} />
+                        <GeneratingProgress onComplete={() => router.replace('/dashboard')} />
                     </motion.div>
                 )}
             </AnimatePresence>
