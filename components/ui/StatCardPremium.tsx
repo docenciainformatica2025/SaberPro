@@ -37,7 +37,7 @@ export const StatCardPremium = memo(({ title, value, icon, trend, trendUp, color
             </div>
 
             <div className="relative z-10">
-                <h3 className="text-4xl font-bold text-slate-900 dark:text-[var(--theme-text-primary)] tracking-tight tabular-nums mb-1">
+                <h3 className="text-4xl font-bold text-[var(--theme-text-primary)] tracking-tight tabular-nums mb-1">
                     {isNumeric ? (
                         <NumberTicker value={numericValue} />
                     ) : (
@@ -45,7 +45,7 @@ export const StatCardPremium = memo(({ title, value, icon, trend, trendUp, color
                     )}
                     {typeof value === 'string' && value.includes('%') && '%'}
                 </h3>
-                <p className="text-slate-500 dark:text-[var(--theme-text-tertiary)] text-xs font-black uppercase tracking-widest leading-none">
+                <p className="text-[var(--theme-text-tertiary)] text-xs font-black uppercase tracking-widest leading-none">
                     {title}
                 </p>
             </div>

@@ -179,8 +179,8 @@ export const RoleBasedNavigation = memo(() => {
                         )}
                     </div>
                     <div className="flex flex-col">
-                        <h1 className="font-bold text-[9px] md:text-[10px] tracking-tight leading-none text-slate-800">SaberPro</h1>
-                        <p className={`text-[6px] md:text-[7px] font-bold tracking-widest uppercase leading-none mt-0.5 ${role === 'admin' ? 'text-brand-error' : 'text-slate-400'}`}>
+                        <h1 className="font-bold text-[9px] md:text-[10px] tracking-tight leading-none text-[var(--theme-text-primary)]">SaberPro</h1>
+                        <p className={`text-[6px] md:text-[7px] font-bold tracking-widest uppercase leading-none mt-0.5 ${role === 'admin' ? 'text-brand-error' : 'text-[var(--theme-text-tertiary)]'}`}>
                             {branding.brandSubtext}
                         </p>
                     </div>
@@ -193,19 +193,19 @@ export const RoleBasedNavigation = memo(() => {
                 </div>
 
                 {/* Profile Pill - Refined Scale */}
-                <div className="flex items-center gap-2 pointer-events-auto bg-white/80 backdrop-blur-3xl border border-slate-100 pl-2 pr-1 py-1 rounded-full shadow-sm animate-in fade-in slide-in-from-top-4 duration-700 delay-100 group transition-all scale-[0.85] origin-right">
+                <div className="flex items-center gap-2 pointer-events-auto bg-[var(--theme-bg-surface)]/80 backdrop-blur-3xl border border-[var(--theme-border-soft)] pl-2 pr-1 py-1 rounded-full shadow-sm animate-in fade-in slide-in-from-top-4 duration-700 delay-100 group transition-all scale-[0.85] origin-right">
                     <div className="text-right hidden md:block pr-1">
-                        <p className="text-[10px] font-bold text-slate-700 leading-none tracking-tight">
+                        <p className="text-[10px] font-bold text-[var(--theme-text-primary)] leading-none tracking-tight">
                             {profile?.fullName?.split(' ')[0] || user?.displayName?.split(' ')[0] || user?.email?.split('@')[0]}
                         </p>
-                        <p className="text-[7px] text-slate-400 font-bold mt-0.5 uppercase tracking-widest">{role || "Estudiante"}</p>
+                        <p className="text-[7px] text-[var(--theme-text-tertiary)] font-bold mt-0.5 uppercase tracking-widest">{role || "Estudiante"}</p>
                     </div>
                     <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-brand-primary flex items-center justify-center text-[9px] md:text-xs font-black shadow-sm">
                         {(profile?.fullName || user?.displayName || user?.email)?.[0].toUpperCase()}
                     </div>
                     <button
                         onClick={() => handleProtectedNavigation('/', true)}
-                        className="p-1 px-1.5 md:p-1.5 md:px-2 rounded-full hover:bg-brand-error/10 text-theme-text-tertiary hover:text-brand-error transition-colors"
+                        className="p-1 px-1.5 md:p-1.5 md:px-2 rounded-full hover:bg-brand-error/10 text-[var(--theme-text-quaternary)] hover:text-brand-error transition-colors"
                         title="Cerrar Sesión"
                     >
                         <LogOut size={10} className="md:w-3 md:h-3" />

@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { db } from "@/lib/firebase";
-import { collection, query, orderBy, getDocs, limit, serverTimestamp } from "firebase/firestore";
-import { Ticket, Plus, Trash2, Copy, CheckCircle, Clock, AlertCircle } from "lucide-react";
+import { collection, query, orderBy, getDocs, limit, serverTimestamp, doc, setDoc } from "firebase/firestore";
+import { Ticket, Plus, Trash2, Copy, CheckCircle, Clock, AlertCircle, Loader2 } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { generateCoupons } from "@/services/finance/subscription.service";
 import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
+import { toast } from "sonner";
 
 interface Coupon {
     id: string;
@@ -43,13 +43,42 @@ export default function CouponsAdminPage() {
         fetchCoupons();
     }, []);
 
+    const generateCoupons = async (count: number, plan: 'pro' | 'teacher', description: string) => {
+        const results = [];
+        for (let i = 0; i < count; i++) {
+            const code = Math.random().toString(36).substring(2, 10).toUpperCase();
+            const couponRef = doc(db, "coupons", code);
+            const data = {
+                code,
+                plan,
+                isUsed: false,
+                createdAt: serverTimestamp(),
+                description,
+                expiresAt: null
+            };
+            await setDoc(couponRef, data);
+            results.push(data);
+        }
+        return results;
+    };
+
     const handleGenerate = async () => {
+        if (count < 1 || count > 100) {
+            toast.error("La cantidad debe ser entre 1 y 100");
+            return;
+        }
         setGenerating(true);
         try {
-            await generateCoupons(count, plan, `Promo Admin - ${new Date().toLocaleDateString()}`);
+            const description = `Promo Admin - ${new Date().toLocaleDateString()}`;
+            console.log("Generando", count, "códigos para plan", plan, "-", description);
+            
+            await generateCoupons(count, plan, description);
+            
+            toast.success(`${count} códigos generados correctamente`);
             await fetchCoupons();
-        } catch (e) {
-            alert("Error al generar códigos");
+        } catch (e: any) {
+            console.error("Error generando códigos:", e);
+            toast.error("Error al generar códigos: " + (e?.message || "Desconocido"));
         } finally {
             setGenerating(false);
         }

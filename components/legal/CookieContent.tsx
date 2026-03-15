@@ -3,97 +3,92 @@ import { AUTHOR_NAME, COMPANY_NAME } from "@/lib/config";
 
 export default function CookieContent() {
     return (
-        <div className="space-y-10 text-theme-text-secondary" suppressHydrationWarning>
+        <div className="space-y-12 text-[var(--theme-text-secondary)]" suppressHydrationWarning>
             {/* Header Section - Premium Audit Theme */}
-            <div className="bg-gradient-to-r from-brand-primary/5 to-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col md:flex-row justify-between gap-4">
-                <div>
-                    <h3 className="text-brand-primary font-bold mb-1 uppercase tracking-widest text-[10px]">Política de Cookies</h3>
-                    <p className="text-[10px] text-slate-500">Tecnologías de rastreo y almacenamiento local.</p>
+            <div className="bg-gradient-to-br from-brand-primary/10 via-[var(--theme-bg-base)] to-[var(--theme-bg-base)] p-8 rounded-2xl border border-[var(--theme-border-soft)] flex flex-col md:flex-row justify-between items-center gap-6 shadow-sm">
+                <div className="text-center md:text-left">
+                    <h3 className="text-brand-primary font-black mb-1 uppercase tracking-[0.2em] text-[10px]">Política de Cookies</h3>
+                    <p className="text-[10px] text-[var(--theme-text-tertiary)] font-bold">Auditoría Técnica v2.5</p>
                 </div>
-                <div className="text-xs space-y-1 text-right">
-                    <div className="font-bold text-slate-900 text-[11px]">© 2025 {COMPANY_NAME}.</div>
-                    <div className="text-slate-500 text-[10px]">Todos los derechos reservados.</div>
-                    <div className="pt-1 text-slate-600 text-[10px]">
-                        Desarrollado por <strong className="text-slate-800">{AUTHOR_NAME}</strong><br />
-                        para <em className="text-slate-800">{COMPANY_NAME}</em>.
-                    </div>
-                    <div className="pt-1 font-mono text-[9px] text-slate-400">
-                        Jurisdicción: Colombia
-                    </div>
-                    <div className="pt-1 font-mono text-[9px] text-brand-primary font-bold">
-                        v2.1 (Tech Audit)
+                <div className="text-[11px] space-y-1 text-center md:text-right">
+                    <div className="font-bold text-[var(--theme-text-primary)] tracking-tight">© {new Date().getFullYear()} {COMPANY_NAME}</div>
+                    <div className="text-[var(--theme-text-tertiary)] text-[10px]">Protección de Datos Activa</div>
+                    <div className="pt-2 text-[var(--theme-text-tertiary)] text-[9px] font-mono leading-tight">
+                        Protocolo: HTTPS/SaberPro-Sec<br />
+                        <span className="text-brand-primary font-bold">CERTIFIED INFRASTRUCTURE</span>
                     </div>
                 </div>
             </div>
 
             {/* Section 1 */}
             <section className="space-y-4">
-                <h2 className="text-lg md:text-xl font-bold text-slate-800 flex items-center gap-2">
-                    <Cookie className="text-brand-primary" size={18} />
-                    1. ¿Qué son las cookies?
+                <h2 className="text-lg md:text-xl font-bold text-[var(--theme-text-primary)] flex items-center gap-3">
+                    <div className="p-2 bg-brand-primary/10 rounded-lg">
+                        <Cookie className="text-brand-primary" size={20} />
+                    </div>
+                    1. Definición de Tecnologías
                 </h2>
-                <div className="p-4 rounded-lg bg-brand-primary/5 border border-brand-primary/10">
-                    <p className="leading-relaxed text-sm text-slate-700">
-                        Una cookie es un pequeño archivo de texto que se almacena en su navegador. El &quot;Local Storage&quot; permite almacenar datos en su dispositivo de manera más persistente y segura.
+                <div className="p-6 rounded-2xl bg-[var(--theme-bg-overlay)]/40 border border-[var(--theme-border-soft)]">
+                    <p className="leading-relaxed text-sm text-[var(--theme-text-secondary)]">
+                        Las cookies y el <strong className="text-[var(--theme-text-primary)]">LocalStorage</strong> son herramientas esenciales que nos permiten recordar tus preferencias y garantizar que tu sesión sea persistente, segura y fluida durante el entrenamiento intensivo.
                     </p>
                 </div>
             </section>
 
-            <hr className="border-white/5" />
-
             {/* Section 2 */}
             <section className="space-y-6">
-                <h2 className="text-lg md:text-xl font-bold text-slate-800 flex items-center gap-2">
-                    <Eye className="text-brand-primary" size={18} />
-                    2. Tipos de cookies utilizadas
+                <h2 className="text-lg md:text-xl font-bold text-[var(--theme-text-primary)] flex items-center gap-3">
+                    <div className="p-2 bg-brand-primary/10 rounded-lg">
+                        <Eye className="text-brand-primary" size={20} />
+                    </div>
+                    2. Clasificación de Datos
                 </h2>
 
-                <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                <div className="overflow-hidden rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] shadow-xl shadow-black/5">
                     <table className="w-full text-left border-collapse">
-                        <thead className="bg-slate-50 text-slate-600 text-xs uppercase tracking-wider border-b border-slate-100">
+                        <thead className="bg-[var(--theme-bg-base)]/50 text-[var(--theme-text-tertiary)] text-[9px] uppercase tracking-[0.2em] border-b border-[var(--theme-border-soft)]">
                             <tr>
-                                <th className="p-4 font-bold">Tipo</th>
-                                <th className="p-4 font-bold hidden md:table-cell">Propiedad</th>
-                                <th className="p-4 font-bold">Finalidad</th>
+                                <th className="p-5 font-black">Categoría</th>
+                                <th className="p-5 font-black hidden md:table-cell">Origen</th>
+                                <th className="p-5 font-black">Propósito Técnico</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-white/5 text-sm">
-                            <tr className="hover:bg-white/5 transition-colors">
-                                <td className="p-4 font-bold text-slate-800">Sesión</td>
-                                <td className="p-4 hidden md:table-cell"><span className="px-2 py-1 rounded bg-blue-500/10 text-blue-600 text-xs">Propia</span></td>
-                                <td className="p-4 text-slate-600">Gestionar el login y mantener la sesión activa.</td>
-                            </tr>
-                            <tr className="hover:bg-slate-50 transition-colors">
-                                <td className="p-4 font-bold text-slate-800">Seguridad</td>
-                                <td className="p-4 hidden md:table-cell"><span className="px-2 py-1 rounded bg-blue-500/10 text-blue-600 text-xs">Propia</span></td>
-                                <td className="p-4 text-slate-600">Prevenir ataques y proteger tus datos.</td>
-                            </tr>
-                            <tr className="hover:bg-slate-50 transition-colors">
-                                <td className="p-4 font-bold text-slate-800">Analítica</td>
-                                <td className="p-4 hidden md:table-cell"><span className="px-2 py-1 rounded bg-purple-500/10 text-purple-600 text-xs">Terceros</span></td>
-                                <td className="p-4 text-slate-600">Estadísticas de uso anónimas.</td>
-                            </tr>
-                            <tr className="hover:bg-slate-50 transition-colors">
-                                <td className="p-4 font-bold text-slate-800">Preferencias</td>
-                                <td className="p-4 hidden md:table-cell"><span className="px-2 py-1 rounded bg-blue-500/10 text-blue-600 text-xs">Propia</span></td>
-                                <td className="p-4 text-slate-600">Recordar configuración (tema, idioma).</td>
-                            </tr>
+                        <tbody className="divide-y divide-[var(--theme-border-soft)] text-xs">
+                            {[
+                                { cat: "Sesión", origin: "Propia", desc: "Mantenimiento del túnel de autentificación.", color: "blue" },
+                                { cat: "Seguridad", origin: "Propia", desc: "Protección contra ataques CSRF y validación de tokens.", color: "emerald" },
+                                { cat: "Analítica", origin: "Terceros", desc: "Métricas de tráfico anónimas para escalabilidad.", color: "purple" },
+                                { cat: "Personalización", origin: "Propia", desc: "Almacenamiento de temas, idioma y filtros locales.", color: "amber" }
+                            ].map((row, i) => (
+                                <tr key={i} className="hover:bg-[var(--theme-bg-overlay)]/30 transition-colors group">
+                                    <td className="p-5 font-bold text-[var(--theme-text-primary)]">{row.cat}</td>
+                                    <td className="p-5 hidden md:table-cell">
+                                        <span className={`px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-widest
+                                            ${row.origin === 'Propia' ? 'bg-brand-primary/10 text-brand-primary' : 'bg-[var(--theme-text-tertiary)]/10 text-[var(--theme-text-tertiary)]'}`}>
+                                            {row.origin}
+                                        </span>
+                                    </td>
+                                    <td className="p-5 text-[var(--theme-text-secondary)] font-medium">{row.desc}</td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
             </section>
 
-            <hr className="border-white/5" />
-
             {/* Section 3 */}
             <section className="space-y-4">
-                <h2 className="text-lg md:text-xl font-bold text-slate-800 flex items-center gap-2">
-                    <Settings className="text-brand-primary" size={18} />
-                    3. Gestión
+                <h2 className="text-lg md:text-xl font-bold text-[var(--theme-text-primary)] flex items-center gap-3">
+                    <div className="p-2 bg-brand-primary/10 rounded-lg">
+                        <Settings className="text-brand-primary" size={20} />
+                    </div>
+                    3. Autogestión del Usuario
                 </h2>
-                <p className="leading-relaxed text-sm">
-                    Puede permitir, bloquear o eliminar las cookies mediante la configuración de su navegador. Tenga en cuenta que desactivar cookies técnicas puede afectar el funcionamiento de la plataforma.
-                </p>
+                <div className="p-6 rounded-2xl bg-[var(--theme-bg-overlay)]/40 border border-[var(--theme-border-soft)]">
+                    <p className="leading-relaxed text-sm text-[var(--theme-text-secondary)]">
+                        Tienes el control total. Puedes configurar tus preferencias a través de nuestro <strong className="text-brand-primary">Centro de Privacidad</strong> o desactivarlas directamente en la configuración de tu navegador. Considera que bloquear cookies técnicas podría limitar funcionalidades críticas del simulador.
+                    </p>
+                </div>
             </section>
         </div>
     );

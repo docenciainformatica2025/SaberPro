@@ -35,23 +35,23 @@ export default function Home() {
           <GridBackground size={40} opacity={0.05} className="text-brand-primary absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
 
           <div className="relative z-10 max-w-5xl space-y-10 animate-in fade-in slide-in-from-bottom-12 duration-1000">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200 mb-6 backdrop-blur-md shadow-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] mb-6 backdrop-blur-md shadow-sm">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-40"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-primary"></span>
               </span>
-              <span className="text-[9px] font-bold uppercase tracking-widest text-slate-700">Convocatoria {BRAND_YEAR} Abierta</span>
+              <span className="text-[9px] font-bold uppercase tracking-widest text-[var(--theme-text-secondary)]">Convocatoria {BRAND_YEAR} Abierta</span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900 leading-[1.1] text-balance">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[var(--theme-text-primary)] leading-[1.1] text-balance">
               Entrena para el <span className="text-brand-primary italic">Éxito Total</span>
             </h1>
 
             <div className="max-w-2xl mx-auto space-y-6">
-              <p className="text-lg md:text-xl font-medium text-slate-500 leading-relaxed">
+              <p className="text-lg md:text-xl font-medium text-[var(--theme-text-secondary)] leading-relaxed">
                 No dejes tu puntaje al azar. Domina las pruebas con el sistema de entrenamiento más avanzado de Colombia.
               </p>
-              <div className="flex flex-wrap justify-center gap-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+              <div className="flex flex-wrap justify-center gap-4 text-[10px] font-bold uppercase tracking-widest text-[var(--theme-text-tertiary)]">
                 <span className="flex items-center gap-1.5"><CheckCircle2 size={13} /> IA Adaptativa</span>
                 <span className="flex items-center gap-1.5"><CheckCircle2 size={13} /> Simulacros 4K</span>
                 <span className="flex items-center gap-1.5"><CheckCircle2 size={13} /> Mentoría 24/7</span>
@@ -73,7 +73,7 @@ export default function Home() {
                 </Link>
               )}
               <Link href="/methodology" className="w-full sm:w-auto">
-                <Button variant="outline" size="lg" className="w-full h-12 px-8 text-[10px] font-bold uppercase tracking-widest rounded-xl border-slate-200 hover:bg-slate-50 transition-all text-slate-600">
+                <Button variant="outline" size="lg" className="w-full h-12 px-8 text-[10px] font-bold uppercase tracking-widest rounded-xl border-[var(--theme-border-soft)] hover:bg-[var(--theme-bg-surface)] transition-all text-[var(--theme-text-secondary)]">
                   Metodología
                 </Button>
               </Link>
@@ -101,7 +101,7 @@ export default function Home() {
         <section className="py-32 relative bg-[var(--theme-bg-base)]">
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="text-center mb-20">
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-800 mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[var(--theme-text-primary)] mb-4">
                 Tu ruta de <span className="text-brand-primary italic">Élite</span>
               </h2>
               <div className="w-12 h-1 bg-brand-primary/20 mx-auto rounded-full" />
@@ -146,7 +146,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <p className="text-lg text-slate-500 dark:text-[var(--theme-text-secondary)] leading-relaxed max-w-xl">
+                <p className="text-lg text-[var(--theme-text-secondary)] leading-relaxed max-w-xl">
                   Nuestra plataforma utiliza algoritmos de última generación para mapear tu cerebro académico y entregarte exactamente lo que necesitas reforzar, segundo a segundo.
                 </p>
 
@@ -208,19 +208,19 @@ export default function Home() {
                 <p className="text-4xl md:text-5xl font-bold tracking-tight text-brand-primary mb-2">
                   <NumberTicker value={100} suffix="+" />
                 </p>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Estudiantes activos</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--theme-text-secondary)]">Estudiantes activos</p>
               </div>
               <div className="group">
-                <p className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-2">
+                <p className="text-4xl md:text-5xl font-bold tracking-tight text-[var(--theme-text-primary)] mb-2">
                   <NumberTicker value={24} suffix="/7" />
                 </p>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Disponibilidad total</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--theme-text-secondary)]">Disponibilidad total</p>
               </div>
               <div className="group">
                 <p className="text-4xl md:text-5xl font-bold tracking-tight text-brand-primary mb-2">
                   <NumberTicker value={100} suffix="%" />
                 </p>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Cobertura curricular</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--theme-text-secondary)]">Cobertura curricular</p>
               </div>
             </div>
           </div>

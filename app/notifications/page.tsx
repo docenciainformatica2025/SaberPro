@@ -88,7 +88,7 @@ export default function NotificationsPage() {
     const [activeTab, setActiveTab] = useState('all');
 
     return (
-        <div className="min-h-screen bg-gray-50 pb-24 font-sans">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] pb-24 font-sans">
             {/* Header Section */}
             <div className="bg-[#1e293b] pt-6 pb-12 px-6 rounded-b-[2.5rem] relative shadow-xl overflow-hidden">
                 <div className="flex justify-between items-center mb-6 text-white relative z-10">
@@ -122,7 +122,7 @@ export default function NotificationsPage() {
                                 flex items-center gap-2 px-5 py-3 rounded-2xl text-sm font-bold whitespace-nowrap transition-all shadow-sm
                                 ${activeTab === tab.id
                                     ? 'bg-[#ff7e5f] text-white shadow-orange-500/30'
-                                    : 'bg-white text-slate-500 hover:bg-slate-50'
+                                    : 'bg-[var(--theme-bg-surface)] text-[var(--theme-text-secondary)] hover:bg-[var(--theme-bg-base)]'
                                 }
                             `}
                         >
@@ -135,7 +135,7 @@ export default function NotificationsPage() {
                 <div className="space-y-6">
                     {/* HOY Section */}
                     <div>
-                        <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 ml-2">Hoy</h3>
+                        <h3 className="text-xs font-bold text-[var(--theme-text-tertiary)] uppercase tracking-widest mb-4 ml-2">Hoy</h3>
                         <div className="space-y-4">
                             {NOTIFICATIONS_TODAY.map((notif) => (
                                 <NotificationsCard key={notif.id} notif={notif} />
@@ -145,7 +145,7 @@ export default function NotificationsPage() {
 
                     {/* ANTERIORES Section */}
                     <div>
-                        <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 ml-2">Anteriores</h3>
+                        <h3 className="text-xs font-bold text-[var(--theme-text-tertiary)] uppercase tracking-widest mb-4 ml-2">Anteriores</h3>
                         <div className="space-y-4">
                             {NOTIFICATIONS_PREVIOUS.map((notif) => (
                                 <NotificationsCard key={notif.id} notif={notif} />
@@ -163,7 +163,7 @@ export default function NotificationsPage() {
 
 function NotificationsCard({ notif }: { notif: any }) {
     return (
-        <div className="bg-white rounded-3xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
+        <div className="bg-[var(--theme-bg-surface)] rounded-3xl p-5 shadow-sm border border-[var(--theme-border-soft)] relative overflow-hidden group hover:shadow-md transition-all">
             {/* Left Accent Bar */}
             <div className={`absolute top-4 bottom-4 left-0 w-1.5 rounded-r-full ${notif.accentColor || 'bg-slate-200'}`} />
 
@@ -171,7 +171,7 @@ function NotificationsCard({ notif }: { notif: any }) {
                 {/* Icon Area */}
                 <div className="shrink-0">
                     {notif.type === 'social' ? (
-                        <div className="w-12 h-12 rounded-full border-2 border-slate-100 overflow-hidden relative bg-[#ffedd5]">
+                        <div className="w-12 h-12 rounded-full border-2 border-[var(--theme-border-soft)] overflow-hidden relative bg-[#ffedd5]">
                             {/* Simple Avatar Placeholder */}
                             <User size={24} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-300" />
                             <div className="absolute bottom-0 right-0 w-4 h-4 bg-teal-400 rounded-full border-2 border-white flex items-center justify-center">
@@ -190,11 +190,11 @@ function NotificationsCard({ notif }: { notif: any }) {
                     <div className="flex justify-between items-start">
                         <div className="pr-2">
                             {notif.type === 'social' ? (
-                                <p className="text-sm font-bold text-slate-800 leading-tight">
+                                <p className="text-sm font-bold text-[var(--theme-text-primary)] leading-tight">
                                     {notif.title} <span className="text-[#14b8a6] italic">{notif.highlight}</span> {notif.message}
                                 </p>
                             ) : (
-                                <h4 className="font-bold text-slate-800 text-sm leading-tight pr-4">
+                                <h4 className="font-bold text-[var(--theme-text-primary)] text-sm leading-tight pr-4">
                                     {notif.title}
                                 </h4>
                             )}
@@ -208,7 +208,7 @@ function NotificationsCard({ notif }: { notif: any }) {
 
                     {/* Body Text */}
                     {notif.type !== 'social' && (
-                        <p className="text-xs text-slate-500 leading-relaxed font-medium">
+                        <p className="text-xs text-[var(--theme-text-secondary)] leading-relaxed font-medium">
                             {notif.message}
                         </p>
                     )}
@@ -219,10 +219,10 @@ function NotificationsCard({ notif }: { notif: any }) {
                         {notif.type === 'achievement' && (
                             <div className="flex items-center justify-between gap-4">
                                 <div className="flex-1 flex flex-col gap-1">
-                                    <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div className="h-1.5 w-full bg-[var(--theme-bg-base)] rounded-full overflow-hidden">
                                         <div className="h-full bg-teal-400 rounded-full" style={{ width: `${notif.progress}%` }} />
                                     </div>
-                                    <span className="text-[9px] font-bold text-slate-400 self-end">80% de la meta</span>
+                                    <span className="text-[9px] font-bold text-[var(--theme-text-tertiary)] self-end">80% de la meta</span>
                                 </div>
                                 <Link href="/achievements/celebration">
                                     <button className="text-xs font-bold text-orange-500 hover:text-orange-600 transition-colors uppercase tracking-wider">
@@ -245,7 +245,7 @@ function NotificationsCard({ notif }: { notif: any }) {
                         )}
 
                         {notif.type === 'social' && (
-                            <div className="flex items-center gap-2 text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                            <div className="flex items-center gap-2 text-[10px] text-[var(--theme-text-tertiary)] font-bold uppercase tracking-wider">
                                 <Clock size={12} /> {notif.time}
                             </div>
                         )}

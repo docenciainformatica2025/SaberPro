@@ -62,20 +62,21 @@ const MODULES = [
 ];
 
 export default function PlannerPage() {
-    const { user, profile, loading } = useAuth();
+    const { user, profile, loading: authLoading } = useAuth();
     const router = useRouter();
     const [config, setConfig] = useState<PlannerConfig | null>(null);
     const [plannerData, setPlannerData] = useState<Record<string, PlannerDay>>({});
-    const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+    const [selectedDate, setSelectedDate] = useState<Date>(new Date);
     const [isGenerating, setIsGenerating] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     // Calendar View State
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
     const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
     useEffect(() => {
-        if (!loading && !user) router.push('/login');
-    }, [user, loading, router]);
+        if (!authLoading && !user) router.push('/login');
+    }, [user, authLoading, router]);
 
     useEffect(() => {
         const fetchPlanner = async () => {
@@ -89,6 +90,8 @@ export default function PlannerPage() {
                 }
             } catch (err) {
                 console.error("Error fetching planner", err);
+            } finally {
+                setLoading(false);
             }
         };
         fetchPlanner();
@@ -97,18 +100,18 @@ export default function PlannerPage() {
     const handleGeneratePlan = async () => {
         if (!user) return;
         setIsGenerating(true);
+
+        const timeoutId = setTimeout(() => {
+            setIsGenerating(false);
+            toast.error("Tiempo de espera agotado", {
+                description: "Por favor intenta de nuevo."
+            });
+        }, 30000);
+
         try {
-            // Logic to generate a personalized plan
             const newPlannerData: Record<string, PlannerDay> = {};
             const today = new Date();
-            // Fecha dinámica: de perfil o fallback (+6 meses)
             const examDate = profile?.examDate || new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-
-            // Prompt dinámico (Pre-Simulación de IA)
-            const prompt = `Genera un plan de estudio para ${profile?.targetCareer || 'un estudiante de grado 11'} 
-                enfocado en el examen Saber Pro que se presentará el ${examDate}. 
-                El usuario tiene un nivel de maestría del ${profile?.overallMastery || 0}%.`;
-
 
             for (let i = 0; i < 30; i++) {
                 const date = new Date(today);
@@ -116,8 +119,8 @@ export default function PlannerPage() {
                 const dateKey = date.toISOString().split('T')[0];
                 const dayOfWeek = date.getDay();
 
-                const isRest = dayOfWeek === 0; // Sundays
-                const isSim = i === 14 || i === 28; // Simulation every 2 weeks
+                const isRest = dayOfWeek === 0;
+                const isSim = i === 14 || i === 28;
 
                 const sessions = [];
                 if (!isRest && !isSim) {
@@ -158,6 +161,7 @@ export default function PlannerPage() {
                 description: "No pudimos guardar tu plan en este momento. Por favor, intenta de nuevo."
             });
         } finally {
+            clearTimeout(timeoutId);
             setIsGenerating(false);
         }
     };
@@ -249,7 +253,7 @@ export default function PlannerPage() {
                                 Volver al Inicio
                             </Button>
                         </Link>
-                        <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
+                        <h1 className="text-2xl md:text-3xl font-bold text-[var(--theme-text-primary)] tracking-tight">
                             Tu plan de <span className="text-brand-primary italic">estudio</span>
                         </h1>
                     </div>
@@ -338,7 +342,7 @@ export default function PlannerPage() {
                             <p className="text-[10px] bg-[var(--theme-bg-surface)] text-brand-primary inline-block px-2 py-1 rounded uppercase font-bold tracking-wider mb-2">
                                 {selectedDate.toLocaleDateString('es-CO', { weekday: 'long' })}
                             </p>
-                            <h2 className="text-2xl font-bold text-slate-800 tracking-tight">
+                            <h2 className="text-2xl font-bold text-[var(--theme-text-primary)] tracking-tight">
                                 {selectedDate.toLocaleDateString('es-CO', { day: 'numeric', month: 'long' })}
                             </h2>
                         </div>

@@ -46,7 +46,7 @@ export default function AchievementsPage() {
     const { user } = useAuth();
 
     return (
-        <div className="min-h-screen bg-gray-50 pb-24 font-sans">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] pb-24 font-sans">
             {/* Dark Header Section */}
             <div className="bg-[#0B1221] pt-8 pb-12 px-6 rounded-b-[2.5rem] relative overflow-hidden shadow-2xl">
                 {/* Background Glows */}
@@ -88,9 +88,9 @@ export default function AchievementsPage() {
 
             <div className="max-w-md mx-auto px-6 -mt-6 relative z-20 space-y-8">
                 {/* City Ranking Pill */}
-                <div className="bg-white shadow-xl shadow-blue-900/5 rounded-xl py-3 px-4 flex items-center justify-center gap-2 text-sm font-medium text-slate-700 border border-slate-100">
+                <div className="bg-[var(--theme-bg-surface)] shadow-xl shadow-[var(--shadow-4k)] rounded-xl py-3 px-4 flex items-center justify-center gap-2 text-sm font-medium text-[var(--theme-text-secondary)] border border-[var(--theme-border-soft)]">
                     <span className="text-brand-primary">↗</span>
-                    Estás en el top <span className="font-bold text-slate-900">5%</span> de tu ciudad
+                    Estás en el top <span className="font-bold text-[var(--theme-text-primary)]">5%</span> de tu ciudad
                 </div>
 
                 {/* Hexagonal Grid */}
@@ -132,7 +132,7 @@ export default function AchievementsPage() {
                 {/* Certificates Section */}
                 <div className="space-y-4">
                     {CERTIFICATES.map((cert, idx) => (
-                        <div key={idx} className="bg-white rounded-xl border border-blue-100 shadow-sm overflow-hidden relative group">
+                        <div key={idx} className="bg-[var(--theme-bg-surface)] rounded-xl border border-[var(--theme-border-soft)] shadow-sm overflow-hidden relative group">
                             {/* Decorative Borders */}
                             <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-amber-400 rounded-tl-lg" />
                             <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-amber-400 rounded-tr-lg" />
@@ -140,10 +140,10 @@ export default function AchievementsPage() {
                             <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-amber-400 rounded-br-lg" />
 
                             <div className="p-6 text-center space-y-4">
-                                <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Certificate of Competency</p>
+                                <p className="text-xs font-bold text-[var(--theme-text-tertiary)] uppercase tracking-widest">Certificate of Competency</p>
 
                                 <div className="relative inline-block">
-                                    <h3 className="font-serif text-xl italic text-slate-900 border-b border-slate-200 pb-2 px-4">
+                                    <h3 className="font-serif text-xl italic text-[var(--theme-text-primary)] border-b border-[var(--theme-border-soft)] pb-2 px-4">
                                         - {cert.title}
                                     </h3>
                                 </div>
@@ -156,12 +156,12 @@ export default function AchievementsPage() {
                                     </div>
 
                                     <div className="text-right">
-                                        <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Issued: {cert.issued}</p>
+                                        <p className="text-[10px] text-[var(--theme-text-tertiary)] uppercase font-bold tracking-wider">Issued: {cert.issued}</p>
 
                                         <Button
                                             variant="outline"
                                             size="sm"
-                                            className="mt-2 h-8 text-[10px] font-bold border-slate-200 hover:border-blue-600 hover:text-blue-600 gap-2 rounded-full"
+                                            className="mt-2 h-8 text-[10px] font-bold border-[var(--theme-border-soft)] hover:border-blue-600 hover:text-blue-600 gap-2 rounded-full"
                                         >
                                             Share on LinkedIn <Share2 size={10} />
                                         </Button>

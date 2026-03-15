@@ -196,15 +196,15 @@ export default function AnalyticsPage() {
                         <motion.div variants={itemVariant} className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-12 border-b border-[var(--theme-border-soft)] pb-12">
                             <div className="space-y-4">
                                 <Link href="/dashboard">
-                                    <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-slate-500 hover:text-brand-primary uppercase tracking-[0.2em] font-black text-[9px] pl-0 mb-2 transition-all">
+                                    <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-[var(--theme-text-secondary)] hover:text-brand-primary uppercase tracking-[0.2em] font-black text-[9px] pl-0 mb-2 transition-all">
                                         Volver al Inicio
                                     </Button>
                                 </Link>
                                 <div className="space-y-2">
-                                    <h1 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight leading-none">
+                                    <h1 className="text-3xl md:text-5xl font-bold text-[var(--theme-text-primary)] tracking-tight leading-none">
                                         Analíticas de <span className="text-brand-primary italic">Rendimiento</span>
                                     </h1>
-                                    <p className="text-xs font-black text-slate-500 tracking-[0.3em] uppercase ml-1">
+                                    <p className="text-xs font-black text-[var(--theme-text-secondary)] tracking-[0.3em] uppercase ml-1">
                                         Monitoreo de evolución académica en tiempo real
                                     </p>
                                 </div>
@@ -215,7 +215,7 @@ export default function AnalyticsPage() {
                                     size="lg"
                                     icon={Download}
                                     onClick={handleDownloadReport}
-                                    className="h-14 px-8 rounded-2xl bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:shadow-xl transition-all"
+                                    className="h-14 px-8 rounded-2xl bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:shadow-xl transition-all"
                                 >
                                     Reporte PDF
                                 </Button>
@@ -238,9 +238,9 @@ export default function AnalyticsPage() {
                                     <div className="p-3 bg-yellow-500/10 rounded-2xl text-yellow-500 shadow-sm">
                                         <Trophy size={20} />
                                     </div>
-                                    <span className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-600">Dominio Máximo</span>
+                                    <span className="text-[10px] uppercase tracking-[0.2em] font-black text-[var(--theme-text-secondary)]">Dominio Máximo</span>
                                 </div>
-                                <div className="text-4xl font-bold text-slate-800 tracking-tight leading-none relative z-10">{kpis.highestScore}%</div>
+                                <div className="text-4xl font-bold text-[var(--theme-text-primary)] tracking-tight leading-none relative z-10">{kpis.highestScore}%</div>
                             </Card>
 
                             <Card variant="glass" className="p-10 border-[3px] border-brand-primary/5 bg-brand-primary/[0.01] rounded-[2.5rem] hover:-translate-y-2 transition-all group overflow-hidden relative">
@@ -249,9 +249,9 @@ export default function AnalyticsPage() {
                                     <div className="p-3 bg-blue-500/10 rounded-2xl text-blue-400 shadow-sm">
                                         <Target size={20} />
                                     </div>
-                                    <span className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-600">Nivel de Maestría</span>
+                                    <span className="text-[10px] uppercase tracking-[0.2em] font-black text-[var(--theme-text-secondary)]">Nivel de Maestría</span>
                                 </div>
-                                <div className={`text-4xl font-bold tracking-tight leading-none relative z-10 ${kpis.averageScore >= 60 ? "text-emerald-500" : "text-slate-800"}`}>{kpis.averageScore}%</div>
+                                <div className={`text-4xl font-bold tracking-tight leading-none relative z-10 ${kpis.averageScore >= 60 ? "text-emerald-500" : "text-[var(--theme-text-primary)]"}`}>{kpis.averageScore}%</div>
                             </Card>
 
                             <Card variant="glass" className="p-10 border-[3px] border-brand-primary/5 bg-brand-primary/[0.01] rounded-[2.5rem] hover:-translate-y-2 transition-all group overflow-hidden relative">
@@ -260,9 +260,9 @@ export default function AnalyticsPage() {
                                     <div className="p-3 bg-purple-500/10 rounded-2xl text-purple-400 shadow-sm">
                                         <TrendingUp size={20} />
                                     </div>
-                                    <span className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-600">Desafíos</span>
+                                    <span className="text-[10px] uppercase tracking-[0.2em] font-black text-[var(--theme-text-secondary)]">Desafíos</span>
                                 </div>
-                                <div className="text-4xl font-bold text-slate-800 tracking-tight leading-none relative z-10">{kpis.totalSimulations}</div>
+                                <div className="text-4xl font-bold text-[var(--theme-text-primary)] tracking-tight leading-none relative z-10">{kpis.totalSimulations}</div>
                             </Card>
 
                             <Card variant="glass" className="p-10 border-[3px] border-brand-primary/5 bg-brand-primary/[0.01] rounded-[2.5rem] hover:-translate-y-2 transition-all group overflow-hidden relative">
@@ -271,9 +271,9 @@ export default function AnalyticsPage() {
                                     <div className="p-3 bg-pink-500/10 rounded-2xl text-pink-400 shadow-sm">
                                         <Brain size={20} />
                                     </div>
-                                    <span className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-600">Interacciones</span>
+                                    <span className="text-[10px] uppercase tracking-[0.2em] font-black text-[var(--theme-text-secondary)]">Interacciones</span>
                                 </div>
-                                <div className="text-4xl font-bold text-slate-800 tracking-tight leading-none relative z-10">{kpis.questionsAnswered}</div>
+                                <div className="text-4xl font-bold text-[var(--theme-text-primary)] tracking-tight leading-none relative z-10">{kpis.questionsAnswered}</div>
                             </Card>
                         </motion.div>
 
@@ -286,8 +286,8 @@ export default function AnalyticsPage() {
                         <motion.div variants={itemVariant} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                             <Card variant="glass" className="p-8 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]">
                                 <div className="mb-8 border-b border-[var(--theme-border-soft)] pb-4">
-                                    <h3 className="text-xl font-bold text-slate-900 uppercase italic tracking-tight">Evolución de Puntaje</h3>
-                                    <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Tendencia de tus últimos 7 simulacros</p>
+                                    <h3 className="text-xl font-bold text-[var(--theme-text-primary)] uppercase italic tracking-tight">Evolución de Puntaje</h3>
+                                    <p className="text-xs font-bold text-[var(--theme-text-secondary)] uppercase tracking-wider mt-1">Tendencia de tus últimos 7 simulacros</p>
                                 </div>
                                 <div className="h-[300px] w-full">
                                     <PerformanceChart
@@ -300,8 +300,8 @@ export default function AnalyticsPage() {
 
                             <Card variant="glass" className="p-8 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]">
                                 <div className="mb-8 border-b border-[var(--theme-border-soft)] pb-4">
-                                    <h3 className="text-xl font-bold text-slate-900 uppercase italic tracking-tight">Balance de Competencias</h3>
-                                    <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Fortalezas vs. Debilidades (Promedio)</p>
+                                    <h3 className="text-xl font-bold text-[var(--theme-text-primary)] uppercase italic tracking-tight">Balance de Competencias</h3>
+                                    <p className="text-xs font-bold text-[var(--theme-text-secondary)] uppercase tracking-wider mt-1">Fortalezas vs. Debilidades (Promedio)</p>
                                 </div>
                                 <div className="h-[300px] w-full flex items-center justify-center">
                                     <PerformanceChart type="radar" data={radarData} color="#60a5fa" />
@@ -314,10 +314,10 @@ export default function AnalyticsPage() {
                             <Card variant="glass" className="p-8 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]">
                                 <div className="mb-8 border-b border-[var(--theme-border-soft)] pb-4 flex justify-between items-end">
                                     <div>
-                                        <h3 className="text-xl font-bold text-slate-900 uppercase italic tracking-tight">Historial de Simulacros</h3>
-                                        <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Registro detallado y reportes de resultados</p>
+                                        <h3 className="text-xl font-bold text-[var(--theme-text-primary)] uppercase italic tracking-tight">Historial de Simulacros</h3>
+                                        <p className="text-xs font-bold text-[var(--theme-text-secondary)] uppercase tracking-wider mt-1">Registro detallado y reportes de resultados</p>
                                     </div>
-                                    <Badge variant="default" className="text-[10px] bg-slate-50 text-slate-500 border-slate-100">{fullResults.length} REGISTROS</Badge>
+                                    <Badge variant="default" className="text-[10px] bg-[var(--theme-bg-base)] text-[var(--theme-text-tertiary)] border-[var(--theme-border-soft)]">{fullResults.length} REGISTROS</Badge>
                                 </div>
                                 <ResultsHistoryList results={fullResults} onViewReport={handleViewReport} />
                             </Card>

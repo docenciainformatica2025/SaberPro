@@ -80,12 +80,12 @@ export default function DashboardPage() {
 
             <div className="px-6 pt-10 pb-4 flex items-center justify-between relative z-10 animate-in fade-in slide-in-from-top-4 duration-1000">
                 <div className="space-y-0.5">
-                    <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400">Continuar entrenamiento</p>
-                    <h1 className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight leading-none">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--theme-text-tertiary)]">Continuar entrenamiento</p>
+                    <h1 className="text-xl md:text-2xl font-bold text-[var(--theme-text-primary)] tracking-tight leading-none">
                         Hola, <span className="text-brand-primary">{userName}</span>
                     </h1>
                 </div>
-                <div className="w-8 h-8 flex items-center justify-center bg-white shadow-sm rounded-lg border border-slate-100 group active:scale-95 transition-all">
+                <div className="w-8 h-8 flex items-center justify-center bg-[var(--theme-bg-surface)] shadow-sm rounded-lg border border-[var(--theme-border-soft)] group active:scale-95 transition-all">
                     <Sun className="text-yellow-500/80" size={16} strokeWidth={2} />
                 </div>
             </div>
@@ -108,7 +108,7 @@ export default function DashboardPage() {
                                         <div className="absolute inset-0 rounded-full bg-brand-primary/20 blur-2xl scale-75 group-hover/progress:scale-110 transition-transform duration-700" />
 
                                         <svg className="w-full h-full -rotate-90 relative z-10 drop-shadow-2xl" viewBox="0 0 36 36">
-                                            <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-slate-100 dark:text-white/5" />
+                                            <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-[var(--theme-border-soft)]" />
                                             <circle
                                                 cx="18" cy="18" r="16"
                                                 fill="none"
@@ -121,8 +121,8 @@ export default function DashboardPage() {
                                             />
                                         </svg>
                                         <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
-                                            <span className="text-2xl font-black text-slate-800 dark:text-white leading-none">{stats?.weeklyProgress || 0}%</span>
-                                            <span className="text-[8px] font-black uppercase tracking-widest text-slate-400 dark:text-white/40 mt-1">META</span>
+                                            <span className="text-2xl font-black text-[var(--theme-text-primary)] leading-none">{stats?.weeklyProgress || 0}%</span>
+                                            <span className="text-[8px] font-black uppercase tracking-widest text-[var(--theme-text-tertiary)] mt-1">META</span>
                                         </div>
                                     </>
                                 )}
@@ -136,7 +136,7 @@ export default function DashboardPage() {
                                 <h2 className="text-lg md:text-xl font-bold text-brand-primary leading-none tracking-tight">
                                     {(stats?.weeklyProgress ?? 0) >= 80 ? "Paso de Élite" : (stats?.weeklyProgress ?? 0) >= 50 ? "Buen ritmo" : "El comienzo"}
                                 </h2>
-                                <p className="text-[12px] text-slate-600 mt-2.5 max-w-[85%] leading-relaxed font-medium">
+                                <p className="text-[12px] text-[var(--theme-text-secondary)] mt-2.5 max-w-[85%] leading-relaxed font-medium">
                                     {(stats?.weeklyProgress ?? 0) >= 100
                                         ? "Has dominado tus objetivos semanales. Estás en el 1% superior."
                                         : `Falta un ${100 - (stats?.weeklyProgress ?? 0)}% para completar tu meta.`}

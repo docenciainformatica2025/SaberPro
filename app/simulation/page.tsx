@@ -151,7 +151,7 @@ function SimulationSelectionContent() {
         <div className="min-h-screen bg-[var(--theme-bg-base)] p-6 md:p-12 pb-32">
             <div className="max-w-7xl mx-auto animate-in fade-in duration-700">
                 <div className="flex justify-between items-center mb-8">
-                    <Button variant="ghost" icon={ArrowLeft} onClick={() => step > 1 ? setStep(step - 1) : router.push("/dashboard")} className="p-0 hover:bg-transparent text-slate-500 hover:text-brand-primary uppercase tracking-wider text-[10px] font-bold transition-colors">
+                    <Button variant="ghost" icon={ArrowLeft} onClick={() => step > 1 ? setStep(step - 1) : router.push("/dashboard")} className="p-0 hover:bg-transparent text-[var(--theme-text-secondary)] hover:text-brand-primary uppercase tracking-wider text-[10px] font-bold transition-colors">
                         {step > 1 ? "Regresar" : "Volver al Inicio"}
                     </Button>
                     <div className="flex gap-2">
@@ -167,10 +167,10 @@ function SimulationSelectionContent() {
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-brand-primary text-[10px] font-black tracking-[0.2em] uppercase mb-4 animate-in zoom-in duration-1000">
                                 <Timer size={12} strokeWidth={2.5} /> Fase 1: Calibración de Objetivo
                             </div>
-                            <h1 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight leading-none">
+                            <h1 className="text-3xl md:text-5xl font-bold text-[var(--theme-text-primary)] tracking-tight leading-none">
                                 ¿Cómo quieres <span className="text-brand-primary italic">entrenar</span> hoy?
                             </h1>
-                            <p className="text-xs font-bold text-slate-500 tracking-widest uppercase">Selecciona el nivel de profundidad de tu simulación</p>
+                            <p className="text-xs font-bold text-[var(--theme-text-secondary)] tracking-widest uppercase">Selecciona el nivel de profundidad de tu simulación</p>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -184,8 +184,8 @@ function SimulationSelectionContent() {
                                     <Timer size={20} />
                                 </div>
                                 <div>
-                                    <h3 className="text-2xl font-bold text-slate-900 uppercase italic leading-none">Simulacro Completo</h3>
-                                    <p className="text-slate-500 text-sm mt-3 font-medium">La experiencia real del examen Saber Pro (4h 48m, 100 preguntas).</p>
+                                    <h3 className="text-2xl font-bold text-[var(--theme-text-primary)] uppercase italic leading-none">Simulacro Completo</h3>
+                                    <p className="text-[var(--theme-text-secondary)] text-sm mt-3 font-medium">La experiencia real del examen Saber Pro (4h 48m, 100 preguntas).</p>
                                 </div>
                                 <Button variant="primary" className="w-full">Seleccionar</Button>
                             </Card>
@@ -200,8 +200,8 @@ function SimulationSelectionContent() {
                                     <Zap size={40} strokeWidth={3} />
                                 </div>
                                 <div>
-                                    <h3 className="text-2xl font-bold text-slate-900 uppercase italic leading-none">Entrenamiento Modular</h3>
-                                    <p className="text-slate-500 text-sm mt-3 font-medium">Practica una competencia específica a tu propio ritmo.</p>
+                                    <h3 className="text-2xl font-bold text-[var(--theme-text-primary)] uppercase italic leading-none">Entrenamiento Modular</h3>
+                                    <p className="text-[var(--theme-text-secondary)] text-sm mt-3 font-medium">Practica una competencia específica a tu propio ritmo.</p>
                                 </div>
                                 <Button variant="outline" className="w-full">Seleccionar</Button>
                             </Card>
@@ -213,7 +213,7 @@ function SimulationSelectionContent() {
                     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-10">
                         <div className="text-center">
                             <Badge variant="info" className="mb-4">Paso 2: Competencia</Badge>
-                            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">
+                            <h2 className="text-2xl md:text-3xl font-bold text-[var(--theme-text-primary)] tracking-tight">
                                 Escoge un <span className="text-brand-primary italic">módulo</span>
                             </h2>
                         </div>
@@ -227,19 +227,19 @@ function SimulationSelectionContent() {
                                     className={cn(
                                         "p-10 cursor-pointer border-2 transition-all rounded-[2rem] text-center flex flex-col items-center group",
                                         selectedModule?.id === m.id
-                                            ? "border-brand-primary shadow-2xl shadow-brand-primary/20 bg-white"
-                                            : "border-transparent bg-brand-primary/[0.02] hover:bg-white hover:shadow-xl hover:shadow-slate-200/50"
+                                            ? "border-brand-primary shadow-2xl shadow-brand-primary/20 bg-[var(--theme-bg-surface)]"
+                                            : "border-transparent bg-brand-primary/[0.02] hover:bg-[var(--theme-bg-surface)] hover:shadow-xl hover:shadow-[var(--shadow-4k)]"
                                     )}
                                     onClick={() => setSelectedModule(m)}
                                 >
                                     <div className={cn(
                                         "w-20 h-20 rounded-3xl flex items-center justify-center mb-8 transition-all duration-500 group-hover:scale-110",
-                                        selectedModule?.id === m.id ? "bg-brand-primary text-white" : "bg-white text-slate-400 group-hover:bg-brand-primary/10 group-hover:text-brand-primary shadow-sm"
+                                        selectedModule?.id === m.id ? "bg-brand-primary text-white" : "bg-[var(--theme-bg-base)] text-[var(--theme-text-quaternary)] group-hover:bg-brand-primary/10 group-hover:text-brand-primary shadow-sm"
                                     )}>
                                         <m.icon size={40} strokeWidth={2.5} />
                                     </div>
-                                    <h3 className="text-xl font-bold text-slate-900 uppercase tracking-tighter leading-none mb-3">{m.label}</h3>
-                                    <p className="text-xs font-bold text-slate-500 leading-relaxed mb-8">{m.desc}</p>
+                                    <h3 className="text-xl font-bold text-[var(--theme-text-primary)] uppercase tracking-tighter leading-none mb-3">{m.label}</h3>
+                                    <p className="text-xs font-bold text-[var(--theme-text-secondary)] leading-relaxed mb-8">{m.desc}</p>
                                     {selectedModule?.id === m.id && (
                                         <Button
                                             onClick={() => setStep(3)}
@@ -276,7 +276,7 @@ function SimulationSelectionContent() {
                                         "Debes completar todas las preguntas para recibir certificado.",
                                         isFullSim ? "Módulos automáticos de 50 preguntas cada uno." : "Foco exclusivo en el módulo seleccionado."
                                     ].map((text, i) => (
-                                        <li key={i} className="flex items-start gap-3 text-sm text-slate-600 font-medium">
+                                        <li key={i} className="flex items-start gap-3 text-sm text-[var(--theme-text-secondary)] font-medium">
                                             <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-primary" />
                                             {text}
                                         </li>
@@ -285,7 +285,7 @@ function SimulationSelectionContent() {
                             </div>
 
                             <div className="flex flex-col md:flex-row gap-6 mt-12">
-                                <Button variant="outline" onClick={() => setStep(isFullSim ? 1 : 2)} className="flex-1 h-14 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] opacity-50 hover:opacity-100 transition-all border-slate-200">Cambiar Configuración</Button>
+                                <Button variant="outline" onClick={() => setStep(isFullSim ? 1 : 2)} className="flex-1 h-14 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] opacity-50 hover:opacity-100 transition-all border-[var(--theme-border-soft)]">Cambiar Configuración</Button>
                                 <Button variant="primary" onClick={handleStartSimulation} className="flex-[2] h-16 rounded-2xl font-black text-xs uppercase tracking-[0.25em] shadow-2xl shadow-brand-primary/30 shimmer-gold">¡Comenzar Desafío!</Button>
                             </div>
                         </Card>

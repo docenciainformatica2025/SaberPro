@@ -352,7 +352,7 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
             const isMidScore = percentage >= 40 && percentage < 80;
 
             let feedbackTitle = "Potencial Detectado";
-            let feedbackColor = "text-white";
+            let feedbackColor = "text-[var(--theme-text-primary)]";
             let feedbackMessage = "Tu resultado sugiere que tienes buen conocimiento base, pero necesitas enfrentarte al <strong>examen completo de 50 preguntas</strong> para confirmar tu puntaje real.";
 
             if (isLowScore) {
@@ -367,20 +367,20 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
 
             return (
                 <div className="flex flex-col items-center justify-center min-h-[60vh] text-center animate-in zoom-in duration-500 p-4">
-                    <Card variant="primary" glow className="p-12 max-w-lg w-full shadow-[0_0_50px_rgba(212,175,55,0.15)] bg-gradient-to-br from-black/80 to-slate-900/90 backdrop-blur-md relative overflow-hidden">
+                    <Card variant="primary" glow className="p-12 max-w-lg w-full shadow-[var(--shadow-4k)] bg-[var(--theme-bg-surface)] backdrop-blur-md relative overflow-hidden">
                         <Badge variant="primary" className="mb-6 h-8 px-4 font-semibold">
                             DIAGNÓSTICO FINALIZADO
                         </Badge>
 
                         <h2 className={`text-3xl font-semibold mb-2 uppercase tracking-tight ${feedbackColor}`}>{feedbackTitle}</h2>
-                        <p className="text-theme-text-secondary mb-8 text-lg">
-                            Has completado el diagnóstico gratuito de <span className="text-white font-bold">{questions.length} preguntas</span>.
+                        <p className="text-[var(--theme-text-secondary)] mb-8 text-lg">
+                            Has completado el diagnóstico gratuito de <span className="text-[var(--theme-text-primary)] font-bold">{questions.length} preguntas</span>.
                         </p>
 
                         <div className="grid grid-cols-2 gap-4 mb-8">
-                            <div className="bg-slate-900/50 p-4 rounded-xl border border-theme-text-secondary/10">
-                                <span className="block text-[10px] font-semibold uppercase tracking-wider text-theme-text-secondary/60 mb-1">Aciertos</span>
-                                <span className={`text-3xl font-semibold ${isLowScore ? 'text-red-400' : isMidScore ? 'text-white' : 'text-green-400'}`}>{score}/{questions.length}</span>
+                            <div className="bg-[var(--theme-bg-base)] p-4 rounded-xl border border-[var(--theme-border-soft)]">
+                                <span className="block text-[10px] font-semibold uppercase tracking-wider text-[var(--theme-text-tertiary)]/60 mb-1">Aciertos</span>
+                                <span className={`text-3xl font-semibold ${isLowScore ? 'text-red-400' : isMidScore ? 'text-[var(--theme-text-primary)]' : 'text-green-400'}`}>{score}/{questions.length}</span>
                             </div>
                             <div className="bg-brand-primary/20 p-4 rounded-xl border border-brand-primary/40 relative overflow-hidden">
                                 <span className="block text-[10px] font-semibold uppercase tracking-wider text-brand-primary mb-1">Proyección Global</span>

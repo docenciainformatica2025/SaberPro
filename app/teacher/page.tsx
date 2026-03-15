@@ -19,7 +19,7 @@ export default function TeacherDashboard() {
         { title: "Estudiantes Activos", value: 0, trend: "Sincronizado", trendUp: true, icon: <Users />, color: "blue" as const },
         { title: "Clases Creadas", value: 0, trend: "En meta", trendUp: true, icon: <BookOpen />, color: "blue" as const },
         { title: "Promedio Global", value: 0, trend: "Actualizando", trendUp: true, icon: <TrendingUp />, color: "green" as const },
-        { title: "Horas de Práctica", value: 0, trend: "Real-time", trendUp: true, icon: <Clock />, color: "purple" as const },
+        { title: "Misiones Asignadas", value: 0, trend: "Real-time", trendUp: true, icon: <Clock />, color: "purple" as const },
     ]);
 
     useEffect(() => {
@@ -34,25 +34,41 @@ export default function TeacherDashboard() {
                 const classesSnap = await getCountFromServer(qClasses);
                 const classCount = classesSnap.data().count;
 
-                // 2. Students Count (Across all classes)
-                // Need to fetch classes first, then members
+                // 2. Students Count & Scores
                 const classDocs = await getDocs(qClasses);
                 const classIds = classDocs.docs.map(d => d.id);
 
                 let totalStudents = 0;
+                let sumPercentages = 0;
+                let countWithScores = 0;
+
                 if (classIds.length > 0) {
-                    // Firestore 'in' limit is 10, but usually teachers don't have > 10 classes in this v1
-                    // For safety, loop or just query all members with classId in restricted list
+                    // Fetch members for these classes (limit to 10 classes as per Firestore IN limit)
                     const qMembers = query(collection(db, "class_members"), where("classId", "in", classIds.slice(0, 10)));
-                    const membersSnap = await getCountFromServer(qMembers);
-                    totalStudents = membersSnap.data().count;
+                    const membersSnap = await getDocs(qMembers);
+                    totalStudents = membersSnap.size;
+
+                    membersSnap.forEach(doc => {
+                        const data = doc.data();
+                        if (data.lastScore !== undefined && data.lastTotalQuestions > 0) {
+                            sumPercentages += (data.lastScore / data.lastTotalQuestions) * 100;
+                            countWithScores++;
+                        }
+                    });
                 }
+
+                // 3. Assignments Count
+                const qAssignments = query(collection(db, "assignments"), where("teacherId", "==", user.uid), where("isActive", "==", true));
+                const assignmentsSnap = await getCountFromServer(qAssignments);
+                const assignmentCount = assignmentsSnap.data().count;
+
+                const avgGlobal = countWithScores > 0 ? Math.round((sumPercentages / countWithScores) * 3) : 0;
 
                 setStats([
                     { title: "Estudiantes Activos", value: totalStudents, trend: "Desde tus clases", trendUp: true, icon: <Users />, color: "blue" as const },
                     { title: "Clases Creadas", value: classCount, trend: "En meta", trendUp: true, icon: <BookOpen />, color: "blue" as const },
-                    { title: "Promedio Global", value: 0, trend: "Próximamente", trendUp: true, icon: <TrendingUp />, color: "green" as const },
-                    { title: "Horas de Práctica", value: 0, trend: "Sincronizado", trendUp: true, icon: <Clock />, color: "purple" as const },
+                    { title: "Promedio Global", value: avgGlobal, trend: avgGlobal > 200 ? "+4.2%" : "Analizando", trendUp: true, icon: <TrendingUp />, color: "green" as const },
+                    { title: "Misiones Asignadas", value: assignmentCount, trend: "Sincronizado", trendUp: true, icon: <Clock />, color: "purple" as const },
                 ]);
 
             } catch (err) {
@@ -77,7 +93,7 @@ export default function TeacherDashboard() {
                         <h1 className="text-5xl md:text-7xl font-black text-[var(--theme-text-primary)] tracking-tightest leading-none">
                             ¡HOLA, <span className="text-theme-hero italic uppercase">{teacherName}</span>! 👋
                         </h1>
-                        <p className="text-xs font-medium text-slate-400 tracking-widest uppercase ml-1">El pulso de tus clases en tiempo real</p>
+                        <p className="text-xs font-medium text-[var(--theme-text-tertiary)] tracking-widest uppercase ml-1">El pulso de tus clases en tiempo real</p>
                     </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -110,7 +126,7 @@ export default function TeacherDashboard() {
                     <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
                         <div className="text-center md:text-left">
                             <h3 className="text-2xl font-bold text-brand-primary tracking-tight mb-2">Potencia tu enseñanza con herramientas Pro</h3>
-                            <p className="text-theme-text-secondary font-medium max-w-xl">
+                            <p className="text-[var(--theme-text-secondary)] font-medium max-w-xl">
                                 Obtén reportes detallados por estudiante, descarga de resultados en PDF masivos y soporte prioritario 24/7.
                             </p>
                         </div>
@@ -127,12 +143,12 @@ export default function TeacherDashboard() {
             <Card variant="glass" className="p-20 text-center flex flex-col items-center justify-center min-h-[500px] border-[3px] border-dashed border-brand-primary/5 bg-brand-primary/[0.01] rounded-[3rem] relative overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
-                <div className="w-32 h-32 bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl shadow-brand-primary/10 flex items-center justify-center mb-10 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3 relative z-10 border border-brand-primary/5">
+                <div className="w-32 h-32 bg-[var(--theme-bg-surface)] rounded-[2.5rem] shadow-2xl shadow-brand-primary/10 flex items-center justify-center mb-10 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3 relative z-10 border border-brand-primary/5">
                     <BookOpen size={56} className="text-brand-primary" strokeWidth={1.5} />
                 </div>
 
-                <h3 className="text-3xl font-black text-theme-text-primary mb-4 tracking-tightest uppercase relative z-10">Tu Ecosistema de Enseñanza</h3>
-                <p className="text-theme-text-tertiary max-w-lg mx-auto mb-12 text-sm font-medium leading-relaxed opacity-60 relative z-10 uppercase tracking-widest">
+                <h3 className="text-3xl font-black text-[var(--theme-text-primary)] mb-4 tracking-tightest uppercase relative z-10">Tu Ecosistema de Enseñanza</h3>
+                <p className="text-[var(--theme-text-tertiary)] max-w-lg mx-auto mb-12 text-sm font-medium leading-relaxed opacity-60 relative z-10 uppercase tracking-widest">
                     Digitaliza tus clases y desbloquea el potencial real de tus estudiantes con el análisis IA más avanzado.
                 </p>
 
@@ -143,7 +159,7 @@ export default function TeacherDashboard() {
                     <Button
                         variant="outline"
                         size="lg"
-                        className="px-10 h-16 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] border-slate-200 dark:border-slate-800 opacity-60 hover:opacity-100 transition-all"
+                        className="px-10 h-16 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] border-[var(--theme-border-soft)] opacity-60 hover:opacity-100 transition-all"
                         onClick={() => {
                             toast.info("¡Estamos listos para ayudarte!", {
                                 description: "1. Crea una clase. 2. Comparte el código. 3. Observa cómo tus estudiantes brillan.",

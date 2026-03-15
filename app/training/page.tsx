@@ -65,21 +65,21 @@ export default function TrainingSelectionPage() {
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 border-b border-brand-primary/5 pb-12">
                     <div className="space-y-6">
                         <Link href={role === 'teacher' ? "/teacher" : "/dashboard"}>
-                            <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-slate-500 hover:text-brand-primary uppercase tracking-[0.2em] text-[10px] font-black pl-0 transition-all hover:pl-2">
+                            <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-[var(--theme-text-secondary)] hover:text-brand-primary uppercase tracking-[0.2em] text-[10px] font-black pl-0 transition-all hover:pl-2">
                                 {role === 'teacher' ? "Volver al Panel" : "Volver al Inicio"}
                             </Button>
                         </Link>
                         <div>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-100 text-slate-500 text-[9px] font-bold tracking-widest uppercase mb-4 shadow-sm">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] text-[var(--theme-text-tertiary)] text-[9px] font-bold tracking-widest uppercase mb-4 shadow-sm">
                                 <Sparkles size={11} strokeWidth={2} /> Nueva Experiencia IA
                             </div>
-                            <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-none mb-1">
+                            <h1 className="text-2xl md:text-3xl font-bold text-[var(--theme-text-primary)] tracking-tight leading-none mb-1">
                                 Modo <span className="text-brand-primary italic">Entrenamiento</span>
                             </h1>
                         </div>
                     </div>
                     <div className="bg-brand-primary/[0.03] p-6 rounded-2xl border border-brand-primary/5 max-w-sm hidden md:block backdrop-blur-sm">
-                        <p className="text-slate-600 text-sm font-medium leading-relaxed italic">
+                        <p className="text-[var(--theme-text-secondary)] text-sm font-medium leading-relaxed italic">
                             "La práctica constante es la única ruta hacia la maestría. Explora tus límites con nuestro motor de IA."
                         </p>
                     </div>
@@ -92,7 +92,7 @@ export default function TrainingSelectionPage() {
                             <Link key={module.id} href={`/training/${module.id}`}>
                                 <Card
                                     variant={isRecommended ? "premium" : "glass"}
-                                    className={`h-full p-8 md:p-10 group transition-all duration-500 hover:-translate-y-3 relative overflow-hidden rounded-[2.5rem] ${isRecommended ? 'shadow-2xl shadow-brand-primary/20 ring-2 ring-brand-primary/20 bg-white' : 'bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)] shadow-xl shadow-slate-200/50'}`}
+                                    className={`h-full p-8 md:p-10 group transition-all duration-500 hover:-translate-y-3 relative overflow-hidden rounded-[2.5rem] ${isRecommended ? 'shadow-2xl shadow-brand-primary/20 ring-2 ring-brand-primary/20 bg-[var(--theme-bg-surface)]' : 'bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)] shadow-xl shadow-[var(--shadow-4k)]'}`}
                                 >
                                     {isRecommended && (
                                         <div className="absolute top-6 right-6 z-20">
@@ -103,24 +103,24 @@ export default function TrainingSelectionPage() {
                                     )}
 
                                     {/* Abstract BG Icon - Larger for depth */}
-                                    <div className={`absolute -right-8 -bottom-8 opacity-5 group-hover:opacity-10 transition-all duration-700 rotate-12 group-hover:rotate-0 scale-110 ${isRecommended ? 'text-brand-primary' : 'text-slate-400'}`}>
+                                    <div className={`absolute -right-8 -bottom-8 opacity-5 group-hover:opacity-10 transition-all duration-700 rotate-12 group-hover:rotate-0 scale-110 ${isRecommended ? 'text-brand-primary' : 'text-[var(--theme-border-soft)]'}`}>
                                         <module.icon size={180} strokeWidth={1} />
                                     </div>
 
                                     <div className="relative z-10 flex flex-col h-full">
-                                        <div className={`w-16 h-16 rounded-[1.25rem] flex items-center justify-center mb-8 transition-all duration-500 group-hover:scale-110 shadow-2xl ${isRecommended ? 'bg-brand-primary text-white shadow-brand-primary/30' : 'bg-white text-slate-400 group-hover:bg-brand-primary/10 group-hover:text-brand-primary shadow-slate-200/50'}`}>
+                                        <div className={`w-16 h-16 rounded-[1.25rem] flex items-center justify-center mb-8 transition-all duration-500 group-hover:scale-110 shadow-2xl ${isRecommended ? 'bg-brand-primary text-white shadow-brand-primary/30' : 'bg-[var(--theme-bg-base)] text-[var(--theme-text-tertiary)] group-hover:bg-brand-primary/10 group-hover:text-brand-primary shadow-sm'}`}>
                                             <module.icon size={32} strokeWidth={2.5} />
                                         </div>
 
-                                        <h3 className="text-xl font-bold text-slate-800 mb-2 tracking-tight group-hover:text-brand-primary transition-colors leading-none">
+                                        <h3 className="text-xl font-bold text-[var(--theme-text-primary)] mb-2 tracking-tight group-hover:text-brand-primary transition-colors leading-none">
                                             {module.label}
                                         </h3>
 
-                                        <p className={`text-[12px] font-medium mb-8 leading-relaxed flex-grow ${isRecommended ? 'text-slate-600' : 'text-slate-500'}`}>
+                                        <p className={`text-[12px] font-medium mb-8 leading-relaxed flex-grow ${isRecommended ? 'text-[var(--theme-text-secondary)]' : 'text-[var(--theme-text-tertiary)]'}`}>
                                             {module.desc}
                                         </p>
 
-                                        <div className={`flex items-center text-[11px] font-black uppercase tracking-[0.25em] transition-all ${isRecommended ? 'text-brand-primary' : 'text-slate-700 group-hover:text-brand-primary'}`}>
+                                        <div className={`flex items-center text-[11px] font-black uppercase tracking-[0.25em] transition-all ${isRecommended ? 'text-brand-primary' : 'text-[var(--theme-text-primary)] group-hover:text-brand-primary'}`}>
                                             Iniciar <ChevronRight size={14} strokeWidth={3} className="ml-2 group-hover:translate-x-2 transition-transform" />
                                         </div>
                                     </div>

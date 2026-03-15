@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/Button";
 
 export default function CelebrationPage() {
     return (
-        <div className="min-h-screen bg-slate-50 flex flex-col font-sans relative overflow-hidden">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] flex flex-col font-sans relative overflow-hidden">
 
             {/* Background Gradients */}
             <div className="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] bg-[#ccfbf1]/40 rounded-full blur-3xl -z-10" />
@@ -21,13 +21,13 @@ export default function CelebrationPage() {
             {/* Header */}
             <div className="flex justify-between items-center p-6">
                 <Link href="/notifications">
-                    <button className="p-2 rounded-full hover:bg-slate-100 transition-colors">
-                        <X size={24} className="text-slate-500" />
+                    <button className="p-2 rounded-full hover:bg-[var(--theme-bg-surface)] transition-colors">
+                        <X size={24} className="text-[var(--theme-text-secondary)]" />
                     </button>
                 </Link>
                 <h1 className="text-[10px] font-bold text-[#14b8a6] uppercase tracking-[0.2em]">Logro Desbloqueado</h1>
-                <button className="p-2 rounded-full hover:bg-slate-100 transition-colors">
-                    <Share2 size={24} className="text-slate-400" />
+                <button className="p-2 rounded-full hover:bg-[var(--theme-bg-surface)] transition-colors">
+                    <Share2 size={24} className="text-[var(--theme-text-tertiary)]" />
                 </button>
             </div>
 
@@ -51,12 +51,12 @@ export default function CelebrationPage() {
                 </div>
 
                 <div className="space-y-6 max-w-sm mx-auto animate-in slide-in-from-bottom-8 duration-700 delay-200">
-                    <h2 className="text-3xl font-black text-slate-800 leading-tight">
+                    <h2 className="text-3xl font-black text-[var(--theme-text-primary)] leading-tight">
                         Tu disciplina es el puente <span className="text-[#fb923c]">hacia tu maestría.</span>
                     </h2>
 
-                    <p className="text-slate-500 text-lg leading-relaxed">
-                        Has cultivado tu estado de flow durante <span className="font-bold text-slate-900">5 días seguidos</span>. Cada sesión es un paso firme hacia la excelencia y la evolución de tu potencial interno.
+                    <p className="text-[var(--theme-text-secondary)] text-lg leading-relaxed">
+                        Has cultivado tu estado de flow durante <span className="font-bold text-[var(--theme-text-primary)]">5 días seguidos</span>. Cada sesión es un paso firme hacia la excelencia y la evolución de tu potencial interno.
                     </p>
 
                     {/* Progress Dots */}

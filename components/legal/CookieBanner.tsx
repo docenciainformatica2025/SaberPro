@@ -88,23 +88,22 @@ export default function CookieBanner() {
     return (
         <>
             {/* STICKY BANNER */}
-            <div className="fixed bottom-0 left-0 w-full z-50 p-4 md:p-6 animate-in slide-in-from-bottom-full duration-700">
-                <div className="max-w-7xl mx-auto metallic-card bg-[var(--theme-bg-surface)]/95 backdrop-blur-xl border border-[var(--theme-border-soft)] rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)] p-6 md:flex items-center gap-8">
+            <div className="fixed bottom-0 left-0 w-full z-50 p-4 md:p-6 animate-in slide-in-from-bottom-full duration-700 pointer-events-none">
+                <div className="max-w-7xl mx-auto metallic-card bg-[var(--theme-bg-surface)]/95 backdrop-blur-xl border border-[var(--theme-border-soft)] rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] p-6 md:flex items-center gap-8 pointer-events-auto">
 
                     {/* Icon & Text */}
                     <div className="flex-1 space-y-3 mb-6 md:mb-0">
                         <div className="flex items-center gap-3 mb-2">
-                            <div className="p-2 bg-brand-primary/10 rounded-lg text-brand-primary">
+                            <div className="p-2 bg-brand-primary/10 rounded-lg text-brand-primary shadow-inner">
                                 <Cookie size={24} />
                             </div>
-                            <h3 className="text-lg font-bold text-[var(--theme-text-primary)]">Uso de Cookies y Tecnologías</h3>
+                            <h3 className="text-lg font-bold text-[var(--theme-text-primary)]">Privacidad y Cookies</h3>
                         </div>
                         <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
-                            En SaberPro utilizamos cookies propias y de terceros para garantizar la seguridad, analizar la navegación y mejorar tu experiencia.
-                            ¿Aceptas el procesamiento de datos conforme a nuestra
-                            <button onClick={() => setActivePolicy('privacy')} className="mx-1 underline text-[var(--theme-text-primary)] hover:text-brand-primary font-bold">Política de Privacidad</button>
+                            Potenciamos tu aprendizaje con tecnología propia y de terceros. Acepta el uso de cookies para una experiencia personalizada y segura conforme a nuestra
+                            <button onClick={() => setActivePolicy('privacy')} className="mx-1 underline text-[var(--theme-text-primary)] hover:text-brand-primary font-bold transition-colors">Política de Privacidad</button>
                             y
-                            <button onClick={() => setActivePolicy('cookies')} className="ml-1 underline text-[var(--theme-text-primary)] hover:text-brand-primary font-bold">Política de Cookies</button>?
+                            <button onClick={() => setActivePolicy('cookies')} className="ml-1 underline text-[var(--theme-text-primary)] hover:text-brand-primary font-bold transition-colors">Política de Cookies</button>.
                         </p>
                     </div>
 
@@ -112,19 +111,19 @@ export default function CookieBanner() {
                     <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
                         <button
                             onClick={() => setShowPreferences(true)}
-                            className="text-xs font-bold text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] underline decoration-[var(--theme-text-secondary)]/30 hover:decoration-[var(--theme-text-primary)] underline-offset-4 transition-all px-4"
+                            className="text-[10px] font-black text-[var(--theme-text-tertiary)] hover:text-[var(--theme-text-primary)] uppercase tracking-widest transition-all px-4"
                         >
-                            CONFIGURAR PREFERENCIAS
+                            Ver Preferencias
                         </button>
                         <button
                             onClick={rejectNonEssential}
-                            className="w-full sm:w-auto px-5 py-2.5 rounded-lg border border-[var(--theme-border-soft)] text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] hover:bg-[var(--theme-bg-base)] font-bold text-xs transition-all"
+                            className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-[var(--theme-border-soft)] text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] hover:bg-[var(--theme-bg-base)] font-bold text-xs transition-all"
                         >
-                            RECHAZAR NO ESENCIALES
+                            RECHAZAR
                         </button>
                         <button
                             onClick={acceptAll}
-                            className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-brand-primary text-white font-bold text-xs hover:shadow-gold hover:scale-105 transition-all shadow-sm"
+                            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-brand-primary text-white font-bold text-xs hover:shadow-[0_0_20px_rgba(var(--brand-primary-rgb),0.4)] hover:scale-105 transition-all shadow-lg active:scale-95"
                         >
                             ACEPTAR TODAS
                         </button>
@@ -176,91 +175,108 @@ function PreferencesModal({ onSave, onClose }: { onSave: (c: CookieConsent) => v
     };
 
     return (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-[var(--theme-bg-base)]/80 backdrop-blur-xl animate-in fade-in duration-300">
-            <div className="w-full max-w-2xl bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] rounded-2xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-[var(--theme-bg-base)]/80 backdrop-blur-3xl animate-in fade-in duration-300">
+            <div className="w-full max-w-2xl bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] rounded-3xl shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] overflow-hidden animate-in zoom-in-95 duration-300">
 
                 {/* Header */}
-                <div className="p-6 border-b border-[var(--theme-border-soft)] flex justify-between items-center bg-[var(--theme-bg-base)]/50">
-                    <h2 className="text-xl font-bold text-[var(--theme-text-primary)] flex items-center gap-3">
-                        <Shield className="text-brand-primary" size={24} />
-                        Centro de Preferencias de Privacidad
-                    </h2>
-                    <button onClick={onClose} aria-label="Cerrar banner de cookies" className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] transition-colors">
-                        <X size={24} />
+                <div className="p-8 border-b border-[var(--theme-border-soft)] flex justify-between items-center bg-[var(--theme-bg-base)]/30 backdrop-blur-md">
+                    <div className="flex items-center gap-4">
+                        <div className="p-2.5 bg-brand-primary/10 rounded-xl text-brand-primary">
+                            <Shield size={28} />
+                        </div>
+                        <div>
+                            <h2 className="text-xl font-bold text-[var(--theme-text-primary)]">Control de Privacidad</h2>
+                            <p className="text-[10px] text-[var(--theme-text-tertiary)] uppercase font-bold tracking-widest">SaberPro Configurator</p>
+                        </div>
+                    </div>
+                    <button onClick={onClose} aria-label="Cerrar" className="p-2 rounded-full text-[var(--theme-text-tertiary)] hover:text-brand-error hover:bg-brand-error/10 transition-all">
+                        <X size={20} />
                     </button>
                 </div>
 
                 {/* Content */}
-                <div className="p-6 space-y-6 max-h-[60vh] overflow-y-auto custom-scrollbar">
+                <div className="p-8 space-y-6 max-h-[60vh] overflow-y-auto custom-scrollbar">
                     <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
-                        Este panel le permite gestionar qué tipos de cookies desea autorizar. El bloqueo de ciertos tipos puede afectar su experiencia en el simulador.
+                        Gestiona cómo procesamos tu información. Los ajustes seleccionados garantizan la integridad de tu experiencia en el simulador de alto rendimiento.
                     </p>
 
                     {/* Section A: Strict */}
-                    <div className="p-4 rounded-xl bg-[var(--theme-bg-base)]/50 border border-[var(--theme-border-soft)] space-y-3">
-                        <div className="flex justify-between items-start">
-                            <div className="flex items-center gap-3">
-                                <Shield className="text-green-500" size={20} />
+                    <div className="p-5 rounded-2xl bg-[var(--theme-bg-base)]/50 border border-[var(--theme-border-soft)] group transition-all hover:bg-[var(--theme-bg-base)]">
+                        <div className="flex justify-between items-start gap-4">
+                            <div className="flex items-center gap-4">
+                                <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-500">
+                                    <Shield size={20} />
+                                </div>
                                 <div>
-                                    <h4 className="text-[var(--theme-text-primary)] font-bold text-sm">A. Estrictamente Necesarias</h4>
-                                    <span className="text-[10px] text-green-500 font-bold uppercase tracking-wider">Siempre Activo</span>
+                                    <h4 className="text-[var(--theme-text-primary)] font-bold text-sm">Escenciales y Seguridad</h4>
+                                    <div className="flex items-center gap-2 mt-0.5">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                        <span className="text-[10px] text-emerald-500 font-black uppercase tracking-wider">Siempre Activo</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="opacity-50 grayscale cursor-not-allowed">
+                            <div className="opacity-40 cursor-not-allowed">
                                 <Switch checked={true} readOnly />
                             </div>
                         </div>
-                        <p className="text-xs text-[var(--theme-text-secondary)]/80 leading-relaxed pl-8">
-                            Esenciales para que la plataforma funcione (sesión, seguridad, pagos). No almacenan info personal y no pueden desactivarse.
+                        <p className="text-xs text-[var(--theme-text-tertiary)] leading-relaxed mt-4 pl-12">
+                            Base técnica vital para autenticación, sesiones y pasarela de pagos. No almacenan datos rastreables y son obligatorias.
                         </p>
                     </div>
 
                     {/* Section B: Analytics */}
-                    <div className="p-4 rounded-xl bg-[var(--theme-bg-base)]/50 border border-[var(--theme-border-soft)] space-y-3">
-                        <div className="flex justify-between items-start">
-                            <div className="flex items-center gap-3">
-                                <Activity className="text-blue-400" size={20} />
+                    <div className="p-5 rounded-2xl bg-[var(--theme-bg-base)]/50 border border-[var(--theme-border-soft)] group transition-all hover:bg-[var(--theme-bg-base)]">
+                        <div className="flex justify-between items-start gap-4">
+                            <div className="flex items-center gap-4">
+                                <div className="p-2 bg-blue-500/10 rounded-lg text-blue-500">
+                                    <Activity size={20} />
+                                </div>
                                 <div>
-                                    <h4 className="text-[var(--theme-text-primary)] font-bold text-sm">B. Analítica y Rendimiento</h4>
-                                    <span className="text-[10px] text-[var(--theme-text-secondary)] font-bold uppercase tracking-wider">Opcional</span>
+                                    <h4 className="text-[var(--theme-text-primary)] font-bold text-sm">Analítica de Rendimiento</h4>
+                                    <span className="text-[10px] text-[var(--theme-text-tertiary)] font-bold uppercase tracking-wider">Opcional</span>
                                 </div>
                             </div>
-                            <button onClick={() => setPreferences(p => ({ ...p, analytics: !p.analytics }))}>
+                            <button onClick={() => setPreferences(p => ({ ...p, analytics: !p.analytics }))} className="active:scale-95 transition-transform">
                                 <Switch checked={preferences.analytics} />
                             </button>
                         </div>
-                        <p className="text-xs text-[var(--theme-text-secondary)]/80 leading-relaxed pl-8">
-                            Nos permiten contar visitas y fuentes de tráfico para mejorar nuestros servidores. Toda la info es anónima (Google Analytics).
+                        <p className="text-xs text-[var(--theme-text-tertiary)] leading-relaxed mt-4 pl-12">
+                            Nos permite medir la estabilidad técnica y fuentes de tráfico de forma anónima para optimizar la velocidad del simulador.
                         </p>
                     </div>
 
                     {/* Section C: Functional */}
-                    <div className="p-4 rounded-xl bg-[var(--theme-bg-base)]/50 border border-[var(--theme-border-soft)] space-y-3">
-                        <div className="flex justify-between items-start">
-                            <div className="flex items-center gap-3">
-                                <Monitor className="text-purple-400" size={20} />
+                    <div className="p-5 rounded-2xl bg-[var(--theme-bg-base)]/50 border border-[var(--theme-border-soft)] group transition-all hover:bg-[var(--theme-bg-base)]">
+                        <div className="flex justify-between items-start gap-4">
+                            <div className="flex items-center gap-4">
+                                <div className="p-2 bg-purple-500/10 rounded-lg text-purple-500">
+                                    <Monitor size={20} />
+                                </div>
                                 <div>
-                                    <h4 className="text-[var(--theme-text-primary)] font-bold text-sm">C. Funcionalidad y Preferencias</h4>
-                                    <span className="text-[10px] text-[var(--theme-text-secondary)] font-bold uppercase tracking-wider">Opcional</span>
+                                    <h4 className="text-[var(--theme-text-primary)] font-bold text-sm">Preferencias de Interfaz</h4>
+                                    <span className="text-[10px] text-[var(--theme-text-tertiary)] font-bold uppercase tracking-wider">Opcional</span>
                                 </div>
                             </div>
-                            <button onClick={() => setPreferences(p => ({ ...p, functional: !p.functional }))}>
+                            <button onClick={() => setPreferences(p => ({ ...p, functional: !p.functional }))} className="active:scale-95 transition-transform">
                                 <Switch checked={preferences.functional} />
                             </button>
                         </div>
-                        <p className="text-xs text-[var(--theme-text-secondary)]/80 leading-relaxed pl-8">
-                            Recuerdan sus elecciones (nombre, modo oscuro, idioma) para ofrecer una experiencia personalizada.
+                        <p className="text-xs text-[var(--theme-text-tertiary)] leading-relaxed mt-4 pl-12">
+                            Recuerdan tus ajustes visuales como el modo oscuro, idioma preferido y filtros de búsqueda locales.
                         </p>
                     </div>
                 </div>
 
                 {/* Footer */}
-                <div className="p-6 border-t border-[var(--theme-border-soft)] bg-[var(--theme-bg-base)]/50 flex justify-end">
+                <div className="p-8 border-t border-[var(--theme-border-soft)] bg-[var(--theme-bg-base)]/50 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <p className="text-[10px] text-[var(--theme-text-tertiary)] max-w-[240px] leading-tight">
+                        Al guardar, tus preferencias se aplicarán de inmediato en esta sesión de navegación.
+                    </p>
                     <button
                         onClick={handleSave}
-                        className="px-8 py-3 bg-[var(--theme-text-primary)] text-[var(--theme-bg-base)] font-bold rounded-xl hover:bg-brand-primary hover:text-white transition-colors flex items-center gap-2 shadow-lg"
+                        className="w-full sm:w-auto px-8 py-3.5 bg-[var(--theme-text-primary)] text-[var(--theme-bg-surface)] font-bold rounded-xl hover:bg-brand-primary hover:text-white transition-all flex items-center justify-center gap-2 shadow-xl shadow-black/5"
                     >
-                        <Check size={18} /> GUARDAR MIS PREFERENCIAS
+                        <Check size={18} strokeWidth={3} /> GUARDAR PREFERENCIAS
                     </button>
                 </div>
             </div>
@@ -271,8 +287,8 @@ function PreferencesModal({ onSave, onClose }: { onSave: (c: CookieConsent) => v
 // Simple Custom Switch Component
 function Switch({ checked, readOnly }: { checked: boolean, readOnly?: boolean }) {
     return (
-        <div className={`w-12 h-6 rounded-full p-1 transition-colors duration-300 ${checked ? "bg-green-500" : "bg-[var(--theme-bg-overlay)] border border-[var(--theme-border-soft)]"}`}>
-            <div className={`w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 ${checked ? "translate-x-6" : "translate-x-0"}`} />
+        <div className={`w-14 h-7 rounded-full p-1.5 transition-all duration-300 ${checked ? "bg-emerald-500 shadow-[0_0_15px_-3px_rgba(16,185,129,0.5)]" : "bg-[var(--theme-bg-overlay)] border border-[var(--theme-border-soft)]"}`}>
+            <div className={`w-4 h-4 rounded-full bg-white shadow-lg transform transition-transform duration-500 ease-elastic ${checked ? "translate-x-7" : "translate-x-0"}`} />
         </div>
     );
 }

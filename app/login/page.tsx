@@ -99,7 +99,7 @@ export default function LoginPage() {
                             <div className="h-px w-10 bg-brand-primary/40" />
                             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-primary">Elite Learning System</span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight">
+                        <h2 className="text-4xl md:text-5xl font-bold text-[var(--theme-text-primary)] leading-[1.1] tracking-tight">
                             Libera tu <br />
                             <span className="text-brand-primary italic">potencial</span>
                         </h2>
@@ -111,12 +111,12 @@ export default function LoginPage() {
 
                     <div className="flex flex-wrap gap-8 pt-6">
                         <div className="space-y-1">
-                            <p className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">98%</p>
+                            <p className="text-4xl font-black text-[var(--theme-text-primary)] tracking-tight">98%</p>
                             <p className="text-[9px] font-black uppercase tracking-widest text-brand-primary/60">Efectividad Predictiva</p>
                         </div>
                         <div className="w-px h-12 bg-slate-200 dark:bg-white/10" />
                         <div className="space-y-1">
-                            <p className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">2.4x</p>
+                            <p className="text-4xl font-black text-[var(--theme-text-primary)] tracking-tight">2.4x</p>
                             <p className="text-[9px] font-black uppercase tracking-widest text-brand-primary/60">Velocidad de Mejora</p>
                         </div>
                     </div>
@@ -126,13 +126,13 @@ export default function LoginPage() {
                     <div className="flex items-center gap-8 mb-4">
                         <div className="flex -space-x-3">
                             {[1, 2, 3, 4].map(i => (
-                                <div key={i} className="w-10 h-10 rounded-full border-2 border-[var(--theme-bg-surface)] bg-slate-800 flex items-center justify-center overflow-hidden">
+                                <div key={i} className="w-10 h-10 rounded-full border-2 border-[var(--theme-bg-surface)] bg-[var(--theme-bg-overlay)] flex items-center justify-center overflow-hidden">
                                     <img src={`https://i.pravatar.cc/40?img=${i + 20}`} alt="User avatar" />
                                 </div>
                             ))}
                         </div>
-                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
-                            Únete a más de <span className="text-slate-900 dark:text-white font-black">+5,000 estudiantes</span> destacados
+                        <p className="text-[10px] font-bold text-[var(--theme-text-tertiary)] uppercase tracking-wider">
+                            Únete a más de <span className="text-[var(--theme-text-primary)] font-black">+5,000 estudiantes</span> destacados
                         </p>
                     </div>
                 </div>
@@ -154,7 +154,7 @@ export default function LoginPage() {
                                 </div>
                                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-primary">Acceso Seguro v4.0</span>
                             </div>
-                            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
+                            <h1 className="text-3xl md:text-4xl font-bold text-[var(--theme-text-primary)] tracking-tight leading-tight">
                                 ¡Hola de <span className="text-brand-primary italic">nuevo!</span>
                             </h1>
                             <p className="text-[var(--theme-text-secondary)] text-sm font-medium opacity-60">Entra a tu zona de entrenamiento de alto rendimiento.</p>
@@ -162,7 +162,7 @@ export default function LoginPage() {
                     </div>
 
                     {/* Form Container: Advanced Glassmorphism */}
-                    <div className="bg-white/80 dark:bg-slate-900/40 backdrop-blur-2xl border border-slate-200 dark:border-white/5 p-8 sm:p-10 rounded-[2.5rem] shadow-xl dark:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] relative overflow-hidden group">
+                    <div className="bg-[var(--theme-bg-surface)] backdrop-blur-2xl border border-[var(--theme-border-soft)] p-8 sm:p-10 rounded-[2.5rem] shadow-xl dark:shadow-[var(--shadow-4k)] relative overflow-hidden group">
                         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-primary to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-700" />
 
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -177,7 +177,7 @@ export default function LoginPage() {
 
                             <div className="space-y-3">
                                 <div className="flex justify-between items-center px-1">
-                                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Contraseña</label>
+                                    <label className="text-[10px] font-bold text-[var(--theme-text-tertiary)] uppercase tracking-widest">Contraseña</label>
                                     <Link href="/forgot-password" title="Recuperar contraseña" className="text-[10px] font-black uppercase tracking-tighter text-brand-primary/60 hover:text-brand-primary transition-all hover:tracking-normal">¿Olvidaste tu contraseña?</Link>
                                 </div>
                                 <div className="relative group/pass">
@@ -191,7 +191,7 @@ export default function LoginPage() {
                                     <button
                                         type="button"
                                         onClick={() => setShowPassword(!showPassword)}
-                                        className="absolute right-4 top-4 text-slate-400 dark:text-white/20 group-hover/pass:text-brand-primary transition-colors"
+                                        className="absolute right-4 top-4 text-[var(--theme-text-quaternary)] group-hover/pass:text-brand-primary transition-colors"
                                     >
                                         {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                                     </button>
@@ -203,7 +203,7 @@ export default function LoginPage() {
                                 isLoading={isSubmitting}
                                 icon={ArrowRight}
                                 iconPosition="right"
-                                className="w-full h-14 mt-4 bg-brand-primary hover:bg-brand-primary/90 text-white shadow-2xl shadow-brand-primary/30 text-[11px] font-black uppercase tracking-[0.3em] rounded-2xl transform hover:translate-y-[-2px] active:translate-y-0 transition-all shimmer-gold"
+                                className="w-full h-14 mt-4 bg-brand-primary hover:bg-brand-primary/90 text-[var(--theme-text-inverted)] shadow-2xl shadow-brand-primary/30 text-[11px] font-black uppercase tracking-[0.3em] rounded-2xl transform hover:translate-y-[-2px] active:translate-y-0 transition-all shimmer-gold"
                             >
                                 {isSubmitting ? "Autenticando..." : "Ingresar al Sistema"}
                             </Button>
@@ -211,10 +211,10 @@ export default function LoginPage() {
 
                         <div className="relative my-10">
                             <div className="absolute inset-0 flex items-center">
-                                <div className="w-full border-t border-white/5"></div>
+                                <div className="w-full border-t border-[var(--theme-border-soft)]"></div>
                             </div>
                             <div className="relative flex justify-center text-[9px] font-black uppercase tracking-[0.3em]">
-                                <span className="bg-white dark:bg-[#121212] px-4 text-slate-400 dark:text-white/30 truncate">O continúa con</span>
+                                <span className="bg-[var(--theme-bg-surface)] px-4 text-[var(--theme-text-tertiary)] truncate">O continúa con</span>
                             </div>
                         </div>
 
@@ -222,7 +222,7 @@ export default function LoginPage() {
                             onClick={handleGoogleLogin}
                             disabled={googleLoading}
                             variant="outline"
-                            className="w-full h-12 text-[10px] font-black uppercase tracking-[0.25em] border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-white-[0.02] hover:bg-slate-100 dark:hover:bg-white-[0.05] text-slate-700 dark:text-white rounded-2xl transition-all"
+                            className="w-full h-12 text-[10px] font-black uppercase tracking-[0.25em] border-[var(--theme-border-soft)] bg-[var(--theme-bg-base)] hover:bg-[var(--theme-bg-surface)] text-[var(--theme-text-primary)] rounded-2xl transition-all"
                             isLoading={googleLoading}
                         >
                             <Chrome size={18} className="mr-3" /> Google Autenticación
@@ -233,15 +233,15 @@ export default function LoginPage() {
                     <div className="text-center pt-2">
                         <p className="text-xs font-medium text-[var(--theme-text-tertiary)]">
                             ¿Aún no tienes cuenta?{' '}
-                            <Link href="/register" className="text-brand-primary hover:text-slate-900 dark:hover:text-white font-black uppercase tracking-widest ml-3 transition-all hover:tracking-[0.2em]">ÚNETE AHORA</Link>
+                            <Link href="/register" className="text-brand-primary hover:text-[var(--theme-text-primary)] font-black uppercase tracking-widest ml-3 transition-all hover:tracking-[0.2em]">ÚNETE AHORA</Link>
                         </p>
                     </div>
 
-                    <div className="pt-12 flex justify-between items-center opacity-70 text-[9px] font-black uppercase tracking-widest text-slate-400 dark:text-white/50 border-t border-slate-100 dark:border-white/5">
+                    <div className="pt-12 flex justify-between items-center opacity-70 text-[9px] font-black uppercase tracking-widest text-[var(--theme-text-tertiary)] border-t border-[var(--theme-border-soft)]">
                         <span>{BRAND_YEAR} • {COPYRIGHT_TEXT}</span>
                         <div className="flex gap-4">
-                            <Link href="/terms" className="hover:text-white transition-colors">Términos</Link>
-                            <Link href="/privacy" className="hover:text-white transition-colors">Privacidad</Link>
+                            <Link href="/terms" className="hover:text-[var(--theme-text-primary)] transition-colors">Términos</Link>
+                            <Link href="/privacy" className="hover:text-[var(--theme-text-primary)] transition-colors">Privacidad</Link>
                         </div>
                     </div>
 

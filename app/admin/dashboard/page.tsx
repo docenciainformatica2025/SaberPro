@@ -128,12 +128,12 @@ export default function AdminDashboard() {
     return (
         <main className="max-w-7xl mx-auto space-y-12 pb-12 p-4 lg:p-0 animate-in fade-in slide-in-from-bottom-8 duration-700" suppressHydrationWarning>
             {/* Header Pro */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800/60">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-[var(--theme-bg-surface)]/50 backdrop-blur-md p-4 rounded-2xl border border-[var(--theme-border-soft)]">
                 <div>
-                    <h1 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 tracking-tight">
+                    <h1 className="text-xl font-bold text-[var(--theme-text-primary)] flex items-center gap-2 tracking-tight">
                         <Activity className="text-brand-primary" size={20} /> Comando Central
                     </h1>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 flex items-center gap-1.5 font-medium ml-7">
+                    <p className="text-[11px] text-[var(--theme-text-tertiary)] mt-0.5 flex items-center gap-1.5 font-medium ml-7">
                         Inteligencia de Negocio & Operaciones
                     </p>
                 </div>

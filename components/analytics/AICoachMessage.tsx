@@ -43,7 +43,7 @@ export default function AICoachMessage({ analysis }: AICoachMessageProps) {
                                 }[analysis.overallStatus]}
                             </span>
                         </div>
-                        <h3 className="text-2xl font-semibold text-white italic tracking-tight flex items-center gap-2 uppercase">
+                        <h3 className="text-2xl font-semibold text-[var(--theme-text-primary)] italic tracking-tight flex items-center gap-2 uppercase">
                             <Sparkles className="text-brand-primary" size={24} />
                             Análisis Predictivo de Desempeño
                         </h3>
@@ -53,12 +53,12 @@ export default function AICoachMessage({ analysis }: AICoachMessageProps) {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     {/* Advice Section */}
                     <div className="space-y-6">
-                        <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
+                        <div className="bg-[var(--theme-bg-surface)] rounded-2xl p-6 border border-[var(--theme-border-soft)]">
                             <div className="flex items-center gap-3 mb-4 text-brand-primary">
                                 <Lightbulb size={20} />
                                 <span className="text-[10px] font-semibold uppercase tracking-wider leading-none">Visión Estratégica</span>
                             </div>
-                            <p className="text-white/90 text-lg leading-relaxed font-medium">
+                            <p className="text-[var(--theme-text-primary)] text-lg leading-relaxed font-medium">
                                 {analysis.advice}
                             </p>
                         </div>
@@ -68,7 +68,7 @@ export default function AICoachMessage({ analysis }: AICoachMessageProps) {
                                 <Zap size={20} />
                                 <span className="text-[10px] font-semibold uppercase tracking-wider leading-none">Siguiente Paso Crítico</span>
                             </div>
-                            <p className="text-white font-bold text-lg mb-6">
+                            <p className="text-[var(--theme-text-primary)] font-bold text-lg mb-6">
                                 {analysis.actionStep}
                             </p>
                             <Link href="/training">
@@ -82,39 +82,39 @@ export default function AICoachMessage({ analysis }: AICoachMessageProps) {
 
                     {/* Stats Contrast */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div className="p-6 bg-black/20 rounded-2xl border border-white/5 flex flex-col justify-between">
+                        <div className="p-6 bg-[var(--theme-bg-surface)] rounded-2xl border border-[var(--theme-border-soft)] flex flex-col justify-between">
                             <div>
                                 <Target className="text-green-400 mb-4" size={24} />
-                                <span className="text-[10px] font-semibold text-theme-text-secondary uppercase tracking-wider">Fortaleza Principal</span>
+                                <span className="text-[10px] font-semibold text-[var(--theme-text-tertiary)] uppercase tracking-wider">Fortaleza Principal</span>
                             </div>
                             <div className="mt-4">
-                                <div className="text-2xl font-semibold text-white leading-tight uppercase truncate">{analysis.strengthModule.name}</div>
+                                <div className="text-2xl font-semibold text-[var(--theme-text-primary)] leading-tight uppercase truncate">{analysis.strengthModule.name}</div>
                                 <div className="text-sm font-bold text-green-400">{analysis.strengthModule.value}% Dominio</div>
                             </div>
                         </div>
 
-                        <div className="p-6 bg-black/20 rounded-2xl border border-white/5 flex flex-col justify-between">
+                        <div className="p-6 bg-[var(--theme-bg-surface)] rounded-2xl border border-[var(--theme-border-soft)] flex flex-col justify-between">
                             <div>
                                 <Target className="text-red-400 mb-4" size={24} />
-                                <span className="text-[10px] font-semibold text-theme-text-secondary uppercase tracking-wider">Oportunidad de Mejora</span>
+                                <span className="text-[10px] font-semibold text-[var(--theme-text-tertiary)] uppercase tracking-wider">Oportunidad de Mejora</span>
                             </div>
                             <div className="mt-4">
-                                <div className="text-2xl font-semibold text-white leading-tight uppercase truncate">{analysis.criticalModule.name}</div>
+                                <div className="text-2xl font-semibold text-[var(--theme-text-primary)] leading-tight uppercase truncate">{analysis.criticalModule.name}</div>
                                 <div className="text-sm font-bold text-red-400">{analysis.criticalModule.value}% Dominio</div>
                             </div>
                         </div>
 
-                        <div className="col-span-1 sm:col-span-2 p-6 bg-white/5 rounded-2xl border border-white/5 flex items-center justify-between">
+                        <div className="col-span-1 sm:col-span-2 p-6 bg-[var(--theme-bg-surface)] rounded-2xl border border-[var(--theme-border-soft)] flex items-center justify-between">
                             <div className="flex items-center gap-4">
                                 <div className="p-3 bg-purple-500/10 rounded-xl text-purple-400">
                                     <Brain size={24} />
                                 </div>
                                 <div>
-                                    <div className="text-[10px] font-semibold text-theme-text-secondary uppercase tracking-wider">Proyección Estimada</div>
-                                    <div className="text-xl font-semibold text-white tracking-wider">PUNTAJE GLOBAL</div>
+                                    <div className="text-[10px] font-semibold text-[var(--theme-text-tertiary)] uppercase tracking-wider">Proyección Estimada</div>
+                                    <div className="text-xl font-semibold text-[var(--theme-text-primary)] tracking-wider">PUNTAJE GLOBAL</div>
                                 </div>
                             </div>
-                            <div className="text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-white italic">
+                            <div className="text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-[var(--theme-text-primary)] italic">
                                 ~{((analysis.criticalModule.value + analysis.strengthModule.value) / 2 * 3).toFixed(0)}
                             </div>
                         </div>

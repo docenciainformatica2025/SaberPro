@@ -89,7 +89,7 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
                 </Badge>
             </div>
 
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-[var(--theme-text-primary)] leading-tight mb-10 tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-bold text-[var(--theme-text-primary)] leading-tight mb-10 tracking-tight">
                 {question.text}
             </h2>
 
@@ -97,7 +97,7 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
             {question.isPromptOnly ? (
                 <div className="space-y-4 mb-8">
                     <textarea
-                        className="w-full h-48 p-6 rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[var(--theme-bg-surface)] text-slate-900 dark:text-[var(--theme-text-primary)] focus:border-brand-primary outline-none transition-all duration-180 ease-out placeholder:text-slate-300 dark:placeholder:text-[var(--theme-text-secondary)]/30 font-medium"
+                        className="w-full h-48 p-6 rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] text-[var(--theme-text-primary)] focus:border-brand-primary outline-none transition-all duration-180 ease-out placeholder:text-[var(--theme-text-tertiary)]/30 font-medium"
                         placeholder="Escribe tu análisis aquí..."
                         disabled={showResult}
                         value={promptResponse}
@@ -113,7 +113,7 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
                         const isSelected = selectedOptionId === option.id;
                         const isCorrect = option.id === question.correctAnswer;
 
-                        let optionStyle = "bg-white dark:bg-[var(--theme-bg-surface)] border-slate-200 dark:border-white/10 text-slate-600 dark:text-[var(--theme-text-secondary)] hover:border-brand-primary/50 hover:bg-brand-primary/[0.02]";
+                        let optionStyle = "bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)] text-[var(--theme-text-secondary)] hover:border-brand-primary/50 hover:bg-brand-primary/[0.02]";
 
                         if (showResult) {
                             if (isCorrect) {

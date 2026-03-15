@@ -15,16 +15,16 @@ export default function SupportPage() {
                 {/* Header */}
                 <div className="space-y-6 text-center">
                     <Link href="/">
-                        <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-slate-600 hover:text-brand-primary uppercase tracking-[0.2em] font-black text-[9px] mb-2 transition-all">
+                        <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-[var(--theme-text-secondary)] hover:text-brand-primary uppercase tracking-[0.2em] font-black text-[9px] mb-2 transition-all">
                             Volver al Inicio
                         </Button>
                     </Link>
 
-                    <Badge variant="ghost" className="mx-auto text-slate-600 font-bold tracking-widest uppercase px-3 h-7 bg-slate-50 border border-slate-200">
+                    <Badge variant="ghost" className="mx-auto text-[var(--theme-text-secondary)] font-bold tracking-widest uppercase px-3 h-7 bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)]">
                         Soporte 24/7
                     </Badge>
 
-                    <h1 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight leading-none text-balance">
+                    <h1 className="text-3xl md:text-5xl font-bold text-[var(--theme-text-primary)] tracking-tight leading-none text-balance">
                         Centro de <span className="text-brand-primary italic">Ayuda</span>
                     </h1>
                     <p className="text-[var(--theme-text-secondary)] max-w-2xl mx-auto leading-relaxed">
@@ -39,7 +39,7 @@ export default function SupportPage() {
                     <Card variant="glass" className="p-8 md:p-10 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]/20 shadow-[var(--theme-shadow-md)]">
                         <div className="flex items-center gap-2 mb-8">
                             <HelpCircle size={18} className="text-brand-primary" />
-                            <h2 className="text-xl font-bold text-slate-800 tracking-tight">Preguntas Frecuentes</h2>
+                            <h2 className="text-xl font-bold text-[var(--theme-text-primary)] tracking-tight">Preguntas Frecuentes</h2>
                         </div>
 
                         <div className="grid gap-4">
@@ -49,11 +49,11 @@ export default function SupportPage() {
                                 { q: "La App se cierra sola o va lenta.", a: "Por favor, asegúrate de tener la última versión instalada. Intenta borrar la memoria caché de la App en los ajustes de tu teléfono o prueba reinstalando." },
                                 { q: "Olvidé mi contraseña.", a: "Utiliza la opción '¿Olvidaste tu contraseña?' en la pantalla de inicio para restablecerla vía correo electrónico." }
                             ].map((item, i) => (
-                                <div key={i} className="bg-slate-50/50 dark:bg-[var(--theme-bg-surface)]/20 p-6 rounded-xl border border-slate-100 dark:border-[var(--theme-border-soft)] hover:border-brand-primary/30 transition-colors group">
-                                    <h3 className="font-bold text-slate-900 dark:text-[var(--theme-text-primary)] mb-2 text-sm flex items-start gap-2">
+                                <div key={i} className="bg-[var(--theme-bg-base)] p-6 rounded-xl border border-[var(--theme-border-soft)] hover:border-brand-primary/30 transition-colors group">
+                                    <h3 className="font-bold text-[var(--theme-text-primary)] mb-2 text-sm flex items-start gap-2">
                                         <span className="text-brand-primary select-none font-semibold text-xs uppercase tracking-wider">P:</span> {item.q}
                                     </h3>
-                                    <p className="text-xs text-slate-600 dark:text-[var(--theme-text-tertiary)] leading-relaxed pl-6 group-hover:text-slate-900 dark:group-hover:text-[var(--theme-text-secondary)] transition-colors">
+                                    <p className="text-xs text-[var(--theme-text-secondary)] leading-relaxed pl-6 group-hover:text-[var(--theme-text-primary)] transition-colors">
                                         {item.a}
                                     </p>
                                 </div>
@@ -65,20 +65,20 @@ export default function SupportPage() {
                     <Card variant="premium" className="p-8 md:p-10 relative overflow-hidden bg-gradient-to-br from-brand-primary/5 to-slate-50 border-brand-primary/20">
                         <div className="flex items-center gap-2 mb-8 relative z-10">
                             <Mail size={18} className="text-brand-primary" />
-                            <h2 className="text-xl font-bold text-slate-900 tracking-tight">Contacto Directo</h2>
+                            <h2 className="text-xl font-bold text-[var(--theme-text-primary)] tracking-tight">Contacto Directo</h2>
                         </div>
 
-                        <p className="mb-8 text-sm text-slate-600 leading-relaxed relative z-10 font-medium">
+                        <p className="mb-8 text-sm text-[var(--theme-text-secondary)] leading-relaxed relative z-10 font-medium">
                             Si tu problema persiste no dudes en escribirnos. El equipo de soporte (dirigido por el Ing. {AUTHOR_NAME}) responderá en <strong>24-48 horas hábiles</strong>.
                         </p>
 
                         <div className="flex flex-col md:flex-row gap-6 relative z-10">
-                            <a href={`mailto:${CONTACT_EMAIL}`} className="flex-1 bg-white border border-slate-200 p-6 rounded-xl flex items-center gap-6 hover:bg-slate-50 transition-colors group hover:border-brand-primary/50 shadow-sm">
+                            <a href={`mailto:${CONTACT_EMAIL}`} className="flex-1 bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] p-6 rounded-xl flex items-center gap-6 hover:bg-[var(--theme-bg-base)] transition-colors group hover:border-brand-primary/50 shadow-sm">
                                 <div className="p-4 bg-brand-primary text-white rounded-xl group-hover:scale-110 transition-transform shadow-lg shadow-brand-primary/20">
                                     <Mail size={24} />
                                 </div>
                                 <div>
-                                    <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold mb-1">Correo de Soporte</p>
+                                    <p className="text-[10px] text-[var(--theme-text-tertiary)] uppercase tracking-wider font-semibold mb-1">Correo de Soporte</p>
                                     <p className="text-brand-primary font-bold text-sm md:text-base break-all">{CONTACT_EMAIL}</p>
                                 </div>
                             </a>

@@ -107,7 +107,7 @@ export default function ProfilePage() {
 
                 <div className="mb-8 flex items-center justify-between">
                     <Link href="/dashboard">
-                        <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-slate-500 hover:text-brand-primary uppercase tracking-wider text-[10px] font-bold transition-colors">
+                        <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-[var(--theme-text-secondary)] hover:text-brand-primary uppercase tracking-wider text-[10px] font-bold transition-colors">
                             Volver al Inicio
                         </Button>
                     </Link>
@@ -125,17 +125,17 @@ export default function ProfilePage() {
                             </div>
                         </div>
                         <div>
-                            <h2 className="text-lg font-bold text-slate-800 tracking-tight break-words">{formData.fullName || "Estudiante"}</h2>
+                            <h2 className="text-lg font-bold text-[var(--theme-text-primary)] tracking-tight break-words">{formData.fullName || "Estudiante"}</h2>
                             <p className="text-brand-primary font-bold text-[8px] uppercase tracking-widest mt-1.5">{user?.email}</p>
                         </div>
-                        <div className="w-full h-px bg-slate-100 dark:bg-[var(--theme-border-soft)]" />
+                        <div className="w-full h-px bg-[var(--theme-border-soft)]" />
                         <div className="w-full space-y-4">
                             <div className="flex justify-between items-center text-xs">
-                                <span className="text-slate-500 uppercase font-bold text-[10px] tracking-wider">Rol</span>
+                                <span className="text-[var(--theme-text-tertiary)] uppercase font-bold text-[10px] tracking-wider">Rol</span>
                                 <Badge variant="default" className="text-[9px]">ESTUDIANTE</Badge>
                             </div>
                             <div className="flex justify-between items-center text-xs">
-                                <span className="text-slate-500 uppercase font-bold text-[10px] tracking-wider">Plan</span>
+                                <span className="text-[var(--theme-text-tertiary)] uppercase font-bold text-[10px] tracking-wider">Plan</span>
                                 <Badge variant="primary" className="text-[9px] animate-pulse">PRO</Badge>
                             </div>
                         </div>
@@ -143,15 +143,15 @@ export default function ProfilePage() {
 
                     {/* Form Card */}
                     <Card variant="glass" className="p-8 md:col-span-2 border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)]">
-                        <div className="flex items-center gap-2 mb-6 pb-4 border-b border-slate-100">
+                        <div className="flex items-center gap-2 mb-6 pb-4 border-b border-[var(--theme-border-soft)]">
                             <Sparkles className="text-brand-primary" size={18} />
-                            <h3 className="text-lg font-bold text-slate-800 tracking-tight">Configuración de Perfil</h3>
+                            <h3 className="text-lg font-bold text-[var(--theme-text-primary)] tracking-tight">Configuración de Perfil</h3>
                         </div>
 
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-1">Nombre Completo</label>
+                                    <label className="text-[10px] font-bold uppercase tracking-wider text-[var(--theme-text-tertiary)] ml-1">Nombre Completo</label>
                                     <div className="relative group">
                                         <Input
                                             name="fullName"
@@ -161,30 +161,30 @@ export default function ProfilePage() {
                                             className="pl-10 uppercase transition-all focus:border-brand-primary/50"
                                             required
                                         />
-                                        <UserIcon size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-primary transition-colors" />
+                                        <UserIcon size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--theme-text-tertiary)] group-focus-within:text-brand-primary transition-colors" />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-1">Grado Actual</label>
+                                    <label className="text-[10px] font-bold uppercase tracking-wider text-[var(--theme-text-tertiary)] ml-1">Grado Actual</label>
                                     <div className="relative group">
                                         <select
                                             name="gradeLevel"
                                             value={formData.gradeLevel}
                                             onChange={handleChange}
-                                            className="w-full bg-[var(--theme-bg-base)] border border-slate-200 dark:border-[var(--theme-border-soft)] rounded-xl px-4 pl-10 h-10 text-sm text-[var(--theme-text-primary)] focus:outline-none focus:border-brand-primary/50 transition-all appearance-none uppercase"
+                                            className="w-full bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] rounded-xl px-4 pl-10 h-10 text-sm text-[var(--theme-text-primary)] focus:outline-none focus:border-brand-primary/50 transition-all appearance-none uppercase"
                                         >
                                             <option value="9" className="bg-[var(--theme-bg-base)]">9° GRADO</option>
                                             <option value="10" className="bg-[var(--theme-bg-base)]">10° GRADO</option>
                                             <option value="11" className="bg-[var(--theme-bg-base)]">11° GRADO</option>
                                             <option value="GRADUADO" className="bg-[var(--theme-bg-base)]">Egresado</option>
                                         </select>
-                                        <GraduationCap size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-primary transition-colors" />
+                                        <GraduationCap size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--theme-text-tertiary)] group-focus-within:text-brand-primary transition-colors" />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2 md:col-span-2">
-                                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-1">Institución Educativa</label>
+                                    <label className="text-[10px] font-bold uppercase tracking-wider text-[var(--theme-text-tertiary)] ml-1">Institución Educativa</label>
                                     <div className="relative group">
                                         <Input
                                             name="institution"
@@ -194,12 +194,12 @@ export default function ProfilePage() {
                                             className="pl-10 uppercase focus:border-brand-primary/50"
                                             required
                                         />
-                                        <School size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-primary transition-colors" />
+                                        <School size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--theme-text-tertiary)] group-focus-within:text-brand-primary transition-colors" />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-1">Carrera de Interés</label>
+                                    <label className="text-[10px] font-bold uppercase tracking-wider text-[var(--theme-text-tertiary)] ml-1">Carrera de Interés</label>
                                     <div className="relative group">
                                         <Input
                                             name="targetCareer"
@@ -209,7 +209,7 @@ export default function ProfilePage() {
                                             className="pl-10 uppercase focus:border-brand-primary/50"
                                             required
                                         />
-                                        <Target size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-primary transition-colors" />
+                                        <Target size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--theme-text-tertiary)] group-focus-within:text-brand-primary transition-colors" />
                                     </div>
                                 </div>
 

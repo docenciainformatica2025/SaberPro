@@ -42,3 +42,5 @@ next-env.d.ts
 
 # Firebase Admin SDK (Sensitive)
 lib/firebase-admin-sdk.json
+
+.vercel

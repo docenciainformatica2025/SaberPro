@@ -129,9 +129,9 @@ export default function RegisterPage() {
                     <div className="space-y-4">
                         <div className="flex items-center gap-3">
                             <div className="h-px w-8 bg-brand-primary/30" />
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Membresía Vitalicia</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--theme-text-tertiary)]">Membresía Vitalicia</span>
                         </div>
-                        <h2 className="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight">
+                        <h2 className="text-5xl md:text-6xl font-bold text-[var(--theme-text-primary)] leading-[1.1] tracking-tight">
                             Empieza tu <br />
                             <span className="text-brand-primary italic">Viaje Heroico</span>
                         </h2>
@@ -147,7 +147,7 @@ export default function RegisterPage() {
                             "Simuladores de alta fidelidad",
                             "Análisis de brechas de conocimiento"
                         ].map((item, i) => (
-                            <div key={i} className="flex items-center gap-3 text-slate-500 dark:text-slate-400 font-bold uppercase text-[9px] tracking-widest">
+                            <div key={i} className="flex items-center gap-3 text-[var(--theme-text-tertiary)] font-bold uppercase text-[9px] tracking-widest">
                                 <div className="w-7 h-7 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary shadow-sm border border-brand-primary/20">
                                     <CheckCircleIcon size={14} />
                                 </div>
@@ -158,10 +158,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="relative z-10 flex items-center gap-4 opacity-70">
-                    <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-white/5 flex items-center justify-center border border-slate-200 dark:border-white/5">
+                    <div className="w-12 h-12 rounded-2xl bg-[var(--theme-bg-base)] flex items-center justify-center border border-[var(--theme-border-soft)]">
                         <LockIcon size={20} className="text-brand-primary" />
                     </div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-[var(--theme-text-tertiary)]">
+                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[var(--theme-text-tertiary)]">
                         Protección de datos nivel bancario
                     </p>
                 </div>
@@ -186,15 +186,15 @@ export default function RegisterPage() {
                         </div>
 
                         <div className="space-y-2">
-                            <h1 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight leading-none">
+                            <h1 className="text-3xl font-bold text-[var(--theme-text-primary)] tracking-tight leading-none">
                                 Crear <span className="text-brand-primary">Cuenta</span>
                             </h1>
-                            <p className="text-slate-500 text-sm font-medium">Completa tus datos para activar tu acceso premium.</p>
+                            <p className="text-[var(--theme-text-secondary)] text-sm font-medium">Completa tus datos para activar tu acceso premium.</p>
                         </div>
                     </div>
 
                     {/* Form Container: Advanced Glassmorphism */}
-                    <div className="bg-white/80 dark:bg-slate-900/40 backdrop-blur-2xl border border-slate-200 dark:border-white/5 p-8 sm:p-10 rounded-[2.5rem] shadow-xl dark:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] relative overflow-hidden group">
+                    <div className="bg-[var(--theme-bg-surface)] backdrop-blur-2xl border border-[var(--theme-border-soft)] p-8 sm:p-10 rounded-[2.5rem] shadow-xl dark:shadow-[var(--shadow-4k)] relative overflow-hidden group">
                         <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-brand-primary to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-700" />
 
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 relative z-10">
@@ -211,7 +211,7 @@ export default function RegisterPage() {
 
                                 <div className="space-y-3">
                                     <div className="flex justify-between items-center px-1">
-                                        <label className="text-[10px] font-black text-slate-500 dark:text-white/40 uppercase tracking-[0.2em]">CONTRASEÑA SEGURA</label>
+                                        <label className="text-[10px] font-black text-[var(--theme-text-tertiary)] uppercase tracking-[0.2em]">CONTRASEÑA SEGURA</label>
                                         <button type="button" onClick={generatePassword} className="text-[9px] font-black uppercase tracking-tighter text-brand-primary/60 hover:text-brand-primary transition-all flex items-center gap-1.5">
                                             <RefreshIcon size={12} /> Sugerir Clave
                                         </button>
@@ -239,10 +239,10 @@ export default function RegisterPage() {
                                     className="bg-[var(--theme-bg-base)]/50 border-white/5 focus:border-brand-primary/40 text-sm h-14 rounded-2xl transition-all"
                                 />
 
-                                <div className="pt-4 border-t border-white/5 space-y-6">
-                                    <div className="flex items-start gap-3 bg-slate-50 dark:bg-white/[0.02] p-4 rounded-2xl border border-slate-200 dark:border-white/5">
-                                        <input type="checkbox" id="terms" {...register("terms")} className="mt-1 h-5 w-5 rounded-lg border-slate-300 dark:border-white/10 text-brand-primary focus:ring-brand-primary bg-white dark:bg-black/40 cursor-pointer" />
-                                        <label htmlFor="terms" className="text-[11px] text-slate-600 dark:text-[var(--theme-text-tertiary)] leading-relaxed cursor-pointer select-none">
+                                <div className="pt-4 border-t border-[var(--theme-border-soft)] space-y-6">
+                                    <div className="flex items-start gap-3 bg-[var(--theme-bg-base)] p-4 rounded-2xl border border-[var(--theme-border-soft)]">
+                                        <input type="checkbox" id="terms" {...register("terms")} className="mt-1 h-5 w-5 rounded-lg border-[var(--theme-border-soft)] text-brand-primary focus:ring-brand-primary bg-[var(--theme-bg-surface)] cursor-pointer" />
+                                        <label htmlFor="terms" className="text-[11px] text-[var(--theme-text-secondary)] leading-relaxed cursor-pointer select-none">
                                             Acepto los <Link href="/legal/terms" target="_blank" className="text-brand-primary font-bold hover:underline">Términos</Link>, <Link href="/legal/privacy" target="_blank" className="text-brand-primary font-bold hover:underline">Privacidad</Link> y el uso de <Link href="/legal/cookies" target="_blank" className="text-brand-primary font-bold hover:underline">Cookies</Link>.
                                         </label>
                                     </div>
@@ -271,7 +271,7 @@ export default function RegisterPage() {
                                 <div className="w-full border-t border-white/5"></div>
                             </div>
                             <div className="relative flex justify-center text-[9px] font-black uppercase tracking-[0.3em]">
-                                <span className="bg-white dark:bg-[#121212] px-4 text-slate-400 dark:text-white/30 truncate">O regístrate con</span>
+                                <span className="bg-[var(--theme-bg-surface)] px-4 text-[var(--theme-text-tertiary)] truncate">O regístrate con</span>
                             </div>
                         </div>
 
@@ -279,14 +279,14 @@ export default function RegisterPage() {
                             onClick={handleGoogleLogin}
                             disabled={googleLoading}
                             variant="outline"
-                            className="w-full h-12 text-[10px] font-black uppercase tracking-[0.25em] border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-white-[0.02] hover:bg-slate-100 dark:hover:bg-white-[0.05] text-slate-700 dark:text-white rounded-2xl transition-all"
+                            className="w-full h-12 text-[10px] font-black uppercase tracking-[0.25em] border-[var(--theme-border-soft)] bg-[var(--theme-bg-base)] hover:bg-[var(--theme-bg-surface)] text-[var(--theme-text-primary)] rounded-2xl transition-all"
                             isLoading={googleLoading}
                         >
                             <Chrome size={18} className="mr-3" /> Registrar con Google
                         </Button>
                     </div>
 
-                    <div className="pt-8 text-center text-[9px] font-black uppercase tracking-[0.4em] text-slate-400 dark:text-white/20">
+                    <div className="pt-8 text-center text-[9px] font-black uppercase tracking-[0.4em] text-[var(--theme-text-tertiary)]">
                         © {BRAND_YEAR} • {COPYRIGHT_TEXT}
                     </div>
                 </div>

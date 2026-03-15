@@ -154,6 +154,7 @@ export const generateCoupons = async (count: number, plan: 'pro' | 'teacher', de
     const results = [];
     console.log(`Iniciando generación de ${count} cupones para plan ${plan}...`);
 
+    const batchSize = 10;
     for (let i = 0; i < count; i++) {
         try {
             const code = Math.random().toString(36).substring(2, 10).toUpperCase();
@@ -169,10 +170,16 @@ export const generateCoupons = async (count: number, plan: 'pro' | 'teacher', de
             await setDoc(couponRef, data);
             results.push(data);
             console.log(` Cupón generado: ${code}`);
+
+            if ((i + 1) % batchSize === 0) {
+                console.log(`Procesados ${i + 1} de ${count}...`);
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
         } catch (error: any) {
             console.error(` Error generando cupón en iteración ${i}:`, error);
             throw new Error(`Falló la generación masiva: ${error.message}`);
         }
     }
+    console.log(`Generación completada: ${results.length} códigos`);
     return results;
 };

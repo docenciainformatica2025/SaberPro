@@ -34,14 +34,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         );
 
         const variants = {
-            primary: "bg-brand-primary text-white shadow-[0_1px_2px_rgba(0,0,0,0.1)] hover:brightness-110 active:scale-[0.98] ring-1 ring-white/10",
-            success: "bg-brand-success text-slate-950 shadow-[0_1px_2px_rgba(0,0,0,0.1)] hover:brightness-105 active:scale-[0.98] ring-1 ring-black/5",
-            accent: "bg-brand-accent text-slate-950 shadow-[0_1px_2px_rgba(0,0,0,0.1)] hover:brightness-105 active:scale-[0.98] ring-1 ring-black/5",
-            error: "bg-brand-error text-white shadow-[0_1px_2px_rgba(0,0,0,0.1)] hover:brightness-110 active:scale-[0.98] ring-1 ring-white/10",
-            outline: "bg-transparent border-[0.5px] border-theme-border-soft text-theme-text-primary hover:bg-[var(--theme-bg-surface)] hover:border-brand-primary/30 active:scale-[0.98] ring-1 ring-black/5",
-            ghost: "bg-transparent text-slate-700 hover:bg-[var(--theme-bg-surface)] hover:text-theme-text-primary active:scale-[0.98]",
+            primary: "bg-brand-primary text-white shadow-sm hover:brightness-110 active:scale-[0.98]",
+            success: "bg-brand-success text-white shadow-sm hover:brightness-105 active:scale-[0.98]",
+            accent: "bg-brand-accent text-white shadow-sm hover:brightness-105 active:scale-[0.98]",
+            error: "bg-brand-error text-white shadow-sm hover:brightness-110 active:scale-[0.98]",
+            outline: "bg-transparent border border-[var(--theme-border-soft)] text-[var(--theme-text-primary)] hover:bg-[var(--theme-bg-surface)] hover:border-brand-primary/30 active:scale-[0.98]",
+            ghost: "bg-transparent text-[var(--theme-text-secondary)] hover:bg-[var(--theme-bg-surface)] hover:text-[var(--theme-text-primary)] active:scale-[0.98]",
             link: "bg-transparent text-brand-primary hover:underline underline-offset-4",
-            premium: "bg-gradient-to-r from-brand-primary to-[#B8860B] text-slate-950 shadow-gold hover:shadow-[0_0_20px_rgba(212,175,55,0.6)] hover:brightness-110 border border-yellow-400/20",
+            premium: "bg-gradient-to-r from-brand-primary to-brand-primary-light text-white shadow-lg hover:brightness-110 border border-white/10",
         };
 
         const sizes = {
