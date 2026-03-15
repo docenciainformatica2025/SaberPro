@@ -16,6 +16,7 @@ import {
     DollarSign,
     KeyRound
 } from "lucide-react";
+import { Logo } from "@/components/ui/Logo";
 
 
 interface AdminSidebarProps {
@@ -87,18 +88,18 @@ function SidebarContent({ navGroups, pathname, onClose }: { navGroups: any[], pa
     return (
         <div className="flex flex-col h-full">
             {/* Header */}
-            <div className="p-6 border-b border-[var(--theme-border-soft)]">
-                <div className="flex items-center gap-2.5 text-brand-primary px-1">
-                    <ShieldAlert size={18} />
+            <div className="p-7 border-b border-[var(--theme-border-soft)] bg-[var(--theme-bg-base)]/30">
+                <div className="flex items-center gap-3 px-1">
+                    <Logo variant="icon-only" size="sm" />
                     <div>
-                        <h1 className="font-bold text-sm tracking-tight text-slate-900 dark:text-white">Panel Control</h1>
-                        <p className="text-[9px] text-slate-500 dark:text-slate-400 uppercase tracking-widest font-bold">Admin</p>
+                        <h1 className="font-black text-base tracking-tight text-[var(--theme-text-primary)] font-academic leading-none">Panel Control</h1>
+                        <p className="text-[10px] text-[var(--theme-text-tertiary)] uppercase tracking-[0.2em] font-black mt-1">SaberPro Elite</p>
                     </div>
                 </div>
                 {/* Status Indicator sutil */}
-                <div className="mt-3 flex items-center gap-2 px-1">
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Sistema Activo</span>
+                <div className="mt-4 flex items-center gap-2 px-1">
+                    <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.5)] animate-pulse" />
+                    <span className="text-[10px] font-black text-[var(--theme-text-tertiary)] uppercase tracking-[0.15em]">Sistema Certificado</span>
                 </div>
             </div>
 
@@ -106,7 +107,7 @@ function SidebarContent({ navGroups, pathname, onClose }: { navGroups: any[], pa
             <nav className="flex-1 overflow-y-auto py-6 px-4 space-y-8 custom-scrollbar">
                 {navGroups.map((group: any, idx: number) => (
                     <div key={idx}>
-                        <h3 className="text-[10px] uppercase tracking-wider text-[var(--theme-text-quaternary)] font-bold mb-3 pl-3">
+                        <h3 className="text-[10px] uppercase tracking-[0.25em] text-[var(--theme-text-tertiary)] font-black mb-4 pl-3">
                             {group.title}
                         </h3>
                         <div className="space-y-1">

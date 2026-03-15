@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import PrivacyContent from "@/components/legal/PrivacyContent";
 import { Button } from "@/components/ui/Button";
+import { Logo } from "@/components/ui/Logo";
 
 export default function PrivacyPage() {
     return (
@@ -12,13 +13,23 @@ export default function PrivacyPage() {
 
                 {/* Header */}
                 <div className="space-y-6 text-center">
-                    <Link href="/">
-                        <Button variant="ghost" size="sm" icon={ArrowLeft} className="text-slate-500 hover:text-brand-primary uppercase tracking-[0.2em] font-black text-[9px] mb-2 transition-all">
-                            Volver al Inicio
-                        </Button>
-                    </Link>
-                    <h1 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight leading-none">
-                        Política de Privacidad
+                    <div className="flex flex-col items-center gap-6">
+                        <Link href="/">
+                            <Logo variant="full" size="md" className="hover:scale-105 transition-transform" />
+                        </Link>
+                        <Link href="/">
+                            <Button
+                                variant="ghost"
+                                size="sm"
+                                icon={ArrowLeft}
+                                className="text-[var(--theme-text-tertiary)] hover:text-brand-primary uppercase tracking-[0.2em] font-black text-[9px] transition-all"
+                            >
+                                Volver al Inicio
+                            </Button>
+                        </Link>
+                    </div>
+                    <h1 className="text-4xl md:text-6xl font-black text-[var(--theme-text-primary)] tracking-tightest leading-[0.9] font-academic">
+                        Política de <span className="text-brand-primary italic">Privacidad</span>
                     </h1>
                 </div>
 

@@ -53,9 +53,14 @@ export default function DashboardPage() {
         const loadData = async () => {
             setIsLoadingStats(true);
             try {
+                // Fetch stats first as challenge depends on it
                 const dashboardStats = await StudentService.getDashboardStats(user.uid);
                 if (dashboardStats) {
                     setStats(dashboardStats);
+
+                    // Now we can fetch challenge, we'll keep it separate if needed, 
+                    // but since challenge depends on stats, we wait.
+                    // If challenge was independent, we'd use Promise.all.
                     const dailyChallenge = await StudentService.getDailyChallenge(user.uid, dashboardStats);
                     setChallenge(dailyChallenge);
                 }
@@ -80,9 +85,9 @@ export default function DashboardPage() {
 
             <div className="px-6 pt-10 pb-4 flex items-center justify-between relative z-10 animate-in fade-in slide-in-from-top-4 duration-1000">
                 <div className="space-y-0.5">
-                    <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--theme-text-tertiary)]">Continuar entrenamiento</p>
-                    <h1 className="text-xl md:text-2xl font-bold text-[var(--theme-text-primary)] tracking-tight leading-none">
-                        Hola, <span className="text-brand-primary">{userName}</span>
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--theme-text-tertiary)]">Continuar entrenamiento</p>
+                    <h1 className="text-3xl md:text-3xl font-black text-[var(--theme-text-primary)] tracking-tight leading-none font-academic">
+                        Hola, <span className="text-gradient-maestro">{userName}</span>
                     </h1>
                 </div>
                 <div className="w-8 h-8 flex items-center justify-center bg-[var(--theme-bg-surface)] shadow-sm rounded-lg border border-[var(--theme-border-soft)] group active:scale-95 transition-all">
@@ -146,8 +151,8 @@ export default function DashboardPage() {
 
                         <div className="flex items-center justify-between mt-auto">
                             <Link href="/planner">
-                                <Button className="h-9 px-5 text-[10px] font-bold uppercase tracking-widest rounded-lg bg-brand-primary text-white shadow-md hover:translate-y-[-1px] transition-all">
-                                    Continuar Ruta <ChevronRight size={12} className="ml-1" />
+                                <Button variant="maestro" className="h-10 px-6 rounded-xl shadow-premium">
+                                    Continuar Ruta <ChevronRight size={14} className="ml-2" />
                                 </Button>
                             </Link>
                             <HikerIllustration />
@@ -176,16 +181,17 @@ export default function DashboardPage() {
                                         <Gift size={24} className="text-white" strokeWidth={2.5} />
                                     </div>
                                     <div>
-                                        <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">Módulo sugerido</p>
-                                        <h4 className="text-base font-bold text-slate-800 tracking-tight">“{challenge?.label || 'Lectura Crítica'}”</h4>
+                                        <p className="text-[10px] font-black text-[var(--theme-text-tertiary)] uppercase tracking-[0.2em] mb-0.5">Módulo sugerido</p>
+                                        <h4 className="text-lg font-bold text-[var(--theme-text-primary)] tracking-tight font-academic">“{challenge?.label || 'Lectura Crítica'}”</h4>
                                     </div>
                                 </div>
 
                                 <Link href={`/training/${challenge?.module || 'lectura_critica'}`}>
                                     <Button
-                                        className="w-full bg-slate-900 text-white hover:bg-black font-bold rounded-xl h-12 text-[10px] uppercase tracking-widest shadow-sm"
+                                        variant="maestro"
+                                        className="w-full h-14 rounded-2xl"
                                     >
-                                        <span className="relative z-10">Comenzar ahora</span>
+                                        <span className="relative z-10">Comenzar entrenamiento</span>
                                     </Button>
                                 </Link>
                             </div>
@@ -195,27 +201,30 @@ export default function DashboardPage() {
 
             </div>
 
-            {/* Bottom Navigation - Ultra Sleek v2026 */}
-            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-64px)] max-w-sm bg-black/95 backdrop-blur-3xl rounded-full p-1.5 flex justify-around items-center shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] border border-white/10 z-50 animate-in slide-in-from-bottom-8 duration-1000">
-                <Link href="/dashboard" className="flex-1 flex flex-col items-center gap-1 py-1.5 touch-manipulation group">
-                    <div className="p-2 rounded-xl bg-brand-primary text-white shadow-lg transition-all transform group-active:scale-90">
-                        <Home size={18} strokeWidth={2.5} />
+            {/* Bottom Navigation - Ultra Sleek Maestro v2.1 (Mobile Only) */}
+            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-48px)] max-w-sm bg-[var(--theme-bg-surface)] backdrop-blur-3xl rounded-[2rem] p-2 flex justify-around items-center shadow-premium border border-[var(--theme-border-soft)] z-50 animate-in slide-in-from-bottom-8 duration-1000">
+                <Link href="/dashboard" className="flex-1 flex flex-col items-center gap-1.5 py-1.5 touch-manipulation group">
+                    <div className="p-3 rounded-2xl bg-brand-primary text-white shadow-lg transition-all transform group-active:scale-90">
+                        <Home size={20} strokeWidth={2.5} />
                     </div>
-                    <span className="text-[8px] font-black text-white dark:text-brand-primary uppercase tracking-widest">Inicio</span>
+                    <span className="text-[9px] font-black text-brand-primary uppercase tracking-[0.2em] relative">
+                        Inicio
+                        <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-brand-primary rounded-full"></span>
+                    </span>
                 </Link>
 
-                <Link href="/mentor" className="flex-1 flex flex-col items-center gap-1 py-1.5 touch-manipulation group opacity-40 hover:opacity-100 transition-all">
-                    <div className="p-2 rounded-xl text-white">
-                        <MapIcon size={18} strokeWidth={2} />
+                <Link href="/planner" className="flex-1 flex flex-col items-center gap-1.5 py-1.5 touch-manipulation group opacity-50 hover:opacity-100 transition-all">
+                    <div className="p-3 rounded-2xl text-[var(--theme-text-primary)]">
+                        <MapIcon size={20} strokeWidth={2} />
                     </div>
-                    <span className="text-[8px] font-black text-white uppercase tracking-widest">Ruta</span>
+                    <span className="text-[9px] font-black uppercase tracking-[0.2em]">Ruta</span>
                 </Link>
 
-                <Link href="/achievements" className="flex-1 flex flex-col items-center gap-1 py-1.5 touch-manipulation group opacity-40 hover:opacity-100 transition-all">
-                    <div className="p-2 rounded-xl text-white">
-                        <Award size={18} strokeWidth={2} />
+                <Link href="/achievements" className="flex-1 flex flex-col items-center gap-1.5 py-1.5 touch-manipulation group opacity-50 hover:opacity-100 transition-all">
+                    <div className="p-3 rounded-2xl text-[var(--theme-text-primary)]">
+                        <Award size={20} strokeWidth={2} />
                     </div>
-                    <span className="text-[8px] font-black text-white uppercase tracking-widest">Logros</span>
+                    <span className="text-[9px] font-black uppercase tracking-[0.2em]">Logros</span>
                 </Link>
             </div>
         </div>

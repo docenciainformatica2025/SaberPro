@@ -115,10 +115,10 @@ export default function ForgotPasswordPage() {
                         <button
                             type="submit"
                             disabled={loading || !!message}
-                            className="w-full bg-brand-primary text-black font-bold py-3.5 rounded-xl shadow-lg hover:shadow-brand-primary/20 hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed mt-2"
+                            className="w-full bg-brand-primary hover:bg-brand-primary/95 text-white shadow-xl shadow-brand-primary/20 text-[11px] font-black uppercase tracking-[0.35em] rounded-2xl h-14 transform hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed mt-2"
                         >
                             {loading ? (
-                                <span className="animate-pulse">Enviando...</span>
+                                <span className="animate-pulse">Autenticando...</span>
                             ) : (
                                 "Enviar Enlace de Recuperación"
                             )}

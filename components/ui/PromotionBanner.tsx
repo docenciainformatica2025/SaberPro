@@ -40,26 +40,25 @@ export default function PromotionBanner() {
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                className="relative bg-brand-primary overflow-hidden"
+                className="relative bg-[var(--theme-bg-surface)] border-b border-[var(--theme-border-soft)] overflow-hidden"
             >
-                <div className="absolute inset-0 bg-white/10 animate-pulse pointer-events-none" />
-                <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4 relative z-10">
-                    <div className="flex items-center gap-3">
-                        <div className="bg-white/10 p-1.5 rounded-lg">
-                            <Megaphone size={16} className="text-white" />
+                <div className="absolute inset-0 bg-brand-primary/[0.03] pointer-events-none" />
+                <div className="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between gap-4 relative z-10">
+                    <div className="flex items-center gap-4">
+                        <div className="bg-brand-primary/10 p-2 rounded-xl text-brand-primary">
+                            <Zap size={16} strokeWidth={2.5} className="animate-pulse" />
                         </div>
-                        <p className="text-xs md:text-sm font-semibold text-white uppercase tracking-tight italic flex items-center gap-2">
-                            <Sparkles size={14} className="animate-bounce" /> {promoText}
+                        <p className="text-[10px] md:text-xs font-black text-[var(--theme-text-primary)] uppercase tracking-[0.15em] leading-none">
+                            {promoText}
                         </p>
                     </div>
 
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-4">
                         <Link href="/pricing" className="hidden md:block">
                             <Button
-                                variant="outline"
+                                variant="maestro"
                                 size="sm"
-                                icon={Zap}
-                                className="bg-white text-brand-primary hover:bg-white/90 border-none shadow-sm text-[10px]"
+                                className="h-8 md:h-9 px-5 rounded-full text-[9px] shadow-premium"
                             >
                                 Obtener Beneficio
                             </Button>
@@ -72,7 +71,7 @@ export default function PromotionBanner() {
                                 setDismissed(true);
                             }}
                             icon={X}
-                            className="text-white hover:bg-white/10"
+                            className="text-[var(--theme-text-tertiary)] hover:text-brand-error hover:bg-brand-error/5"
                         />
                     </div>
                 </div>

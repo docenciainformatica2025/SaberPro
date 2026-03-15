@@ -13,6 +13,7 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
+import { formatShortDate, formatLongDate } from "@/utils/dates";
 
 interface Transaction {
     id: string;
@@ -39,29 +40,6 @@ const BRAND_COLORS = {
 };
 
 const CHART_COLORS = ['var(--chart-1)', 'var(--chart-2)', 'var(--chart-3)', 'var(--chart-4)'];
-
-function FileTextIcon(props: React.SVGProps<SVGSVGElement>) {
-    return (
-        <svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
-            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
-            <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-            <path d="M10 9H8" />
-            <path d="M16 13H8" />
-            <path d="M16 17H8" />
-        </svg>
-    );
-}
 
 export default function FinanceDashboard() {
     const router = useRouter();
@@ -90,14 +68,28 @@ export default function FinanceDashboard() {
                 } as Transaction));
                 setTransactions(data);
 
+                // Optimized User Fetching (Batch)
+                const uniqueUserIds = Array.from(new Set(data.map(tx => tx.userId))).filter(Boolean);
                 const uMap: Record<string, FinanceUserProfile> = {};
-                const userPromises = data.map(async (tx) => {
-                    if (!uMap[tx.userId]) {
-                        const uSnap = await getDoc(doc(db, "users", tx.userId));
-                        if (uSnap.exists()) uMap[tx.userId] = uSnap.data();
+
+                if (uniqueUserIds.length > 0) {
+                    // Firestore 'in' query supports up to 30 elements
+                    const chunks = [];
+                    for (let i = 0; i < uniqueUserIds.length; i += 30) {
+                        chunks.push(uniqueUserIds.slice(i, i + 30));
                     }
-                });
-                await Promise.all(userPromises);
+
+                    const userPromises = chunks.map(chunk =>
+                        getDocs(query(collection(db, "users"), where("__name__", "in", chunk)))
+                    );
+
+                    const userSnapshots = await Promise.all(userPromises);
+                    userSnapshots.forEach(snap => {
+                        snap.docs.forEach(doc => {
+                            uMap[doc.id] = doc.data() as FinanceUserProfile;
+                        });
+                    });
+                }
                 setUserMap(uMap);
 
                 const total = data.reduce((acc, curr) => acc + (curr.status === 'completed' ? curr.amount : 0), 0);
@@ -375,7 +367,7 @@ export default function FinanceDashboard() {
                                     <div className="flex items-center justify-between pt-2">
                                         <div className="flex items-center gap-2 text-theme-text-secondary/40 text-[10px] font-bold uppercase">
                                             <Calendar size={12} />
-                                            {tx.createdAt?.seconds ? new Date(tx.createdAt.seconds * 1000).toLocaleDateString('es-CO', { day: '2-digit', month: 'short', year: 'numeric' }) : '---'}
+                                            {formatLongDate(tx.createdAt)}
                                         </div>
                                         <Button
                                             variant="ghost"
@@ -391,7 +383,7 @@ export default function FinanceDashboard() {
                                                 invoiceGenerator.generateInvoice({
                                                     ...tx,
                                                     createdAt: createdAtDate
-                                                } as any, {
+                                                }, {
                                                     fullName: userName,
                                                     email: u.email || "---",
                                                     uid: tx.userId
@@ -457,7 +449,7 @@ export default function FinanceDashboard() {
                                             <td className="px-8 py-5">
                                                 <div className="flex items-center gap-2 text-theme-text-secondary/60 text-[10px] font-bold uppercase italic p-2 bg-[var(--theme-bg-base)] rounded-xl w-fit border border-[var(--theme-border-soft)]">
                                                     <Calendar size={12} className="opacity-40" />
-                                                    {tx.createdAt?.seconds ? new Date(tx.createdAt.seconds * 1000).toLocaleDateString('es-CO', { day: '2-digit', month: 'short' }) : '---'}
+                                                    {formatShortDate(tx.createdAt)}
                                                 </div>
                                             </td>
                                             <td className="px-8 py-5 text-center">
@@ -480,7 +472,7 @@ export default function FinanceDashboard() {
                                                         invoiceGenerator.generateInvoice({
                                                             ...tx,
                                                             createdAt: createdAtDate
-                                                        } as any, {
+                                                        }, {
                                                             fullName: userName,
                                                             email: u.email || "---",
                                                             uid: tx.userId

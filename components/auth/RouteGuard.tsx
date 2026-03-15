@@ -71,9 +71,9 @@ export default function RouteGuard({ children }: { children: React.ReactNode }) 
     // Show nothing (blank or loader) while redirecting or checking
     if (loading || (!isAuthorized && !PUBLIC_ROUTES.some(route => pathname === route || pathname.startsWith(`${route}/`)))) {
         return (
-            <div className="min-h-screen bg-theme-bg-base flex items-center justify-center">
-                <div className="animate-pulse flex flex-col items-center gap-4">
-                    <div className="w-12 h-12 rounded-full border-4 border-brand-primary border-t-transparent animate-spin" />
+            <div className="min-h-screen bg-theme-bg-base flex items-center justify-center" suppressHydrationWarning>
+                <div className="animate-pulse flex flex-col items-center gap-4" suppressHydrationWarning>
+                    <div className="w-12 h-12 rounded-full border-4 border-brand-primary border-t-transparent animate-spin" suppressHydrationWarning />
                     <p className="text-[10px] font-bold uppercase tracking-widest text-theme-text-tertiary">
                         Verificando Acceso...
                     </p>

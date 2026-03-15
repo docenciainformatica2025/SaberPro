@@ -80,8 +80,8 @@ export interface Coupon {
     plan: SubscriptionPlan;
     isUsed: boolean;
     usedBy?: string;
-    usedAt?: any; // Timestamp
-    createdAt: any; // Timestamp
-    expiresAt?: any; // Timestamp
+    usedAt?: number | { seconds: number; nanoseconds: number }; // Unix or Timestamp
+    createdAt: number | { seconds: number; nanoseconds: number };
+    expiresAt?: number | { seconds: number; nanoseconds: number };
     description?: string;
 }

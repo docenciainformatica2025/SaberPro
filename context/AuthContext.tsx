@@ -16,28 +16,8 @@ import { db, auth } from "@/lib/firebase";
 // Force Spanish for Firebase Emails
 auth.languageCode = 'es';
 
+import { UserSubscription, UserProfile } from "@/types/user";
 import { SubscriptionPlan } from "@/types/finance";
-
-// Basic subscription types
-export interface UserSubscription {
-    plan: SubscriptionPlan; // Use shared Type
-    status: 'active' | 'expired' | 'cancelled';
-    validUntil?: Timestamp; // Timestamp
-}
-
-export interface UserProfile {
-    fullName?: string;
-    email: string;
-    gamification?: {
-        xp?: number;
-        streak?: {
-            current: number;
-            lastActiveDate: string;
-        };
-        badges?: string[];
-    };
-    [key: string]: string | number | boolean | any;
-}
 
 interface AuthContextType {
     user: User | null;
@@ -289,13 +269,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const logout = async () => {
         try {
             await firebaseSignOut(auth);
-            // Force redirect to home after logout
-            // We can't strictly use router here if it's not imported.
-            // But it is a hook.
-            // IMPORTANT: I need to verify if useRouter is imported in AuthContext.
-            // Looking at previous view_file of AuthContext, it was NOT imported.
-            // Usage of window.location.href is safer for full clearance, or standard router.
-            window.location.href = "/";
+
+            // Full state and cache cleanup for performance and security
+            if (typeof window !== 'undefined') {
+                // Clear selective storage to avoid resource bloat
+                localStorage.removeItem("saberpro_diagnostic_results");
+                localStorage.removeItem("saberpro_onboarding_step");
+                sessionStorage.clear();
+
+                // Final redirection to anchor clean start
+                window.location.href = "/";
+            }
         } catch (error) {
             console.error("Error signing out", error);
         }

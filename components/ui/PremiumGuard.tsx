@@ -11,14 +11,14 @@ interface PremiumGuardProps {
 }
 
 export default function PremiumGuard({ children, fallback }: PremiumGuardProps) {
-    const { subscription, loading } = useAuth();
+    const { subscription, loading, role } = useAuth();
 
     if (loading) {
         // Can render a skeleton or nothing while checking
         return <div className="animate-pulse h-32 bg-[var(--theme-bg-surface)] rounded-xl w-full border border-[var(--theme-border-soft)]"></div>;
     }
 
-    if (subscription?.plan === 'pro') {
+    if (subscription?.plan === 'pro' || role === 'admin') {
         return <>{children}</>;
     }
 

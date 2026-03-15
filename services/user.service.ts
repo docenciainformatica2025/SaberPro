@@ -1,23 +1,7 @@
 import { db } from "@/lib/firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 
-export interface UserProfile {
-    uid: string;
-    email: string;
-    fullName?: string;
-    role?: string;
-    gradeLevel?: string;
-    targetCareer?: string;
-    dreamUniversity?: string;
-    institution?: string;
-    city?: string;
-    scoreGoal?: string;
-    subscription?: {
-        plan: 'free' | 'pro';
-        expiresAt?: number | Date | null;
-    };
-    onboardingCompleted?: boolean;
-}
+import { UserProfile } from "@/types/user";
 
 export class UserService {
     /**

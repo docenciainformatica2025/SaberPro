@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Geist_Mono } from "next/font/google";
+import { Inter, Geist_Mono, Cormorant_Garamond } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Clarity from "@/components/analytics/Clarity";
 import { Toaster } from "@/components/ui/Toaster";
 import OfflineIndicator from "@/components/ui/OfflineIndicator";
-import "./globals.css";
+import "./saberpro-core.css";
 import RouteGuard from "@/components/auth/RouteGuard";
 import { AuthProvider } from "@/context/AuthContext";
 import RoleBasedNavigation from "@/components/layout/RoleBasedNavigation";
@@ -16,33 +16,51 @@ import AdminRoleSwitcher from "@/components/admin/AdminRoleSwitcher";
 import MobileTabBar from "@/components/layout/MobileTabBar";
 import DarkModeToggle from "@/components/ui/DarkModeToggle";
 import VersionUpdateGuard from "@/components/ui/VersionUpdateGuard";
+import SessionWatcher from "@/components/auth/SessionWatcher";
 
-// Hydration Error Suppression for Browser Extensions (Bitwarden, Bloom, etc.)
+// Hydration Error Suppression and Browser Extension Cleanup
 if (typeof window !== "undefined") {
+  // 1. Console Patch (Silence annoying hydration mismatches in Dev)
   const originalError = console.error;
   console.error = (...args) => {
     const msg = args.map(arg => String(arg)).join(" ");
-    // Silent specific hydration mismatch logs common in production/extensions
-    const silentErrors = [
-      "bis_skin_checked",
-      "Hydration failed",
-      "text content does not match",
-      "did not match",
-      "warning: extra attributes from the server"
-    ];
-
-    if (silentErrors.some(error => msg.includes(error))) {
-      return;
-    }
+    if (["bis_skin_checked", "Hydration", "match", "extra attributes"].some(e => msg.includes(e))) return;
     originalError.apply(console, args);
   };
-}
 
-// ... existing code ...
+  // 2. Early attribute cleanup (Pre-empting Next.js Dev Overlay)
+  const cleanup = () => {
+    document.documentElement.removeAttribute('bis_skin_checked');
+    document.body.removeAttribute('bis_skin_checked');
+    document.querySelectorAll('[bis_skin_checked]').forEach(el => el.removeAttribute('bis_skin_checked'));
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', cleanup);
+  } else {
+    cleanup();
+  }
+
+  // 3. Mutation Observer to keep it clean (Prevents overlay from re-triggering)
+  new MutationObserver((mutations) => {
+    mutations.forEach((m) => {
+      if (m.type === 'attributes' && m.attributeName === 'bis_skin_checked') {
+        (m.target as HTMLElement).removeAttribute('bis_skin_checked');
+      }
+    });
+  }).observe(document.documentElement, { attributes: true, subtree: true });
+}
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: 'swap',
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-academic",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: 'swap',
 });
 
@@ -68,6 +86,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icon.svg",
   },
+  manifest: "/manifest.json",
 };
 
 export const viewport = {
@@ -89,13 +108,15 @@ export default function RootLayout({
     <html lang="es" suppressHydrationWarning className="bg-[var(--theme-bg-base)]">
       <body
         suppressHydrationWarning
-        className={`${inter.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-[var(--theme-bg-base)] transition-colors duration-500`}
+        className={`${inter.variable} ${geistMono.variable} ${cormorant.variable} antialiased min-h-screen flex flex-col bg-[var(--theme-bg-base)] transition-colors duration-500`}
       >
+        <div className="fog-bg" suppressHydrationWarning />
         <AuthProvider>
+          <SessionWatcher />
           <VersionUpdateGuard>
             <RouteGuard>
               <RoleBasedNavigation />
-              <main className="flex-grow flex flex-col pt-[var(--header-safe-zone)] pb-8 md:pb-12" suppressHydrationWarning>
+              <main className="relative z-10 flex-grow flex flex-col pt-[var(--header-safe-zone)] pb-8 md:pb-12" suppressHydrationWarning={true}>
                 <PageTransition>
                   {children}
                 </PageTransition>
@@ -113,44 +134,18 @@ export default function RootLayout({
         <Toaster />
         <OfflineIndicator />
         <script
-          type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                "name": `${BRAND_NAME_SPACED} Simulador`,
-                "url": "https://saberpro-app.vercel.app/",
-                "potentialAction": {
-                  "@type": "SearchAction",
-                  "target": "https://saberpro-app.vercel.app/training?q={search_term_string}",
-                  "query-input": "required name=search_term_string"
-                }
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "SoftwareApplication",
-                "name": BRAND_NAME_SPACED,
-                "applicationCategory": "EducationalApplication",
-                "operatingSystem": "Web",
-                "softwareVersion": APP_VERSION,
-                "url": "https://saberpro-app.vercel.app",
-                "offers": {
-                  "@type": "Offer",
-                  "price": "0",
-                  "priceCurrency": "COP"
-                },
-                "aggregateRating": {
-                  "@type": "AggregateRating",
-                  "ratingValue": "4.9",
-                  "ratingCount": "5200"
-                },
-                "author": {
-                  "@type": "Person",
-                  "name": process.env.NEXT_PUBLIC_AUTHOR_NAME || "SaberPro Team"
-                }
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js').then(function(reg) {
+                    console.log('SW Registered');
+                  }).catch(function(err) {
+                    console.log('SW Registration failed: ', err);
+                  });
+                });
               }
-            ])
+            `
           }}
         />
       </body>

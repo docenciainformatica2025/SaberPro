@@ -13,6 +13,7 @@ import { Input } from '@/components/ui/Input';
 import { toast } from 'sonner';
 import { BRAND_YEAR, COPYRIGHT_TEXT } from "@/lib/config";
 import { Logo } from "@/components/ui/Logo";
+import Image from 'next/image';
 
 export default function LoginPage() {
     const { login, signInWithGoogle, user, role, loading } = useAuth(); // Add role & loading
@@ -89,9 +90,9 @@ export default function LoginPage() {
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop')] bg-cover bg-center opacity-[0.07] grayscale mix-blend-luminosity"></div>
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--theme-bg-base)] via-[var(--theme-bg-base)]/90 to-transparent"></div>
 
-                <div className="relative z-10 transition-transform hover:scale-105 duration-700">
+                <Link href="/" className="relative z-10 block transition-transform hover:scale-105 duration-700">
                     <Logo variant="full" size="xl" />
-                </div>
+                </Link>
 
                 <div className="relative z-10 space-y-10">
                     <div className="space-y-4">
@@ -126,8 +127,14 @@ export default function LoginPage() {
                     <div className="flex items-center gap-8 mb-4">
                         <div className="flex -space-x-3">
                             {[1, 2, 3, 4].map(i => (
-                                <div key={i} className="w-10 h-10 rounded-full border-2 border-[var(--theme-bg-surface)] bg-[var(--theme-bg-overlay)] flex items-center justify-center overflow-hidden">
-                                    <img src={`https://i.pravatar.cc/40?img=${i + 20}`} alt="User avatar" />
+                                <div key={i} className="w-10 h-10 rounded-full border-2 border-[var(--theme-bg-surface)] bg-[var(--theme-bg-overlay)] flex items-center justify-center overflow-hidden relative">
+                                    <Image
+                                        src={`https://i.pravatar.cc/40?img=${i + 20}`}
+                                        alt={`User avatar ${i}`}
+                                        fill
+                                        className="object-cover"
+                                        sizes="40px"
+                                    />
                                 </div>
                             ))}
                         </div>
@@ -145,19 +152,21 @@ export default function LoginPage() {
                     {/* Header: Identity & Welcome */}
                     <div className="space-y-4">
                         <div className="lg:hidden flex justify-center mb-10">
-                            <Logo variant="full" size="md" />
+                            <Link href="/">
+                                <Logo variant="full" size="md" />
+                            </Link>
                         </div>
                         <div className="space-y-2">
                             <div className="flex items-center gap-2">
                                 <div className="p-1.5 bg-brand-primary/10 rounded-lg">
                                     <CheckCircle2 size={16} className="text-brand-primary" />
                                 </div>
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-primary">Acceso Seguro v4.0</span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-primary opacity-80">Acceso Seguro v4.1</span>
                             </div>
-                            <h1 className="text-3xl md:text-4xl font-bold text-[var(--theme-text-primary)] tracking-tight leading-tight">
-                                ¡Hola de <span className="text-brand-primary italic">nuevo!</span>
+                            <h1 className="text-4xl md:text-5xl font-black text-[var(--theme-text-primary)] tracking-tight leading-tight font-academic">
+                                ¡Hola de <span className="text-gradient-maestro italic">nuevo!</span>
                             </h1>
-                            <p className="text-[var(--theme-text-secondary)] text-sm font-medium opacity-60">Entra a tu zona de entrenamiento de alto rendimiento.</p>
+                            <p className="text-[var(--theme-text-secondary)] text-base font-medium">Entra a tu zona de entrenamiento de alto rendimiento.</p>
                         </div>
                     </div>
 
@@ -172,7 +181,7 @@ export default function LoginPage() {
                                 icon={Mail}
                                 {...register("email")}
                                 error={errors.email?.message}
-                                className="bg-[var(--theme-bg-base)]/50 border-white/5 focus:border-brand-primary/40 text-sm h-14 rounded-2xl transition-all"
+                                className="bg-[var(--theme-bg-base)]/50 border-[var(--theme-border-soft)] focus:border-brand-primary/60 text-sm h-14 rounded-2xl transition-all font-medium"
                             />
 
                             <div className="space-y-3">
@@ -186,7 +195,7 @@ export default function LoginPage() {
                                         icon={Lock}
                                         {...register("password")}
                                         error={errors.password?.message}
-                                        className="bg-[var(--theme-bg-base)]/50 border-white/5 focus:border-brand-primary/40 text-sm h-14 rounded-2xl transition-all"
+                                        className="bg-[var(--theme-bg-base)]/50 border-[var(--theme-border-soft)] focus:border-brand-primary/60 text-sm h-14 rounded-2xl transition-all font-medium"
                                     />
                                     <button
                                         type="button"
@@ -203,7 +212,7 @@ export default function LoginPage() {
                                 isLoading={isSubmitting}
                                 icon={ArrowRight}
                                 iconPosition="right"
-                                className="w-full h-14 mt-4 bg-brand-primary hover:bg-brand-primary/90 text-[var(--theme-text-inverted)] shadow-2xl shadow-brand-primary/30 text-[11px] font-black uppercase tracking-[0.3em] rounded-2xl transform hover:translate-y-[-2px] active:translate-y-0 transition-all shimmer-gold"
+                                className="w-full h-15 mt-4 bg-brand-primary hover:bg-brand-primary/95 text-white shadow-xl shadow-brand-primary/20 text-[11px] font-black uppercase tracking-[0.35em] rounded-2xl transform hover:scale-[1.01] active:scale-[0.98] transition-all"
                             >
                                 {isSubmitting ? "Autenticando..." : "Ingresar al Sistema"}
                             </Button>
@@ -217,6 +226,7 @@ export default function LoginPage() {
                                 <span className="bg-[var(--theme-bg-surface)] px-4 text-[var(--theme-text-tertiary)] truncate">O continúa con</span>
                             </div>
                         </div>
+
 
                         <Button
                             onClick={handleGoogleLogin}
@@ -240,8 +250,8 @@ export default function LoginPage() {
                     <div className="pt-12 flex justify-between items-center opacity-70 text-[9px] font-black uppercase tracking-widest text-[var(--theme-text-tertiary)] border-t border-[var(--theme-border-soft)]">
                         <span>{BRAND_YEAR} • {COPYRIGHT_TEXT}</span>
                         <div className="flex gap-4">
-                            <Link href="/terms" className="hover:text-[var(--theme-text-primary)] transition-colors">Términos</Link>
-                            <Link href="/privacy" className="hover:text-[var(--theme-text-primary)] transition-colors">Privacidad</Link>
+                            <Link href="/legal/terms" className="hover:text-[var(--theme-text-primary)] transition-colors">Términos</Link>
+                            <Link href="/legal/privacy" className="hover:text-[var(--theme-text-primary)] transition-colors">Privacidad</Link>
                         </div>
                     </div>
 

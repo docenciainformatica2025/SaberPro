@@ -1,0 +1,192 @@
+@import 'tailwindcss';
+
+@theme {
+    --font-sans: 'Inter', var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    --font-academic: 'Cormorant Garamond', var(--font-academic), serif;
+
+    --color-brand-primary: var(--brand-primary);
+    --color-brand-success: var(--brand-success);
+    --color-brand-accent: var(--brand-accent);
+    --color-brand-error: var(--brand-error);
+
+    --color-theme-text-primary: var(--text-primary);
+    --color-theme-text-secondary: var(--text-secondary);
+    --color-theme-text-tertiary: var(--text-muted);
+
+    --color-theme-bg-base: var(--bg-app);
+    --color-theme-bg-surface: var(--surface-card);
+    --color-theme-bg-overlay: var(--bg-overlay);
+    --color-theme-border-soft: var(--border-subtle);
+    --color-theme-divider: var(--divider);
+
+    --shadow-premium: 0 4px 24px -1px rgba(0, 0, 0, 0.04), 0 2px 12px -1px rgba(0, 0, 0, 0.02);
+}
+
+:root {
+    /* --- MAESTRO PREMIUM DESIGN TOKENS 2026 --- */
+    --mist-white: #F9F8F6;
+    /* Lighter, cleaner background */
+    --deep-space: #121212;
+    /* Deeper black for higher contrast */
+    --serene-sage: #89A79C;
+    /* More contrastive sage */
+    --sunset-glow: #D4A373;
+    /* Richer accent */
+    --golden-hour: #E9C46A;
+
+    --brand-primary: var(--deep-space);
+    --brand-success: #2D6A4F;
+    /* Stronger success color */
+    --brand-accent: var(--sunset-glow);
+    --brand-error: #D00000;
+
+    --bg-app: var(--mist-white);
+    --surface-card: #FFFFFF;
+    --border-subtle: rgba(18, 18, 18, 0.12);
+    /* Slightly more visible */
+    --divider: rgba(18, 18, 18, 0.05);
+
+    /* Text Contrast Optimization */
+    --text-primary: var(--deep-space);
+    --text-secondary: rgba(18, 18, 18, 0.85);
+    /* High contrast secondary */
+    --text-muted: rgba(18, 18, 18, 0.55);
+    /* Readable muted text */
+
+    /* Semantic Mappings */
+    --theme-bg-base: var(--bg-app);
+    --theme-bg-surface: var(--surface-card);
+    --theme-bg-overlay: rgba(18, 18, 18, 0.03);
+    --theme-text-primary: var(--text-primary);
+    --theme-text-secondary: var(--text-secondary);
+    --theme-text-tertiary: var(--text-muted);
+    --theme-border-soft: var(--border-subtle);
+
+    /* Radius System (Premium Maestro) */
+    --radius-organic: 28px 10px 28px 10px;
+    --radius-organic-reverse: 10px 28px 10px 28px;
+    --radius-xs: 6px;
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 22px;
+    --radius-xl: 32px;
+
+    /* Motion */
+    --ease-elastic: cubic-bezier(0.2, 0.8, 0.2, 1.05);
+}
+
+.dark {
+    --bg-app: #08090A;
+    --surface-card: #121417;
+    --bg-overlay: rgba(255, 255, 255, 0.05);
+    --brand-primary: #60A5FA;
+    --text-primary: #FFFFFF;
+    --text-secondary: #E2E8F0;
+    --text-muted: #94A3B8;
+    --border-subtle: rgba(255, 255, 255, 0.12);
+}
+
+@layer base {
+
+    html,
+    body {
+        background-color: var(--bg-app) !important;
+        color: var(--text-primary);
+        letter-spacing: -0.011em;
+    }
+
+    h1,
+    h2,
+    h3,
+    .font-academic {
+        font-family: var(--font-academic);
+        letter-spacing: -0.02em;
+    }
+
+    /* Input refinement */
+    input,
+    textarea,
+    select {
+        transition: all 0.2s;
+
+        &:focus {
+            outline: 2px solid var(--brand-primary);
+        }
+    }
+}
+
+@layer utilities {
+
+    /* La Niebla 2.0 (More presence) */
+    .fog-bg {
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle at 50% -10%, rgba(137, 167, 156, 0.18) 0%, transparent 80%);
+        pointer-events: none;
+        z-index: 0;
+        animation: fog-breathe 25s ease-in-out infinite alternate;
+    }
+
+    @keyframes fog-breathe {
+        0% {
+            opacity: 0.4;
+            transform: scale(1) translateY(0);
+        }
+
+        100% {
+            opacity: 0.8;
+            transform: scale(1.08) translateY(-2%);
+        }
+    }
+
+    .organic-border {
+        border-radius: var(--radius-organic);
+    }
+
+    .organic-border-reverse {
+        border-radius: var(--radius-organic-reverse);
+    }
+
+    /* Glassmorphism Premium */
+    .glass-premium {
+        backdrop-filter: blur(24px);
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: var(--shadow-premium);
+    }
+
+    /* Maestro Gradient */
+    .text-gradient-maestro {
+        background: linear-gradient(135deg, var(--deep-space) 0%, #4A4A4A 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .btn-maestro {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s;
+        background: var(--brand-primary);
+        color: white;
+        box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-maestro:active {
+        transform: scale(0.98);
+    }
+
+    .btn-maestro:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* Fix for blurry Cormorant on Windows */
+@supports (-webkit-font-smoothing: antialiased) {
+    .font-academic {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-weight: 500;
+    }
+}

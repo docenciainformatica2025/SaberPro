@@ -9,7 +9,7 @@ import { motion, HTMLMotionProps } from "framer-motion";
  * Button component variants based on the SaberPro "Metal" Design System.
  */
 export interface ButtonProps extends Omit<HTMLMotionProps<"button">, 'ref'> {
-    variant?: 'primary' | 'success' | 'accent' | 'error' | 'outline' | 'ghost' | 'link' | 'premium';
+    variant?: 'primary' | 'success' | 'accent' | 'error' | 'outline' | 'ghost' | 'link' | 'premium' | 'maestro';
     size?: 'sm' | 'md' | 'lg' | 'xl' | 'icon';
     isLoading?: boolean;
     icon?: LucideIcon;
@@ -34,14 +34,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         );
 
         const variants = {
-            primary: "bg-brand-primary text-white shadow-sm hover:brightness-110 active:scale-[0.98]",
-            success: "bg-brand-success text-white shadow-sm hover:brightness-105 active:scale-[0.98]",
-            accent: "bg-brand-accent text-white shadow-sm hover:brightness-105 active:scale-[0.98]",
-            error: "bg-brand-error text-white shadow-sm hover:brightness-110 active:scale-[0.98]",
-            outline: "bg-transparent border border-[var(--theme-border-soft)] text-[var(--theme-text-primary)] hover:bg-[var(--theme-bg-surface)] hover:border-brand-primary/30 active:scale-[0.98]",
+            primary: "bg-brand-primary text-white shadow-md hover:shadow-lg active:scale-[0.98]",
+            success: "bg-brand-success text-white shadow-md hover:bg-brand-success/90 active:scale-[0.98]",
+            accent: "bg-brand-accent text-white shadow-md hover:opacity-90 active:scale-[0.98]",
+            error: "bg-brand-error text-white shadow-md hover:bg-brand-error/90 active:scale-[0.98]",
+            outline: "bg-transparent border-2 border-[var(--theme-border-soft)] text-[var(--theme-text-primary)] hover:border-brand-primary/50 hover:bg-[var(--theme-bg-base)] active:scale-[0.98]",
             ghost: "bg-transparent text-[var(--theme-text-secondary)] hover:bg-[var(--theme-bg-surface)] hover:text-[var(--theme-text-primary)] active:scale-[0.98]",
-            link: "bg-transparent text-brand-primary hover:underline underline-offset-4",
-            premium: "bg-gradient-to-r from-brand-primary to-brand-primary-light text-white shadow-lg hover:brightness-110 border border-white/10",
+            link: "bg-transparent text-brand-primary hover:underline underline-offset-4 font-bold uppercase tracking-widest text-[10px]",
+            premium: "bg-gradient-to-br from-brand-primary via-brand-primary to-[#444] text-white shadow-xl hover:brightness-110 border border-white/20",
+            maestro: "btn-maestro text-white font-black uppercase tracking-[0.2em] shadow-premium",
         };
 
         const sizes = {

@@ -1,0 +1,17 @@
+{
+    "name": "SaberPro Elite Suite",
+    "short_name": "SaberPro",
+    "description": "Plataforma de entrenamiento de alto rendimiento para las pruebas Saber Pro.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0A0C0F",
+    "theme_color": "#0A0C0F",
+    "icons": [
+        {
+            "src": "/icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ]
+}

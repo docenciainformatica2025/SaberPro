@@ -166,7 +166,7 @@ export const RoleBasedNavigation = memo(() => {
                             handleProtectedNavigation('/dashboard');
                         }
                     }}
-                    className="flex items-center gap-1.5 pointer-events-auto bg-surface-card/85 backdrop-blur-3xl border border-theme-border-soft px-2 py-0.5 md:px-2.5 md:py-1 rounded-full shadow-md animate-in fade-in slide-in-from-top-4 duration-700 cursor-pointer hover:border-brand-primary/20 transition-all scale-[0.8] origin-left"
+                    className="flex items-center gap-1.5 pointer-events-auto bg-[var(--theme-bg-surface)]/90 backdrop-blur-3xl border border-[var(--theme-border-soft)] px-2 py-0.5 md:px-3 md:py-1.5 rounded-full shadow-lg animate-in fade-in slide-in-from-top-4 duration-700 cursor-pointer hover:border-brand-primary/40 transition-all scale-[0.85] origin-left"
                 >
                     <div className="flex items-center gap-1">
                         <div className="scale-[0.65] transform origin-left">
@@ -222,7 +222,7 @@ export const RoleBasedNavigation = memo(() => {
             />
 
             {/* 2. The "World Class" Floating Dock - Scaled Up */}
-            <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 hidden md:flex items-end gap-3 px-6 py-4 bg-surface-card/80 backdrop-blur-3xl border border-theme-border-soft rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all hover:scale-[1.01] max-w-[90vw] overflow-x-auto no-scrollbar touch-pan-x">
+            <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 hidden md:flex items-end gap-3 px-6 py-4 bg-[var(--theme-bg-surface)]/90 backdrop-blur-3xl border border-[var(--theme-border-soft)] rounded-[2.5rem] shadow-premium transition-all hover:scale-[1.01] max-w-[90vw] overflow-x-auto no-scrollbar touch-pan-x">
                 {branding.navItems.map((item) => {
                     const Icon = item.icon;
 

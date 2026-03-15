@@ -83,22 +83,22 @@ export default function TeacherDashboard() {
     return (
         <main className="max-w-7xl mx-auto space-y-12 pb-12 p-4 lg:p-0 animate-in fade-in slide-in-from-bottom-8 duration-700">
             <PromotionBanner />
-            {/* Header - Unified Elite Style */}
+            {/* Header - Maestro Style */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 pb-4">
                 <div className="space-y-4">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-brand-primary text-[10px] font-black tracking-[0.2em] uppercase shadow-sm">
-                        Panel Docente v4.0.0
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-brand-primary text-[9px] font-black tracking-[0.2em] uppercase shadow-sm">
+                        Sistema Sincronizado v4.1 • Pro
                     </div>
                     <div className="space-y-1">
-                        <h1 className="text-5xl md:text-7xl font-black text-[var(--theme-text-primary)] tracking-tightest leading-none">
-                            ¡HOLA, <span className="text-theme-hero italic uppercase">{teacherName}</span>! 👋
+                        <h1 className="text-5xl md:text-7xl font-academic font-bold text-[var(--theme-text-primary)] tracking-tight leading-none">
+                            Hola de nuevo, <span className="text-theme-hero italic">{teacherName}.</span>
                         </h1>
-                        <p className="text-xs font-medium text-[var(--theme-text-tertiary)] tracking-widest uppercase ml-1">El pulso de tus clases en tiempo real</p>
+                        <p className="text-lg font-academic italic text-[var(--theme-text-secondary)] opacity-80">Respira hondo. Estás guiando el futuro.</p>
                     </div>
                 </div>
                 <div className="flex items-center gap-4">
                     <Link href="/teacher/classes">
-                        <Button variant="primary" size="lg" className="px-8 h-14 shadow-2xl shadow-brand-primary/20 text-[11px] font-black uppercase tracking-[0.15em] rounded-2xl shimmer-gold" icon={Plus}>
+                        <Button variant="primary" size="lg" className="px-8 h-14 shadow-2xl shadow-brand-primary/20 text-[10px] font-bold uppercase tracking-[0.2em] organic-border-reverse shimmer-gold kinesthetic-bounce" icon={Plus}>
                             Nueva Clase
                         </Button>
                     </Link>
@@ -116,58 +116,40 @@ export default function TeacherDashboard() {
                         trend={stat.trend}
                         trendUp={stat.trendUp}
                         color={stat.color}
+                        className={i % 2 === 0 ? "organic-border" : "organic-border-reverse"}
                     />
                 ))}
             </div>
 
-            {/* PRO Upgrade Card (Visible to non-pro) */}
-            {profile?.role === 'teacher' && subscription?.plan !== 'pro' && (
-                <Card variant="primary" className="p-8 bg-brand-primary/5 border border-brand-primary/10 relative overflow-hidden group">
-                    <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-                        <div className="text-center md:text-left">
-                            <h3 className="text-2xl font-bold text-brand-primary tracking-tight mb-2">Potencia tu enseñanza con herramientas Pro</h3>
-                            <p className="text-[var(--theme-text-secondary)] font-medium max-w-xl">
-                                Obtén reportes detallados por estudiante, descarga de resultados en PDF masivos y soporte prioritario 24/7.
-                            </p>
-                        </div>
-                        <Link href="/pricing" className="shrink-0">
-                            <Button variant="primary" className="px-8 h-12 font-bold tracking-wider shadow-md shadow-brand-primary/10">
-                                Actualizar a Pro
-                            </Button>
-                        </Link>
-                    </div>
-                </Card>
-            )}
-
-            {/* Empty State / CTA - Enhanced Premium Style */}
-            <Card variant="glass" className="p-20 text-center flex flex-col items-center justify-center min-h-[500px] border-[3px] border-dashed border-brand-primary/5 bg-brand-primary/[0.01] rounded-[3rem] relative overflow-hidden group">
+            {/* Empty State / CTA - Maestro "Lighthouse" Style */}
+            <Card variant="glass" className="p-20 text-center flex flex-col items-center justify-center min-h-[500px] border-[1px] border-[var(--theme-border-soft)] bg-white/40 backdrop-blur-3xl organic-border relative overflow-hidden group shadow-2xl shadow-black/5">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
-                <div className="w-32 h-32 bg-[var(--theme-bg-surface)] rounded-[2.5rem] shadow-2xl shadow-brand-primary/10 flex items-center justify-center mb-10 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3 relative z-10 border border-brand-primary/5">
-                    <BookOpen size={56} className="text-brand-primary" strokeWidth={1.5} />
+                <div className="w-32 h-32 bg-white rounded-full shadow-2xl shadow-brand-primary/10 flex items-center justify-center mb-10 transition-all duration-700 group-hover:scale-110 relative z-10 border border-brand-primary/5 floating-buoy">
+                    <BookOpen size={56} className="text-brand-primary opacity-80" strokeWidth={1} />
                 </div>
 
-                <h3 className="text-3xl font-black text-[var(--theme-text-primary)] mb-4 tracking-tightest uppercase relative z-10">Tu Ecosistema de Enseñanza</h3>
-                <p className="text-[var(--theme-text-tertiary)] max-w-lg mx-auto mb-12 text-sm font-medium leading-relaxed opacity-60 relative z-10 uppercase tracking-widest">
-                    Digitaliza tus clases y desbloquea el potencial real de tus estudiantes con el análisis IA más avanzado.
+                <h3 className="text-4xl font-academic font-bold text-[var(--theme-text-primary)] mb-4 tracking-tight relative z-10">Tu Ecosistema de Saberes</h3>
+                <p className="text-[var(--theme-text-secondary)] font-academic italic max-w-lg mx-auto mb-12 text-lg leading-relaxed opacity-60 relative z-10">
+                    &quot;Un faro no corre por toda la isla buscando botes que salvar; simplemente permanece allí, brillando.&quot;
                 </p>
 
                 <div className="flex flex-col md:flex-row gap-6 relative z-10">
                     <Link href="/teacher/classes">
-                        <Button variant="primary" size="lg" className="px-10 h-16 rounded-2xl shadow-xl shadow-brand-primary/20 font-black text-[11px] uppercase tracking-[0.2em] shimmer-gold" icon={Plus}>Empezar Ahora</Button>
+                        <Button variant="primary" size="lg" className="px-10 h-16 organic-border-reverse shadow-xl shadow-brand-primary/20 font-bold text-[10px] uppercase tracking-[0.2em] kinesthetic-bounce" icon={Plus}>Empezar Ahora</Button>
                     </Link>
                     <Button
                         variant="outline"
                         size="lg"
-                        className="px-10 h-16 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] border-[var(--theme-border-soft)] opacity-60 hover:opacity-100 transition-all"
+                        className="px-10 h-16 organic-border font-bold text-[10px] uppercase tracking-[0.2em] border-[var(--theme-border-soft)] bg-white/50 hover:bg-white transition-all kinesthetic-bounce"
                         onClick={() => {
-                            toast.info("¡Estamos listos para ayudarte!", {
-                                description: "1. Crea una clase. 2. Comparte el código. 3. Observa cómo tus estudiantes brillan.",
-                                icon: <Info className="text-brand-primary" size={16} />
+                            toast.info("Guía Rápida", {
+                                description: "La clave está en la calma. Crea tu primera clase y deja que la IA se encargue del resto.",
+                                icon: <Plus className="text-brand-primary" size={16} />
                             });
                         }}
                     >
-                        Ver Guía Rápida
+                        Ver Filosofía
                     </Button>
                 </div>
             </Card>

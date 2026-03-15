@@ -28,6 +28,7 @@ export default function RegisterPage() {
     const [authError, setAuthError] = useState('');
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
     const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const {
         register,
@@ -121,9 +122,9 @@ export default function RegisterPage() {
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-[0.07] grayscale mix-blend-luminosity"></div>
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--theme-bg-base)] via-[var(--theme-bg-base)]/90 to-transparent"></div>
 
-                <div className="relative z-10">
+                <Link href="/" className="relative z-10 block transition-transform hover:scale-105 duration-700">
                     <Logo variant="full" size="xl" />
-                </div>
+                </Link>
 
                 <div className="relative z-10 space-y-10">
                     <div className="space-y-4">
@@ -181,15 +182,17 @@ export default function RegisterPage() {
                                 </Button>
                             </Link>
                             <div className="lg:hidden">
-                                <Logo variant="full" size="sm" />
+                                <Link href="/">
+                                    <Logo variant="full" size="sm" />
+                                </Link>
                             </div>
                         </div>
 
                         <div className="space-y-2">
-                            <h1 className="text-3xl font-bold text-[var(--theme-text-primary)] tracking-tight leading-none">
-                                Crear <span className="text-brand-primary">Cuenta</span>
+                            <h1 className="text-4xl md:text-5xl font-black text-[var(--theme-text-primary)] tracking-tight font-academic leading-tight">
+                                Crear <span className="text-gradient-maestro italic">Cuenta</span>
                             </h1>
-                            <p className="text-[var(--theme-text-secondary)] text-sm font-medium">Completa tus datos para activar tu acceso premium.</p>
+                            <p className="text-[var(--theme-text-secondary)] text-base font-medium">Completa tus datos para activar tu acceso premium.</p>
                         </div>
                     </div>
 
@@ -205,7 +208,7 @@ export default function RegisterPage() {
                                     icon={MailIcon}
                                     onValidate={validateEmail}
                                     onChange={(value) => setValue('email', value)}
-                                    className="bg-[var(--theme-bg-base)]/50 border-white/5 focus:border-brand-primary/40 text-sm h-14 rounded-2xl transition-all"
+                                    className="bg-[var(--theme-bg-base)]/50 border-[var(--theme-border-soft)] focus:border-brand-primary/60 text-sm h-14 rounded-2xl transition-all font-medium"
                                 />
                                 {errors.email && <p className="text-[10px] text-red-400 font-bold uppercase ml-1 tracking-wider">{errors.email.message}</p>}
 
@@ -222,7 +225,7 @@ export default function RegisterPage() {
                                             icon={LockIcon}
                                             {...register("password")}
                                             error={errors.password?.message}
-                                            className="bg-[var(--theme-bg-base)]/50 border-white/5 focus:border-brand-primary/40 text-sm h-14 rounded-2xl transition-all"
+                                            className="bg-[var(--theme-bg-base)]/50 border-[var(--theme-border-soft)] focus:border-brand-primary/60 text-sm h-14 rounded-2xl transition-all font-medium"
                                         />
                                         <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-4 text-slate-400 dark:text-white/20 group-hover/pass:text-brand-primary transition-colors">
                                             {showPassword ? <EyeOffIcon size={20} /> : <EyeIcon size={20} />}
@@ -230,14 +233,19 @@ export default function RegisterPage() {
                                     </div>
                                 </div>
 
-                                <Input
-                                    label="CONFIRMAR CONTRASEÑA"
-                                    type="password"
-                                    icon={LockIcon}
-                                    {...register("confirmPassword")}
-                                    error={errors.confirmPassword?.message}
-                                    className="bg-[var(--theme-bg-base)]/50 border-white/5 focus:border-brand-primary/40 text-sm h-14 rounded-2xl transition-all"
-                                />
+                                <div className="relative group/pass">
+                                    <Input
+                                        label="CONFIRMAR CONTRASEÑA"
+                                        type={showConfirmPassword ? "text" : "password"}
+                                        icon={LockIcon}
+                                        {...register("confirmPassword")}
+                                        error={errors.confirmPassword?.message}
+                                        className="bg-[var(--theme-bg-base)]/50 border-[var(--theme-border-soft)] focus:border-brand-primary/60 text-sm h-14 rounded-2xl transition-all font-medium"
+                                    />
+                                    <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-4 top-4 text-slate-400 dark:text-white/20 group-hover/pass:text-brand-primary transition-colors">
+                                        {showConfirmPassword ? <EyeOffIcon size={20} /> : <EyeIcon size={20} />}
+                                    </button>
+                                </div>
 
                                 <div className="pt-4 border-t border-[var(--theme-border-soft)] space-y-6">
                                     <div className="flex items-start gap-3 bg-[var(--theme-bg-base)] p-4 rounded-2xl border border-[var(--theme-border-soft)]">
@@ -258,7 +266,7 @@ export default function RegisterPage() {
                                 type="submit"
                                 disabled={isSubmitting || !captchaToken}
                                 isLoading={isSubmitting}
-                                className="w-full h-12 bg-brand-primary hover:bg-brand-primary/90 text-white shadow-xl shadow-brand-primary/10 text-[10px] font-bold uppercase tracking-widest rounded-xl transition-all"
+                                className="w-full h-15 mt-4 bg-brand-primary hover:bg-brand-primary/95 text-white shadow-xl shadow-brand-primary/20 text-[11px] font-black uppercase tracking-[0.35em] rounded-2xl transform hover:scale-[1.01] active:scale-[0.98] transition-all"
                                 icon={ArrowRightIcon}
                                 iconPosition="right"
                             >

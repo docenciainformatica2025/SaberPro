@@ -11,16 +11,16 @@ export interface BadgeProps extends HTMLMotionProps<"span"> {
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     ({ className, variant = 'default', children, ...props }, ref) => {
         const variants: Record<string, string> = {
-            default: "bg-surface-card text-slate-700 border-theme-border-soft",
-            primary: "bg-brand-primary/10 text-brand-primary border-brand-primary/20",
-            secondary: "bg-[var(--theme-bg-secondary)] text-[var(--theme-text-primary)] border-[var(--theme-border-soft)]",
-            success: "bg-brand-success/10 text-brand-success border-brand-success/20",
-            warning: "bg-brand-accent/10 text-brand-accent border-brand-accent/20",
-            error: "bg-brand-error/10 text-brand-error border-brand-error/20",
-            info: "bg-brand-primary/10 text-brand-primary border-brand-primary/20",
+            default: "bg-[var(--theme-bg-surface)] text-[var(--theme-text-secondary)] border-[var(--theme-border-soft)]",
+            primary: "bg-brand-primary/10 text-brand-primary border-brand-primary/30",
+            secondary: "bg-[var(--theme-bg-surface)] text-[var(--theme-text-primary)] border-[var(--theme-border-soft)]",
+            success: "bg-brand-success/15 text-brand-success border-brand-success/30",
+            warning: "bg-brand-accent/15 text-brand-accent border-brand-accent/30",
+            error: "bg-brand-error/15 text-brand-error border-brand-error/30",
+            info: "bg-brand-primary/15 text-brand-primary border-brand-primary/30",
             premium: "bg-brand-primary text-white border-brand-primary shadow-sm",
-            ghost: "bg-transparent text-slate-500 border-theme-border-soft",
-            outline: "bg-transparent border border-theme-border-soft text-slate-600"
+            ghost: "bg-transparent text-[var(--theme-text-tertiary)] border-[var(--theme-border-soft)]",
+            outline: "bg-transparent border border-[var(--theme-border-soft)] text-[var(--theme-text-secondary)]"
         };
 
         return (
@@ -28,7 +28,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
                 ref={ref as any}
                 whileHover={{ scale: 1.05 }}
                 className={cn(
-                    "px-2.5 py-0.5 rounded-full text-[10px] font-bold border-[0.5px] uppercase tracking-wider transition-all duration-300 ring-1 ring-black/5",
+                    "px-2.5 py-1 rounded-full text-[9px] font-black border uppercase tracking-[0.15em] transition-all duration-300",
                     variants[variant],
                     className
                 )}

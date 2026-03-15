@@ -6,9 +6,11 @@ import {
     COPYRIGHT_TEXT
 } from "@/lib/config";
 
+import { Logo } from "@/components/ui/Logo";
+
 export default function ProFooter() {
     return (
-        <footer className="border-t border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] backdrop-blur-3xl transition-colors duration-500 pb-24 md:pb-32 relative overflow-hidden">
+        <footer suppressHydrationWarning className="border-t border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] backdrop-blur-3xl transition-colors duration-500 pb-24 md:pb-32 relative overflow-hidden">
             {/* Ambient Light Effect */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -16,13 +18,10 @@ export default function ProFooter() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                     {/* Brand Section */}
                     <div className="md:col-span-2 space-y-6">
-                        <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 bg-brand-primary rounded-lg flex items-center justify-center shadow-lg shadow-brand-primary/20">
-                                <span className="text-white font-black text-lg italic">S</span>
-                            </div>
-                            <span className="text-xl font-black tracking-tightest text-[var(--theme-text-primary)] uppercase italic">SABER <span className="text-brand-primary">PRO</span></span>
-                        </div>
-                        <p className="text-sm text-slate-500 dark:text-[var(--theme-text-secondary)] leading-relaxed max-w-xs font-medium">
+                        <Link href="/" className="hover:opacity-80 transition-opacity block w-fit">
+                            <Logo variant="full" size="md" />
+                        </Link>
+                        <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed max-w-xs font-medium">
                             Entrenamiento de élite impulsado por inteligencia artificial para la nueva generación de profesionales en Colombia.
                         </p>
                     </div>
@@ -62,14 +61,14 @@ export default function ProFooter() {
                 {/* Bottom Bar */}
                 <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between font-medium">
                     <div className="space-y-1">
-                        <p className="text-[10px] font-black uppercase tracking-[0.1em] text-slate-400 dark:text-[var(--theme-text-tertiary)] opacity-80">
+                        <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[var(--theme-text-tertiary)] opacity-80">
                             {COPYRIGHT_TEXT}
                         </p>
                     </div>
 
                     <div className="flex items-center gap-6">
-                        <p className="text-[10px] font-black text-slate-400 dark:text-[var(--theme-text-tertiary)] uppercase tracking-widest flex items-center gap-1.5">
-                            Powered by <span className="text-slate-900 dark:text-[var(--theme-text-primary)]">SINAPCODE</span>
+                        <p className="text-[10px] font-black text-[var(--theme-text-tertiary)] uppercase tracking-widest flex items-center gap-1.5">
+                            Powered by <span className="text-[var(--theme-text-primary)]">SINAPCODE</span>
                         </p>
                         <div className="h-4 w-px bg-[var(--theme-border-soft)]" />
                         <div className="px-3 py-1 rounded-full bg-brand-primary/5 border border-brand-primary/10">

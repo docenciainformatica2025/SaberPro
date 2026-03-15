@@ -7,6 +7,7 @@ import { db } from "@/lib/firebase";
 import { collection, query, where, orderBy, getDocs } from "firebase/firestore";
 import { Transaction, PaymentStatus } from "@/types/finance";
 import { Download, CreditCard, Clock, CheckCircle, AlertCircle, ArrowLeft, Receipt } from "lucide-react";
+import { formatLongDate } from '@/utils/dates';
 export default function BillingPage() {
     const { user, subscription, role } = useAuth();
     const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -37,7 +38,7 @@ export default function BillingPage() {
                 });
 
                 setTransactions(list);
-            } catch (error: any) {
+            } catch (error) {
                 console.error("Error fetching billing history:", error);
             } finally {
                 setLoading(false);
@@ -61,16 +62,6 @@ export default function BillingPage() {
         }
     };
 
-    // Robust Date Formatter
-    const formatDate = (dateValue: any) => {
-        if (!dateValue) return "Ciclo Anual";
-        try {
-            const date = dateValue.toDate ? dateValue.toDate() : new Date(dateValue);
-            return date.toLocaleDateString("es-CO", { year: 'numeric', month: 'long', day: 'numeric' });
-        } catch (e) {
-            return "Próxima renovación (Anual)";
-        }
-    };
 
     const StatusBadge = ({ status }: { status: PaymentStatus }) => {
         const styles = {
@@ -139,7 +130,7 @@ export default function BillingPage() {
                                 <div className="flex items-center gap-3 text-xs text-white/50 font-medium tracking-wide">
                                     <Clock size={16} className="text-brand-primary" />
                                     {subscription?.status === 'active'
-                                        ? <span>Renovación automática: <b className="text-white">{formatDate(subscription.validUntil)}</b></span>
+                                        ? <span>Renovación automática: <b className="text-white">{formatLongDate(subscription.validUntil)}</b></span>
                                         : 'Sin suscripción activa'}
                                 </div>
                             </div>
@@ -201,7 +192,7 @@ export default function BillingPage() {
                                             <div className="flex items-center gap-3 text-[10px] font-black tracking-widest text-white/30">
                                                 <span className="bg-black/40 px-3 py-1 rounded-full text-brand-primary border border-white/5">REF: {tx.reference}</span>
                                                 <span>•</span>
-                                                <span className="uppercase">{formatDate(tx.createdAt)}</span>
+                                                <span className="uppercase">{formatLongDate(tx.createdAt)}</span>
                                             </div>
                                         </div>
                                     </div>

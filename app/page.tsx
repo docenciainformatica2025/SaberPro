@@ -1,7 +1,8 @@
 "use client";
+// Maestro v4.2.1 - Build Trigger
 
 import Link from "next/link";
-import { ShieldCheck, TrendingUp, Brain, ArrowRight, CheckCircle2, Zap, Trophy, Users, Star } from "lucide-react";
+import { ShieldCheck, TrendingUp, Brain, ArrowRight, CheckCircle2, Zap, Trophy, Users, Star, Compass, Sparkles } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
@@ -43,38 +44,39 @@ export default function Home() {
               <span className="text-[9px] font-bold uppercase tracking-widest text-[var(--theme-text-secondary)]">Convocatoria {BRAND_YEAR} Abierta</span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[var(--theme-text-primary)] leading-[1.1] text-balance">
-              Entrena para el <span className="text-brand-primary italic">Éxito Total</span>
+            <h1 className="text-5xl md:text-7xl font-academic font-bold tracking-tight text-[var(--theme-text-primary)] leading-[1.05] text-balance">
+              Tu faro hacia el <br />
+              <span className="text-brand-primary italic">Éxito Académico</span>
             </h1>
 
             <div className="max-w-2xl mx-auto space-y-6">
-              <p className="text-lg md:text-xl font-medium text-[var(--theme-text-secondary)] leading-relaxed">
-                No dejes tu puntaje al azar. Domina las pruebas con el sistema de entrenamiento más avanzado de Colombia.
+              <p className="text-lg md:text-xl font-medium text-[var(--theme-text-secondary)] leading-relaxed font-academic italic">
+                La niebla se disipa. Respira hondo. Estás exactamente donde necesitas estar para dominar tu futuro.
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-[10px] font-bold uppercase tracking-widest text-[var(--theme-text-tertiary)]">
-                <span className="flex items-center gap-1.5"><CheckCircle2 size={13} /> IA Adaptativa</span>
-                <span className="flex items-center gap-1.5"><CheckCircle2 size={13} /> Simulacros 4K</span>
-                <span className="flex items-center gap-1.5"><CheckCircle2 size={13} /> Mentoría 24/7</span>
+                <span className="flex items-center gap-1.5"><Brain size={13} className="text-brand-primary" /> IA Empática</span>
+                <span className="flex items-center gap-1.5"><Compass size={13} className="text-brand-primary" /> Guía de Carrera</span>
+                <span className="flex items-center gap-1.5"><Sparkles size={13} className="text-brand-primary" /> Cero Estrés</span>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12 w-full max-w-xl mx-auto">
               {user ? (
                 <Link href={dashboardLink} className="w-full sm:w-auto">
-                  <Button size="lg" variant="primary" icon={ArrowRight} iconPosition="right" className="w-full h-12 px-8 text-[10px] font-bold uppercase tracking-widest bg-brand-primary text-white rounded-xl hover:-translate-y-0.5 transition-all">
-                    Entrar al panel
+                  <Button size="lg" variant="primary" icon={ArrowRight} iconPosition="right" className="w-full h-14 px-10 text-[10px] font-bold uppercase tracking-[0.2em] bg-brand-primary text-white organic-border-reverse hover:shadow-xl hover:shadow-brand-primary/20 transition-all active:scale-95">
+                    Ir a mi panel
                   </Button>
                 </Link>
               ) : (
                 <Link href="/register" className="w-full sm:w-auto">
-                  <Button size="lg" variant="primary" className="w-full h-12 px-8 text-[10px] font-bold uppercase tracking-widest bg-brand-primary text-white rounded-xl hover:-translate-y-0.5 transition-all shadow-lg shadow-brand-primary/20">
-                    Prueba gratuita
+                  <Button size="lg" variant="primary" className="w-full h-14 px-10 text-[10px] font-bold uppercase tracking-[0.2em] bg-brand-primary text-white organic-border-reverse hover:shadow-xl hover:shadow-brand-primary/20 transition-all shadow-lg active:scale-95">
+                    Comenzar Gratis
                   </Button>
                 </Link>
               )}
               <Link href="/methodology" className="w-full sm:w-auto">
-                <Button variant="outline" size="lg" className="w-full h-12 px-8 text-[10px] font-bold uppercase tracking-widest rounded-xl border-[var(--theme-border-soft)] hover:bg-[var(--theme-bg-surface)] transition-all text-[var(--theme-text-secondary)]">
-                  Metodología
+                <Button variant="outline" size="lg" className="w-full h-14 px-10 text-[10px] font-bold uppercase tracking-[0.2em] organic-border border-[var(--theme-border-soft)] hover:bg-white/50 transition-all text-[var(--theme-text-secondary)] active:scale-95">
+                  Filosofía
                 </Button>
               </Link>
             </div>
@@ -84,7 +86,7 @@ export default function Home() {
         {/* Dynamic Trust Section */}
         <section className="py-16 border-y border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] backdrop-blur-xl relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-            <p className="text-[9px] font-black uppercase tracking-[0.5em] text-slate-400 dark:text-[var(--theme-text-tertiary)] mb-12 opacity-80">
+            <p className="text-[9px] font-black uppercase tracking-[0.5em] text-[var(--theme-text-tertiary)] mb-12 opacity-80">
               ESTUDIANTES DE LAS MEJORES INSTITUCIONES CONFÍAN EN NOSOTROS
             </p>
             <div className="flex flex-wrap justify-center gap-x-20 gap-y-10 items-center">
@@ -112,19 +114,19 @@ export default function Home() {
                 step="01"
                 title="ESTRATEGIA"
                 description="Personalizamos tu entrenamiento según tu carrera y debilidades detectadas por IA."
-                className="transform hover:-translate-y-2 transition-transform duration-500"
+                className="organic-border transform hover:-translate-y-2 transition-transform duration-500 shadow-sm border-[var(--theme-border-soft)]"
               />
               <StepCard
                 step="02"
                 title="PRECISIÓN"
                 description="Practica con simulacros dinámicos que se adaptan a tu nivel real de conocimiento."
-                className="transform hover:-translate-y-2 transition-transform duration-500"
+                className="organic-border-reverse transform hover:-translate-y-2 transition-transform duration-500 shadow-sm border-[var(--theme-border-soft)]"
               />
               <StepCard
                 step="03"
                 title="MAESTRÍA"
                 description="Domina cada área y asegura un puntaje superior con análisis predictivo de resultados."
-                className="transform hover:-translate-y-2 transition-transform duration-500"
+                className="organic-border transform hover:-translate-y-2 transition-transform duration-500 shadow-sm border-[var(--theme-border-soft)]"
               />
             </div>
           </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth } from "@/context/AuthContext";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, Calendar as CalendarIcon, CheckCircle2, Circle, Clock, MoreVertical, Plus, Sparkles, Target, Zap } from "lucide-react";
 import Link from "next/link";
@@ -66,7 +66,7 @@ export default function PlannerPage() {
     const router = useRouter();
     const [config, setConfig] = useState<PlannerConfig | null>(null);
     const [plannerData, setPlannerData] = useState<Record<string, PlannerDay>>({});
-    const [selectedDate, setSelectedDate] = useState<Date>(new Date);
+    const [selectedDate, setSelectedDate] = useState<Date>(new Date());
     const [isGenerating, setIsGenerating] = useState(false);
     const [loading, setLoading] = useState(true);
 
@@ -180,6 +180,14 @@ export default function PlannerPage() {
         });
     };
 
+    // Calculate progress - Memoized for performance
+    const { progress } = useMemo(() => {
+        const total = Object.values(plannerData).reduce((acc, day) => acc + day.sessions.length, 0);
+        const completed = Object.values(plannerData).reduce((acc, day) => acc + day.sessions.filter(s => s.completed).length, 0);
+        const perc = total > 0 ? Math.round((completed / total) * 100) : 0;
+        return { progress: perc };
+    }, [plannerData]);
+
     if (loading) return null;
 
     if (isGenerating) {
@@ -235,11 +243,6 @@ export default function PlannerPage() {
     const daysInMonth = generateMonthDays(currentYear, currentMonth);
     const selectedDateKey = selectedDate.toISOString().split('T')[0];
     const selectedDayData = plannerData[selectedDateKey];
-
-    // Calculate progress
-    const totalSessions = Object.values(plannerData).reduce((acc, day) => acc + day.sessions.length, 0);
-    const completedSessions = Object.values(plannerData).reduce((acc, day) => acc + day.sessions.filter(s => s.completed).length, 0);
-    const progress = totalSessions > 0 ? Math.round((completedSessions / totalSessions) * 100) : 0;
 
     return (
         <div className="min-h-screen bg-[var(--theme-bg-base)] p-4 md:p-8 pb-32">
