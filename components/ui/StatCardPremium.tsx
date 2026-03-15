@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { ReactNode, memo } from "react";
 import NumberTicker from "@/components/ui/NumberTicker";
+import { cn } from "@/lib/utils";
 
 interface StatCardPremiumProps {
     title: string;
@@ -10,9 +11,10 @@ interface StatCardPremiumProps {
     trend: string;
     trendUp: boolean;
     color: 'gold' | 'blue' | 'purple' | 'green';
+    className?: string;
 }
 
-export const StatCardPremium = memo(({ title, value, icon, trend, trendUp, color }: StatCardPremiumProps) => {
+export const StatCardPremium = memo(({ title, value, icon, trend, trendUp, color, className }: StatCardPremiumProps) => {
     const theme = {
         gold: { bg: 'bg-brand-primary/10', text: 'text-brand-primary', border: 'border-brand-primary/20 shadow-sm shadow-brand-primary/5' },
         blue: { bg: 'bg-brand-primary/10', text: 'text-brand-primary', border: 'border-brand-primary/20 shadow-sm shadow-brand-primary/5' },
@@ -24,7 +26,7 @@ export const StatCardPremium = memo(({ title, value, icon, trend, trendUp, color
     const numericValue = typeof value === 'number' ? value : Number(value);
 
     return (
-        <Card variant="solid" className="p-6 relative overflow-hidden group hover:border-brand-primary/30 transition-all duration-500 shadow-[var(--shadow-4k)] border-[0.5px]">
+        <Card variant="solid" className={cn("p-6 relative overflow-hidden group hover:border-brand-primary/30 transition-all duration-500 shadow-[var(--shadow-4k)] border-[0.5px]", className)}>
             <div className={`absolute top-0 right-0 w-24 h-24 ${theme.bg} rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-20 group-hover:opacity-40 transition-opacity`}></div>
 
             <div className="flex justify-between items-start mb-6 relative z-10">
