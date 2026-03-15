@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
-import { UserService, UserProfile } from "@/services/user.service";
+import { UserService } from "@/services/user.service";
+import { UserProfile } from "@/types/user";
 import Link from "next/link";
 import { Card } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";

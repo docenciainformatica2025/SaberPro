@@ -2,6 +2,7 @@ import { db } from "@/lib/firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 import { UserProfile } from "@/types/user";
+export type { UserProfile };
 
 export class UserService {
     /**
