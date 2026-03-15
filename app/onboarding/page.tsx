@@ -27,6 +27,13 @@ export default function OnboardingPage() {
         goal: "excellence",
     });
 
+    // Protect route: Redirect to login if not authenticated
+    useEffect(() => {
+        if (!loading && !user) {
+            router.replace('/login');
+        }
+    }, [user, loading, router]);
+
     // State recovery: sync authProfile to local state and advance steps if data exists
     useEffect(() => {
         if (!loading && authProfile) {

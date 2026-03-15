@@ -26,9 +26,12 @@ export default function RouteGuard({ children }: { children: React.ReactNode }) 
     useEffect(() => {
         if (loading) return;
 
-        const isPublicRoute = PUBLIC_ROUTES.some(route =>
-            pathname === route || pathname.startsWith(`${route}/`)
-        );
+        // Robust path matching
+        const normalizedPath = pathname.replace(/\/$/, '') || '/';
+        const isPublicRoute = PUBLIC_ROUTES.some(route => {
+            if (route === '/') return normalizedPath === '/';
+            return normalizedPath === route || normalizedPath.startsWith(`${route}/`);
+        });
 
         // 1. Unauthenticated users on private routes -> Redirect to login
         if (!user && !isPublicRoute) {
@@ -37,11 +40,17 @@ export default function RouteGuard({ children }: { children: React.ReactNode }) 
             return;
         }
 
-        // 2. Authenticated users (excluding Super Admins) check for role
+        // 2. Authenticated users check
         if (user && !isSuperAdmin) {
             const isExcludedFromOnboarding = pathname === '/onboarding' || pathname.startsWith('/diagnostic');
 
-            // Missing role -> Force Onboarding
+            // IF the user is at a PUBLIC route, don't force them anywhere
+            if (isPublicRoute && !isExcludedFromOnboarding) {
+                setIsAuthorized(true);
+                return;
+            }
+
+            // Missing role -> Force Onboarding (only if not already there or in diagnostic)
             if (!role && !isExcludedFromOnboarding) {
                 router.replace('/onboarding');
                 setIsAuthorized(false);
@@ -57,7 +66,7 @@ export default function RouteGuard({ children }: { children: React.ReactNode }) 
             }
         }
 
-        // 3. Authenticated users trying to access login/register -> Redirect home
+        // 3. Authenticated users trying to access login/register -> Redirect dashboard
         if (user && (pathname === '/login' || pathname === '/register')) {
             const home = role === 'teacher' ? '/teacher' : role === 'admin' ? '/admin/dashboard' : '/dashboard';
             router.replace(home);
