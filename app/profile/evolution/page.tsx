@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import {
     ArrowLeft,
     Share2,
@@ -31,6 +31,7 @@ import {
 } from 'recharts';
 import { toast } from 'sonner';
 import { motion } from 'framer-motion';
+import { SubscriptionPlan } from '@/types/finance';
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -48,14 +49,20 @@ const itemVariants = {
 };
 
 export default function ProfileEvolutionPage() {
-    const { user, profile } = useAuth();
+    const { user, profile, subscription, isSuperAdmin } = useAuth();
     const [loading, setLoading] = useState(true);
     const [generatingPdf, setGeneratingPdf] = useState(false);
+    
+    const isPro = useMemo(() => {
+        return subscription?.plan !== SubscriptionPlan.FREE || isSuperAdmin;
+    }, [subscription?.plan, isSuperAdmin]);
+
     const [stats, setStats] = useState({
         hours: 0,
         flow: 0,
         streak: 0,
         xp: 0,
+        simulationsCount: 0,
         radarData: [
             { subject: 'Pensamiento Crítico', A: 0, fullMark: 100 },
             { subject: 'Adaptabilidad', A: 0, fullMark: 100 },
@@ -96,9 +103,9 @@ export default function ProfileEvolutionPage() {
 
                 snapshot.docs.forEach(doc => {
                     const data = doc.data();
-                    const score = (data.score / data.totalQuestions) * 100;
+                    const score = (data.score / (data.totalQuestions || 1)) * 100;
                     totalScore += score;
-                    totalQuestions += data.totalQuestions;
+                    totalQuestions += (data.totalQuestions || 0);
                     count++;
 
                     const type = data.type || 'general';
@@ -137,13 +144,14 @@ export default function ProfileEvolutionPage() {
                     { subject: 'Solución de Problemas', A: Math.round(skills.problem.sum / (skills.problem.count || 1)), fullMark: 100 },
                 ];
 
-                const focusArea = [...radarData].sort((a, b) => a.A - b.A)[0].subject;
+                const focusArea = radarData.length > 0 ? [...radarData].sort((a, b) => a.A - b.A)[0].subject : 'N/A';
 
                 setStats({
                     hours: totalHours,
                     flow: avgFlow,
                     streak: profile?.gamification?.streak?.current || 0,
                     xp: profile?.gamification?.xp || 0,
+                    simulationsCount: count,
                     radarData,
                     growth: growthValue,
                     focus: focusArea
@@ -160,6 +168,17 @@ export default function ProfileEvolutionPage() {
 
     const handleGenerateCertificate = async () => {
         if (!user || !profile) return;
+
+        if (!isPro) {
+            toast.error("El certificado es una función exclusiva de la versión PRO.");
+            return;
+        }
+
+        if (stats.simulationsCount === 0) {
+            toast.error("Debes completar al menos un simulacro para generar tu certificado.");
+            return;
+        }
+
         setGeneratingPdf(true);
         try {
             const userName = profile.fullName || user.displayName || 'Estudiante';
@@ -272,10 +291,25 @@ export default function ProfileEvolutionPage() {
                                 <button 
                                     onClick={handleGenerateCertificate}
                                     disabled={generatingPdf}
-                                    className="mt-6 w-full h-14 rounded-2xl bg-[var(--theme-text-primary)] text-[var(--theme-bg-base)] font-black text-[10px] uppercase tracking-[0.3em] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 disabled:opacity-50 shadow-xl"
+                                    className={`mt-6 w-full h-14 rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 shadow-xl ${
+                                        isPro && stats.simulationsCount > 0 
+                                            ? 'bg-[var(--theme-text-primary)] text-[var(--theme-bg-base)]' 
+                                            : 'bg-[var(--theme-bg-surface)] text-[var(--theme-text-tertiary)] border border-[var(--theme-border-soft)] opacity-80'
+                                    } disabled:opacity-50`}
                                 >
-                                    {generatingPdf ? <Loader2 className="w-4 h-4 animate-spin" /> : <Award className="w-4 h-4" />}
-                                    {generatingPdf ? 'GENERANDO...' : 'DESCARGAR CERTIFICADO'}
+                                    {generatingPdf ? (
+                                        <Loader2 className="w-4 h-4 animate-spin" />
+                                    ) : !isPro ? (
+                                        <Lock className="w-4 h-4" />
+                                    ) : stats.simulationsCount === 0 ? (
+                                        <Target className="w-4 h-4" />
+                                    ) : (
+                                        <Award className="w-4 h-4" />
+                                    )}
+                                    {generatingPdf ? 'GENERANDO...' : 
+                                     !isPro ? 'EXCLUSIVO PRO' : 
+                                     stats.simulationsCount === 0 ? 'REALIZA UN SIMULACRO' : 
+                                     'DESCARGAR CERTIFICADO'}
                                 </button>
                             </div>
                         </motion.section>
