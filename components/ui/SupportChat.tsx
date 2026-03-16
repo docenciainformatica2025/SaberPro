@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/Button";
 import { CONTACT_EMAIL, SUPPORT_WHATSAPP, PAYMENTS_WHATSAPP } from "@/lib/config";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { saveGabrielaLead } from "@/services/marketing/leads.service";
 
 interface Message {
     id: string;
@@ -33,8 +34,9 @@ interface Message {
 export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }) {
     const [mounted, setMounted] = useState(false);
     const [isOpen, setIsOpen] = useState(!isGlobal);
-    const [step, setStep] = useState<'initial' | 'asking_name' | 'asking_need' | 'ready'>('initial');
-    const [userData, setUserData] = useState({ name: '', need: '' });
+    const [step, setStep] = useState<'initial' | 'asking_name' | 'asking_need' | 'ready' | 'capturing_email'>('initial');
+    const [userData, setUserData] = useState({ name: '', need: '', email: '' });
+    const [leadCaptured, setLeadCaptured] = useState(false);
 
     useEffect(() => {
         setMounted(true);
@@ -145,8 +147,14 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                     { label: "🙋 Charla Humana", value: "humano_flow" }
                 ]);
             } else if (value.startsWith("custom_")) {
-                const intent = matchIntent(value.replace("custom_", ""));
-                if (intent !== "unknown") {
+                const userQuery = value.replace("custom_", "");
+                const intent = matchIntent(userQuery);
+                
+                // Track intent for marketing if possible
+                if (intent !== "unknown" && !leadCaptured && step === 'initial') {
+                    setStep('capturing_email');
+                    addBotMessage(`¡Excelente pregunta sobre ${intent}! 😊 Me encantaría darte una asesoría premium. ¿Me regalas tu nombre y tu mejor correo para enviarte información exclusiva?`);
+                } else if (intent !== "unknown") {
                     processBotResponse(intent);
                 } else {
                     addBotMessage("¡Qué buena pregunta! 😊 Aún estoy aprendiendo, pero puedo ayudarte con simulacros, planes PRO o comunicarte con el equipo. ¿Qué prefieres?", 'options', [
@@ -196,6 +204,25 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                 ]);
                 setIsTyping(false);
             }, 600);
+        } else if (step === 'capturing_email' || (currentInput.includes('@') && !leadCaptured)) {
+            // Subtle capture
+            const emailMatch = currentInput.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+            const capturedEmail = emailMatch ? emailMatch[0] : '';
+            
+            if (capturedEmail) {
+                setUserData(prev => ({ ...prev, email: capturedEmail }));
+                setLeadCaptured(true);
+                setStep('initial');
+                saveGabrielaLead({
+                    name: userData.name || 'Anónimo',
+                    email: capturedEmail,
+                    intent: 'general_inquiry'
+                });
+                addBotMessage("¡Listo! Ya te tengo en mi lista VIP. ✨ ¿En qué estábamos? Ah sí, cuéntame más sobre tu duda.");
+            } else {
+                setUserData(prev => ({ ...prev, name: currentInput }));
+                addBotMessage("¡Genial! Y ahora, ¿a qué correo te puedo enviar las guías?");
+            }
         } else {
             processBotResponse("custom_" + currentInput.toLowerCase());
         }
@@ -329,12 +356,12 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                             </div>
 
                             {/* Input Footer */}
-                            <div className="p-4 bg-[var(--theme-bg-surface)] border-t border-[var(--theme-border-soft)] relative z-20">
+                            <div className="p-4 bg-[var(--theme-bg-surface)] border-t border-[var(--theme-border-soft)] relative z-20 mt-auto">
                                 {/* Suggestion Chips */}
-                                <div className="flex gap-2 overflow-x-auto no-scrollbar pb-3 mb-1 -mx-2 px-2">
+                                <div className="flex gap-2 overflow-x-auto no-scrollbar pb-3 mb-1 -mx-2 px-2 scroll-smooth">
                                     {[
                                         "¿Cuánto vale el Plan Pro?", 
-                                        "¿Cómo pago pro Nequi?", 
+                                        "¿Cómo pago por Nequi?", 
                                         "¿Tienen simulacros gratis?",
                                         "Quiero hablar con alguien"
                                     ].map((hint, idx) => (
@@ -342,9 +369,8 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                                             key={idx}
                                             onClick={() => {
                                                 setInputValue(hint);
-                                                // Small delay for natural feel before auto-sending or letting user edit
                                             }}
-                                            className="whitespace-nowrap px-3 py-1.5 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-[9px] font-bold text-brand-primary hover:bg-brand-primary/10 transition-colors"
+                                            className="whitespace-nowrap px-3 py-1.5 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-[9px] font-bold text-brand-primary hover:bg-brand-primary/10 transition-colors active:scale-95 shadow-sm"
                                         >
                                             {hint}
                                         </button>
@@ -371,18 +397,19 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                                         <Send size={20} />
                                     </button>
                                 </form>
-                                <div className="mt-5 flex justify-around border-t border-[var(--theme-border-soft)] pt-4 opacity-70">
-                                    <button onClick={() => window.open(`https://wa.me/${SUPPORT_WHATSAPP}`, '_blank')} className="flex flex-col items-center gap-1.5 group">
-                                        <Phone size={16} className="text-brand-success group-hover:scale-110 transition-transform" />
-                                        <span className="text-[9px] font-bold uppercase text-[var(--theme-text-tertiary)] group-hover:text-brand-primary transition-colors">Ayuda</span>
+                                
+                                <div className="mt-4 flex justify-around border-t border-[var(--theme-border-soft)] pt-3 opacity-70">
+                                    <button onClick={() => window.open(`https://wa.me/${SUPPORT_WHATSAPP}`, '_blank')} className="flex flex-col items-center gap-1 group">
+                                        <Phone size={14} className="text-brand-success group-hover:scale-110 transition-transform" />
+                                        <span className="text-[8px] font-black uppercase text-[var(--theme-text-tertiary)]">Ventas</span>
                                     </button>
-                                    <button onClick={() => window.location.href = `mailto:${CONTACT_EMAIL}`} className="flex flex-col items-center gap-1.5 group">
-                                        <Mail size={16} className="text-brand-primary group-hover:scale-110 transition-transform" />
-                                        <span className="text-[9px] font-bold uppercase text-[var(--theme-text-tertiary)] group-hover:text-brand-primary transition-colors">Correo</span>
+                                    <button onClick={() => window.location.href = `mailto:${CONTACT_EMAIL}`} className="flex flex-col items-center gap-1 group">
+                                        <Mail size={14} className="text-brand-primary group-hover:scale-110 transition-transform" />
+                                        <span className="text-[8px] font-black uppercase text-[var(--theme-text-tertiary)]">Correo</span>
                                     </button>
-                                    <button onClick={() => window.open(`https://wa.me/${PAYMENTS_WHATSAPP}`, '_blank')} className="flex flex-col items-center gap-1.5 group">
-                                        <Sparkles size={16} className="text-yellow-500 group-hover:scale-110 transition-transform" />
-                                        <span className="text-[9px] font-bold uppercase text-[var(--theme-text-tertiary)] group-hover:text-brand-primary transition-colors">Nequi</span>
+                                    <button onClick={() => window.open(`https://wa.me/${PAYMENTS_WHATSAPP}`, '_blank')} className="flex flex-col items-center gap-1 group">
+                                        <Sparkles size={14} className="text-yellow-500 group-hover:scale-110 transition-transform" />
+                                        <span className="text-[8px] font-black uppercase text-[var(--theme-text-tertiary)]">Pagar</span>
                                     </button>
                                 </div>
                             </div>

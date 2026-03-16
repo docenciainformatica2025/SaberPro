@@ -219,7 +219,7 @@ export default function RegisterPage() {
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 relative z-10">
                             <div className="space-y-5">
                                 <ValidatedInput
-                                    label="CORREO INSTITUCIONAL"
+                                    label="CORREO ELECTRÓNICO"
                                     type="email"
                                     icon={MailIcon}
                                     onValidate={validateEmail}
