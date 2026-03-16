@@ -346,13 +346,13 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                         className={cn(
                             "z-[200] flex flex-col",
                             isGlobal 
-                                ? "fixed inset-0 md:inset-auto md:bottom-24 md:right-8 w-full md:w-[380px] h-[100dvh] md:h-[600px] md:max-h-[75vh] shadow-4k md:rounded-3xl overflow-hidden flex flex-col" 
-                                : "w-full h-full flex flex-col"
+                                ? "fixed inset-0 md:inset-auto md:bottom-24 md:right-8 w-full md:w-[380px] h-full md:h-[600px] md:max-h-[85vh] shadow-4k md:rounded-3xl overflow-hidden" 
+                                : "w-full h-full"
                         )}
                     >
-                        <Card variant="primary" className="flex-1 flex flex-col p-0 overflow-hidden border-brand-primary/20 backdrop-blur-3xl bg-[var(--theme-bg-surface)]/95 md:rounded-3xl shadow-2xl relative">
+                        <Card variant="primary" className="flex-1 flex flex-col h-full min-h-0 p-0 overflow-hidden border-brand-primary/20 backdrop-blur-3xl bg-[var(--theme-bg-surface)]/95 md:rounded-3xl shadow-2xl relative">
                             {/* Header */}
-                            <div className="bg-brand-primary p-5 text-white flex justify-between items-center shadow-md relative overflow-hidden">
+                            <div className="shrink-0 bg-brand-primary p-5 text-white flex justify-between items-center shadow-md relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 animate-pulse" />
                                 <div className="flex items-center gap-3 relative z-10">
                                     <div className="w-11 h-11 rounded-2xl bg-white/20 flex items-center justify-center relative shadow-inner rotate-3 overflow-hidden">
@@ -430,19 +430,14 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                                         </div>
                                     </div>
                                 ))}
-                                {isTyping && (
-                                    <div className="flex items-center gap-2 text-brand-primary/60 pb-2">
-                                        <div className="flex gap-1">
-                                            <span className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-bounce [animation-delay:-0.3s]" />
-                                            <span className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-bounce [animation-delay:-0.15s]" />
-                                            <span className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-bounce" />
-                                        </div>
-                                        <span className="text-[10px] font-bold uppercase tracking-widest italic opacity-50">Gabriela está escribiendo...</span>
-                                    </div>
-                                )}
+                                    <div className="flex-1 min-h-0" /> {/* Final spacer */}
+                                </div>
+                            </div>
 
-                                {/* Suggestion Chips inside scroll area to save space in footer */}
-                                <div className="flex gap-2 overflow-x-auto no-scrollbar py-2 -mx-1 px-1">
+                            {/* Input Footer - Pinned */}
+                            <div className="shrink-0 p-4 bg-[var(--theme-bg-surface)] border-t border-[var(--theme-border-soft)] z-30 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+                                {/* Suggestion Chips - Now pinned above input */}
+                                <div className="flex gap-2 overflow-x-auto no-scrollbar pb-3 -mx-1 px-1">
                                     {[
                                         "¿Cuánto vale el Plan Pro?", 
                                         "¿Cómo pago por Nequi?", 
@@ -458,10 +453,8 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                                         </button>
                                     ))}
                                 </div>
-                            </div>
 
-                            {/* Input Footer - Pinned */}
-                            <div className="shrink-0 p-4 bg-[var(--theme-bg-surface)] border-t border-[var(--theme-border-soft)] z-30 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+                                <form 
                                 <form 
                                     onSubmit={(e) => { e.preventDefault(); handleSend(); }}
                                     className="flex items-center gap-2"
