@@ -162,7 +162,7 @@ export default function AdminAnalyticsPage() {
                     <div className="h-[350px] w-full mt-4">
                         <ResponsiveContainer width="100%" height="100%">
                             <AreaChart
-                                data={chartData.length > 0 ? chartData : [{ month: '---', users: 0 }]}
+                                data={chartData.length > 0 ? chartData : [{ month: '---', users: 0, revenue: 0 }]}
                                 margin={{ top: 20, right: 30, left: -20, bottom: 10 }}
                             >
                                 <defs>
