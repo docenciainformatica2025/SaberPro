@@ -336,18 +336,17 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                                 </button>
                             </div>
 
-                            {/* Chat Body - FORCED SCROLL */}
+                            {/* Chat Body - FORCED SCROLL & HISTORY FOCUS */}
                             <div 
                                 ref={scrollRef}
-                                className="flex-1 overflow-y-auto overflow-x-hidden p-5 space-y-5 bg-gradient-to-b from-[var(--theme-bg-base)]/50 to-[var(--theme-bg-surface)]/50 scroll-smooth custom-scrollbar"
+                                className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-5 space-y-5 bg-gradient-to-b from-[var(--theme-bg-base)]/50 to-[var(--theme-bg-surface)]/50 scroll-smooth custom-scrollbar overscroll-contain"
                                 style={{ 
                                     WebkitOverflowScrolling: 'touch',
-                                    maxHeight: 'calc(100% - 140px)', // Strict limit for messages area
                                     display: 'flex',
                                     flexDirection: 'column'
                                 }}
                             >
-                                <div className="flex-1" /> {/* Spacer to push messages down */}
+                                <div className="flex-1 min-h-[20px]" /> {/* Spacer to push messages down */}
                                 {messages.map(msg => (
                                     <div key={msg.id} className={cn(
                                         "flex gap-3 animate-in fade-in slide-in-from-bottom-2 duration-300",
