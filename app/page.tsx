@@ -70,7 +70,7 @@ export default function Home() {
               ) : (
                 <Link href="/register" className="w-full sm:w-auto">
                   <Button size="lg" variant="primary" className="w-full h-14 px-10 text-[10px] font-bold uppercase tracking-[0.2em] bg-brand-primary text-white organic-border-reverse hover:shadow-xl hover:shadow-brand-primary/20 transition-all shadow-lg active:scale-95">
-                    Comenzar Gratis
+                    ¡Empezar mi camino!
                   </Button>
                 </Link>
               )}
