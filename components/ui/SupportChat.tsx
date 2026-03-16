@@ -52,6 +52,11 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
     const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     const validatePhone = (phone: string) => /^[0-9]{10,15}$/.test(phone.replace(/\s/g, ''));
 
+    // Mount handling
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     // Initial message based on Auth state
     useEffect(() => {
         if (mounted && messages.length === 0) {
@@ -338,7 +343,7 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                         animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 50, x: 20 }}
                         className={cn(
-                            "z-[100] flex flex-col",
+                            "z-[200] flex flex-col",
                             isGlobal 
                                 ? "fixed inset-0 md:inset-auto md:bottom-24 md:right-8 w-full md:w-[380px] h-[100dvh] md:h-[600px] md:max-h-[75vh] shadow-4k md:rounded-3xl overflow-hidden flex flex-col" 
                                 : "w-full h-full flex flex-col"
