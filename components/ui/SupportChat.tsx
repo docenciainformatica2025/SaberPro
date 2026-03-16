@@ -315,9 +315,10 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
         <>
             {isGlobal && (
                 <button 
+                    id="gabriela-trigger"
                     onClick={() => setIsOpen(!isOpen)}
                     className={cn(
-                        "fixed bottom-24 right-4 z-[60] w-14 h-14 rounded-2xl bg-brand-primary text-white shadow-2xl flex items-center justify-center hover:scale-110 transition-all active:scale-95 md:w-16 md:h-16 md:bottom-8 md:right-8 overflow-hidden border-4 border-white dark:border-slate-800 group",
+                        "fixed bottom-28 right-4 z-[999] w-14 h-14 rounded-2xl bg-brand-primary text-white shadow-2xl flex items-center justify-center hover:scale-110 transition-all active:scale-95 md:w-16 md:h-16 md:bottom-8 md:right-8 overflow-hidden border-4 border-white dark:border-slate-800 group",
                         isOpen && "scale-0 opacity-0 pointer-events-none"
                     )}
                 >

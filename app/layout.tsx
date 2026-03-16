@@ -122,6 +122,7 @@ export default function RootLayout({
         <AuthProvider>
           <SessionWatcher />
           <VersionUpdateGuard>
+            <SupportChat isGlobal={true} />
             <RouteGuard>
               <RoleBasedNavigation />
               <main className="relative z-10 flex-grow flex flex-col pt-[var(--header-safe-zone)] pb-8 md:pb-12" suppressHydrationWarning={true}>
@@ -132,7 +133,6 @@ export default function RootLayout({
               <AdminRoleSwitcher />
               <MobileTabBar />
             </RouteGuard>
-            <SupportChat isGlobal={true} />
             <DarkModeToggle />
             <ConditionalFooter />
             <CookieBanner />
