@@ -36,7 +36,7 @@ interface Message {
 export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }) {
     const [mounted, setMounted] = useState(false);
     const [isOpen, setIsOpen] = useState(!isGlobal);
-    const [step, setStep] = useState<'initial' | 'asking_name' | 'asking_phone' | 'asking_email' | 'asking_need' | 'ready' | 'capturing_leads'>('initial');
+    const [step, setStep] = useState<'initial' | 'asking_name' | 'asking_phone' | 'asking_email' | 'ready' | 'capturing_leads'>('initial');
     const [userData, setUserData] = useState({ name: '', phone: '', email: '', intent: '' });
     const [leadCaptured, setLeadCaptured] = useState(false);
 
