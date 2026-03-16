@@ -4,6 +4,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 export interface GabrielaLead {
     name: string;
     email: string;
+    phone?: string;
     intent: string;
     region?: string;
     userAgent?: string;

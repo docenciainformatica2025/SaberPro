@@ -103,6 +103,12 @@ export default function MarketingPage() {
         return encodeURIComponent(msg);
     };
 
+    const handleWAContact = (lead: LeadData) => {
+        const phone = lead.phone?.replace(/\D/g, '');
+        const target = phone && phone.length >= 10 ? phone : SUPPORT_WHATSAPP;
+        window.open(`https://wa.me/${target}?text=${getContactMessage(lead)}`, '_blank');
+    };
+
     return (
         <main className="max-w-7xl mx-auto space-y-12 pb-12 p-4 lg:p-0 animate-in fade-in slide-in-from-bottom-8 duration-700">
             <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
@@ -165,6 +171,7 @@ export default function MarketingPage() {
                             <thead>
                                 <tr className="text-[10px] text-[var(--theme-text-tertiary)] uppercase font-semibold tracking-wider bg-[var(--theme-bg-surface)]/50">
                                     <th className="px-8 py-6 border-b border-[var(--theme-border-soft)]">Prospecto</th>
+                                    <th className="px-8 py-6 border-b border-[var(--theme-border-soft)]">Contacto</th>
                                     <th className="px-8 py-6 border-b border-[var(--theme-border-soft)]">Intención / Interés</th>
                                     <th className="px-8 py-6 border-b border-[var(--theme-border-soft)]">Lugar / Fecha</th>
                                     <th className="px-8 py-6 border-b border-[var(--theme-border-soft)] text-right">Acciones</th>
@@ -178,10 +185,12 @@ export default function MarketingPage() {
                                                 <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center font-bold text-brand-primary border border-brand-primary/20">
                                                     {l.name[0].toUpperCase()}
                                                 </div>
-                                                <div>
-                                                    <p className="font-bold text-[var(--theme-text-primary)]">{l.name}</p>
-                                                    <p className="text-[10px] text-theme-text-secondary/40 font-bold uppercase tracking-wider">{l.email}</p>
-                                                </div>
+                                        <td className="px-8 py-6">
+                                            <div className="flex flex-col">
+                                                <p className="font-bold text-[var(--theme-text-primary)]">{l.email}</p>
+                                                <p className="text-[10px] text-brand-success font-black uppercase tracking-widest">{l.phone || 'Sin número'}</p>
+                                            </div>
+                                        </td>
                                             </div>
                                         </td>
                                         <td className="px-8 py-6">
@@ -207,7 +216,7 @@ export default function MarketingPage() {
                                                     variant="ghost" 
                                                     size="icon" 
                                                     className="hover:text-brand-success hover:bg-brand-success/10 border-transparent transition-all"
-                                                    onClick={() => window.open(`https://wa.me/${SUPPORT_WHATSAPP}?text=${getContactMessage(l)}`, '_blank')}
+                                                    onClick={() => handleWAContact(l)}
                                                 >
                                                     <Phone size={16} />
                                                 </Button>

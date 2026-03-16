@@ -36,8 +36,8 @@ interface Message {
 export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }) {
     const [mounted, setMounted] = useState(false);
     const [isOpen, setIsOpen] = useState(!isGlobal);
-    const [step, setStep] = useState<'initial' | 'asking_name' | 'asking_need' | 'ready' | 'capturing_email'>('initial');
-    const [userData, setUserData] = useState({ name: '', need: '', email: '' });
+    const [step, setStep] = useState<'initial' | 'asking_name' | 'asking_phone' | 'asking_email' | 'asking_need' | 'ready' | 'capturing_leads'>('initial');
+    const [userData, setUserData] = useState({ name: '', phone: '', email: '', intent: '' });
     const [leadCaptured, setLeadCaptured] = useState(false);
 
     const { user, profile, subscription } = useAuth();
@@ -48,6 +48,9 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
     const [inputValue, setInputValue] = useState("");
     const [isTyping, setIsTyping] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
+
+    const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const validatePhone = (phone: string) => /^[0-9]{10,15}$/.test(phone.replace(/\s/g, ''));
 
     // Initial message based on Auth state
     useEffect(() => {
@@ -187,8 +190,9 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                 
                 // Track intent for marketing (Only for NOT logged in users)
                 if (!user && intent !== "unknown" && !leadCaptured && step === 'initial') {
-                    setStep('capturing_email');
-                    addBotMessage(`¡Excelente pregunta sobre ${intent}! 😊 Me encantaría darte una asesoría premium. ¿Me regalas tu nombre y tu mejor correo para enviarte información exclusiva?`);
+                    setUserData(prev => ({ ...prev, intent: intent }));
+                    setStep('capturing_leads');
+                    addBotMessage(`¡Excelente pregunta sobre ${intent}! 😊 Me encantaría darte una asesoría premium. ¿Me regalas tu nombre para empezar?`);
                 } else if (intent !== "unknown") {
                     processBotResponse(intent);
                 } else {
@@ -210,55 +214,92 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
 
     const handleSend = () => {
         if (!inputValue.trim()) return;
+        const currentInput = inputValue.trim();
         const msg: Message = {
             id: Date.now().toString(),
             role: 'user',
-            content: inputValue,
+            content: currentInput,
             timestamp: new Date()
         };
         setMessages(prev => [...prev, msg]);
-        const currentInput = inputValue;
         setInputValue("");
 
         if (step === 'asking_name') {
             setUserData(prev => ({ ...prev, name: currentInput }));
-            setStep('asking_need');
+            setStep('asking_phone');
             setIsTyping(true);
             setTimeout(() => {
-                addBotMessage(`¡Mucho gusto, ${currentInput}! ✨ ¿Cuéntame qué necesitas para conectarte con la persona adecuada?`);
+                addBotMessage(`¡Mucho gusto, ${currentInput.split(' ')[0]}! ✨ ¿Me regalas tu número de celular o WhatsApp para contactarte?`);
                 setIsTyping(false);
             }, 600);
-        } else if (step === 'asking_need') {
-            setUserData(prev => ({ ...prev, need: currentInput }));
-            setStep('ready');
-            setIsTyping(true);
-            setTimeout(() => {
-                addBotMessage("¡Entendido! Ya tengo todo. ¿Por dónde prefieres que hablemos?", 'options', [
-                    { label: "📲 Por WhatsApp", value: "whatsapp_support" },
-                    { label: "📧 Por Correo", value: "email_form" }
-                ]);
-                setIsTyping(false);
-            }, 600);
-        } else if (step === 'capturing_email' || (currentInput.includes('@') && !leadCaptured)) {
-            // Subtle capture
-            const emailMatch = currentInput.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
-            const capturedEmail = emailMatch ? emailMatch[0] : '';
-            
-            if (capturedEmail) {
-                setUserData(prev => ({ ...prev, email: capturedEmail }));
-                setLeadCaptured(true);
-                setStep('initial');
-                saveGabrielaLead({
-                    name: userData.name || 'Anónimo',
-                    email: capturedEmail,
-                    intent: 'general_inquiry'
-                });
-                addBotMessage("¡Listo! Ya te tengo en mi lista VIP. ✨ ¿En qué estábamos? Ah sí, cuéntame más sobre tu duda.");
+        } else if (step === 'asking_phone') {
+            if (validatePhone(currentInput)) {
+                setUserData(prev => ({ ...prev, phone: currentInput }));
+                setStep('asking_email');
+                setIsTyping(true);
+                setTimeout(() => {
+                    addBotMessage("¡Perfecto! Ya casi terminamos. ¿Cuál es tu mejor correo electrónico?");
+                    setIsTyping(false);
+                }, 600);
             } else {
+                addBotMessage("Parece que ese número no es válido. ¿Me lo escribes de nuevo? (Ej: 3001234567)");
+            }
+        } else if (step === 'asking_email') {
+            if (validateEmail(currentInput)) {
+                setUserData(prev => ({ ...prev, email: currentInput }));
+                setStep('ready');
+                setIsTyping(true);
+                setLeadCaptured(true);
+                
+                // Save lead
+                saveGabrielaLead({
+                    name: userData.name,
+                    phone: userData.phone,
+                    email: currentInput,
+                    intent: userData.intent || 'general_inquiry'
+                });
+
+                setTimeout(() => {
+                    addBotMessage("¡Listo! Ya tengo tus datos a salvo. ✨ ¿Por dónde prefieres que te contacte un asesor especializado?", 'options', [
+                        { label: "📲 Por WhatsApp", value: "whatsapp_support" },
+                        { label: "📧 Por Correo", value: "email_form" },
+                        { label: "🏠 Menú principal", value: "restart" }
+                    ]);
+                    setIsTyping(false);
+                }, 600);
+            } else {
+                addBotMessage("Ese correo no me parece correcto. ¿Podrías escribirlo de nuevo?");
+            }
+        } else if (step === 'capturing_leads') {
+            // New flow for spontaneous capture
+            if (!userData.name) {
                 setUserData(prev => ({ ...prev, name: currentInput }));
-                addBotMessage("¡Genial! Y ahora, ¿a qué correo te puedo enviar las guías?");
+                addBotMessage("¡Genial! Y ahora, ¿a qué número de WhatsApp te puedo escribir?");
+            } else if (!userData.phone) {
+                if (validatePhone(currentInput)) {
+                    setUserData(prev => ({ ...prev, phone: currentInput }));
+                    addBotMessage("¡Súper! Y por último, regálame tu correo para enviarte las guías de estudio.");
+                } else {
+                    addBotMessage("Porfa, escribe un número de WhatsApp válido.");
+                }
+            } else if (!userData.email) {
+                if (validateEmail(currentInput)) {
+                    setUserData(prev => ({ ...prev, email: currentInput }));
+                    setLeadCaptured(true);
+                    setStep('initial');
+                    saveGabrielaLead({
+                        name: userData.name,
+                        phone: userData.phone,
+                        email: currentInput,
+                        intent: userData.intent || 'spontaneous_lead'
+                    });
+                    addBotMessage("¡Excelente! Ya estás en mi lista VIP. ✨ ¿En qué estábamos? Cuéntame más sobre tu duda.");
+                } else {
+                    addBotMessage("Ese correo no parece válido. ¿Me lo repites?");
+                }
             }
         } else {
+            // Intent handling
             processBotResponse("custom_" + currentInput.toLowerCase());
         }
     };
@@ -299,8 +340,8 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                         className={cn(
                             "z-[100] flex flex-col",
                             isGlobal 
-                                ? "fixed bottom-0 right-0 w-full h-[100dvh] md:bottom-24 md:right-8 md:w-[380px] md:max-h-[70vh] md:h-[600px] shadow-4k md:rounded-3xl overscroll-contain" 
-                                : "w-full h-full"
+                                ? "fixed inset-0 md:inset-auto md:bottom-24 md:right-8 w-full md:w-[380px] h-[100dvh] md:h-[600px] md:max-h-[75vh] shadow-4k md:rounded-3xl overflow-hidden flex flex-col" 
+                                : "w-full h-full flex flex-col"
                         )}
                     >
                         <Card variant="primary" className="flex-1 flex flex-col p-0 overflow-hidden border-brand-primary/20 backdrop-blur-3xl bg-[var(--theme-bg-surface)]/95 md:rounded-3xl shadow-2xl relative">
