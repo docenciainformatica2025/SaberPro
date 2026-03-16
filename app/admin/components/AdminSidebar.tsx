@@ -14,7 +14,8 @@ import {
     BarChart3,
     Activity,
     DollarSign,
-    KeyRound
+    KeyRound,
+    Megaphone
 } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 
