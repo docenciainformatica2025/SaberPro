@@ -216,10 +216,9 @@ export default function DashboardPage() {
                                     <Sparkles size={32} />
                                 </div>
                                 <div className="space-y-1">
-                                    <h4 className="text-xl font-bold text-[var(--theme-text-primary)] tracking-tight">Potencia tu <span className="text-brand-primary italic">Maestría</span></h4>
+                                    <h4 className="text-xl font-bold text-[var(--theme-text-primary)] tracking-tight">¡Sube al <span className="text-brand-primary italic">Siguiente Nivel</span>!</h4>
                                     <p className="text-[11px] text-[var(--theme-text-secondary)] font-medium leading-relaxed max-w-sm">
-                                        Desbloquea simulacros ilimitados, análisis de IA y reportes PDF.
-                                        Estadísticamente, los usuarios PRO mejoran un 40% más rápido.
+                                        Con el plan PRO tienes ejercicios ilimitados y consejos personalizados para que asegures tu mejor puntaje. ¡Tú puedes lograrlo!
                                     </p>
                                 </div>
                             </div>
@@ -228,7 +227,7 @@ export default function DashboardPage() {
                                 className="h-14 px-8 rounded-xl shadow-lg w-full md:w-auto"
                                 onClick={() => router.push('/pricing')}
                             >
-                                Mejorar a PRO
+                                ¡Quiero ser PRO!
                             </Button>
                         </div>
                     </div>
@@ -238,7 +237,7 @@ export default function DashboardPage() {
                     <div className="flex items-center justify-between px-6 py-4 bg-brand-primary/5 border border-brand-primary/10 rounded-[2rem] mb-8">
                         <div className="flex items-center gap-3">
                             <Shield size={16} className="text-brand-primary" />
-                            <span className="text-[10px] font-black text-brand-primary uppercase tracking-[0.2em]">Versión Profesional Activa</span>
+                            <span className="text-[10px] font-black text-brand-primary uppercase tracking-[0.2em]">Tienes el Plan PRO Activo ✨</span>
                         </div>
                         <span className="text-[9px] font-bold text-[var(--theme-text-tertiary)] uppercase tracking-widest">Soporte Prioritario</span>
                     </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth } from "@/context/AuthContext";
-import { Check, X, Zap, Crown, Shield, ArrowRight, Star } from "lucide-react";
+import { Check, X, Zap, Crown, Shield, ArrowRight, Star, Phone, Ticket } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { upgradeUserSubscription, redeemCoupon } from "@/services/finance/subscription.service";
@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import Link from "next/link";
 import PaymentGateway from "@/components/finance/PaymentGateway";
-import { Ticket } from "lucide-react";
+import { PAYMENTS_WHATSAPP } from "@/lib/config";
 
 const FeatureItem = ({ text, included = true }: { text: string, included?: boolean }) => (
     <li className={`flex items-center gap-3 ${included ? 'text-[var(--theme-text-primary)]' : 'text-[var(--theme-text-quaternary)]/30'}`}>
@@ -72,10 +72,10 @@ export default function PricingPage() {
         setRedeeming(true);
         try {
             const result = await redeemCoupon(user.uid, couponCode);
-            alert(`¡Éxito! Plan ${result.plan.toUpperCase()} activado correctamente.`);
+            alert(`¡Genial! Tu plan ${result.plan.toUpperCase()} ya está activo. ¡A estudiar!`);
             router.push('/dashboard?promo_success=true');
         } catch (e: any) {
-            alert(e.message || "Error al canjear el código.");
+            alert(e.message || "Ups, ese código no parece funcionar. Revisa si está bien escrito.");
         } finally {
             setRedeeming(false);
         }
@@ -250,16 +250,17 @@ export default function PricingPage() {
                         onClick={handleUpgrade}
                         icon={Zap}
                     >
-                        {user ? "Activar Plan Ahora" : "Comenzar Ahora"}
+                        {user ? "¡Quiero mi plan PRO!" : "¡Empezar ahora mismo!"}
                     </Button>
                 </Card>
             </div>
 
-            <div className="mt-16 w-full max-w-lg animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
+            <div className="mt-12 w-full max-w-lg grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
+                {/* Coupon Card */}
                 <Card variant="solid" className="p-6 bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)]">
                     <div className="flex items-center gap-3 mb-4 text-brand-primary">
                         <Ticket size={20} />
-                        <h4 className="text-xs font-bold uppercase tracking-widest text-[var(--theme-text-primary)]">¿Tienes un código de acceso?</h4>
+                        <h4 className="text-xs font-bold uppercase tracking-widest text-[var(--theme-text-primary)]">¿Tienes un código?</h4>
                     </div>
                     <div className="flex gap-2">
                         <input
@@ -267,7 +268,7 @@ export default function PricingPage() {
                             placeholder="Ej: PROMO-2025"
                             value={couponCode}
                             onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
-                            className="flex-1 h-12 bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] rounded-xl px-4 text-xs font-bold text-[var(--theme-text-primary)] focus:border-brand-primary outline-none transition-all"
+                            className="flex-1 h-12 bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] rounded-xl px-4 text-xs font-bold text-[var(--theme-text-primary)] focus:border-brand-primary outline-none transition-all w-24"
                         />
                         <Button
                             variant="primary"
@@ -275,12 +276,25 @@ export default function PricingPage() {
                             onClick={handleRedeemCoupon}
                             isLoading={redeeming}
                         >
-                            Canjear
+                            Usar código
                         </Button>
                     </div>
-                    <p className="mt-3 text-[9px] text-[var(--theme-text-tertiary)] italic text-center uppercase tracking-wider">
-                        * Los códigos promocionales son de un solo uso.
-                    </p>
+                </Card>
+
+                {/* WhatsApp Payment Card */}
+                <Card variant="solid" className="p-6 bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)] flex flex-col justify-between">
+                    <div className="flex items-center gap-3 mb-4 text-brand-success">
+                        <Phone size={20} />
+                        <h4 className="text-xs font-bold uppercase tracking-widest text-[var(--theme-text-primary)]">Activación por Nequi</h4>
+                    </div>
+                    <p className="text-[10px] text-[var(--theme-text-secondary)] mb-4 font-medium">¿Prefieres pagar por Nequi? Chatea con nosotros para una activación rápida.</p>
+                    <Button
+                        variant="outline"
+                        className="w-full h-12 border-brand-success/30 text-brand-success hover:bg-brand-success/5 uppercase tracking-widest font-bold text-[10px]"
+                        onClick={() => window.open(`https://wa.me/${PAYMENTS_WHATSAPP}?text=Hola,%20quiero%20adquirir%20el%20plan%20PRO%20por%20WhatsApp`, '_blank')}
+                    >
+                        Pagar por WhatsApp
+                    </Button>
                 </Card>
             </div>
 
