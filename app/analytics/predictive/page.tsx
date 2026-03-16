@@ -162,23 +162,6 @@ export default function PredictiveMapPage() {
                 </div>
             </section>
 
-            {/* Floating Navigation (Just visual, or functional) */}
-            {/* Usually redundant with Layout, but part of the design. I'll omit if Layout has it, but this page looks standalone. */}
-            {/* The HTML had a unique floating pill nav. I'll replicate it for "wow" factor if not conflicting. */}
-            <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-[340px] z-40">
-                <div className="bg-[#1A2B3C]/95 backdrop-blur-lg rounded-full px-8 py-4 flex justify-between items-center shadow-2xl border border-white/10">
-                    <button className="text-teal-500">
-                        <TrendingUp className="w-5 h-5" />
-                    </button>
-                    <button className="text-white/40 hover:text-white transition-colors">
-                        <Home className="w-5 h-5" />
-                        <span className="sr-only">Inicio</span>
-                    </button>
-                    <button className="text-white/40 hover:text-white transition-colors">
-                        <Users className="w-5 h-5" />
-                    </button>
-                </div>
-            </nav>
         </div>
     );
 }

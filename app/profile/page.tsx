@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/Badge";
 import { toast } from "sonner";
 import { BRAND_NAME } from "@/lib/config";
 import { CheckCircle2, AlertCircle, User as UserIcon, GraduationCap, Target, School, MapPin, Sparkles, ArrowLeft, Save } from "lucide-react";
+import { formatDBInfo, formatFullName } from "@/utils/formatters";
 
 export default function ProfilePage() {
     const { user, loading: authLoading, role } = useAuth();
@@ -68,7 +69,7 @@ export default function ProfilePage() {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value.toUpperCase()
+            [e.target.name]: e.target.value
         });
     };
 
@@ -78,11 +79,18 @@ export default function ProfilePage() {
 
         setSaving(true);
         try {
-            await UserService.updateProfile(user.uid, {
+            const normalizedData = {
                 ...formData,
+                fullName: formatFullName(formData.fullName),
+                targetCareer: formatDBInfo(formData.targetCareer),
+                dreamUniversity: formatDBInfo(formData.dreamUniversity),
+                institution: formatDBInfo(formData.institution),
+                city: formatDBInfo(formData.city),
                 email: user.email!,
                 onboardingCompleted: true
-            } as any);
+            };
+
+            await UserService.updateProfile(user.uid, normalizedData as any);
 
             toast.success("¡Perfil Actualizado!", {
                 description: `Tu identidad digital en ${BRAND_NAME} ha sido sincronizada.`,

@@ -230,9 +230,9 @@ export default function LeaderboardPage() {
                 </div>
             </div>
 
-            {/* Sticky Me (if not in top view or just always show for context) */}
+            {/* Sticky Me - Adjusted to avoid MobileTabBar collision */}
             {userRank && (
-                <div className="fixed bottom-0 left-0 right-0 p-4 bg-[var(--theme-bg-base)]/95 backdrop-blur-xl border-t border-brand-primary/20 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] z-50 animate-in slide-in-from-bottom-full">
+                <div className="fixed bottom-14 md:bottom-0 left-0 right-0 p-4 bg-[var(--theme-bg-base)]/95 backdrop-blur-xl border-t border-brand-primary/20 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] z-50 animate-in slide-in-from-bottom-full">
                     <div className="max-w-3xl mx-auto flex items-center justify-between">
                         <div className="flex items-center gap-4">
                             <span className="text-[var(--theme-text-primary)] font-semibold text-2xl">#{userRank.rank}</span>

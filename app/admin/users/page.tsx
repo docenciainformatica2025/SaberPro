@@ -28,6 +28,7 @@ import {
     Users as UsersIcon,
     ShieldAlert
 } from "lucide-react";
+import { formatDBInfo, formatFullName } from "@/utils/formatters";
 import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
 import { logAdminAction } from "@/lib/adminLogger";
 import { useAuth } from "@/context/AuthContext";
@@ -292,12 +293,13 @@ export default function UsersPage() {
 
         setLoading(true);
         try {
+            const normalizedName = formatFullName(editForm.fullName);
             await updateDoc(doc(db, "users", editingUser.id), {
-                fullName: editForm.fullName,
+                fullName: normalizedName,
                 role: editForm.role
             });
-            await logAdminAction(currentUser?.email || "unknown", "UPDATE_USER_DETAILS", editingUser.id, `Updated name/role to ${editForm.fullName} / ${editForm.role}`);
-            setUsers(prev => prev.map(u => u.id === editingUser.id ? { ...u, fullName: editForm.fullName, role: editForm.role as any } : u));
+            await logAdminAction(currentUser?.email || "unknown", "UPDATE_USER_DETAILS", editingUser.id, `Updated name/role to ${normalizedName} / ${editForm.role}`);
+            setUsers(prev => prev.map(u => u.id === editingUser.id ? { ...u, fullName: normalizedName, role: editForm.role as any } : u));
             setIsEditModalOpen(false);
         } catch (error) {
             alert("Error al actualizar usuario.");

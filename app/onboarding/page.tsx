@@ -13,6 +13,7 @@ import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { UserProfile } from "@/types/user";
+import { formatDBInfo, formatFullName } from "@/utils/formatters";
 
 interface OnboardingProfile {
     fullName: string;
@@ -88,13 +89,12 @@ export default function OnboardingPage() {
         try {
             const userRef = doc(db, "users", user.uid);
 
-            // Map onboarding state to canonical UserProfile fields
             const saveData: Partial<UserProfile> = {
                 uid: user.uid,
                 email: user.email || "",
-                fullName: profile.fullName || user.displayName || authProfile?.fullName || "",
-                targetCareer: profile.career,
-                dreamUniversity: profile.university,
+                fullName: formatFullName(profile.fullName || user.displayName || authProfile?.fullName || ""),
+                targetCareer: formatDBInfo(profile.career),
+                dreamUniversity: formatDBInfo(profile.university),
                 examDate: profile.examDate,
                 scoreGoal: profile.goal,
                 role: finalRole,

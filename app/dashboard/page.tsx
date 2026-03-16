@@ -245,32 +245,6 @@ export default function DashboardPage() {
                 )}
             </div>
 
-            {/* Bottom Navigation - Ultra Sleek Maestro v2.1 (Mobile Only) */}
-            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-48px)] max-w-sm bg-[var(--theme-bg-surface)] backdrop-blur-3xl rounded-[2rem] p-2 flex justify-around items-center shadow-premium border border-[var(--theme-border-soft)] z-50 animate-in slide-in-from-bottom-8 duration-1000">
-                <Link href="/dashboard" className="flex-1 flex flex-col items-center gap-1.5 py-1.5 touch-manipulation group">
-                    <div className="p-3 rounded-2xl bg-brand-primary text-white shadow-lg transition-all transform group-active:scale-90">
-                        <Home size={20} strokeWidth={2.5} />
-                    </div>
-                    <span className="text-[9px] font-black text-brand-primary uppercase tracking-[0.2em] relative">
-                        Inicio
-                        <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-brand-primary rounded-full"></span>
-                    </span>
-                </Link>
-
-                <Link href="/planner" className="flex-1 flex flex-col items-center gap-1.5 py-1.5 touch-manipulation group opacity-50 hover:opacity-100 transition-all">
-                    <div className="p-3 rounded-2xl text-[var(--theme-text-primary)]">
-                        <MapIcon size={20} strokeWidth={2} />
-                    </div>
-                    <span className="text-[9px] font-black uppercase tracking-[0.2em]">Ruta</span>
-                </Link>
-
-                <Link href="/achievements" className="flex-1 flex flex-col items-center gap-1.5 py-1.5 touch-manipulation group opacity-50 hover:opacity-100 transition-all">
-                    <div className="p-3 rounded-2xl text-[var(--theme-text-primary)]">
-                        <Award size={20} strokeWidth={2} />
-                    </div>
-                    <span className="text-[9px] font-black uppercase tracking-[0.2em]">Logros</span>
-                </Link>
-            </div>
         </div>
     );
 }
