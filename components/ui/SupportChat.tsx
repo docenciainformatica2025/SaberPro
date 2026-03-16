@@ -21,6 +21,8 @@ import { CONTACT_EMAIL, SUPPORT_WHATSAPP, PAYMENTS_WHATSAPP } from "@/lib/config
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { saveGabrielaLead } from "@/services/marketing/leads.service";
+import { useAuth } from "@/context/AuthContext";
+import { SubscriptionPlan } from "@/types/finance";
 
 interface Message {
     id: string;
@@ -38,28 +40,41 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
     const [userData, setUserData] = useState({ name: '', need: '', email: '' });
     const [leadCaptured, setLeadCaptured] = useState(false);
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-    
-    const [messages, setMessages] = useState<Message[]>([
-        {
-            id: '1',
-            role: 'bot',
-            content: "¡Hola! Soy Gabriela, tu guía en SaberPro. 😊 ¿Cómo te va hoy? Cuéntame en qué puedo darte una mano.",
-            timestamp: new Date(),
-            type: 'options',
-            options: [
-                { label: "🎯 Practicar simulacro", value: "simulacro" },
-                { label: "💎 Saber del plan Pro", value: "suscripcion" },
-                { label: "💳 Pagos por Nequi", value: "pago" },
-                { label: "🙋 Charlar con alguien", value: "humano_flow" }
-            ]
-        }
-    ]);
+    const { user, profile, subscription } = useAuth();
+    const isPro = subscription?.plan === SubscriptionPlan.PRO;
+    const userName = profile?.fullName?.split(' ')[0] || "estudiante";
+
+    const [messages, setMessages] = useState<Message[]>([]);
     const [inputValue, setInputValue] = useState("");
     const [isTyping, setIsTyping] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
+
+    // Initial message based on Auth state
+    useEffect(() => {
+        if (mounted && messages.length === 0) {
+            const welcomeMsg = user 
+                ? `¡Hola de nuevo, ${userName}! ✨ Qué alegría verte por aquí. ${isPro ? 'Como usuario PRO, tienes acceso total.' : '¿Listo para llevar tu estudio al siguiente nivel?'} ¿En qué te ayudo hoy?`
+                : "¡Hola! Soy Gabriela, tu guía en SaberPro. 😊 ¿Cómo te va hoy? Cuéntame en qué puedo darte una mano.";
+            
+            setMessages([{
+                id: '1',
+                role: 'bot',
+                content: welcomeMsg,
+                timestamp: new Date(),
+                type: 'options',
+                options: isPro ? [
+                    { label: "🚀 Simulacros", value: "simulacro" },
+                    { label: "📊 Mi Progreso", value: "progress" },
+                    { label: "🙋 Soporte VIP", value: "humano_flow" }
+                ] : [
+                    { label: "🎯 Practicar simulacro", value: "simulacro" },
+                    { label: "💎 Saber del plan Pro", value: "suscripcion" },
+                    { label: "💳 Pagos por Nequi", value: "pago" },
+                    { label: "🙋 Charlar con alguien", value: "humano_flow" }
+                ]
+            }]);
+        }
+    }, [mounted, user, profile, isPro, userName]);
 
     useEffect(() => {
         if (scrollRef.current) {
@@ -107,24 +122,44 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
             const lowercaseValue = value.toLowerCase();
 
             if (value === "humano_flow") {
-                setStep('asking_name');
-                addBotMessage("¡Claro! Me encantaría presentarte con alguien del equipo. Para empezar, ¿me dices cómo te llamas?");
+                if (user) {
+                    addBotMessage(`¡Claro, ${userName}! Te conectaré con un asesor de inmediato para ayudarte con tu cuenta.`, 'options', [
+                        { label: "📲 Hablar por WhatsApp", value: "whatsapp_support" }
+                    ]);
+                } else {
+                    setStep('asking_name');
+                    addBotMessage("¡Claro! Me encantaría presentarte con alguien del equipo. Para empezar, ¿me dices cómo te llamas?");
+                }
             } else if (lowercaseValue.includes("simulacro")) {
-                addBotMessage("Nuestros ejercicios son igualitos a los del examen real. Te aconsejo empezar con el Diagnóstico para que sepas qué repasar primero.", 'options', [
+                addBotMessage(isPro ? "Como eres PRO, tienes todos los módulos desbloqueados. ¿Quieres hacer uno nuevo o revisar tus errores?" : "Nuestros ejercicios son igualitos a los del examen real. Te aconsejo empezar con el Diagnóstico para que sepas qué repasar primero.", 'options', isPro ? [
+                    { label: "🚀 Nuevo Simulacro", value: "start_diagnostic" },
+                    { label: "📉 Ver mis fallos", value: "progress" },
+                    { label: "🏠 Menú", value: "restart" }
+                ] : [
                     { label: "🚀 Empezar ahora", value: "start_diagnostic" },
                     { label: "📚 Guías de estudio", value: "help_center" },
                     { label: "🏠 Menú principal", value: "restart" }
                 ]);
             } else if (lowercaseValue.includes("suscripcion") || lowercaseValue.includes("pro")) {
-                addBotMessage("Con el plan PRO puedes practicar todas las veces que quieras y ver tus fallos explicados. ¡Es la clave para un buen puntaje!", 'options', [
-                    { label: "💎 Ver el plan Pro", value: "pricing" },
-                    { label: "🏠 Menú principal", value: "restart" }
-                ]);
+                if (isPro) {
+                    addBotMessage("¡Ya eres parte de la élite PRO! ✨ Tienes acceso ilimitado a simulacros y análisis de IA. ¿Quieres ver tu reporte de hoy?", 'options', [
+                        { label: "📊 Ver mi progreso", value: "progress" },
+                        { label: "🏠 Menú", value: "restart" }
+                    ]);
+                } else {
+                    addBotMessage("Con el plan PRO puedes practicar todas las veces que quieras y ver tus fallos explicados. ¡Es la clave para un buen puntaje!", 'options', [
+                        { label: "💎 Ver el plan Pro", value: "pricing" },
+                        { label: "🏠 Menú principal", value: "restart" }
+                    ]);
+                }
             } else if (lowercaseValue.includes("pago")) {
-                addBotMessage("¡Súper fácil! Recibimos Nequi, tarjetas y PSE. Si prefieres Nequi, te paso los datos por WhatsApp de una.", 'options', [
-                    { label: "📲 Pagar por Nequi", value: "whatsapp_payment" },
-                    { label: "🏠 Menú principal", value: "restart" }
+                addBotMessage(isPro ? "Tu suscripción está activa. Si necesitas renovar o cambiar de plan, avísame." : "¡Súper fácil! Recibimos Nequi, tarjetas y PSE. Si prefieres Nequi, te paso los datos por WhatsApp de una.", 'options', [
+                    { label: isPro ? "🙋 Soporte" : "📲 Pagar por Nequi", value: isPro ? "humano_flow" : "whatsapp_payment" },
+                    { label: "🏠 Menú", value: "restart" }
                 ]);
+            } else if (value === "progress") {
+                window.location.href = "/dashboard";
+                addBotMessage("Cargando tu dashboard... ¡Espero que esos números estén subiendo!");
             } else if (value === "final_thanks") {
                 addBotMessage("¡Con gusto! ✨ Estaré aquí si necesitas algo más. ¡A darle con toda al estudio!", 'options', [
                     { label: "🏠 Menú principal", value: "restart" }
@@ -150,8 +185,8 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                 const userQuery = value.replace("custom_", "");
                 const intent = matchIntent(userQuery);
                 
-                // Track intent for marketing if possible
-                if (intent !== "unknown" && !leadCaptured && step === 'initial') {
+                // Track intent for marketing (Only for NOT logged in users)
+                if (!user && intent !== "unknown" && !leadCaptured && step === 'initial') {
                     setStep('capturing_email');
                     addBotMessage(`¡Excelente pregunta sobre ${intent}! 😊 Me encantaría darte una asesoría premium. ¿Me regalas tu nombre y tu mejor correo para enviarte información exclusiva?`);
                 } else if (intent !== "unknown") {
@@ -264,11 +299,11 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                         className={cn(
                             "z-[100] flex flex-col",
                             isGlobal 
-                                ? "fixed bottom-0 right-0 w-full h-[100dvh] md:bottom-24 md:right-8 md:w-[380px] md:h-[550px] shadow-4k md:rounded-3xl overscroll-contain" 
+                                ? "fixed bottom-0 right-0 w-full h-[100dvh] md:bottom-24 md:right-8 md:w-[380px] md:max-h-[70vh] md:h-[600px] shadow-4k md:rounded-3xl overscroll-contain" 
                                 : "w-full h-full"
                         )}
                     >
-                        <Card variant="primary" className="flex-1 flex flex-col p-0 overflow-hidden border-brand-primary/20 backdrop-blur-3xl bg-[var(--theme-bg-surface)]/90 md:rounded-3xl shadow-2xl relative">
+                        <Card variant="primary" className="flex-1 flex flex-col p-0 overflow-hidden border-brand-primary/20 backdrop-blur-3xl bg-[var(--theme-bg-surface)]/95 md:rounded-3xl shadow-2xl relative">
                             {/* Header */}
                             <div className="bg-brand-primary p-5 text-white flex justify-between items-center shadow-md relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 animate-pulse" />
@@ -301,12 +336,18 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                                 </button>
                             </div>
 
-                            {/* Chat Body */}
+                            {/* Chat Body - FORCED SCROLL */}
                             <div 
                                 ref={scrollRef}
-                                className="flex-1 overflow-y-auto p-5 space-y-5 bg-gradient-to-b from-[var(--theme-bg-base)]/50 to-[var(--theme-bg-surface)]/50 scroll-smooth"
-                                style={{ WebkitOverflowScrolling: 'touch' }}
+                                className="flex-1 overflow-y-auto overflow-x-hidden p-5 space-y-5 bg-gradient-to-b from-[var(--theme-bg-base)]/50 to-[var(--theme-bg-surface)]/50 scroll-smooth custom-scrollbar"
+                                style={{ 
+                                    WebkitOverflowScrolling: 'touch',
+                                    maxHeight: 'calc(100% - 140px)', // Strict limit for messages area
+                                    display: 'flex',
+                                    flexDirection: 'column'
+                                }}
                             >
+                                <div className="flex-1" /> {/* Spacer to push messages down */}
                                 {messages.map(msg => (
                                     <div key={msg.id} className={cn(
                                         "flex gap-3 animate-in fade-in slide-in-from-bottom-2 duration-300",
