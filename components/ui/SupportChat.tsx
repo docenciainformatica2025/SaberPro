@@ -264,11 +264,11 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                         className={cn(
                             "z-[100] flex flex-col",
                             isGlobal 
-                                ? "fixed bottom-0 right-0 w-full h-full md:bottom-24 md:right-8 md:w-[380px] md:h-[550px] shadow-4k md:rounded-3xl" 
+                                ? "fixed bottom-0 right-0 w-full h-[100dvh] md:bottom-24 md:right-8 md:w-[380px] md:h-[550px] shadow-4k md:rounded-3xl overscroll-contain" 
                                 : "w-full h-full"
                         )}
                     >
-                        <Card variant="primary" className="flex-1 flex flex-col p-0 overflow-hidden border-brand-primary/20 backdrop-blur-3xl bg-[var(--theme-bg-surface)]/90 md:rounded-3xl shadow-2xl">
+                        <Card variant="primary" className="flex-1 flex flex-col p-0 overflow-hidden border-brand-primary/20 backdrop-blur-3xl bg-[var(--theme-bg-surface)]/90 md:rounded-3xl shadow-2xl relative">
                             {/* Header */}
                             <div className="bg-brand-primary p-5 text-white flex justify-between items-center shadow-md relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 animate-pulse" />
@@ -344,72 +344,69 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                                     </div>
                                 ))}
                                 {isTyping && (
-                                    <div className="flex items-center gap-2 text-brand-primary/60">
+                                    <div className="flex items-center gap-2 text-brand-primary/60 pb-2">
                                         <div className="flex gap-1">
                                             <span className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-bounce [animation-delay:-0.3s]" />
                                             <span className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-bounce [animation-delay:-0.15s]" />
                                             <span className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-bounce" />
                                         </div>
-                                        <span className="text-[10px] font-bold uppercase tracking-widest italic opacity-50">Escribiendo...</span>
+                                        <span className="text-[10px] font-bold uppercase tracking-widest italic opacity-50">Gabriela está escribiendo...</span>
                                     </div>
                                 )}
-                            </div>
 
-                            {/* Input Footer */}
-                            <div className="p-4 bg-[var(--theme-bg-surface)] border-t border-[var(--theme-border-soft)] relative z-20 mt-auto">
-                                {/* Suggestion Chips */}
-                                <div className="flex gap-2 overflow-x-auto no-scrollbar pb-3 mb-1 -mx-2 px-2 scroll-smooth">
+                                {/* Suggestion Chips inside scroll area to save space in footer */}
+                                <div className="flex gap-2 overflow-x-auto no-scrollbar py-2 -mx-1 px-1">
                                     {[
                                         "¿Cuánto vale el Plan Pro?", 
                                         "¿Cómo pago por Nequi?", 
                                         "¿Tienen simulacros gratis?",
-                                        "Quiero hablar con alguien"
+                                        "Hablar con un humano"
                                     ].map((hint, idx) => (
                                         <button 
                                             key={idx}
-                                            onClick={() => {
-                                                setInputValue(hint);
-                                            }}
-                                            className="whitespace-nowrap px-3 py-1.5 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-[9px] font-bold text-brand-primary hover:bg-brand-primary/10 transition-colors active:scale-95 shadow-sm"
+                                            onClick={() => setInputValue(hint)}
+                                            className="whitespace-nowrap px-3 py-2 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-[10px] font-bold text-brand-primary hover:bg-brand-primary/20 transition-all active:scale-95 flex-shrink-0"
                                         >
                                             {hint}
                                         </button>
                                     ))}
                                 </div>
+                            </div>
 
+                            {/* Input Footer - Pinned */}
+                            <div className="shrink-0 p-4 bg-[var(--theme-bg-surface)] border-t border-[var(--theme-border-soft)] z-30 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
                                 <form 
                                     onSubmit={(e) => { e.preventDefault(); handleSend(); }}
-                                    className="flex items-center gap-2 relative"
+                                    className="flex items-center gap-2"
                                 >
                                     <input 
                                         type="text" 
                                         value={inputValue}
                                         onChange={(e) => setInputValue(e.target.value)}
-                                        placeholder="Escribe tu duda aquí..."
-                                        className="flex-1 h-12 bg-[var(--theme-bg-base)] rounded-2xl px-5 text-sm font-semibold border border-[var(--theme-border-soft)] focus:border-brand-primary/50 focus:ring-4 focus:ring-brand-primary/5 outline-none transition-all placeholder:opacity-50"
+                                        placeholder="Escribe tu duda o pregunta aquí..."
+                                        className="flex-1 h-12 bg-[var(--theme-bg-base)] rounded-2xl px-5 text-sm font-semibold border border-[var(--theme-border-soft)] focus:border-brand-primary/50 focus:ring-4 focus:ring-brand-primary/5 outline-none transition-all placeholder:text-[var(--theme-text-quaternary)]"
                                         autoComplete="off"
                                     />
                                     <button 
                                         type="submit"
                                         disabled={!inputValue.trim()}
-                                        className="w-12 h-12 rounded-2xl bg-brand-primary text-white flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl shadow-brand-primary/25 disabled:opacity-50 disabled:scale-100 disabled:shadow-none shrink-0"
+                                        className="w-12 h-12 rounded-2xl bg-brand-primary text-white flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl shadow-brand-primary/25 disabled:opacity-50 disabled:scale-100 disabled:shadow-none"
                                     >
                                         <Send size={20} />
                                     </button>
                                 </form>
-                                
-                                <div className="mt-4 flex justify-around border-t border-[var(--theme-border-soft)] pt-3 opacity-70">
+                                <div className="mt-4 flex justify-around border-t border-[var(--theme-border-soft)] pt-3 opacity-80">
                                     <button onClick={() => window.open(`https://wa.me/${SUPPORT_WHATSAPP}`, '_blank')} className="flex flex-col items-center gap-1 group">
                                         <Phone size={14} className="text-brand-success group-hover:scale-110 transition-transform" />
-                                        <span className="text-[8px] font-black uppercase text-[var(--theme-text-tertiary)]">Ventas</span>
+                                        <span className="text-[9px] font-black uppercase text-brand-success">WhatsApp</span>
                                     </button>
                                     <button onClick={() => window.location.href = `mailto:${CONTACT_EMAIL}`} className="flex flex-col items-center gap-1 group">
                                         <Mail size={14} className="text-brand-primary group-hover:scale-110 transition-transform" />
-                                        <span className="text-[8px] font-black uppercase text-[var(--theme-text-tertiary)]">Correo</span>
+                                        <span className="text-[9px] font-black uppercase text-brand-primary">Email</span>
                                     </button>
                                     <button onClick={() => window.open(`https://wa.me/${PAYMENTS_WHATSAPP}`, '_blank')} className="flex flex-col items-center gap-1 group">
                                         <Sparkles size={14} className="text-yellow-500 group-hover:scale-110 transition-transform" />
-                                        <span className="text-[8px] font-black uppercase text-[var(--theme-text-tertiary)]">Pagar</span>
+                                        <span className="text-[9px] font-black uppercase text-yellow-600">Plan PRO</span>
                                     </button>
                                 </div>
                             </div>
