@@ -6,7 +6,7 @@ This directory serves as the centralized repository for all project documentatio
 
 ### 📂 [01_Governance_and_Compliance](./01_Governance_and_Compliance)
 Policies, regulatory compliance documents, and governance frameworks.
-*   *(Placeholder for Privacy Policy, Terms of Service, etc.)*
+*   **[GOVERNANCE_PROTOCOL_2026.md](./01_Governance_and_Compliance/GOVERNANCE_PROTOCOL_2026.md)**: Official Governance Protocol for SP 2026.
 
 ### 📂 [02_Brand_Identity](./02_Brand_Identity)
 Visual identity guidelines, assets, and design systems.
@@ -15,6 +15,7 @@ Visual identity guidelines, assets, and design systems.
 ### 📂 [03_Technical_Reports](./03_Technical_Reports)
 Engineering audits, sprint reports, and architectural decisions.
 *   **[SPRINT_TECHNICAL_REPORT.md](./03_Technical_Reports/SPRINT_TECHNICAL_REPORT.md)**: Detailed engineering report of the production readiness sprint (ISO 25010 / OWASP).
+*   **[SECURITY_CRYPTOGRAPHY_REPORT_2026.md](./03_Technical_Reports/SECURITY_CRYPTOGRAPHY_REPORT_2026.md)**: Reporte de auditoría de seguridad y blindaje de entropía criptográfica (WebCrypto API).
 *   **[AUDIT_REPORT_PII_SECURITY_2026.md](./03_Technical_Reports/AUDIT_REPORT_PII_SECURITY_2026.md)**: Reporte oficial de limpieza de PII y auditoría de seguridad pre-producción.
 
 ### 📂 [04_Operational_Manuals](./04_Operational_Manuals)
