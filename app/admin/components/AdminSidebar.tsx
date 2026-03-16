@@ -39,6 +39,7 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
             title: "Gestión",
             items: [
                 { href: "/admin/users", icon: Users, label: "Usuarios & Roles" },
+                { href: "/admin/marketing", icon: Megaphone, label: "Leads de Marketing" },
                 { href: "/admin/finance", icon: DollarSign, label: "Finanzas" },
                 { href: "/admin/finance/coupons", icon: KeyRound, label: "Códigos de Acceso" },
                 { href: "/admin/questions", icon: FileText, label: "Banco de Preguntas" },
