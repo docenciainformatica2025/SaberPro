@@ -41,26 +41,34 @@ export default function RouteGuard({ children }: { children: React.ReactNode }) 
         }
 
         // 2. Authenticated users check
-        if (user && !isSuperAdmin) {
+        if (user) {
             const isExcludedFromOnboarding = pathname === '/onboarding' || pathname.startsWith('/diagnostic');
+            const effectiveRole = isSuperAdmin ? 'admin' : role;
+            const homeHref = effectiveRole === 'teacher' ? '/teacher' : effectiveRole === 'admin' ? '/admin/dashboard' : '/dashboard';
 
-            // IF the user is at a PUBLIC route, don't force them anywhere
-            if (isPublicRoute && !isExcludedFromOnboarding) {
+            // IF the user is at a PUBLIC route (except landing)
+            if (isPublicRoute && pathname !== '/' && !isExcludedFromOnboarding) {
                 setIsAuthorized(true);
                 return;
             }
 
-            // Missing role -> Force Onboarding (only if not already there or in diagnostic)
-            if (!role && !isExcludedFromOnboarding) {
+            // REDIRECTION: If logged in user hits '/', send them to their actual home
+            if (pathname === '/' && role) {
+                router.replace(homeHref);
+                setIsAuthorized(false);
+                return;
+            }
+
+            // Missing role -> Force Onboarding (unless admin or already going there)
+            if (!role && !isExcludedFromOnboarding && !isSuperAdmin) {
                 router.replace('/onboarding');
                 setIsAuthorized(false);
                 return;
             }
 
-            // Already has role but trying to go to onboarding -> Move to dashboard
+            // Already has role but trying to go to onboarding -> Move dashboard
             if (role && pathname === '/onboarding') {
-                const home = role === 'teacher' ? '/teacher' : role === 'admin' ? '/admin/dashboard' : '/dashboard';
-                router.replace(home);
+                router.replace(homeHref);
                 setIsAuthorized(false);
                 return;
             }

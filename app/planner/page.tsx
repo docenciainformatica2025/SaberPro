@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { db } from "@/lib/firebase";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
 import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
 import { toast } from "sonner";
 import { AnimatePresence, motion } from "framer-motion";
@@ -261,18 +261,72 @@ export default function PlannerPage() {
                         </h1>
                     </div>
 
-                    <div className="flex items-center gap-4">
-                        <div className="text-right">
-                            <p className="text-[10px] text-[var(--theme-text-secondary)] uppercase font-bold tracking-wider mb-1">Progreso del Plan</p>
-                            <div className="w-48 h-2 bg-[var(--theme-bg-surface)] rounded-full overflow-hidden">
-                                <div className="h-full bg-brand-primary transition-all duration-500" style={{ width: `${progress}%` }} />
+                    <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+                        <div className="flex items-center gap-4">
+                            <div className="text-right">
+                                <p className="text-[10px] text-[var(--theme-text-secondary)] uppercase font-bold tracking-wider mb-1">Progreso General</p>
+                                <div className="w-40 h-2 bg-[var(--theme-bg-surface)] rounded-full overflow-hidden border border-white/5">
+                                    <div className="h-full bg-brand-primary transition-all duration-1000 ease-out" style={{ width: `${progress}%` }} />
+                                </div>
                             </div>
-                        </div>
-                        <div className="w-12 h-12 rounded-full border-2 border-brand-primary flex items-center justify-center text-brand-primary font-semibold text-xs">
-                            {progress}%
+                            <div className="w-12 h-12 rounded-full border-2 border-brand-primary flex items-center justify-center text-brand-primary font-bold text-xs shadow-[0_0_15px_rgba(var(--brand-primary-rgb),0.2)]">
+                                {progress}%
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                {/* Today's Focus - Hero Action */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                >
+                    <Card variant="primary" className="p-6 md:p-8 border-l-4 border-l-brand-primary bg-gradient-to-r from-brand-primary/5 to-transparent overflow-hidden relative">
+                        <div className="absolute right-0 top-0 p-8 opacity-5">
+                            <Zap size={120} />
+                        </div>
+                        <div className="flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
+                            <div className="space-y-3 text-center md:text-left">
+                                <Badge variant="secondary" className="bg-brand-primary/10 text-brand-primary border-none uppercase tracking-widest text-[9px] py-1 px-3">Enfoque de Hoy</Badge>
+                                <h2 className="text-2xl md:text-3xl font-black text-[var(--theme-text-primary)] uppercase italic tracking-tighter">
+                                    {new Date().toLocaleDateString('es-CO', { weekday: 'long', day: 'numeric', month: 'long' })}
+                                </h2>
+                                <p className="text-[var(--theme-text-secondary)] max-w-md">
+                                    {selectedDayData?.type === 'rest'
+                                        ? "Día de descanso. ¡Relájate y recarga baterías!"
+                                        : "Es momento de avanzar. Tu meta de hoy te acerca a tu objetivo profesional."}
+                                </p>
+                            </div>
+
+                            <div className="flex flex-wrap justify-center gap-4">
+                                {selectedDayData?.type === 'study' && selectedDayData.sessions.some(s => !s.completed) && (
+                                    <Button
+                                        variant="primary"
+                                        size="xl"
+                                        className="h-16 px-10 shadow-gold group"
+                                        onClick={() => {
+                                            const firstPending = selectedDayData.sessions.find(s => !s.completed);
+                                            if (firstPending) {
+                                                toast.success(`Iniciando sesión: ${firstPending.title}`);
+                                                router.push(`/training/${firstPending.moduleId}`);
+                                            }
+                                        }}
+                                    >
+                                        <Zap className="mr-2 group-hover:scale-110 transition-transform" /> Iniciar Sesión de Hoy
+                                    </Button>
+                                )}
+                                {selectedDayData?.type === 'simulation' && (
+                                    <Link href="/simulation">
+                                        <Button variant="accent" size="xl" className="h-16 px-10">
+                                            Realizar Simulacro
+                                        </Button>
+                                    </Link>
+                                )}
+                            </div>
+                        </div>
+                    </Card>
+                </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
@@ -403,6 +457,35 @@ export default function PlannerPage() {
                             </div>
                         )}
                     </Card>
+                </div>
+
+                {/* Study Guide - Step by Step */}
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div className="md:col-span-1 space-y-4">
+                        <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--theme-text-tertiary)] flex items-center gap-2">
+                            <Sparkles size={14} className="text-brand-accent" /> Guía de Usuario
+                        </h3>
+                        <p className="text-[10px] leading-relaxed text-[var(--theme-text-secondary)] opacity-80 uppercase font-black">
+                            Sigue estos pasos para dominar tu preparación:
+                        </p>
+                    </div>
+                    <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        {[
+                            { title: "1. Elige el Día", desc: "Usa el calendario para ver tus metas diarias.", icon: CalendarIcon },
+                            { title: "2. Inicia Sesión", desc: "Haz clic en una tarea para ir al entrenamiento.", icon: Zap },
+                            { title: "3. Gana XP", desc: "Marca como completado para subir en el ranking.", icon: Target },
+                        ].map((step, i) => (
+                            <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
+                                <div className="text-brand-primary shrink-0 mt-1">
+                                    <step.icon size={20} />
+                                </div>
+                                <div className="space-y-1">
+                                    <h4 className="text-xs font-bold text-[var(--theme-text-primary)]">{step.title}</h4>
+                                    <p className="text-[10px] text-[var(--theme-text-secondary)] leading-tight">{step.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

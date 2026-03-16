@@ -18,37 +18,43 @@ import DarkModeToggle from "@/components/ui/DarkModeToggle";
 import VersionUpdateGuard from "@/components/ui/VersionUpdateGuard";
 import SessionWatcher from "@/components/auth/SessionWatcher";
 
-// Hydration Error Suppression and Browser Extension Cleanup
+// --- HYDRATION & EXTENSION CLEANUP (MAESTRO 2026) ---
 if (typeof window !== "undefined") {
-  // 1. Console Patch (Silence annoying hydration mismatches in Dev)
-  const originalError = console.error;
-  console.error = (...args) => {
-    const msg = args.map(arg => String(arg)).join(" ");
-    if (["bis_skin_checked", "Hydration", "match", "extra attributes"].some(e => msg.includes(e))) return;
-    originalError.apply(console, args);
-  };
+    // 1. Silent Hydration: Suppress specific annoying errors from extensions
+    const originalError = console.error;
+    console.error = (...args) => {
+        const msg = String(args[0]);
+        if (msg.includes("bis_skin_checked") || msg.includes("Hydration") || msg.includes("extra attributes")) return;
+        originalError.apply(console, args);
+    };
 
-  // 2. Early attribute cleanup (Pre-empting Next.js Dev Overlay)
-  const cleanup = () => {
-    document.documentElement.removeAttribute('bis_skin_checked');
-    document.body.removeAttribute('bis_skin_checked');
-    document.querySelectorAll('[bis_skin_checked]').forEach(el => el.removeAttribute('bis_skin_checked'));
-  };
+    // 2. Early DOM Sanitization
+    const cleanNodes = (root: ParentNode) => {
+        root.querySelectorAll('[bis_skin_checked]').forEach(el => el.removeAttribute('bis_skin_checked'));
+    };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', cleanup);
-  } else {
-    cleanup();
-  }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => cleanNodes(document));
+    } else {
+        cleanNodes(document);
+    }
 
-  // 3. Mutation Observer to keep it clean (Prevents overlay from re-triggering)
-  new MutationObserver((mutations) => {
-    mutations.forEach((m) => {
-      if (m.type === 'attributes' && m.attributeName === 'bis_skin_checked') {
-        (m.target as HTMLElement).removeAttribute('bis_skin_checked');
-      }
+    // 3. Persistent Cleanup (Mutation Observer)
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((m) => {
+            if (m.type === 'attributes' && m.attributeName === 'bis_skin_checked') {
+                (m.target as HTMLElement).removeAttribute('bis_skin_checked');
+            } else if (m.type === 'childList') {
+                m.addedNodes.forEach(node => {
+                    if (node instanceof Element) {
+                        if (node.hasAttribute('bis_skin_checked')) node.removeAttribute('bis_skin_checked');
+                        cleanNodes(node);
+                    }
+                });
+            }
+        });
     });
-  }).observe(document.documentElement, { attributes: true, subtree: true });
+    observer.observe(document.documentElement, { attributes: true, subtree: true, childList: true });
 }
 
 const inter = Inter({

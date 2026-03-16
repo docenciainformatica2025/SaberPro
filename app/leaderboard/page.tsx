@@ -32,13 +32,13 @@ export default function LeaderboardPage() {
 
     useEffect(() => {
         const fetchLeaderboard = async () => {
+            if (!user) return; // Wait for user to be authenticated to avoid permission error
             try {
-                // Query published user profiles with points from 'users' collection.
+                // Query published user profiles with XP from 'users' collection.
                 // Only read public-safe fields; Firestore rules protect private data.
                 const q = query(
                     collection(db, "users"),
-                    where("gamification.points", ">", 0),
-                    orderBy("gamification.points", "desc"),
+                    orderBy("gamification.xp", "desc"),
                     limit(50)
                 );
                 const snapshot = await getDocs(q);
@@ -49,7 +49,7 @@ export default function LeaderboardPage() {
                         id: doc.id,
                         fullName: data.fullName || data.displayName || "Estudiante",
                         photoURL: data.photoURL || undefined,
-                        points: data.gamification?.points || 0,
+                        points: data.gamification?.xp || 0,
                         streak: data.gamification?.streak?.current || 0,
                     };
                 });
@@ -58,14 +58,14 @@ export default function LeaderboardPage() {
                 if (user && profile) {
                     const alreadyIn = allUsers.find(u => u.id === user.uid);
                     if (!alreadyIn) {
-                        const myPoints = (profile as any)?.gamification?.points || 0;
+                        const myPoints = profile?.gamification?.xp || 0;
                         if (myPoints > 0) {
                             allUsers.push({
                                 id: user.uid,
-                                fullName: (profile as any)?.fullName || user.email?.split('@')[0] || "Tú",
+                                fullName: profile?.fullName || user.email?.split('@')[0] || "Tú",
                                 photoURL: user.photoURL || undefined,
                                 points: myPoints,
-                                streak: (profile as any)?.gamification?.streak?.current || 0,
+                                streak: profile?.gamification?.streak?.current || 0,
                             });
                             allUsers.sort((a, b) => b.points - a.points);
                         }

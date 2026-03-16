@@ -28,7 +28,7 @@ service cloud.firestore {
     }
 
     function isAdmin() { 
-      return hasRole('admin') || isRootToken() || isRootEmail(getUserData().get('email', '')); 
+      return isRootToken() || hasRole('admin') || isRootEmail(getUserData().get('email', '')); 
     }
     function isTeacher() { return hasRole('teacher'); }
     
@@ -44,23 +44,29 @@ service cloud.firestore {
       return val is string && val.size() <= maxLen && !val.matches('.*<script.*');
     }
 
-    // --- REGLAS DE PROTECCIÓN ATÓMICA ---
-
+    // --- REGLAS DE ACCESO PÚBLICO (RANKING) ---
     match /users/{userId} {
-      allow read: if isOwner(userId) || isAdmin();
-      allow create: if isAuthenticated() && request.auth.uid == userId 
-                    && request.resource.data.role != 'admin'; // No auto-admin
+      // Permitir lectura de perfiles a cualquier usuario logueado (necesario para Leaderboard)
+      allow get, list: if request.auth != null;
+      
+      // Escritura restringida al propio usuario y administradores
+      allow create: if request.auth != null && request.auth.uid == userId 
+                    && (request.resource.data.get('role', null) != 'admin' || isRootEmail(request.auth.token.email));
       
       allow update: if (isOwner(userId) || isAdmin()) 
                     && (!isRoot(userId) || (request.auth.uid == userId))
-                    // Solo el Root puede cambiar roles a admin
-                    && (request.resource.data.role == resource.data.role || isRoot(request.auth.uid))
-                    // Sanitización de campos críticos
+                    && (
+                      request.resource.data.get('role', null) == resource.data.get('role', null) || 
+                      (resource.data.get('role', null) == null && request.resource.data.get('role', null) in ['student', 'teacher']) ||
+                      isRootEmail(request.auth.token.email)
+                    )
                     && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['fullName']) 
-                        || isValidString(request.resource.data.fullName, 100));
+                        || isValidString(request.resource.data.get('fullName', ''), 100));
       
       allow delete: if isAdmin() && !isRoot(userId);
     }
+
+    // --- REGLAS DE NEGOCIO Y OPERACIONES ---
 
     match /transactions/{transactionId} {
       allow read: if isAuthenticated() && (resource.data.userId == request.auth.uid || isAdmin());

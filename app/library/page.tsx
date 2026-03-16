@@ -12,6 +12,7 @@ import {
     BookMarked,
     FileText
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/Badge";
 import BottomNav from "@/components/layout/BottomNav";
 import { EmptyState } from "@/components/ui/EmptyState";
@@ -19,6 +20,7 @@ import { LibraryService, LibraryItem } from "@/services/student/library.service"
 
 export default function LibraryPage() {
     const { user } = useAuth();
+    const router = useRouter();
     const [activeFilter, setActiveFilter] = useState("Todo");
     const [recommended, setRecommended] = useState<LibraryItem[]>([]);
     const [saved, setSaved] = useState<LibraryItem[]>([]);
@@ -94,11 +96,15 @@ export default function LibraryPage() {
                             ))}
                         </div>
                     ) : recommended.length === 0 ? (
-                        <div className="py-10">
+                        <div
+                            onClick={() => router.push('/simulation')}
+                            className="py-10 group cursor-pointer transition-all hover:scale-[1.01]"
+                        >
                             <EmptyState
                                 title="Sin recomendaciones aún"
                                 description="Completa tu diagnóstico inicial para que el sistema personalice recursos para ti."
                                 icon={BookMarked}
+                                className="group-hover:border-brand-primary/40 group-hover:bg-brand-primary/5 transition-colors"
                             />
                         </div>
                     ) : (

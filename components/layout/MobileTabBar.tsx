@@ -34,8 +34,8 @@ export default function MobileTabBar() {
     });
 
     // Hide on desktop, public pages, or auth states
-    if (loading || !user) return null;
-    if (pathname === '/onboarding' || pathname === '/') return null;
+    if (loading || !user || !role) return null;
+    if (pathname === '/') return null;
 
     // Define navigation per role (max 5 items for mobile thumb reach)
     const getNavItems = () => {

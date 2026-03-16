@@ -2,13 +2,20 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { Logo } from "@/components/ui/Logo";
 import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { ArrowRight, Lock, Target, TrendingUp, Zap } from "lucide-react";
+import {
+    ArrowRight as LucideArrowRight,
+    Lock as LucideLock,
+    Target as LucideTarget,
+    TrendingUp as LucideTrendingUp,
+    Zap as LucideZap
+} from "lucide-react";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
-import Link from "next/link";
 
 export default function DiagnosticResultsPage() {
     const { user } = useAuth();
@@ -73,11 +80,29 @@ export default function DiagnosticResultsPage() {
         : null;
 
     return (
-        <div className="min-h-screen bg-[var(--theme-bg-base)] selection:bg-brand-primary/30 p-6 flex items-center justify-center">
-            <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] transition-colors duration-500 pb-20 pt-24 md:pt-32 relative">
+            {/* Unified Logo Header for Onboarding/Public states */}
+            <div className="fixed top-6 left-1/2 -translate-x-1/2 z-40 md:hidden">
+                <Logo />
+            </div>
 
-                {/* Left: The Visual Diagnosis (The Gap) */}
-                <div className="space-y-8 animate-in slide-in-from-left-8 duration-700">
+            <div className="max-w-4xl mx-auto px-6 space-y-12">
+                {/* Navigation Guide */}
+                <div className="flex items-center justify-between">
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => router.push('/')}
+                        className="text-[10px] uppercase font-bold tracking-widest opacity-60 hover:opacity-100"
+                    >
+                        Regresar al Inicio
+                    </Button>
+                    <Badge variant="outline" className="text-[10px] font-black uppercase tracking-tighter border-brand-primary/20 text-brand-primary animate-pulse">
+                        Resultados Disponibles
+                    </Badge>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center animate-in slide-in-from-bottom-8 duration-700">
                     <div className="mb-8">
                         <Badge variant="primary" className="mb-4 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em]">
                             Análisis Completado
@@ -140,7 +165,7 @@ export default function DiagnosticResultsPage() {
                     <div className="relative z-10 space-y-8">
                         <div className="space-y-4">
                             <div className="flex items-center gap-3 text-green-400 font-bold uppercase tracking-wider text-xs">
-                                <TrendingUp size={16} /> Proyección IA
+                                <LucideTrendingUp size={16} /> Proyección IA
                             </div>
                             <h2 className="text-2xl font-bold text-[var(--theme-text-primary)] leading-snug">
                                 Si practicas 15 minutos al día, puedes subir <span className="text-brand-primary">+18 puntos</span> en 6 semanas.
@@ -149,14 +174,14 @@ export default function DiagnosticResultsPage() {
 
                         <div className="space-y-3">
                             <div className="p-4 bg-[var(--theme-bg-base)] rounded-xl border border-[var(--theme-border-soft)] flex items-center gap-4">
-                                <div className="p-2 bg-purple-500/20 rounded-lg text-purple-400"><Lock size={20} /></div>
+                                <div className="p-2 bg-purple-500/20 rounded-lg text-purple-400"><LucideLock size={20} /></div>
                                 <div>
                                     <p className="text-[var(--theme-text-primary)] font-bold text-sm">Plan de Estudio Personalizado</p>
                                     <p className="text-xs text-[var(--theme-text-secondary)]">Generado según tus 5 respuestas.</p>
                                 </div>
                             </div>
                             <div className="p-4 bg-[var(--theme-bg-base)] rounded-xl border border-[var(--theme-border-soft)] flex items-center gap-4">
-                                <div className="p-2 bg-blue-500/20 rounded-lg text-blue-400"><Target size={20} /></div>
+                                <div className="p-2 bg-blue-500/20 rounded-lg text-blue-400"><LucideTarget size={20} /></div>
                                 <div>
                                     <p className="text-[var(--theme-text-primary)] font-bold text-sm">Banco de Preguntas Adaptativo</p>
                                     <p className="text-xs text-[var(--theme-text-secondary)]">Solo lo que necesitas reforzar.</p>
@@ -169,7 +194,7 @@ export default function DiagnosticResultsPage() {
                                 variant="primary"
                                 size="xl"
                                 className="w-full h-16 text-sm font-semibold uppercase tracking-[0.2em] shadow-[0_0_40px_rgba(212,175,55,0.4)] animate-pulse hover:animate-none"
-                                icon={Zap}
+                                icon={LucideZap}
                             >
                                 {user ? "Ir a mi Dashboard" : "Crear mi plan personalizado"}
                             </Button>

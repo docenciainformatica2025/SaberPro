@@ -25,9 +25,20 @@ export default function SimulationSelectionPage() {
 }
 
 function SimulationSelectionContent() {
-    const { user, loading, role, subscription } = useAuth();
+    const auth = useAuth();
     const router = useRouter();
     const searchParams = useSearchParams();
+
+    // Safety check for auth object properties
+    // Unified Pro Logic: Pro if plan is not FREE OR user is SuperAdmin
+    const isPro = auth?.subscription?.plan !== SubscriptionPlan.FREE || auth?.isSuperAdmin;
+
+    // Safety check for user/loading
+    const user = auth?.user;
+    const loading = auth?.loading;
+    const subscription = auth?.subscription;
+    const isSuperAdmin = auth?.isSuperAdmin;
+
     const assignmentId = searchParams.get('assignmentId');
     const [checkingProfile, setCheckingProfile] = useState(true);
     const [loadingAssignment, setLoadingAssignment] = useState(!!assignmentId);
@@ -35,8 +46,8 @@ function SimulationSelectionContent() {
     const [step, setStep] = useState(1); // 1: Mode, 2: Module, 3: Pre-flight
     const [selectedModule, setSelectedModule] = useState<any>(null);
     const [isFullSim, setIsFullSim] = useState(false);
+    const [showPremiumModal, setShowPremiumModal] = useState(false);
 
-    const isPro = subscription?.plan === SubscriptionPlan.PRO || subscription?.plan === SubscriptionPlan.TEACHER_PRO || subscription?.plan === SubscriptionPlan.INSTITUTION;
 
     const modules = [
         { id: "razonamiento_cuantitativo", label: "Razonamiento Cuantitativo", icon: Zap, desc: "Matemáticas y lógica aplicada" },
@@ -46,9 +57,12 @@ function SimulationSelectionContent() {
         { id: "comunicacion_escrita", label: "Comunicación Escrita", icon: Brain, desc: "Redacción y ortografía" },
     ];
 
+    const attemptsLeft = 3 - simulationCount;
+
     // Check Limits
     useEffect(() => {
         const checkLimits = async () => {
+            if (!user) return; // Guard against permission errors while auth loads
             if (user && !loading && !assignmentId && !isPro) {
                 try {
                     const snap = await getDocs(query(collection(db, "results"), where("userId", "==", user.uid), limit(4)));
@@ -99,7 +113,7 @@ function SimulationSelectionContent() {
                     const docSnap = await getDoc(doc(db, "users", user.uid));
                     if (docSnap.exists()) {
                         const data = docSnap.data();
-                        if (!data.targetCareer && role !== 'teacher') {
+                        if (!data.targetCareer && data.role !== 'teacher') {
                             toast.warning("Configuración Requerida", {
                                 description: "Para calibrar el simulacro, necesitamos conocer tu Carrera de Interés.",
                                 duration: 5000,
@@ -128,10 +142,7 @@ function SimulationSelectionContent() {
 
     const handleStartSimulation = () => {
         if (!isPro && simulationCount >= 3) {
-            toast.error("🔒 Límite Gratuito Alcanzado", {
-                description: "Has completado tus simulacros de prueba. Mejora a Pro para continuar.",
-                action: { label: "Ver Planes", onClick: () => router.push('/pricing') }
-            });
+            setShowPremiumModal(true);
             return;
         }
 
@@ -154,10 +165,17 @@ function SimulationSelectionContent() {
                     <Button variant="ghost" icon={ArrowLeft} onClick={() => step > 1 ? setStep(step - 1) : router.push("/dashboard")} className="p-0 hover:bg-transparent text-[var(--theme-text-secondary)] hover:text-brand-primary uppercase tracking-wider text-[10px] font-bold transition-colors">
                         {step > 1 ? "Regresar" : "Volver al Inicio"}
                     </Button>
-                    <div className="flex gap-2">
-                        {[1, 2, 3].map(i => (
-                            <div key={i} className={cn("h-1 w-8 rounded-full transition-all duration-300", step >= i ? "bg-brand-primary" : "bg-[var(--theme-border-soft)]")} />
-                        ))}
+                    <div className="flex items-center gap-4">
+                        {!isPro && step === 1 && (
+                            <div className="hidden md:flex items-center gap-2 bg-brand-primary/10 border border-brand-primary/20 px-3 py-1.5 rounded-full">
+                                <span className="text-[9px] font-black text-brand-primary uppercase tracking-widest">{attemptsLeft <= 0 ? "Límite Alcanzado" : `${attemptsLeft} Intentos Gratuitos`}</span>
+                            </div>
+                        )}
+                        <div className="flex gap-2">
+                            {[1, 2, 3].map(i => (
+                                <div key={i} className={cn("h-1 w-8 rounded-full transition-all duration-300", step >= i ? "bg-brand-primary" : "bg-[var(--theme-border-soft)]")} />
+                            ))}
+                        </div>
                     </div>
                 </div>
 
@@ -176,10 +194,25 @@ function SimulationSelectionContent() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                             <Card
                                 interactive
-                                variant="primary"
-                                className="p-10 cursor-pointer text-center space-y-6"
-                                onClick={() => { setIsFullSim(true); setStep(3); }}
+                                variant={isPro ? "primary" : "premium"}
+                                className={cn(
+                                    "p-10 cursor-pointer text-center space-y-6 relative overflow-hidden group transition-all duration-500",
+                                    !isPro && "border-brand-primary/40 bg-brand-primary/[0.03] shadow-[0_0_30px_rgba(var(--brand-primary-rgb),0.1)]"
+                                )}
+                                onClick={() => {
+                                    if (!isPro) {
+                                        setShowPremiumModal(true);
+                                        return;
+                                    }
+                                    setIsFullSim(true);
+                                    setStep(3);
+                                }}
                             >
+                                {!isPro && (
+                                    <div className="absolute top-4 right-4 z-20">
+                                        <Badge variant="premium" className="bg-gradient-to-r from-brand-primary to-brand-accent text-white border-white/20 shadow-[0_0_20px_rgba(var(--brand-primary-rgb),0.6)] text-[9px] animate-pulse px-4 py-1.5 font-black ring-2 ring-white/10">EXCLUSIVO PRO</Badge>
+                                    </div>
+                                )}
                                 <div className="w-10 h-10 rounded-xl bg-[var(--theme-bg-base)] flex items-center justify-center text-[var(--theme-text-primary)] group-hover:bg-brand-primary group-hover:text-[var(--theme-bg-base)] transition-all">
                                     <Timer size={20} />
                                 </div>
@@ -187,14 +220,29 @@ function SimulationSelectionContent() {
                                     <h3 className="text-2xl font-bold text-[var(--theme-text-primary)] uppercase italic leading-none">Simulacro Completo</h3>
                                     <p className="text-[var(--theme-text-secondary)] text-sm mt-3 font-medium">La experiencia real del examen Saber Pro (4h 48m, 100 preguntas).</p>
                                 </div>
-                                <Button variant="primary" className="w-full">Seleccionar</Button>
+                                <Button
+                                    variant={isPro ? "primary" : "premium"}
+                                    className={cn(
+                                        "w-full h-14 rounded-2xl transition-all shadow-premium hover:shadow-2xl",
+                                        !isPro && "border-white/10"
+                                    )}
+                                >
+                                    {isPro ? "Seleccionar" : "Desbloquear con PRO"}
+                                </Button>
                             </Card>
 
                             <Card
                                 interactive
                                 variant="glass"
-                                className="p-10 cursor-pointer text-center space-y-6"
-                                onClick={() => { setIsFullSim(false); setStep(2); }}
+                                className="p-10 cursor-pointer text-center space-y-6 group hover:border-brand-primary/30 transition-all"
+                                onClick={() => {
+                                    if (!isPro && simulationCount >= 3) {
+                                        setShowPremiumModal(true);
+                                        return;
+                                    }
+                                    setIsFullSim(false);
+                                    setStep(2);
+                                }}
                             >
                                 <div className="w-20 h-20 bg-[var(--theme-bg-base)] rounded-3xl flex items-center justify-center mx-auto text-[var(--theme-text-primary)]">
                                     <Zap size={40} strokeWidth={3} />
@@ -268,6 +316,16 @@ function SimulationSelectionContent() {
                             </h2>
 
                             <div className="space-y-4 text-left bg-[var(--theme-bg-base)]/60 p-6 rounded-2xl border border-[var(--theme-border-soft)]">
+                                {/* Attempt Validation View */}
+                                {!isPro && (
+                                    <div className="flex items-center justify-between px-4 py-3 bg-[var(--theme-bg-surface)] rounded-xl border border-[var(--theme-border-soft)] mb-2">
+                                        <div className="flex items-center gap-2">
+                                            <div className={cn("w-2 h-2 rounded-full", simulationCount < 3 ? "bg-brand-success" : "bg-brand-error")} />
+                                            <span className="text-[10px] font-bold text-[var(--theme-text-tertiary)] uppercase tracking-wider">Simulacros de prueba</span>
+                                        </div>
+                                        <span className="text-xs font-black text-[var(--theme-text-primary)]">{3 - simulationCount} de 3 restantes</span>
+                                    </div>
+                                )}
                                 <h4 className="text-[10px] font-semibold text-brand-primary uppercase tracking-[0.2em] mb-4">Reglas del Simulacro:</h4>
                                 <ul className="space-y-3">
                                     {[
@@ -290,6 +348,24 @@ function SimulationSelectionContent() {
                             </div>
                         </Card>
                     </motion.div>
+                )}
+                {/* Premium Modal */}
+                {showPremiumModal && (
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-[var(--theme-bg-base)]/80 backdrop-blur-xl animate-in fade-in duration-300">
+                        <Card variant="primary" className="max-w-md w-full p-10 text-center space-y-6 shadow-4k animate-in zoom-in-95 duration-300 relative">
+                            <div className="w-16 h-16 rounded-2xl bg-brand-primary/10 text-brand-primary flex items-center justify-center mx-auto">
+                                <Sparkles size={32} />
+                            </div>
+                            <div className="space-y-2">
+                                <h3 className="text-2xl font-bold text-[var(--theme-text-primary)] uppercase italic leading-none">Simulacros Ilimitados</h3>
+                                <p className="text-sm text-[var(--theme-text-secondary)] font-medium leading-relaxed">Has alcanzado el límite de tu versión gratuita. Mejora a PRO para realizar simulacros ilimitados y acceder a todos los módulos.</p>
+                            </div>
+                            <div className="space-y-4 pt-4">
+                                <Button variant="premium" className="w-full h-14 rounded-xl shadow-lg" onClick={() => router.push('/pricing')}>Ver Planes Premium</Button>
+                                <Button variant="ghost" className="w-full h-12 text-[10px] uppercase font-black tracking-widest text-[var(--theme-text-tertiary)]" onClick={() => setShowPremiumModal(false)}>Quizás más tarde</Button>
+                            </div>
+                        </Card>
+                    </div>
                 )}
             </div>
         </div>

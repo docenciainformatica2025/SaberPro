@@ -5,13 +5,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { ArrowRight, BookOpen, Target, Sparkles, GraduationCap, Calendar } from "lucide-react";
+import { ArrowRight, BookOpen, Target, Sparkles, GraduationCap, Calendar, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/context/AuthContext";
 import { db } from "@/lib/firebase";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { UserProfile } from "@/types/user";
+
+interface OnboardingProfile {
+    fullName: string;
+    career: string;
+    university: string;
+    examDate: string;
+    goal: string;
+    selectedRole: "student" | "teacher" | "";
+}
 
 type Step = "welcome" | "profile" | "goals" | "diagnostic" | "generating";
 
@@ -20,11 +30,13 @@ export default function OnboardingPage() {
     const { user, profile: authProfile, loading } = useAuth();
     const router = useRouter();
     const [isSaving, setIsSaving] = useState(false);
-    const [profile, setProfile] = useState({
+    const [profile, setProfile] = useState<OnboardingProfile>({
+        fullName: "",
         career: "",
         university: "",
         examDate: "",
         goal: "excellence",
+        selectedRole: "",
     });
 
     // Protect route: Redirect to login if not authenticated
@@ -36,20 +48,28 @@ export default function OnboardingPage() {
 
     // State recovery: sync authProfile to local state and advance steps if data exists
     useEffect(() => {
-        if (!loading && authProfile) {
+        if (!loading) {
+            // Prevent redirection loop: if they ALREADY have a role, get out of here
+            if (authProfile?.role || authProfile?.completedProfile) {
+                const homeHref = authProfile.role === 'teacher' ? '/teacher' : authProfile.role === 'admin' ? '/admin/dashboard' : '/dashboard';
+                router.replace(homeHref);
+                return;
+            }
+
             setProfile(prev => ({
                 ...prev,
-                career: authProfile.career || prev.career,
-                university: authProfile.university || prev.university,
-                examDate: authProfile.examDate || prev.examDate,
-                goal: authProfile.goal || prev.goal,
+                fullName: authProfile?.fullName || user?.displayName || prev.fullName,
+                career: authProfile?.career || prev.career,
+                university: authProfile?.university || prev.university,
+                examDate: authProfile?.examDate || prev.examDate,
+                goal: authProfile?.goal || prev.goal,
             }));
 
-            // Auto-advance logic
-            if (step === "welcome" && authProfile.career) setStep("goals");
-            if (step === "goals" && authProfile.goal && authProfile.career) setStep("diagnostic");
+            // Auto-advance logic: If profile is mostly done, don't show welcome
+            if (step === "welcome" && authProfile?.career) setStep("goals");
+            if (step === "goals" && authProfile?.goal && authProfile?.career) setStep("diagnostic");
         }
-    }, [authProfile, loading, step]);
+    }, [authProfile, loading, step, router, user]);
 
     const nextStep = (next: Step) => {
         setStep(next);
@@ -58,24 +78,41 @@ export default function OnboardingPage() {
         }
     };
 
-    const handleSaveAndComplete = async (skipDiagnostic = false) => {
+    const handleSaveAndComplete = async (skipDiagnostic = false, forceRole?: "student" | "teacher") => {
         if (!user) return;
         setIsSaving(true);
+        // Important: Preserve admin role if they are already identified as such
+        const currentRole = authProfile?.role || null;
+        const finalRole = currentRole === 'admin' ? 'admin' : (forceRole || profile.selectedRole || 'student');
+
         try {
             const userRef = doc(db, "users", user.uid);
-            await updateDoc(userRef, {
-                ...profile,
-                role: 'student',
+
+            // Map onboarding state to canonical UserProfile fields
+            const saveData: Partial<UserProfile> = {
+                uid: user.uid,
+                email: user.email || "",
+                fullName: profile.fullName || user.displayName || authProfile?.fullName || "",
+                targetCareer: profile.career,
+                dreamUniversity: profile.university,
+                examDate: profile.examDate,
+                scoreGoal: profile.goal,
+                role: finalRole,
+                selectedRole: finalRole as any,
                 completedProfile: true,
-                updatedAt: new Date().toISOString()
-            });
+                onboardingCompleted: true,
+                updatedAt: serverTimestamp(),
+            };
+
+            // Use setDoc with merge: true to handle non-existent documents (common for new admins)
+            await setDoc(userRef, saveData, { merge: true });
 
             if (skipDiagnostic) {
                 setStep("generating");
             }
         } catch (err) {
             console.error("Error saving onboarding data", err);
-            toast.error("Error al guardar tu perfil");
+            toast.error("Error al guardar tu perfil. Revisa tu conexión.");
             setStep("goals");
         } finally {
             setIsSaving(false);
@@ -85,7 +122,7 @@ export default function OnboardingPage() {
     const isProfileValid = profile.career.trim().length > 3 && profile.university.trim().length > 3;
 
     return (
-        <div className="min-h-screen bg-[var(--theme-bg-base)] flex flex-col items-center justify-center p-6 sm:p-12 overflow-hidden">
+        <div className="min-h-screen bg-[var(--theme-bg-base)] flex flex-col items-center justify-center p-6 sm:p-12 overflow-hidden relative pt-[var(--header-safe-zone)]">
             <AnimatePresence mode="wait">
                 {step === "welcome" && (
                     <motion.div
@@ -114,15 +151,43 @@ export default function OnboardingPage() {
                             </p>
                         </div>
 
-                        <div className="pt-8">
-                            <Button
-                                onClick={() => nextStep("profile")}
-                                className="h-16 px-10 text-lg font-bold shadow-gold rounded-full"
-                                size="xl"
-                                icon={ArrowRight}
-                                iconPosition="right"
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-lg mx-auto pt-8">
+                            <button
+                                onClick={() => {
+                                    setProfile({ ...profile, selectedRole: 'student' });
+                                    nextStep("profile");
+                                }}
+                                className="p-6 bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] rounded-3xl hover:border-brand-primary transition-all text-left space-y-3 group"
                             >
-                                Diseñar mi Plan Personal
+                                <div className="p-3 bg-brand-primary/10 rounded-xl text-brand-primary w-fit group-hover:scale-110 transition-transform">
+                                    <Target size={24} />
+                                </div>
+                                <h3 className="font-bold text-[var(--theme-text-primary)]">Soy Estudiante</h3>
+                                <p className="text-xs text-[var(--theme-text-secondary)]">Quiero entrenar y mejorar mi puntaje.</p>
+                            </button>
+
+                            <button
+                                onClick={() => {
+                                    setProfile(prev => ({ ...prev, selectedRole: 'teacher' }));
+                                    handleSaveAndComplete(true, 'teacher');
+                                }}
+                                className="p-6 bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] rounded-3xl hover:border-brand-primary transition-all text-left space-y-3 group"
+                            >
+                                <div className="p-3 bg-brand-accent/10 rounded-xl text-brand-accent w-fit group-hover:scale-110 transition-transform">
+                                    <GraduationCap size={24} />
+                                </div>
+                                <h3 className="font-bold text-[var(--theme-text-primary)]">Soy Docente</h3>
+                                <p className="text-xs text-[var(--theme-text-secondary)]">Quiero gestionar mis clases y simulacros.</p>
+                            </button>
+                        </div>
+
+                        <div className="pt-4">
+                            <Button
+                                variant="ghost"
+                                onClick={() => router.push('/')}
+                                className="opacity-60 hover:opacity-100 text-xs font-bold uppercase tracking-widest"
+                            >
+                                Regresar al inicio
                             </Button>
                         </div>
                     </motion.div>
@@ -143,6 +208,19 @@ export default function OnboardingPage() {
                         </header>
 
                         <div className="space-y-6">
+                            <div className="space-y-3">
+                                <label className="text-sm font-bold text-[var(--theme-text-secondary)] uppercase tracking-wider ml-1 flex items-center gap-2">
+                                    <User size={16} className="text-brand-primary" /> Nombre Completo
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Tu nombre y apellidos"
+                                    className="w-full h-16 px-6 rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] text-lg focus:border-brand-primary transition-all outline-none"
+                                    value={profile.fullName}
+                                    onChange={(e) => setProfile({ ...profile, fullName: e.target.value })}
+                                />
+                            </div>
+
                             <div className="space-y-3">
                                 <label className="text-sm font-bold text-[var(--theme-text-secondary)] uppercase tracking-wider ml-1 flex items-center gap-2">
                                     <GraduationCap size={16} className="text-brand-primary" /> Carrera Universitaria
@@ -265,8 +343,14 @@ export default function OnboardingPage() {
                                 size="xl"
                                 isLoading={isSaving}
                                 onClick={async () => {
-                                    await handleSaveAndComplete(false);
-                                    router.push("/diagnostic");
+                                    // Auto-check if they already have results in localStorage (from public flow)
+                                    const savedResults = localStorage.getItem("saberpro_diagnostic_results");
+                                    if (savedResults) {
+                                        await handleSaveAndComplete(true);
+                                    } else {
+                                        await handleSaveAndComplete(false);
+                                        router.push("/diagnostic");
+                                    }
                                 }}
                             >
                                 Iniciar Diagnóstico (2 min)
@@ -302,11 +386,11 @@ export default function OnboardingPage() {
                         <div className="space-y-4">
                             <h2 className="text-3xl font-semibold text-[var(--theme-text-primary)]">Generando tu Plan Maestro</h2>
                             <p className="text-[var(--theme-text-secondary)] animate-pulse">
-                                Analizando carrera ({profile.career}) y meta ({profile.goal})...
+                                Analizando para {profile.selectedRole === 'teacher' ? 'Docente' : `Carrera: ${profile.career}`} y meta ({profile.goal})...
                             </p>
                         </div>
 
-                        <GeneratingProgress onComplete={() => router.replace('/dashboard')} />
+                        <GeneratingProgress onComplete={() => router.replace(profile.selectedRole === 'teacher' ? '/teacher' : '/dashboard')} />
                     </motion.div>
                 )}
             </AnimatePresence>

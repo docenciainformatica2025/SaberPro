@@ -10,7 +10,9 @@ import {
     Gift,
     Sun,
     Flag,
-    ChevronRight
+    ChevronRight,
+    Sparkles,
+    Shield
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
@@ -40,7 +42,8 @@ const HikerIllustration = () => (
 );
 
 export default function DashboardPage() {
-    const { user, profile } = useAuth();
+    const { user, profile, subscription, isSuperAdmin } = useAuth();
+    const router = useRouter();
     const [userName, setUserName] = useState("Estudiante");
     const [stats, setStats] = useState<DashboardStats | null>(null);
     const [challenge, setChallenge] = useState<DailyChallenge | null>(null);
@@ -53,14 +56,11 @@ export default function DashboardPage() {
         const loadData = async () => {
             setIsLoadingStats(true);
             try {
-                // Fetch stats first as challenge depends on it
+                // Fetch stats as primary data
                 const dashboardStats = await StudentService.getDashboardStats(user.uid);
                 if (dashboardStats) {
                     setStats(dashboardStats);
-
-                    // Now we can fetch challenge, we'll keep it separate if needed, 
-                    // but since challenge depends on stats, we wait.
-                    // If challenge was independent, we'd use Promise.all.
+                    // Derivate challenge based on stats
                     const dailyChallenge = await StudentService.getDailyChallenge(user.uid, dashboardStats);
                     setChallenge(dailyChallenge);
                 }
@@ -74,6 +74,8 @@ export default function DashboardPage() {
 
         loadData();
     }, [user, profile]);
+
+    const isPro = subscription?.plan !== 'free' || isSuperAdmin;
 
     return (
         <div className="min-h-screen bg-[var(--theme-bg-base)] pb-32 font-sans selection:bg-brand-primary/20 transition-colors duration-500 overflow-x-hidden" suppressHydrationWarning>
@@ -136,15 +138,21 @@ export default function DashboardPage() {
                             <div className="flex-1 pl-8 pt-2">
                                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/10 mb-4">
                                     <div className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-ping" />
-                                    <span className="text-[9px] font-black uppercase tracking-widest text-brand-primary">Activo Ahora</span>
+                                    <span className="text-[9px] font-black uppercase tracking-widest text-brand-primary">
+                                        {stats?.totalSimulations === 0 ? "Comenzando Ruta" : "Activo Ahora"}
+                                    </span>
                                 </div>
                                 <h2 className="text-lg md:text-xl font-bold text-brand-primary leading-none tracking-tight">
-                                    {(stats?.weeklyProgress ?? 0) >= 80 ? "Paso de Élite" : (stats?.weeklyProgress ?? 0) >= 50 ? "Buen ritmo" : "El comienzo"}
+                                    {stats?.totalSimulations === 0
+                                        ? "¡Bienvenido a tu entrenamiento!"
+                                        : (stats?.weeklyProgress ?? 0) >= 80 ? "Paso de Élite" : (stats?.weeklyProgress ?? 0) >= 50 ? "Buen ritmo" : "El comienzo"}
                                 </h2>
                                 <p className="text-[12px] text-[var(--theme-text-secondary)] mt-2.5 max-w-[85%] leading-relaxed font-medium">
-                                    {(stats?.weeklyProgress ?? 0) >= 100
-                                        ? "Has dominado tus objetivos semanales. Estás en el 1% superior."
-                                        : `Falta un ${100 - (stats?.weeklyProgress ?? 0)}% para completar tu meta.`}
+                                    {stats?.totalSimulations === 0
+                                        ? "Configuramos tu plan basado en tu meta. Tu primer paso es revisar tu Planificador."
+                                        : (stats?.weeklyProgress ?? 0) >= 100
+                                            ? "Has dominado tus objetivos semanales. Estás en el 1% superior."
+                                            : `Falta un ${100 - (stats?.weeklyProgress ?? 0)}% para completar tu meta.`}
                                 </p>
                             </div>
                         </div>
@@ -152,7 +160,7 @@ export default function DashboardPage() {
                         <div className="flex items-center justify-between mt-auto">
                             <Link href="/planner">
                                 <Button variant="maestro" className="h-10 px-6 rounded-xl shadow-premium">
-                                    Continuar Ruta <ChevronRight size={14} className="ml-2" />
+                                    {stats?.totalSimulations === 0 ? "Ver mi Plan de Estudio" : "Continuar Ruta"} <ChevronRight size={14} className="ml-2" />
                                 </Button>
                             </Link>
                             <HikerIllustration />
@@ -199,6 +207,42 @@ export default function DashboardPage() {
                     </div>
                 </div>
 
+                {/* Subscription / Upsell Card - 360 Degree Visibility */}
+                {!isPro && (
+                    <div className="bg-gradient-to-r from-slate-900 to-brand-primary p-[1px] rounded-[2rem] shadow-2xl overflow-hidden group mb-8">
+                        <div className="bg-[var(--theme-bg-surface)] rounded-[1.95rem] p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+                            <div className="flex items-center gap-6">
+                                <div className="w-16 h-16 rounded-2xl bg-brand-primary/10 flex items-center justify-center text-brand-primary shrink-0 transition-transform group-hover:scale-110">
+                                    <Sparkles size={32} />
+                                </div>
+                                <div className="space-y-1">
+                                    <h4 className="text-xl font-bold text-[var(--theme-text-primary)] tracking-tight">Potencia tu <span className="text-brand-primary italic">Maestría</span></h4>
+                                    <p className="text-[11px] text-[var(--theme-text-secondary)] font-medium leading-relaxed max-w-sm">
+                                        Desbloquea simulacros ilimitados, análisis de IA y reportes PDF.
+                                        Estadísticamente, los usuarios PRO mejoran un 40% más rápido.
+                                    </p>
+                                </div>
+                            </div>
+                            <Button
+                                variant="premium"
+                                className="h-14 px-8 rounded-xl shadow-lg w-full md:w-auto"
+                                onClick={() => router.push('/pricing')}
+                            >
+                                Mejorar a PRO
+                            </Button>
+                        </div>
+                    </div>
+                )}
+
+                {isPro && (
+                    <div className="flex items-center justify-between px-6 py-4 bg-brand-primary/5 border border-brand-primary/10 rounded-[2rem] mb-8">
+                        <div className="flex items-center gap-3">
+                            <Shield size={16} className="text-brand-primary" />
+                            <span className="text-[10px] font-black text-brand-primary uppercase tracking-[0.2em]">Versión Profesional Activa</span>
+                        </div>
+                        <span className="text-[9px] font-bold text-[var(--theme-text-tertiary)] uppercase tracking-widest">Soporte Prioritario</span>
+                    </div>
+                )}
             </div>
 
             {/* Bottom Navigation - Ultra Sleek Maestro v2.1 (Mobile Only) */}

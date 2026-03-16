@@ -2,8 +2,7 @@ const CACHE_NAME = 'saberpro-cache-v1';
 const ASSETS_TO_CACHE = [
     '/',
     '/manifest.json',
-    '/icon.svg',
-    '/saberpro-core.css'
+    '/icon.svg'
 ];
 
 self.addEventListener('install', (event) => {

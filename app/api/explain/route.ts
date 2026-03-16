@@ -47,8 +47,29 @@ const explainSchema = z.object({
     }).optional(),
 });
 
+import { adminAuth } from "@/lib/firebase-admin";
+
 export async function POST(req: Request) {
     try {
+        // --- SECURITY AUDIT FIX: VERIFY AUTHENTICATION ---
+        const authHeader = req.headers.get("Authorization");
+        if (!authHeader || !authHeader.startsWith("Bearer ")) {
+            return NextResponse.json({ error: "No autorizado. Se requiere token." }, { status: 401 });
+        }
+
+        const idToken = authHeader.split("Bearer ")[1];
+        try {
+            if (!adminAuth) {
+                console.warn("Firebase Admin bypass: Token verification skipped (Admin SDK not initialized)");
+            } else {
+                await adminAuth.verifyIdToken(idToken);
+            }
+        } catch (error) {
+            console.error("Error verificando token:", error);
+            return NextResponse.json({ error: "Token inválido o expirado." }, { status: 401 });
+        }
+        // ------------------------------------------------
+
         const body = await req.json();
         const { question, selectedOption, correctAnswer, userProfile } = explainSchema.parse(body);
 

@@ -14,6 +14,7 @@ import ResultDetailModal from "@/components/analytics/ResultDetailModal";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { cn } from "@/lib/utils";
 import { pdfGenerator } from "@/utils/pdfGenerator";
 import {
     ArrowLeft,
@@ -33,9 +34,11 @@ import { AnalyticsSkeleton } from "@/components/ui/AnalyticsSkeleton";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { adaptiveEngine, AdaptiveAdvice } from "@/utils/adaptiveEngine";
 import AICoachMessage from "@/components/analytics/AICoachMessage";
+import { Lock } from "lucide-react";
+import { SubscriptionPlan } from "@/types/finance";
 
 export default function AnalyticsPage() {
-    const { user, loading } = useAuth();
+    const { user, loading, subscription, isSuperAdmin } = useAuth();
     const router = useRouter();
     const [isLoadingData, setIsLoadingData] = useState(true);
     const [trendData, setTrendData] = useState<{ name: string; value: number; fullDate: Date }[]>([]);
@@ -45,6 +48,9 @@ export default function AnalyticsPage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [userName, setUserName] = useState("Estudiante");
     const [aiAnalysis, setAiAnalysis] = useState<AdaptiveAdvice | null>(null);
+    const [showPremiumModal, setShowPremiumModal] = useState(false);
+
+    const isPro = subscription?.plan !== SubscriptionPlan.FREE || isSuperAdmin;
 
     const [kpis, setKpis] = useState({
         totalSimulations: 0,
@@ -147,6 +153,10 @@ export default function AnalyticsPage() {
     };
 
     const handleDownloadReport = () => {
+        if (!isPro) {
+            setShowPremiumModal(true);
+            return;
+        }
         if (!user) return;
         const reportData = {
             user: { name: userName, email: user.email || "" },
@@ -211,20 +221,31 @@ export default function AnalyticsPage() {
                             </div>
                             <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
                                 <Button
-                                    variant="outline"
+                                    variant={isPro ? "outline" : "ghost"}
                                     size="lg"
-                                    icon={Download}
+                                    icon={isPro ? Download : Lock}
                                     onClick={handleDownloadReport}
-                                    className="h-14 px-8 rounded-2xl bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:shadow-xl transition-all"
+                                    className={cn(
+                                        "h-14 px-8 rounded-2xl border-[var(--theme-border-soft)] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:shadow-xl transition-all",
+                                        !isPro && "bg-[var(--theme-bg-surface)] text-[var(--theme-text-quaternary)]"
+                                    )}
                                 >
-                                    Reporte PDF
+                                    {isPro ? "Reporte PDF" : "Reporte PDF (PRO)"}
                                 </Button>
-                                <div className="px-6 py-4 rounded-2xl bg-brand-primary/5 border border-brand-primary/10 shadow-2xl shadow-brand-primary/5 group transition-all hover:bg-brand-primary/10">
+                                <div
+                                    onClick={() => !isPro && setShowPremiumModal(true)}
+                                    className={cn(
+                                        "px-6 py-4 rounded-2xl border transition-all cursor-pointer relative overflow-hidden",
+                                        isPro
+                                            ? "bg-brand-primary/5 border-brand-primary/10 shadow-2xl shadow-brand-primary/5 hover:bg-brand-primary/10"
+                                            : "bg-[var(--theme-bg-surface)] border-[var(--theme-border-soft)] opacity-80"
+                                    )}
+                                >
                                     <div className="flex items-center gap-3 text-brand-primary text-[10px] font-black tracking-widest uppercase mb-1">
-                                        <Brain size={16} /> Proyección IA
+                                        <Brain size={16} /> Proyección IA {!isPro && <Lock size={12} className="ml-1 opacity-50" />}
                                     </div>
                                     <div className="text-2xl font-black text-slate-900 dark:text-[var(--theme-text-primary)] tracking-tighter leading-none">
-                                        {kpis.averageScore > 0 ? (kpis.averageScore * 3).toString() + " / 300" : "PROCESANDO..."}
+                                        {isPro ? (kpis.averageScore > 0 ? (kpis.averageScore * 3).toString() + " / 300" : "PROCESANDO...") : "•••• / 300"}
                                     </div>
                                 </div>
                             </div>
@@ -330,6 +351,24 @@ export default function AnalyticsPage() {
                             result={selectedResult}
                             userName={userName}
                         />
+                        {/* Premium Modal */}
+                        {showPremiumModal && (
+                            <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-[var(--theme-bg-base)]/80 backdrop-blur-xl animate-in fade-in duration-300">
+                                <Card variant="primary" className="max-w-md w-full p-10 text-center space-y-6 shadow-4k animate-in zoom-in-95 duration-300 relative">
+                                    <div className="w-16 h-16 rounded-2xl bg-brand-primary/10 text-brand-primary flex items-center justify-center mx-auto">
+                                        <Sparkles size={32} />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <h3 className="text-2xl font-bold text-[var(--theme-text-primary)] uppercase italic leading-none">Desbloquea Maestro Pro</h3>
+                                        <p className="text-sm text-[var(--theme-text-secondary)] font-medium leading-relaxed">Obtén acceso a reportes PDF descargables, proyecciones basadas en IA y simulacros ilimitados.</p>
+                                    </div>
+                                    <div className="space-y-4 pt-4">
+                                        <Button variant="premium" className="w-full h-14 rounded-xl shadow-lg" onClick={() => router.push('/pricing')}>Ver Planes Premium</Button>
+                                        <Button variant="ghost" className="w-full h-12 text-[10px] uppercase font-black tracking-widest text-[var(--theme-text-tertiary)]" onClick={() => setShowPremiumModal(false)}>Quizás más tarde</Button>
+                                    </div>
+                                </Card>
+                            </div>
+                        )}
                     </motion.div>
                 )}
             </div>
