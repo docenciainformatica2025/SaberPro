@@ -30,6 +30,7 @@ interface LeadData {
     id: string;
     name: string;
     email: string;
+    phone?: string;
     intent: string;
     region?: string;
     status: 'pending' | 'converted';

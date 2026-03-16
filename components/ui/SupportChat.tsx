@@ -171,7 +171,7 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                 window.location.href = "/diagnostic";
                 addBotMessage("¡Listo! Te estoy llevando al diagnóstico. ¡Dale con toda!");
             } else if (value === "whatsapp_support") {
-                const text = userData.name ? `Hola,%20soy%20${userData.name}.%20Necesito%20ayuda%20con:%20${userData.need || 'la app'}` : 'Hola,%20necesito%20ayudita%20con%20SaberPro';
+                const text = userData.name ? `Hola,%20soy%20${userData.name}.%20Necesito%20ayuda%20con:%20${userData.intent || 'la app'}` : 'Hola,%20necesito%20ayudita%20con%20SaberPro';
                 window.open(`https://wa.me/${SUPPORT_WHATSAPP}?text=${text}`, '_blank');
                 addBotMessage("Ya te abrí el chat. ¡En un momento te atienden!", 'options', [{ label: "🏠 Menú principal", value: "restart" }]);
             } else if (value === "whatsapp_payment") {
