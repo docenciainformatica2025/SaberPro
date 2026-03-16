@@ -453,7 +453,7 @@ export default function SettingsPage() {
             </Card>
 
             <div className="flex justify-between items-center text-[10px] text-theme-text-secondary/30 px-2 uppercase font-semibold tracking-[0.1em]">
-                <span>Saber Pro Suite v4.1.29 - Central Control Page</span>
+                <span>Saber Pro Suite v4.1.30 - Central Control Page</span>
                 <span className="flex items-center gap-1"><ShieldAlert size={10} /> TLS 1.3 / Inmutable Config Pattern</span>
             </div>
         </main>

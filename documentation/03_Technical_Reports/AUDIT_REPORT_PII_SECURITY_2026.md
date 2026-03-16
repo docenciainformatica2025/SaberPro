@@ -1,7 +1,7 @@
 # Reporte Oficial de Auditoría de Seguridad y PII - Febrero 2026
 
 ## 1. Resumen Ejecutivo
-Este documento constituye la **Copia de Seguridad de Auditoría** realizada previo al despliegue de producción de la versión **v4.1.29**. Se han seguido los protocolos de "Military-Grade Security" y la "Regla Zero-Static" definidos en las políticas de SaberPro.
+Este documento constituye la **Copia de Seguridad de Auditoría** realizada previo al despliegue de producción de la versión **v4.1.30**. Se han seguido los protocolos de "Military-Grade Security" y la "Regla Zero-Static" definidos en las políticas de SaberPro.
 
 ## 2. Acciones Realizadas (Trazabilidad)
 

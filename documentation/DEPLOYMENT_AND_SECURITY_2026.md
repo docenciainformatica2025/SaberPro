@@ -1,6 +1,6 @@
 # Protocolo de Despliegue y Seguridad SaberPro 2026
 
-Este documento sirve como referencia técnica para la resolución de conflictos de infraestructura y seguridad encontrados durante el despliegue de la versión **v4.1.29**.
+Este documento sirve como referencia técnica para la resolución de conflictos de infraestructura y seguridad encontrados durante el despliegue de la versión **v4.1.30**.
 
 ## 1. Incidente de Bloqueo "Shallow Update" (Infraestructura)
 
@@ -65,7 +65,7 @@ Si una llave privada (ej: `firebase-admin-sdk.json`) toca el historial, seguir e
 
 ---
 
-## 3. Estado Actual (v4.1.29)
+## 3. Estado Actual (v4.1.30)
 *   **Rama de Producción**: `main`
 *   **Estado de Seguridad**: Limpio (Sin credenciales expuestas).
 *   **Método de Despliegue**: Automático vía Vercel tras push a `main`.
