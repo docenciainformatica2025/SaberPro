@@ -39,7 +39,7 @@ export default function DarkModeToggle() {
             onClick={toggle}
             className="
                 fixed bottom-4 left-4
-                md:bottom-6 md:right-6 md:left-auto
+                md:bottom-6 md:left-6
                 w-11 h-11 md:w-12 md:h-12 rounded-full
                 bg-brand-primary hover:bg-brand-primary/90
                 flex items-center justify-center

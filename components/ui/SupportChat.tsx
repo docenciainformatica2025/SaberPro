@@ -31,9 +31,14 @@ interface Message {
 }
 
 export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }) {
+    const [mounted, setMounted] = useState(false);
     const [isOpen, setIsOpen] = useState(!isGlobal);
     const [step, setStep] = useState<'initial' | 'asking_name' | 'asking_need' | 'ready'>('initial');
     const [userData, setUserData] = useState({ name: '', need: '' });
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
     
     const [messages, setMessages] = useState<Message[]>([
         {
@@ -180,6 +185,8 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
         }
     };
 
+    if (!mounted) return null;
+
     return (
         <>
             {isGlobal && (
@@ -191,7 +198,7 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                     )}
                 >
                     <img 
-                        src="/gabriela-avatar.png" 
+                        src="/gabriela-avatar.png?v=2" 
                         alt="Gabriela" 
                         className="w-full h-full object-cover"
                     />
@@ -219,7 +226,7 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                                 <div className="flex items-center gap-3 relative z-10">
                                     <div className="w-11 h-11 rounded-2xl bg-white/20 flex items-center justify-center relative shadow-inner rotate-3 overflow-hidden">
                                         <img 
-                                            src="/gabriela-avatar.png" 
+                                            src="/gabriela-avatar.png?v=2" 
                                             alt="Gabriela" 
                                             className="w-full h-full object-cover -rotate-3 scale-110"
                                         />
@@ -250,7 +257,7 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                                     )}>
                                         {msg.role === 'bot' && (
                                             <div className="w-8 h-8 rounded-xl bg-brand-primary/10 flex-shrink-0 overflow-hidden mt-1 border border-brand-primary/10">
-                                                <img src="/gabriela-avatar.png" alt="G" className="w-full h-full object-cover" />
+                                                <img src="/gabriela-avatar.png?v=2" alt="G" className="w-full h-full object-cover" />
                                             </div>
                                         )}
                                         <div className="flex flex-col gap-1.5 max-w-[85%]">

@@ -105,6 +105,8 @@ export const viewport = {
   ],
 };
 
+import SupportChat from "@/components/ui/SupportChat";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -129,8 +131,9 @@ export default function RootLayout({
               </main>
               <AdminRoleSwitcher />
               <MobileTabBar />
-              <DarkModeToggle />
             </RouteGuard>
+            <SupportChat isGlobal={true} />
+            <DarkModeToggle />
             <ConditionalFooter />
             <CookieBanner />
           </VersionUpdateGuard>
