@@ -43,15 +43,31 @@ export default function RegisterPage() {
     });
 
     const generatePassword = () => {
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@$!%*?&";
-        let password = "Aa1@";
-        for (let i = 0; i < 4; i++) {
-            password += chars.charAt(Math.floor(Math.random() * chars.length));
+        const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@$!%*?&";
+        const passwordArray = new Uint32Array(12);
+        
+        const cryptoObj = (typeof window !== 'undefined' ? window.crypto : null) || (global as any).crypto || require('crypto');
+        if (cryptoObj.getRandomValues) {
+            cryptoObj.getRandomValues(passwordArray);
+        } else {
+            const buf = require('crypto').randomBytes(passwordArray.byteLength);
+            passwordArray.set(new Uint32Array(buf.buffer, buf.byteOffset, passwordArray.length));
         }
-        password = password.split('').sort(() => 0.5 - Math.random()).join('');
-        setValue("password", password);
-        setValue("confirmPassword", password);
-        toast.success("Contraseña segura generada");
+        
+        let password = "";
+        // Ensure at least one of each required type
+        password += "Ab1!"; 
+        
+        for (let i = 0; i < passwordArray.length; i++) {
+            password += charset[passwordArray[i] % charset.length];
+        }
+        
+        // Shuffle the password
+        const shuffled = password.split('').sort(() => 0.5 - Math.random()).join('');
+        
+        setValue("password", shuffled);
+        setValue("confirmPassword", shuffled);
+        toast.success("Contraseña de grado militar generada");
     };
 
     const passwordValue = watch("password", "");

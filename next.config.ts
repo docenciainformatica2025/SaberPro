@@ -24,10 +24,29 @@ const nextConfig: NextConfig = {
   },
   reactStrictMode: true,
   async headers() {
+    const cspHeader = `
+      default-src 'self';
+      script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.google-analytics.com https://*.googletagmanager.com https://challenges.cloudflare.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      img-src 'self' blob: data: https://lh3.googleusercontent.com https://firebasestorage.googleapis.com https://images.unsplash.com https://*.google-analytics.com;
+      font-src 'self' https://fonts.gstatic.com;
+      connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.google-analytics.com https://challenges.cloudflare.com;
+      frame-src 'self' https://challenges.cloudflare.com https://*.firebaseapp.com;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      frame-ancestors 'none';
+      upgrade-insecure-requests;
+    `.replace(/\s{2,}/g, ' ').trim();
+
     return [
       {
         source: '/(.*)',
         headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: cspHeader,
+          },
           {
             key: 'X-Frame-Options',
             value: 'DENY',

@@ -18,7 +18,7 @@ export default function PremiumGuard({ children, fallback }: PremiumGuardProps) 
         return <div className="animate-pulse h-32 bg-[var(--theme-bg-surface)] rounded-xl w-full border border-[var(--theme-border-soft)]"></div>;
     }
 
-    if (subscription?.plan === 'pro' || role === 'admin') {
+    if (subscription?.plan === 'pro' || role === 'admin' || role === 'teacher') {
         return <>{children}</>;
     }
 

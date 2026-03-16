@@ -33,9 +33,13 @@ export default function QuestionCard({ question, selectedOptionId, onSelectOptio
         if (onAiUsed) onAiUsed(); // Increment usage counter
 
         try {
+            const idToken = await user?.getIdToken();
             const res = await fetch('/api/explain', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${idToken}`
+                },
                 body: JSON.stringify({
                     question,
                     selectedOption: question.isPromptOnly ? promptResponse : (question.options.find(o => o.id === selectedOptionId)?.text || "Ninguna"),

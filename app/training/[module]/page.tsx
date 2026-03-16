@@ -33,8 +33,6 @@ export default function TrainingModulePage({ params }: TrainingPageProps) {
     const [loading, setLoading] = useState(true);
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
     const [feedback, setFeedback] = useState<"correct" | "incorrect" | null>(null);
-    const [explanation, setExplanation] = useState<string | null>(null);
-    const [loadingExplanation, setLoadingExplanation] = useState(false);
     const [userProfile, setUserProfile] = useState<any>(null);
     const [score, setScore] = useState(0);
 
@@ -105,41 +103,11 @@ export default function TrainingModulePage({ params }: TrainingPageProps) {
         }
     };
 
-    const [aiUsageCount, setAiUsageCount] = useState(0);
-
-    const handleExplain = async () => {
-        setLoadingExplanation(true);
-        try {
-            const idToken = await user?.getIdToken();
-            const res = await fetch("/api/explain", {
-                method: "POST",
-                headers: { 
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${idToken}`
-                },
-                body: JSON.stringify({
-                    question: currentQuestion,
-                    selectedOption,
-                    correctAnswer: currentQuestion.correctAnswer,
-                    userProfile: userProfile
-                })
-            });
-            const data = await res.json();
-            setExplanation(data.explanation || "No pudimos generar una explicación en este momento.");
-        } catch (error) {
-            console.error(error);
-            setExplanation("Error de conexión con la IA.");
-        } finally {
-            setLoadingExplanation(false);
-        }
-    };
-
     const [showUpsell, setShowUpsell] = useState(false);
 
     const handleNext = () => {
         setFeedback(null);
         setSelectedOption(null);
-        setExplanation(null);
         if (currentIndex < questions.length - 1) {
             setCurrentIndex(prev => prev + 1);
         } else {
@@ -209,7 +177,7 @@ export default function TrainingModulePage({ params }: TrainingPageProps) {
             <div className="max-w-4xl mx-auto">
                 {/* ... (Existing Render) ... */}
                 <div className="flex justify-between items-center mb-8">
-                    <Link href={role === 'teacher' ? "/training" : "/training"} className="text-[var(--theme-text-tertiary)] hover:text-[var(--theme-text-primary)] flex items-center gap-2">
+                    <Link href="/training" className="text-[var(--theme-text-tertiary)] hover:text-[var(--theme-text-primary)] flex items-center gap-2">
                         <ArrowLeft size={20} /> Salir
                     </Link>
                     <div className="text-metal-gold font-bold">
@@ -223,8 +191,6 @@ export default function TrainingModulePage({ params }: TrainingPageProps) {
                     selectedOptionId={selectedOption}
                     onSelectOption={handleSelectOption}
                     showResult={!!feedback}
-                    aiUsageCount={aiUsageCount}
-                    onAiUsed={() => setAiUsageCount(prev => prev + 1)}
                 />
 
                 {feedback && (

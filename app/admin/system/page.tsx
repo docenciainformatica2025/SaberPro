@@ -52,7 +52,16 @@ export default function SystemStatusPage() {
 
         // 3. Server Health & Latency (Real API Call)
         try {
-            const res = await fetch('/api/health', { cache: 'no-store' });
+            const auth = getAuth(app);
+            const user = auth.currentUser;
+            const idToken = await user?.getIdToken();
+
+            const res = await fetch('/api/health', { 
+                cache: 'no-store',
+                headers: {
+                    'Authorization': `Bearer ${idToken}`
+                }
+            });
             const end = Date.now();
             newStatus.latency = end - start;
 
@@ -62,6 +71,9 @@ export default function SystemStatusPage() {
                 newStatus.api = newStatus.latency < 500 ? 'excellent' : 'good';
             } else {
                 newStatus.api = 'error';
+                if (res.status === 401 || res.status === 403) {
+                    console.warn("Acceso denegado a métricas de salud.");
+                }
             }
         } catch (e) {
             newStatus.api = 'offline';

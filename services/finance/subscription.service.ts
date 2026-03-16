@@ -152,12 +152,17 @@ export const redeemCoupon = async (userId: string, code: string) => {
  */
 export const generateCoupons = async (count: number, plan: 'pro' | 'teacher', description: string = "Promo Admin") => {
     const results = [];
-    console.log(`Iniciando generación de ${count} cupones para plan ${plan}...`);
-
     const batchSize = 10;
     for (let i = 0; i < count; i++) {
         try {
-            const code = Math.random().toString(36).substring(2, 10).toUpperCase();
+            const randomBytes = new Uint8Array(5);
+            const cryptoObj = (typeof window !== 'undefined' ? window.crypto : null) || (global as any).crypto || require('crypto');
+            if (cryptoObj.getRandomValues) {
+                cryptoObj.getRandomValues(randomBytes);
+            } else {
+                randomBytes.set(require('crypto').randomBytes(5));
+            }
+            const code = Array.from(randomBytes).map(b => b.toString(36).padStart(2, '0')).join('').substring(0, 8).toUpperCase();
             const couponRef = doc(db, "coupons", code);
             const data = {
                 code,
@@ -169,10 +174,8 @@ export const generateCoupons = async (count: number, plan: 'pro' | 'teacher', de
             };
             await setDoc(couponRef, data);
             results.push(data);
-            console.log(` Cupón generado: ${code}`);
 
             if ((i + 1) % batchSize === 0) {
-                console.log(`Procesados ${i + 1} de ${count}...`);
                 await new Promise(resolve => setTimeout(resolve, 100));
             }
         } catch (error: any) {

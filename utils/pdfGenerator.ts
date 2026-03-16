@@ -186,5 +186,71 @@ export const pdfGenerator = {
         await drawSecuritySeal(doc, pageHeight - 60, contentHash, margin, pageWidth);
         drawFooter(doc, 1, pageHeight, pageWidth, margin, verifID, dateStr);
         doc.save(generateFileName("CONSENT", user.email, verifID));
+    },
+    generateAchievementCertificate: async (userName: string, level: string, xp: number) => {
+        const doc = new jsPDF({ orientation: 'landscape', format: 'letter' });
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const now = new Date();
+        const dateStr = now.toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' });
+        const verifID = generateVerificationID(userName);
+        const margin = 15;
+
+        // Background / Border
+        doc.setFillColor(INK_BLACK[0], INK_BLACK[1], INK_BLACK[2]);
+        doc.rect(0, 0, pageWidth, pageHeight, 'F');
+        
+        doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+        doc.setLineWidth(2);
+        doc.rect(margin, margin, pageWidth - 2 * margin, pageHeight - 2 * margin, 'S');
+        
+        doc.setLineWidth(0.5);
+        doc.rect(margin + 2, margin + 2, pageWidth - 2 * margin - 4, pageHeight - 2 * margin - 4, 'S');
+
+        // Content
+        doc.setTextColor(GOLD[0], GOLD[1], GOLD[2]);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(40);
+        doc.text("CERTIFICADO DE EXCELENCIA", pageWidth / 2, 60, { align: 'center' });
+        
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(18);
+        doc.setFont("helvetica", "normal");
+        doc.text("SaberPro otorga el presente reconocimiento a:", pageWidth / 2, 85, { align: 'center' });
+        
+        doc.setTextColor(GOLD[0], GOLD[1], GOLD[2]);
+        doc.setFontSize(32);
+        doc.setFont("helvetica", "bold");
+        doc.text(userName.toUpperCase(), pageWidth / 2, 110, { align: 'center' });
+        
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(16);
+        doc.setFont("helvetica", "normal");
+        doc.text(`Por su destacada evolución y compromiso en el nivel:`, pageWidth / 2, 130, { align: 'center' });
+        doc.setFont("helvetica", "bold");
+        doc.text(level, pageWidth / 2, 140, { align: 'center' });
+        
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(12);
+        doc.text(`Total Puntos de Maestría (XP): ${xp.toLocaleString()}`, pageWidth / 2, 160, { align: 'center' });
+
+        // Footer / Verification
+        doc.setFontSize(10);
+        doc.setTextColor(TECH_GRAY[0], TECH_GRAY[1], TECH_GRAY[2]);
+        doc.text(`Fecha de emisión: ${dateStr}`, margin + 20, pageHeight - margin - 20);
+        doc.text(`ID Verificación: ${verifID}`, pageWidth - margin - 20, pageHeight - margin - 20, { align: 'right' });
+
+        const contentStr = `${userName}-${level}-${xp}-${verifID}`;
+        const contentHash = await generateContentHash(contentStr);
+        
+        // Security seal
+        doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+        doc.roundedRect(pageWidth / 2 - 50, pageHeight - margin - 35, 100, 20, 1, 1, 'S');
+        doc.setFont("monospace", "normal");
+        doc.setFontSize(6);
+        doc.text(`HASH: ${contentHash}`, pageWidth / 2, pageHeight - margin - 22, { align: 'center' });
+        doc.text(`SABERPRO SECURE v4.1`, pageWidth / 2, pageHeight - margin - 28, { align: 'center' });
+
+        doc.save(generateFileName("CERTIFICADO", userName, verifID));
     }
 };

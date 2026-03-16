@@ -1,10 +1,34 @@
 
 import { NextResponse } from 'next/server';
+import { adminAuth } from '@/lib/firebase-admin';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(req: Request) {
     try {
+        // --- SEGURIDAD MILITAR: VERIFICACIÓN DE IDENTIDAD ---
+        const authHeader = req.headers.get("Authorization");
+        if (!authHeader || !authHeader.startsWith("Bearer ")) {
+            return NextResponse.json({ error: "Acceso denegado." }, { status: 401 });
+        }
+
+        const idToken = authHeader.split("Bearer ")[1];
+        try {
+            if (adminAuth) {
+                const decodedToken = await adminAuth.verifyIdToken(idToken);
+                // Opcional: Verificar si es admin en el token o en nuestra lista
+                const adminEmails = (process.env.ADMIN_EMAILS || "").split(",").map(e => e.trim().toLowerCase());
+                const isRoot = decodedToken.email && ['antonio_rburgos@msn.com', 'jarbugos40@gmail.com'].includes(decodedToken.email.toLowerCase());
+                
+                if (!isRoot && !adminEmails.includes(decodedToken.email || "")) {
+                    return NextResponse.json({ error: "Privilegios insuficientes." }, { status: 403 });
+                }
+            }
+        } catch (authError) {
+            return NextResponse.json({ error: "Sesión inválida." }, { status: 401 });
+        }
+        // ---------------------------------------------------
+
         const memoryUsage = process.memoryUsage();
         const uptime = process.uptime();
 

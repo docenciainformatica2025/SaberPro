@@ -118,10 +118,14 @@ export default function UsersPage() {
             masterAdmins.push("antonio_rburgos@msn.com");
         }
 
-        const confirmation = prompt(`ALERTA DE SEGURIDAD NIVEL 5 - SALIDA A PRODUCCIÓN\n\nEsta acción ELIMINARÁ PERMANENTEMENTE a todos los usuarios excepto a los Administradores Maestros.\n\nPara confirmar, escriba el correo electrónico principal (${masterAdmins[0]}):`);
+        const confirmation = prompt(`ALERTA DE SEGURIDAD NIVEL 5 - SALIDA A PRODUCCIÓN\n\nEsta acción ELIMINARÁ PERMANENTEMENTE a todos los usuarios excepto a los Administradores Maestros.\n\nPara confirmar, escriba su correo electrónico de Administrador Maestro:`);
 
-        if (confirmation !== masterAdmins[0]) {
-            toast.error("Confirmación fallida. Operación abortada.");
+        if (!confirmation || !masterAdmins.includes(confirmation.toLowerCase())) {
+            toast.error("Identidad no validada. Operación abortada.");
+            return;
+        }
+
+        if (!confirm("⚠️ ÚLTIMA ADVERTENCIA: ¿Realmente desea proceder con la purga total de la base de datos?")) {
             return;
         }
 

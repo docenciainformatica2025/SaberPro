@@ -27,9 +27,17 @@ export class ClassService {
 
     private static generateUniqueCode(): string {
         const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        const randomValues = new Uint32Array(6);
+        const cryptoObj = (typeof window !== 'undefined' ? window.crypto : null) || (global as any).crypto || require('crypto');
+        if (cryptoObj.getRandomValues) {
+            cryptoObj.getRandomValues(randomValues);
+        } else {
+            const buf = require('crypto').randomBytes(randomValues.byteLength);
+            randomValues.set(new Uint32Array(buf.buffer, buf.byteOffset, randomValues.length));
+        }
         let result = '';
         for (let i = 0; i < 6; i++) {
-            result += chars.charAt(Math.floor(Math.random() * chars.length));
+            result += chars.charAt(randomValues[i] % chars.length);
         }
         return result;
     }
