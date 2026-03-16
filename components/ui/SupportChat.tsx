@@ -88,6 +88,17 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
         setMessages(prev => [...prev, msg]);
     };
 
+    const matchIntent = (text: string) => {
+        const t = text.toLowerCase();
+        if (t.includes("pago") || t.includes("nequi") || t.includes("comprar") || t.includes("pagar") || t.includes("precio") || t.includes("costo") || t.includes("valor") || t.includes("membresia") || t.includes("tarjeta")) return "pago";
+        if (t.includes("simulacro") || t.includes("practicar") || t.includes("entrenar") || t.includes("examen") || t.includes("prueba") || t.includes("diagnostico") || t.includes("preguntas")) return "simulacro";
+        if (t.includes("pro") || t.includes("premium") || t.includes("ventajas") || t.includes("beneficios") || t.includes("mejorar") || t.includes("suscripcion")) return "suscripcion";
+        if (t.includes("ayuda") || t.includes("persona") || t.includes("humano") || t.includes("asesor") || t.includes("soporte") || t.includes("contacto") || t.includes("hablar")) return "humano_flow";
+        if (t.includes("hola") || t.includes("buenos") || t.includes("saludos") || t.includes("hey")) return "restart";
+        if (t.includes("gracias") || t.includes("listo") || t.includes("vale") || t.includes("entendido")) return "final_thanks";
+        return "unknown";
+    };
+
     const processBotResponse = (value: string) => {
         setIsTyping(true);
         setTimeout(() => {
@@ -100,17 +111,21 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                 addBotMessage("Nuestros ejercicios son igualitos a los del examen real. Te aconsejo empezar con el Diagnóstico para que sepas qué repasar primero.", 'options', [
                     { label: "🚀 Empezar ahora", value: "start_diagnostic" },
                     { label: "📚 Guías de estudio", value: "help_center" },
-                    { label: "🙋 Otra duda", value: "restart" }
+                    { label: "🏠 Menú principal", value: "restart" }
                 ]);
             } else if (lowercaseValue.includes("suscripcion") || lowercaseValue.includes("pro")) {
                 addBotMessage("Con el plan PRO puedes practicar todas las veces que quieras y ver tus fallos explicados. ¡Es la clave para un buen puntaje!", 'options', [
                     { label: "💎 Ver el plan Pro", value: "pricing" },
-                    { label: "💳 ¿Cómo pago?", value: "pago" }
+                    { label: "🏠 Menú principal", value: "restart" }
                 ]);
             } else if (lowercaseValue.includes("pago")) {
                 addBotMessage("¡Súper fácil! Recibimos Nequi, tarjetas y PSE. Si prefieres Nequi, te paso los datos por WhatsApp de una.", 'options', [
                     { label: "📲 Pagar por Nequi", value: "whatsapp_payment" },
-                    { label: "✨ Ver beneficios", value: "pricing" }
+                    { label: "🏠 Menú principal", value: "restart" }
+                ]);
+            } else if (value === "final_thanks") {
+                addBotMessage("¡Con gusto! ✨ Estaré aquí si necesitas algo más. ¡A darle con toda al estudio!", 'options', [
+                    { label: "🏠 Menú principal", value: "restart" }
                 ]);
             } else if (value === "start_diagnostic") {
                 window.location.href = "/diagnostic";
@@ -118,31 +133,32 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
             } else if (value === "whatsapp_support") {
                 const text = userData.name ? `Hola,%20soy%20${userData.name}.%20Necesito%20ayuda%20con:%20${userData.need || 'la app'}` : 'Hola,%20necesito%20ayudita%20con%20SaberPro';
                 window.open(`https://wa.me/${SUPPORT_WHATSAPP}?text=${text}`, '_blank');
-                addBotMessage("Ya te abrí el chat. ¡En un momento te atienden!");
+                addBotMessage("Ya te abrí el chat. ¡En un momento te atienden!", 'options', [{ label: "🏠 Menú principal", value: "restart" }]);
             } else if (value === "whatsapp_payment") {
                 window.open(`https://wa.me/${PAYMENTS_WHATSAPP}?text=Hola,%20quiero%20pagar%20mi%20suscripción%20por%20Nequi`, '_blank');
-                addBotMessage("Escríbenos por WhatsApp para darte los datos y activarte rápido.");
-            } else if (value === "help_center") {
-                window.location.href = "/support";
-                addBotMessage("Aquí tienes todas las guías y respuestas a las dudas más comunes.");
-            } else if (value === "pricing") {
-                window.location.href = "/pricing";
-                addBotMessage("Aquí puedes ver todo lo que incluye el plan Pro.");
-            } else if (value === "email_form") {
-                const body = userData.name ? `Hola,%20soy%20${userData.name}.%0A%0A` : '';
-                window.location.href = `mailto:${CONTACT_EMAIL}?subject=Ayuda con SaberPro&body=${body}`;
-                addBotMessage("¡Listo! Correo abierto. Estaremos pendientes.");
+                addBotMessage("Escríbenos por WhatsApp para darte los datos y activarte rápido.", 'options', [{ label: "🏠 Menú principal", value: "restart" }]);
             } else if (value === "restart") {
                 setStep('initial');
-                addBotMessage("¿En qué más puedo ayudarte hoy?", 'options', [
+                addBotMessage("¿En qué más puedo ayudarte hoy? Recuerda que soy tu guía 24/7.", 'options', [
                     { label: "🎯 Simulacros", value: "simulacro" },
                     { label: "💎 Plan Pro", value: "suscripcion" },
-                    { label: "🙋 Charlar", value: "humano_flow" }
+                    { label: "🙋 Charla Humana", value: "humano_flow" }
                 ]);
+            } else if (value.startsWith("custom_")) {
+                const intent = matchIntent(value.replace("custom_", ""));
+                if (intent !== "unknown") {
+                    processBotResponse(intent);
+                } else {
+                    addBotMessage("¡Qué buena pregunta! 😊 Aún estoy aprendiendo, pero puedo ayudarte con simulacros, planes PRO o comunicarte con el equipo. ¿Qué prefieres?", 'options', [
+                        { label: "🎯 Simulacros", value: "simulacro" },
+                        { label: "💎 Plan Pro", value: "suscripcion" },
+                        { label: "🙋 Charla Humana", value: "humano_flow" }
+                    ]);
+                }
             } else {
-                addBotMessage("¡Me gusta tu curiosidad! 😊 Como guía, te recomiendo practicar un poco o ver cómo el plan PRO te puede ayudar. ¿Qué prefieres?", 'options', [
-                    { label: "🎯 Practicar", value: "simulacro" },
-                    { label: "💎 Plan Pro", value: "suscripcion" }
+                addBotMessage("¡Entendido! 😊 ¿Qué más te gustaría saber para lograr tu éxito hoy?", 'options', [
+                    { label: "🎯 Simulacros", value: "simulacro" },
+                    { label: "🏠 Menú principal", value: "restart" }
                 ]);
             }
             setIsTyping(false);
@@ -240,8 +256,15 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                                         </p>
                                     </div>
                                 </div>
-                                <button onClick={() => setIsOpen(false)} className="bg-white/10 p-2 rounded-xl hover:bg-white/20 transition-colors">
-                                    <X size={18} />
+                                <button 
+                                    onClick={() => {
+                                        console.log("Cerrando chat...");
+                                        setIsOpen(false);
+                                    }} 
+                                    className="bg-white/20 p-3 rounded-2xl hover:bg-white/30 transition-all active:scale-95 shadow-lg group z-[110]"
+                                    aria-label="Cerrar chat"
+                                >
+                                    <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
                                 </button>
                             </div>
 
