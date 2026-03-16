@@ -209,7 +209,7 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                 <button 
                     onClick={() => setIsOpen(!isOpen)}
                     className={cn(
-                        "fixed bottom-24 right-4 z-[60] w-14 h-14 rounded-2xl bg-brand-primary text-white shadow-2xl flex items-center justify-center hover:scale-110 transition-all active:scale-95 md:w-16 md:h-16 md:bottom-8 md:right-8 overflow-hidden border-4 border-white dark:border-slate-800",
+                        "fixed bottom-24 right-4 z-[60] w-14 h-14 rounded-2xl bg-brand-primary text-white shadow-2xl flex items-center justify-center hover:scale-110 transition-all active:scale-95 md:w-16 md:h-16 md:bottom-8 md:right-8 overflow-hidden border-4 border-white dark:border-slate-800 group",
                         isOpen && "scale-0 opacity-0 pointer-events-none"
                     )}
                 >
@@ -219,6 +219,12 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                         className="w-full h-full object-cover"
                     />
                     <span className="absolute top-1 right-1 w-3.5 h-3.5 bg-brand-success rounded-full border-2 border-white dark:border-slate-800 animate-pulse" />
+                    
+                    {/* Floating Help Label */}
+                    <div className="absolute -top-12 right-0 bg-brand-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-xl animate-bounce md:group-hover:flex">
+                        ¿Tienes dudas? ¡Pregúntame!
+                        <div className="absolute bottom-[-4px] right-6 w-2 h-2 bg-brand-primary rotate-45" />
+                    </div>
                 </button>
             )}
 
@@ -261,17 +267,18 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                                         console.log("Cerrando chat...");
                                         setIsOpen(false);
                                     }} 
-                                    className="bg-white/20 p-3 rounded-2xl hover:bg-white/30 transition-all active:scale-95 shadow-lg group z-[110]"
+                                    className="bg-white/20 p-3 rounded-2xl hover:bg-white/30 transition-all active:scale-95 shadow-lg group z-[110] touch-none"
                                     aria-label="Cerrar chat"
                                 >
-                                    <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
+                                    <X size={24} className="group-hover:rotate-90 transition-transform duration-300 pointer-events-none" />
                                 </button>
                             </div>
 
                             {/* Chat Body */}
                             <div 
                                 ref={scrollRef}
-                                className="flex-1 overflow-y-auto p-5 space-y-5 bg-gradient-to-b from-[var(--theme-bg-base)]/50 to-[var(--theme-bg-surface)]/50 no-scrollbar"
+                                className="flex-1 overflow-y-auto p-5 space-y-5 bg-gradient-to-b from-[var(--theme-bg-base)]/50 to-[var(--theme-bg-surface)]/50 scroll-smooth"
+                                style={{ WebkitOverflowScrolling: 'touch' }}
                             >
                                 {messages.map(msg => (
                                     <div key={msg.id} className={cn(
@@ -322,22 +329,44 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                             </div>
 
                             {/* Input Footer */}
-                            <div className="p-5 bg-[var(--theme-bg-surface)] border-t border-[var(--theme-border-soft)]">
+                            <div className="p-4 bg-[var(--theme-bg-surface)] border-t border-[var(--theme-border-soft)] relative z-20">
+                                {/* Suggestion Chips */}
+                                <div className="flex gap-2 overflow-x-auto no-scrollbar pb-3 mb-1 -mx-2 px-2">
+                                    {[
+                                        "¿Cuánto vale el Plan Pro?", 
+                                        "¿Cómo pago pro Nequi?", 
+                                        "¿Tienen simulacros gratis?",
+                                        "Quiero hablar con alguien"
+                                    ].map((hint, idx) => (
+                                        <button 
+                                            key={idx}
+                                            onClick={() => {
+                                                setInputValue(hint);
+                                                // Small delay for natural feel before auto-sending or letting user edit
+                                            }}
+                                            className="whitespace-nowrap px-3 py-1.5 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-[9px] font-bold text-brand-primary hover:bg-brand-primary/10 transition-colors"
+                                        >
+                                            {hint}
+                                        </button>
+                                    ))}
+                                </div>
+
                                 <form 
                                     onSubmit={(e) => { e.preventDefault(); handleSend(); }}
-                                    className="flex items-center gap-2"
+                                    className="flex items-center gap-2 relative"
                                 >
                                     <input 
                                         type="text" 
                                         value={inputValue}
                                         onChange={(e) => setInputValue(e.target.value)}
-                                        placeholder="Dime, ¿qué necesitas?"
-                                        className="flex-1 h-12 bg-[var(--theme-bg-base)] rounded-2xl px-5 text-sm font-semibold border border-[var(--theme-border-soft)] focus:border-brand-primary/50 focus:ring-4 focus:ring-brand-primary/5 outline-none transition-all"
+                                        placeholder="Escribe tu duda aquí..."
+                                        className="flex-1 h-12 bg-[var(--theme-bg-base)] rounded-2xl px-5 text-sm font-semibold border border-[var(--theme-border-soft)] focus:border-brand-primary/50 focus:ring-4 focus:ring-brand-primary/5 outline-none transition-all placeholder:opacity-50"
+                                        autoComplete="off"
                                     />
                                     <button 
                                         type="submit"
                                         disabled={!inputValue.trim()}
-                                        className="w-12 h-12 rounded-2xl bg-brand-primary text-white flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl shadow-brand-primary/25 disabled:opacity-50 disabled:scale-100 disabled:shadow-none"
+                                        className="w-12 h-12 rounded-2xl bg-brand-primary text-white flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl shadow-brand-primary/25 disabled:opacity-50 disabled:scale-100 disabled:shadow-none shrink-0"
                                     >
                                         <Send size={20} />
                                     </button>
