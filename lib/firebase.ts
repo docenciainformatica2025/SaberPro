@@ -14,19 +14,22 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase - handle both client and server side
-let app: FirebaseApp;
-let auth: ReturnType<typeof getAuth>;
-let db: ReturnType<typeof getFirestore>;
+let app: FirebaseApp | undefined;
+let auth: any = null;
+let db: any = null;
 
-try {
-    app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
-    auth = getAuth(app);
-    db = getFirestore(app);
-} catch (error) {
-    console.error("Firebase initialization error:", error);
-    app = null as any;
-    auth = null as any;
-    db = null as any;
+const isConfigValid = !!firebaseConfig.apiKey && firebaseConfig.apiKey !== 'undefined';
+
+if (isConfigValid) {
+    try {
+        app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+        auth = getAuth(app);
+        db = getFirestore(app);
+    } catch (error) {
+        console.error("Firebase initialization error:", error);
+    }
+} else {
+    console.warn("Firebase: NEXT_PUBLIC_FIREBASE_API_KEY is missing. Skipping initialization. (Normal during build if secrets are not injected)");
 }
 
 export { app, auth, db };

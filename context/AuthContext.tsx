@@ -14,7 +14,9 @@ import { doc, getDoc, setDoc, Timestamp, onSnapshot, DocumentData } from "fireba
 import { db, auth } from "@/lib/firebase";
 
 // Force Spanish for Firebase Emails
-auth.languageCode = 'es';
+if (auth) {
+    auth.languageCode = 'es';
+}
 
 import { UserSubscription, UserProfile } from "@/types/user";
 import { SubscriptionPlan } from "@/types/finance";
