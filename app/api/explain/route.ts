@@ -1,5 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
+import { adminAuth, adminDb } from "@/lib/firebase-admin";
+import { z } from "zod";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
@@ -23,8 +25,6 @@ async function generateWithFallback(prompt: string) {
         } catch (error: any) {
             lastError = error;
             console.warn(`Falló IA con modelo ${modelName}:`, error.message);
-            // Si el error no es de cuota o modelo no encontrado, tal vez no valga la pena reintentar
-            // Pero seguimos adelante para agotar opciones.
             if (error.status === 429) {
                 console.warn(`Cuota agotada para ${modelName}, reintentando con el siguiente...`);
             }
@@ -32,8 +32,6 @@ async function generateWithFallback(prompt: string) {
     }
     throw lastError;
 }
-
-import { z } from "zod";
 
 const explainSchema = z.object({
     question: z.object({
@@ -47,35 +45,58 @@ const explainSchema = z.object({
     }).optional(),
 });
 
-import { adminAuth } from "@/lib/firebase-admin";
-
 export async function POST(req: Request) {
     try {
-        // --- SECURITY AUDIT FIX: VERIFY AUTHENTICATION ---
+        // --- SECURITY & GATEKEEPING AUDIT 2026 ---
         const authHeader = req.headers.get("Authorization");
         if (!authHeader || !authHeader.startsWith("Bearer ")) {
             return NextResponse.json({ error: "No autorizado. Se requiere token." }, { status: 401 });
         }
 
         const idToken = authHeader.split("Bearer ")[1];
+        let uid = "";
+        let email = "";
+
         try {
             if (!adminAuth) {
-                console.warn("Firebase Admin bypass: Token verification skipped (Admin SDK not initialized)");
+                // Bypass logic for local dev if needed, else throw
+                if (process.env.NODE_ENV === 'production') throw new Error("Admin SDK missing in production");
+                uid = "dev-user-id";
+                email = "admin@test.com";
             } else {
-                await adminAuth.verifyIdToken(idToken);
+                const decodedToken = await adminAuth.verifyIdToken(idToken);
+                uid = decodedToken.uid;
+                email = decodedToken.email || "";
             }
         } catch (error) {
             console.error("Error verificando token:", error);
             return NextResponse.json({ error: "Token inválido o expirado." }, { status: 401 });
         }
-        // ------------------------------------------------
 
+        // --- PRO SUBSCRIPTION GUARDIAN (Server Side) ---
+        const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "").split(",").map((e: string) => e.trim().toLowerCase());
+        const isSuperAdmin = email && adminEmails.includes(email.toLowerCase());
+
+        if (!isSuperAdmin && adminDb) {
+            const userDoc = await adminDb.collection("users").doc(uid).get();
+            const userData = userDoc.data();
+            const plan = userData?.subscription?.plan || 'free';
+            
+            if (plan === 'free') {
+                return NextResponse.json({ 
+                    error: "PREMIUM_REQUIRED",
+                    message: "La explicación asistida por IA es exclusiva para usuarios PRO. Mejora tu plan para desbloquear el máximo análisis." 
+                }, { status: 403 });
+            }
+        }
+
+        // --- DATA PROCESSING ---
         const body = await req.json();
         const { question, selectedOption, correctAnswer, userProfile } = explainSchema.parse(body);
 
         if (!process.env.GEMINI_API_KEY) {
             return NextResponse.json(
-                { error: "API Key no configurada. Por favor agrega GEMINI_API_KEY en .env.local" },
+                { error: "API Key no configurada." },
                 { status: 500 }
             );
         }
@@ -110,18 +131,10 @@ export async function POST(req: Request) {
     } catch (error: any) {
         console.error("Error completo de IA:", error);
 
-        // Mensajes amigables según el tipo de fallo
         if (error.status === 429) {
             return NextResponse.json(
-                { error: "Límite de IA alcanzado para este minuto. Por favor intenta de nuevo en 60 segundos." },
+                { error: "Límite de IA alcanzado. Reintenta en 60 segundos." },
                 { status: 429 }
-            );
-        }
-
-        if (error.status === 400 && error.message?.includes('API key')) {
-            return NextResponse.json(
-                { error: "La clave de IA no es válida o ha caducado." },
-                { status: 500 }
             );
         }
 

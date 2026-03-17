@@ -115,12 +115,13 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
 
     const matchIntent = (text: string) => {
         const t = text.toLowerCase();
-        if (t.includes("pago") || t.includes("nequi") || t.includes("comprar") || t.includes("pagar") || t.includes("precio") || t.includes("costo") || t.includes("valor") || t.includes("membresia") || t.includes("tarjeta")) return "pago";
-        if (t.includes("simulacro") || t.includes("practicar") || t.includes("entrenar") || t.includes("examen") || t.includes("prueba") || t.includes("diagnostico") || t.includes("preguntas")) return "simulacro";
-        if (t.includes("pro") || t.includes("premium") || t.includes("ventajas") || t.includes("beneficios") || t.includes("mejorar") || t.includes("suscripcion")) return "suscripcion";
-        if (t.includes("ayuda") || t.includes("persona") || t.includes("humano") || t.includes("asesor") || t.includes("soporte") || t.includes("contacto") || t.includes("hablar")) return "humano_flow";
-        if (t.includes("hola") || t.includes("buenos") || t.includes("saludos") || t.includes("hey")) return "restart";
-        if (t.includes("gracias") || t.includes("listo") || t.includes("vale") || t.includes("entendido")) return "final_thanks";
+        if (t.includes("pago") || t.includes("nequi") || t.includes("comprar") || t.includes("pagar") || t.includes("precio") || t.includes("costo") || t.includes("valor") || t.includes("membresia") || t.includes("tarjeta") || t.includes("cuanto vale")) return "pago";
+        if (t.includes("simulacro") || t.includes("practicar") || t.includes("entrenar") || t.includes("examen") || t.includes("prueba") || t.includes("diagnostico") || t.includes("preguntas") || t.includes("test")) return "simulacro";
+        if (t.includes("pro") || t.includes("premium") || t.includes("ventajas") || t.includes("beneficios") || t.includes("mejorar") || t.includes("suscripcion") || t.includes("beneficio")) return "suscripcion";
+        if (t.includes("ayuda") || t.includes("persona") || t.includes("humano") || t.includes("asesor") || t.includes("soporte") || t.includes("contacto") || t.includes("hablar") || t.includes("chat") || t.includes("numero") || t.includes("whatsapp")) return "humano_flow";
+        if (t.includes("como funciona") || t.includes("metodo") || t.includes("metodologia") || t.includes("estudiar") || t.includes("enseñan") || t.includes("paso")) return "methodology";
+        if (t.includes("hola") || t.includes("buenos") || t.includes("saludos") || t.includes("hey") || t.includes("que tal")) return "restart";
+        if (t.includes("gracias") || t.includes("listo") || t.includes("vale") || t.includes("entendido") || t.includes("chao") || t.includes("adios")) return "final_thanks";
         return "unknown";
     };
 
@@ -130,61 +131,82 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
             const lowercaseValue = value.toLowerCase();
 
             if (value === "humano_flow") {
+                const contactMsg = user 
+                    ? `¡Oye! Claro que sí, ${userName}. Te voy a conectar directo con mi equipo. Son súper amables y te resolverán todo en un segundo. 🚀`
+                    : "¡Me encantaría presentarte a uno de mis compañeros! Son expertos en ayudarte a pasar el examen. Primero, ¿cómo te llamas para poder presentarte?";
+                
                 if (user) {
-                    addBotMessage(`¡Claro, ${userName}! Te conectaré con un asesor de inmediato para ayudarte con tu cuenta.`, 'options', [
-                        { label: "📲 Hablar por WhatsApp", value: "whatsapp_support" }
+                    addBotMessage(contactMsg, 'options', [
+                        { label: "📲 Hablar por WhatsApp", value: "whatsapp_support" },
+                        { label: "🏠 Menú", value: "restart" }
                     ]);
                 } else {
                     setStep('asking_name');
-                    addBotMessage("¡Claro! Me encantaría presentarte con alguien del equipo. Para empezar, ¿me dices cómo te llamas?");
+                    addBotMessage(contactMsg);
                 }
+            } else if (lowercaseValue.includes("methodology")) {
+                addBotMessage("¡Qué gran pregunta! En SaberPro no solo te damos preguntas, te entrenamos de verdad. 🧠 Nuestro método es: 1. Diagnóstico para ver dónde estás, 2. Entrenamiento diario con IA, y 3. Simulacros reales para pulir tiempo y nervios. ¿Quieres probar?", 'options', [
+                    { label: "🚀 Probar Diagnóstico", value: "start_diagnostic" },
+                    { label: "💎 Ver Plan Pro", value: "suscripcion" },
+                    { label: "🏠 Menú", value: "restart" }
+                ]);
             } else if (lowercaseValue.includes("simulacro")) {
-                addBotMessage(isPro ? "Como eres PRO, tienes todos los módulos desbloqueados. ¿Quieres hacer uno nuevo o revisar tus errores?" : "Nuestros ejercicios son igualitos a los del examen real. Te aconsejo empezar con el Diagnóstico para que sepas qué repasar primero.", 'options', isPro ? [
+                const simulacroMsg = isPro 
+                    ? `¡A darle con toda, ${userName}! Como eres PRO, tienes rienda suelta a todos los módulos. ¿Hoy vamos por una nueva meta o repasamos los fallos pasados?`
+                    : "Nuestros simulacros son iguales a los del ICFES real, ¡sin sorpresas! 🎯 Te súper recomiendo empezar con el Diagnóstico para que la IA sepa exactamente qué temas reforzar contigo.";
+                
+                addBotMessage(simulacroMsg, 'options', isPro ? [
                     { label: "🚀 Nuevo Simulacro", value: "start_diagnostic" },
                     { label: "📉 Ver mis fallos", value: "progress" },
                     { label: "🏠 Menú", value: "restart" }
                 ] : [
                     { label: "🚀 Empezar ahora", value: "start_diagnostic" },
                     { label: "📚 Guías de estudio", value: "help_center" },
-                    { label: "🏠 Menú principal", value: "restart" }
+                    { label: "🏠 Menú", value: "restart" }
                 ]);
             } else if (lowercaseValue.includes("suscripcion") || lowercaseValue.includes("pro")) {
                 if (isPro) {
-                    addBotMessage("¡Ya eres parte de la élite PRO! ✨ Tienes acceso ilimitado a simulacros y análisis de IA. ¿Quieres ver tu reporte de hoy?", 'options', [
+                    addBotMessage(`¡Ya eres de los nuestros en la élite PRO! ✨ Ya tienes desbloqueado el poder de la IA. ¿Te gustaría que revisáramos tu reporte de hoy para ver qué tal vas?`, 'options', [
                         { label: "📊 Ver mi progreso", value: "progress" },
                         { label: "🏠 Menú", value: "restart" }
                     ]);
                 } else {
-                    addBotMessage("Con el plan PRO puedes practicar todas las veces que quieras y ver tus fallos explicados. ¡Es la clave para un buen puntaje!", 'options', [
+                    addBotMessage("Con el plan PRO desbloqueas todo: simulacros ilimitados, IA explicándote cada respuesta y acceso a todos los módulos. ¡Es la inversión más segura para tu futuro!", 'options', [
                         { label: "💎 Ver el plan Pro", value: "pricing" },
-                        { label: "🏠 Menú principal", value: "restart" }
+                        { label: "📲 Preguntar en WhatsApp", value: "whatsapp_payment" },
+                        { label: "🏠 Menú", value: "restart" }
                     ]);
                 }
             } else if (lowercaseValue.includes("pago")) {
-                addBotMessage(isPro ? "Tu suscripción está activa. Si necesitas renovar o cambiar de plan, avísame." : "¡Súper fácil! Recibimos Nequi, tarjetas y PSE. Si prefieres Nequi, te paso los datos por WhatsApp de una.", 'options', [
+                const paymentMsg = isPro 
+                    ? "¡Todo en orden con tu cuenta PRO! 💎 Si necesitas renovar o ayuda con facturación, aquí me tienes." 
+                    : "¡Súper fácil! Puedes pagar por Nequi, tarjetas de crédito o PSE. Si prefieres Nequi, te paso los datos por WhatsApp de una vez para activarte manualmente si quieres.";
+                
+                addBotMessage(paymentMsg, 'options', [
                     { label: isPro ? "🙋 Soporte" : "📲 Pagar por Nequi", value: isPro ? "humano_flow" : "whatsapp_payment" },
+                    { label: "💎 Ver Precios", value: "pricing" },
                     { label: "🏠 Menú", value: "restart" }
                 ]);
             } else if (value === "progress") {
                 window.location.href = "/dashboard";
-                addBotMessage("Cargando tu dashboard... ¡Espero que esos números estén subiendo!");
+                addBotMessage(`¡De una! Te llevo a tu dashboard. ¡Espero ver esos gráficos subiendo como espuma! 📈`);
             } else if (value === "final_thanks") {
-                addBotMessage("¡Con gusto! ✨ Estaré aquí si necesitas algo más. ¡A darle con toda al estudio!", 'options', [
+                addBotMessage("¡No hay nada que agradecer! ✨ Estaré aquí 24/7 si te surge cualquier otra duda. ¡A darle con toda al estudio!", 'options', [
                     { label: "🏠 Menú principal", value: "restart" }
                 ]);
             } else if (value === "start_diagnostic") {
                 window.location.href = "/diagnostic";
-                addBotMessage("¡Listo! Te estoy llevando al diagnóstico. ¡Dale con toda!");
+                addBotMessage("¡Excelente decisión! Te estoy llevando al diagnóstico. Tómate tu tiempo y lee bien. ¡Tú puedes!");
             } else if (value === "whatsapp_support") {
-                const text = userData.name ? `Hola,%20soy%20${userData.name}.%20Necesito%20ayuda%20con:%20${userData.intent || 'la app'}` : 'Hola,%20necesito%20ayudita%20con%20SaberPro';
+                const text = userData.name ? `Hola,%20soy%20${userData.name}.%20Necesito%20ayuda%20con%20la%20plataforma%20SaberPro%20🚀` : 'Hola,%20necesito%20ayuda%20con%20SaberPro%20😊';
                 window.open(`https://wa.me/${SUPPORT_WHATSAPP}?text=${text}`, '_blank');
-                addBotMessage("Ya te abrí el chat. ¡En un momento te atienden!", 'options', [{ label: "🏠 Menú principal", value: "restart" }]);
+                addBotMessage("¡Listo! Ya se está abriendo el WhatsApp. En un ratito te atiende un humano experto. Mientras tanto, ¿algo más?", 'options', [{ label: "🏠 Menú", value: "restart" }]);
             } else if (value === "whatsapp_payment") {
-                window.open(`https://wa.me/${PAYMENTS_WHATSAPP}?text=Hola,%20quiero%20pagar%20mi%20suscripción%20por%20Nequi`, '_blank');
-                addBotMessage("Escríbenos por WhatsApp para darte los datos y activarte rápido.", 'options', [{ label: "🏠 Menú principal", value: "restart" }]);
+                window.open(`https://wa.me/${PAYMENTS_WHATSAPP}?text=Hola,%20Gabriela%20me%20atendió.%20Quiero%20pagar%20mi%20suscripción%20Premium%20por%20Nequi%20💎`, '_blank');
+                addBotMessage("¡Perfecto! Escríbenos ahí y te mandamos los datos de pago al instante. ¡Bienvenido a la élite!", 'options', [{ label: "🏠 Menú", value: "restart" }]);
             } else if (value === "restart") {
                 setStep('initial');
-                addBotMessage("¿En qué más puedo ayudarte hoy? Recuerda que soy tu guía 24/7.", 'options', [
+                addBotMessage(`¡Aquí estoy de nuevo! 😊 ¿Qué más tienes en mente? Cualquier cosa por pequeña que sea, pregúntame.`, 'options', [
                     { label: "🎯 Simulacros", value: "simulacro" },
                     { label: "💎 Plan Pro", value: "suscripcion" },
                     { label: "🙋 Charla Humana", value: "humano_flow" }
@@ -193,28 +215,28 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                 const userQuery = value.replace("custom_", "");
                 const intent = matchIntent(userQuery);
                 
-                // Track intent for marketing (Only for NOT logged in users)
                 if (!user && intent !== "unknown" && !leadCaptured && step === 'initial') {
                     setUserData(prev => ({ ...prev, intent: intent }));
                     setStep('capturing_leads');
-                    addBotMessage(`¡Excelente pregunta sobre ${intent}! 😊 Me encantaría darte una asesoría premium. ¿Me regalas tu nombre para empezar?`);
+                    const intentName = intent === 'pago' ? 'los pagos' : (intent === 'simulacro' ? 'los simulacros' : 'SaberPro');
+                    addBotMessage(`¡Oye, qué buena pregunta sobre ${intentName}! 😊 Me encantaría darte una asesoría premium y personalizada. ¿Cómo te llamas para poder ayudarte mejor?`);
                 } else if (intent !== "unknown") {
                     processBotResponse(intent);
                 } else {
-                    addBotMessage("¡Qué buena pregunta! 😊 Aún estoy aprendiendo, pero puedo ayudarte con simulacros, planes PRO o comunicarte con el equipo. ¿Qué prefieres?", 'options', [
+                    addBotMessage("¡Vaya, esa pregunta me puso a pensar! 😊 Aún estoy aprendiendo cosas nuevas cada día, pero puedo guiarte con simulacros, planes PRO o comunicarte con mi equipo de humanos. ¿Qué te parece mejor?", 'options', [
                         { label: "🎯 Simulacros", value: "simulacro" },
                         { label: "💎 Plan Pro", value: "suscripcion" },
                         { label: "🙋 Charla Humana", value: "humano_flow" }
                     ]);
                 }
             } else {
-                addBotMessage("¡Entendido! 😊 ¿Qué más te gustaría saber para lograr tu éxito hoy?", 'options', [
+                addBotMessage("¡Entendido perfectamente! 😊 ¿Hay alguna otra cosita con la que pueda ayudarte a lograr ese gran puntaje hoy?", 'options', [
                     { label: "🎯 Simulacros", value: "simulacro" },
                     { label: "🏠 Menú principal", value: "restart" }
                 ]);
             }
             setIsTyping(false);
-        }, 800);
+        }, 1000); // Slightly more delay for a "thinking" feel
     };
 
     const handleSend = () => {
@@ -340,87 +362,83 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
             <AnimatePresence>
                 {isOpen && (
                     <motion.div 
-                        initial={isGlobal ? { opacity: 0, scale: 0.9, y: 50, x: 20 } : { opacity: 1 }}
-                        animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
-                        exit={{ opacity: 0, scale: 0.9, y: 50, x: 20 }}
+                        initial={isGlobal ? { opacity: 0, scale: 0.95, y: 30 } : { opacity: 1 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: 30 }}
                         className={cn(
-                            "z-[200] flex flex-col",
+                            "z-[500] flex flex-col bg-[var(--theme-bg-surface)] shadow-2xl overflow-hidden border border-brand-primary/10 antialiased",
                             isGlobal 
-                                ? "fixed inset-0 md:inset-auto md:bottom-24 md:right-8 w-full md:w-[380px] h-full md:h-[600px] md:max-h-[85vh] shadow-4k md:rounded-3xl overflow-hidden" 
-                                : "w-full h-full"
+                                ? "fixed inset-0 md:inset-auto md:bottom-24 md:right-8 w-full md:w-[400px] h-[100dvh] md:h-[650px] md:max-h-[85vh] md:rounded-[2rem] backdrop-blur-xl" 
+                                : "w-full h-full rounded-2xl"
                         )}
+                        id="gabriela-window"
                     >
-                        <Card variant="primary" className="flex-1 flex flex-col h-full min-h-0 p-0 overflow-hidden border-brand-primary/20 backdrop-blur-3xl bg-[var(--theme-bg-surface)]/95 md:rounded-3xl shadow-2xl relative">
-                            {/* Header */}
-                            <div className="shrink-0 bg-brand-primary p-5 text-white flex justify-between items-center shadow-md relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 animate-pulse" />
-                                <div className="flex items-center gap-3 relative z-10">
-                                    <div className="w-11 h-11 rounded-2xl bg-white/20 flex items-center justify-center relative shadow-inner rotate-3 overflow-hidden">
-                                        <img 
-                                            src="/gabriela-avatar.png?v=2" 
-                                            alt="Gabriela" 
-                                            className="w-full h-full object-cover -rotate-3 scale-110"
-                                        />
-                                        <div className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-brand-success border-2 border-brand-primary rounded-full" />
-                                    </div>
-                                    <div>
-                                        <h3 className="font-black text-sm uppercase tracking-tighter">Gabriela</h3>
-                                        <p className="text-[9px] font-bold opacity-80 uppercase tracking-widest flex items-center gap-1">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-brand-success animate-pulse" />
-                                            En línea contigo
-                                        </p>
-                                    </div>
+                        {/* Persistent Header */}
+                        <div className="shrink-0 bg-brand-primary p-5 text-white flex justify-between items-center relative overflow-hidden z-20">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 animate-pulse pointer-events-none" />
+                            <div className="flex items-center gap-3 relative z-10">
+                                <div className="w-11 h-11 rounded-2xl bg-white/20 flex items-center justify-center relative shadow-inner rotate-3 overflow-hidden border border-white/10 pointer-events-none">
+                                    <img 
+                                        src="/gabriela-avatar.png?v=2" 
+                                        alt="Gabriela" 
+                                        className="w-full h-full object-cover -rotate-3 scale-110"
+                                    />
+                                    <div className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-brand-success border-2 border-brand-primary rounded-full" />
                                 </div>
-                                <button 
-                                    onClick={() => {
-                                        console.log("Cerrando chat...");
-                                        setIsOpen(false);
-                                    }} 
-                                    className="bg-white/20 p-3 rounded-2xl hover:bg-white/30 transition-all active:scale-95 shadow-lg group z-[110] touch-none"
-                                    aria-label="Cerrar chat"
-                                >
-                                    <X size={24} className="group-hover:rotate-90 transition-transform duration-300 pointer-events-none" />
-                                </button>
+                                <div>
+                                    <h3 className="font-black text-sm uppercase tracking-tighter">Gabriela</h3>
+                                    <p className="text-[9px] font-bold opacity-80 uppercase tracking-widest flex items-center gap-1">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-brand-success animate-pulse" />
+                                        En línea
+                                    </p>
+                                </div>
                             </div>
-
-                            {/* Chat Body - FORCED SCROLL & HISTORY FOCUS */}
-                            <div 
-                                ref={scrollRef}
-                                className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-5 space-y-5 bg-gradient-to-b from-[var(--theme-bg-base)]/50 to-[var(--theme-bg-surface)]/50 scroll-smooth custom-scrollbar overscroll-contain"
-                                style={{ 
-                                    WebkitOverflowScrolling: 'touch',
-                                    display: 'flex',
-                                    flexDirection: 'column'
-                                }}
+                            <button 
+                                onClick={() => setIsOpen(false)}
+                                className="bg-white/10 p-2.5 rounded-xl hover:bg-white/20 transition-all active:scale-90"
+                                aria-label="Cerrar chat"
                             >
-                                <div className="flex-1 min-h-[20px]" /> {/* Spacer to push messages down */}
-                                {messages.map(msg => (
-                                    <div key={msg.id} className={cn(
-                                        "flex gap-3 animate-in fade-in slide-in-from-bottom-2 duration-300",
-                                        msg.role === 'bot' ? "items-start" : "items-end flex-row-reverse"
+                                <X size={20} />
+                            </button>
+                        </div>
+
+                        {/* Flexible Scroll Area */}
+                        <div 
+                            ref={scrollRef}
+                            className="flex-grow min-h-0 overflow-y-auto p-5 scroll-smooth custom-scrollbar bg-gradient-to-b from-[var(--theme-bg-base)]/20 directly via-transparent to-[var(--theme-bg-surface)]/20"
+                            style={{ WebkitOverflowScrolling: 'touch' }}
+                        >
+                            <div className="space-y-6 flex flex-col">
+                                {messages.map((msg, idx) => (
+                                    <div key={msg.id || idx} className={cn(
+                                        "flex gap-3 items-start animate-in fade-in slide-in-from-bottom-2 duration-300",
+                                        msg.role === 'user' && "flex-row-reverse"
                                     )}>
                                         {msg.role === 'bot' && (
-                                            <div className="w-8 h-8 rounded-xl bg-brand-primary/10 flex-shrink-0 overflow-hidden mt-1 border border-brand-primary/10">
+                                            <div className="w-8 h-8 rounded-xl bg-brand-primary/10 flex-shrink-0 overflow-hidden mt-1 border border-brand-primary/5">
                                                 <img src="/gabriela-avatar.png?v=2" alt="G" className="w-full h-full object-cover" />
                                             </div>
                                         )}
-                                        <div className="flex flex-col gap-1.5 max-w-[85%]">
+                                        <div className={cn(
+                                            "flex flex-col gap-1.5 max-w-[85%]",
+                                            msg.role === 'user' && "items-end"
+                                        )}>
                                             <div className={cn(
-                                                "p-4 rounded-2xl text-xs font-semibold leading-relaxed shadow-sm",
+                                                "p-4 rounded-2xl text-[13px] font-medium leading-relaxed",
                                                 msg.role === 'bot' 
-                                                    ? "bg-[var(--theme-bg-surface)] text-[var(--theme-text-primary)] rounded-tl-none border border-[var(--theme-border-soft)]" 
-                                                    : "bg-brand-primary text-white rounded-tr-none shadow-brand-primary/20 shadow-lg"
+                                                    ? "bg-white dark:bg-slate-900 border border-[var(--theme-border-soft)] rounded-tl-none shadow-sm" 
+                                                    : "bg-brand-primary text-white rounded-tr-none shadow-lg shadow-brand-primary/20"
                                             )}>
                                                 {msg.content}
                                             </div>
                                             
                                             {msg.type === 'options' && msg.options && (
-                                                <div className="flex flex-wrap gap-2 mt-2">
+                                                <div className="flex flex-wrap gap-2 mt-1">
                                                     {msg.options.map((opt, i) => (
                                                         <button 
                                                             key={i}
                                                             onClick={() => handleOptionClick(opt)}
-                                                            className="text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-xl border border-brand-primary/20 text-brand-primary hover:bg-brand-primary hover:text-white transition-all bg-[var(--theme-bg-surface)] shadow-sm active:scale-95"
+                                                            className="text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-xl border border-brand-primary/10 text-brand-primary hover:bg-brand-primary hover:text-white transition-all bg-white dark:bg-slate-900 shadow-sm"
                                                         >
                                                             {opt.label}
                                                         </button>
@@ -430,67 +448,75 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                                         </div>
                                     </div>
                                 ))}
-                                    <div className="flex-1 min-h-0" /> {/* Final spacer */}
-                                </div>
+                                {isTyping && (
+                                    <div className="flex items-center gap-2 text-brand-primary/60">
+                                        <div className="flex gap-1">
+                                            <span className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-bounce [animation-delay:-0.3s]" />
+                                            <span className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-bounce [animation-delay:-0.15s]" />
+                                            <span className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-bounce" />
+                                        </div>
+                                        <span className="text-[9px] font-bold uppercase opacity-50">Gabriela está escribiendo...</span>
+                                    </div>
+                                )}
                             </div>
+                        </div>
 
-                            {/* Input Footer - Pinned */}
-                            <div className="shrink-0 p-4 bg-[var(--theme-bg-surface)] border-t border-[var(--theme-border-soft)] z-30 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
-                                {/* Suggestion Chips - Now pinned above input */}
-                                <div className="flex gap-2 overflow-x-auto no-scrollbar pb-3 -mx-1 px-1">
-                                    {[
-                                        "¿Cuánto vale el Plan Pro?", 
-                                        "¿Cómo pago por Nequi?", 
-                                        "¿Tienen simulacros gratis?",
-                                        "Hablar con un humano"
-                                    ].map((hint, idx) => (
-                                        <button 
-                                            key={idx}
-                                            onClick={() => setInputValue(hint)}
-                                            className="whitespace-nowrap px-3 py-2 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-[10px] font-bold text-brand-primary hover:bg-brand-primary/20 transition-all active:scale-95 flex-shrink-0"
-                                        >
-                                            {hint}
-                                        </button>
-                                    ))}
-                                </div>
-
-                                <form 
-                                <form 
-                                    onSubmit={(e) => { e.preventDefault(); handleSend(); }}
-                                    className="flex items-center gap-2"
-                                >
-                                    <input 
-                                        type="text" 
-                                        value={inputValue}
-                                        onChange={(e) => setInputValue(e.target.value)}
-                                        placeholder="Escribe tu duda o pregunta aquí..."
-                                        className="flex-1 h-12 bg-[var(--theme-bg-base)] rounded-2xl px-5 text-sm font-semibold border border-[var(--theme-border-soft)] focus:border-brand-primary/50 focus:ring-4 focus:ring-brand-primary/5 outline-none transition-all placeholder:text-[var(--theme-text-quaternary)]"
-                                        autoComplete="off"
-                                    />
+                        {/* Persistent Footer */}
+                        <div className="shrink-0 p-5 bg-[var(--theme-bg-surface)] border-t border-[var(--theme-border-soft)] z-30 shadow-4k">
+                            {/* Suggestions */}
+                            <div className="flex gap-2 overflow-x-auto no-scrollbar pb-3 -mx-1 px-1">
+                                {[
+                                    "¿Cuánto vale el Plan Pro?", 
+                                    "¿Cómo pago por Nequi?", 
+                                    "¿Tienen simulacros gratis?",
+                                    "Hablar con un humano"
+                                ].map((hint, idx) => (
                                     <button 
-                                        type="submit"
-                                        disabled={!inputValue.trim()}
-                                        className="w-12 h-12 rounded-2xl bg-brand-primary text-white flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl shadow-brand-primary/25 disabled:opacity-50 disabled:scale-100 disabled:shadow-none"
+                                        key={idx}
+                                        onClick={() => setInputValue(hint)}
+                                        className="whitespace-nowrap px-4 py-1.5 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-[10px] font-bold text-brand-primary hover:bg-brand-primary hover:text-white transition-all flex-shrink-0"
                                     >
-                                        <Send size={20} />
+                                        {hint}
                                     </button>
-                                </form>
-                                <div className="mt-4 flex justify-around border-t border-[var(--theme-border-soft)] pt-3 opacity-80">
-                                    <button onClick={() => window.open(`https://wa.me/${SUPPORT_WHATSAPP}`, '_blank')} className="flex flex-col items-center gap-1 group">
-                                        <Phone size={14} className="text-brand-success group-hover:scale-110 transition-transform" />
-                                        <span className="text-[9px] font-black uppercase text-brand-success">WhatsApp</span>
-                                    </button>
-                                    <button onClick={() => window.location.href = `mailto:${CONTACT_EMAIL}`} className="flex flex-col items-center gap-1 group">
-                                        <Mail size={14} className="text-brand-primary group-hover:scale-110 transition-transform" />
-                                        <span className="text-[9px] font-black uppercase text-brand-primary">Email</span>
-                                    </button>
-                                    <button onClick={() => window.open(`https://wa.me/${PAYMENTS_WHATSAPP}`, '_blank')} className="flex flex-col items-center gap-1 group">
-                                        <Sparkles size={14} className="text-yellow-500 group-hover:scale-110 transition-transform" />
-                                        <span className="text-[9px] font-black uppercase text-yellow-600">Plan PRO</span>
-                                    </button>
-                                </div>
+                                ))}
                             </div>
-                        </Card>
+
+                            <form 
+                                onSubmit={(e) => { e.preventDefault(); handleSend(); }}
+                                className="flex items-center gap-2"
+                            >
+                                <input 
+                                    type="text" 
+                                    value={inputValue}
+                                    onChange={(e) => setInputValue(e.target.value)}
+                                    placeholder="Escribe tu duda aquí..."
+                                    className="flex-1 h-12 bg-white dark:bg-slate-900 rounded-2xl px-5 text-[13px] font-semibold border border-[var(--theme-border-soft)] focus:border-brand-primary/50 focus:ring-4 focus:ring-brand-primary/5 outline-none transition-all placeholder:text-[var(--theme-text-quaternary)] shadow-sm"
+                                />
+                                <button 
+                                    type="submit"
+                                    disabled={!inputValue.trim()}
+                                    className="w-12 h-12 rounded-2xl bg-brand-primary text-white flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl shadow-brand-primary/25 disabled:opacity-50 shrink-0"
+                                >
+                                    <Send size={18} />
+                                </button>
+                            </form>
+
+                            {/* Contact Links */}
+                            <div className="mt-4 flex justify-around items-center border-t border-[var(--theme-border-soft)] pt-3 opacity-90">
+                                <button onClick={() => window.open(`https://wa.me/${SUPPORT_WHATSAPP}`, '_blank')} className="flex flex-col items-center gap-1 group">
+                                    <Phone size={14} className="text-brand-success group-hover:scale-110 transition-transform" />
+                                    <span className="text-[8px] font-black uppercase text-brand-success">Soporte</span>
+                                </button>
+                                <button onClick={() => window.location.href = `mailto:${CONTACT_EMAIL}`} className="flex flex-col items-center gap-1 group">
+                                    <Mail size={14} className="text-brand-primary group-hover:scale-110 transition-transform" />
+                                    <span className="text-[8px] font-black uppercase text-brand-primary">Email</span>
+                                </button>
+                                <button onClick={() => window.open(`https://wa.me/${PAYMENTS_WHATSAPP}`, '_blank')} className="flex flex-col items-center gap-1 group">
+                                    <Sparkles size={14} className="text-yellow-500 group-hover:scale-110 transition-transform" />
+                                    <span className="text-[8px] font-black uppercase text-yellow-600">Plan PRO</span>
+                                </button>
+                            </div>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>

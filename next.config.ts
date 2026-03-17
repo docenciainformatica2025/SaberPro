@@ -26,11 +26,11 @@ const nextConfig: NextConfig = {
   async headers() {
     const cspHeader = `
       default-src 'self';
-      script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.google-analytics.com https://*.googletagmanager.com https://challenges.cloudflare.com;
+      script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.google-analytics.com https://*.googletagmanager.com https://challenges.cloudflare.com https://www.clarity.ms https://*.clarity.ms;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-      img-src 'self' blob: data: https://lh3.googleusercontent.com https://firebasestorage.googleapis.com https://images.unsplash.com https://*.google-analytics.com;
+      img-src 'self' blob: data: https://lh3.googleusercontent.com https://firebasestorage.googleapis.com https://images.unsplash.com https://*.google-analytics.com https://*.clarity.ms;
       font-src 'self' https://fonts.gstatic.com;
-      connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.google-analytics.com https://challenges.cloudflare.com;
+      connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.google-analytics.com https://challenges.cloudflare.com https://*.clarity.ms https://c.bing.com;
       frame-src 'self' https://challenges.cloudflare.com https://*.firebaseapp.com;
       object-src 'none';
       base-uri 'self';

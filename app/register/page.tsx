@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registerSchema, RegisterFormValues } from '@/lib/schemas';
@@ -17,13 +17,9 @@ import { toast } from 'sonner';
 import { Logo } from "@/components/ui/Logo";
 import { BRAND_YEAR, COPYRIGHT_TEXT } from '@/lib/config';
 
-const STEPS = []; // Removed for single-step flow
-
 export default function RegisterPage() {
-    // v4.0.0 Restoration - Exact Original State
     const { signup, signInWithGoogle } = useAuth();
     const router = useRouter();
-    const [currentStep, setCurrentStep] = useState(0);
     const [googleLoading, setGoogleLoading] = useState(false);
     const [authError, setAuthError] = useState('');
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
@@ -33,9 +29,9 @@ export default function RegisterPage() {
     const {
         register,
         handleSubmit,
-        setValue,
         watch,
         trigger,
+        setValue,
         formState: { errors, isSubmitting },
     } = useForm<RegisterFormValues>({
         resolver: zodResolver(registerSchema),
@@ -44,35 +40,32 @@ export default function RegisterPage() {
 
     const generatePassword = () => {
         const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@$!%*?&";
-        const passwordArray = new Uint32Array(12);
-        
-        const cryptoObj = (typeof window !== 'undefined' ? window.crypto : null) || (global as any).crypto || require('crypto');
-        if (cryptoObj.getRandomValues) {
-            cryptoObj.getRandomValues(passwordArray);
-        } else {
-            const buf = require('crypto').randomBytes(passwordArray.byteLength);
-            passwordArray.set(new Uint32Array(buf.buffer, buf.byteOffset, passwordArray.length));
-        }
-        
         let password = "";
-        // Ensure at least one of each required type
-        password += "Ab1!"; 
         
-        for (let i = 0; i < passwordArray.length; i++) {
-            password += charset[passwordArray[i] % charset.length];
+        // Ensure at least one of each requirement
+        password += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[Math.floor(Math.random() * 26)];
+        password += "0123456789"[Math.floor(Math.random() * 10)];
+        password += "@$!%*?&"[Math.floor(Math.random() * 7)];
+        
+        for (let i = 0; i < 9; i++) {
+            password += charset[Math.floor(Math.random() * charset.length)];
         }
         
-        // Shuffle the password
-        const shuffled = password.split('').sort(() => 0.5 - Math.random()).join('');
+        const finalPassword = password.split('').sort(() => 0.5 - Math.random()).join('');
         
-        setValue("password", shuffled);
-        setValue("confirmPassword", shuffled);
-        toast.success("Contraseña de grado militar generada");
+        // Update RHF state
+        setValue("password", finalPassword, { shouldValidate: true });
+        setValue("confirmPassword", finalPassword, { shouldValidate: true });
     };
 
     const passwordValue = watch("password", "");
     const confirmPasswordValue = watch("confirmPassword", "");
-    const emailValue = watch("email", "");
+
+    useEffect(() => {
+        if (confirmPasswordValue) {
+            trigger("confirmPassword");
+        }
+    }, [passwordValue, trigger, confirmPasswordValue]);
 
     const requirements = [
         { regex: /.{8,}/, text: "Mínimo 8 caracteres" },
@@ -86,8 +79,6 @@ export default function RegisterPage() {
         return emailRegex.test(value) ? 'valid' : 'invalid';
     };
 
-
-
     const validatePassword = (value: string) => {
         const allMet = requirements.every(req => req.regex.test(value));
         return allMet ? 'valid' : 'invalid';
@@ -97,16 +88,22 @@ export default function RegisterPage() {
         setAuthError('');
         const loadingToast = toast.loading("Creando tu cuenta...");
         try {
+            console.log("Iniciando registro para:", data.email);
             await signup(data.email, data.password);
             toast.dismiss(loadingToast);
             toast.success("¡Cuenta creada exitosamente!");
             router.push('/onboarding');
         } catch (err: any) {
             toast.dismiss(loadingToast);
+            console.error("Error en registro:", err);
+            
             let msg = `Error al crear cuenta: ${err.message || 'Error desconocido'}`;
             if (err.code === 'auth/email-already-in-use') {
                 msg = "Este correo ya está registrado. Intenta iniciar sesión.";
+            } else if (err.code === 'permission-denied') {
+                msg = "Error de base de datos: Permisos denegados. Contacta a soporte.";
             }
+            
             setAuthError(msg);
             toast.error("Error de Registro", { description: msg, duration: 5000 });
         }
@@ -122,8 +119,6 @@ export default function RegisterPage() {
             setGoogleLoading(false);
         }
     };
-
-
 
     return (
         <div className="flex min-h-screen bg-[var(--theme-bg-base)] text-[var(--theme-text-primary)] selection:bg-brand-primary/20 transition-colors duration-500" suppressHydrationWarning>
@@ -223,10 +218,10 @@ export default function RegisterPage() {
                                     type="email"
                                     icon={MailIcon}
                                     onValidate={validateEmail}
-                                    onChange={(value) => setValue('email', value)}
+                                    {...register("email")}
+                                    error={errors.email?.message}
                                     className="bg-[var(--theme-bg-base)]/50 border-[var(--theme-border-soft)] focus:border-brand-primary/60 text-sm h-14 rounded-2xl transition-all font-medium"
                                 />
-                                {errors.email && <p className="text-[10px] text-red-400 font-bold uppercase ml-1 tracking-wider">{errors.email.message}</p>}
 
                                 <div className="space-y-3">
                                     <div className="flex justify-between items-center px-1">
@@ -236,21 +231,23 @@ export default function RegisterPage() {
                                         </button>
                                     </div>
                                     <div className="relative group/pass">
-                                        <Input
+                                        <ValidatedInput
+                                            label=""
                                             type={showPassword ? "text" : "password"}
                                             icon={LockIcon}
+                                            onValidate={validatePassword}
                                             {...register("password")}
                                             error={errors.password?.message}
                                             className="bg-[var(--theme-bg-base)]/50 border-[var(--theme-border-soft)] focus:border-brand-primary/60 text-sm h-14 rounded-2xl transition-all font-medium"
                                         />
-                                        <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-4 text-slate-400 dark:text-white/20 group-hover/pass:text-brand-primary transition-colors">
+                                        <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-11 text-slate-400 dark:text-white/20 group-hover/pass:text-brand-primary transition-colors z-20">
                                             {showPassword ? <EyeOffIcon size={20} /> : <EyeIcon size={20} />}
                                         </button>
                                     </div>
                                 </div>
 
                                 <div className="relative group/pass">
-                                    <Input
+                                    <ValidatedInput
                                         label="CONFIRMAR CONTRASEÑA"
                                         type={showConfirmPassword ? "text" : "password"}
                                         icon={LockIcon}
@@ -258,7 +255,7 @@ export default function RegisterPage() {
                                         error={errors.confirmPassword?.message}
                                         className="bg-[var(--theme-bg-base)]/50 border-[var(--theme-border-soft)] focus:border-brand-primary/60 text-sm h-14 rounded-2xl transition-all font-medium"
                                     />
-                                    <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-4 top-4 text-slate-400 dark:text-white/20 group-hover/pass:text-brand-primary transition-colors">
+                                    <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-4 top-13 text-slate-400 dark:text-white/20 group-hover/pass:text-brand-primary transition-colors z-20">
                                         {showConfirmPassword ? <EyeOffIcon size={20} /> : <EyeIcon size={20} />}
                                     </button>
                                 </div>
@@ -273,7 +270,7 @@ export default function RegisterPage() {
                                     {errors.terms && <p className="text-[10px] text-red-500 font-bold uppercase ml-1 tracking-wider">{errors.terms.message}</p>}
 
                                     <div className="flex justify-center p-3 rounded-2xl bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/5">
-                                        <Turnstile sitekey="0x4AAAAAACH1Rmabzh7QI6OR" onVerify={(token) => setCaptchaToken(token)} theme="auto" />
+                                        <Turnstile sitekey="1x00000000000000000000AA" onVerify={(token) => setCaptchaToken(token)} theme="auto" />
                                     </div>
                                 </div>
                             </div>
@@ -316,6 +313,5 @@ export default function RegisterPage() {
                 </div>
             </div>
         </div>
-
     );
 }

@@ -199,70 +199,84 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
 
     const signup = async (email: string, password: string) => {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-
-        // Check for pre-registration consent
-        let consentLog = {
-            acceptedAt: new Date().toISOString(),
-            version: "v1.0-2025",
-            type: "Habeas Data + Términos",
-            ipHash: "ANONYMIZED_IP_REGISTER_INIT"
-        };
-
-        if (typeof window !== 'undefined') {
-            const savedConsent = localStorage.getItem("saberpro_pending_consent");
-            if (savedConsent) {
-                try {
-                    consentLog = JSON.parse(savedConsent);
-                    localStorage.removeItem("saberpro_pending_consent"); // Clear after use
-                } catch (e) {
-                    console.error("Error parsing saved consent", e);
-                }
-            }
-        }
-
-        // Create initial user document in Firestore
-        await setDoc(doc(db, "users", userCredential.user.uid), {
-            email: email,
-            role: null, // Forces Onboarding Selection
-            subscription: defaultSubscription,
-            createdAt: new Date(),
-            fullName: "", // To be filled in profile
-            completedProfile: false,
-            consentLog: consentLog,
-            gamification: {
-                xp: 0,
-                level: 1,
-                badges: [],
-                streak: {
-                    current: 0,
-                    lastActiveDate: null
-                }
-            }
-        });
-
-        // Migrate Diagnostic Data if exists
         try {
-            const diagnosticData = localStorage.getItem("saberpro_diagnostic_results");
-            if (diagnosticData) {
-                const parsed = JSON.parse(diagnosticData);
-                const resultsRef = await import("firebase/firestore").then(mod => mod.collection(db, "results"));
-                const addDoc = await import("firebase/firestore").then(mod => mod.addDoc);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
-                await addDoc(resultsRef, {
-                    userId: userCredential.user.uid,
-                    type: 'diagnostic',
-                    score: parsed.score,
-                    totalQuestions: 5,
-                    answers: parsed.answers,
-                    completedAt: new Date(parsed.date || Date.now()),
-                    migratedFromPublic: true
-                });
+            // Check for pre-registration consent
+            let consentLog = {
+                acceptedAt: new Date().toISOString(),
+                version: "v1.0-2025",
+                type: "Habeas Data + Términos",
+                ipHash: "ANONYMIZED_IP_REGISTER_INIT"
+            };
 
-                localStorage.removeItem("saberpro_diagnostic_results");
+            if (typeof window !== 'undefined') {
+                const savedConsent = localStorage.getItem("saberpro_pending_consent");
+                if (savedConsent) {
+                    try {
+                        consentLog = JSON.parse(savedConsent);
+                        localStorage.removeItem("saberpro_pending_consent"); // Clear after use
+                    } catch (e) {
+                        console.error("Error parsing saved consent", e);
+                    }
+                }
             }
-        } catch (e) {
-            console.error("Error migrating diagnostic data", e);
+
+            // Create initial user document in Firestore
+            try {
+                await setDoc(doc(db, "users", userCredential.user.uid), {
+                    email: email,
+                    role: null, // Forces Onboarding Selection
+                    subscription: defaultSubscription,
+                    createdAt: new Date(),
+                    fullName: "", // To be filled in profile
+                    completedProfile: false,
+                    consentLog: consentLog,
+                    gamification: {
+                        xp: 0,
+                        level: 1,
+                        badges: [],
+                        streak: {
+                            current: 0,
+                            lastActiveDate: null
+                        }
+                    }
+                });
+            } catch (fsError: any) {
+                console.error("Critical: Auth succeeded but Firestore init failed", fsError);
+                throw fsError; // Throwing ensures the UI knows something went wrong with the DB
+            }
+
+            // Migrate Diagnostic Data if exists
+            try {
+                const diagnosticData = localStorage.getItem("saberpro_diagnostic_results");
+                if (diagnosticData) {
+                    const parsed = JSON.parse(diagnosticData);
+                    const resultsRef = await import("firebase/firestore").then(mod => mod.collection(db, "results"));
+                    const addDoc = await import("firebase/firestore").then(mod => mod.addDoc);
+
+                    await addDoc(resultsRef, {
+                        userId: userCredential.user.uid,
+                        type: 'diagnostic',
+                        score: parsed.score,
+                        totalQuestions: 5,
+                        answers: parsed.answers,
+                        completedAt: new Date(parsed.date || Date.now()),
+                        migratedFromPublic: true
+                    });
+
+                    localStorage.removeItem("saberpro_diagnostic_results");
+                }
+            } catch (e) {
+                console.error("Error migrating diagnostic data", e);
+            }
+        } catch (error: any) {
+            console.error("Firebase Signup 400/Error Diagnostic:", {
+                code: error.code,
+                message: error.message,
+                email: email
+            });
+            throw error;
         }
     };
 

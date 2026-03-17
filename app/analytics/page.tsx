@@ -28,7 +28,8 @@ import {
     Download,
     BarChart3,
     History,
-    GraduationCap
+    GraduationCap,
+    Zap
 } from "lucide-react";
 import { AnalyticsSkeleton } from "@/components/ui/AnalyticsSkeleton";
 import { EmptyState } from "@/components/ui/EmptyState";
@@ -351,20 +352,50 @@ export default function AnalyticsPage() {
                             result={selectedResult}
                             userName={userName}
                         />
-                        {/* Premium Modal */}
+                        {/* High-Conversion Growth Modal */}
                         {showPremiumModal && (
-                            <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-[var(--theme-bg-base)]/80 backdrop-blur-xl animate-in fade-in duration-300">
-                                <Card variant="primary" className="max-w-md w-full p-10 text-center space-y-6 shadow-4k animate-in zoom-in-95 duration-300 relative">
-                                    <div className="w-16 h-16 rounded-2xl bg-brand-primary/10 text-brand-primary flex items-center justify-center mx-auto">
-                                        <Sparkles size={32} />
+                            <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-[var(--theme-bg-base)]/80 backdrop-blur-2xl animate-in fade-in duration-500">
+                                <Card variant="primary" className="max-w-md w-full p-12 text-center space-y-8 shadow-4k animate-in zoom-in-95 duration-300 relative border-brand-primary/20 overflow-hidden">
+                                     <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-brand-primary via-brand-accent to-brand-primary animate-shimmer" />
+                                    
+                                    <div className="w-20 h-20 rounded-[2.5rem] bg-gradient-to-br from-brand-primary to-brand-accent text-white flex items-center justify-center mx-auto shadow-2xl shadow-brand-primary/40 rotate-3 hover:rotate-0 transition-transform duration-500">
+                                        <Sparkles size={40} fill="currentColor" />
                                     </div>
-                                    <div className="space-y-2">
-                                        <h3 className="text-2xl font-bold text-[var(--theme-text-primary)] uppercase italic leading-none">Desbloquea Maestro Pro</h3>
-                                        <p className="text-sm text-[var(--theme-text-secondary)] font-medium leading-relaxed">Obtén acceso a reportes PDF descargables, proyecciones basadas en IA y simulacros ilimitados.</p>
+
+                                    <div className="space-y-3">
+                                        <h3 className="text-3xl font-black text-[var(--theme-text-primary)] uppercase italic leading-none tracking-tighter">
+                                            Analítica <span className="text-brand-primary">Predictiva</span>
+                                        </h3>
+                                        <p className="text-[10px] font-black text-brand-primary uppercase tracking-[0.3em] opacity-80">Exclusivo Membresía PRO</p>
+                                        <p className="text-sm text-[var(--theme-text-secondary)] font-medium leading-relaxed mt-4">
+                                            No te conformes con ver el pasado. Los estudiantes <span className="text-brand-primary font-bold">PRO</span> acceden a proyecciones de puntaje real, reportes ejecutivos en PDF y análisis de debilidades asistido por IA.
+                                        </p>
                                     </div>
+
                                     <div className="space-y-4 pt-4">
-                                        <Button variant="premium" className="w-full h-14 rounded-xl shadow-lg" onClick={() => router.push('/pricing')}>Ver Planes Premium</Button>
-                                        <Button variant="ghost" className="w-full h-12 text-[10px] uppercase font-black tracking-widest text-[var(--theme-text-tertiary)]" onClick={() => setShowPremiumModal(false)}>Quizás más tarde</Button>
+                                        <Button 
+                                            variant="premium" 
+                                            className="w-full h-16 rounded-2xl shadow-2xl hover:scale-[1.03] flex items-center justify-center gap-3 font-black text-xs uppercase tracking-[0.2em] transition-all transform shimmer-gold"
+                                            onClick={() => router.push('/pricing')}
+                                        >
+                                            <Zap size={16} fill="currentColor" /> Desbloquear mi potencial
+                                        </Button>
+                                        <Button 
+                                            variant="ghost" 
+                                            className="w-full h-12 text-[10px] uppercase font-black tracking-widest text-[var(--theme-text-tertiary)] hover:text-brand-primary transition-colors" 
+                                            onClick={() => setShowPremiumModal(false)}
+                                        >
+                                            Seguir con datos básicos
+                                        </Button>
+                                    </div>
+                                    
+                                    <div className="pt-4 flex items-center justify-center gap-4 border-t border-[var(--theme-border-soft)]">
+                                        <div className="flex -space-x-2">
+                                            {[1,2,3].map(i => (
+                                                <div key={i} className="w-6 h-6 rounded-full border-2 border-[var(--theme-bg-surface)] bg-brand-primary/10" />
+                                            ))}
+                                        </div>
+                                        <span className="text-[9px] font-bold text-[var(--theme-text-tertiary)] uppercase tracking-widest">+500 estudiantes ya usan PRO</span>
                                     </div>
                                 </Card>
                             </div>
