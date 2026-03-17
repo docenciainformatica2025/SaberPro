@@ -79,13 +79,13 @@ export default function MobileTabBar() {
             });
             return;
         }
-        router.push(href);
+        router.push(href as any);
     };
 
     const confirmExit = async () => {
         const target = modalState.target;
         setModalState({ ...modalState, isOpen: false });
-        if (target) router.push(target);
+        if (target) router.push(target as any);
     };
 
     return (

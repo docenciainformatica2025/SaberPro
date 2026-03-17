@@ -139,7 +139,7 @@ export const RoleBasedNavigation = memo(() => {
             if (isLogout) {
                 setModalState({ isOpen: true, type: 'logout' });
             } else {
-                router.push(href);
+                router.push(href as any);
             }
             return;
         }
@@ -152,7 +152,7 @@ export const RoleBasedNavigation = memo(() => {
             });
             return;
         }
-        router.push(href);
+        router.push(href as any);
     };
 
     const confirmExit = async () => {
@@ -164,7 +164,7 @@ export const RoleBasedNavigation = memo(() => {
             await logout();
             // Logout redirects to home automatically in AuthContext
         } else if (target) {
-            router.push(target);
+            router.push(target as any);
         }
     };
 
@@ -213,7 +213,7 @@ export const RoleBasedNavigation = memo(() => {
 
                     {/* Profile Pill - Refined Scale */}
                     <div
-                        onClick={() => handleProtectedNavigation(settingsHref)}
+                        onClick={() => handleProtectedNavigation(settingsHref as any)}
                         className="flex items-center gap-2 pointer-events-auto bg-[var(--theme-bg-surface)]/80 backdrop-blur-3xl border border-[var(--theme-border-soft)] pl-2 pr-1 py-1 rounded-full shadow-sm animate-in fade-in slide-in-from-top-4 duration-700 delay-100 group transition-all scale-[0.85] origin-right cursor-pointer hover:border-brand-primary/40"
                     >
                         <div className="flex items-center gap-1.5 ml-1 mr-1">
@@ -285,7 +285,7 @@ export const RoleBasedNavigation = memo(() => {
                         return (
                             <button
                                 key={item.href}
-                                onClick={() => handleProtectedNavigation(item.href)}
+                                onClick={() => handleProtectedNavigation(item.href as any)}
                                 className={`group relative flex items-center justify-center p-4 rounded-3xl transition-all duration-300 ease-out 
                                     ${isActive
                                         ? `bg-brand-primary text-white -translate-y-4 shadow-xl shadow-brand-primary/30 scale-110 mx-2`
@@ -311,7 +311,7 @@ export const RoleBasedNavigation = memo(() => {
                     <div className="w-px h-10 bg-[var(--theme-border-soft)] mx-3 self-center" />
 
                     <button
-                        onClick={() => handleProtectedNavigation(settingsHref)}
+                        onClick={() => handleProtectedNavigation(settingsHref as any)}
                         className={`group relative p-4 rounded-3xl transition-all duration-300 hover:bg-brand-primary/5 hover:-translate-y-2 text-theme-text-tertiary hover:text-brand-primary ${pathname === settingsHref ? 'text-brand-primary' : ''}`}
                     >
                         <Settings size={26} />

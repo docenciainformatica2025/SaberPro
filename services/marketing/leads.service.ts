@@ -1,5 +1,6 @@
 import { db } from "@/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import Logger from "@/utils/logger";
 
 export interface GabrielaLead {
     name: string;
@@ -23,8 +24,8 @@ export const saveGabrielaLead = async (data: Partial<GabrielaLead>) => {
             region: Intl.DateTimeFormat().resolvedOptions().timeZone,
             userAgent: typeof window !== 'undefined' ? navigator.userAgent : 'unknown'
         });
-        console.log("Lead saved successfully to Firestore");
+        Logger.info("Lead saved successfully to Firestore");
     } catch (error) {
-        console.error("Error saving lead:", error);
+        Logger.error("Error saving lead:", error);
     }
 };

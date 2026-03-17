@@ -3,11 +3,13 @@
 
 import { useState, useEffect } from "react";
 import { Plus, Calendar, Clock, Lock, Trash2, CheckCircle, Users } from "lucide-react";
+import { toast } from "sonner";
 import { useAuth } from "@/context/AuthContext";
 import { db } from "@/lib/firebase";
 import { collection, query, where, getDocs, orderBy, deleteDoc, doc } from "firebase/firestore";
 import CreateAssignmentModal from "@/components/teacher/CreateAssignmentModal";
 import { Assignment } from "@/types/assignment";
+import { robustDate } from "@/utils/dates";
 
 export default function AssignmentsPage() {
     const { user, subscription } = useAuth();
@@ -33,13 +35,13 @@ export default function AssignmentsPage() {
             const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Assignment));
             // Sort client-side
             data.sort((a, b) => {
-                const dateA = a.createdAt instanceof Date ? a.createdAt : (a.createdAt as any).toDate();
-                const dateB = b.createdAt instanceof Date ? b.createdAt : (b.createdAt as any).toDate();
+                const dateA = robustDate(a.createdAt).getTime();
+                const dateB = robustDate(b.createdAt).getTime();
                 return dateB - dateA;
             });
             setAssignments(data);
         } catch (error) {
-            console.error("Error fetching assignments:", error);
+            // Silencio en producción
         } finally {
             setLoading(false);
         }
@@ -50,37 +52,16 @@ export default function AssignmentsPage() {
             try {
                 await deleteDoc(doc(db, "assignments", id));
                 setAssignments(prev => prev.filter(a => a.id !== id));
+                toast.success("Tarea eliminada correctamente.");
             } catch (error) {
-                console.error("Error deleting assignment:", error);
-                alert("Error al eliminar.");
+                toast.error("Error al eliminar la tarea.");
             }
         }
     };
 
     const formatDate = (date: any) => {
         if (!date) return 'Sin fecha';
-
-        // Priority 1: Firestore Timestamp with toDate()
-        if (typeof date.toDate === 'function') {
-            return date.toDate().toLocaleDateString();
-        }
-
-        // Priority 2: Serialized Timestamp (seconds)
-        if (date.seconds !== undefined) {
-            return new Date(date.seconds * 1000).toLocaleDateString();
-        }
-
-        // Priority 3: Standard Date or String
-        try {
-            const d = new Date(date);
-            if (!isNaN(d.getTime())) {
-                return d.toLocaleDateString();
-            }
-        } catch (e) {
-            return 'Error fecha';
-        }
-
-        return 'Fecha inválida';
+        return robustDate(date).toLocaleDateString();
     };
 
     return (

@@ -41,7 +41,7 @@ const BRAND_COLORS = {
 
 const CHART_COLORS = ['var(--chart-1)', 'var(--chart-2)', 'var(--chart-3)', 'var(--chart-4)'];
 
-export default function FinanceDashboard() {
+export default function AdminFinancePage() {
     const router = useRouter();
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [userMap, setUserMap] = useState<Record<string, FinanceUserProfile>>({});

@@ -74,7 +74,7 @@ export async function POST(req: Request) {
         }
 
         // --- PRO SUBSCRIPTION GUARDIAN (Server Side) ---
-        const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "").split(",").map((e: string) => e.trim().toLowerCase());
+        const adminEmails = (process.env.ADMIN_EMAILS || "").split(",").map((e: string) => e.trim().toLowerCase());
         const isSuperAdmin = email && adminEmails.includes(email.toLowerCase());
 
         if (!isSuperAdmin && adminDb) {

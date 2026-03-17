@@ -109,7 +109,7 @@ export default function AdminAnalyticsPage() {
                 </Link>
 
                 {/* Total Revenue */}
-                <Link href="/admin/revenue" className="group relative overflow-hidden rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] p-6 transition-all hover:bg-[var(--theme-bg-overlay)] hover:shadow-2xl">
+                <Link href="/admin/finance" className="group relative overflow-hidden rounded-2xl border border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] p-6 transition-all hover:bg-[var(--theme-bg-overlay)] hover:shadow-2xl">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--theme-bg-warning-soft)] rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
                     <div className="relative z-10 flex items-start justify-between">
                         <div className="p-3 bg-[var(--theme-bg-warning-soft)] rounded-xl text-[var(--theme-text-warning)] border border-[var(--theme-border-warning)] shadow-lg group-hover:scale-110 transition-transform">

@@ -24,7 +24,7 @@ export default function AdminRoleSwitcher() {
 
     const handleSwitch = (roleId: 'admin' | 'student' | 'teacher', path: string) => {
         switchRole(roleId === 'admin' ? null : roleId);
-        router.push(path);
+        router.push(path as any);
     };
 
     return (

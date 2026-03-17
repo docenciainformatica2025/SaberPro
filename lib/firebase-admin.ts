@@ -27,7 +27,6 @@ if (!admin.apps.length) {
                 }),
                 databaseURL: `https://${projectId}.firebaseio.com`,
             });
-            console.log('✅ Firebase Admin SDK inicializado correctamente.');
         } catch (error: any) {
             console.error('❌ Error crítico de inicialización Firebase Admin:', error.message);
         }

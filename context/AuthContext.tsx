@@ -61,7 +61,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const [activeActivity, setActiveActivity] = useState<{ id: string; type: 'simulation' | 'training' } | null>(null);
     const [impersonatedRole, setImpersonatedRole] = useState<'student' | 'teacher' | 'admin' | null>(null);
 
-    const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "").split(",").map((e: string) => e.trim().toLowerCase());
+    const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS_OBFUSCATED || "").split(",").map((e: string) => e.trim().toLowerCase());
     const isSuperAdmin = !!(user?.email && adminEmails.includes(user.email.toLowerCase()));
 
     const switchRole = (newRole: 'student' | 'teacher' | 'admin' | null) => {
@@ -95,7 +95,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (!user || !FIREBASE_READY || !db) return;
 
         const unsubscribeSnapshot = onSnapshot(doc(db, "users", user.uid), (docSnap) => {
-            const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "").split(",").map((e: string) => e.trim().toLowerCase());
+            const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS_OBFUSCATED || "").split(",").map((e: string) => e.trim().toLowerCase());
             const isSuperAdmin = user.email && adminEmails.includes(user.email.toLowerCase());
 
             if (docSnap.exists()) {

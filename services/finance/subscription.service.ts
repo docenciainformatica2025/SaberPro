@@ -1,5 +1,6 @@
 import { db } from "@/lib/firebase";
 import { doc, updateDoc, setDoc, serverTimestamp, getDoc, runTransaction } from "firebase/firestore";
+import Logger from "@/utils/logger";
 
 // Types
 interface PaymentResult {
@@ -55,7 +56,7 @@ export const upgradeUserSubscription = async (userId: string, planName: 'pro', t
                     paymentMethodDesc = `${parsed.method.brand.toUpperCase()} **** ${parsed.method.last4}`;
                 }
             } catch (e) {
-                console.warn("Failed to parse risk context", e);
+                Logger.warn("Failed to parse risk context", e);
             }
         }
 
@@ -76,7 +77,7 @@ export const upgradeUserSubscription = async (userId: string, planName: 'pro', t
 
         return true;
     } catch (error) {
-        console.error("Error upgrading user:", error);
+        Logger.error("Error upgrading user:", error);
         throw error;
     }
 };
@@ -142,7 +143,7 @@ export const redeemCoupon = async (userId: string, code: string) => {
             return { success: true, plan: couponData.plan };
         });
     } catch (error: any) {
-        console.error("Error redeeming coupon:", error.message);
+        Logger.error("Error redeeming coupon:", error.message);
         throw error;
     }
 };
@@ -179,10 +180,10 @@ export const generateCoupons = async (count: number, plan: 'pro' | 'teacher', de
                 await new Promise(resolve => setTimeout(resolve, 100));
             }
         } catch (error: any) {
-            console.error(` Error generando cupón en iteración ${i}:`, error);
+            Logger.error(` Error generando cupón en iteración ${i}:`, error);
             throw new Error(`Falló la generación masiva: ${error.message}`);
         }
     }
-    console.log(`Generación completada: ${results.length} códigos`);
+    Logger.info(`Generación completada: ${results.length} códigos`);
     return results;
 };

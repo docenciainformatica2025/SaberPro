@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import CookieContent from "@/components/legal/CookieContent";
 import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
 import { Logo } from "@/components/ui/Logo";
 
 export default function CookiePolicyPage() {
@@ -37,9 +38,12 @@ export default function CookiePolicyPage() {
                 </div>
 
                 {/* Content Card */}
-                <div className="metallic-card p-8 md:p-12 rounded-3xl bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] shadow-2xl">
-                    <CookieContent />
-                </div>
+                <Card variant="glass" className="p-8 md:p-14 rounded-3xl bg-[var(--theme-bg-surface)]/20 border border-[var(--theme-border-soft)] shadow-2xl overflow-hidden relative group">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/[0.02] blur-[100px] -mr-32 -mt-32 rounded-full transition-opacity group-hover:opacity-100 opacity-60" />
+                    <div className="relative z-10 prose prose-invert prose-brand max-w-none">
+                        <CookieContent />
+                    </div>
+                </Card>
             </div>
         </div>
     );

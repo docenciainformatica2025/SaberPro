@@ -23,47 +23,58 @@
 }
 
 :root {
-    /* --- MAESTRO PREMIUM DESIGN TOKENS 2026 --- */
-    --mist-white: #F9F8F6;
-    /* Lighter, cleaner background */
-    --deep-space: #121212;
-    /* Deeper black for higher contrast */
-    --serene-sage: #89A79C;
-    /* More contrastive sage */
-    --sunset-glow: #D4A373;
-    /* Richer accent */
-    --golden-hour: #E9C46A;
+    /* --- TIER 1: PRIMITIVES (OKLCH PERCEPTUAL SYSTEM) --- */
+    --primitive-gray-50: 0.98 0.01 247;
+    --primitive-gray-100: 0.94 0.01 247;
+    --primitive-gray-200: 0.88 0.01 247;
+    --primitive-gray-900: 0.12 0.01 247;
+    --primitive-gray-950: 0.08 0.01 247;
 
-    --brand-primary: var(--deep-space);
-    --brand-success: #2D6A4F;
-    /* Stronger success color */
-    --brand-accent: var(--sunset-glow);
-    --brand-error: #D00000;
-    --brand-primary-rgb: 18, 18, 18;
+    --primitive-brand-primary: 0.60 0.15 250;
+    --primitive-brand-success: 0.50 0.15 150;
+    --primitive-brand-accent: 0.75 0.15 75;
+    --primitive-brand-error: 0.55 0.20 25;
 
-    --bg-app: var(--mist-white);
+    /* --- TIER 2: SEMANTIC MAPPINGS (THEME AWARE) --- */
+    --brand-primary: oklch(var(--primitive-brand-primary));
+    --brand-primary-fg: #FFFFFF;
+    --brand-success: oklch(var(--primitive-brand-success));
+    --brand-accent: oklch(var(--primitive-brand-accent));
+    --brand-error: oklch(var(--primitive-brand-error));
+
+    --bg-app: oklch(var(--primitive-gray-50));
     --surface-card: #FFFFFF;
-    --border-subtle: rgba(18, 18, 18, 0.12);
-    /* Slightly more visible */
-    --divider: rgba(18, 18, 18, 0.05);
+    --border-subtle: oklch(var(--primitive-gray-900) / 0.12);
+    --divider: oklch(var(--primitive-gray-900) / 0.05);
 
-    /* Text Contrast Optimization */
-    --text-primary: var(--deep-space);
-    --text-secondary: rgba(18, 18, 18, 0.85);
-    /* High contrast secondary */
-    --text-muted: rgba(18, 18, 18, 0.55);
-    /* Readable muted text */
+    /* Text Contrast Optimization (WCAG AA) */
+    --text-primary: oklch(var(--primitive-gray-900));
+    --text-secondary: oklch(var(--primitive-gray-900) / 0.85);
+    --text-muted: oklch(var(--primitive-gray-900) / 0.55);
 
-    /* Semantic Mappings */
+    /* Semantic Aliases */
     --theme-bg-base: var(--bg-app);
     --theme-bg-surface: var(--surface-card);
-    --theme-bg-overlay: rgba(18, 18, 18, 0.03);
+    --theme-bg-overlay: oklch(var(--primitive-gray-900) / 0.03);
     --theme-text-primary: var(--text-primary);
     --theme-text-secondary: var(--text-secondary);
     --theme-text-tertiary: var(--text-muted);
+    --theme-text-quaternary: oklch(var(--primitive-gray-900) / 0.35);
     --theme-border-soft: var(--border-subtle);
+    --theme-ring-focus: var(--brand-primary);
 
-    /* Radius System (Premium Maestro) */
+    /* Tier 3: Component Tokens (Elite UI) */
+    --btn-radius: var(--radius-md);
+    --btn-h-sm: 2.5rem;
+    --btn-h-md: 3rem;
+    --btn-h-lg: 3.5rem;
+    --btn-h-xl: 4rem;
+    
+    --card-radius: var(--radius-lg);
+    --card-padding: 1.5rem;
+    --card-shadow: var(--shadow-premium);
+
+    /* Radius System */
     --radius-organic: 28px 10px 28px 10px;
     --radius-organic-reverse: 10px 28px 10px 28px;
     --radius-xs: 6px;
@@ -72,20 +83,32 @@
     --radius-lg: 22px;
     --radius-xl: 32px;
 
-    /* Motion */
+    /* Motion & Effects */
     --ease-elastic: cubic-bezier(0.2, 0.8, 0.2, 1.05);
+    --shadow-premium: 0 4px 24px -1px rgba(0, 0, 0, 0.04), 0 2px 12px -1px rgba(0, 0, 0, 0.02);
+    --shimmer-gradient: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
 }
 
 .dark {
-    --bg-app: #08090A;
-    --surface-card: #121417;
+    --bg-app: oklch(var(--primitive-gray-950));
+    --surface-card: oklch(var(--primitive-gray-900));
     --bg-overlay: rgba(255, 255, 255, 0.05);
-    --brand-primary: #60A5FA;
-    --text-primary: #FFFFFF;
-    --text-secondary: #E2E8F0;
-    --text-muted: #94A3B8;
-    --border-subtle: rgba(255, 255, 255, 0.12);
-    --brand-primary-rgb: 96, 165, 250;
+    
+    --brand-primary: oklch(0.75 0.12 250); /* Adjust for dark background */
+    --brand-primary-fg: oklch(var(--primitive-gray-950));
+    
+    --text-primary: oklch(0.98 0.01 247);
+    --text-secondary: oklch(0.92 0.02 247);
+    --text-muted: oklch(0.80 0.02 247);
+    --border-subtle: oklch(0.98 0.01 247 / 0.12);
+    
+    /* Semantic Dark Adjustments */
+    --theme-bg-overlay: oklch(0.98 0.01 247 / 0.02);
+    --theme-text-quaternary: oklch(0.98 0.01 247 / 0.15);
+    
+    /* Ensure high contrast for primary branding text */
+    --brand-primary-fg: oklch(var(--primitive-gray-950));
+    --color-theme-text-primary: #FFFFFF;
 }
 
 @layer base {
@@ -97,9 +120,36 @@
         letter-spacing: -0.011em;
     }
 
-    h1,
-    h2,
-    h3,
+    h1 {
+        font-family: var(--font-academic);
+        font-size: 2.25rem; /* 36px */
+        line-height: 1.2;
+        letter-spacing: -0.04em;
+        font-weight: 700;
+        @media (min-width: 1024px) {
+            font-size: 3rem; /* 48px */
+        }
+    }
+
+    h2 {
+        font-family: var(--font-academic);
+        font-size: 1.875rem; /* 30px */
+        line-height: 1.25;
+        letter-spacing: -0.03em;
+        font-weight: 600;
+        @media (min-width: 1024px) {
+            font-size: 2.25rem; /* 36px */
+        }
+    }
+
+    h3 {
+        font-family: var(--font-sans);
+        font-size: 1.25rem; /* 20px */
+        line-height: 1.5;
+        letter-spacing: -0.01em;
+        font-weight: 600;
+    }
+
     .font-academic {
         font-family: var(--font-academic);
         letter-spacing: -0.02em;
@@ -170,7 +220,7 @@
         overflow: hidden;
         transition: all 0.3s;
         background: var(--brand-primary);
-        color: white;
+        color: var(--brand-primary-fg);
         box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.3);
     }
 
@@ -181,6 +231,11 @@
     .btn-maestro:hover {
         transform: translateY(-2px);
         box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Legacy compatibility with theme-awareness */
+    .text-theme-hero {
+        color: var(--text-primary);
     }
 }
 

@@ -1,0 +1,94 @@
+Ôû▓ Next.js 16.1.5 (Turbopack)
+- Environments: .env.local
+- Experiments (use with caution):
+  ┬À clientTraceMetadata
+  ┬À optimizePackageImports
+
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 61s
+  Running next.config.js provided runAfterProductionCompile ...
+Ô£ô Completed runAfterProductionCompile in 1750ms
+  Running TypeScript ...
+  Collecting page data using 11 workers ...
+ÔÜá Using edge runtime on a page currently disables static generation for that page
+ÔÜá´©Å ALERTA DE SEGURIDAD: Credenciales de Administrador faltantes en producci├│n.
+ÔÜá´©Å ALERTA DE SEGURIDAD: Credenciales de Administrador faltantes en producci├│n.
+  Generating static pages using 11 workers (0/62) ...
+  Generating static pages using 11 workers (15/62) 
+  Generating static pages using 11 workers (30/62) 
+  Generating static pages using 11 workers (46/62) 
+Ô£ô Generating static pages using 11 workers (62/62) in 6.6s
+  Finalizing page optimization ...
+
+Route (app)
+Ôöî Ôùï /
+Ôö£ Ôùï /_not-found
+Ôö£ Ôùï /achievements
+Ôö£ Ôùï /achievements/celebration
+Ôö£ Ôùï /admin/analytics
+Ôö£ Ôùï /admin/audit
+Ôö£ Ôùï /admin/dashboard
+Ôö£ Ôùï /admin/finance
+Ôö£ Ôùï /admin/finance/coupons
+Ôö£ Ôùï /admin/marketing
+Ôö£ Ôùï /admin/questions
+Ôö£ ãÆ /admin/questions/[id]
+Ôö£ Ôùï /admin/questions/new
+Ôö£ Ôùï /admin/seed
+Ôö£ Ôùï /admin/settings
+Ôö£ Ôùï /admin/settings/change-password
+Ôö£ Ôùï /admin/system
+Ôö£ Ôùï /admin/users
+Ôö£ Ôùï /analytics
+Ôö£ Ôùï /analytics/predictive
+Ôö£ ãÆ /api/explain
+Ôö£ ãÆ /api/health
+Ôö£ Ôùï /contact
+Ôö£ Ôùï /credits
+Ôö£ Ôùï /dashboard
+Ôö£ Ôùï /dashboard/billing
+Ôö£ Ôùï /diagnostic
+Ôö£ Ôùï /diagnostic/results
+Ôö£ Ôùï /evolution
+Ôö£ Ôùï /forgot-password
+Ôö£ Ôùï /leaderboard
+Ôö£ Ôùï /learning
+Ôö£ Ôùï /legal/cookies
+Ôö£ Ôùï /legal/privacy
+Ôö£ Ôùï /legal/terms
+Ôö£ Ôùï /library
+Ôö£ Ôùï /login
+Ôö£ Ôùï /manifest.webmanifest
+Ôö£ Ôùï /mentor
+Ôö£ Ôùï /methodology
+Ôö£ Ôùï /notifications
+Ôö£ Ôùï /onboarding
+Ôö£ ãÆ /opengraph-image
+Ôö£ Ôùï /planner
+Ôö£ Ôùï /pricing
+Ôö£ Ôùï /privacy
+Ôö£ Ôùï /profile
+Ôö£ Ôùï /profile/evolution
+Ôö£ Ôùï /pulse
+Ôö£ Ôùï /register
+Ôö£ Ôùï /robots.txt
+Ôö£ Ôùï /simulation
+Ôö£ ãÆ /simulation/[module]
+Ôö£ Ôùï /sitemap.xml
+Ôö£ Ôùï /support
+Ôö£ Ôùï /teacher
+Ôö£ Ôùï /teacher/analytics
+Ôö£ Ôùï /teacher/assignments
+Ôö£ Ôùï /teacher/classes
+Ôö£ ãÆ /teacher/classes/[classId]
+Ôö£ Ôùï /teacher/generator
+Ôö£ Ôùï /teacher/settings
+Ôö£ Ôùï /terms
+Ôö£ Ôùï /training
+Ôö£ ãÆ /training/[module]
+Ôöö Ôùï /update-password
+
+
+Ôùï  (Static)   prerendered as static content
+ãÆ  (Dynamic)  server-rendered on demand
+

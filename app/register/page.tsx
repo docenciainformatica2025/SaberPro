@@ -88,14 +88,14 @@ export default function RegisterPage() {
         setAuthError('');
         const loadingToast = toast.loading("Creando tu cuenta...");
         try {
-            console.log("Iniciando registro para:", data.email);
+            // Registering user with Firebase Auth
             await signup(data.email, data.password);
             toast.dismiss(loadingToast);
             toast.success("¡Cuenta creada exitosamente!");
             router.push('/onboarding');
         } catch (err: any) {
             toast.dismiss(loadingToast);
-            console.error("Error en registro:", err);
+            // Error handling is managed below
             
             let msg = `Error al crear cuenta: ${err.message || 'Error desconocido'}`;
             if (err.code === 'auth/email-already-in-use') {
@@ -121,7 +121,7 @@ export default function RegisterPage() {
     };
 
     return (
-        <div className="flex min-h-screen bg-[var(--theme-bg-base)] text-[var(--theme-text-primary)] selection:bg-brand-primary/20 transition-colors duration-500" suppressHydrationWarning>
+        <div className="flex flex-col lg:flex-row min-h-screen bg-[var(--theme-bg-base)] text-[var(--theme-text-primary)] selection:bg-brand-primary/20 transition-colors duration-500" suppressHydrationWarning>
             {/* Ambient Background Layer */}
             <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
                 <div className="absolute top-[-15%] left-[-10%] w-[800px] h-[800px] bg-brand-primary/10 rounded-full blur-[160px] animate-pulse"></div>
@@ -159,8 +159,8 @@ export default function RegisterPage() {
                             "Simuladores de alta fidelidad",
                             "Análisis de brechas de conocimiento"
                         ].map((item, i) => (
-                            <div key={i} className="flex items-center gap-3 text-[var(--theme-text-tertiary)] font-bold uppercase text-[9px] tracking-widest">
-                                <div className="w-7 h-7 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary shadow-sm border border-brand-primary/20">
+                            <div key={i} className="flex items-center gap-3 text-[var(--theme-text-secondary)] font-bold uppercase text-[9px] tracking-widest group/item">
+                                <div className="w-7 h-7 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary shadow-sm border border-brand-primary/20 group-hover/item:bg-brand-primary group-hover/item:text-white transition-all">
                                     <CheckCircleIcon size={14} />
                                 </div>
                                 <span>{item}</span>
@@ -208,7 +208,7 @@ export default function RegisterPage() {
                     </div>
 
                     {/* Form Container: Advanced Glassmorphism */}
-                    <div className="bg-[var(--theme-bg-surface)] backdrop-blur-2xl border border-[var(--theme-border-soft)] p-8 sm:p-10 rounded-[2.5rem] shadow-xl dark:shadow-[var(--shadow-4k)] relative overflow-hidden group">
+                    <div className="bg-[var(--theme-bg-surface)] backdrop-blur-2xl border border-[var(--theme-border-soft)] p-7 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] shadow-xl dark:shadow-[var(--shadow-4k)] relative overflow-hidden group organic-border transition-all duration-500">
                         <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-brand-primary to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-700" />
 
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 relative z-10">
@@ -240,7 +240,7 @@ export default function RegisterPage() {
                                             error={errors.password?.message}
                                             className="bg-[var(--theme-bg-base)]/50 border-[var(--theme-border-soft)] focus:border-brand-primary/60 text-sm h-14 rounded-2xl transition-all font-medium"
                                         />
-                                        <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-11 text-slate-400 dark:text-white/20 group-hover/pass:text-brand-primary transition-colors z-20">
+                                        <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-11 text-[var(--theme-text-quaternary)] group-hover/pass:text-brand-primary transition-colors z-20">
                                             {showPassword ? <EyeOffIcon size={20} /> : <EyeIcon size={20} />}
                                         </button>
                                     </div>
@@ -255,7 +255,7 @@ export default function RegisterPage() {
                                         error={errors.confirmPassword?.message}
                                         className="bg-[var(--theme-bg-base)]/50 border-[var(--theme-border-soft)] focus:border-brand-primary/60 text-sm h-14 rounded-2xl transition-all font-medium"
                                     />
-                                    <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-4 top-13 text-slate-400 dark:text-white/20 group-hover/pass:text-brand-primary transition-colors z-20">
+                                    <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-4 top-13 text-[var(--theme-text-quaternary)] group-hover/pass:text-brand-primary transition-colors z-20">
                                         {showConfirmPassword ? <EyeOffIcon size={20} /> : <EyeIcon size={20} />}
                                     </button>
                                 </div>
@@ -275,7 +275,7 @@ export default function RegisterPage() {
                                 type="submit"
                                 disabled={isSubmitting}
                                 isLoading={isSubmitting}
-                                className="w-full h-15 mt-4 bg-brand-primary hover:bg-brand-primary/95 text-white shadow-xl shadow-brand-primary/20 text-[11px] font-black uppercase tracking-[0.35em] rounded-2xl transform hover:scale-[1.01] active:scale-[0.98] transition-all"
+                                className="w-full h-15 mt-4 bg-brand-primary hover:bg-brand-primary/95 text-white shadow-xl shadow-brand-primary/20 text-[11px] font-black uppercase tracking-[0.35em] organic-border-reverse transform hover:scale-[1.01] active:scale-[0.98] transition-all"
                                 icon={ArrowRightIcon}
                                 iconPosition="right"
                             >
@@ -296,7 +296,7 @@ export default function RegisterPage() {
                             onClick={handleGoogleLogin}
                             disabled={googleLoading}
                             variant="outline"
-                            className="w-full h-12 text-[10px] font-black uppercase tracking-[0.25em] border-[var(--theme-border-soft)] bg-[var(--theme-bg-base)] hover:bg-[var(--theme-bg-surface)] text-[var(--theme-text-primary)] rounded-2xl transition-all"
+                            className="w-full h-12 text-[10px] font-black uppercase tracking-[0.25em] border-[var(--theme-border-soft)] bg-[var(--theme-bg-base)] hover:bg-[var(--theme-bg-surface)] text-[var(--theme-text-primary)] organic-border transition-all"
                             isLoading={googleLoading}
                         >
                             <Chrome size={18} className="mr-3" /> Registrar con Google

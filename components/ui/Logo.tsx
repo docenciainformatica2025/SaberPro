@@ -24,12 +24,13 @@ export const Logo: React.FC<LogoProps> = React.memo(({
 
     return (
         <div
+            suppressHydrationWarning
             className={`flex items-center gap-3 select-none group cursor-pointer ${className}`}
             role="img"
-            aria-label="SaberPro Logo - Propuesta El Pliegue"
+            aria-label="SaberPro - Plataforma de Entrenamiento para Pruebas de Estado"
         >
             {/* --- ISOTIPO: EL PLIEGUE (Propuesta 3) --- */}
-            <div className={`${currentSize.box} relative flex items-center justify-center transition-all duration-700 ease-elastic group-hover:rotate-6`}>
+            <div suppressHydrationWarning className={`${currentSize.box} relative flex items-center justify-center transition-all duration-700 ease-elastic group-hover:rotate-6`}>
                 {/* Background Glow for Premium Feel */}
                 <div className="absolute inset-0 bg-brand-primary/20 blur-lg rounded-full scale-0 group-hover:scale-150 transition-transform duration-1000" />
 
@@ -73,7 +74,7 @@ export const Logo: React.FC<LogoProps> = React.memo(({
 
             {/* --- LOGOTIPO (El Texto) --- */}
             {variant === 'full' && (
-                <div className="flex flex-col leading-none">
+                <div suppressHydrationWarning className="flex flex-col leading-none">
                     <span className={`font-black tracking-tighter text-theme-text-primary ${currentSize.text} italic uppercase`}>
                         Saber<span className="text-brand-primary font-black">Pro</span>
                     </span>

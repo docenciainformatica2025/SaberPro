@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import Logger from "@/utils/logger";
 
 /**
  * SessionWatcher handles automatic logout after a period of inactivity.
@@ -25,14 +26,14 @@ export default function SessionWatcher() {
         if (user) {
             timeoutRef.current = setTimeout(async () => {
                 try {
-                    console.log("Session expired due to inactivity.");
+                    Logger.warn("Session expired due to inactivity.");
                     toast.warning("Sesión expirada", {
                         description: "Has sido desconectado por inactividad para proteger tu seguridad."
                     });
                     await logout();
                     router.push("/");
                 } catch (error) {
-                    console.error("Auto-logout error:", error);
+                    Logger.error("Auto-logout error:", error);
                 }
             }, INACTIVITY_LIMIT);
         }

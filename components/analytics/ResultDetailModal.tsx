@@ -2,9 +2,8 @@
 
 import { useRef, useState } from "react";
 import { toast } from "sonner";
-import { X, Download, CheckCircle, AlertCircle, Lock } from "lucide-react";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+import { X, Download, CheckCircle, AlertCircle, Lock, FileText } from "lucide-react";
+import Logger from "@/utils/logger";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
@@ -79,8 +78,10 @@ export default function ResultDetailModal({ isOpen, onClose, result, userName }:
             );
 
         } catch (error) {
-            console.error("Error generating PDF:", error);
-            alert(`Hubo un error generando el PDF.`);
+            Logger.error("Error generating PDF:", error);
+            toast.error("Error de descarga", {
+                description: "Hubo un problema generando el PDF. Por favor reintenta."
+            });
         } finally {
             setIsDownloading(false);
         }
@@ -93,7 +94,7 @@ export default function ResultDetailModal({ isOpen, onClose, result, userName }:
                 {/* Header Actions */}
                 <div className="flex justify-between items-center p-4 border-b border-[var(--theme-border-soft)] bg-[var(--theme-bg-base)]/40">
                     <h3 className="text-[var(--theme-text-primary)] font-bold text-lg flex items-center gap-2">
-                        <FileTextIcon /> Reporte de Resultados
+                        <FileText className="w-5 h-5" aria-hidden="true" /> Reporte de Resultados
                     </h3>
                     <div className="flex items-center gap-2">
                         <Button
@@ -236,22 +237,3 @@ export default function ResultDetailModal({ isOpen, onClose, result, userName }:
     );
 }
 
-function FileTextIcon(props: React.SVGProps<SVGSVGElement>) {
-    return (
-        <svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
-            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-            <polyline points="14 2 14 8 20 8" />
-        </svg>
-    );
-}

@@ -7,7 +7,8 @@ import { db } from "@/lib/firebase";
 import { collection, query, where, orderBy, getDocs } from "firebase/firestore";
 import { Transaction, PaymentStatus } from "@/types/finance";
 import { Download, CreditCard, Clock, CheckCircle, AlertCircle, ArrowLeft, Receipt } from "lucide-react";
-import { formatLongDate } from '@/utils/dates';
+import { formatLongDate, robustDate } from '@/utils/dates';
+import { toast } from 'sonner';
 export default function BillingPage() {
     const { user, subscription, role } = useAuth();
     const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -32,14 +33,14 @@ export default function BillingPage() {
 
                 // Client-side sort to avoid missing index issues
                 list.sort((a, b) => {
-                    const timeA = (a.createdAt as any)?.seconds || 0;
-                    const timeB = (b.createdAt as any)?.seconds || 0;
+                    const timeA = robustDate(a.createdAt).getTime();
+                    const timeB = robustDate(b.createdAt).getTime();
                     return timeB - timeA;
                 });
 
                 setTransactions(list);
             } catch (error) {
-                console.error("Error fetching billing history:", error);
+                // Silent catch for billing history
             } finally {
                 setLoading(false);
             }
@@ -57,8 +58,7 @@ export default function BillingPage() {
                 uid: user?.uid
             });
         } catch (e) {
-            console.error(e);
-            alert("Error generando PDF. Intente nuevamente.");
+            toast.error("Error al generar el PDF de la factura.");
         }
     };
 
@@ -188,9 +188,9 @@ export default function BillingPage() {
                                             {tx.status === PaymentStatus.COMPLETED ? <CheckCircle size={28} /> : <AlertCircle size={28} />}
                                         </div>
                                         <div className="space-y-1">
-                                            <div className="font-black text-white text-xl tracking-tight group-hover:text-brand-primary transition-colors uppercase">{tx.description}</div>
-                                            <div className="flex items-center gap-3 text-[10px] font-black tracking-widest text-white/30">
-                                                <span className="bg-black/40 px-3 py-1 rounded-full text-brand-primary border border-white/5">REF: {tx.reference}</span>
+                                            <div className="font-black text-[var(--theme-text-primary)] text-xl tracking-tight group-hover:text-brand-primary transition-colors uppercase">{tx.description}</div>
+                                            <div className="flex items-center gap-3 text-[10px] font-black tracking-widest text-[var(--theme-text-tertiary)]/60">
+                                                <span className="bg-[var(--theme-bg-base)]/40 px-3 py-1 rounded-full text-brand-primary border border-[var(--theme-border-soft)]">REF: {tx.reference}</span>
                                                 <span>•</span>
                                                 <span className="uppercase">{formatLongDate(tx.createdAt)}</span>
                                             </div>
@@ -199,7 +199,7 @@ export default function BillingPage() {
 
                                     <div className="flex items-center gap-10 w-full md:w-auto mt-6 md:mt-0 justify-between md:justify-end">
                                         <div className="text-right space-y-1">
-                                            <div className="font-black text-white text-2xl tracking-tightest">
+                                            <div className="font-black text-[var(--theme-text-primary)] text-2xl tracking-tightest">
                                                 {new Intl.NumberFormat('es-CO', { style: 'currency', currency: tx.currency }).format(tx.amount)}
                                             </div>
                                             <StatusBadge status={tx.status} />
@@ -207,7 +207,7 @@ export default function BillingPage() {
 
                                         <button
                                             onClick={() => handleDownloadInvoice(tx)}
-                                            className="w-14 h-14 rounded-2xl bg-white/5 text-white/40 hover:bg-brand-primary hover:text-white transition-all flex flex-col items-center justify-center gap-1 group/btn border border-white/5 shadow-xl"
+                                            className="w-14 h-14 rounded-2xl bg-[var(--theme-bg-base)]/5 text-[var(--theme-text-secondary)]/40 hover:bg-brand-primary hover:text-white transition-all flex flex-col items-center justify-center gap-1 group/btn border border-[var(--theme-border-soft)] shadow-xl"
                                             title="Descargar Factura"
                                         >
                                             <Download size={22} className="group-hover/btn:-translate-y-1 transition-transform" />

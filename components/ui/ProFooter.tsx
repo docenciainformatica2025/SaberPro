@@ -12,9 +12,9 @@ export default function ProFooter() {
     return (
         <footer suppressHydrationWarning className="border-t border-[var(--theme-border-soft)] bg-[var(--theme-bg-surface)] backdrop-blur-3xl transition-colors duration-500 pb-24 md:pb-32 relative overflow-hidden">
             {/* Ambient Light Effect */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none" />
+            <div suppressHydrationWarning className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
-            <div className="mx-auto max-w-7xl px-6 py-16 relative z-10">
+            <div suppressHydrationWarning className="mx-auto max-w-7xl px-6 py-16 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                     {/* Brand Section */}
                     <div className="md:col-span-2 space-y-6">
@@ -28,16 +28,19 @@ export default function ProFooter() {
 
                     {/* Links Sections */}
                     <div className="space-y-6">
-                        <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-primary">Recursos Legales</h4>
-                        <nav className="flex flex-col gap-4 text-sm font-bold text-[var(--theme-text-secondary)]">
-                            <Link href="/legal/terms" className="hover:text-brand-primary transition-colors flex items-center gap-2 group">
-                                <span className="w-1 h-1 rounded-full bg-brand-primary/40 group-hover:bg-brand-primary transition-colors" /> Términos de Uso
+                        <h4 className="text-[10px] font-black uppercase tracking-[0.35em] text-brand-primary flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-brand-primary/20 blur-[1px]" />
+                            Recursos Legales
+                        </h4>
+                        <nav className="flex flex-col gap-4 text-xs font-black text-[var(--theme-text-secondary)] uppercase tracking-widest">
+                            <Link href="/legal/terms" className="hover:text-brand-primary transition-all duration-300 flex items-center gap-3 group">
+                                <span className="w-1.5 h-[1px] bg-[var(--theme-border-soft)] group-hover:w-3 group-hover:bg-brand-primary transition-all" /> Términos de Uso
                             </Link>
-                            <Link href="/legal/privacy" className="hover:text-brand-primary transition-colors flex items-center gap-2 group">
-                                <span className="w-1 h-1 rounded-full bg-brand-primary/40 group-hover:bg-brand-primary transition-colors" /> Privacidad
+                            <Link href="/legal/privacy" className="hover:text-brand-primary transition-all duration-300 flex items-center gap-3 group">
+                                <span className="w-1.5 h-[1px] bg-[var(--theme-border-soft)] group-hover:w-3 group-hover:bg-brand-primary transition-all" /> Privacidad
                             </Link>
-                            <Link href="/legal/cookies" className="hover:text-brand-primary transition-colors flex items-center gap-2 group">
-                                <span className="w-1 h-1 rounded-full bg-brand-primary/40 group-hover:bg-brand-primary transition-colors" /> Cookies
+                            <Link href="/legal/cookies" className="hover:text-brand-primary transition-all duration-300 flex items-center gap-3 group">
+                                <span className="w-1.5 h-[1px] bg-[var(--theme-border-soft)] group-hover:w-3 group-hover:bg-brand-primary transition-all" /> Cookies
                             </Link>
                         </nav>
                     </div>

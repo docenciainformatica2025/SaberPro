@@ -25,7 +25,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
 
         return (
             <motion.span
-                ref={ref as any}
+                ref={ref}
                 whileHover={{ scale: 1.05 }}
                 className={cn(
                     "px-2.5 py-1 rounded-full text-[9px] font-black border uppercase tracking-[0.15em] transition-all duration-300",

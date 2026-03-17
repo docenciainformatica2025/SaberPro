@@ -37,8 +37,8 @@ import { Button } from "@/components/ui/Button";
 import { StatCardPremium } from "@/components/ui/StatCardPremium";
 
 const CHART_COLORS = [
-    'var(--chart-1)',
-    'var(--chart-2)',
+    'var(--brand-primary)',
+    'var(--brand-accent)',
     'var(--chart-3)',
     'var(--chart-4)',
     'var(--chart-5)'

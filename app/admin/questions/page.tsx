@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import { collection, getDocs, deleteDoc, doc, query, orderBy } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { Question } from "@/types/question";
@@ -43,8 +44,7 @@ export default function QuestionsPage() {
                 await deleteDoc(doc(db, "questions", id));
                 setQuestions(prev => prev.filter(q => q.id !== id));
             } catch (error) {
-                console.error("Error deleting question:", error);
-                alert("Error al eliminar");
+                toast.error("Error al eliminar la pregunta.");
             }
         }
     };
@@ -71,8 +71,8 @@ export default function QuestionsPage() {
             {/* Header Area */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 <div>
-                    <h1 className="text-5xl lg:text-6xl font-black text-theme-hero flex items-center gap-4 tracking-tighter italic uppercase">
-                        <BookOpen className="text-brand-primary" size={48} /> Banco de Reactivos
+                    <h1 className="text-[var(--theme-text-primary)] flex items-center gap-4 italic uppercase">
+                        <BookOpen className="text-brand-primary" size={40} /> Banco de Reactivos
                     </h1>
                     <p className="text-[var(--theme-text-tertiary)] text-xs mt-2 flex items-center gap-2 font-black uppercase tracking-widest opacity-70">
                         <Target size={14} className="text-brand-primary" /> Curaduría Académica v9.0 • Control Maestro

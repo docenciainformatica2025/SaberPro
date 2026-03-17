@@ -128,7 +128,7 @@ export default function NotFound() {
                     className="grid grid-cols-2 md:grid-cols-4 gap-4"
                 >
                     {quickLinks.map((link, i) => (
-                        <Link key={i} href={link.href}>
+                        <Link key={i} href={link.href as any}>
                             <div className="bg-[var(--theme-bg-surface)]/40 backdrop-blur-sm border border-[var(--theme-border-soft)] rounded-3xl p-6 hover:bg-brand-primary/5 hover:border-brand-primary/30 transition-all group active:scale-95">
                                 <link.icon className={`${link.color} mx-auto mb-3 transition-transform group-hover:scale-110 group-hover:rotate-6`} size={24} />
                                 <span className="text-[10px] font-black uppercase tracking-widest text-[var(--theme-text-tertiary)] group-hover:text-brand-primary">{link.label}</span>

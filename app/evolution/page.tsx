@@ -2,6 +2,8 @@
 
 import { useAuth } from "@/context/AuthContext";
 import { useEffect, useState } from "react";
+import { robustDate } from "@/utils/dates";
+import { UserProfile } from "@/types/user";
 import {
     User,
     TrendingUp,
@@ -35,7 +37,7 @@ export default function EvolutionPage() {
     const [data, setData] = useState<EvolutionData | null>(null);
     const [loading, setLoading] = useState(true);
 
-    const displayName = (profile as any)?.fullName
+    const displayName = profile?.fullName
         || user?.displayName
         || user?.email?.split("@")[0]
         || "Estudiante";
@@ -72,8 +74,8 @@ export default function EvolutionPage() {
                 });
 
                 const avg = snapshot.size > 0 ? Math.round(totalScoreSum / snapshot.size) : 0;
-                const streak = (profile as any)?.gamification?.streak?.current || 0;
-                const points = (profile as any)?.gamification?.points || 0;
+                const streak = profile?.gamification?.streak?.current || 0;
+                const points = profile?.gamification?.points || 0;
 
                 setData({
                     totalSimulations: snapshot.size,

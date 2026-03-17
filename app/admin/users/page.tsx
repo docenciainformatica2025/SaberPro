@@ -100,7 +100,7 @@ export default function UsersPage() {
             setUsers(data);
             setFilteredUsers(data);
         } catch (error) {
-            console.error("Error fetching users:", error);
+            // Silenciar error en producción
         } finally {
             setLoading(false);
         }
@@ -196,7 +196,7 @@ export default function UsersPage() {
             await logAdminAction(currentUser?.email || "unknown", "UPDATE_ROLE", userId, `Changed role from ${currentRole} to ${newRole}`);
             setUsers(prev => prev.map(u => u.id === userId ? { ...u, role: newRole as any } : u));
         } catch (error) {
-            alert("Error actualizando rol.");
+            toast.error("Error al actualizar el rol del usuario.");
         }
     };
 
@@ -216,7 +216,7 @@ export default function UsersPage() {
                     : u
             ));
         } catch (error) {
-            alert("Error actualizando plan");
+            toast.error("Error al actualizar el plan de suscripción.");
         }
     };
 
@@ -232,7 +232,7 @@ export default function UsersPage() {
             await updateDoc(doc(db, "users", userId), { consentLog: logData });
             setUsers(prev => prev.map(u => u.id === userId ? { ...u, consentLog: logData } : u));
         } catch (e) {
-            alert("Error validando");
+            toast.error("Error al validar el consentimiento legal.");
         }
     };
 
@@ -256,9 +256,9 @@ export default function UsersPage() {
             await deleteDoc(doc(db, "users", userId));
             await logAdminAction(currentUser?.email || "unknown", "DELETE_USER", userId, "Permanently deleted user");
             setUsers(prev => prev.filter(u => u.id !== userId));
-            alert("Usuario eliminado correctamente.");
+            toast.success("Usuario eliminado correctamente.");
         } catch (error) {
-            alert("Error al eliminar el usuario.");
+            toast.error("Error al eliminar el usuario de la base de datos.");
         } finally {
             setLoading(false);
         }
@@ -306,7 +306,7 @@ export default function UsersPage() {
             setUsers(prev => prev.map(u => u.id === editingUser.id ? { ...u, fullName: normalizedName, role: editForm.role as any } : u));
             setIsEditModalOpen(false);
         } catch (error) {
-            alert("Error al actualizar usuario.");
+            toast.error("Error al actualizar los datos del usuario.");
         } finally {
             setLoading(false);
         }
@@ -407,8 +407,8 @@ export default function UsersPage() {
                                         <tr key={u.id} className="group hover:bg-[var(--theme-bg-surface)]/20 transition-all duration-300">
                                             <td className="px-8 py-6">
                                                 <div className="flex items-center gap-5">
-                                                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center font-semibold text-xl border transition-all duration-500 group-hover:scale-105 ${u.role === 'admin' ? 'bg-red-500/10 text-red-500 border-red-500/20 shadow-[0_0_20px_rgba(239,68,68,0.1)]' :
-                                                        u.role === 'teacher' ? 'bg-purple-500/10 text-purple-400 border-purple-500/20 shadow-[0_0_20px_rgba(168,85,247,0.1)]' : 'bg-brand-primary/10 text-brand-primary border-brand-primary/20 shadow-[0_0_20px_rgba(212,175,55,0.1)]'
+                                                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center font-semibold text-xl border transition-all duration-500 group-hover:scale-105 ${u.role === 'admin' ? 'bg-[var(--theme-bg-error-soft)] text-[var(--theme-text-error)] border-[var(--theme-border-error)] shadow-lg shadow-[var(--theme-bg-error-soft)]/20' :
+                                                        u.role === 'teacher' ? 'bg-[var(--theme-bg-info-soft)] text-[var(--theme-text-info)] border-[var(--theme-border-info)] shadow-lg shadow-[var(--theme-bg-info-soft)]/20' : 'bg-brand-primary/10 text-brand-primary border-brand-primary/20 shadow-lg shadow-brand-primary/10'
                                                         }`}>
                                                         {(u.fullName || u.displayName || u.email || "?")[0].toUpperCase()}
                                                     </div>
@@ -424,9 +424,9 @@ export default function UsersPage() {
                                                 <div className="flex flex-col gap-1.5">
                                                     <Badge
                                                         variant={u.role === 'admin' ? 'error' : u.role === 'teacher' ? 'info' : 'default'}
-                                                        className="w-fit uppercase text-[9px] px-3 font-semibold tracking-wider border-[var(--theme-border-soft)]"
+                                                        className="w-fit uppercase text-[9px] px-3 font-bold tracking-widest border-[var(--theme-border-soft)]"
                                                     >
-                                                        {u.role === 'admin' ? 'SISTEMA' : u.role === 'teacher' ? 'PRO-DOCENTE' : 'ACADÉMICO'}
+                                                        {u.role === 'admin' ? 'SISTEMA' : u.role === 'teacher' ? 'DOCENTE ELITE' : 'ACADÉMICO'}
                                                     </Badge>
                                                     {u.institution && (
                                                         <span className="text-[10px] text-theme-text-secondary/30 flex items-center gap-1.5 font-bold italic">
@@ -452,9 +452,9 @@ export default function UsersPage() {
                                                     <Tooltip title={`Certificado v${u.consentLog.version} - Firmado: ${new Date(u.consentLog.acceptedAt).toLocaleString('es-CO')}`}>
                                                         <div className="inline-flex flex-col items-center group/legal cursor-help">
                                                             <div className="p-3 bg-[var(--theme-bg-success-soft)] rounded-full text-[var(--theme-text-success)] mb-2 border border-[var(--theme-border-success)] group-hover/legal:bg-[var(--theme-bg-success-soft)]/80 transition-all duration-300">
-                                                                <Shield size={20} />
+                                                                <Check size={20} />
                                                             </div>
-                                                            <span className="text-[9px] text-green-400/30 uppercase font-semibold tracking-wider">Legal Firmado</span>
+                                                            <span className="text-[9px] text-[var(--theme-text-success)]/60 uppercase font-black tracking-widest leading-none">Legal OK</span>
                                                         </div>
                                                     </Tooltip>
                                                 ) : (

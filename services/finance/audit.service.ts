@@ -16,8 +16,8 @@ export class AuditService {
         const transactionRecord: Transaction = {
             ...data,
             id: newTxRef.id,
-            createdAt: Date.now() as any, // Standardizing on number for Unix consistency, but cast to any to avoid type mismatch if using Timestamp later
-            updatedAt: Date.now() as any
+            createdAt: Date.now(),
+            updatedAt: Date.now()
         };
 
         await setDoc(newTxRef, transactionRecord);

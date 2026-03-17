@@ -65,8 +65,8 @@ const DEFAULT_CONFIG: SystemConfig = {
     simulation: { timePerQuestion: 120, passingScore: 60, maxRetries: 3 },
     monetization: {
         currency: "COP",
-        students: { price: 24900, promoActive: false, promoText: "¡50% OFF!" },
-        teachers: { priceMonthly: 49900, promoActive: false, maxStudentsPerGroup: 50 },
+        students: { price: 49900, promoActive: false, promoText: "¡50% OFF!" },
+        teachers: { priceMonthly: 89900, promoActive: false, maxStudentsPerGroup: 50 },
         institutions: { pricePerSeat: 15000, minSeats: 100, contactEmail: SALES_EMAIL }
     },
     maintenance: { isActive: false, message: `El sistema ${COMPANY_NAME} está en mantenimiento. Volveremos pronto.` }

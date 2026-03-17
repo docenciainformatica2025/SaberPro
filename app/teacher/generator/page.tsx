@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { toast } from 'sonner';
 import { useAuth } from "@/context/AuthContext";
 import { db } from "@/lib/firebase";
 import { collection, query, where, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
@@ -49,7 +50,7 @@ export default function ExamGeneratorPage() {
             const snapshot = await getDocs(q);
 
             if (snapshot.empty) {
-                alert(`No se encontraron preguntas disponibles para el módulo: ${config.subject.replace(/_/g, ' ')}.`);
+                toast.error(`No se encontraron preguntas disponibles para el módulo: ${config.subject.replace(/_/g, ' ')}.`);
                 setGeneratedQuestions([]);
                 setLoading(false);
                 return;
@@ -80,8 +81,7 @@ export default function ExamGeneratorPage() {
             setGeneratedQuestions(selected);
 
         } catch (error) {
-            console.error("Error generating exam:", error);
-            alert("Error al acceder al Banco de Preguntas.");
+            toast.error("Error al acceder al Banco de Preguntas.");
         } finally {
             setLoading(false);
         }
@@ -89,7 +89,7 @@ export default function ExamGeneratorPage() {
 
     const handleSaveExam = async () => {
         if (!config.title || !config.classId) {
-            alert("Por favor completa el título y selecciona una clase.");
+            toast.warning("Por favor completa el título y selecciona una clase.");
             return;
         }
 
@@ -104,12 +104,11 @@ export default function ExamGeneratorPage() {
                 status: 'active',
                 type: 'exam'
             });
-            alert("¡Examen asignado exitosamente!");
+            toast.success("¡Examen asignado exitosamente!");
             setGeneratedQuestions([]);
             setConfig({ ...config, title: "" });
         } catch (error) {
-            console.error(error);
-            alert("Error al guardar.");
+            toast.error("Error al guardar el examen.");
         }
     };
 
@@ -161,7 +160,7 @@ export default function ExamGeneratorPage() {
                                 <label className="text-sm font-bold text-[var(--theme-text-secondary)] mb-1 block">Área de Conocimiento</label>
                                 <select
                                     value={config.subject}
-                                    onChange={e => setConfig({ ...config, subject: e.target.value as any })}
+                                    onChange={e => setConfig({ ...config, subject: e.target.value as CompetencyType })}
                                     className="w-full bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] rounded-lg px-4 py-2 text-[var(--theme-text-primary)] outline-none focus:border-brand-primary"
                                 >
                                     <option value="lectura_critica" className="bg-[var(--theme-bg-base)]">Lectura Crítica</option>

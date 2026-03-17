@@ -78,7 +78,7 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="flex min-h-screen bg-[var(--theme-bg-base)] text-[var(--theme-text-primary)] selection:bg-brand-primary/20 transition-colors duration-500" suppressHydrationWarning>
+        <div className="flex flex-col lg:flex-row min-h-screen bg-[var(--theme-bg-base)] text-[var(--theme-text-primary)] selection:bg-brand-primary/20 transition-colors duration-500" suppressHydrationWarning>
             {/* Ambient Background Layer */}
             <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
                 <div className="absolute top-[-15%] right-[-10%] w-[800px] h-[800px] bg-brand-primary/10 rounded-full blur-[160px] animate-pulse"></div>
@@ -106,18 +106,18 @@ export default function LoginPage() {
                         </h2>
                     </div>
 
-                    <p className="text-xl text-[var(--theme-text-secondary)] font-medium leading-relaxed max-w-md opacity-80">
+                    <p className="text-lg md:text-xl text-[var(--theme-text-secondary)] font-medium leading-relaxed max-w-md opacity-90">
                         La plataforma definitiva para el entrenamiento Saber Pro, rediseñada para ofrecerte una ventaja competitiva real.
                     </p>
 
                     <div className="flex flex-wrap gap-8 pt-6">
                         <div className="space-y-1">
-                            <p className="text-4xl font-black text-[var(--theme-text-primary)] tracking-tight">98%</p>
+                            <p className="text-3xl md:text-4xl font-black text-[var(--theme-text-primary)] tracking-tight">98%</p>
                             <p className="text-[9px] font-black uppercase tracking-widest text-brand-primary/60">Efectividad Predictiva</p>
                         </div>
-                        <div className="w-px h-12 bg-slate-200 dark:bg-white/10" />
+                        <div className="w-px h-12 bg-[var(--theme-border-soft)]" />
                         <div className="space-y-1">
-                            <p className="text-4xl font-black text-[var(--theme-text-primary)] tracking-tight">2.4x</p>
+                            <p className="text-3xl md:text-4xl font-black text-[var(--theme-text-primary)] tracking-tight">2.4x</p>
                             <p className="text-[9px] font-black uppercase tracking-widest text-brand-primary/60">Velocidad de Mejora</p>
                         </div>
                     </div>
@@ -171,7 +171,7 @@ export default function LoginPage() {
                     </div>
 
                     {/* Form Container: Advanced Glassmorphism */}
-                    <div className="bg-[var(--theme-bg-surface)] backdrop-blur-2xl border border-[var(--theme-border-soft)] p-8 sm:p-10 rounded-[2.5rem] shadow-xl dark:shadow-[var(--shadow-4k)] relative overflow-hidden group">
+                    <div className="bg-[var(--theme-bg-surface)] backdrop-blur-2xl border border-[var(--theme-border-soft)] p-7 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] shadow-xl dark:shadow-[var(--shadow-4k)] relative overflow-hidden group organic-border transition-all duration-500">
                         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-primary to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-700" />
 
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -207,15 +207,15 @@ export default function LoginPage() {
                                 </div>
                             </div>
 
-                            <Button
-                                type="submit"
-                                isLoading={isSubmitting}
-                                icon={ArrowRight}
-                                iconPosition="right"
-                                className="w-full h-15 mt-4 bg-brand-primary hover:bg-brand-primary/95 text-white shadow-xl shadow-brand-primary/20 text-[11px] font-black uppercase tracking-[0.35em] rounded-2xl transform hover:scale-[1.01] active:scale-[0.98] transition-all"
-                            >
-                                {isSubmitting ? "Autenticando..." : "Ingresar al Sistema"}
-                            </Button>
+                                <Button
+                                    type="submit"
+                                    isLoading={isSubmitting}
+                                    icon={ArrowRight}
+                                    iconPosition="right"
+                                    className="w-full h-14 mt-4 bg-brand-primary hover:bg-brand-primary/95 text-white shadow-xl shadow-brand-primary/20 text-[11px] font-black uppercase tracking-[0.35em] organic-border-reverse transform hover:scale-[1.01] active:scale-[0.98] transition-all"
+                                >
+                                    {isSubmitting ? "Autenticando..." : "Ingresar al Sistema"}
+                                </Button>
                         </form>
 
                         <div className="relative my-10">
@@ -232,7 +232,7 @@ export default function LoginPage() {
                             onClick={handleGoogleLogin}
                             disabled={googleLoading}
                             variant="outline"
-                            className="w-full h-12 text-[10px] font-black uppercase tracking-[0.25em] border-[var(--theme-border-soft)] bg-[var(--theme-bg-base)] hover:bg-[var(--theme-bg-surface)] text-[var(--theme-text-primary)] rounded-2xl transition-all"
+                            className="w-full h-12 text-[10px] font-black uppercase tracking-[0.25em] border-[var(--theme-border-soft)] bg-[var(--theme-bg-base)] hover:bg-[var(--theme-bg-surface)] text-[var(--theme-text-primary)] organic-border transition-all"
                             isLoading={googleLoading}
                         >
                             <Chrome size={18} className="mr-3" /> Google Autenticación

@@ -26,7 +26,7 @@ export default function CreditsPage() {
                     <Badge variant="ghost" className="mb-6 px-3 h-7 bg-slate-50 border border-slate-200 text-[10px] font-bold tracking-widest uppercase text-slate-600">
                         Transparencia
                     </Badge>
-                    <h1 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight mb-4">
+                    <h1 className="text-[var(--theme-text-primary)] tracking-tight mb-4 uppercase italic">
                         Acerca del <span className="text-brand-primary italic">Autor</span>
                     </h1>
                     <p className="text-lg text-theme-text-secondary font-medium max-w-xl mx-auto">

@@ -3,6 +3,7 @@ import { withSentryConfig } from "@sentry/nextjs";
 
 const nextConfig: NextConfig = {
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -23,15 +24,20 @@ const nextConfig: NextConfig = {
     ],
   },
   reactStrictMode: true,
+  typedRoutes: true,
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
+  },
   async headers() {
     const cspHeader = `
       default-src 'self';
-      script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.google-analytics.com https://*.googletagmanager.com https://challenges.cloudflare.com https://www.clarity.ms https://*.clarity.ms https://vercel.live https://*.vercel.live;
+      script-src 'self' 'unsafe-inline' https://*.google-analytics.com https://*.googletagmanager.com https://challenges.cloudflare.com https://*.clarity.ms https://*.vercel-scripts.com https://apis.google.com;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-      img-src 'self' blob: data: https://lh3.googleusercontent.com https://firebasestorage.googleapis.com https://images.unsplash.com https://*.google-analytics.com https://*.clarity.ms https://vercel.com https://*.vercel.com;
+      img-src 'self' blob: data: https://lh3.googleusercontent.com https://firebasestorage.googleapis.com https://images.unsplash.com https://*.google-analytics.com https://*.googletagmanager.com https://*.clarity.ms https://*.vercel.com;
       font-src 'self' https://fonts.gstatic.com;
-      connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.google-analytics.com https://*.googletagmanager.com https://challenges.cloudflare.com https://*.clarity.ms https://c.bing.com https://images.unsplash.com https://vercel.live https://*.vercel.live;
+      connect-src 'self' https://*.googleapis.com https://apis.google.com https://*.firebaseio.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://challenges.cloudflare.com https://*.clarity.ms https://*.bing.com https://*.vercel-live https://*.vercel-insights.com https://*.vercel-scripts.com https://images.unsplash.com;
       frame-src 'self' https://challenges.cloudflare.com https://*.firebaseapp.com;
+      worker-src 'self' blob:;
       object-src 'none';
       base-uri 'self';
       form-action 'self';
@@ -66,6 +72,10 @@ const nextConfig: NextConfig = {
           {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()',
+          },
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
           }
         ],
       },

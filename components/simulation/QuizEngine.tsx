@@ -388,7 +388,8 @@ export default function QuizEngine({ questions, moduleName, nextModule, timeLimi
                             </div>
                         </div>
 
-                        <p className="text-sm text-theme-text-secondary/80 mb-8 italic border-l-2 border-brand-primary/50 pl-4 text-left leading-relaxed" dangerouslySetInnerHTML={{ __html: `"${feedbackMessage}"` }}>
+                        <p className="text-sm text-theme-text-secondary/80 mb-8 italic border-l-2 border-brand-primary/50 pl-4 text-left leading-relaxed">
+                            {feedbackMessage.replace(/<\/?strong>/g, '')}
                         </p>
 
                         <Button

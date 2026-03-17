@@ -8,15 +8,19 @@ import "./saberpro-core.css";
 import RouteGuard from "@/components/auth/RouteGuard";
 import { AuthProvider } from "@/context/AuthContext";
 import RoleBasedNavigation from "@/components/layout/RoleBasedNavigation";
-import ConditionalFooter from "@/components/ui/ConditionalFooter";
-import CookieBanner from "@/components/legal/CookieBanner";
 import { BRAND_NAME_SPACED, APP_VERSION } from "@/lib/config";
 import PageTransition from "@/components/layout/PageTransition";
+import SupportChat from "@/components/ui/SupportChat";
+import DarkModeToggle from "@/components/ui/DarkModeToggle";
+import CookieBanner from "@/components/legal/CookieBanner";
+import SessionWatcher from "@/components/auth/SessionWatcher";
+import VersionUpdateGuard from "@/components/ui/VersionUpdateGuard";
 import AdminRoleSwitcher from "@/components/admin/AdminRoleSwitcher";
 import MobileTabBar from "@/components/layout/MobileTabBar";
-import DarkModeToggle from "@/components/ui/DarkModeToggle";
-import VersionUpdateGuard from "@/components/ui/VersionUpdateGuard";
-import SessionWatcher from "@/components/auth/SessionWatcher";
+import ConditionalFooter from "@/components/ui/ConditionalFooter";
+import NextTopLoader from 'nextjs-toploader';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // --- HYDRATION & EXTENSION CLEANUP (MAESTRO 2026) ---
 if (typeof window !== "undefined") {
@@ -24,7 +28,13 @@ if (typeof window !== "undefined") {
     const originalError = console.error;
     console.error = (...args) => {
         const msg = String(args[0]);
-        if (msg.includes("bis_skin_checked") || msg.includes("Hydration") || msg.includes("extra attributes")) return;
+        if (
+            msg.includes("bis_skin_checked") || 
+            msg.includes("Hydration") || 
+            msg.includes("extra attributes") ||
+            msg.includes("did not match") ||
+            msg.includes("Server-rendered HTML")
+        ) return;
         originalError.apply(console, args);
     };
 
@@ -100,12 +110,10 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F8FAFC" },
-    { media: "(prefers-color-scheme: dark)", color: "#0A0C0F" },
+    { media: "(prefers-color-scheme: light)", color: "#F9F8F6" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B0C0E" },
   ],
 };
-
-import SupportChat from "@/components/ui/SupportChat";
 
 export default function RootLayout({
   children,
@@ -114,10 +122,27 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning className="bg-[var(--theme-bg-base)]">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.clarity.ms" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms" />
+      </head>
       <body
         suppressHydrationWarning
-        className={`${inter.variable} ${geistMono.variable} ${cormorant.variable} antialiased min-h-screen flex flex-col bg-[var(--theme-bg-base)] transition-colors duration-500`}
+        className={`${inter.variable} ${geistMono.variable} ${cormorant.variable} font-sans antialiased min-h-screen flex flex-col bg-[var(--theme-bg-base)] transition-colors duration-500`}
       >
+        <NextTopLoader 
+          color="var(--brand-primary)"
+          showSpinner={false}
+          crawl={true}
+          height={3}
+        />
         <div className="fog-bg" suppressHydrationWarning />
         <AuthProvider>
           <SessionWatcher />
@@ -142,15 +167,29 @@ export default function RootLayout({
         <Clarity />
         <Toaster />
         <OfflineIndicator />
+        <Analytics />
+        <SpeedInsights />
         <script
           dangerouslySetInnerHTML={{
             __html: `
               if ('serviceWorker' in navigator) {
+                // Surgical cache clear for v4.1.30 update
+                const VERSION_KEY = 'SABERPRO_CLEANUP_v4.1.30';
+                if (!localStorage.getItem(VERSION_KEY)) {
+                  caches.keys().then(keys => Promise.all(keys.map(key => caches.delete(key))));
+                  navigator.serviceWorker.getRegistrations().then(regs => {
+                    for(let reg of regs) reg.unregister();
+                  });
+                  localStorage.setItem(VERSION_KEY, 'true');
+                  console.log('Cleanup performed. Reloading...');
+                  window.location.reload();
+                }
+
                 window.addEventListener('load', function() {
                   navigator.serviceWorker.register('/sw.js').then(function(reg) {
-                    // SW Registered
+                    console.log('SW Registered');
                   }).catch(function(err) {
-                    // SW Registration failed
+                    console.error('SW Registration failed:', err);
                   });
                 });
               }

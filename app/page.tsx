@@ -9,10 +9,12 @@ import { Badge } from "@/components/ui/Badge";
 import { BRAND_YEAR } from "@/lib/config";
 import { Logo } from "@/components/ui/Logo";
 import ProFooter from "@/components/ui/ProFooter";
-import NumberTicker from "@/components/ui/NumberTicker";
-import { StepCard } from "@/components/ui/StepCard";
-import { FeatureValueCard } from "@/components/ui/FeatureValueCard";
-import { GridBackground } from "@/components/ui/GridBackground";
+import dynamic from "next/dynamic";
+
+const NumberTicker = dynamic(() => import("@/components/ui/NumberTicker"), { ssr: false });
+const StepCard = dynamic(() => import("@/components/ui/StepCard").then(mod => mod.StepCard), { ssr: false });
+const FeatureValueCard = dynamic(() => import("@/components/ui/FeatureValueCard").then(mod => mod.FeatureValueCard), { ssr: false });
+const GridBackground = dynamic(() => import("@/components/ui/GridBackground").then(mod => mod.GridBackground), { ssr: false });
 import SmartNav from "@/components/layout/SmartNav";
 
 export default function Home() {
@@ -44,7 +46,7 @@ export default function Home() {
               <span className="text-[9px] font-bold uppercase tracking-widest text-[var(--theme-text-secondary)]">Convocatoria {BRAND_YEAR} Abierta</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-academic font-bold tracking-tight text-[var(--theme-text-primary)] leading-[1.05] text-balance">
+            <h1 className="text-4xl md:text-6xl font-academic font-bold tracking-tight text-[var(--theme-text-primary)] leading-[1.05] text-balance">
               Tu faro hacia el <br />
               <span className="text-brand-primary italic">Éxito Académico</span>
             </h1>
@@ -53,7 +55,7 @@ export default function Home() {
               <p className="text-lg md:text-xl font-medium text-[var(--theme-text-secondary)] leading-relaxed font-academic italic">
                 La niebla se disipa. Respira hondo. Estás exactamente donde necesitas estar para dominar tu futuro.
               </p>
-              <div className="flex flex-wrap justify-center gap-4 text-[10px] font-bold uppercase tracking-widest text-[var(--theme-text-tertiary)]">
+              <div className="flex flex-wrap justify-center gap-4 text-[10px] font-bold uppercase tracking-widest text-[var(--theme-text-secondary)] opacity-70">
                 <span className="flex items-center gap-1.5"><Brain size={13} className="text-brand-primary" /> IA Empática</span>
                 <span className="flex items-center gap-1.5"><Compass size={13} className="text-brand-primary" /> Guía de Carrera</span>
                 <span className="flex items-center gap-1.5"><Sparkles size={13} className="text-brand-primary" /> Cero Estrés</span>
@@ -75,7 +77,7 @@ export default function Home() {
                 </Link>
               )}
               <Link href="/methodology" className="w-full sm:w-auto">
-                <Button variant="outline" size="lg" className="w-full h-14 px-10 text-[10px] font-bold uppercase tracking-[0.2em] organic-border border-[var(--theme-border-soft)] hover:bg-white/50 transition-all text-[var(--theme-text-secondary)] active:scale-95">
+                <Button variant="outline" size="lg" className="w-full h-14 px-10 text-[10px] font-bold uppercase tracking-[0.2em] organic-border border-[var(--theme-border-soft)] hover:bg-[var(--theme-bg-muted)] transition-all text-[var(--theme-text-secondary)] active:scale-95">
                   Filosofía
                 </Button>
               </Link>
@@ -240,7 +242,10 @@ export default function Home() {
                 Únete a la nueva generación de estudiantes que transforman su futuro con tecnología.
               </p>
               <Link href="/register">
-                <Button variant="primary" className="h-12 px-8 bg-white text-brand-primary hover:bg-slate-50 font-bold text-[10px] uppercase tracking-widest rounded-lg shadow-xl border-none">
+                <Button 
+                    variant="outline"
+                    className="h-12 px-8 bg-white text-brand-primary hover:bg-white/90 active:scale-95 transition-all font-bold text-[10px] uppercase tracking-widest rounded-lg shadow-xl border-none"
+                >
                   Crear mi cuenta gratis
                 </Button>
               </Link>

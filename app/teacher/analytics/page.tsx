@@ -6,7 +6,16 @@ import { BarChart3, TrendingUp, Users, AlertTriangle, Lock, Crown, ChevronRight,
 import { db } from "@/lib/firebase";
 import { collection, query, where, getDocs, getCountFromServer } from "firebase/firestore";
 import Link from "next/link";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
+import { toast } from "sonner";
+import dynamic from 'next/dynamic';
+
+const ResponsiveContainer = dynamic(() => import('recharts').then((mod) => mod.ResponsiveContainer), { ssr: false });
+const LineChart = dynamic(() => import('recharts').then((mod) => mod.LineChart), { ssr: false });
+const Line = dynamic(() => import('recharts').then((mod) => mod.Line), { ssr: false });
+const XAxis = dynamic(() => import('recharts').then((mod) => mod.XAxis), { ssr: false });
+const YAxis = dynamic(() => import('recharts').then((mod) => mod.YAxis), { ssr: false });
+const CartesianGrid = dynamic(() => import('recharts').then((mod) => mod.CartesianGrid), { ssr: false });
+const Tooltip = dynamic(() => import('recharts').then((mod) => mod.Tooltip), { ssr: false });
 
 export default function TeacherAnalyticsPage() {
     const { user, subscription } = useAuth();
@@ -88,8 +97,7 @@ export default function TeacherAnalyticsPage() {
 
             doc.save("reporte_clase_elite.pdf");
         } catch (e) {
-            console.error(e);
-            alert("Error generando reporte.");
+            toast.error("Error al generar el reporte.");
         } finally {
             setLoading(false);
         }

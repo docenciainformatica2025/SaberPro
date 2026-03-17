@@ -99,6 +99,7 @@ function SidebarContent({ navGroups, pathname, onClose }: { navGroups: any[], pa
                     </div>
                 </div>
                 {/* Status Indicator sutil */}
+                {/* Status Indicator sutil */}
                 <div className="mt-4 flex items-center gap-2 px-1">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.5)] animate-pulse" />
                     <span className="text-[10px] font-black text-[var(--theme-text-tertiary)] uppercase tracking-[0.15em]">Sistema Certificado</span>
@@ -123,7 +124,7 @@ function SidebarContent({ navGroups, pathname, onClose }: { navGroups: any[], pa
                                         className={`
                                             flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 group
                                             ${isActive
-                                                ? "bg-brand-primary text-white shadow-[0_0_15px_rgba(30,64,175,0.3)] font-semibold"
+                                                ? "bg-brand-primary text-white shadow-lg shadow-brand-primary/20 font-semibold"
                                                 : "text-[var(--theme-text-secondary)] hover:bg-[var(--theme-text-primary)]/5 hover:text-[var(--theme-text-primary)]"
                                             }
                                         `}

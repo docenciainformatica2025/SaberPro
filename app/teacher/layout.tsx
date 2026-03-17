@@ -78,9 +78,9 @@ export default function TeacherLayout({ children }: { children: React.ReactNode 
                 <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[var(--theme-secondary)]/[0.03] dark:bg-[var(--theme-secondary)]/5 rounded-full blur-[120px] mix-blend-screen" />
             </div>
 
-            {/* Main Content Area - Full Screen Canvas */}
-            <div className="relative z-10 w-[95%] max-w-[1800px] mx-auto">
-                <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 ease-out">
+            {/* Main Content Area - Canvas Maestro */}
+            <div className="relative z-10 w-[96%] max-w-[1800px] mx-auto py-8 md:py-12">
+                <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000 ease-out fill-mode-both">
                     {children}
                 </div>
             </div>

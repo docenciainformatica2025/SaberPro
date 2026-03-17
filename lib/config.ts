@@ -20,3 +20,5 @@ export const CONTACT_EMAIL = "sinapcoderia@gmail.com";
 export const SALES_EMAIL = "sinapcoderia@gmail.com";
 export const SUPPORT_WHATSAPP = "573052357890";
 export const PAYMENTS_WHATSAPP = "573052357890";
+export const NEQUI_NUMBER = "3147940540";
+export const DIRECT_CONTACT_NUMBER = "3157940540";

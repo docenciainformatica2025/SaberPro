@@ -88,16 +88,16 @@ export default function CookieBanner() {
     return (
         <>
             {/* STICKY BANNER */}
-            <div className="fixed bottom-0 left-0 w-full z-50 p-4 md:p-6 animate-in slide-in-from-bottom-full duration-700 pointer-events-none">
-                <div className="max-w-7xl mx-auto metallic-card bg-[var(--theme-bg-surface)]/95 backdrop-blur-xl border border-[var(--theme-border-soft)] rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] p-6 md:flex items-center gap-8 pointer-events-auto">
+            <div className="fixed bottom-0 left-0 w-full z-50 p-3 sm:p-4 md:p-6 animate-in slide-in-from-bottom-full duration-700 pointer-events-none">
+                <div className="max-w-7xl mx-auto metallic-card bg-[var(--theme-bg-surface)]/95 backdrop-blur-xl border border-[var(--theme-border-soft)] rounded-2xl sm:rounded-3xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] p-4 sm:p-6 md:flex items-center gap-8 pointer-events-auto transition-all">
 
                     {/* Icon & Text */}
-                    <div className="flex-1 space-y-3 mb-6 md:mb-0">
-                        <div className="flex items-center gap-3 mb-2">
-                            <div className="p-2 bg-brand-primary/10 rounded-lg text-brand-primary shadow-inner">
-                                <Cookie size={24} />
+                    <div className="flex-1 space-y-2 sm:space-y-3 mb-4 sm:mb-6 md:mb-0">
+                        <div className="flex items-center gap-3 mb-1 sm:mb-2">
+                            <div className="p-1.5 sm:p-2 bg-brand-primary/10 rounded-lg text-brand-primary shadow-inner">
+                                <Cookie className="w-5 h-5 sm:w-6 sm:h-6" />
                             </div>
-                            <h3 className="text-lg font-bold text-[var(--theme-text-primary)]">Privacidad y Cookies</h3>
+                            <h3 className="text-base sm:text-lg font-bold text-[var(--theme-text-primary)]">Privacidad y Cookies</h3>
                         </div>
                         <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">
                             Potenciamos tu aprendizaje con tecnología propia y de terceros. Acepta el uso de cookies para una experiencia personalizada y segura conforme a nuestra
@@ -111,19 +111,19 @@ export default function CookieBanner() {
                     <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
                         <button
                             onClick={() => setShowPreferences(true)}
-                            className="text-[10px] font-black text-[var(--theme-text-tertiary)] hover:text-[var(--theme-text-primary)] uppercase tracking-widest transition-all px-4"
+                            className="hidden sm:block text-[10px] font-black text-[var(--theme-text-tertiary)] hover:text-[var(--theme-text-primary)] uppercase tracking-widest transition-all px-4"
                         >
-                            Ver Preferencias
+                            Preferencias
                         </button>
                         <button
                             onClick={rejectNonEssential}
-                            className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-[var(--theme-border-soft)] text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] hover:bg-[var(--theme-bg-base)] font-bold text-xs transition-all"
+                            className="w-full sm:w-auto px-5 py-2 sm:py-2.5 rounded-xl border border-[var(--theme-border-soft)] text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] hover:bg-[var(--theme-bg-base)] font-bold text-[10px] sm:text-xs transition-all"
                         >
                             RECHAZAR
                         </button>
                         <button
                             onClick={acceptAll}
-                            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-brand-primary text-white font-bold text-xs hover:shadow-[0_0_20px_rgba(var(--brand-primary-rgb),0.4)] hover:scale-105 transition-all shadow-lg active:scale-95"
+                            className="w-full sm:w-auto px-6 py-2 sm:py-2.5 rounded-xl bg-brand-primary text-white font-bold text-[10px] sm:text-xs hover:shadow-[0_0_20px_rgba(var(--brand-primary-rgb),0.4)] hover:scale-105 transition-all shadow-lg active:scale-95 organic-border-reverse"
                         >
                             ACEPTAR TODAS
                         </button>

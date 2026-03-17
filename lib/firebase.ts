@@ -36,6 +36,6 @@ export const FIREBASE_READY = isConfigValid && !!app;
 export { app, auth, db };
 
 // Initialize analytics only on client side and if supported
-export const analytics = typeof window !== 'undefined' && app ?
-    isSupported().then(yes => yes ? getAnalytics(app) : null)
+export const analytics = typeof window !== 'undefined' && app && firebaseConfig.appId ?
+    isSupported().then(yes => yes ? getAnalytics(app!) : null)
     : null;

@@ -19,18 +19,18 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 )}
                 <div className="relative group">
                     {Icon && (
-                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-theme-text-secondary group-focus-within:text-brand-primary transition-colors duration-300">
+                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--theme-text-secondary)] group-focus-within:text-brand-primary transition-colors duration-200">
                             <Icon size={18} strokeWidth={2.5} />
                         </div>
                     )}
                     <input
                         type={type}
                         className={cn(
-                            "w-full bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] rounded-[var(--radius-md)] px-5 py-4 text-[var(--theme-text-primary)] placeholder-[var(--theme-text-tertiary)] outline-none transition-all duration-300 font-medium",
-                            "hover:border-[var(--theme-text-tertiary)] focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10",
+                            "w-full bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] rounded-[var(--radius-md)] px-5 py-4 text-[var(--theme-text-primary)] placeholder-[var(--theme-text-tertiary)] outline-none transition-all duration-200 font-medium",
+                            "hover:border-[var(--theme-text-secondary)] focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10",
                             "disabled:opacity-50 disabled:cursor-not-allowed",
                             Icon && "pl-12",
-                            error && "border-red-500 focus:border-red-500 focus:ring-red-500/10",
+                            error && "border-brand-error focus:border-brand-error focus:ring-brand-error/10",
                             className
                         )}
                         ref={ref}
@@ -38,8 +38,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     />
                 </div>
                 {error && (
-                    <p className="text-[11px] font-bold text-red-500 mt-1.5 ml-1 animate-in fade-in slide-in-from-top-1 flex items-center gap-1.5 uppercase tracking-wide">
-                        <span className="w-1 h-1 rounded-full bg-red-500"></span>
+                    <p className="text-[11px] font-bold text-brand-error mt-1.5 ml-1 animate-in fade-in slide-in-from-top-1 flex items-center gap-1.5 uppercase tracking-wide">
+                        <span className="w-1.5 h-1.5 rounded-full bg-brand-error"></span>
                         {error}
                     </p>
                 )}

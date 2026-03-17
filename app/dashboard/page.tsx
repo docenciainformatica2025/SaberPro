@@ -4,12 +4,9 @@ import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
-    Home,
-    Map as MapIcon,
-    Award,
     Gift,
     Sun,
-    Flag,
+    Moon,
     ChevronRight,
     Sparkles,
     Shield
@@ -30,13 +27,13 @@ const HikerIllustration = () => (
                 </linearGradient>
             </defs>
             <path d="M80,80 L20,100 L100,100 Z" fill="url(#hillGrad)" className="animate-pulse" />
-            <circle cx="60" cy="40" r="8" fill="#fca5a5" className="animate-bounce" style={{ animationDuration: '3s' }} />
+            <circle cx="60" cy="40" r="8" fill="var(--brand-accent)" className="animate-bounce" style={{ animationDuration: '3s' }} />
             <rect x="55" y="48" width="10" height="20" fill="var(--brand-primary)" rx="2" />
-            <path d="M55,60 L45,80" stroke="#fca5a5" strokeWidth="3" strokeLinecap="round" />
-            <path d="M65,60 L75,80" stroke="#fca5a5" strokeWidth="3" strokeLinecap="round" />
-            <path d="M55,50 L40,40" stroke="#fca5a5" strokeWidth="3" strokeLinecap="round" />
+            <path d="M55,60 L45,80" stroke="var(--brand-accent)" strokeWidth="3" strokeLinecap="round" />
+            <path d="M65,60 L75,80" stroke="var(--brand-accent)" strokeWidth="3" strokeLinecap="round" />
+            <path d="M55,50 L40,40" stroke="var(--brand-accent)" strokeWidth="3" strokeLinecap="round" />
             <line x1="75" y1="40" x2="75" y2="90" stroke="var(--brand-primary)" strokeWidth="1.5" opacity="0.3" />
-            <path d="M75,30 L90,35 L75,40 Z" fill="#f97316" className="animate-pulse" />
+            <path d="M75,30 L90,35 L75,40 Z" fill="var(--brand-accent)" className="animate-pulse" />
         </svg>
     </div>
 );
@@ -60,12 +57,14 @@ export default function DashboardPage() {
                 const dashboardStats = await StudentService.getDashboardStats(user.uid);
                 if (dashboardStats) {
                     setStats(dashboardStats);
-                    // Derivate challenge based on stats
-                    const dailyChallenge = await StudentService.getDailyChallenge(user.uid, dashboardStats);
-                    setChallenge(dailyChallenge);
+                    
+                    // Fetch challenge in background without blocking stats display
+                    StudentService.getDailyChallenge(user.uid, dashboardStats)
+                        .then(dailyChallenge => setChallenge(dailyChallenge))
+                        .catch(() => { /* Silent fail for challenge */ });
                 }
             } catch (err) {
-                console.error("Dashboard load error", err);
+                // Silent dashboard load error
                 toast.error("Error al cargar estadísticas");
             } finally {
                 setIsLoadingStats(false);
@@ -87,14 +86,24 @@ export default function DashboardPage() {
 
             <div className="px-6 pt-10 pb-4 flex items-center justify-between relative z-10 animate-in fade-in slide-in-from-top-4 duration-1000">
                 <div className="space-y-0.5">
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--theme-text-tertiary)]">Continuar entrenamiento</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--theme-text-secondary)] opacity-60">Continuar entrenamiento</p>
                     <h1 className="text-3xl md:text-3xl font-black text-[var(--theme-text-primary)] tracking-tight leading-none font-academic">
                         Hola, <span className="text-gradient-maestro">{userName}</span>
                     </h1>
                 </div>
-                <div className="w-8 h-8 flex items-center justify-center bg-[var(--theme-bg-surface)] shadow-sm rounded-lg border border-[var(--theme-border-soft)] group active:scale-95 transition-all">
-                    <Sun className="text-yellow-500/80" size={16} strokeWidth={2} />
-                </div>
+                <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="w-10 h-10 rounded-xl border border-[var(--theme-border-soft)]"
+                    onClick={() => {
+                        const isDark = document.documentElement.classList.toggle('dark');
+                        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                    }}
+                    aria-label="Cambiar tema"
+                >
+                    <Sun className="text-yellow-500/80 dark:hidden" size={18} strokeWidth={2.5} />
+                    <Moon className="hidden dark:block text-blue-400" size={18} strokeWidth={2.5} />
+                </Button>
             </div>
 
             <div className="px-6 space-y-8">
@@ -170,7 +179,7 @@ export default function DashboardPage() {
                 {/* Challenge Section - More Emotion */}
                 <div className="bg-transparent space-y-4">
                     <div className="flex items-center justify-between px-2">
-                        <h3 className="text-[11px] font-black text-slate-400 dark:text-white/40 uppercase tracking-[0.4em]">Propuesta Diaria</h3>
+                        <h3 className="text-[11px] font-black text-slate-400 dark:text-white/40 uppercase tracking-[0.4em] font-academic">Propuesta Diaria</h3>
                         <div className="flex gap-1">
                             <div className="w-1 h-1 rounded-full bg-brand-primary" />
                             <div className="w-1 h-1 rounded-full bg-brand-primary/40" />

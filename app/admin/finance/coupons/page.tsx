@@ -7,8 +7,8 @@ import { Ticket, Plus, Trash2, Copy, CheckCircle, Clock, AlertCircle, Loader2 } 
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
 import { toast } from "sonner";
+import AIProcessingLoader from "@/components/ui/AIProcessingLoader";
 
 interface Coupon {
     id: string;
@@ -70,14 +70,12 @@ export default function CouponsAdminPage() {
         setGenerating(true);
         try {
             const description = `Promo Admin - ${new Date().toLocaleDateString()}`;
-            console.log("Generando", count, "códigos para plan", plan, "-", description);
             
             await generateCoupons(count, plan, description);
             
             toast.success(`${count} códigos generados correctamente`);
             await fetchCoupons();
         } catch (e: any) {
-            console.error("Error generando códigos:", e);
             toast.error("Error al generar códigos: " + (e?.message || "Desconocido"));
         } finally {
             setGenerating(false);

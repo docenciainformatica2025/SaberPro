@@ -92,12 +92,11 @@ function SimulationSelectionContent() {
                         const data = assignDoc.data();
                         router.push(`/simulation/${data.subject}?assignmentId=${assignmentId}`);
                     } else {
-                        alert("El examen asignado no existe o ha sido eliminado.");
+                        toast.error("El examen asignado no existe o ha sido eliminado.");
                         router.push('/dashboard');
                     }
                 } catch (e) {
-                    console.error(e);
-                    alert("Error al cargar examen. Revisa tu conexión.");
+                    toast.error("Error al cargar examen. Revisa tu conexión.");
                     setLoadingAssignment(false);
                 }
             }

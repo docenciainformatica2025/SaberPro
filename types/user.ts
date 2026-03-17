@@ -23,6 +23,7 @@ export interface UserProfile {
     completedProfile?: boolean;
     gamification?: {
         xp?: number;
+        points?: number;
         streak?: {
             current: number;
             lastActiveDate: string | null;
@@ -36,6 +37,6 @@ export interface UserProfile {
         type: string;
         ipHash: string;
     };
-    createdAt?: any;
+    createdAt?: Timestamp | Date | number;
     [key: string]: any; // Allow for extensibility
 }

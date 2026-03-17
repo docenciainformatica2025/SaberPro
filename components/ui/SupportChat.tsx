@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { CONTACT_EMAIL, SUPPORT_WHATSAPP, PAYMENTS_WHATSAPP } from "@/lib/config";
+import { CONTACT_EMAIL, SUPPORT_WHATSAPP, PAYMENTS_WHATSAPP, NEQUI_NUMBER, DIRECT_CONTACT_NUMBER } from "@/lib/config";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { saveGabrielaLead } from "@/services/marketing/leads.service";
@@ -101,7 +101,7 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
         processBotResponse(option.value);
     };
 
-    const addBotMessage = (content: string, type: 'text' | 'options' = 'text', options?: any[]) => {
+    const addBotMessage = (content: string, type: 'text' | 'options' = 'text', options?: Message['options']) => {
         const msg: Message = {
             id: Date.now().toString(),
             role: 'bot',
@@ -170,9 +170,9 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                         { label: "🏠 Menú", value: "restart" }
                     ]);
                 } else {
-                    addBotMessage("El Plan PRO te otorga la ventaja competitiva definitiva: IA explicativa en cada pregunta, simulacros ilimitados y reportes detallados por competencia. ¿Quieres conocer los precios actuales?", 'options', [
+                    addBotMessage("El Plan PRO es nuestra experiencia élite para asegurar tu éxito. 🚀\n\nBeneficios exclusivos:\n- 🤖 IA Explicativa: Análisis profundo de cada respuesta.\n- 🎯 Simulacros Ilimitados: Entrena sin restricciones.\n- 📊 Analítica Predictiva: Reportes de competencia avanzados.\n- 💎 Contenido Total: Acceso a toda la biblioteca SaberPro.\n- 🚀 Soporte VIP 24/7: Atención prioritaria constante.\n\n¿Te gustaría ver los precios o prefieres un upgrade inmediato?", 'options', [
                         { label: "💎 Ver Planes y Precios", value: "pricing" },
-                        { label: "📲 Consultar en WhatsApp", value: "whatsapp_payment" },
+                        { label: "📲 Upgrade por Nequi", value: "whatsapp_payment" },
                         { label: "🏠 Menú", value: "restart" }
                     ]);
                 }
@@ -185,10 +185,18 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                     { label: "🙋 Soporte VIP", value: "humano_flow" },
                     { label: "🏠 Menú", value: "restart" }
                 ] : [
-                    { label: "📲 Datos para Nequi", value: "whatsapp_payment" },
+                    { label: "📲 Instrucciones Nequi", value: "whatsapp_payment" },
                     { label: "💳 Pagar con Tarjeta", value: "pricing" },
                     { label: "🏠 Menú", value: "restart" }
                 ]);
+            } else if (value === "whatsapp_payment") {
+                addBotMessage(`¡Excelente decisión, ${userName}! 💎 Para activar tu Plan PRO vía Nequi:\n\n1. Transfiere al número: **${NEQUI_NUMBER}**.\n2. Envía el comprobante al WhatsApp de asistencia: **${SUPPORT_WHATSAPP.replace('57', '')}**.\n3. Recibirás tu código de activación Pro al instante.\n\n¿Te gustaría que te redirija a WhatsApp para enviar el comprobante?`, 'options', [
+                    { label: "📲 Enviar Comprobante", value: "whatsapp_support" },
+                    { label: "🏠 Menú Principal", value: "restart" }
+                ]);
+            } else if (value === "pricing") {
+                addBotMessage(`¡Perfecto! Te redirijo a nuestra página de planes donde podrás ver todas las opciones y beneficios detallados que te comenté. ✨`);
+                setTimeout(() => window.location.href = "/pricing", 1500);
             } else if (value === "progress") {
                 addBotMessage(`¡Entendido! Te estoy redirigiendo a tu análisis de progreso... 📈`);
                 setTimeout(() => window.location.href = "/dashboard", 1000);
@@ -334,63 +342,63 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                     id="gabriela-trigger"
                     onClick={() => setIsOpen(!isOpen)}
                     className={cn(
-                        "fixed bottom-28 right-4 z-[999] w-14 h-14 rounded-2xl bg-brand-primary text-white shadow-2xl flex items-center justify-center hover:scale-110 transition-all active:scale-95 md:w-16 md:h-16 md:bottom-8 md:right-8 overflow-hidden border-4 border-white dark:border-slate-800 group",
+                        "fixed bottom-28 right-4 z-[999] w-14 h-14 rounded-2xl bg-brand-primary text-white shadow-4k flex items-center justify-center hover:scale-110 transition-all active:scale-95 md:w-16 md:h-16 md:bottom-8 md:right-8 overflow-hidden border-4 border-[var(--theme-bg-surface)] group animate-pulse",
                         isOpen && "scale-0 opacity-0 pointer-events-none"
                     )}
                 >
                     <img 
-                        src="/gabriela-avatar.png?v=2" 
+                        src="/gabriela-avatar-3d.png" 
                         alt="Gabriela" 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform group-hover:scale-110"
                     />
-                    <span className="absolute top-1 right-1 w-3.5 h-3.5 bg-brand-success rounded-full border-2 border-white dark:border-slate-800 animate-pulse" />
+                    <span className="absolute top-0 right-0 w-3.5 h-3.5 bg-brand-success rounded-full border-2 border-[var(--theme-bg-surface)] shadow-[0_0_10px_rgba(34,197,94,0.5)] z-20" />
                     
                     {/* Floating Help Label */}
-                    <div className="absolute -top-12 right-0 bg-brand-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-xl animate-bounce md:group-hover:flex">
-                        ¿Tienes dudas? ¡Pregúntame!
+                    <div className="absolute -top-14 right-0 bg-brand-primary text-black text-[9px] font-black px-4 py-2 rounded-xl whitespace-nowrap shadow-4k animate-bounce md:group-hover:flex uppercase tracking-widest border border-white/20">
+                        ¿Hablamos?
                         <div className="absolute bottom-[-4px] right-6 w-2 h-2 bg-brand-primary rotate-45" />
                     </div>
                 </button>
             )}
 
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
                 {isOpen && (
                     <motion.div 
-                        initial={isGlobal ? { opacity: 0, scale: 0.95, y: 30 } : { opacity: 1 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.95, y: 30 }}
+                        initial={isGlobal ? { opacity: 0, scale: 0.9, y: 40, filter: "blur(10px)" } : { opacity: 1 }}
+                        animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+                        exit={{ opacity: 0, scale: 0.9, y: 40, filter: "blur(10px)" }}
+                        transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
                         className={cn(
-                            "z-[500] flex flex-col bg-[var(--theme-bg-surface)] shadow-2xl overflow-hidden border border-brand-primary/10 antialiased",
+                            "z-[500] flex flex-col bg-[var(--theme-bg-surface)]/80 shadow-4k overflow-hidden border border-brand-primary/10 antialiased backdrop-blur-3xl organic-border",
                             isGlobal 
-                                ? "fixed inset-0 md:inset-auto md:bottom-24 md:right-8 w-full md:w-[400px] h-[100dvh] md:h-[650px] md:max-h-[85vh] md:rounded-[2rem] backdrop-blur-xl" 
+                                ? "fixed inset-0 md:inset-auto md:bottom-28 md:right-8 w-full md:w-[420px] h-[100dvh] md:h-[700px] md:max-h-[85vh] md:rounded-[2.5rem]" 
                                 : "w-full h-full rounded-2xl"
                         )}
                         id="gabriela-window"
                     >
-                        {/* Persistent Header */}
-                        <div className="shrink-0 bg-brand-primary p-5 text-white flex justify-between items-center relative overflow-hidden z-20">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 animate-pulse pointer-events-none" />
-                            <div className="flex items-center gap-3 relative z-10">
-                                <div className="w-11 h-11 rounded-2xl bg-white/20 flex items-center justify-center relative shadow-inner rotate-3 overflow-hidden border border-white/10 pointer-events-none">
+                        {/* Persistent Header - Maestro Style */}
+                        <div className="shrink-0 bg-brand-primary p-6 text-black flex justify-between items-center relative overflow-hidden z-20 shadow-xl">
+                            <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -mr-20 -mt-20 animate-pulse pointer-events-none" />
+                            <div className="flex items-center gap-4 relative z-10">
+                                <div className="w-12 h-12 rounded-xl bg-white/20 flex-shrink-0 overflow-hidden border border-white/30 shadow-inner group-hover:scale-110 transition-transform">
                                     <img 
-                                        src="/gabriela-avatar.png?v=2" 
+                                        src="/gabriela-avatar-3d.png" 
                                         alt="Gabriela" 
-                                        className="w-full h-full object-cover -rotate-3 scale-110"
+                                        className="w-full h-full object-cover"
                                     />
-                                    <div className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-brand-success border-2 border-brand-primary rounded-full" />
                                 </div>
                                 <div>
-                                    <h3 className="font-black text-sm uppercase tracking-tighter">Gabriela</h3>
-                                    <p className="text-[9px] font-bold opacity-80 uppercase tracking-widest flex items-center gap-1">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-brand-success animate-pulse" />
-                                        En línea
+                                    <h3 className="font-black text-lg uppercase tracking-tightest leading-none mb-1 font-academic italic">Gabriela</h3>
+                                    <p className="text-[10px] font-black opacity-60 uppercase tracking-[0.2em] flex items-center gap-2">
+                                        <span className="w-2 h-2 rounded-full bg-brand-success shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
+                                        Sincronizada
                                     </p>
                                 </div>
                             </div>
                             <button 
                                 onClick={() => setIsOpen(false)}
-                                className="bg-white/10 p-2.5 rounded-xl hover:bg-white/20 transition-all active:scale-90"
-                                aria-label="Cerrar chat"
+                                aria-label="Cerrar chat de soporte"
+                                className="bg-black/5 hover:bg-black/10 p-3 rounded-2xl transition-all"
                             >
                                 <X size={20} />
                             </button>
@@ -399,40 +407,40 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                         {/* Flexible Scroll Area */}
                         <div 
                             ref={scrollRef}
-                            className="flex-grow min-h-0 overflow-y-auto p-5 scroll-smooth custom-scrollbar bg-gradient-to-b from-[var(--theme-bg-base)]/20 directly via-transparent to-[var(--theme-bg-surface)]/20"
+                            className="flex-grow min-h-0 overflow-y-auto p-6 scroll-smooth d-flex flex-col gap-8 custom-scrollbar bg-gradient-to-b from-[var(--theme-bg-base)]/50 to-[var(--theme-bg-surface)]/20"
                             style={{ WebkitOverflowScrolling: 'touch' }}
                         >
-                            <div className="space-y-6 flex flex-col">
+                            <div className="space-y-8 flex flex-col">
                                 {messages.map((msg, idx) => (
                                     <div key={msg.id || idx} className={cn(
-                                        "flex gap-3 items-start animate-in fade-in slide-in-from-bottom-2 duration-300",
+                                        "flex gap-4 items-start animate-in fade-in slide-in-from-bottom-2 duration-500",
                                         msg.role === 'user' && "flex-row-reverse"
                                     )}>
                                         {msg.role === 'bot' && (
-                                            <div className="w-8 h-8 rounded-xl bg-brand-primary/10 flex-shrink-0 overflow-hidden mt-1 border border-brand-primary/5">
-                                                <img src="/gabriela-avatar.png?v=2" alt="G" className="w-full h-full object-cover" />
+                                            <div className="w-10 h-10 rounded-xl bg-brand-primary/5 flex-shrink-0 overflow-hidden mt-1 border border-[var(--theme-border-soft)] shadow-inner">
+                                                <img src="/gabriela-avatar-3d.png" alt="Avatar de Gabriela" className="w-full h-full object-cover" />
                                             </div>
                                         )}
                                         <div className={cn(
-                                            "flex flex-col gap-1.5 max-w-[85%]",
+                                            "flex flex-col gap-2.5 max-w-[85%]",
                                             msg.role === 'user' && "items-end"
                                         )}>
                                             <div className={cn(
-                                                "p-4 rounded-2xl text-[13px] font-medium leading-relaxed",
+                                                "p-5 rounded-3xl text-[13px] font-medium leading-[1.6] shadow-2xl",
                                                 msg.role === 'bot' 
-                                                    ? "bg-white dark:bg-slate-900 border border-[var(--theme-border-soft)] rounded-tl-none shadow-sm" 
-                                                    : "bg-brand-primary text-white rounded-tr-none shadow-lg shadow-brand-primary/20"
+                                                    ? "bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] rounded-tl-none italic text-[var(--theme-text-primary)]" 
+                                                    : "bg-brand-primary text-[var(--brand-primary-fg, black)] rounded-tr-none font-black shadow-brand-primary/20"
                                             )}>
                                                 {msg.content}
                                             </div>
                                             
                                             {msg.type === 'options' && msg.options && (
-                                                <div className="flex flex-wrap gap-2 mt-1">
+                                                <div className="flex flex-wrap gap-2.5 mt-2">
                                                     {msg.options.map((opt, i) => (
                                                         <button 
                                                             key={i}
                                                             onClick={() => handleOptionClick(opt)}
-                                                            className="text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-xl border border-brand-primary/10 text-brand-primary hover:bg-brand-primary hover:text-white transition-all bg-white dark:bg-slate-900 shadow-sm"
+                                                            className="text-[10px] font-black uppercase tracking-[0.2em] px-5 py-3 rounded-2xl border border-[var(--theme-border-medium)] text-[var(--theme-text-primary)] hover:bg-brand-primary hover:text-[var(--brand-primary-fg, #000)] hover:border-brand-primary transition-all bg-[var(--theme-bg-surface)] shadow-lg active:scale-95 shimmer-gold"
                                                         >
                                                             {opt.label}
                                                         </button>
@@ -443,32 +451,32 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                                     </div>
                                 ))}
                                 {isTyping && (
-                                    <div className="flex items-center gap-2 text-brand-primary/60">
-                                        <div className="flex gap-1">
-                                            <span className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-bounce [animation-delay:-0.3s]" />
-                                            <span className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-bounce [animation-delay:-0.15s]" />
-                                            <span className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-bounce" />
+                                    <div className="flex items-center gap-3 text-brand-primary pl-13">
+                                        <div className="flex gap-1.5">
+                                            <span className="w-2 h-2 bg-brand-primary rounded-full animate-bounce [animation-delay:-0.3s]" />
+                                            <span className="w-2 h-2 bg-brand-primary rounded-full animate-bounce [animation-delay:-0.15s]" />
+                                            <span className="w-2 h-2 bg-brand-primary rounded-full animate-bounce" />
                                         </div>
-                                        <span className="text-[9px] font-bold uppercase opacity-50">Gabriela está escribiendo...</span>
+                                        <span className="text-[9px] font-black uppercase tracking-widest opacity-50">Sincronizando...</span>
                                     </div>
                                 )}
                             </div>
                         </div>
 
-                        {/* Persistent Footer */}
-                        <div className="shrink-0 p-5 bg-[var(--theme-bg-surface)] border-t border-[var(--theme-border-soft)] z-30 shadow-4k">
+                        {/* Persistent Footer - Maestro Style */}
+                        <div className="shrink-0 p-6 bg-[var(--theme-bg-surface)]/90 border-t border-[var(--theme-border-soft)] z-30 shadow-4k backdrop-blur-xl">
                             {/* Suggestions */}
-                            <div className="flex gap-2 overflow-x-auto no-scrollbar pb-3 -mx-1 px-1">
+                            <div className="flex gap-2.5 overflow-x-auto no-scrollbar pb-4 -mx-1 px-1">
                                 {[
                                     "¿Cuánto vale el Plan Pro?", 
                                     "¿Cómo pago por Nequi?", 
                                     "¿Tienen simulacros gratis?",
-                                    "Hablar con un humano"
+                                    "Soporte VIP"
                                 ].map((hint, idx) => (
                                     <button 
                                         key={idx}
                                         onClick={() => setInputValue(hint)}
-                                        className="whitespace-nowrap px-4 py-1.5 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-[10px] font-bold text-brand-primary hover:bg-brand-primary hover:text-white transition-all flex-shrink-0"
+                                        className="whitespace-nowrap px-5 py-2.5 rounded-3xl bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] text-[10px] font-black uppercase tracking-widest text-[var(--theme-text-tertiary)] hover:border-brand-primary hover:text-brand-primary transition-all flex-shrink-0 shadow-sm"
                                     >
                                         {hint}
                                     </button>
@@ -477,37 +485,43 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
 
                             <form 
                                 onSubmit={(e) => { e.preventDefault(); handleSend(); }}
-                                className="flex items-center gap-2"
+                                className="flex items-center gap-3"
                             >
                                 <input 
                                     type="text" 
                                     value={inputValue}
                                     onChange={(e) => setInputValue(e.target.value)}
-                                    placeholder="Escribe tu duda aquí..."
-                                    className="flex-1 h-12 bg-white dark:bg-slate-900 rounded-2xl px-5 text-[13px] font-semibold border border-[var(--theme-border-soft)] focus:border-brand-primary/50 focus:ring-4 focus:ring-brand-primary/5 outline-none transition-all placeholder:text-[var(--theme-text-quaternary)] shadow-sm"
+                                    placeholder="Dialoguemos sobre tu futuro..."
+                                    className="flex-1 h-14 bg-[var(--theme-bg-base)] rounded-2xl px-6 text-[13px] font-bold border border-[var(--theme-border-soft)] focus:border-brand-primary/50 focus:ring-4 focus:ring-brand-primary/5 outline-none transition-all placeholder:text-[var(--theme-text-quaternary)]/40 shadow-inner"
                                 />
                                 <button 
                                     type="submit"
                                     disabled={!inputValue.trim()}
-                                    className="w-12 h-12 rounded-2xl bg-brand-primary text-white flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl shadow-brand-primary/25 disabled:opacity-50 shrink-0"
+                                    className="w-14 h-14 rounded-2xl bg-brand-primary text-black flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl shadow-brand-primary/25 disabled:opacity-50 shrink-0 organic-border-reverse"
                                 >
-                                    <Send size={18} />
+                                    <Send size={20} strokeWidth={2.5} />
                                 </button>
                             </form>
 
                             {/* Contact Links */}
-                            <div className="mt-4 flex justify-around items-center border-t border-[var(--theme-border-soft)] pt-3 opacity-90">
-                                <button onClick={() => window.open(`https://wa.me/${SUPPORT_WHATSAPP}`, '_blank')} className="flex flex-col items-center gap-1 group">
-                                    <Phone size={14} className="text-brand-success group-hover:scale-110 transition-transform" />
-                                    <span className="text-[8px] font-black uppercase text-brand-success">Soporte</span>
+                            <div className="mt-6 flex justify-around items-center border-t border-[var(--theme-border-soft)] pt-4 opacity-100">
+                                <button onClick={() => window.open(`tel:${DIRECT_CONTACT_NUMBER}`, '_self')} className="flex flex-col items-center gap-1.5 group">
+                                    <div className="p-2 bg-brand-success/5 rounded-xl group-hover:bg-brand-success/10 transition-colors">
+                                        <Phone size={14} className="text-brand-success group-hover:scale-110 transition-transform" />
+                                    </div>
+                                    <span className="text-[9px] font-black uppercase tracking-widest text-[var(--theme-text-tertiary)] group-hover:text-brand-success transition-colors">Asistencia</span>
                                 </button>
-                                <button onClick={() => window.location.href = `mailto:${CONTACT_EMAIL}`} className="flex flex-col items-center gap-1 group">
-                                    <Mail size={14} className="text-brand-primary group-hover:scale-110 transition-transform" />
-                                    <span className="text-[8px] font-black uppercase text-brand-primary">Email</span>
+                                <button onClick={() => window.open(`https://wa.me/${SUPPORT_WHATSAPP}`, '_blank')} className="flex flex-col items-center gap-1.5 group">
+                                    <div className="p-2 bg-brand-primary/5 rounded-xl group-hover:bg-brand-primary/10 transition-colors">
+                                        <MessageSquare size={14} className="text-brand-primary group-hover:scale-110 transition-transform" />
+                                    </div>
+                                    <span className="text-[9px] font-black uppercase tracking-widest text-[var(--theme-text-tertiary)] group-hover:text-brand-primary transition-colors">WhatsApp VIP</span>
                                 </button>
-                                <button onClick={() => window.open(`https://wa.me/${PAYMENTS_WHATSAPP}`, '_blank')} className="flex flex-col items-center gap-1 group">
-                                    <Sparkles size={14} className="text-yellow-500 group-hover:scale-110 transition-transform" />
-                                    <span className="text-[8px] font-black uppercase text-yellow-600">Plan PRO</span>
+                                <button onClick={() => handleOptionClick({ label: 'Upgrade PRO', value: 'whatsapp_payment' })} className="flex flex-col items-center gap-1.5 group">
+                                    <div className="p-2 bg-brand-primary/5 rounded-xl group-hover:bg-brand-primary/10 transition-colors">
+                                        <Sparkles size={14} className="text-brand-primary group-hover:scale-110 transition-transform" />
+                                    </div>
+                                    <span className="text-[9px] font-black uppercase tracking-widest text-[var(--theme-text-tertiary)] group-hover:text-brand-primary transition-colors">Upgrade</span>
                                 </button>
                             </div>
                         </div>

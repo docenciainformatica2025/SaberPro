@@ -8,7 +8,7 @@ import {
     Bot,
     BarChart2,
     User,
-    Bell
+    Activity
 } from "lucide-react";
 
 export default function BottomNav() {
@@ -23,8 +23,8 @@ export default function BottomNav() {
     const NAV_ITEMS = [
         { label: 'Inicio', path: '/dashboard', icon: Home },
         { label: 'Cursos', path: '/library', icon: BookOpen },
-        { label: 'Mentor', path: '/mentor', icon: Bot, isSpecial: true },
-        { label: 'Progreso', path: '/achievements', icon: BarChart2 },
+        { label: 'Pulso', path: '/pulse', icon: Activity, isSpecial: true },
+        { label: 'Mentor', path: '/mentor', icon: Bot },
         { label: 'Perfil', path: '/evolution', icon: User },
     ];
 
@@ -44,14 +44,14 @@ export default function BottomNav() {
                 return (
                     <Link
                         key={item.path}
-                        href={item.path}
+                        href={item.path as any}
                         className={`flex flex-col items-center gap-1.5 transition-all duration-300 group ${active ? 'scale-110' : 'opacity-60 hover:opacity-100'}`}
                     >
-                        <div className={`p-2 rounded-2xl transition-all duration-300 ${active ? 'bg-brand-primary/10' : 'group-hover:bg-[var(--theme-bg-surface)]'}`}>
+                        <div className={`p-2 rounded-2xl transition-all duration-300 ${active ? 'bg-brand-primary/10' : item.isSpecial ? 'bg-brand-primary/5' : 'group-hover:bg-[var(--theme-bg-surface)]'}`}>
                             <Icon
-                                size={20}
-                                className={`${active ? 'text-brand-primary' : 'text-[var(--theme-text-quaternary)]'}`}
-                                strokeWidth={active ? 2.5 : 2}
+                                size={item.isSpecial ? 22 : 20}
+                                className={`${active ? 'text-brand-primary' : item.isSpecial ? 'text-brand-primary' : 'text-[var(--theme-text-quaternary)]'}`}
+                                strokeWidth={active || item.isSpecial ? 2.5 : 2}
                             />
                         </div>
                         <span className={`text-[9px] uppercase tracking-widest ${active ? 'font-black text-brand-primary' : 'font-bold text-[var(--theme-text-quaternary)]'}`}>
