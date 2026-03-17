@@ -32,10 +32,13 @@ export default function SystemStatusPage() {
 
         // 1. Check Database Connection (Simplified)
         try {
-            const db = getFirestore(app);
-            // Just checking if db instance exists is enough for "Client SDK Ready"
-            if (db) newStatus.database = 'online';
-            else newStatus.database = 'offline';
+            if (app) {
+                const db = getFirestore(app);
+                if (db) newStatus.database = 'online';
+                else newStatus.database = 'offline';
+            } else {
+                newStatus.database = 'offline';
+            }
         } catch (e) {
             console.error(e);
             newStatus.database = 'offline';
@@ -43,20 +46,25 @@ export default function SystemStatusPage() {
 
         // 2. Check Auth
         try {
-            const auth = getAuth(app);
-            if (auth) newStatus.auth = 'online';
-            else newStatus.auth = 'offline';
+            if (app) {
+                const auth = getAuth(app);
+                if (auth) newStatus.auth = 'online';
+                else newStatus.auth = 'offline';
+            } else {
+                newStatus.auth = 'offline';
+            }
         } catch (e) {
             newStatus.auth = 'error';
         }
 
         // 3. Server Health & Latency (Real API Call)
         try {
-            const auth = getAuth(app);
-            const user = auth.currentUser;
-            const idToken = await user?.getIdToken();
+            if (app) {
+                const auth = getAuth(app);
+                const user = auth.currentUser;
+                const idToken = await user?.getIdToken();
 
-            const res = await fetch('/api/health', { 
+                const res = await fetch('/api/health', { 
                 cache: 'no-store',
                 headers: {
                     'Authorization': `Bearer ${idToken}`
@@ -65,14 +73,15 @@ export default function SystemStatusPage() {
             const end = Date.now();
             newStatus.latency = end - start;
 
-            if (res.ok) {
-                const data = await res.json();
-                newStatus.server = data;
-                newStatus.api = newStatus.latency < 500 ? 'excellent' : 'good';
-            } else {
-                newStatus.api = 'error';
-                if (res.status === 401 || res.status === 403) {
-                    console.warn("Acceso denegado a métricas de salud.");
+                if (res.ok) {
+                    const data = await res.json();
+                    newStatus.server = data;
+                    newStatus.api = newStatus.latency < 500 ? 'excellent' : 'good';
+                } else {
+                    newStatus.api = 'error';
+                    if (res.status === 401 || res.status === 403) {
+                        console.warn("Acceso denegado a métricas de salud.");
+                    }
                 }
             }
         } catch (e) {

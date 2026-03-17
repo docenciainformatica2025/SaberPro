@@ -129,114 +129,109 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
         setIsTyping(true);
         setTimeout(() => {
             const lowercaseValue = value.toLowerCase();
+            
+            // INTEL: Anti-loop check. If we already have the data or user is logged in, skip lead steps
+            const hasBasicInfo = !!(user || (userData.name && userData.email));
 
             if (value === "humano_flow") {
-                const contactMsg = user 
-                    ? `¡Oye! Claro que sí, ${userName}. Te voy a conectar directo con mi equipo. Son súper amables y te resolverán todo en un segundo. 🚀`
-                    : "¡Me encantaría presentarte a uno de mis compañeros! Son expertos en ayudarte a pasar el examen. Primero, ¿cómo te llamas para poder presentarte?";
-                
-                if (user) {
-                    addBotMessage(contactMsg, 'options', [
-                        { label: "📲 Hablar por WhatsApp", value: "whatsapp_support" },
-                        { label: "🏠 Menú", value: "restart" }
+                if (user || leadCaptured) {
+                    addBotMessage(`¡Claro que sí, ${userName}! Te conecto de inmediato con mi equipo humano. 🚀`, 'options', [
+                        { label: "📲 WhatsApp Soporte", value: "whatsapp_support" },
+                        { label: "🏠 Menú Principal", value: "restart" }
                     ]);
                 } else {
                     setStep('asking_name');
-                    addBotMessage(contactMsg);
+                    addBotMessage("¡Me encantaría presentarte a uno de mis compañeros especialistas! Pero primero, para darte una atención profesional, ¿cuál es tu nombre?");
                 }
             } else if (lowercaseValue.includes("methodology")) {
-                addBotMessage("¡Qué gran pregunta! En SaberPro no solo te damos preguntas, te entrenamos de verdad. 🧠 Nuestro método es: 1. Diagnóstico para ver dónde estás, 2. Entrenamiento diario con IA, y 3. Simulacros reales para pulir tiempo y nervios. ¿Quieres probar?", 'options', [
+                addBotMessage("Nuestra metodología se basa en la neurociencia aplicada: 1. Diagnóstico preciso, 2. Micro-entrenamientos diarios personalizados y 3. Simulacros de alta fidelidad. ¿Te gustaría ver cómo la IA personaliza tu estudio?", 'options', [
                     { label: "🚀 Probar Diagnóstico", value: "start_diagnostic" },
-                    { label: "💎 Ver Plan Pro", value: "suscripcion" },
+                    { label: "💎 Ver Plan Pro", value: "pricing" },
                     { label: "🏠 Menú", value: "restart" }
                 ]);
             } else if (lowercaseValue.includes("simulacro")) {
                 const simulacroMsg = isPro 
-                    ? `¡A darle con toda, ${userName}! Como eres PRO, tienes rienda suelta a todos los módulos. ¿Hoy vamos por una nueva meta o repasamos los fallos pasados?`
-                    : "Nuestros simulacros son iguales a los del ICFES real, ¡sin sorpresas! 🎯 Te súper recomiendo empezar con el Diagnóstico para que la IA sepa exactamente qué temas reforzar contigo.";
+                    ? `¡A por ese gran puntaje, ${userName}! Tienes acceso total. ¿Quieres iniciar un módulo específico o revisar tus áreas de mejora en el dashboard?`
+                    : "Nuestros simulacros replican exactamente la experiencia del examen real. 🎯 Te recomiendo iniciar con el Diagnóstico Gratuito para que identifiquemos tus fortalezas hoy mismo.";
                 
                 addBotMessage(simulacroMsg, 'options', isPro ? [
-                    { label: "🚀 Nuevo Simulacro", value: "start_diagnostic" },
-                    { label: "📉 Ver mis fallos", value: "progress" },
+                    { label: "🚀 Nuevo Módulo", value: "start_diagnostic" },
+                    { label: "📊 Ver Análisis de Fallos", value: "progress" },
                     { label: "🏠 Menú", value: "restart" }
                 ] : [
-                    { label: "🚀 Empezar ahora", value: "start_diagnostic" },
-                    { label: "📚 Guías de estudio", value: "help_center" },
+                    { label: "🚀 Diagnóstico Gratis", value: "start_diagnostic" },
+                    { label: "📚 Guías de Estudio", value: "help_center" },
                     { label: "🏠 Menú", value: "restart" }
                 ]);
             } else if (lowercaseValue.includes("suscripcion") || lowercaseValue.includes("pro")) {
                 if (isPro) {
-                    addBotMessage(`¡Ya eres de los nuestros en la élite PRO! ✨ Ya tienes desbloqueado el poder de la IA. ¿Te gustaría que revisáramos tu reporte de hoy para ver qué tal vas?`, 'options', [
-                        { label: "📊 Ver mi progreso", value: "progress" },
+                    addBotMessage(`¡Ya eres parte de la élite Premium! ✨ Tienes desbloqueado el motor predictivo de IA. ¿Quieres ver tus proyecciones de puntaje en el dashboard?`, 'options', [
+                        { label: "📈 Ver Mi Dashboard", value: "progress" },
                         { label: "🏠 Menú", value: "restart" }
                     ]);
                 } else {
-                    addBotMessage("Con el plan PRO desbloqueas todo: simulacros ilimitados, IA explicándote cada respuesta y acceso a todos los módulos. ¡Es la inversión más segura para tu futuro!", 'options', [
-                        { label: "💎 Ver el plan Pro", value: "pricing" },
-                        { label: "📲 Preguntar en WhatsApp", value: "whatsapp_payment" },
+                    addBotMessage("El Plan PRO te otorga la ventaja competitiva definitiva: IA explicativa en cada pregunta, simulacros ilimitados y reportes detallados por competencia. ¿Quieres conocer los precios actuales?", 'options', [
+                        { label: "💎 Ver Planes y Precios", value: "pricing" },
+                        { label: "📲 Consultar en WhatsApp", value: "whatsapp_payment" },
                         { label: "🏠 Menú", value: "restart" }
                     ]);
                 }
             } else if (lowercaseValue.includes("pago")) {
                 const paymentMsg = isPro 
-                    ? "¡Todo en orden con tu cuenta PRO! 💎 Si necesitas renovar o ayuda con facturación, aquí me tienes." 
-                    : "¡Súper fácil! Puedes pagar por Nequi, tarjetas de crédito o PSE. Si prefieres Nequi, te paso los datos por WhatsApp de una vez para activarte manualmente si quieres.";
+                    ? "¡Tu suscripción PRO está activa y al día! 💎 Si necesitas ayuda administrativa o una factura especial, aquí estoy." 
+                    : "Manejamos Nequi, Tarjetas y PSE de forma 100% segura. Si prefieres un proceso manual por Nequi, te daré los datos directos. ¿Qué prefieres?";
                 
-                addBotMessage(paymentMsg, 'options', [
-                    { label: isPro ? "🙋 Soporte" : "📲 Pagar por Nequi", value: isPro ? "humano_flow" : "whatsapp_payment" },
-                    { label: "💎 Ver Precios", value: "pricing" },
+                addBotMessage(paymentMsg, 'options', isPro ? [
+                    { label: "🙋 Soporte VIP", value: "humano_flow" },
+                    { label: "🏠 Menú", value: "restart" }
+                ] : [
+                    { label: "📲 Datos para Nequi", value: "whatsapp_payment" },
+                    { label: "💳 Pagar con Tarjeta", value: "pricing" },
                     { label: "🏠 Menú", value: "restart" }
                 ]);
             } else if (value === "progress") {
-                window.location.href = "/dashboard";
-                addBotMessage(`¡De una! Te llevo a tu dashboard. ¡Espero ver esos gráficos subiendo como espuma! 📈`);
+                addBotMessage(`¡Entendido! Te estoy redirigiendo a tu análisis de progreso... 📈`);
+                setTimeout(() => window.location.href = "/dashboard", 1000);
             } else if (value === "final_thanks") {
-                addBotMessage("¡No hay nada que agradecer! ✨ Estaré aquí 24/7 si te surge cualquier otra duda. ¡A darle con toda al estudio!", 'options', [
-                    { label: "🏠 Menú principal", value: "restart" }
+                addBotMessage("¡Ha sido un gusto ayudarte! ✨ Estaré aquí si necesitas algo más. ¡Mucho éxito en tu preparación!", 'options', [
+                    { label: "🏠 Volver al inicio", value: "restart" }
                 ]);
             } else if (value === "start_diagnostic") {
-                window.location.href = "/diagnostic";
-                addBotMessage("¡Excelente decisión! Te estoy llevando al diagnóstico. Tómate tu tiempo y lee bien. ¡Tú puedes!");
-            } else if (value === "whatsapp_support") {
-                const text = userData.name ? `Hola,%20soy%20${userData.name}.%20Necesito%20ayuda%20con%20la%20plataforma%20SaberPro%20🚀` : 'Hola,%20necesito%20ayuda%20con%20SaberPro%20😊';
-                window.open(`https://wa.me/${SUPPORT_WHATSAPP}?text=${text}`, '_blank');
-                addBotMessage("¡Listo! Ya se está abriendo el WhatsApp. En un ratito te atiende un humano experto. Mientras tanto, ¿algo más?", 'options', [{ label: "🏠 Menú", value: "restart" }]);
-            } else if (value === "whatsapp_payment") {
-                window.open(`https://wa.me/${PAYMENTS_WHATSAPP}?text=Hola,%20Gabriela%20me%20atendió.%20Quiero%20pagar%20mi%20suscripción%20Premium%20por%20Nequi%20💎`, '_blank');
-                addBotMessage("¡Perfecto! Escríbenos ahí y te mandamos los datos de pago al instante. ¡Bienvenido a la élite!", 'options', [{ label: "🏠 Menú", value: "restart" }]);
-            } else if (value === "restart") {
-                setStep('initial');
-                addBotMessage(`¡Aquí estoy de nuevo! 😊 ¿Qué más tienes en mente? Cualquier cosa por pequeña que sea, pregúntame.`, 'options', [
-                    { label: "🎯 Simulacros", value: "simulacro" },
-                    { label: "💎 Plan Pro", value: "suscripcion" },
-                    { label: "🙋 Charla Humana", value: "humano_flow" }
-                ]);
+                addBotMessage("Excelente. Preparando tu entorno de diagnóstico... 🎯 Recuerda leer cada pregunta con calma.");
+                setTimeout(() => window.location.href = "/diagnostic", 1000);
             } else if (value.startsWith("custom_")) {
                 const userQuery = value.replace("custom_", "");
                 const intent = matchIntent(userQuery);
                 
-                if (!user && intent !== "unknown" && !leadCaptured && step === 'initial') {
+                // Profesional Logic: Only trigger lead capture if UNKNOWN or specific intent and NO basic info
+                if (!hasBasicInfo && !leadCaptured && step === 'initial') {
                     setUserData(prev => ({ ...prev, intent: intent }));
                     setStep('capturing_leads');
-                    const intentName = intent === 'pago' ? 'los pagos' : (intent === 'simulacro' ? 'los simulacros' : 'SaberPro');
-                    addBotMessage(`¡Oye, qué buena pregunta sobre ${intentName}! 😊 Me encantaría darte una asesoría premium y personalizada. ¿Cómo te llamas para poder ayudarte mejor?`);
+                    addBotMessage(`¡Excelente punto! 😊 Para darte una respuesta profesional y enviarte material de apoyo, ¿me regalas tu nombre?`);
                 } else if (intent !== "unknown") {
                     processBotResponse(intent);
                 } else {
-                    addBotMessage("¡Vaya, esa pregunta me puso a pensar! 😊 Aún estoy aprendiendo cosas nuevas cada día, pero puedo guiarte con simulacros, planes PRO o comunicarte con mi equipo de humanos. ¿Qué te parece mejor?", 'options', [
+                    addBotMessage("Aún estoy afinando mis conocimientos sobre ese tema en particular. Sin embargo, puedo ayudarte con simulacros, planes PRO o escalarte con mi equipo experto. ¿Qué prefieres?", 'options', [
                         { label: "🎯 Simulacros", value: "simulacro" },
                         { label: "💎 Plan Pro", value: "suscripcion" },
                         { label: "🙋 Charla Humana", value: "humano_flow" }
                     ]);
                 }
-            } else {
-                addBotMessage("¡Entendido perfectamente! 😊 ¿Hay alguna otra cosita con la que pueda ayudarte a lograr ese gran puntaje hoy?", 'options', [
+            } else if (value === "restart") {
+                setStep('ready'); // Avoid looping back to questions if restart is clicked
+                addBotMessage(`¡Hola de nuevo! Aquí tienes el menú principal. ¿En qué puedo enfocarnos ahora?`, 'options', [
                     { label: "🎯 Simulacros", value: "simulacro" },
-                    { label: "🏠 Menú principal", value: "restart" }
+                    { label: "💎 Plan Pro", value: "suscripcion" },
+                    { label: "🙋 Charla Humana", value: "humano_flow" }
+                ]);
+            } else {
+                addBotMessage("Perfecto. 😊 ¿Hay algo más en lo que pueda apoyarte para garantizar tu ingreso a la educación superior?", 'options', [
+                    { label: "🎯 Simulacros", value: "simulacro" },
+                    { label: "🏠 Menú Principal", value: "restart" }
                 ]);
             }
             setIsTyping(false);
-        }, 1000); // Slightly more delay for a "thinking" feel
+        }, 800);
     };
 
     const handleSend = () => {
