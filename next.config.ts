@@ -31,7 +31,7 @@ const nextConfig: NextConfig = {
   async headers() {
     const cspHeader = `
       default-src 'self';
-      script-src 'self' 'unsafe-inline' https://*.google-analytics.com https://*.googletagmanager.com https://challenges.cloudflare.com https://*.clarity.ms https://*.vercel-scripts.com https://apis.google.com;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.google-analytics.com https://*.googletagmanager.com https://challenges.cloudflare.com https://*.clarity.ms https://*.vercel-scripts.com https://apis.google.com;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       img-src 'self' blob: data: https://lh3.googleusercontent.com https://firebasestorage.googleapis.com https://images.unsplash.com https://*.google-analytics.com https://*.googletagmanager.com https://*.clarity.ms https://*.vercel.com;
       font-src 'self' https://fonts.gstatic.com;
