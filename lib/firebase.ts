@@ -29,9 +29,10 @@ if (isConfigValid) {
         console.error("Firebase initialization error:", error);
     }
 } else {
-    console.warn("Firebase: NEXT_PUBLIC_FIREBASE_API_KEY is missing. Skipping initialization. (Normal during build if secrets are not injected)");
+    console.warn("Firebase: NEXT_PUBLIC_FIREBASE_API_KEY is missing. Skipping initialization.");
 }
 
+export const FIREBASE_READY = isConfigValid && !!app;
 export { app, auth, db };
 
 // Initialize analytics only on client side and if supported

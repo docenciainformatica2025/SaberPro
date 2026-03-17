@@ -11,7 +11,7 @@ import {
     User
 } from "firebase/auth";
 import { doc, getDoc, setDoc, Timestamp, onSnapshot, DocumentData } from "firebase/firestore";
-import { db, auth } from "@/lib/firebase";
+import { db, auth, FIREBASE_READY } from "@/lib/firebase";
 
 // Force Spanish for Firebase Emails
 if (auth) {
@@ -70,6 +70,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
 
     useEffect(() => {
+        if (!FIREBASE_READY || !auth) {
+            setLoading(false);
+            return;
+        }
+
         const unsubscribeAuth = onAuthStateChanged(auth, (authUser) => {
             setUser(authUser);
             if (!authUser) {
@@ -87,7 +92,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     // 2. Real-time Firestore Profile Sync
     useEffect(() => {
-        if (!user) return;
+        if (!user || !FIREBASE_READY || !db) return;
 
         const unsubscribeSnapshot = onSnapshot(doc(db, "users", user.uid), (docSnap) => {
             const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "").split(",").map((e: string) => e.trim().toLowerCase());
