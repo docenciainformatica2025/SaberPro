@@ -64,6 +64,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS_OBFUSCATED || "").split(",").map((e: string) => e.trim().toLowerCase());
     const isSuperAdmin = !!(user?.email && adminEmails.includes(user.email.toLowerCase()));
 
+    // Priority Role calculation to avoid database latency
+    const effectiveRole = isSuperAdmin ? 'admin' : (impersonatedRole || role);
+
     const switchRole = (newRole: 'student' | 'teacher' | 'admin' | null) => {
         if (!isSuperAdmin) return;
         setImpersonatedRole(newRole);
@@ -332,7 +335,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         <AuthContext.Provider value={{
             user,
             profile,
-            role: impersonatedRole || role,
+            role: effectiveRole,
             subscription,
             completedProfile,
             loading,
