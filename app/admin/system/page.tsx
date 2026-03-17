@@ -33,7 +33,7 @@ export default function SystemStatusPage() {
         // 1. Check Database Connection (Simplified)
         try {
             if (app) {
-                const db = getFirestore(app);
+                const db = getFirestore(app as any);
                 if (db) newStatus.database = 'online';
                 else newStatus.database = 'offline';
             } else {
@@ -47,7 +47,7 @@ export default function SystemStatusPage() {
         // 2. Check Auth
         try {
             if (app) {
-                const auth = getAuth(app);
+                const auth = getAuth(app as any);
                 if (auth) newStatus.auth = 'online';
                 else newStatus.auth = 'offline';
             } else {
@@ -60,7 +60,7 @@ export default function SystemStatusPage() {
         // 3. Server Health & Latency (Real API Call)
         try {
             if (app) {
-                const auth = getAuth(app);
+                const auth = getAuth(app as any);
                 const user = auth.currentUser;
                 const idToken = await user?.getIdToken();
 

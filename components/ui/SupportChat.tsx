@@ -247,11 +247,13 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
         setInputValue("");
 
         if (step === 'asking_name') {
-            setUserData(prev => ({ ...prev, name: currentInput }));
+            const name = currentInput.trim();
+            setUserData(prev => ({ ...prev, name }));
             setStep('asking_phone');
             setIsTyping(true);
             setTimeout(() => {
-                addBotMessage(`¡Mucho gusto, ${currentInput.split(' ')[0]}! ✨ ¿Me regalas tu número de celular o WhatsApp para contactarte?`);
+                const firstName = name.split(' ')[0];
+                addBotMessage(`¡Mucho gusto, ${firstName}! ✨ ¿Me regalas tu número de celular o WhatsApp para que un asesor te contacte si es necesario?`);
                 setIsTyping(false);
             }, 600);
         } else if (step === 'asking_phone') {
@@ -260,11 +262,11 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                 setStep('asking_email');
                 setIsTyping(true);
                 setTimeout(() => {
-                    addBotMessage("¡Perfecto! Ya casi terminamos. ¿Cuál es tu mejor correo electrónico?");
+                    addBotMessage("¡Perfecto! Ya casi terminamos. ¿Cuál es tu mejor correo electrónico para enviarte la información?");
                     setIsTyping(false);
                 }, 600);
             } else {
-                addBotMessage("Parece que ese número no es válido. ¿Me lo escribes de nuevo? (Ej: 3001234567)");
+                addBotMessage("Ese número no me parece correcto. ¿Podrías escribirlo de nuevo con el código de país o 10 dígitos? (Ej: 3001234567)");
             }
         } else if (step === 'asking_email') {
             if (validateEmail(currentInput)) {
@@ -273,7 +275,6 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                 setIsTyping(true);
                 setLeadCaptured(true);
                 
-                // Save lead
                 saveGabrielaLead({
                     name: userData.name,
                     phone: userData.phone,
@@ -282,46 +283,44 @@ export default function SupportChat({ isGlobal = false }: { isGlobal?: boolean }
                 });
 
                 setTimeout(() => {
-                    addBotMessage("¡Listo! Ya tengo tus datos a salvo. ✨ ¿Por dónde prefieres que te contacte un asesor especializado?", 'options', [
+                    addBotMessage("¡Excelente! Ya tengo tus datos a salvo. ✨ En breve un experto te contactará. Mientras tanto, ¿por dónde prefieres hablar?", 'options', [
                         { label: "📲 Por WhatsApp", value: "whatsapp_support" },
-                        { label: "📧 Por Correo", value: "email_form" },
-                        { label: "🏠 Menú principal", value: "restart" }
+                        { label: "🏠 Menú Principal", value: "restart" }
                     ]);
                     setIsTyping(false);
                 }, 600);
             } else {
-                addBotMessage("Ese correo no me parece correcto. ¿Podrías escribirlo de nuevo?");
+                addBotMessage("Ese correo no parece válido. ¿Me lo repites para asegurar que te llegue la info?");
             }
         } else if (step === 'capturing_leads') {
-            // New flow for spontaneous capture
+            // Smart spontaneous capture logic
             if (!userData.name) {
                 setUserData(prev => ({ ...prev, name: currentInput }));
-                addBotMessage("¡Genial! Y ahora, ¿a qué número de WhatsApp te puedo escribir?");
+                addBotMessage(`¡Qué buen nombre! 😊 ¿Y a qué número de WhatsApp podemos contactarte?`);
             } else if (!userData.phone) {
                 if (validatePhone(currentInput)) {
                     setUserData(prev => ({ ...prev, phone: currentInput }));
-                    addBotMessage("¡Súper! Y por último, regálame tu correo para enviarte las guías de estudio.");
+                    addBotMessage("¡Súper! Y por último, regálame tu correo electrónico para que el equipo tenga toda la base lista.");
                 } else {
-                    addBotMessage("Porfa, escribe un número de WhatsApp válido.");
+                    addBotMessage("Porfa, escribe un número de celular válido.");
                 }
             } else if (!userData.email) {
                 if (validateEmail(currentInput)) {
                     setUserData(prev => ({ ...prev, email: currentInput }));
                     setLeadCaptured(true);
-                    setStep('initial');
+                    setStep('ready');
                     saveGabrielaLead({
                         name: userData.name,
                         phone: userData.phone,
                         email: currentInput,
                         intent: userData.intent || 'spontaneous_lead'
                     });
-                    addBotMessage("¡Excelente! Ya estás en mi lista VIP. ✨ ¿En qué estábamos? Cuéntame más sobre tu duda.");
+                    addBotMessage("¡Listo! Ahora sí, sigamos adelante. ¿En qué estábamos? Cuéntame más sobre tu duda.");
                 } else {
-                    addBotMessage("Ese correo no parece válido. ¿Me lo repites?");
+                    addBotMessage("Ese correo no parece correcto. ¿Lo intentamos de nuevo?");
                 }
             }
         } else {
-            // Intent handling
             processBotResponse("custom_" + currentInput.toLowerCase());
         }
     };
