@@ -15,7 +15,7 @@ export default function TermsOfServiceBody() {
                     <div className="text-[var(--theme-text-tertiary)] text-[10px]">Todos los derechos reservados.</div>
                     <div className="pt-2 text-[var(--theme-text-tertiary)] text-[10px]">
                         Desarrollado para <strong className="text-[var(--theme-text-primary)] font-bold">{COMPANY_NAME}</strong><br />
-                        por <em className="text-[var(--theme-text-primary)] font-semibold not-italic">{AUTHOR_NAME}</em>.
+                        por <em className="text-[var(--theme-text-primary)] font-semibold not-italic">SinapCode SaaS</em> (Estonia Reg).
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@ export default function TermsOfServiceBody() {
                         <div className="mt-1 min-w-[6px] h-6 bg-brand-error/40 rounded-full" />
                         <div>
                             <strong className="text-[var(--theme-text-primary)] text-sm font-black uppercase tracking-wider block mb-1">Responsabilidad Limitada</strong>
-                            <p className="text-xs text-[var(--theme-text-secondary)] font-medium leading-relaxed">{AUTHOR_NAME} no se hace responsable por los resultados obtenidos por el Usuario en las pruebas reales. El éxito depende exclusivamente de tu preparación individual.</p>
+                            <p className="text-xs text-[var(--theme-text-secondary)] font-medium leading-relaxed">SinapCode SaaS no se hace responsable por los resultados obtenidos por el Usuario en las pruebas reales. El éxito depende exclusivamente de tu preparación individual.</p>
                         </div>
                     </div>
                 </div>
@@ -115,7 +115,7 @@ export default function TermsOfServiceBody() {
                 </h2>
                 <div className="p-6 rounded-2xl bg-[var(--theme-bg-overlay)]/50 border border-[var(--theme-border-soft)]">
                     <p className="leading-relaxed text-sm text-[var(--theme-text-secondary)] font-medium">
-                        El código fuente, diseño, algoritmos y base de datos son propiedad exclusiva de <strong className="text-[var(--theme-text-primary)]">{AUTHOR_NAME}</strong>.
+                        El código fuente, diseño, algoritmos y base de datos son propiedad exclusiva de <strong className="text-[var(--theme-text-primary)]">SinapCode SaaS (SIA)</strong>.
                         <span className="block mt-4 text-brand-primary font-black uppercase tracking-widest text-[10px]">Queda prohibida la reproducción, ingeniería inversa o distribución no autorizada.</span>
                     </p>
                 </div>

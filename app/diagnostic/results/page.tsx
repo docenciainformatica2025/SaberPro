@@ -125,34 +125,33 @@ export default function DiagnosticResultsPage() {
                         </p>
                     </div>
 
-                    <Card variant="glass" className="h-[300px] border-brand-primary/20 bg-black/40 relative">
+                    <Card variant="glass" className="h-[300px] border-brand-primary/20 bg-[var(--theme-bg-surface)]/40 relative overflow-hidden backdrop-blur-xl">
                         {mounted ? (
                             <div style={{ width: '100%', height: '100%' }}>
                                 <ResponsiveContainer width="100%" height="100%">
                                     <RadarChart cx="50%" cy="50%" outerRadius="70%" data={chartData}>
-                                        <PolarGrid stroke="var(--theme-border-soft)" />
-                                        <PolarAngleAxis dataKey="subject" tick={{ fill: 'var(--theme-text-tertiary)', fontSize: 10 }} />
-                                        <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+                                        <PolarGrid stroke="var(--theme-text-secondary)" opacity={0.1} />
+                                        <PolarAngleAxis dataKey="subject" tick={{ fill: 'var(--theme-text-secondary)', fontSize: 10, fontWeight: 'bold' }} />
                                         <Radar
                                             name="Tu Nivel"
                                             dataKey="A"
                                             stroke="var(--brand-primary)"
                                             strokeWidth={3}
                                             fill="var(--brand-primary)"
-                                            fillOpacity={0.3}
+                                            fillOpacity={0.4}
                                         />
                                     </RadarChart>
                                 </ResponsiveContainer>
                             </div>
                         ) : (
                             <div className="w-full h-full flex items-center justify-center">
-                                <div className="animate-pulse text-tertiary text-[10px] font-semibold uppercase tracking-wider">
+                                <div className="animate-pulse text-[var(--theme-text-tertiary)] text-[10px] font-semibold uppercase tracking-wider">
                                     Generando Visualización...
                                 </div>
                             </div>
                         )}
                         <div className="absolute inset-x-0 bottom-4 text-center">
-                            <p className="text-xs text-theme-text-secondary uppercase tracking-wider font-bold">Patrón de Desempeño</p>
+                            <p className="text-[10px] text-[var(--theme-text-tertiary)] uppercase tracking-widest font-black">Patrón de Desempeño</p>
                         </div>
                     </Card>
                 </div>

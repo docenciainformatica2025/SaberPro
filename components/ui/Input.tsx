@@ -27,7 +27,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                         type={type}
                         className={cn(
                             "w-full bg-[var(--theme-bg-surface)] border border-[var(--theme-border-soft)] rounded-[var(--radius-md)] px-5 py-4 text-[var(--theme-text-primary)] placeholder-[var(--theme-text-tertiary)] outline-none transition-all duration-300 font-medium",
-                            "hover:border-[var(--theme-text-tertiary)] focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 bg-white dark:bg-[var(--theme-bg-surface)]",
+                            "hover:border-[var(--theme-text-tertiary)] focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10",
                             "disabled:opacity-50 disabled:cursor-not-allowed",
                             Icon && "pl-12",
                             error && "border-red-500 focus:border-red-500 focus:ring-red-500/10",

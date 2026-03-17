@@ -104,9 +104,9 @@ export default function BillingPage() {
                         </h1>
                         <p className="text-xs text-[var(--theme-text-secondary)] opacity-60 font-medium tracking-wide">Gestiona tu estatus de miembro de élite y comprobantes.</p>
                     </div>
-                    <div className="bg-white/5 backdrop-blur-md border border-white/10 px-6 py-3 rounded-2xl flex items-center gap-4 shadow-xl">
+                    <div className="bg-[var(--theme-bg-surface)] backdrop-blur-md border border-[var(--theme-border-soft)] px-6 py-3 rounded-2xl flex items-center gap-4 shadow-xl">
                         <Receipt className="text-brand-primary" size={20} />
-                        <span className="text-xs font-black uppercase tracking-widest text-white/80">{transactions.length} Transacciones</span>
+                        <span className="text-xs font-black uppercase tracking-widest text-[var(--theme-text-primary)]/80">{transactions.length} Transacciones</span>
                     </div>
                 </header>
 
@@ -120,17 +120,17 @@ export default function BillingPage() {
                                 <CreditCard className="text-white w-10 h-10 drop-shadow-lg" strokeWidth={1.5} />
                             </div>
                             <div>
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/10 mb-3">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/20 border border-brand-primary/20 mb-3">
                                     <div className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-ping" />
                                     <span className="text-[9px] font-black uppercase tracking-widest text-brand-primary">ESTATUS ACTUAL</span>
                                 </div>
-                                <h3 className="text-4xl font-black text-white tracking-tightest leading-none mb-4">
+                                <h3 className="text-4xl font-black text-[var(--theme-text-primary)] tracking-tightest leading-none mb-4">
                                     {subscription?.plan === 'pro' || subscription?.plan === 'teacher' ? 'MIEMBRO ÉLITE' : (subscription?.plan || 'GRATUITO').toUpperCase()}
                                 </h3>
-                                <div className="flex items-center gap-3 text-xs text-white/50 font-medium tracking-wide">
+                                <div className="flex items-center gap-3 text-xs text-[var(--theme-text-secondary)]/60 font-medium tracking-wide">
                                     <Clock size={16} className="text-brand-primary" />
                                     {subscription?.status === 'active'
-                                        ? <span>Renovación automática: <b className="text-white">{formatLongDate(subscription.validUntil)}</b></span>
+                                        ? <span>Renovación automática: <b className="text-[var(--theme-text-primary)]">{formatLongDate(subscription.validUntil)}</b></span>
                                         : 'Sin suscripción activa'}
                                 </div>
                             </div>
@@ -139,7 +139,7 @@ export default function BillingPage() {
                         <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
                             {subscription?.plan !== 'free' ? (
                                 <>
-                                    <button className="h-14 px-8 rounded-2xl border border-white/5 text-white/40 hover:text-white/80 hover:bg-white/5 transition-all text-[11px] font-black uppercase tracking-[0.2em]">
+                                    <button className="h-14 px-8 rounded-2xl border border-[var(--theme-border-soft)] text-[var(--theme-text-secondary)]/40 hover:text-[var(--theme-text-primary)] hover:bg-[var(--theme-bg-base)]/50 transition-all text-[11px] font-black uppercase tracking-[0.2em]">
                                         CANCELAR
                                     </button>
                                     <button
@@ -164,8 +164,8 @@ export default function BillingPage() {
                 {/* Transactions Grid */}
                 <div className="space-y-8">
                     <div className="flex justify-between items-center px-4">
-                        <h2 className="text-[11px] font-black text-white/40 uppercase tracking-[0.4em]">Historial de Élite</h2>
-                        <div className="h-px flex-1 mx-8 bg-white/5" />
+                        <h2 className="text-[11px] font-black text-[var(--theme-text-secondary)]/40 uppercase tracking-[0.4em]">Historial de Élite</h2>
+                        <div className="h-px flex-1 mx-8 bg-[var(--theme-border-soft)]" />
                     </div>
 
                     {loading ? (

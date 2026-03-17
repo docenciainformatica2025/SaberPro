@@ -268,16 +268,12 @@ export default function RegisterPage() {
                                         </label>
                                     </div>
                                     {errors.terms && <p className="text-[10px] text-red-500 font-bold uppercase ml-1 tracking-wider">{errors.terms.message}</p>}
-
-                                    <div className="flex justify-center p-3 rounded-2xl bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/5">
-                                        <Turnstile sitekey="1x00000000000000000000AA" onVerify={(token) => setCaptchaToken(token)} theme="auto" />
-                                    </div>
                                 </div>
                             </div>
 
                             <Button
                                 type="submit"
-                                disabled={isSubmitting || !captchaToken}
+                                disabled={isSubmitting}
                                 isLoading={isSubmitting}
                                 className="w-full h-15 mt-4 bg-brand-primary hover:bg-brand-primary/95 text-white shadow-xl shadow-brand-primary/20 text-[11px] font-black uppercase tracking-[0.35em] rounded-2xl transform hover:scale-[1.01] active:scale-[0.98] transition-all"
                                 icon={ArrowRightIcon}

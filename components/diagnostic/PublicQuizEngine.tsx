@@ -240,8 +240,8 @@ export default function PublicQuizEngine() {
 
                                 <Button
                                     onClick={handleNext}
-                                    variant="primary"
-                                    className="w-full text-xs font-semibold uppercase tracking-wider h-11"
+                                    variant="maestro"
+                                    className="w-full text-xs font-semibold uppercase tracking-wider h-12 shadow-premium border border-white/10"
                                     icon={ArrowRight}
                                     iconPosition="right"
                                 >

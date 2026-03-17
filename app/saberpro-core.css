@@ -39,6 +39,7 @@
     /* Stronger success color */
     --brand-accent: var(--sunset-glow);
     --brand-error: #D00000;
+    --brand-primary-rgb: 18, 18, 18;
 
     --bg-app: var(--mist-white);
     --surface-card: #FFFFFF;
@@ -84,6 +85,7 @@
     --text-secondary: #E2E8F0;
     --text-muted: #94A3B8;
     --border-subtle: rgba(255, 255, 255, 0.12);
+    --brand-primary-rgb: 96, 165, 250;
 }
 
 @layer base {

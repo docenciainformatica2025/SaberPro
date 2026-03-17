@@ -276,7 +276,7 @@ export default function ProfilePage() {
                                     size="lg"
                                     isLoading={saving}
                                     icon={Save}
-                                    className="px-8 shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] transition-all uppercase tracking-wider font-semibold text-xs"
+                                    className="px-8 shadow-[0_0_20px_rgba(var(--brand-primary-rgb),0.3)] hover:shadow-[0_0_40px_rgba(var(--brand-primary-rgb),0.5)] transition-all uppercase tracking-wider font-extrabold text-xs text-white"
                                 >
                                     Guardar Perfil
                                 </Button>

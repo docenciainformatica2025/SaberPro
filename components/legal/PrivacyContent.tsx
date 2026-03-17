@@ -12,7 +12,7 @@ export default function PrivacyContent() {
                     <p className="text-[10px] text-[var(--theme-text-tertiary)] font-bold uppercase tracking-tight">Cumplimiento Estricto Ley 1581 (Colombia)</p>
                 </div>
                 <div className="text-[11px] space-y-1.5 text-center md:text-right">
-                    <div className="font-bold text-[var(--theme-text-primary)] tracking-tight">Responsable: {AUTHOR_NAME}</div>
+                    <div className="font-bold text-[var(--theme-text-primary)] tracking-tight">Responsable: SinapCode SaaS</div>
                     <div className="text-brand-primary font-black tracking-wide truncate max-w-[200px]">{CONTACT_EMAIL}</div>
                     <div className="pt-2 text-[var(--theme-text-tertiary)] text-[10px] leading-relaxed font-medium">
                         Infraestructura: <em className="text-[var(--theme-text-primary)] not-italic font-black">SaberPro Cloud</em><br />
@@ -40,7 +40,7 @@ export default function PrivacyContent() {
                 <div className="p-8 rounded-3xl bg-[var(--theme-bg-base)] border border-[var(--theme-border-soft)] shadow-sm relative overflow-hidden group">
                     <div className="absolute top-0 left-0 w-1 h-full bg-brand-primary/20 group-hover:bg-brand-primary transition-colors" />
                     <p className="leading-relaxed text-sm text-[var(--theme-text-secondary)] font-medium">
-                        En cumplimiento de la <strong className="text-[var(--theme-text-primary)] font-black">Ley Estatutaria 1581 de 2012</strong> y el Decreto 1377 de 2013, autorizas a {AUTHOR_NAME} para el tratamiento de tu información bajo los principios de finalidad, libertad y veracidad suprema.
+                        En cumplimiento de la <strong className="text-[var(--theme-text-primary)] font-black">Ley Estatutaria 1581 de 2012</strong> y el Decreto 1377 de 2013, autorizas a SinapCode SaaS para el tratamiento de tu información bajo los principios de finalidad, libertad y veracidad suprema.
                     </p>
                 </div>
             </section>

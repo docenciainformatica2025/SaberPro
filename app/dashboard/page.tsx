@@ -163,7 +163,6 @@ export default function DashboardPage() {
                                     {stats?.totalSimulations === 0 ? "Ver mi Plan de Estudio" : "Continuar Ruta"} <ChevronRight size={14} className="ml-2" />
                                 </Button>
                             </Link>
-                            <HikerIllustration />
                         </div>
                     </div>
                 </div>

@@ -14,9 +14,9 @@ export const COPYRIGHT_TEXT = `© ${CURRENT_YEAR} Saber Pro Suite. Todos los der
 export const DEVELOPER_COPYRIGHT = `© ${CURRENT_YEAR} – Saber Pro Trainer v${APP_VERSION}`;
 
 // Email remains static as it's a specific address
-export const AUTHOR_NAME = "Antonio Rodríguez";
+export const AUTHOR_NAME = "SinapCode SaaS";
 export const COMPANY_NAME = "Saber Pro Suite";
 export const CONTACT_EMAIL = "sinapcoderia@gmail.com";
 export const SALES_EMAIL = "sinapcoderia@gmail.com";
 export const SUPPORT_WHATSAPP = "573052357890";
-export const PAYMENTS_WHATSAPP = "573147940540";
+export const PAYMENTS_WHATSAPP = "573052357890";
