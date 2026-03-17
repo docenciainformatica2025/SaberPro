@@ -45,8 +45,10 @@ export default function AdminAnalyticsPage() {
         conversionRate: 0
     });
     const [chartData, setChartData] = useState<ChartDataPoint[]>([]);
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         const fetchAnalytics = async () => {
             try {
                 const { stats, chartData } = await AnalyticsService.getGrowthMetrics();
@@ -160,56 +162,58 @@ export default function AdminAnalyticsPage() {
                         </div>
                     </div>
                     <div className="h-[350px] w-full mt-4">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <AreaChart
-                                data={chartData.length > 0 ? chartData : [{ month: '---', users: 0, revenue: 0 }]}
-                                margin={{ top: 20, right: 30, left: -20, bottom: 10 }}
-                            >
-                                <defs>
-                                    <linearGradient id="colorUsers" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor="var(--brand-primary)" stopOpacity={0.3} />
-                                        <stop offset="95%" stopColor="var(--brand-primary)" stopOpacity={0} />
-                                    </linearGradient>
-                                </defs>
-                                <CartesianGrid strokeDasharray="3 3" stroke="var(--theme-border-soft)" vertical={false} />
-                                <XAxis
-                                    dataKey="month"
-                                    stroke="var(--theme-text-secondary)"
-                                    fontSize={10}
-                                    tickLine={false}
-                                    axisLine={false}
-                                    dy={10}
-                                    fontStyle="italic"
-                                />
-                                <YAxis
-                                    stroke="var(--theme-text-secondary)"
-                                    fontSize={10}
-                                    tickLine={false}
-                                    axisLine={false}
-                                    tickFormatter={(val) => val.toLocaleString('es-CO')}
-                                />
-                                <Tooltip
-                                    contentStyle={{
-                                        backgroundColor: 'var(--theme-bg-surface)',
-                                        borderColor: 'var(--theme-border-soft)',
-                                        borderRadius: '12px',
-                                        fontSize: '12px',
-                                        boxShadow: 'var(--shadow-premium)',
-                                        color: 'var(--theme-text-primary)'
-                                    }}
-                                    itemStyle={{ color: 'var(--brand-primary)', fontWeight: 'bold' }}
-                                />
-                                <Area
-                                    type="monotone"
-                                    dataKey="users"
-                                    name="Registros"
-                                    stroke="var(--brand-primary)"
-                                    strokeWidth={3}
-                                    fillOpacity={1}
-                                    fill="url(#colorUsers)"
-                                />
-                            </AreaChart>
-                        </ResponsiveContainer>
+                        {mounted && (
+                            <ResponsiveContainer width="100%" height="100%">
+                                <AreaChart
+                                    data={chartData.length > 0 ? chartData : [{ month: '---', users: 0, revenue: 0 }]}
+                                    margin={{ top: 20, right: 30, left: -20, bottom: 10 }}
+                                >
+                                    <defs>
+                                        <linearGradient id="colorUsers" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="5%" stopColor="var(--brand-primary)" stopOpacity={0.3} />
+                                            <stop offset="95%" stopColor="var(--brand-primary)" stopOpacity={0} />
+                                        </linearGradient>
+                                    </defs>
+                                    <CartesianGrid strokeDasharray="3 3" stroke="var(--theme-border-soft)" vertical={false} />
+                                    <XAxis
+                                        dataKey="month"
+                                        stroke="var(--theme-text-secondary)"
+                                        fontSize={10}
+                                        tickLine={false}
+                                        axisLine={false}
+                                        dy={10}
+                                        fontStyle="italic"
+                                    />
+                                    <YAxis
+                                        stroke="var(--theme-text-secondary)"
+                                        fontSize={10}
+                                        tickLine={false}
+                                        axisLine={false}
+                                        tickFormatter={(val) => val.toLocaleString('es-CO')}
+                                    />
+                                    <Tooltip
+                                        contentStyle={{
+                                            backgroundColor: 'var(--theme-bg-surface)',
+                                            borderColor: 'var(--theme-border-soft)',
+                                            borderRadius: '12px',
+                                            fontSize: '12px',
+                                            boxShadow: 'var(--shadow-premium)',
+                                            color: 'var(--theme-text-primary)'
+                                        }}
+                                        itemStyle={{ color: 'var(--brand-primary)', fontWeight: 'bold' }}
+                                    />
+                                    <Area
+                                        type="monotone"
+                                        dataKey="users"
+                                        name="Registros"
+                                        stroke="var(--brand-primary)"
+                                        strokeWidth={3}
+                                        fillOpacity={1}
+                                        fill="url(#colorUsers)"
+                                    />
+                                </AreaChart>
+                            </ResponsiveContainer>
+                        )}
                     </div>
                 </Card>
 
@@ -230,41 +234,43 @@ export default function AdminAnalyticsPage() {
                             <span className="text-4xl font-bold text-[var(--theme-text-primary)] tabular-nums tracking-tight drop-shadow-2xl">{stats.totalUsers}</span>
                         </div>
 
-                        <ResponsiveContainer width="100%" height="100%">
-                            <PieChart>
-                                <Pie
-                                    data={conversionData}
-                                    cx="50%"
-                                    cy="50%"
-                                    innerRadius={75}
-                                    outerRadius={105}
-                                    paddingAngle={5}
-                                    cornerRadius={4}
-                                    dataKey="value"
-                                    stroke="none"
-                                    animationBegin={0}
-                                    animationDuration={1500}
-                                >
-                                    {conversionData.map((entry, index) => (
-                                        <Cell
-                                            key={`cell-${index}`}
-                                            fill={CHART_COLORS[index % CHART_COLORS.length]}
-                                            className="hover:opacity-90 transition-opacity cursor-pointer outline-none"
-                                        />
-                                    ))}
-                                </Pie>
-                                <Tooltip
-                                    contentStyle={{
-                                        backgroundColor: 'var(--theme-bg-surface)',
-                                        borderColor: 'var(--theme-border-soft)',
-                                        borderRadius: '16px',
-                                        fontSize: '11px',
-                                        boxShadow: 'var(--shadow-premium)',
-                                        color: 'var(--theme-text-primary)'
-                                    }}
-                                />
-                            </PieChart>
-                        </ResponsiveContainer>
+                        {mounted && (
+                            <ResponsiveContainer width="100%" height="100%">
+                                <PieChart>
+                                    <Pie
+                                        data={conversionData}
+                                        cx="50%"
+                                        cy="50%"
+                                        innerRadius={75}
+                                        outerRadius={105}
+                                        paddingAngle={5}
+                                        cornerRadius={4}
+                                        dataKey="value"
+                                        stroke="none"
+                                        animationBegin={0}
+                                        animationDuration={1500}
+                                    >
+                                        {conversionData.map((entry, index) => (
+                                            <Cell
+                                                key={`cell-${index}`}
+                                                fill={CHART_COLORS[index % CHART_COLORS.length]}
+                                                className="hover:opacity-90 transition-opacity cursor-pointer outline-none"
+                                            />
+                                        ))}
+                                    </Pie>
+                                    <Tooltip
+                                        contentStyle={{
+                                            backgroundColor: 'var(--theme-bg-surface)',
+                                            borderColor: 'var(--theme-border-soft)',
+                                            borderRadius: '16px',
+                                            fontSize: '11px',
+                                            boxShadow: 'var(--shadow-premium)',
+                                            color: 'var(--theme-text-primary)'
+                                        }}
+                                    />
+                                </PieChart>
+                            </ResponsiveContainer>
+                        )}
                     </div>
 
                     <div className="w-full space-y-4">
