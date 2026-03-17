@@ -276,7 +276,7 @@ export default function UsersPage() {
 
     const saveEditUser = async () => {
         if (!editingUser) return;
-        const masterAdmins = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "")
+        const masterAdmins = (process.env.NEXT_PUBLIC_ADMIN_EMAILS_OBFUSCATED || "")
             .split(",")
             .map(e => e.trim().toLowerCase());
 

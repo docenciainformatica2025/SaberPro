@@ -30,7 +30,7 @@ export default function AdminLayout({
 
             try {
                 // Check if user has admin privileges (Case Insensitive)
-                const allowedEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "")
+                const allowedEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS_OBFUSCATED || "")
                     .split(",")
                     .map(e => e.trim().toLowerCase());
 
